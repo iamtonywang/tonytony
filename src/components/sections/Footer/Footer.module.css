@@ -1,11 +1,41 @@
 .footer {
   width: 100%;
-  padding: 20px 12px;
+  padding: 20px 12px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  color: #ffffff;
 }
 
 .text {
   font-size: 0.875rem;
-  line-height: 1.2;
+  line-height: 1.45;
+  color: inherit;
+}
+
+.policyLinks {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.policyLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.policyLink:hover {
+  color: #ff7f00;
+}
+
+.copyright {
+  margin: 14px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.3;
   color: inherit;
 }
