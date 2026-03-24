@@ -1,21 +1,34 @@
+import Link from "next/link";
 import styles from "./Header.module.css";
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Global navigation">
-        <a href="#" className={styles.link}>
-          Our Work
-        </a>
-        <a href="#" className={styles.link}>
-          WHY?
-        </a>
-        <a href="#" className={styles.link}>
-          Product
-        </a>
-        <a href="#" className={styles.link}>
-          Login
-        </a>
+        <div className={styles.topRow}>
+          <button
+            type="button"
+            className={styles.menuButton}
+            aria-label="Open navigation menu"
+          >
+            <span className={styles.menuIcon} />
+          </button>
+          <p className={styles.brand}>TONYWANG</p>
+        </div>
+        <div className={styles.menuRow}>
+          <Link href="/ourwork" className={styles.link}>
+            Our Work
+          </Link>
+          <Link href="/why" className={styles.link}>
+            WHY?
+          </Link>
+          <Link href="/products" className={styles.link}>
+            Product
+          </Link>
+          <Link href="/login" className={styles.link}>
+            Login
+          </Link>
+        </div>
       </nav>
     </header>
   );
