@@ -67,7 +67,7 @@
 }
 
 .menuRow {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   gap: 16px;
@@ -83,4 +83,14 @@
 
 .link:hover {
   color: #ff7f00;
+}
+
+@media (min-width: 768px) {
+  .menuButton {
+    display: none;
+  }
+
+  .menuRow {
+    display: flex;
+  }
 }
