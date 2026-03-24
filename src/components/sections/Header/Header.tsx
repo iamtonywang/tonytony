@@ -6,7 +6,9 @@ export default function Header() {
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Global navigation">
         <div className={styles.topRow}>
-          <p className={styles.brand}>TONYWANG</p>
+          <Link href="/" className={styles.brand}>
+            TONYWANG
+          </Link>
           <button
             type="button"
             className={styles.menuButton}
