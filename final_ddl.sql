@@ -674,11 +674,7 @@ create table partner_codes (
     check (expired_at is null or expired_at >= issued_at)
 );
 
-create unique index uq_partner_applications_one_pending_per_user
-  on partner_applications (user_id)
-  where application_status = 'pending';
-
-- 03 product_tables
+-- 03_product_tables
 create table products (
   id bigserial primary key,
   slug text not null,
@@ -1003,7 +999,6 @@ create table payments (
   updated_at timestamptz not null default now(),
 
   constraint uq_payments_id_order_id unique (id, order_id),
-  constraint uq_payments_transaction_id unique (transaction_id),
 
   constraint fk_payments_order
     foreign key (order_id) references orders(id) on delete restrict,
@@ -1336,7 +1331,7 @@ create table partner_point_logs (
     check (balance_after >= 0)
 );
 
--- 07 board tables 
+-- 07_board_tables
 create table reviews (
   id bigserial primary key,
   product_id bigint not null,
@@ -1404,7 +1399,6 @@ create table inquiries (
 
   constraint chk_inquiries_answered_at_after_created
     check (answered_at is null or answered_at >= created_at)
-);
 );
 
 -- 08 ops_tables
@@ -1788,6 +1782,14 @@ create unique index uq_product_media_active_primary_per_product_type
   on product_media (product_id, media_type)
   where is_primary = true
     and is_active = true;
+
+create unique index uq_partner_applications_one_pending_per_user
+  on partner_applications (user_id)
+  where application_status = 'pending';
+
+create unique index uq_payments_transaction_id_not_null
+  on payments (transaction_id)
+  where transaction_id is not null;
 
 create index idx_products_status_visible_order
   on products (product_status, is_visible, display_order);
