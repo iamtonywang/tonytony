@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./ProductListSection.module.css";
 
 const PRODUCT_ITEMS = [
@@ -20,6 +21,9 @@ export default function ProductListSection() {
           <article key={item.slug} className={styles.card}>
             <p className={styles.productName}>{item.name}</p>
             <p className={styles.productSlug}>slug: {item.slug}</p>
+            <Link href={`/products/${item.slug}`} className={styles.viewButton}>
+              View Product
+            </Link>
           </article>
         ))}
       </div>
