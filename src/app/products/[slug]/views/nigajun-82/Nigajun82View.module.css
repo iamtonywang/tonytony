@@ -1,0 +1,51 @@
+.detailPage {
+  width: 100%;
+  padding: 24px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heroSection,
+.coreInfoSection,
+.ctaSection,
+.boardSection,
+.informationSection {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 16px;
+}
+
+.productTitle {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.heroMediaSlot {
+  width: 100%;
+  min-height: 140px;
+  margin-top: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.sectionText {
+  margin: 8px 0 0;
+  line-height: 1.6;
+}
+
+.ctaButton {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
