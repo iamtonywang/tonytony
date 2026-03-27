@@ -1,9 +1,15 @@
-import styles from "./OurWork.module.css";
+import HeroSection from "./HeroSection";
+import MainContentSection from "./MainContentSection";
+import OptionalSection from "./OptionalSection";
+import OptionalMediaSection from "./OptionalMediaSection";
 
 export default function OurWork() {
   return (
-    <section className={styles.section}>
-      <p className={styles.text}>Our Work page placeholder.</p>
-    </section>
+    <>
+      <HeroSection />
+      <MainContentSection />
+      <OptionalSection />
+      <OptionalMediaSection />
+    </>
   );
 }
