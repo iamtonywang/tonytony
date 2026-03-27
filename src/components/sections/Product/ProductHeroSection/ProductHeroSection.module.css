@@ -3,8 +3,49 @@
   padding: 28px 16px 12px;
 }
 
-.heroInner {
+.heroVisual {
   width: 100%;
+  min-height: 34vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.videoArea {
+  width: 100%;
+  min-height: 34vh;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.backgroundLayer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.2));
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.videoElement {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.heroOverlay {
+  width: 100%;
+  max-width: 540px;
+  padding: 0 12px;
+  position: absolute;
+  z-index: 2;
   text-align: center;
 }
 
