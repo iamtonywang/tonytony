@@ -4,14 +4,29 @@
   padding: 24px 16px;
 }
 
-.heroInner {
+.heroVisual {
   width: 100%;
   min-height: 22vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  position: relative;
+}
+
+.videoArea {
+  width: 100%;
+  min-height: 22vh;
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.heroOverlay {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 12px;
 }
 
 .heroText {
