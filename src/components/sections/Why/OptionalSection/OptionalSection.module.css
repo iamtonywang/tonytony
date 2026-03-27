@@ -1,0 +1,15 @@
+.optionalSection {
+  width: 100%;
+  min-height: 28vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.optionalText {
+  margin: 0;
+  color: inherit;
+  line-height: 1.6;
+}

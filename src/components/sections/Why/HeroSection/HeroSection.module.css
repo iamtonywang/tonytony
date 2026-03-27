@@ -1,0 +1,21 @@
+.heroSection {
+  width: 100%;
+  min-height: 34vh;
+  padding: 24px 16px;
+}
+
+.heroInner {
+  width: 100%;
+  min-height: 22vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.heroText {
+  margin: 0;
+  color: inherit;
+  line-height: 1.6;
+}
