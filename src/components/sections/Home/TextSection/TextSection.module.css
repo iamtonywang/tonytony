@@ -1,0 +1,16 @@
+.textSection {
+  width: 100%;
+  min-height: 32vh;
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.textSection p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: inherit;
+}

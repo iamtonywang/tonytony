@@ -1,0 +1,26 @@
+.visualSection {
+  width: 100%;
+  min-height: 52vh;
+  padding: 0 16px 24px;
+}
+
+.visualArea {
+  width: 100%;
+  min-height: 44vh;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualOverlay {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  padding: 0 12px;
+}
+
+.visualOverlay p {
+  margin: 0;
+  line-height: 1.6;
+}
