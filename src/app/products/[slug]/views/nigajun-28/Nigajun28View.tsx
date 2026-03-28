@@ -2,8 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import styles from "./Nigajun28View.module.css";
+import type { ProductMinimal } from "@/app/products/_server/types";
 
-export default function Nigajun28View() {
+interface Props {
+  product?: ProductMinimal;
+}
+
+export default function Nigajun28View({ product }: Props) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
 
@@ -62,14 +67,18 @@ export default function Nigajun28View() {
             <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
           </div>
           <div className={styles.heroOverlay}>
-            <h1 className={styles.productTitle}>NIGAJUN 28</h1>
+            <h1 className={styles.productTitle}>
+              {product?.productName ?? "NIGAJUN 28"}
+            </h1>
           </div>
         </div>
       </section>
 
       <section className={styles.coreInfoSection}>
         <h2 className={styles.sectionTitle}>Core Information</h2>
-        <p className={styles.sectionText}>Core product information placeholder.</p>
+        <p className={styles.sectionText}>
+          {product?.shortDescription ?? "Core product information placeholder."}
+        </p>
       </section>
 
       <section className={styles.ctaSection}>
