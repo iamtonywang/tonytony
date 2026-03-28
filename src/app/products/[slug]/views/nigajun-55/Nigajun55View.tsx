@@ -29,6 +29,9 @@ export default function Nigajun55View({ product }: Props) {
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
 
+      // connect asset source (single pc asset as default)
+      videoEl.src = "/landing-assets/nigajun-55-hero-pc.mp4.mp4";
+
       videoOverlayRef.current.appendChild(videoEl);
       hasMountedVideo = true;
     };
@@ -63,7 +66,10 @@ export default function Nigajun55View({ product }: Props) {
       <section className={styles.heroSection}>
         <div ref={heroVisualRef} className={styles.heroVisual}>
           <div className={styles.videoArea}>
-            <div className={styles.backgroundLayer} />
+            <div
+              className={styles.backgroundLayer}
+              style={{ backgroundImage: "url('/landing-assets/nigajun-55-hero-pc.webp.webp')" }}
+            />
             <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
           </div>
           <div className={styles.heroOverlay}>
