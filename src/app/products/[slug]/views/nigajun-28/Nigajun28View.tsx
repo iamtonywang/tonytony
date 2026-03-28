@@ -15,6 +15,8 @@ export default function Nigajun28View({ product }: Props) {
   useEffect(() => {
     let isMounted = true;
     let hasMountedVideo = false;
+    let timeoutId: number | null = null;
+    let hasScheduled = false;
 
     const mountVideoOverlay = () => {
       if (!isMounted || hasMountedVideo || !videoOverlayRef.current) {
@@ -44,9 +46,12 @@ export default function Nigajun28View({ product }: Props) {
       const observer = new IntersectionObserver(
         (entries) => {
           const [entry] = entries;
-          if (entry && entry.isIntersecting) {
-            mountVideoOverlay();
-            observer.disconnect();
+          if (entry && entry.isIntersecting && !hasScheduled) {
+            hasScheduled = true;
+            timeoutId = window.setTimeout(() => {
+              mountVideoOverlay();
+              observer.disconnect();
+            }, 4000);
           }
         },
         { threshold: 0.2 }
@@ -57,6 +62,9 @@ export default function Nigajun28View({ product }: Props) {
 
     return () => {
       isMounted = false;
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
       cancelAnimationFrame(rafId);
     };
   }, []);
