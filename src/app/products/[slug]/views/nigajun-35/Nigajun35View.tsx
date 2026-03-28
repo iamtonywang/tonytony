@@ -87,18 +87,17 @@ export default function Nigajun35View({ product }: Props) {
             />
             <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
           </div>
-          <div
-            className={styles.heroOverlay}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-            }}
-          >
+          <div className={styles.heroOverlay}>
+            <h1 className={styles.productTitle}>
+              {product?.productName ?? "NIGAJUN 35"}
+            </h1>
             <h1
-              className={styles.productTitle}
               style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                textAlign: "center",
                 opacity: hideText ? 0 : 1,
                 transition: "opacity 2s ease",
               }}
