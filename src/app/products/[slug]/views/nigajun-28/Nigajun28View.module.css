@@ -76,9 +76,9 @@
 
 .playButton {
   position: absolute;
+  top: 50%;
   left: 50%;
-  bottom: 20%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -87,10 +87,22 @@
   backdrop-filter: blur(4px);
 }
 
-.playIcon {
-  width: 18px;
-  height: 18px;
-  color: rgba(255, 255, 255, 0.9);
+.playButton::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-40%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid #ff6a00;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  box-shadow: 0 0 6px rgba(255, 106, 0, 0.35);
+}
+
+.playButton:hover::before {
+  box-shadow: 0 0 10px rgba(255, 106, 0, 0.6);
 }
 
 .coreInfoSection,

@@ -103,11 +103,7 @@ export default function Nigajun82View({ product }: Props) {
                 } catch {}
               }}
               aria-label="Toggle video playback"
-            >
-              <svg className={styles.playIcon} viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M8 5v14l11-7z" fill="currentColor"/>
-              </svg>
-            </button>
+            />
           </div>
         </div>
       </section>
