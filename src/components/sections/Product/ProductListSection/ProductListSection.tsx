@@ -1,31 +1,49 @@
 import Link from "next/link";
 import styles from "./ProductListSection.module.css";
+import type { ProductMinimal } from "@/app/products/_server/types";
 
-const PRODUCT_ITEMS = [
-  { name: "NIGAJUN 44", slug: "nigajun-44" },
-  { name: "NIGAJUN 99", slug: "nigajun-99" },
-  { name: "NIGAJUN 82", slug: "nigajun-82" },
-  { name: "NIGAJUN 77", slug: "nigajun-77" },
-  { name: "NIGAJUN 55", slug: "nigajun-55" },
-  { name: "NIGAJUN 35", slug: "nigajun-35" },
-  { name: "NIGAJUN 28", slug: "nigajun-28" },
-  { name: "NIGAJUN 17", slug: "nigajun-17" },
-];
+interface ProductListSectionProps {
+  items: ProductMinimal[];
+}
 
-export default function ProductListSection() {
+export default function ProductListSection({ items }: ProductListSectionProps) {
   return (
     <section className={styles.listSection}>
       <h2 className={styles.heading}>Product List</h2>
       <div className={styles.grid}>
-        {PRODUCT_ITEMS.map((item) => (
-          <article key={item.slug} className={styles.card}>
-            <p className={styles.productName}>{item.name}</p>
-            <p className={styles.productSlug}>slug: {item.slug}</p>
-            <Link href={`/products/${item.slug}`} className={styles.viewButton}>
-              View Product
-            </Link>
-          </article>
-        ))}
+        {items.map((item) => {
+          const key = item.slug ?? Math.random().toString(36);
+          return (
+            <article key={key} className={styles.card}>
+              <p className={styles.productName}>
+                {item.productName ?? ""}
+              </p>
+              <p className={styles.productSlug}>
+                {item.slug ? `slug: ${item.slug}` : ""}
+              </p>
+              {typeof item.finalPriceAmount === "number" ? (
+                <p className={styles.productPrice}>₩ {item.finalPriceAmount.toLocaleString()}</p>
+              ) : (
+                <p className={styles.productPrice}></p>
+              )}
+              {item.heroImageUrl ? (
+                <img
+                  src={item.heroImageUrl}
+                  alt=""
+                  className={styles.productImage}
+                />
+              ) : null}
+              {item.shortDescription ? (
+                <p className={styles.productDesc}>{item.shortDescription}</p>
+              ) : null}
+              {item.slug ? (
+                <Link href={`/products/${item.slug}`} className={styles.viewButton}>
+                  View Product
+                </Link>
+              ) : null}
+            </article>
+          );
+        })}
       </div>
     </section>
   );
