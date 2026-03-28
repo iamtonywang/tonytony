@@ -78,6 +78,9 @@ export default function Nigajun35View({ product }: Props) {
         <h2 className={styles.sectionTitle}>Core Information</h2>
         <p className={styles.sectionText}>
           {product?.shortDescription ?? "Core product information placeholder."}
+          {typeof product?.finalPriceAmount === "number" ? (
+            <span> {" "}· {product.finalPriceAmount.toLocaleString()}원</span>
+          ) : null}
         </p>
       </section>
 
