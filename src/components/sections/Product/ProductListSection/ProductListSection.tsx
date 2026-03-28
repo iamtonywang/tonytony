@@ -8,43 +8,20 @@ interface ProductListSectionProps {
 
 export default function ProductListSection({ items }: ProductListSectionProps) {
   return (
-    <section className={styles.listSection}>
-      <h2 className={styles.heading}>Product List</h2>
-      <div className={styles.grid}>
+    <div className={styles.textList}>
+      <ul className={styles.ul}>
         {items.map((item) => {
           const key = item.slug ?? Math.random().toString(36);
+          if (!item.slug) return null;
           return (
-            <article key={key} className={styles.card}>
-              <p className={styles.productName}>
+            <li key={key} className={styles.li}>
+              <Link href={`/products/${item.slug}`} className={styles.textLink}>
                 {item.productName ?? ""}
-              </p>
-              <p className={styles.productSlug}>
-                {item.slug ? `slug: ${item.slug}` : ""}
-              </p>
-              {typeof item.finalPriceAmount === "number" ? (
-                <p className={styles.productPrice}>₩ {item.finalPriceAmount.toLocaleString()}</p>
-              ) : (
-                <p className={styles.productPrice}></p>
-              )}
-              {item.heroImageUrl ? (
-                <img
-                  src={item.heroImageUrl}
-                  alt=""
-                  className={styles.productImage}
-                />
-              ) : null}
-              {item.shortDescription ? (
-                <p className={styles.productDesc}>{item.shortDescription}</p>
-              ) : null}
-              {item.slug ? (
-                <Link href={`/products/${item.slug}`} className={styles.viewButton}>
-                  View Product
-                </Link>
-              ) : null}
-            </article>
+              </Link>
+            </li>
           );
         })}
-      </div>
-    </section>
+      </ul>
+    </div>
   );
 }

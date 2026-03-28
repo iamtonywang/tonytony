@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type PropsWithChildren } from "react";
 import styles from "./ProductHeroSection.module.css";
 
-export default function ProductHeroSection() {
+export default function ProductHeroSection({ children }: PropsWithChildren) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
 
@@ -62,7 +62,8 @@ export default function ProductHeroSection() {
         </div>
         <div className={styles.heroOverlay}>
           <h1 className={styles.title}>Product</h1>
-          <p className={styles.subtitle}>Browse our currently available products.</p>
+          <p className={styles.subtitle}>Tap a product name to view details.</p>
+          {children ? <div className={styles.overlayList}>{children}</div> : null}
         </div>
       </div>
     </section>

@@ -34,9 +34,10 @@ export default async function ProductsPage() {
 
   return (
     <>
-      <ProductHeroSection />
+      <ProductHeroSection>
+        <ProductListSection items={filteredAndSorted} />
+      </ProductHeroSection>
       <ProductFilterSection />
-      <ProductListSection items={filteredAndSorted} />
       <ProductBanner />
     </>
   );
