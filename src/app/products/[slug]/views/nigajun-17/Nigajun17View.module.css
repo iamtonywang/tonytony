@@ -65,12 +65,12 @@
   width: 100%;
   position: absolute;
   z-index: 2;
-  text-align: center;
-  padding: 0 12px;
+  text-align: right;
+  padding: 0 16px 16px 16px;
   inset: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .playButton {
@@ -118,8 +118,14 @@
 
 .productTitle {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   line-height: 1.2;
+}
+
+@media (min-width: 1024px) {
+  .productTitle {
+    font-size: 1.4rem;
+  }
 }
 
 .sectionTitle {
