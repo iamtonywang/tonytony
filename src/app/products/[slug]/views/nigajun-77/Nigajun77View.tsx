@@ -84,6 +84,20 @@ export default function Nigajun77View({ product }: Props) {
             <h1 className={styles.productTitle}>
               {product?.productName ?? "NIGAJUN 77"}
             </h1>
+            <button
+              type="button"
+              className={styles.playButton}
+              onClick={() => {
+                const video = videoOverlayRef.current?.querySelector("video") as HTMLVideoElement | null;
+                if (video) {
+                  try {
+                    video.muted = false;
+                    void video.play();
+                  } catch {}
+                }
+              }}
+              aria-label="Unmute video"
+            />
           </div>
         </div>
       </section>

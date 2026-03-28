@@ -73,6 +73,18 @@
   justify-content: center;
 }
 
+ .playButton {
+   position: absolute;
+   left: 50%;
+   bottom: 12%;
+   transform: translateX(-50%);
+   width: 64px;
+   height: 64px;
+   border-radius: 50%;
+   border: 1px solid rgba(255, 255, 255, 0.6);
+   backdrop-filter: blur(6px);
+   background: transparent;
+ }
 .coreInfoSection,
 .ctaSection,
 .boardSection,
