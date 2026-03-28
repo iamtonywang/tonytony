@@ -2,6 +2,11 @@ import 'server-only';
 
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
+// Debug env loading (temporary, per instruction)
+console.log('ENV URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
+console.log('ENV KEY:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+console.log('CWD:', process.cwd());
+
 /**
  * Returns a server-only, read-only configured Supabase client.
  * Throws a descriptive error when required environment variables are missing.
