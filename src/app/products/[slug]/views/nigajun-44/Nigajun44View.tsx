@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Nigajun44View.module.css";
 import type { ProductMinimal } from "@/app/products/_server/types";
 
@@ -11,6 +11,7 @@ interface Props {
 export default function Nigajun44View({ product }: Props) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
+  const [hideText, setHideText] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -54,6 +55,7 @@ export default function Nigajun44View({ product }: Props) {
           if (entry && entry.isIntersecting && !hasScheduled) {
             hasScheduled = true;
             timeoutId = window.setTimeout(() => {
+              setHideText(true);
               mountVideoOverlay();
               observer.disconnect();
             }, 2000);
@@ -85,9 +87,27 @@ export default function Nigajun44View({ product }: Props) {
             />
             <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
           </div>
-          <div className={styles.heroOverlay}>
-            <h1 className={styles.productTitle}>
-              {product?.productName ?? "NIGAJUN 44"}
+          <div
+            className={styles.heroOverlay}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
+            <h1
+              className={styles.productTitle}
+              style={{
+                opacity: hideText ? 0 : 1,
+                transition: "opacity 2s ease",
+              }}
+            >
+              <span>TONYWANG</span>
+              <br />
+              <span>NIGAJUN 44</span>
+              <br />
+              <span>If you don't know the value, go away</span>
             </h1>
             <button
               type="button"
