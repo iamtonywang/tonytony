@@ -1,6 +1,4 @@
 import {
-  ProductBanner,
-  ProductFilterSection,
   ProductHeroSection,
   ProductListSection,
 } from "@/components/sections/Product";
@@ -37,8 +35,6 @@ export default async function ProductsPage() {
       <ProductHeroSection>
         <ProductListSection items={filteredAndSorted} />
       </ProductHeroSection>
-      <ProductFilterSection />
-      <ProductBanner />
     </>
   );
 }
