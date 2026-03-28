@@ -39,7 +39,11 @@
 
 .videoOverlay {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  height: 75%;
   pointer-events: none;
 }
 
