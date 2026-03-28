@@ -80,6 +80,11 @@
   flex-wrap: wrap;
 }
 
+.menuRowOpen {
+  display: flex;
+  flex-direction: column;
+}
+
 .link {
   color: inherit;
   text-decoration: none;
@@ -98,5 +103,11 @@
 
   .menuRow {
     display: flex;
+    flex-direction: row;
+  }
+
+  .menuRowOpen {
+    display: flex;
+    flex-direction: row;
   }
 }
