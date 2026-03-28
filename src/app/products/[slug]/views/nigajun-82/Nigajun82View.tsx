@@ -89,15 +89,25 @@ export default function Nigajun82View({ product }: Props) {
               className={styles.playButton}
               onClick={() => {
                 const video = videoOverlayRef.current?.querySelector("video") as HTMLVideoElement | null;
-                if (video) {
-                  try {
+                if (!video) {
+                  return;
+                }
+                try {
+                  if (video.paused) {
                     video.muted = false;
                     void video.play();
-                  } catch {}
-                }
+                  } else {
+                    video.pause();
+                    video.currentTime = 0;
+                  }
+                } catch {}
               }}
-              aria-label="Unmute video"
-            />
+              aria-label="Toggle video playback"
+            >
+              <svg className={styles.playIcon} viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5v14l11-7z" fill="currentColor"/>
+              </svg>
+            </button>
           </div>
         </div>
       </section>

@@ -77,14 +77,20 @@
 .playButton {
   position: absolute;
   left: 50%;
-  bottom: 12%;
+  bottom: 20%;
   transform: translateX(-50%);
-  width: 64px;
-  height: 64px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   background: transparent;
+  backdrop-filter: blur(4px);
+}
+
+.playIcon {
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .coreInfoSection,
