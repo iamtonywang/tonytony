@@ -108,3 +108,12 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+  .backgroundLayer {
+    background-position: center 35%;
+  }
+  .videoElement {
+    object-position: center 30%;
+  }
+}
