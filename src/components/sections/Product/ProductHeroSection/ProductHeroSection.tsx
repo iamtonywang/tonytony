@@ -61,8 +61,6 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
           <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
         </div>
         <div className={styles.heroOverlay}>
-          <h1 className={styles.title}>Product</h1>
-          <p className={styles.subtitle}>Tap a product name to view details.</p>
           {children ? <div className={styles.overlayList}>{children}</div> : null}
         </div>
       </div>

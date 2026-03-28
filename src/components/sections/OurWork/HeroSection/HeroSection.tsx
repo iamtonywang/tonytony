@@ -61,7 +61,7 @@ export default function HeroSection() {
           <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
         </div>
         <div className={styles.heroOverlay}>
-          <p className={styles.heroText}>Hero section placeholder.</p>
+          {/* placeholder removed */}
         </div>
       </div>
     </section>

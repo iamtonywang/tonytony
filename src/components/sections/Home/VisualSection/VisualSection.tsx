@@ -5,7 +5,7 @@ export default function VisualSection() {
     <section className={styles.visualSection}>
       <div className={styles.visualArea}>
         <div className={styles.visualOverlay}>
-          <p>Second visual copy placeholder.</p>
+          {/* placeholder removed */}
         </div>
       </div>
     </section>
