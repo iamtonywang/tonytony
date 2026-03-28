@@ -112,9 +112,9 @@
 
 @media (max-width: 768px) {
   .backgroundLayer {
-    background-position: center 35%;
+    background-position: center 15%;
   }
   .videoElement {
-    object-position: center 30%;
+    object-position: center 15%;
   }
 }
