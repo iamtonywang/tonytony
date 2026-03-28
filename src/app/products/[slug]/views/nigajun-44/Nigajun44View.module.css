@@ -79,8 +79,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 46px;
-  height: 46px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.7);
   background: transparent;
@@ -92,7 +92,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-40%, -50%);
+  transform: translate(-35%, -50%);
   width: 0;
   height: 0;
   border-left: 10px solid #ff6a00;
