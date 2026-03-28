@@ -51,7 +51,7 @@ export default function Nigajun17View({ product }: Props) {
             timeoutId = window.setTimeout(() => {
               mountVideoOverlay();
               observer.disconnect();
-            }, 4000);
+            }, 2000);
           }
         },
         { threshold: 0.2 }
