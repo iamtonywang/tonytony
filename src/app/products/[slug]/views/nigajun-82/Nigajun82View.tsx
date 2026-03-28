@@ -27,9 +27,14 @@ export default function Nigajun82View({ product }: Props) {
       videoEl.className = styles.videoElement;
       videoEl.muted = true;
       videoEl.playsInline = true;
-      videoEl.loop = true;
+      videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
+      videoEl.addEventListener("ended", () => {
+        try {
+          videoEl.currentTime = videoEl.duration;
+        } catch {}
+      });
 
       // connect asset source (single pc asset as default)
       videoEl.src = "/landing-assets/nigajun-82-hero-pc.mp4.mp4";
