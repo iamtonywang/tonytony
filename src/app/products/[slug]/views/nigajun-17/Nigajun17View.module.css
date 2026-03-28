@@ -13,7 +13,7 @@
 
 .heroVisual {
   width: 100%;
-  min-height: 60vh;
+  min-height: 70svh;
   position: relative;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@
 
 .videoArea {
   width: 100%;
-  min-height: 60vh;
+  min-height: 70svh;
   position: relative;
   overflow: hidden;
 }
@@ -30,7 +30,7 @@
 .backgroundLayer {
   position: absolute;
   inset: 0;
-  background-position: center;
+  background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -45,10 +45,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center bottom;
   display: block;
   pointer-events: none;
 }
 
+@media (min-width: 1024px) {
+  .heroVisual {
+    min-height: 92vh;
+  }
+  .videoArea {
+    min-height: 92vh;
+  }
+}
 .heroOverlay {
   width: 100%;
   position: absolute;
