@@ -16,11 +16,32 @@ export function mapProductRowToMinimal(row: RawProductRow): ProductMinimal {
     slug: row?.slug ?? null,
     productName: row?.product_name ?? null,
     shortDescription: row?.short_description ?? null,
-    // Price/media are not fetched in this step; keep them as null (no fake defaults).
     heroImageUrl: null,
     finalPriceAmount: null,
     productStatus: row?.product_status ?? null,
     isVisible: row?.is_visible ?? null,
+  };
+}
+
+type MergeExtras = {
+  heroImageUrl?: string | null;
+  finalPriceAmount?: number | null;
+};
+
+export function withMergedExtras(
+  base: ProductMinimal,
+  extras?: MergeExtras
+): ProductMinimal {
+  return {
+    ...base,
+    heroImageUrl:
+      extras && typeof extras.heroImageUrl !== 'undefined'
+        ? extras.heroImageUrl
+        : base.heroImageUrl ?? null,
+    finalPriceAmount:
+      extras && typeof extras.finalPriceAmount !== 'undefined'
+        ? extras.finalPriceAmount
+        : base.finalPriceAmount ?? null,
   };
 }
 

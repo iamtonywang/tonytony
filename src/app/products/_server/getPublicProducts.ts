@@ -1,34 +1,128 @@
 import 'server-only';
 
 import { getSupabaseServerClient } from './client';
-import { mapProductRowToMinimal } from './productMappers';
+import { mapProductRowToMinimal, withMergedExtras } from './productMappers';
 import type { ProductMinimal } from './types';
 
+type ProductRowWithId = {
+  id: number;
+  slug: string | null;
+  product_name: string | null;
+  short_description: string | null;
+  product_status: string | null;
+  is_visible: boolean | null;
+};
+
+type PriceRow = {
+  product_id: number;
+  final_price_amount: number | null;
+};
+
+type MediaRow = {
+  product_id: number;
+  file_url: string | null;
+  is_primary: boolean | null;
+};
+
 /**
- * Lists publicly visible products.
- * Visibility criteria:
- * - is_visible = true
- * - product_status in ('active', 'sold_out')
- *
- * Note:
- * - Active price and primary hero image are NOT joined in this step to avoid
- *   unsafe/assumed relationship syntax. They will be added in a later step
- *   after confirming relationship query patterns. The fields are returned as null.
+ * Lists publicly visible products (no nested relations).
+ * Then fetches prices and hero images with separate queries and merges them by product_id.
  */
 export async function getPublicProducts(): Promise<ProductMinimal[]> {
   const supabase = getSupabaseServerClient();
 
-  const { data, error } = await supabase
+  // 1) Base products under public visibility constraints
+  const { data: products, error: productsError } = await supabase
     .from('products')
-    .select('slug, product_name, short_description, product_status, is_visible')
+    .select('id, slug, product_name, short_description, product_status, is_visible')
     .eq('is_visible', true)
     .in('product_status', ['active', 'sold_out']);
 
-  if (error) {
-    throw new Error(`Failed to load public products: ${error.message}`);
+  if (productsError) {
+    throw new Error(`Failed to load public products: ${productsError.message}`);
   }
 
-  const rows = Array.isArray(data) ? data : [];
-  return rows.map(mapProductRowToMinimal);
+  const productRows: ProductRowWithId[] = Array.isArray(products) ? products : [];
+  if (productRows.length === 0) {
+    // 3) If no base products, do not run follow-up queries
+    return [];
+  }
+
+  // Extract product_id set
+  const productIds = productRows
+    .map((p) => p.id)
+    .filter((id): id is number => typeof id === 'number');
+  if (productIds.length === 0) {
+    return [];
+  }
+
+  // 4) Active prices by product_id
+  const { data: priceRows, error: pricesError } = await supabase
+    .from('product_prices')
+    .select('product_id, final_price_amount')
+    .in('product_id', productIds)
+    .eq('is_active', true);
+
+  if (pricesError) {
+    throw new Error(`Failed to load active product prices: ${pricesError.message}`);
+  }
+  const prices: PriceRow[] = Array.isArray(priceRows) ? priceRows : [];
+  const priceByProductId = new Map<number, number | null>();
+  // Unique active per product is enforced; if multiple appear, last write wins but should not happen.
+  for (const pr of prices) {
+    if (typeof pr.product_id === 'number') {
+      priceByProductId.set(pr.product_id, pr.final_price_amount ?? null);
+    }
+  }
+
+  // 5) Hero image candidates by product_id
+  const { data: mediaRows, error: mediaError } = await supabase
+    .from('product_media')
+    .select('product_id, file_url, is_primary')
+    .in('product_id', productIds)
+    .eq('media_type', 'hero_image')
+    .eq('is_active', true);
+
+  if (mediaError) {
+    throw new Error(`Failed to load hero image media: ${mediaError.message}`);
+  }
+  const medias: MediaRow[] = Array.isArray(mediaRows) ? mediaRows : [];
+
+  // Build primary-only map; if not exactly one primary per product, keep null.
+  const heroImageByProductId = new Map<number, string | null>();
+  {
+    const grouped = new Map<number, MediaRow[]>();
+    for (const m of medias) {
+      if (typeof m.product_id === 'number') {
+        const arr = grouped.get(m.product_id) ?? [];
+        arr.push(m);
+        grouped.set(m.product_id, arr);
+      }
+    }
+    for (const [pid, arr] of grouped.entries()) {
+      const primaries = arr.filter((r) => r.is_primary === true && !!r.file_url);
+      if (primaries.length === 1) {
+        heroImageByProductId.set(pid, primaries[0].file_url ?? null);
+      } else {
+        // Multiple or none -> do not choose arbitrarily
+        heroImageByProductId.set(pid, null);
+      }
+    }
+  }
+
+  // 6) Merge by product_id into minimal shape
+  const result: ProductMinimal[] = productRows.map((row) => {
+    const base = mapProductRowToMinimal(row);
+    const finalPriceAmount = priceByProductId.has(row.id)
+      ? priceByProductId.get(row.id) ?? null
+      : null;
+    const heroImageUrl = heroImageByProductId.has(row.id)
+      ? heroImageByProductId.get(row.id) ?? null
+      : null;
+    return withMergedExtras(base, { finalPriceAmount, heroImageUrl });
+  });
+
+  // 8) Do not sort here (8 fixed order is page layer responsibility)
+  return result;
 }
 
