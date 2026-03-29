@@ -1,5 +1,7 @@
 .textList {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .ul {
@@ -8,23 +10,45 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 4px;
 }
 
 .li {
   margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .textLink {
   color: inherit;
   text-decoration: none;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: 17px;
+  line-height: 1.2;
   transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 4px 8px;
+  text-align: center;
 }
 
 .textLink:hover,
 .textLink:focus {
   color: #ff7f00;
   outline: none;
+}
+
+@media (max-width: 768px) {
+  .ul {
+    gap: 2px;
+  }
+
+  .textLink {
+    font-size: 13px;
+    min-height: 40px;
+    padding: 4px 6px;
+  }
 }

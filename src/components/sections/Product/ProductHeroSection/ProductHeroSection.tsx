@@ -100,7 +100,13 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
             It only sells to those who truly love themselves<br/>
             자신을 사랑하지 않는 자 여기서 나가라
           </p>
-          {children ? <div className={styles.overlayList}>{children}</div> : null}
+
+          <div className={styles.bottomStack}>
+            <div className={styles.brandText}>
+              TONYWANG
+            </div>
+            {children ? <div className={styles.overlayList}>{children}</div> : null}
+          </div>
         </div>
         <button
           type="button"
