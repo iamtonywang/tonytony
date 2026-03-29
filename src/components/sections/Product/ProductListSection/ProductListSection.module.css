@@ -1,7 +1,7 @@
 .textList {
-  width: 100%;
+  width: auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .ul {
@@ -10,15 +10,12 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 4px;
+  align-items: flex-end;
+  gap: 2px;
 }
 
 .li {
   margin: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .textLink {
@@ -27,12 +24,9 @@
   font-size: 17px;
   line-height: 1.2;
   transition: color 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: 4px 8px;
-  text-align: center;
+  display: inline-block;
+  padding: 2px 0;
+  text-align: right;
 }
 
 .textLink:hover,
@@ -42,13 +36,8 @@
 }
 
 @media (max-width: 768px) {
-  .ul {
-    gap: 2px;
-  }
-
   .textLink {
     font-size: 13px;
-    min-height: 40px;
-    padding: 4px 6px;
+    padding: 2px 0;
   }
 }
