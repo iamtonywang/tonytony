@@ -42,6 +42,7 @@ export default function HeroSection() {
 
       videoOverlayRef.current.appendChild(videoEl);
       try {
+        videoEl.load();
         void videoEl.play();
       } catch {}
       hasMountedVideo = true;
