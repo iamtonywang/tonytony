@@ -44,6 +44,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 88%;
   display: block;
   pointer-events: none;
 }
@@ -97,5 +98,8 @@
   }
   .heroSection {
     min-height: 60vh;
+  }
+  .videoElement {
+    object-position: center 15%;
   }
 }
