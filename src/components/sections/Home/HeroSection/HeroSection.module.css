@@ -65,8 +65,12 @@
 
 .heroOverlay h1 {
   margin: 0;
-  font-size: 2.05rem;
+  font-size: 19px;
   line-height: 1.2;
+}
+
+.heroOverlay h2 {
+  font-size: 19px;
 }
 
 .heroOverlay p {
