@@ -178,3 +178,10 @@
   }
 }
 
+
+@media (min-width: 769px) {
+  .backgroundLayer {
+    background-position: center 30%;
+  }
+}
+
