@@ -20,11 +20,13 @@
 
 .heroVisual {
   width: 100%;
+  min-height: 100vh;
   position: relative;
 }
 
 .videoArea {
   width: 100%;
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
   border: none;
