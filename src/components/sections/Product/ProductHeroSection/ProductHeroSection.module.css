@@ -84,6 +84,19 @@
   border-bottom: 6px solid transparent;
   box-shadow: 0 0 6px rgba(255, 106, 0, 0.35);
 }
+
+.playButtonBottom {
+  top: auto;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .playButtonBottom {
+    bottom: 24px;
+  }
+}
 .heroOverlay {
   width: 100%;
   position: absolute;

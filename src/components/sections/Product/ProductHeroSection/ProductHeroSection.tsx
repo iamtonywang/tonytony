@@ -141,7 +141,7 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
         </div>
         <button
           type="button"
-          className={styles.playButton}
+          className={`${styles.playButton} ${isSequenceComplete ? styles.playButtonBottom : ""}`}
           onClick={handleToggle}
           aria-label={isPlaying ? "Pause video" : "Play video"}
         />
