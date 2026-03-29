@@ -30,15 +30,17 @@
 .heroSection {
   width: 100vw;
   max-width: 100vw;
-  min-height: 100vh;
+  height: 85vh;
   padding: 0;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  position: relative;
+  overflow: hidden;
 }
 
 .heroVisual {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +49,7 @@
 
 .videoArea {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -59,20 +61,21 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100%;
 }
 
 .videoOverlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  height: 100%;
 }
 
 .videoElement {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 35%;
   display: block;
   pointer-events: none;
 }
@@ -127,6 +130,9 @@
 @media (max-width: 768px) {
   .backgroundLayer {
     background-image: url("/landing-assets/home-hero-mobile.webp");
+  }
+  .heroSection {
+    height: 60vh;
   }
 }
 
