@@ -1,18 +1,34 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.css";
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
+  const [showVideo, setShowVideo] = useState(false);
+  const [hideText, setHideText] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    let isMounted = true;
+    const timer = setTimeout(() => {
+      setShowVideo(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHideText(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+  useEffect(() => {
     let hasMountedVideo = false;
 
     const mountVideoOverlay = () => {
-      if (!isMounted || hasMountedVideo || !videoOverlayRef.current) {
+      if (hasMountedVideo || !videoOverlayRef.current) {
         return;
       }
 
@@ -24,44 +40,72 @@ export default function HeroSection() {
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
 
+      const sourcePc = document.createElement("source");
+      sourcePc.src = "/landing-assets/why-hero-pc.mp4";
+      sourcePc.type = "video/mp4";
+      sourcePc.media = "(min-width: 769px)";
+
+      const sourceMobile = document.createElement("source");
+      sourceMobile.src = "/landing-assets/why-hero-mobile.mp4";
+      sourceMobile.type = "video/mp4";
+      sourceMobile.media = "(max-width: 768px)";
+
+      videoEl.appendChild(sourcePc);
+      videoEl.appendChild(sourceMobile);
+
+      videoRef.current = videoEl;
       videoOverlayRef.current.appendChild(videoEl);
       hasMountedVideo = true;
     };
 
-    const rafId = requestAnimationFrame(() => {
-      if (!heroVisualRef.current) {
-        return;
-      }
+    if (showVideo) {
+      mountVideoOverlay();
+    }
+  }, [showVideo, styles.videoElement]);
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const [entry] = entries;
-          if (entry && entry.isIntersecting) {
-            mountVideoOverlay();
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.2 }
-      );
+  const handleToggle = async () => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
 
-      observer.observe(heroVisualRef.current);
-    });
+    if (videoEl.paused) {
+      videoEl.muted = false;
+      await videoEl.play().catch(() => {});
+      setIsPlaying(true);
+      return;
+    }
 
-    return () => {
-      isMounted = false;
-      cancelAnimationFrame(rafId);
-    };
-  }, []);
+    videoEl.pause();
+    videoEl.currentTime = 0;
+    setIsPlaying(false);
+  };
 
   return (
     <section className={styles.heroSection}>
       <div ref={heroVisualRef} className={styles.heroVisual}>
         <div className={styles.videoArea}>
           <div className={styles.backgroundLayer} />
-          <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
+          {showVideo && (
+            <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
+          )}
         </div>
+        <button
+          type="button"
+          className={styles.playButton}
+          onClick={handleToggle}
+          aria-label={isPlaying ? "Pause video" : "Play video"}
+        />
         <div className={styles.heroOverlay}>
-          {/* placeholder removed */}
+          <p className={styles.heroText} style={{ opacity: hideText ? 0 : 1 }}>
+            WHY?<br/>
+            TONYWANG<br/>
+            식물세포유전자단백질연구개발<br/>
+            분자생물바이오생명공학<br/>
+            I will prove that Tonywang is the best
+          </p>
+
+          <div className={styles.brandText}>
+            TONYWANG
+          </div>
         </div>
       </div>
     </section>

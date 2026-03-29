@@ -62,6 +62,18 @@
   margin: 0;
   color: inherit;
   line-height: 1.6;
+  font-size: 19px;
+  font-weight: 400;
+  transition: opacity 2s ease;
+}
+
+.brandText {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  font-size: 19px;
+  color: #ffffff;
+  z-index: 3;
 }
 
 @media (max-width: 768px) {
@@ -81,6 +93,8 @@
   background: transparent;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 3;
+  pointer-events: auto;
 }
 
 .playButton::before {

@@ -1,18 +1,33 @@
 "use client";
 
-import { useEffect, useRef, type PropsWithChildren } from "react";
+import { useEffect, useRef, useState, type PropsWithChildren } from "react";
 import styles from "./ProductHeroSection.module.css";
 
 export default function ProductHeroSection({ children }: PropsWithChildren) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
+  const [showVideo, setShowVideo] = useState(false);
+  const [hideText, setHideText] = useState(false);
 
   useEffect(() => {
-    let isMounted = true;
+    const timer = setTimeout(() => {
+      setShowVideo(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHideText(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     let hasMountedVideo = false;
 
     const mountVideoOverlay = () => {
-      if (!isMounted || hasMountedVideo || !videoOverlayRef.current) {
+      if (hasMountedVideo || !videoOverlayRef.current) {
         return;
       }
 
@@ -24,43 +39,46 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
 
+      const sourcePc = document.createElement("source");
+      sourcePc.src = "/landing-assets/products-hero-pc.mp4";
+      sourcePc.type = "video/mp4";
+      sourcePc.media = "(min-width: 769px)";
+
+      const sourceMobile = document.createElement("source");
+      sourceMobile.src = "/landing-assets/products-hero-mobile.mp4";
+      sourceMobile.type = "video/mp4";
+      sourceMobile.media = "(max-width: 768px)";
+
+      videoEl.appendChild(sourcePc);
+      videoEl.appendChild(sourceMobile);
+
       videoOverlayRef.current.appendChild(videoEl);
       hasMountedVideo = true;
     };
 
-    const rafId = requestAnimationFrame(() => {
-      if (!heroVisualRef.current) {
-        return;
-      }
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const [entry] = entries;
-          if (entry && entry.isIntersecting) {
-            mountVideoOverlay();
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.2 }
-      );
-
-      observer.observe(heroVisualRef.current);
-    });
-
-    return () => {
-      isMounted = false;
-      cancelAnimationFrame(rafId);
-    };
-  }, []);
+    if (showVideo) {
+      mountVideoOverlay();
+    }
+  }, [showVideo, styles.videoElement]);
 
   return (
     <section className={styles.heroSection}>
       <div ref={heroVisualRef} className={styles.heroVisual}>
         <div className={styles.videoArea}>
           <div className={styles.backgroundLayer} />
-          <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
+          {showVideo && (
+            <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
+          )}
         </div>
         <div className={styles.heroOverlay}>
+          <p className={styles.heroText} style={{ opacity: hideText ? 0 : 1 }}>
+            Product<br/>
+            TONYWANG TONYWANG<br/>
+            식물세포유전자단백질연구개발<br/>
+            분자생물바이오생명공학<br/>
+            It only sells to those who truly love themselves<br/>
+            자신을 사랑하지 않는 자 여기서 나가라
+          </p>
           {children ? <div className={styles.overlayList}>{children}</div> : null}
         </div>
       </div>
