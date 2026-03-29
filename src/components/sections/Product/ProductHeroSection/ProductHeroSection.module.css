@@ -85,17 +85,12 @@
   box-shadow: 0 0 6px rgba(255, 106, 0, 0.35);
 }
 
-.playButtonBottom {
-  top: auto;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-@media (max-width: 768px) {
-  .playButtonBottom {
-    bottom: 24px;
-  }
+.playButton:focus,
+.playButton:active,
+.playButton:focus-visible {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: none;
 }
 .heroOverlay {
   width: 100%;
@@ -153,32 +148,6 @@
   pointer-events: none;
 }
 
-.bottomStackCenter {
-  left: 50%;
-  right: auto;
-  bottom: 50%;
-  transform: translate(-50%, 50%);
-  align-items: center;
-  text-align: center;
-  gap: 6px;
-}
-
-.bottomStackCenter .overlayList {
-  justify-content: center;
-}
-
-.bottomStackCenter .textList {
-  justify-content: center;
-}
-
-.bottomStackCenter .ul {
-  align-items: center;
-}
-
-.bottomStackCenter .textLink {
-  text-align: center;
-}
-
 @media (max-width: 768px) {
   .backgroundLayer {
     background-image: url("/landing-assets/products-hero-mobile.webp");
@@ -196,12 +165,6 @@
     right: 16px;
     bottom: 16px;
     gap: 2px;
-  }
-
-  .bottomStackCenter {
-    bottom: 50%;
-    transform: translate(-50%, 50%);
-    gap: 4px;
   }
 
   .heroSequence {
