@@ -30,6 +30,16 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
     }
 
     if (videoEl.paused) {
+      const isEnded =
+        videoEl.ended ||
+        videoEl.currentTime >= videoEl.duration - 0.05 ||
+        isSequenceComplete;
+
+      if (isEnded) {
+        try {
+          videoEl.currentTime = 0;
+        } catch {}
+      }
       if (videoEl.currentTime === 0 || isSequenceComplete) {
         setActiveLineIndex(0);
         setIsSequenceComplete(false);
