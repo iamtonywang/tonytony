@@ -25,6 +25,7 @@ export default function HeroSection() {
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
       videoEl.autoplay = true;
+      console.log("video created");
 
       // attach desktop/mobile sources with media queries
       const sourcePc = document.createElement("source");
@@ -37,13 +38,22 @@ export default function HeroSection() {
       sourceMobile.type = "video/mp4";
       sourceMobile.media = "(max-width: 768px)";
 
+      console.log("source pc:", sourcePc.src);
+      console.log("source mobile:", sourceMobile.src);
+
       videoEl.appendChild(sourcePc);
       videoEl.appendChild(sourceMobile);
 
       videoOverlayRef.current.appendChild(videoEl);
+      console.log("video appended");
       try {
+        console.log("video load called");
         videoEl.load();
-        void videoEl.play();
+        console.log("video readyState:", videoEl.readyState);
+        console.log("video play called");
+        void videoEl.play().catch((e) => {
+          console.log("video error:", e);
+        });
       } catch {}
       hasMountedVideo = true;
     };
