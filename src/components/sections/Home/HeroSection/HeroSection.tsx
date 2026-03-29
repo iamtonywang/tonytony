@@ -67,8 +67,10 @@ export default function HeroSection() {
         (entries) => {
           const [entry] = entries;
           if (entry && entry.isIntersecting) {
-            mountVideoOverlay();
-            observer.disconnect();
+            setTimeout(() => {
+              mountVideoOverlay();
+              observer.disconnect();
+            }, 2000);
           }
         },
         { threshold: 0.2 }
