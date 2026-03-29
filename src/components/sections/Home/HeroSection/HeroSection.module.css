@@ -1,6 +1,7 @@
 .heroSection {
   width: 100%;
-  min-height: 90vh;
+  min-height: 85vh;
+  height: 85vh;
   padding: 24px 0;
 }
 
@@ -29,12 +30,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  height: 100%;
 }
 
 .videoOverlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  height: 100%;
 }
 
 .videoElement {
