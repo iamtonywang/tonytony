@@ -91,13 +91,27 @@ export default function Nigajun17View({ product }: Props) {
             <h1 className={styles.productTitle}>
               {product?.productName ?? "NIGAJUN 17"}
             </h1>
-            <p className={styles.heroText}>
-              TONYWANG<br/>
-              NIGAJUN 17<br/>
-              Development of Plant Cell Genetic Protein<br/>
-              Molecular Bio-Bio-Bioengineering<br/>
-              Life is beautiful and tearful
-            </p>
+            <h1
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                textAlign: "center",
+                opacity: hideText ? 0 : 1,
+                transition: "opacity 2s ease",
+              }}
+            >
+              <span>TONYWANG</span>
+              <br />
+              <span>NIGAJUN 17</span>
+              <br />
+              <span>Development of Plant Cell Genetic Protein</span>
+              <br />
+              <span>Molecular Bio-Bio-Bioengineering</span>
+              <br />
+              <span>Life is beautiful and tearful</span>
+            </h1>
             <button
               type="button"
               className={styles.playButton}
