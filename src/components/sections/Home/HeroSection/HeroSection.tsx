@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./HeroSection.module.css";
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
+  const [hideText, setHideText] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -68,6 +69,7 @@ export default function HeroSection() {
           const [entry] = entries;
           if (entry && entry.isIntersecting) {
             setTimeout(() => {
+              setHideText(true);
               mountVideoOverlay();
               observer.disconnect();
             }, 2000);
@@ -93,8 +95,38 @@ export default function HeroSection() {
           <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
         </div>
         <div className={styles.heroOverlay}>
-          {/* reserved for future 2s landing animation text (kept intentionally empty) */}
-          <div aria-hidden="true" />
+          <h1
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              opacity: hideText ? 0 : 1,
+              transition: "opacity 2s ease",
+            }}
+          >
+            <span>TONY WANG</span>
+            <br />
+            <span>Plant Cell Genetic Protein Laboratory</span>
+            <br />
+            <span>식물세포유전자단백질연구개발</span>
+            <br />
+            <span>분자생물학 바이오생명공학연구소</span>
+            <br />
+            <span>I'm going to solve all the puzzles about skin</span>
+          </h1>
+
+          <h2
+            style={{
+              position: "absolute",
+              right: "24px",
+              bottom: "24px",
+              fontWeight: "500",
+            }}
+          >
+            TONYWANG
+          </h2>
         </div>
       </div>
     </section>
