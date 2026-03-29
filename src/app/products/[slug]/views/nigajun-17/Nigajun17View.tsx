@@ -91,23 +91,13 @@ export default function Nigajun17View({ product }: Props) {
             <h1 className={styles.productTitle}>
               {product?.productName ?? "NIGAJUN 17"}
             </h1>
-            <h1
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                textAlign: "center",
-                opacity: hideText ? 0 : 1,
-                transition: "opacity 2s ease",
-              }}
-            >
-              <span>TONYWANG</span>
-              <br />
-              <span>NIGAJUN 17</span>
-              <br />
-              <span>Life is beautiful and tearful</span>
-            </h1>
+            <p className={styles.heroText}>
+              TONYWANG<br/>
+              NIGAJUN 17<br/>
+              Development of Plant Cell Genetic Protein<br/>
+              Molecular Bio-Bio-Bioengineering<br/>
+              Life is beautiful and tearful
+            </p>
             <button
               type="button"
               className={styles.playButton}
@@ -137,7 +127,7 @@ export default function Nigajun17View({ product }: Props) {
         <p className={styles.sectionText}>
           {product?.shortDescription ?? "Core product information placeholder."}
           {typeof product?.finalPriceAmount === "number" ? (
-            <span> {" "}· {product.finalPriceAmount.toLocaleString()}원</span>
+            <span> {" "}· {product.finalPriceAmount.toLocaleString()}</span>
           ) : null}
         </p>
       </section>
@@ -161,3 +151,4 @@ export default function Nigajun17View({ product }: Props) {
     </article>
   );
 }
+

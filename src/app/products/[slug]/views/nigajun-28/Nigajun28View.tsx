@@ -91,6 +91,7 @@ export default function Nigajun28View({ product }: Props) {
             <h1 className={styles.productTitle}>
               {product?.productName ?? "NIGAJUN 28"}
             </h1>
+
             <h1
               style={{
                 position: "absolute",
@@ -105,6 +106,10 @@ export default function Nigajun28View({ product }: Props) {
               <span>TONYWANG</span>
               <br />
               <span>NIGAJUN 28</span>
+              <br />
+              <span>Development of Plant Cell Genetic Protein</span>
+              <br />
+              <span>Molecular Bio-Bio-Bioengineering</span>
               <br />
               <span>Do the best you can in your life</span>
             </h1>
@@ -137,7 +142,7 @@ export default function Nigajun28View({ product }: Props) {
         <p className={styles.sectionText}>
           {product?.shortDescription ?? "Core product information placeholder."}
           {typeof product?.finalPriceAmount === "number" ? (
-            <span> {" "}· {product.finalPriceAmount.toLocaleString()}원</span>
+            <span> {" "}· {product.finalPriceAmount.toLocaleString()}</span>
           ) : null}
         </p>
       </section>
@@ -161,3 +166,4 @@ export default function Nigajun28View({ product }: Props) {
     </article>
   );
 }
+
