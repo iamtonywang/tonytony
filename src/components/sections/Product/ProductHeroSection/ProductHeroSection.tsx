@@ -55,9 +55,16 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
       videoEl.className = styles.videoElement;
       videoEl.muted = true;
       videoEl.playsInline = true;
-      videoEl.loop = true;
+      videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
+      videoEl.addEventListener("ended", () => {
+        try {
+          videoEl.pause();
+          videoEl.currentTime = 0;
+        } catch {}
+        setIsPlaying(false);
+      });
       videoRef.current = videoEl;
 
       const sourcePc = document.createElement("source");
