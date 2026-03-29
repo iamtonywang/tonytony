@@ -132,7 +132,7 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
               {HERO_LINES[activeLineIndex]}
             </p>
           </div>
-          <div className={styles.bottomStack}>
+          <div className={`${styles.bottomStack} ${isSequenceComplete ? styles.bottomStackCenter : ""}`}>
             <div className={styles.brandText}>
               TONYWANG
             </div>
