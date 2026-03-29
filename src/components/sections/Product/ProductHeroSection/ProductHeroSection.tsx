@@ -132,7 +132,7 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
               {HERO_LINES[activeLineIndex]}
             </p>
           </div>
-          <div className={`${styles.bottomStack} ${isSequenceComplete ? styles.bottomStackCenter : ""}`}>
+          <div className={styles.bottomStack}>
             <div className={styles.brandText}>
               TONYWANG
             </div>
@@ -141,7 +141,7 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
         </div>
         <button
           type="button"
-          className={`${styles.playButton} ${isSequenceComplete ? styles.playButtonBottom : ""}`}
+          className={styles.playButton}
           onClick={handleToggle}
           aria-label={isPlaying ? "Pause video" : "Play video"}
         />
