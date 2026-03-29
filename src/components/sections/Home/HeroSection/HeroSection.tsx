@@ -24,6 +24,7 @@ export default function HeroSection() {
       videoEl.loop = true;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
+      videoEl.autoplay = true;
 
       // attach desktop/mobile sources with media queries
       const sourcePc = document.createElement("source");
@@ -40,6 +41,9 @@ export default function HeroSection() {
       videoEl.appendChild(sourceMobile);
 
       videoOverlayRef.current.appendChild(videoEl);
+      try {
+        void videoEl.play();
+      } catch {}
       hasMountedVideo = true;
     };
 
