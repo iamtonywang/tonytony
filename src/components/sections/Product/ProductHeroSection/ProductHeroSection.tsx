@@ -3,13 +3,25 @@
 import { useEffect, useRef, useState, type PropsWithChildren } from "react";
 import styles from "./ProductHeroSection.module.css";
 
+const HERO_LINES = [
+  "TONYWANG",
+  "Research Development Plant Cell Gene Protein",
+  "Molecular Bio-Bioengineering",
+  "It only sells to those who truly love themselves",
+  "If you don't love yourself, get out of here",
+  "I want to tell you the true value, not the product",
+  "I'm here to solve all the skin problems",
+  "TONYWANG",
+];
+
 export default function ProductHeroSection({ children }: PropsWithChildren) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [showVideo, setShowVideo] = useState(false);
-  const [hideText, setHideText] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [activeLineIndex, setActiveLineIndex] = useState(0);
+  const [isSequenceComplete, setIsSequenceComplete] = useState(false);
 
   const handleToggle = async () => {
     const videoEl = videoRef.current;
@@ -18,6 +30,10 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
     }
 
     if (videoEl.paused) {
+      if (videoEl.currentTime === 0 || isSequenceComplete) {
+        setActiveLineIndex(0);
+        setIsSequenceComplete(false);
+      }
       videoEl.muted = false;
       await videoEl.play().catch(() => {});
       setIsPlaying(true);
@@ -27,18 +43,13 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
     videoEl.pause();
     videoEl.currentTime = 0;
     setIsPlaying(false);
+    setActiveLineIndex(0);
+    setIsSequenceComplete(false);
   };
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowVideo(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setHideText(true);
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -64,6 +75,23 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
           videoEl.currentTime = videoEl.duration;
         } catch {}
         setIsPlaying(false);
+        setActiveLineIndex(HERO_LINES.length - 1);
+        setIsSequenceComplete(true);
+      });
+      videoEl.addEventListener("timeupdate", () => {
+        const duration = videoEl.duration;
+
+        if (!duration || Number.isNaN(duration)) {
+          return;
+        }
+
+        const segment = duration / HERO_LINES.length;
+        const nextIndex = Math.min(
+          HERO_LINES.length - 1,
+          Math.floor(videoEl.currentTime / segment)
+        );
+
+        setActiveLineIndex(nextIndex);
       });
       videoRef.current = videoEl;
 
@@ -99,15 +127,11 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
           )}
         </div>
         <div className={styles.heroOverlay}>
-          <p className={styles.heroText} style={{ opacity: hideText ? 0 : 1 }}>
-            Product<br/>
-            TONYWANG TONYWANG<br/>
-            식물세포유전자단백질연구개발<br/>
-            분자생물바이오생명공학<br/>
-            It only sells to those who truly love themselves<br/>
-            자신을 사랑하지 않는 자 여기서 나가라
-          </p>
-
+          <div className={styles.heroSequence} aria-hidden="true">
+            <p key={activeLineIndex} className={styles.heroText}>
+              {HERO_LINES[activeLineIndex]}
+            </p>
+          </div>
           <div className={styles.bottomStack}>
             <div className={styles.brandText}>
               TONYWANG
