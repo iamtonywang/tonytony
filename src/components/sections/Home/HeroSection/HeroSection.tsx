@@ -28,7 +28,6 @@ export default function HeroSection() {
       videoEl.loop = true;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
-      videoEl.autoplay = true;
       console.log("video created");
 
       // attach desktop/mobile sources with media queries
@@ -56,11 +55,7 @@ export default function HeroSection() {
         console.log("video load called");
         videoEl.load();
         console.log("video readyState:", videoEl.readyState);
-        console.log("video play called");
-        void videoEl.play().catch((e) => {
-          console.log("video error:", e);
-        });
-        setIsPlaying(true);
+        // autoplay disabled: start only on button click
       } catch {}
       hasMountedVideo = true;
     };
