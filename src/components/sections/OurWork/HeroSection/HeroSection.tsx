@@ -6,7 +6,10 @@ import styles from "./HeroSection.module.css";
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [hideText, setHideText] = useState(false);
+  const [hasVideo, setHasVideo] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -26,7 +29,25 @@ export default function HeroSection() {
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
 
+      const sourcePc = document.createElement("source");
+      sourcePc.src = "/landing-assets/ourwork-hero-pc.mp4";
+      sourcePc.type = "video/mp4";
+      sourcePc.media = "(min-width: 769px)";
+
+      const sourceMobile = document.createElement("source");
+      sourceMobile.src = "/landing-assets/ourwork-hero-mobile.mp4";
+      sourceMobile.type = "video/mp4";
+      sourceMobile.media = "(max-width: 768px)";
+
+      videoEl.appendChild(sourcePc);
+      videoEl.appendChild(sourceMobile);
+
       videoOverlayRef.current.appendChild(videoEl);
+      videoRef.current = videoEl;
+      setHasVideo(true);
+      try {
+        videoEl.load();
+      } catch {}
       hasMountedVideo = true;
     };
 
@@ -62,6 +83,37 @@ export default function HeroSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleEnded = () => {
+      video.currentTime = 0;
+      setIsPlaying(false);
+    };
+
+    video.addEventListener("ended", handleEnded);
+    return () => {
+      video.removeEventListener("ended", handleEnded);
+    };
+  }, [hasVideo]);
+
+  const handleToggle = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video.muted = false;
+      video.currentTime = 0;
+      void video.play().catch(() => {});
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      video.currentTime = 0;
+      setIsPlaying(false);
+    }
+  };
+
   return (
     <section className={styles.heroSection}>
       <div ref={heroVisualRef} className={styles.heroVisual}>
@@ -96,6 +148,13 @@ export default function HeroSection() {
           >
             TONYWANG
           </h2>
+
+          <button
+            type="button"
+            className={styles.playButton}
+            onClick={handleToggle}
+            aria-label="Toggle video playback"
+          />
         </div>
       </div>
     </section>
