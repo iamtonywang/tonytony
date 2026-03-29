@@ -169,4 +169,7 @@
   .videoArea {
     min-height: 92vh;
   }
+  .videoElement {
+    object-position: center 62%;
+  }
 }
