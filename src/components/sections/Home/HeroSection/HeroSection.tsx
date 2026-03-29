@@ -25,7 +25,7 @@ export default function HeroSection() {
       videoEl.className = styles.videoElement;
       videoEl.muted = true;
       videoEl.playsInline = true;
-      videoEl.loop = true;
+      videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
       console.log("video created");
