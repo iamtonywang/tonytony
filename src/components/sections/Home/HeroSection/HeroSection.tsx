@@ -25,6 +25,20 @@ export default function HeroSection() {
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
 
+      // attach desktop/mobile sources with media queries
+      const sourcePc = document.createElement("source");
+      sourcePc.src = "/landing-assets/home-hero-pc.mp4";
+      sourcePc.type = "video/mp4";
+      sourcePc.media = "(min-width: 769px)";
+
+      const sourceMobile = document.createElement("source");
+      sourceMobile.src = "/landing-assets/home-hero-mobile.mp4";
+      sourceMobile.type = "video/mp4";
+      sourceMobile.media = "(max-width: 768px)";
+
+      videoEl.appendChild(sourcePc);
+      videoEl.appendChild(sourceMobile);
+
       videoOverlayRef.current.appendChild(videoEl);
       hasMountedVideo = true;
     };

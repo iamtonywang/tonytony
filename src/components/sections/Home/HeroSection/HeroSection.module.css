@@ -24,7 +24,10 @@
 .backgroundLayer {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.2));
+  background-image: url("/landing-assets/home-hero-pc.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .videoOverlay {
@@ -82,4 +85,10 @@
 
 .cta:hover {
   color: #ff7f00;
+}
+
+@media (max-width: 768px) {
+  .backgroundLayer {
+    background-image: url("/landing-assets/home-hero-mobile.webp");
+  }
 }
