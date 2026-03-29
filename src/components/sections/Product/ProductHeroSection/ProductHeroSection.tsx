@@ -6,8 +6,28 @@ import styles from "./ProductHeroSection.module.css";
 export default function ProductHeroSection({ children }: PropsWithChildren) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [showVideo, setShowVideo] = useState(false);
   const [hideText, setHideText] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleToggle = async () => {
+    const videoEl = videoRef.current;
+    if (!videoEl) {
+      return;
+    }
+
+    if (videoEl.paused) {
+      videoEl.muted = false;
+      await videoEl.play().catch(() => {});
+      setIsPlaying(true);
+      return;
+    }
+
+    videoEl.pause();
+    videoEl.currentTime = 0;
+    setIsPlaying(false);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,6 +58,7 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
       videoEl.loop = true;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
+      videoRef.current = videoEl;
 
       const sourcePc = document.createElement("source");
       sourcePc.src = "/landing-assets/products-hero-pc.mp4";
@@ -81,6 +102,12 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
           </p>
           {children ? <div className={styles.overlayList}>{children}</div> : null}
         </div>
+        <button
+          type="button"
+          className={styles.playButton}
+          onClick={handleToggle}
+          aria-label={isPlaying ? "Pause video" : "Play video"}
+        />
       </div>
     </section>
   );

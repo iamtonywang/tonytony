@@ -126,46 +126,23 @@ export default function HeroSection() {
           <div className={styles.backgroundLayer} />
           <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
         </div>
+        <button
+          type="button"
+          className={styles.playButton}
+          onClick={handleToggle}
+          aria-label={isPlaying ? "Pause video" : "Play video"}
+        />
         <div className={styles.heroOverlay}>
-          <h1
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              textAlign: "center",
-              opacity: hideText ? 0 : 1,
-              transition: "opacity 2s ease",
-            }}
-          >
-            <span>TONY WANG</span>
-            <br />
-            <span>Plant Cell Genetic Protein Laboratory</span>
-            <br />
-            <span>식물세포유전자단백질연구개발</span>
-            <br />
-            <span>분자생물학 바이오생명공학연구소</span>
-            <br />
-            <span>I'm going to solve all the puzzles about skin</span>
-          </h1>
+          <p className={styles.heroText} style={{ opacity: hideText ? 0 : 1 }}>
+            TONY WANG<br/>
+            Plant Cell Genetic Protein Laboratory<br/>
+            식물세포유전자단백질연구개발<br/>
+            분자생물학 바이오생명공학연구소
+          </p>
 
-          <h2
-            style={{
-              position: "absolute",
-              right: "24px",
-              bottom: "24px",
-              fontWeight: "500",
-            }}
-          >
+          <div className={styles.brandText}>
             TONYWANG
-          </h2>
-
-          <button
-            type="button"
-            className={styles.playButton}
-            onClick={handleToggle}
-            aria-label="Toggle video playback"
-          />
+          </div>
         </div>
       </div>
     </section>
