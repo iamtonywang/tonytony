@@ -93,11 +93,8 @@ export default function HeroSection() {
           <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
         </div>
         <div className={styles.heroOverlay}>
-          <h1>TONYWANG SCIENCE</h1>
-          <p>Science-backed wellness for modern living.</p>
-          <Link href="/products" className={styles.cta}>
-            Explore Product
-          </Link>
+          {/* reserved for future 2s landing animation text (kept intentionally empty) */}
+          <div aria-hidden="true" />
         </div>
       </div>
     </section>
