@@ -129,3 +129,13 @@
     background-image: url("/landing-assets/home-hero-mobile.webp");
   }
 }
+
+.brandText {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  font-size: 19px;
+  color: #ffffff;
+  z-index: 3;
+  pointer-events: none;
+}
