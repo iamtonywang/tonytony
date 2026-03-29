@@ -168,3 +168,13 @@
     min-height: 92vh;
   }
 }
+@media (min-width: 769px) {
+  .heroVisual {
+    min-height: 100vh;
+  }
+
+  .videoArea {
+    min-height: 100vh;
+  }
+}
+
