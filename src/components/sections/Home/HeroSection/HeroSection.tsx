@@ -25,7 +25,6 @@ export default function HeroSection() {
       videoEl.className = styles.videoElement;
       videoEl.muted = true;
       videoEl.playsInline = true;
-      videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
       console.log("video created");
@@ -93,6 +92,7 @@ export default function HeroSection() {
     if (!video) return;
 
     const handleEnded = () => {
+      video.pause();
       video.currentTime = 0;
       setIsPlaying(false);
     };
