@@ -61,7 +61,7 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
       videoEl.addEventListener("ended", () => {
         try {
           videoEl.pause();
-          videoEl.currentTime = 0;
+          videoEl.currentTime = videoEl.duration;
         } catch {}
         setIsPlaying(false);
       });
