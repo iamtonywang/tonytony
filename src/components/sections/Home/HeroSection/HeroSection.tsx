@@ -7,7 +7,10 @@ import styles from "./HeroSection.module.css";
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [hideText, setHideText] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [hasVideo, setHasVideo] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -47,6 +50,8 @@ export default function HeroSection() {
 
       videoOverlayRef.current.appendChild(videoEl);
       console.log("video appended");
+      videoRef.current = videoEl;
+      setHasVideo(true);
       try {
         console.log("video load called");
         videoEl.load();
@@ -55,6 +60,7 @@ export default function HeroSection() {
         void videoEl.play().catch((e) => {
           console.log("video error:", e);
         });
+        setIsPlaying(true);
       } catch {}
       hasMountedVideo = true;
     };
@@ -86,6 +92,37 @@ export default function HeroSection() {
       cancelAnimationFrame(rafId);
     };
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleEnded = () => {
+      video.currentTime = 0;
+      setIsPlaying(false);
+    };
+
+    video.addEventListener("ended", handleEnded);
+    return () => {
+      video.removeEventListener("ended", handleEnded);
+    };
+  }, [hasVideo]);
+
+  const handleToggle = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video.muted = false;
+      video.currentTime = 0;
+      void video.play().catch(() => {});
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      video.currentTime = 0;
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <section className={styles.heroSection}>
@@ -127,6 +164,13 @@ export default function HeroSection() {
           >
             TONYWANG
           </h2>
+
+          <button
+            type="button"
+            className={styles.playButton}
+            onClick={handleToggle}
+            aria-label="Toggle video playback"
+          />
         </div>
       </div>
     </section>

@@ -1,3 +1,30 @@
+.playButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.playButton::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-35%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid #ff6a00;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  box-shadow: 0 0 6px rgba(255, 106, 0, 0.35);
+}
+
 .heroSection {
   width: 100%;
   min-height: 85vh;
