@@ -161,3 +161,12 @@
     object-position: center 15%;
   }
 }
+
+@media (min-width: 1024px) {
+  .heroVisual {
+    min-height: 92vh;
+  }
+  .videoArea {
+    min-height: 92vh;
+  }
+}
