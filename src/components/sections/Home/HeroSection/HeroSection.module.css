@@ -134,6 +134,9 @@
   .heroSection {
     height: 60vh;
   }
+  .videoElement {
+    object-position: center 20%;
+  }
 }
 
 .brandText {
