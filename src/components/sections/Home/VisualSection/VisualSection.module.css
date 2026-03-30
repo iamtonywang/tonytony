@@ -21,3 +21,9 @@
   margin: 0;
   line-height: 1.6;
 }
+
+@keyframes lineReveal {
+  to {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
