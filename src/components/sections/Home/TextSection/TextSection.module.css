@@ -1,7 +1,7 @@
 .textSection {
   width: 100%;
-  min-height: 32vh;
-  padding: 20px 16px;
+  min-height: auto;
+  padding: 0px 16px 20px;
   position: relative;
   display: flex;
   align-items: center;
@@ -9,21 +9,46 @@
   text-align: center;
 }
 
-.textSection::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.4);
-  z-index: 20;
-  pointer-events: none;
-}
-
 .textSection p {
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.6;
   color: inherit;
+}
+
+.sectionSeparator {
+  display: block;
+  width: 60%;
+  height: 1px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+  margin: 10px auto 18px auto;
+  flex: 0 0 auto;
+}
+
+.sectionSeparator::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    transparent
+  );
+  animation: separatorShimmer 3.2s linear infinite;
+}
+
+@keyframes separatorShimmer {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
 }
