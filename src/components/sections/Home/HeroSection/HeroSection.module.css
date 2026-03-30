@@ -150,3 +150,82 @@
   z-index: 3;
   pointer-events: none;
 }
+
+/* New intro/follow-up text motion structure */
+.introText {
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: normal;
+  word-break: keep-all;
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+  max-width: min(92vw, 720px);
+  width: 100%;
+}
+
+.introTextHidden {
+  opacity: 0;
+  transform: translateY(-8px) rotate(-10deg);
+}
+
+.videoTextWrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, calc(-50% - 24px));
+  width: min(92vw, 720px);
+  max-width: min(92vw, 720px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+  padding: 0 16px;
+}
+
+.videoTextWrapVisible {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.videoText {
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: normal;
+  word-break: keep-all;
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .introText {
+    font-size: 13px;
+    line-height: 1.55;
+    max-width: calc(100vw - 32px);
+  }
+  .videoTextWrap {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+  }
+  .videoText {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+}

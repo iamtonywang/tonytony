@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import styles from "./HeroSection.module.css";
 
 export default function HeroSection() {
@@ -15,6 +14,8 @@ export default function HeroSection() {
   useEffect(() => {
     let isMounted = true;
     let hasMountedVideo = false;
+    let timeoutId: number | null = null;
+    let observer: IntersectionObserver | null = null;
 
     const mountVideoOverlay = () => {
       if (!isMounted || hasMountedVideo || !videoOverlayRef.current) {
@@ -64,14 +65,16 @@ export default function HeroSection() {
         return;
       }
 
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
           const [entry] = entries;
           if (entry && entry.isIntersecting) {
-            setTimeout(() => {
+            timeoutId = window.setTimeout(() => {
               setHideText(true);
               mountVideoOverlay();
-              observer.disconnect();
+              if (observer) {
+                observer.disconnect();
+              }
             }, 2000);
           }
         },
@@ -83,6 +86,12 @@ export default function HeroSection() {
 
     return () => {
       isMounted = false;
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
+      if (observer) {
+        observer.disconnect();
+      }
       cancelAnimationFrame(rafId);
     };
   }, []);
@@ -133,12 +142,19 @@ export default function HeroSection() {
           aria-label={isPlaying ? "Pause video" : "Play video"}
         />
         <div className={styles.heroOverlay}>
-          <p className={styles.heroText} style={{ opacity: hideText ? 0 : 1 }}>
+          <p className={`${styles.introText} ${hideText ? styles.introTextHidden : ""}`}>
             TONY WANG<br/>
             Plant Cell Genetic Protein Laboratory<br/>
             식물세포유전자단백질연구개발<br/>
             분자생물학 바이오생명공학연구소
           </p>
+
+          <div
+            className={`${styles.videoTextWrap} ${hideText ? styles.videoTextWrapVisible : ""}`}
+            aria-hidden="true"
+          >
+            <p className={styles.videoText}>HOME</p>
+          </div>
 
           <div className={styles.brandText}>
             TONYWANG
