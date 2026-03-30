@@ -212,6 +212,15 @@
   position: relative;
   z-index: 2;
   width: 100%;
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.videoTextExit {
+  opacity: 0;
+  transform: translateY(-14px) rotate(-16deg);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (max-width: 768px) {

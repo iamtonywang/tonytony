@@ -59,6 +59,7 @@ export default function HeroSection() {
   const [seqIndex, setSeqIndex] = useState(0);
   const [showFinalBlock, setShowFinalBlock] = useState(false);
   const [hasPlaybackStarted, setHasPlaybackStarted] = useState(false);
+  const [isSequenceExiting, setIsSequenceExiting] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -154,6 +155,7 @@ export default function HeroSection() {
       video.currentTime = 0;
       setIsPlaying(false);
       setHasPlaybackStarted(false);
+      setIsSequenceExiting(false);
     };
 
     video.addEventListener("ended", handleEnded);
@@ -167,22 +169,38 @@ export default function HeroSection() {
 
     setSeqIndex(0);
     setShowFinalBlock(false);
+    setIsSequenceExiting(false);
 
     let currentIndex = 0;
+    let stepTimeout: ReturnType<typeof setTimeout> | null = null;
+    let exitTimeout: ReturnType<typeof setTimeout> | null = null;
 
-    const interval = setInterval(() => {
-      currentIndex += 1;
+    const runSequence = () => {
+      exitTimeout = setTimeout(() => {
+        setIsSequenceExiting(true);
+      }, 2900);
 
-      if (currentIndex >= HERO_SEQUENCE.length) {
-        clearInterval(interval);
-        setShowFinalBlock(true);
-        return;
-      }
+      stepTimeout = setTimeout(() => {
+        currentIndex += 1;
 
-      setSeqIndex(currentIndex);
-    }, 2800);
+        if (currentIndex >= HERO_SEQUENCE.length) {
+          setIsSequenceExiting(false);
+          setShowFinalBlock(true);
+          return;
+        }
 
-    return () => clearInterval(interval);
+        setSeqIndex(currentIndex);
+        setIsSequenceExiting(false);
+        runSequence();
+      }, 3800);
+    };
+
+    runSequence();
+
+    return () => {
+      if (exitTimeout) clearTimeout(exitTimeout);
+      if (stepTimeout) clearTimeout(stepTimeout);
+    };
   }, [hasPlaybackStarted]);
 
   const handleToggle = async () => {
@@ -207,6 +225,7 @@ export default function HeroSection() {
       setHasPlaybackStarted(false);
       setSeqIndex(0);
       setShowFinalBlock(false);
+      setIsSequenceExiting(false);
     }
   };
 
@@ -241,7 +260,10 @@ export default function HeroSection() {
                   {HERO_FINAL_BLOCK}
                 </p>
               ) : (
-                <p key={seqIndex} className={styles.videoText}>
+                <p
+                  key={seqIndex}
+                  className={`${styles.videoText} ${isSequenceExiting ? styles.videoTextExit : ""}`}
+                >
                   {HERO_SEQUENCE[seqIndex]}
                 </p>
               )
