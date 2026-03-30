@@ -23,6 +23,15 @@ const HERO_SEQUENCE = [
   "You have to be crazy to have it"
 ];
 
+const EMPHASIS_TEXT = [
+  "HEY",
+  "TONY WANG",
+  "And",
+  "revolution",
+  "TONY WNG",
+  "Creation !"
+];
+
 const HERO_FINAL_BLOCK = (
   <>
     TONY WANG<br />
@@ -262,7 +271,11 @@ export default function HeroSection() {
               ) : (
                 <p
                   key={seqIndex}
-                  className={`${styles.videoText} ${isSequenceExiting ? styles.videoTextExit : ""}`}
+                  className={`
+                    ${styles.videoText}
+                    ${isSequenceExiting ? styles.videoTextExit : ""}
+                    ${EMPHASIS_TEXT.includes(HERO_SEQUENCE[seqIndex]) ? styles.videoTextEmphasis : ""}
+                  `}
                 >
                   {HERO_SEQUENCE[seqIndex]}
                 </p>
