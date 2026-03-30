@@ -153,7 +153,7 @@ export default function HeroSection() {
             className={`${styles.videoTextWrap} ${hideText ? styles.videoTextWrapVisible : ""}`}
             aria-hidden="true"
           >
-            <p className={styles.videoText}>HOME</p>
+            <p className={styles.videoText}>HEY</p>
           </div>
 
           <div className={styles.brandText}>
