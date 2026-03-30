@@ -163,7 +163,7 @@
   word-break: keep-all;
   opacity: 1;
   transform: translateY(0) rotate(0deg);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transition: opacity 1.05s ease, transform 1.05s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
   position: relative;
   z-index: 2;
@@ -173,7 +173,7 @@
 
 .introTextHidden {
   opacity: 0;
-  transform: translateY(-8px) rotate(-10deg);
+  transform: translateY(-14px) rotate(-18deg);
 }
 
 .videoTextWrap {

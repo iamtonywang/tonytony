@@ -58,6 +58,7 @@ export default function HeroSection() {
   const [hasVideo, setHasVideo] = useState(false);
   const [seqIndex, setSeqIndex] = useState(0);
   const [showFinalBlock, setShowFinalBlock] = useState(false);
+  const [hasPlaybackStarted, setHasPlaybackStarted] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -152,6 +153,7 @@ export default function HeroSection() {
       video.pause();
       video.currentTime = 0;
       setIsPlaying(false);
+      setHasPlaybackStarted(false);
     };
 
     video.addEventListener("ended", handleEnded);
@@ -161,7 +163,7 @@ export default function HeroSection() {
   }, [hasVideo]);
 
   useEffect(() => {
-    if (!hideText) return;
+    if (!hasPlaybackStarted) return;
 
     setSeqIndex(0);
     setShowFinalBlock(false);
@@ -178,24 +180,33 @@ export default function HeroSection() {
       }
 
       setSeqIndex(currentIndex);
-    }, 1800);
+    }, 2800);
 
     return () => clearInterval(interval);
-  }, [hideText]);
+  }, [hasPlaybackStarted]);
 
-  const handleToggle = () => {
+  const handleToggle = async () => {
     const video = videoRef.current;
     if (!video) return;
 
     if (video.paused) {
       video.muted = false;
       video.currentTime = 0;
-      void video.play().catch(() => {});
-      setIsPlaying(true);
+      const playResult = await video.play().catch(() => null);
+      if (playResult === undefined || playResult) {
+        setIsPlaying(true);
+        setHasPlaybackStarted(true);
+      } else {
+        setIsPlaying(false);
+        setHasPlaybackStarted(false);
+      }
     } else {
       video.pause();
       video.currentTime = 0;
       setIsPlaying(false);
+      setHasPlaybackStarted(false);
+      setSeqIndex(0);
+      setShowFinalBlock(false);
     }
   };
 
@@ -224,15 +235,17 @@ export default function HeroSection() {
             className={`${styles.videoTextWrap} ${hideText ? styles.videoTextWrapVisible : ""}`}
             aria-hidden="true"
           >
-            {showFinalBlock ? (
-              <p className={styles.videoText}>
-                {HERO_FINAL_BLOCK}
-              </p>
-            ) : (
-              <p key={seqIndex} className={styles.videoText}>
-                {HERO_SEQUENCE[seqIndex]}
-              </p>
-            )}
+            {hasPlaybackStarted ? (
+              showFinalBlock ? (
+                <p className={styles.videoText}>
+                  {HERO_FINAL_BLOCK}
+                </p>
+              ) : (
+                <p key={seqIndex} className={styles.videoText}>
+                  {HERO_SEQUENCE[seqIndex]}
+                </p>
+              )
+            ) : null}
           </div>
 
           <div className={styles.brandText}>
