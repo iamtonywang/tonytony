@@ -178,7 +178,7 @@ export default function HeroSection() {
     const runSequence = () => {
       exitTimeout = setTimeout(() => {
         setIsSequenceExiting(true);
-      }, 2900);
+      }, 3740);
 
       stepTimeout = setTimeout(() => {
         currentIndex += 1;
@@ -192,7 +192,7 @@ export default function HeroSection() {
         setSeqIndex(currentIndex);
         setIsSequenceExiting(false);
         runSequence();
-      }, 3800);
+      }, 4940);
     };
 
     runSequence();
