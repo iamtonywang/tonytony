@@ -21,14 +21,3 @@
   margin: 0;
   line-height: 1.6;
 }
-
-@keyframes lineReveal {
-  to {
-    transform: translateX(-50%) scaleX(1);
-  }
-}
-
-.visualSection::before {
-  background: #ffffff;
-  transform: translateX(-50%) scaleX(1);
-}
