@@ -3,6 +3,6 @@
 .homeDividerLine {
   width: 100%;
   height: 1px;
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
   margin: 0;
 }
