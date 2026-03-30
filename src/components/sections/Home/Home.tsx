@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <div className={styles.homeDividerLine} aria-hidden="true" />
       <TextSection />
       <VisualSection />
     </>
