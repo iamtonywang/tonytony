@@ -3,6 +3,52 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.css";
 
+const HERO_SEQUENCE = [
+  "HEY",
+  "TONY WANG",
+  "Do you know the reality?",
+  "People don't know TONY WANG",
+  "I don't have a presence",
+  "No one knows TONY WANG",
+  "Why is it coming out to the world?",
+  "I want to prove that I'm the best",
+  "And",
+  "I want to enjoy the new challenge to my heart's content",
+  "revolution",
+  "Not everyone can do it",
+  "TONY WANG",
+  "only one who can do it",
+  "It's only possible for the Creation",
+  "Creation !",
+  "You have to be crazy to have it"
+];
+
+const HERO_FINAL_BLOCK = (
+  <>
+    TONY WANG<br />
+    All right.<br />
+    I've been studying cells for 28 years<br />
+    I've never thought about making trashy cosmetics<br />
+    It's their lies that made me angry<br />
+    I decided to change all my trashy cosmetics<br />
+    I decided to make a crazy new creation this time<br />
+    I researched and developed NIGAJUN<br />
+    I want to prove that the past and present are the first<br />
+    I want to show you that I'm the best<br />
+    I think it's going to be a fun game<br />
+    I thought about it and decided<br />
+    You can turn the world around with skincare<br />
+    What excites me even more is that<br />
+    It's a bad skincare culture that only lies<br />
+    I want to break it down<br />
+    You have to be crazy to win<br />
+    This is my TONY WANG's belief<br />
+    You have to be crazy to get what you want<br />
+    It's a very good and valuable work<br />
+    TONY WANG
+  </>
+);
+
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
@@ -10,6 +56,8 @@ export default function HeroSection() {
   const [hideText, setHideText] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasVideo, setHasVideo] = useState(false);
+  const [seqIndex, setSeqIndex] = useState(0);
+  const [showFinalBlock, setShowFinalBlock] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -112,6 +160,29 @@ export default function HeroSection() {
     };
   }, [hasVideo]);
 
+  useEffect(() => {
+    if (!hideText) return;
+
+    setSeqIndex(0);
+    setShowFinalBlock(false);
+
+    let currentIndex = 0;
+
+    const interval = setInterval(() => {
+      currentIndex += 1;
+
+      if (currentIndex >= HERO_SEQUENCE.length) {
+        clearInterval(interval);
+        setShowFinalBlock(true);
+        return;
+      }
+
+      setSeqIndex(currentIndex);
+    }, 1800);
+
+    return () => clearInterval(interval);
+  }, [hideText]);
+
   const handleToggle = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -153,7 +224,15 @@ export default function HeroSection() {
             className={`${styles.videoTextWrap} ${hideText ? styles.videoTextWrapVisible : ""}`}
             aria-hidden="true"
           >
-            <p className={styles.videoText}>HEY</p>
+            {showFinalBlock ? (
+              <p className={styles.videoText}>
+                {HERO_FINAL_BLOCK}
+              </p>
+            ) : (
+              <p key={seqIndex} className={styles.videoText}>
+                {HERO_SEQUENCE[seqIndex]}
+              </p>
+            )}
           </div>
 
           <div className={styles.brandText}>
