@@ -54,6 +54,7 @@ export default function TextSection() {
           </div>
         </div>
       </div>
+      <div className={styles.statementBottomGlowLine} aria-hidden="true" />
     </section>
   );
 }
