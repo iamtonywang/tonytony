@@ -195,7 +195,7 @@
   overflow: hidden;
   background: rgba(255, 255, 255, 0.18);
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
-  margin: 12px auto 6px auto;
+  margin: 10px auto 2px auto;
   flex: 0 0 auto;
 }
 
@@ -264,7 +264,7 @@
 .statementBottomClosing {
   width: 100%;
   max-width: min(92vw, 720px);
-  margin: 12px auto 0;
+  margin: 10px auto 12px;
   padding: 0 16px;
   text-align: center;
   color: #ffffff;
@@ -328,6 +328,14 @@
   align-items: flex-start;
   justify-content: center;
   pointer-events: none;
+}
+
+.statementTextOverlay .textLine {
+  animation-play-state: paused;
+}
+
+.statementTextOverlayVisible .textLine {
+  animation-play-state: running;
 }
 
 .statementTextInner {
@@ -465,7 +473,7 @@
 
   .statementVisualMedia {
     position: relative;
-    height: 70vh;
+    height: 50vh;
     overflow: hidden;
   }
 

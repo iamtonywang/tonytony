@@ -1,6 +1,30 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import styles from "./TextSection.module.css";
 
 export default function TextSection() {
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (overlayRef.current) {
+      observer.observe(overlayRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className={styles.textSection}>
       <div className={styles.sectionSeparator} aria-hidden="true" />
@@ -21,7 +45,11 @@ export default function TextSection() {
             alt="TONYWANG plant cell genetic protein visual"
           />
           <div className={styles.statementGradientOverlay} aria-hidden="true" />
-          <div className={styles.statementTextOverlay} aria-hidden="true">
+          <div
+            ref={overlayRef}
+            className={`${styles.statementTextOverlay} ${visible ? styles.statementTextOverlayVisible : ""}`}
+            aria-hidden="true"
+          >
             <div className={styles.statementTextInner}>
               <div className={styles.textLine + " " + styles.textHero}>HEY</div>
               <div className={styles.textLine}>나는 이렇게 나를 정리해 망설이는 시간은 멍청하고 아까워</div>
