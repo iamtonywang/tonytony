@@ -40,7 +40,10 @@ export default function TextSection() {
               <div className={styles.textLine + " " + styles.textOrangeSecondary}>창조란?</div>
               <div className={styles.textLine}>미쳐야 가질 수 있고 세상에 없는것을 만드는것이야</div>
               <div className={styles.textLine}>피부에 관한 모든 퍼즐을 풀고자 세상에 나왔다</div>
-              <div className={styles.textLine}>스킨케어로도 세상을 뒤집어 놓을수있다는 것을 보여줄려고 해</div>
+              <div className={styles.textLine}>
+                <span>스킨케어로도 세상을 뒤집어 놓을수있다는 것을 </span>
+                <span className={styles.mobileLineBreak}>보여줄려고 해</span>
+              </div>
               <div className={styles.textLine + " " + styles.textSectionTitle}>식물 세포 유전자 단백질</div>
               <div className={styles.textLine}>세균이 지배하는 피부에 세균를 지휘하는 마에스트로</div>
               <div className={styles.textLine}>새로운 피부 조직을 변혁 시키는 유일한 유전자 단백질</div>
