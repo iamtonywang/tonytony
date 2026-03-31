@@ -261,6 +261,18 @@
   opacity: 0.8;
 }
 
+.statementBottomClosing {
+  width: 100%;
+  max-width: min(92vw, 720px);
+  margin: 12px auto 0;
+  padding: 0 16px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
 @keyframes statementGlowSweep {
   0% {
     left: -30%;

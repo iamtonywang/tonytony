@@ -82,6 +82,9 @@ export default function TextSection() {
         <p className={styles.bottomSignature}>TONYWANG</p>
       </div>
       <div className={styles.statementBottomEndGlowLine} aria-hidden="true" />
+      <p className={styles.statementBottomClosing}>
+        I will always sell the truth and the value By TONYWANG
+      </p>
     </section>
   );
 }
