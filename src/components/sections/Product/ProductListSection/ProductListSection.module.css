@@ -114,6 +114,12 @@
   -webkit-touch-callout: none;
 }
 
+@media (min-width: 769px) {
+  .productTextOverlay {
+    transform: translateY(0);
+  }
+}
+
 .productOverlayCopy {
   display: flex;
   flex-direction: column;
