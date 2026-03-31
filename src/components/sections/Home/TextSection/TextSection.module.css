@@ -213,7 +213,7 @@
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   pointer-events: none;
 }
@@ -226,6 +226,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 18%;
 }
 
 
@@ -233,15 +234,40 @@
 /* Overlay sequential statement text (CSS-only animation) */
 .textLine {
   opacity: 0;
-  transform: translateY(10px);
-  animation: textSlideIn 0.6s ease forwards;
+  transform: translateY(8px);
+  animation: textSlideIn 0.9s ease forwards;
   font-size: 14px;
   line-height: 1.5;
+  font-weight: 300;
   width: 100%;
 }
 
+.textHero {
+  font-size: 35px;
+  font-weight: 300;
+}
+
+.textOrangePrimary {
+  color: #ff8a3d;
+  font-size: 35px;
+  font-weight: 300;
+}
+
+.textOrangeSecondary {
+  color: #ff8a3d;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.textSectionTitle {
+  font-size: 17px;
+  font-weight: 300;
+}
+
+/* keep for compatibility if referenced elsewhere */
 .textHighlight {
   font-size: 35px;
+  font-weight: 300;
 }
 
 @keyframes textSlideIn {
@@ -256,64 +282,64 @@
   animation-delay: 0.1s;
 }
 .textLine:nth-child(2) {
-  animation-delay: 0.3s;
+  animation-delay: 0.4s;
 }
 .textLine:nth-child(3) {
-  animation-delay: 0.5s;
-}
-.textLine:nth-child(4) {
   animation-delay: 0.7s;
 }
+.textLine:nth-child(4) {
+  animation-delay: 1s;
+}
 .textLine:nth-child(5) {
-  animation-delay: 0.9s;
-}
-.textLine:nth-child(6) {
-  animation-delay: 1.1s;
-}
-.textLine:nth-child(7) {
   animation-delay: 1.3s;
 }
-.textLine:nth-child(8) {
-  animation-delay: 1.5s;
+.textLine:nth-child(6) {
+  animation-delay: 1.6s;
 }
-.textLine:nth-child(9) {
-  animation-delay: 1.7s;
-}
-.textLine:nth-child(10) {
+.textLine:nth-child(7) {
   animation-delay: 1.9s;
 }
-.textLine:nth-child(11) {
-  animation-delay: 2.1s;
+.textLine:nth-child(8) {
+  animation-delay: 2.2s;
 }
-.textLine:nth-child(12) {
-  animation-delay: 2.3s;
-}
-.textLine:nth-child(13) {
+.textLine:nth-child(9) {
   animation-delay: 2.5s;
 }
-.textLine:nth-child(14) {
-  animation-delay: 2.7s;
+.textLine:nth-child(10) {
+  animation-delay: 2.8s;
 }
-.textLine:nth-child(15) {
-  animation-delay: 2.9s;
-}
-.textLine:nth-child(16) {
+.textLine:nth-child(11) {
   animation-delay: 3.1s;
 }
-.textLine:nth-child(17) {
-  animation-delay: 3.3s;
+.textLine:nth-child(12) {
+  animation-delay: 3.4s;
 }
-.textLine:nth-child(18) {
-  animation-delay: 3.5s;
-}
-.textLine:nth-child(19) {
+.textLine:nth-child(13) {
   animation-delay: 3.7s;
 }
+.textLine:nth-child(14) {
+  animation-delay: 4s;
+}
+.textLine:nth-child(15) {
+  animation-delay: 4.3s;
+}
+.textLine:nth-child(16) {
+  animation-delay: 4.6s;
+}
+.textLine:nth-child(17) {
+  animation-delay: 4.9s;
+}
+.textLine:nth-child(18) {
+  animation-delay: 5.2s;
+}
+.textLine:nth-child(19) {
+  animation-delay: 5.5s;
+}
 .textLine:nth-child(20) {
-  animation-delay: 3.9s;
+  animation-delay: 5.8s;
 }
 .textLine:nth-child(21) {
-  animation-delay: 4.1s;
+  animation-delay: 6.1s;
 }
 
 @media (max-width: 768px) {
@@ -323,6 +349,22 @@
 
   .textLine {
     font-size: 14px;
+  }
+
+  .textHero {
+    font-size: 17px;
+  }
+
+  .textOrangePrimary {
+    font-size: 17px;
+  }
+
+  .textOrangeSecondary {
+    font-size: 17px;
+  }
+
+  .textSectionTitle {
+    font-size: 17px;
   }
 
   .textHighlight {
