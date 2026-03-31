@@ -136,24 +136,51 @@ export default function Nigajun35View({ product }: Props) {
           </div>
         </div>
       </section>
+      <div className={styles.detailTopGlowLine} aria-hidden="true" />
 
-      <section className={styles.coreInfoSection}>
-        <h2 className={styles.sectionTitle}>Core Information</h2>
-        <p className={styles.sectionText}>
-          {product?.shortDescription ?? "Core product information placeholder."}
+      <section className={styles.detailIntroSection}>
+        <h1 className={styles.detailTitle}>TONYWANG</h1>
+
+        <p className={styles.detailPriceRow}>
           {typeof product?.finalPriceAmount === "number" ? (
-            <span> {" "}· {product.finalPriceAmount.toLocaleString()}</span>
+            <span>· {product.finalPriceAmount.toLocaleString()}</span>
           ) : null}
+        </p>
+
+        <div className={styles.detailCtaRow}>
+          <button className={styles.detailBuyButton} disabled>
+            Coming Soon
+          </button>
+        </div>
+
+        <p className={styles.detailDescription}>
+          {product?.shortDescription ?? "Core product information placeholder."}
         </p>
       </section>
 
-      <section className={styles.ctaSection}>
-        <h2 className={styles.sectionTitle}>CTA</h2>
-        <button type="button" className={styles.ctaButton} disabled>
-          Coming Soon
-        </button>
+      <div className={styles.detailMidGlowLine} aria-hidden="true" />
+
+      <section className={styles.detailVisualSection}>
+        <div className={styles.detailVisualMedia}>
+          <img
+            className={styles.detailVisualImage}
+            src="/landing-assets/product-hero-main.webp"
+            alt="TONYWANG product visual"
+            draggable={false}
+          />
+          <div className={styles.detailGradientOverlay} aria-hidden="true" />
+        </div>
       </section>
 
+      <div className={styles.detailBottomGlowLine} aria-hidden="true" />
+
+      <section className={styles.detailCopySection}>
+        <p className={styles.detailCopyText}>
+          Detailed product statement placeholder.
+        </p>
+      </section>
+
+      <div className={styles.detailEndGlowLine} aria-hidden="true" />
       <section className={styles.boardSection}>
         <h2 className={styles.sectionTitle}>Board</h2>
         <p className={styles.sectionText}>Review and inquiry area placeholder.</p>

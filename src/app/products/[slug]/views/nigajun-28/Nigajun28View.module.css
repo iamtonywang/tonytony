@@ -197,3 +197,205 @@
     font-size: 13px;
   }
 }
+
+.detailTopGlowLine,
+.detailMidGlowLine,
+.detailBottomGlowLine,
+.detailEndGlowLine {
+  position: relative;
+  width: min(1120px, 92vw);
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 168, 255, 0.05) 0%,
+    rgba(0, 168, 255, 0.35) 40%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(0, 168, 255, 0.35) 60%,
+    rgba(0, 168, 255, 0.05) 100%
+  );
+  overflow: hidden;
+}
+
+.detailTopGlowLine::after,
+.detailMidGlowLine::after,
+.detailBottomGlowLine::after,
+.detailEndGlowLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.78) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: detailGlowSweep 3.6s ease-in-out infinite;
+}
+
+.detailTopGlowLine {
+  margin-top: 0;
+  margin-bottom: 38px;
+}
+
+.detailMidGlowLine {
+  margin-top: 14px;
+  margin-bottom: 36px;
+}
+
+.detailBottomGlowLine {
+  margin-top: 12px;
+  margin-bottom: 30px;
+}
+
+.detailEndGlowLine {
+  margin-top: 22px;
+  margin-bottom: 30px;
+}
+
+.detailIntroSection,
+.detailCopySection,
+.detailVisualSection {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+}
+
+.detailIntroSection {
+  text-align: center;
+}
+
+.detailTitle {
+  margin: 0 0 14px;
+  font-size: clamp(20px, 2.1vw, 30px);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.detailPriceRow {
+  margin: 0 0 16px;
+  font-size: clamp(14px, 1.15vw, 18px);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.detailCtaRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.detailBuyButton {
+  min-width: 164px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(0, 0, 0, 0.36);
+  color: rgba(255, 255, 255, 0.88);
+  border-radius: 999px;
+  padding: 10px 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.detailDescription {
+  margin: 0 auto;
+  max-width: 760px;
+  font-size: clamp(13px, 1.08vw, 16px);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.detailVisualMedia {
+  position: relative;
+  width: 100%;
+  min-height: min(70vh, 780px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.detailVisualImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.detailGradientOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.58) 100%),
+    radial-gradient(circle at 50% 112%, rgba(0, 168, 255, 0.28) 0%, transparent 58%);
+}
+
+.detailCopySection {
+  text-align: center;
+}
+
+.detailCopyText {
+  margin: 0 auto;
+  max-width: 800px;
+  font-size: clamp(13px, 1.08vw, 16px);
+  line-height: 1.78;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+@media (max-width: 768px) {
+  .detailTopGlowLine,
+  .detailMidGlowLine,
+  .detailBottomGlowLine,
+  .detailEndGlowLine,
+  .detailIntroSection,
+  .detailCopySection,
+  .detailVisualSection {
+    width: min(1120px, 94vw);
+  }
+
+  .detailTopGlowLine {
+    margin-bottom: 28px;
+  }
+
+  .detailMidGlowLine {
+    margin-bottom: 26px;
+  }
+
+  .detailBottomGlowLine {
+    margin-bottom: 24px;
+  }
+
+  .detailEndGlowLine {
+    margin-bottom: 22px;
+  }
+
+  .detailTitle {
+    font-size: 18px;
+  }
+
+  .detailPriceRow {
+    font-size: 13px;
+  }
+
+  .detailDescription,
+  .detailCopyText {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .detailVisualMedia {
+    min-height: 54vh;
+    border-radius: 10px;
+  }
+}
+
+@keyframes detailGlowSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
