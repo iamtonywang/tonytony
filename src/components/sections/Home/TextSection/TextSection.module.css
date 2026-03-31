@@ -134,17 +134,17 @@
 
 /* Inline statement visual block under SEO text */
 .statementVisualBlock {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
   margin-top: 12px;
 }
 
 .statementVisualMedia {
   position: relative;
-  width: 100vw;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
   overflow: hidden;
 }
 
