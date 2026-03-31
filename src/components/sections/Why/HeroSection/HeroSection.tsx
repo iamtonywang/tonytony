@@ -36,6 +36,7 @@ export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const [showVideo, setShowVideo] = useState(false);
+  const [pendingPlay, setPendingPlay] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeLineIndex, setActiveLineIndex] = useState(0);
@@ -113,7 +114,7 @@ export default function HeroSection() {
       videoEl.muted = true;
       videoEl.autoplay = false;
       videoEl.playsInline = true;
-      videoEl.loop = true;
+      videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
       videoEl.addEventListener("play", () => setIsPlaying(true));
@@ -136,17 +137,24 @@ export default function HeroSection() {
       videoRef.current = videoEl;
       videoOverlayRef.current.appendChild(videoEl);
       hasMountedVideo = true;
+
+      if (pendingPlay) {
+        videoEl.muted = false;
+        void videoEl.play().catch(() => {});
+        setPendingPlay(false);
+      }
     };
 
     if (showVideo) {
       mountVideoOverlay();
     }
-  }, [showVideo, styles.videoElement]);
+  }, [showVideo, pendingPlay, styles.videoElement]);
 
   const handleToggle = async () => {
     const videoEl = videoRef.current;
     if (!videoEl) {
       if (!showVideo) {
+        setPendingPlay(true);
         setShowVideo(true);
       }
       return;
