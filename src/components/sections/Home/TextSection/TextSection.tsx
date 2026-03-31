@@ -12,7 +12,8 @@ export default function TextSection() {
       ([entry]) => {
         if (entry?.isIntersecting) {
           setVisible(true);
-          observer.disconnect();
+        } else {
+          setVisible(false);
         }
       },
       { threshold: 0.3 }
