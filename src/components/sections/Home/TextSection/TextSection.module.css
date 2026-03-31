@@ -216,6 +216,12 @@
   font-weight: 300;
 }
 
+.bottomSingleLine {
+  white-space: nowrap;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
 .bottomSignature {
   margin-top: 16px;
   font-size: 14px;
@@ -475,5 +481,9 @@
   .statementBottomText p {
     font-size: 13px;
     line-height: 1.45;
+  }
+
+  .bottomSingleLine {
+    white-space: normal;
   }
 }
