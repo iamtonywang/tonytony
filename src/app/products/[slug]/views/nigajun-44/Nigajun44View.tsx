@@ -140,7 +140,7 @@ export default function Nigajun44View({ product }: Props) {
         <div className={styles.detailVisualMedia}>
           <img
             className={styles.detailVisualImage}
-            src="/landing-assets/product-detail-hero.webp"
+            src="/landing-assets/product-hero-main.webp"
             alt="TONYWANG product visual"
             draggable={false}
           />
