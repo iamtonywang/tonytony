@@ -428,3 +428,9 @@
     width: min(94vw, 560px);
   }
 }
+
+@media (min-width: 769px) {
+  .detailVisualImage {
+    object-position: center top;
+  }
+}
