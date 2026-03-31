@@ -257,7 +257,7 @@
 
 @media (max-width: 768px) {
   .productTextOverlay {
-    transform: translateY(10%);
+    transform: translateY(30%);
   }
 
   .productSeoTitle,
