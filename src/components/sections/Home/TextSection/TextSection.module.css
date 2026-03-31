@@ -526,6 +526,7 @@
     max-width: none;
     padding: 0 12px;
     margin-top: 0;
+    transform: translateY(20%);
   }
 
   .textLine {
