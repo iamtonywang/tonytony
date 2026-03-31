@@ -307,9 +307,11 @@
 .detailVisualMedia {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
+
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+
   overflow: hidden;
 }
 
@@ -386,8 +388,15 @@
   }
 
   .detailVisualMedia {
-    height: 72vh;
-  }
+  position: relative;
+  width: 100vw;
+  height: 85vh;
+
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  overflow: hidden;
+}
 }
 
 @keyframes detailGlowSweep {
@@ -426,13 +435,15 @@
 
   .detailOverlayInner {
     width: min(94vw, 560px);
+    padding: 0 16px 56px;
   }
 }
 
 @media (min-width: 769px) {
   .detailVisualImage {
-    object-fit: cover;
-    object-position: center 8%;
+    object-fit: contain;
+    object-position: center;
+    height: auto;
     background: transparent;
   }
 }
