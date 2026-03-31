@@ -129,6 +129,10 @@
 .ourWorkOverlayLine:nth-child(5) { animation-delay: 1.4s; }
 .ourWorkOverlayLine:nth-child(6) { animation-delay: 1.7s; }
 
+.statementSmallBlock .ourWorkOverlayLine {
+  font-size: 14px;
+}
+
 .ourWorkBottomCopy {
   width: 100%;
   max-width: min(92vw, 820px);
@@ -206,5 +210,9 @@
   .ourWorkOverlayLine {
     font-size: 14px;
     line-height: 1.35;
+  }
+
+  .statementSmallBlock .ourWorkOverlayLine {
+    font-size: 13px;
   }
 }

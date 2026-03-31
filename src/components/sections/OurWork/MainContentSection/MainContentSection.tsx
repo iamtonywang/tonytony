@@ -64,24 +64,26 @@ export default function MainContentSection() {
               <div className={styles.ourWorkOverlayLine}>
                 Natural product-based plant cell gene protein platform technology
               </div>
-              <div className={styles.ourWorkOverlayLine}>나는 28년간 인류의 질병</div>
-              <div className={styles.ourWorkOverlayLine}>질병을 유발하는 악성균을 치료할 유전자 단백질을 찾고자</div>
-              <div className={styles.ourWorkOverlayLine}>모든 것을 걸었고 모든 것을 버렸다</div>
-              <div className={styles.ourWorkOverlayLine}>나는 운명이라 생각했다</div>
-              <div className={styles.ourWorkOverlayLine}>그래 거창함은 없다 운명이라 생각했다</div>
-              <div className={styles.ourWorkOverlayLine}>
-                세상에 태어난 이유이고 인류의 질병에 오로지 해결점을 찾고 싶었다
+              <div className={styles.statementSmallBlock}>
+                <div className={styles.ourWorkOverlayLine}>나는 28년간 인류의 질병</div>
+                <div className={styles.ourWorkOverlayLine}>질병을 유발하는 악성균을 치료할 유전자 단백질을 찾고자</div>
+                <div className={styles.ourWorkOverlayLine}>모든 것을 걸었고 모든 것을 버렸다</div>
+                <div className={styles.ourWorkOverlayLine}>나는 운명이라 생각했다</div>
+                <div className={styles.ourWorkOverlayLine}>그래 거창함은 없다 운명이라 생각했다</div>
+                <div className={styles.ourWorkOverlayLine}>
+                  세상에 태어난 이유이고 인류의 질병에 오로지 해결점을 찾고 싶었다
+                </div>
+                <div className={styles.ourWorkOverlayLine}>28년 생명공학 연구 개발을 하면서</div>
+                <div className={styles.ourWorkOverlayLine}>단 한번도</div>
+                <div className={styles.ourWorkOverlayLine}>화장품 따위는 만들 생각이 없었다</div>
+                <div className={styles.ourWorkOverlayLine}>나의 창작 연구는</div>
+                <div className={styles.ourWorkOverlayLine}>줄기세포 NO, 리포좀 NO,</div>
+                <div className={styles.ourWorkOverlayLine}>엑소좀 NO, 성장인자 NO,</div>
+                <div className={styles.ourWorkOverlayLine}>나노입자 NO, 펩타이드 NO</div>
+                <div className={styles.ourWorkOverlayLine}>Plant Cell Gene Protein</div>
+                <div className={styles.ourWorkOverlayLine}>바이오 의약품 세균, 바이러스, 세포 mRNA</div>
+                <div className={styles.ourWorkOverlayLine}>천연물 기반 식물세포 유전자 단백질 플랫폼</div>
               </div>
-              <div className={styles.ourWorkOverlayLine}>28년 생명공학 연구 개발을 하면서</div>
-              <div className={styles.ourWorkOverlayLine}>단 한번도</div>
-              <div className={styles.ourWorkOverlayLine}>화장품 따위는 만들 생각이 없었다</div>
-              <div className={styles.ourWorkOverlayLine}>나의 창작 연구는</div>
-              <div className={styles.ourWorkOverlayLine}>줄기세포 NO, 리포좀 NO,</div>
-              <div className={styles.ourWorkOverlayLine}>엑소좀 NO, 성장인자 NO,</div>
-              <div className={styles.ourWorkOverlayLine}>나노입자 NO, 펩타이드 NO</div>
-              <div className={styles.ourWorkOverlayLine}>Plant Cell Gene Protein</div>
-              <div className={styles.ourWorkOverlayLine}>바이오 의약품 세균, 바이러스, 세포 mRNA</div>
-              <div className={styles.ourWorkOverlayLine}>천연물 기반 식물세포 유전자 단백질 플랫폼</div>
               <div className={styles.ourWorkOverlayLine}>SINCE  August 2025 TONYWANG</div>
             </div>
           </div>
