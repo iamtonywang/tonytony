@@ -138,28 +138,6 @@ export default function Nigajun35View({ product }: Props) {
       </section>
       <div className={styles.detailTopGlowLine} aria-hidden="true" />
 
-      <section className={styles.detailIntroSection}>
-        <h1 className={styles.detailTitle}>TONYWANG</h1>
-
-        <p className={styles.detailPriceRow}>
-          {typeof product?.finalPriceAmount === "number" ? (
-            <span>· {product.finalPriceAmount.toLocaleString()}</span>
-          ) : null}
-        </p>
-
-        <div className={styles.detailCtaRow}>
-          <button className={styles.detailBuyButton} disabled>
-            Coming Soon
-          </button>
-        </div>
-
-        <p className={styles.detailDescription}>
-          {product?.shortDescription ?? "Core product information placeholder."}
-        </p>
-      </section>
-
-      <div className={styles.detailMidGlowLine} aria-hidden="true" />
-
       <section className={styles.detailVisualSection}>
         <div className={styles.detailVisualMedia}>
           <img
@@ -169,6 +147,28 @@ export default function Nigajun35View({ product }: Props) {
             draggable={false}
           />
           <div className={styles.detailGradientOverlay} aria-hidden="true" />
+
+          <div className={styles.detailVisualOverlay} draggable={false}>
+            <div className={styles.detailOverlayInner}>
+              <h1 className={styles.detailTitle}>TONYWANG</h1>
+
+              <p className={styles.detailPriceRow}>
+                {typeof product?.finalPriceAmount === "number" ? (
+                  <span>· {product.finalPriceAmount.toLocaleString()}</span>
+                ) : null}
+              </p>
+
+              <div className={styles.detailCtaRow}>
+                <button className={styles.detailBuyButton} disabled>
+                  Coming Soon
+                </button>
+              </div>
+
+              <p className={styles.detailDescription}>
+                {product?.shortDescription ?? "Core product information placeholder."}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -181,6 +181,7 @@ export default function Nigajun35View({ product }: Props) {
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
+
       <section className={styles.boardSection}>
         <h2 className={styles.sectionTitle}>Board</h2>
         <p className={styles.sectionText}>Review and inquiry area placeholder.</p>

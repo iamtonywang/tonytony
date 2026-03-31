@@ -399,3 +399,31 @@
     transform: translateX(100%);
   }
 }
+
+.detailVisualOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: clamp(20px, 4vw, 48px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.detailOverlayInner {
+  width: min(760px, 100%);
+  text-align: center;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .detailVisualOverlay {
+    align-items: center;
+    padding: 18px;
+  }
+
+  .detailOverlayInner {
+    width: min(94vw, 560px);
+  }
+}
