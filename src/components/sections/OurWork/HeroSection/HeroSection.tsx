@@ -26,6 +26,14 @@ const HERO_LINES = [
   "SINCE  August 2025 ByTONYWANG",
 ] as const;
 
+const BACKGROUND_LINES = [
+  "Our Work",
+  "TONYWANG",
+  "식물세포유전자단백질연구개발",
+  "분자생물바이오생명공학",
+  "My job is to develop a plant cell gene protein",
+] as const;
+
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [showVideo, setShowVideo] = useState(false);
@@ -43,7 +51,7 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
-    if (!showVideo) {
+    if (!isPlaying) {
       setActiveLineIndex(0);
       setLinePhase("enter");
       setShowFinalStack(false);
@@ -92,7 +100,7 @@ export default function HeroSection() {
       if (exitTimeout) clearTimeout(exitTimeout);
       if (finalTimeout) clearTimeout(finalTimeout);
     };
-  }, [showVideo]);
+  }, [isPlaying]);
   const handleToggle = async () => {
     const videoEl = videoRef.current;
     if (!videoEl) return;
@@ -147,7 +155,16 @@ export default function HeroSection() {
           />
 
           <div className={styles.heroOverlay}>
-            {!showFinalStack ? (
+            {!isPlaying ? (
+              <p className={styles.heroText}>
+                {BACKGROUND_LINES.map((line) => (
+                  <span key={line}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
+              </p>
+            ) : !showFinalStack ? (
               <p
                 key={activeLineIndex}
                 className={`${styles.heroText} ${
