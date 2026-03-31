@@ -108,8 +108,101 @@
   padding: 0 12px;
 }
 
+.fallbackOverlay {
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 12px;
+}
+
+.motionOverlay {
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 12px;
+}
+
 .heroText {
   margin: 0;
   color: inherit;
   line-height: 1.6;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.heroTextEnter {
+  animation: whyLineEnter 0.56s ease forwards;
+}
+
+.heroTextExit {
+  animation: whyLineExit 0.34s ease forwards;
+}
+
+.finalStack {
+  width: 100%;
+  max-width: min(92vw, 860px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  animation: whyFinalStackFadeIn 0.5s ease forwards;
+}
+
+.finalStackLine {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 300;
+  text-align: center;
+}
+
+@keyframes whyLineEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes whyLineExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes whyFinalStackFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroText,
+  .finalStackLine {
+    font-size: 12px;
+    line-height: 1.35;
+  }
 }
