@@ -72,6 +72,7 @@ export default function ProductListSection({ items }: ProductListSectionProps) {
               <p>person who doesn't care about himself</p>
               <p>Please get out of here.</p>
             </div>
+            <div className={styles.productOverlayDivider} aria-hidden="true" />
             <ul key={animKey} className={styles.productOverlayList} draggable={false}>
               {items.map((item) => {
                 const key = item.slug ?? Math.random().toString(36);
