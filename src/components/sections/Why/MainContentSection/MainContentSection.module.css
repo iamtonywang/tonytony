@@ -1,15 +1,176 @@
 .section {
   width: 100%;
-  min-height: 40vh;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 0;
+  text-align: center;
+  color: #ffffff;
+}
+
+.whyGlowLine {
+  width: min(92vw, 980px);
+  height: 1px;
+  margin: 18px auto;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.whyGlowLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.68) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: whyGlowSweep 3.6s ease-in-out infinite;
+}
+
+.whySeoIntro {
+  width: 100%;
+  max-width: 980px;
+  margin: 8px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.whySeoTitle {
+  margin: 0;
+  font-size: 35px;
+  line-height: 1.2;
+  font-weight: 300;
+}
+
+.whySeoLine {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.whyVisualBlock {
+  width: 100vw;
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.whyVisualMedia {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.whyVisualImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.whyGradientOverlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.6) 55%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+
+.whyTextOverlay {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 16px;
-  text-align: center;
+  pointer-events: none;
 }
 
-.text {
+.whyTextInner {
+  width: 100%;
+  max-width: min(92vw, 840px);
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.whyOverlayLine {
   margin: 0;
-  color: inherit;
-  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: whyLineIn 1.2s ease forwards paused;
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 300;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.whyTextOverlayVisible .whyOverlayLine {
+  animation-play-state: running;
+}
+
+.whyOverlayLine:nth-child(1) { animation-delay: 0.2s; }
+.whyOverlayLine:nth-child(2) { animation-delay: 0.5s; }
+.whyOverlayLine:nth-child(3) { animation-delay: 0.8s; }
+.whyOverlayLine:nth-child(4) { animation-delay: 1.1s; }
+.whyOverlayLine:nth-child(5) { animation-delay: 1.4s; }
+.whyOverlayLine:nth-child(6) { animation-delay: 1.7s; }
+
+@keyframes whyLineIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes whyGlowSweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.2;
+  }
+}
+
+@media (max-width: 768px) {
+  .whySeoTitle {
+    font-size: 25px;
+  }
+
+  .whySeoLine {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .whyVisualMedia {
+    height: 70vh;
+  }
+
+  .whyVisualImage {
+    height: 100%;
+    object-position: center;
+  }
+
+  .whyOverlayLine {
+    font-size: 14px;
+    line-height: 1.35;
+  }
 }
