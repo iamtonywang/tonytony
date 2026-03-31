@@ -84,10 +84,6 @@ export default function HeroSection() {
               분자생물바이오생명공학<br/>
               My job is to develop a plant cell gene protein
             </p>
-
-            <div className={styles.brandText}>
-              TONYWANG
-            </div>
           </div>
         </div>
       </div>
