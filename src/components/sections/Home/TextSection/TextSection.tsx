@@ -14,26 +14,11 @@ export default function TextSection() {
       </div>
       <div className={styles.statementVisualBlock}>
         <div className={styles.statementVisualMedia}>
-          <picture className={styles.statementVisualPicture}>
-            <source
-              srcSet="/landing-assets/hero-main-mobile.webp"
-              media="(max-width: 768px)"
-            />
-            <source
-              srcSet="/landing-assets/hero-main-pc.webp"
-              media="(min-width: 769px)"
-            />
-            <img
-              className={styles.statementVisualImage}
-              src="/landing-assets/hero-main-pc.webp"
-              alt="TONYWANG plant cell genetic protein visual"
-            />
-          </picture>
-          <div className={styles.statementVisualOverlay}>
-            <p className={styles.statementVisualText}>
-              plant cell genetic protein
-            </p>
-          </div>
+          <img
+            className={styles.statementVisualImage}
+            src="/landing-assets/hero-main-pc.webp"
+            alt="TONYWANG plant cell genetic protein visual"
+          />
         </div>
       </div>
     </section>

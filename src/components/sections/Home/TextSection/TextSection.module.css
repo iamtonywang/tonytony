@@ -150,11 +150,6 @@
   overflow: hidden;
 }
 
-.statementVisualPicture {
-  display: block;
-  width: 100%;
-}
-
 .statementVisualImage {
   display: block;
   width: 100%;
@@ -162,32 +157,11 @@
   object-fit: cover;
 }
 
-.statementVisualOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 12px;
-  pointer-events: none;
-}
 
-.statementVisualText {
-  margin: 0;
-  max-width: 90%;
-  color: #ffffff;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.4;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
 
 @media (max-width: 768px) {
   .statementVisualBlock {
     margin-top: 10px;
   }
-  .statementVisualText {
-    font-size: 13px;
-    line-height: 1.35;
-  }
+
 }
