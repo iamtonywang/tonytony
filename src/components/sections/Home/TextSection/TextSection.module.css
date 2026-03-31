@@ -136,8 +136,10 @@
 .statementVisualBlock {
   width: 100vw;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  left: auto;
+  transform: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   display: block;
   margin-top: 12px;
 }
