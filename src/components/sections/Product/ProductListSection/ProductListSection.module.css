@@ -106,7 +106,7 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-  transform: translateY(30%);
+  transform: translateY(10%);
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
