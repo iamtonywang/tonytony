@@ -24,6 +24,14 @@ const WHY_LINES = [
   "SINCE  August 2025 TONYWANG",
 ] as const;
 
+const BACKGROUND_LINES = [
+  "WHY?",
+  "TONYWANG",
+  "식물세포유전자단백질연구개발",
+  "분자생물바이오생명공학",
+  "I will prove that Tonywang is the best",
+] as const;
+
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
@@ -103,6 +111,7 @@ export default function HeroSection() {
       const videoEl = document.createElement("video");
       videoEl.className = styles.videoElement;
       videoEl.muted = true;
+      videoEl.autoplay = false;
       videoEl.playsInline = true;
       videoEl.loop = true;
       videoEl.preload = "metadata";
@@ -136,7 +145,12 @@ export default function HeroSection() {
 
   const handleToggle = async () => {
     const videoEl = videoRef.current;
-    if (!videoEl) return;
+    if (!videoEl) {
+      if (!showVideo) {
+        setShowVideo(true);
+      }
+      return;
+    }
 
     if (videoEl.paused) {
       videoEl.muted = false;
@@ -164,10 +178,10 @@ export default function HeroSection() {
           onClick={handleToggle}
           aria-label={isPlaying ? "Pause video" : "Play video"}
         />
-        {!showVideo && (
+        {!isPlaying && (
           <div className={styles.fallbackOverlay}>
             <p className={styles.heroText}>
-              {WHY_LINES.map((line) => (
+              {BACKGROUND_LINES.map((line) => (
                 <span key={line}>
                   {line}
                   <br />
