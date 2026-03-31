@@ -352,7 +352,7 @@
   }
 
   .statementTextInner {
-    max-width: min(84vw, 520px);
+    max-width: 92vw;
     padding: 0 12px;
     margin-top: 10%;
   }
