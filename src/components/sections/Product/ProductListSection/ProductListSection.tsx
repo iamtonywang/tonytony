@@ -59,6 +59,7 @@ export default function ProductListSection({ items }: ProductListSectionProps) {
             alt="TONYWANG product visual"
             draggable={false}
           />
+          <div className={styles.productGradientOverlay} aria-hidden="true" />
           <div
             ref={overlayRef}
             className={`${styles.productTextOverlay} ${visible ? styles.productTextOverlayVisible : ""}`}
