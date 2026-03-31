@@ -61,13 +61,23 @@ export default function TextSection() {
 
         <p>ProteoPhyto Complex is a protein-peptide complex derived from plant cells independently developed by TONYWANG</p>
 
-        <p className={styles.bottomSingleLine}>It is a protein-peptide complex derived from plant cells that precisely regulates signal transmission of damaged skin to activate recovery and regeneration.</p>
+        <p className={styles.bottomTightBlock}>
+          <span>It is a protein-peptide complex derived from plant cells that precisely regulates signal</span>
+          <span>transmission of damaged skin to activate recovery and regeneration</span>
+        </p>
 
-        <p className={styles.bottomSingleLine}>Interact with cell membrane receptors to stabilize signal flow, promote recovery and defense genes, and rebuild collagen and elastin-based ECM structures.</p>
+        <p className={styles.bottomTightBlock}>
+          <span>Interact with cell membrane receptors to stabilize signal flow,</span>
+          <span>promote recovery and defense genes, and rebuild collagen and elastin-based ECM structures</span>
+        </p>
 
         <p>Precisely regulate skin cell signaling, and activate ECM reconstruction and regenerative genes to build an integrated CARE from removing toxins, recovery, and trouble healing in the skin.</p>
 
-        <p className={styles.bottomSingleLine}>Substance definition: A group of signal transmission-like human-specific proteins that are responsible for growth and defense within plant cells and have high homology with human skin amino acid sequences (including peptides) by refining</p>
+        <p className={styles.bottomTightBlock}>
+          <span>Substance definition: A group of signal transmission-like human-specific proteins</span>
+          <span>that are responsible for growth and defense within plant cells and have high homology</span>
+          <span>with human skin amino acid sequences (including peptides) by refining</span>
+        </p>
 
         <p className={styles.bottomSignature}>TONYWANG</p>
       </div>
