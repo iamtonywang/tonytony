@@ -256,6 +256,10 @@
 }
 
 @media (max-width: 768px) {
+  .productTextOverlay {
+    transform: translateY(10%);
+  }
+
   .productSeoTitle,
   .productBottomTitle {
     font-size: 25px;
