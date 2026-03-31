@@ -347,27 +347,34 @@
     margin-top: 10px;
   }
 
+  .statementTextInner {
+    max-width: min(84vw, 520px);
+    padding: 0 12px;
+    margin-top: 24%;
+  }
+
   .textLine {
-    font-size: 14px;
+    font-size: 12px;
+    line-height: 1.35;
   }
 
   .textHero {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .textOrangePrimary {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .textOrangeSecondary {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .textSectionTitle {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .textHighlight {
-    font-size: 17px;
+    font-size: 15px;
   }
 }
