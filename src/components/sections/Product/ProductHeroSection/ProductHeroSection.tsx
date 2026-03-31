@@ -23,21 +23,10 @@ export default function ProductHeroSection() {
   const [activeLineIndex, setActiveLineIndex] = useState(0);
   const [isSequenceComplete, setIsSequenceComplete] = useState(false);
 
-  const tryPlayVideo = useCallback(async (videoEl: HTMLVideoElement) => {
-    try {
-      await videoEl.play();
-      setIsPlaying(true);
-      return;
-    } catch {}
-
-    // Fallback for autoplay restrictions: retry in muted mode.
-    videoEl.muted = true;
-    try {
-      await videoEl.play();
-      setIsPlaying(true);
-    } catch {
-      setIsPlaying(false);
-    }
+  // Autoplay 제거: 재생은 클릭 시에만 이루어지도록 변경
+  const tryPlayVideo = useCallback(async (_videoEl: HTMLVideoElement) => {
+    // intentionally no-op to prevent autoplay
+    setIsPlaying(false);
   }, []);
 
   const mountVideoOverlay = useCallback(() => {
@@ -56,6 +45,7 @@ export default function ProductHeroSection() {
     videoEl.muted = true;
     videoEl.playsInline = true;
     videoEl.loop = false;
+    videoEl.autoplay = false;
     videoEl.preload = "metadata";
     videoEl.setAttribute("aria-hidden", "true");
     videoEl.addEventListener("ended", () => {
@@ -144,12 +134,9 @@ export default function ProductHeroSection() {
 
   useEffect(() => {
     if (showVideo) {
-      const mountedVideo = mountVideoOverlay();
-      if (mountedVideo && mountedVideo.paused) {
-        void tryPlayVideo(mountedVideo);
-      }
+      void mountVideoOverlay();
     }
-  }, [showVideo, mountVideoOverlay, tryPlayVideo]);
+  }, [showVideo, mountVideoOverlay]);
 
   useEffect(() => {
     const handlePageShow = () => {
@@ -159,21 +146,14 @@ export default function ProductHeroSection() {
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          const videoEl = mountVideoOverlay();
-          if (!videoEl) {
-            return;
-          }
-
-          if (videoEl.paused) {
-            void tryPlayVideo(videoEl);
-          }
+          void mountVideoOverlay();
         });
       });
     };
 
     window.addEventListener("pageshow", handlePageShow);
     return () => window.removeEventListener("pageshow", handlePageShow);
-  }, [showVideo, mountVideoOverlay, tryPlayVideo]);
+  }, [showVideo, mountVideoOverlay]);
 
   return (
     <section className={styles.heroSection}>
