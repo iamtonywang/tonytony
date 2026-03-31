@@ -85,6 +85,7 @@ export default function TextSection() {
       <p className={styles.statementBottomClosing}>
         I will always sell the truth and the value By TONYWANG
       </p>
+      <div className={styles.statementBottomGlowLine} aria-hidden="true" />
     </section>
   );
 }
