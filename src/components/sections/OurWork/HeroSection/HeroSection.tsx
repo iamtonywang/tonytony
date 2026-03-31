@@ -59,9 +59,9 @@ export default function HeroSection() {
     }
 
     const lineCount = HERO_LINES.length;
-    const lineVisibleMs = 1400;
-    const lineExitMs = 320;
-    const finalStackDelayMs = 500;
+    const lineVisibleMs = 2100;
+    const lineExitMs = 360;
+    const finalStackDelayMs = 900;
     let visibleTimeout: ReturnType<typeof setTimeout> | null = null;
     let exitTimeout: ReturnType<typeof setTimeout> | null = null;
     let finalTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -154,8 +154,8 @@ export default function HeroSection() {
             aria-label={isPlaying ? "Pause video" : "Play video"}
           />
 
-          <div className={styles.heroOverlay}>
-            {!isPlaying ? (
+          {!showVideo && (
+            <div className={styles.fallbackOverlay}>
               <p className={styles.heroText}>
                 {BACKGROUND_LINES.map((line) => (
                   <span key={line}>
@@ -164,25 +164,31 @@ export default function HeroSection() {
                   </span>
                 ))}
               </p>
-            ) : !showFinalStack ? (
-              <p
-                key={activeLineIndex}
-                className={`${styles.heroText} ${
-                  linePhase === "exit" ? styles.heroTextExit : styles.heroTextEnter
-                }`}
-              >
-                {HERO_LINES[activeLineIndex]}
-              </p>
-            ) : (
-              <div className={styles.finalStack}>
-                {HERO_LINES.map((line) => (
-                  <p key={line} className={styles.finalStackLine}>
-                    {line}
-                  </p>
-                ))}
-              </div>
-            )}
-          </div>
+            </div>
+          )}
+
+          {showVideo && isPlaying && (
+            <div className={styles.motionOverlay}>
+              {!showFinalStack ? (
+                <p
+                  key={activeLineIndex}
+                  className={`${styles.heroText} ${
+                    linePhase === "exit" ? styles.heroTextExit : styles.heroTextEnter
+                  }`}
+                >
+                  {HERO_LINES[activeLineIndex]}
+                </p>
+              ) : (
+                <div className={styles.finalStack}>
+                  {HERO_LINES.map((line) => (
+                    <p key={line} className={styles.finalStackLine}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>

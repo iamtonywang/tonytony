@@ -59,6 +59,32 @@
   padding: 0 12px;
 }
 
+.fallbackOverlay {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 12px;
+}
+
+.motionOverlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 12px;
+}
+
 .heroText {
   margin: 0;
   color: inherit;
@@ -112,6 +138,14 @@
 
   .heroOverlay {
     top: 68%;
+  }
+
+  .fallbackOverlay {
+    top: 68%;
+  }
+
+  .motionOverlay {
+    top: 54%;
   }
 
   .heroText,
