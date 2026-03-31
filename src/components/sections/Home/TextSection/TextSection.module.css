@@ -131,3 +131,61 @@
     font-size: 14px;
   }
 }
+
+/* Inline statement visual block under SEO text */
+.statementVisualBlock {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.statementVisualMedia {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.statementVisualPicture {
+  display: block;
+  width: 100%;
+}
+
+.statementVisualImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.statementVisualOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  pointer-events: none;
+}
+
+.statementVisualText {
+  margin: 0;
+  max-width: 90%;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .statementVisualBlock {
+    margin-top: 10px;
+  }
+  .statementVisualText {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+}
