@@ -6,12 +6,14 @@ import styles from "./TextSection.module.css";
 export default function TextSection() {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
+  const [animKey, setAnimKey] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
           setVisible(true);
+          setAnimKey((prev) => prev + 1);
         } else {
           setVisible(false);
         }
@@ -51,7 +53,7 @@ export default function TextSection() {
             className={`${styles.statementTextOverlay} ${visible ? styles.statementTextOverlayVisible : ""}`}
             aria-hidden="true"
           >
-            <div className={styles.statementTextInner}>
+            <div key={animKey} className={styles.statementTextInner}>
               <div className={styles.textLine + " " + styles.textHero}>HEY</div>
               <div className={styles.textLine}>나는 이렇게 나를 정리해 망설이는 시간은 멍청하고 아까워</div>
               <div className={styles.textLine}>그냥 아무 생각 하지마</div>
