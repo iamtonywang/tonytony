@@ -133,6 +133,10 @@
   font-size: 14px;
 }
 
+.mobileOnlyBreak {
+  display: none;
+}
+
 @keyframes whyLineIn {
   to {
     opacity: 1;
@@ -184,5 +188,9 @@
 
   .statementSmallBlock .whyOverlayLine {
     font-size: 12px;
+  }
+
+  .mobileOnlyBreak {
+    display: inline;
   }
 }

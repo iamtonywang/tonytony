@@ -71,7 +71,13 @@ export default function MainContentSection() {
                 <div className={styles.whyOverlayLine}>피부가 늙는 건 나이가 아니라, 세포가 지쳐버렸기 때문이야</div>
                 <div className={styles.whyOverlayLine}>그래</div>
                 <div className={styles.whyOverlayLine}>나는 세포를 연구하는 데 28년을 보냈다</div>
-                <div className={styles.whyOverlayLine}>누구나 인생을 살면서 한번쯤 은 미친 듯이 도전을 해보았을 것이다</div>
+              <div className={styles.whyOverlayLine}>
+                <span>
+                  누구나 인생을 살면서 한번쯤 은 미친 듯이
+                  <br className={styles.mobileOnlyBreak} />
+                  도전을 해보았을 것이다
+                </span>
+              </div>
                 <div className={styles.whyOverlayLine}>그리고 . . . . . .</div>
                 <div className={styles.whyOverlayLine}>셀 수 없는 한숨과 눈물 그리고 가슴 저미 는 고통을 받으며</div>
                 <div className={styles.whyOverlayLine}>미친 듯이 실패하고 좌절하면서 실패한 것을 깨달고</div>
