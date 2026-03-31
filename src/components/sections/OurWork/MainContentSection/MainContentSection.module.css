@@ -194,6 +194,10 @@
 }
 
 @media (max-width: 768px) {
+  .ourWorkTextOverlay {
+    transform: translateY(15%);
+  }
+
   .ourWorkSeoTitle,
   .ourWorkBottomTitle {
     font-size: 25px;
