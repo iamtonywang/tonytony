@@ -7,6 +7,11 @@
   align-items: center;
   justify-content: flex-start;
   text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .textSection p {
@@ -62,6 +67,11 @@
   justify-content: flex-start;
   text-align: center;
   gap: 8px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .brandTitle {
@@ -222,6 +232,11 @@
   padding: 0 16px;
   text-align: center;
   color: #ffffff;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .bottomTitle {
@@ -271,6 +286,11 @@
   font-size: 14px;
   line-height: 1.5;
   font-weight: 300;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 @keyframes statementGlowSweep {
@@ -304,6 +324,8 @@
   width: 100%;
   height: auto;
   object-fit: cover;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .statementGradientOverlay {
@@ -328,6 +350,11 @@
   align-items: flex-start;
   justify-content: center;
   pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .statementTextOverlay .textLine {
@@ -347,6 +374,11 @@
   align-items: center;
   text-align: center;
   margin-top: 41%;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 

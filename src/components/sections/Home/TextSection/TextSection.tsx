@@ -29,9 +29,15 @@ export default function TextSection() {
   }, []);
 
   return (
-    <section className={styles.textSection}>
+    <section
+      className={styles.textSection}
+      onCopy={(e) => e.preventDefault()}
+      onCut={(e) => e.preventDefault()}
+      onContextMenu={(e) => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
+    >
       <div className={styles.sectionSeparator} aria-hidden="true" />
-      <div className={styles.seoBlock}>
+      <div className={styles.seoBlock} draggable={false}>
         <h1 className={styles.brandTitle}>TONYWANG</h1>
         <p className={styles.subLine}>plant cell genetic protein</p>
         <p className={styles.subLine}>Institute Bio-Bioengineering</p>
@@ -46,14 +52,16 @@ export default function TextSection() {
             className={styles.statementVisualImage}
             src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG plant cell genetic protein visual"
+            draggable={false}
           />
           <div className={styles.statementGradientOverlay} aria-hidden="true" />
           <div
             ref={overlayRef}
             className={`${styles.statementTextOverlay} ${visible ? styles.statementTextOverlayVisible : ""}`}
             aria-hidden="true"
+            draggable={false}
           >
-            <div key={animKey} className={styles.statementTextInner}>
+            <div key={animKey} className={styles.statementTextInner} draggable={false}>
               <div className={styles.textLine + " " + styles.textHero}>HEY</div>
               <div className={styles.textLine}>나는 이렇게 나를 정리해 망설이는 시간은 멍청하고 아까워</div>
               <div className={styles.textLine}>그냥 아무 생각 하지마</div>
@@ -86,7 +94,7 @@ export default function TextSection() {
         </div>
       </div>
       <div className={styles.statementBottomGlowLine} aria-hidden="true" />
-      <div className={styles.statementBottomText}>
+      <div className={styles.statementBottomText} draggable={false}>
         <p className={styles.bottomTitle}>TONYWANG</p>
         <p className={styles.bottomSubTitle}>ProteoPhytoComplex</p>
 
@@ -113,7 +121,7 @@ export default function TextSection() {
         <p className={styles.bottomSignature}>TONYWANG</p>
       </div>
       <div className={styles.statementBottomEndGlowLine} aria-hidden="true" />
-      <p className={styles.statementBottomClosing}>
+      <p className={styles.statementBottomClosing} draggable={false}>
         I will always sell the truth and the value By TONYWANG
       </p>
       <div className={styles.statementBottomGlowLine} aria-hidden="true" />
