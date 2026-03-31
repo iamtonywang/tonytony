@@ -178,7 +178,7 @@ export default function HeroSection() {
           onClick={handleToggle}
           aria-label={isPlaying ? "Pause video" : "Play video"}
         />
-        {!isPlaying && (
+        {!showVideo && (
           <div className={styles.fallbackOverlay}>
             <p className={styles.heroText}>
               {BACKGROUND_LINES.map((line) => (
