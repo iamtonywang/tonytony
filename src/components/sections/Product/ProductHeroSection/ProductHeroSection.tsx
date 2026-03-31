@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type PropsWithChildren } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ProductHeroSection.module.css";
 
 const HERO_LINES = [
@@ -14,7 +14,7 @@ const HERO_LINES = [
   "TONYWANG",
 ];
 
-export default function ProductHeroSection({ children }: PropsWithChildren) {
+export default function ProductHeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -141,12 +141,6 @@ export default function ProductHeroSection({ children }: PropsWithChildren) {
             <p key={activeLineIndex} className={styles.heroText}>
               {HERO_LINES[activeLineIndex]}
             </p>
-          </div>
-          <div className={styles.bottomStack}>
-            <div className={styles.brandText}>
-              TONYWANG
-            </div>
-            {children ? <div className={styles.overlayList}>{children}</div> : null}
           </div>
         </div>
         <button
