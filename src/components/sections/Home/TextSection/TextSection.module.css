@@ -351,6 +351,11 @@
     margin-top: 10px;
   }
 
+  .statementTextOverlay {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
   .statementTextInner {
     width: 100%;
     max-width: none;
