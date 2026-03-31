@@ -431,8 +431,8 @@
 
 @media (min-width: 769px) {
   .detailVisualImage {
-    object-fit: contain;
-    object-position: center;
-    background: #000;
+    object-fit: cover;
+    object-position: center 8%;
+    background: transparent;
   }
 }
