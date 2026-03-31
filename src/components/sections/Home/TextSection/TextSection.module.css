@@ -270,6 +270,10 @@
   font-weight: 300;
 }
 
+.mobileLineBreak {
+  display: inline;
+}
+
 @keyframes textSlideIn {
   to {
     opacity: 1;
@@ -376,5 +380,9 @@
 
   .textHighlight {
     font-size: 15px;
+  }
+
+  .mobileLineBreak {
+    display: block;
   }
 }

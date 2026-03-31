@@ -27,7 +27,10 @@ export default function TextSection() {
               <div className={styles.textLine}>나는 이렇게 나를 정리해 망설이는 시간은 멍청하고 아까워</div>
               <div className={styles.textLine}>그냥 아무 생각 하지마</div>
               <div className={styles.textLine}>그래야 머리가 비워지고 새로운 것을 담을 수 있어</div>
-              <div className={styles.textLine}>내가 스킨케어를 연구하고 개발한다는 것은 상상도 하지 않았어</div>
+              <div className={styles.textLine}>
+                <span>내가 스킨케어를 연구하고 개발한다는 것은 </span>
+                <span className={styles.mobileLineBreak}>상상도 하지 않았어</span>
+              </div>
               <div className={styles.textLine}>바이오와 향장학은 분야가 너무 달라</div>
               <div className={styles.textLine}>하찮다고 생각했어 지금도 같은 생각이야</div>
               <div className={styles.textLine}>쓰레기 보다 못한 스킨케어 를 부숴버리고 싶어</div>
