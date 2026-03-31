@@ -155,6 +155,10 @@
 }
 
 @media (max-width: 768px) {
+  .whyTextOverlay {
+    transform: translateY(5%) !important;
+  }
+
   .whySeoTitle {
     font-size: 25px;
   }
