@@ -55,6 +55,22 @@ export default function TextSection() {
         </div>
       </div>
       <div className={styles.statementBottomGlowLine} aria-hidden="true" />
+      <div className={styles.statementBottomText}>
+        <p className={styles.bottomTitle}>TONYWANG</p>
+        <p className={styles.bottomSubTitle}>ProteoPhytoComplex</p>
+
+        <p>ProteoPhyto Complex is a protein-peptide complex derived from plant cells independently developed by TONYWANG</p>
+
+        <p>It is a protein-peptide complex derived from plant cells that precisely regulates signal transmission of damaged skin to activate recovery and regeneration.</p>
+
+        <p>Interact with cell membrane receptors to stabilize signal flow, promote recovery and defense genes, and rebuild collagen and elastin-based ECM structures.</p>
+
+        <p>Precisely regulate skin cell signaling, and activate ECM reconstruction and regenerative genes to build an integrated CARE from removing toxins, recovery, and trouble healing in the skin.</p>
+
+        <p>Substance definition: A group of signal transmission-like human-specific proteins that are responsible for growth and defense within plant cells and have high homology with human skin amino acid sequences (including peptides) by refining</p>
+
+        <p className={styles.bottomSignature}>TONYWANG</p>
+      </div>
     </section>
   );
 }

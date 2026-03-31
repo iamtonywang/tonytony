@@ -188,6 +188,40 @@
   animation: statementGlowSweep 4.2s linear infinite;
 }
 
+.statementBottomText {
+  width: 100%;
+  max-width: min(92vw, 720px);
+  margin: 24px auto 0;
+  padding: 0 16px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.bottomTitle {
+  font-size: 35px;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.bottomSubTitle {
+  font-size: 17px;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.statementBottomText p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.bottomSignature {
+  margin-top: 16px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
 @keyframes statementGlowSweep {
   0% {
     left: -30%;
@@ -430,5 +464,16 @@
 
   .mobileLineBreak {
     display: block;
+  }
+
+  .bottomTitle {
+    font-size: 25px;
+  }
+  .bottomSubTitle {
+    font-size: 14px;
+  }
+  .statementBottomText p {
+    font-size: 13px;
+    line-height: 1.45;
   }
 }
