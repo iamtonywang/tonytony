@@ -59,9 +59,9 @@ export default function HeroSection() {
     }
 
     const lineCount = HERO_LINES.length;
-    const lineVisibleMs = 2100;
-    const lineExitMs = 360;
-    const finalStackDelayMs = 900;
+    const lineVisibleMs = 2250;
+    const lineExitMs = 400;
+    const finalStackDelayMs = 1050;
     let visibleTimeout: ReturnType<typeof setTimeout> | null = null;
     let exitTimeout: ReturnType<typeof setTimeout> | null = null;
     let finalTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -117,6 +117,14 @@ export default function HeroSection() {
     setIsPlaying(false);
   };
 
+  const handleVideoEnded = () => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+    videoEl.pause();
+    videoEl.currentTime = 0;
+    setIsPlaying(false);
+  };
+
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroVisual}>
@@ -130,8 +138,8 @@ export default function HeroSection() {
                 className={styles.videoElement}
                 muted
                 playsInline
-                loop
                 preload="metadata"
+                onEnded={handleVideoEnded}
               >
                 <source
                   src="/landing-assets/ourwork-hero-pc.mp4"
