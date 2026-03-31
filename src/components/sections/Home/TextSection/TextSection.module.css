@@ -209,6 +209,25 @@
   );
 }
 
+.statementTextOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.statementTextInner {
+  width: 100%;
+  max-width: min(92vw, 720px);
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 
 
 @media (max-width: 768px) {

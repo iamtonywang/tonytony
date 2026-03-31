@@ -21,6 +21,9 @@ export default function TextSection() {
             alt="TONYWANG plant cell genetic protein visual"
           />
           <div className={styles.statementGradientOverlay} aria-hidden="true" />
+          <div className={styles.statementTextOverlay} aria-hidden="true">
+            <div className={styles.statementTextInner} />
+          </div>
         </div>
       </div>
     </section>
