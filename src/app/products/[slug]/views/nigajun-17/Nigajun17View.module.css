@@ -429,6 +429,6 @@
 
 @media (min-width: 769px) {
   .detailVisualImage {
-    object-position: center top;
+    object-position: center 12%;
   }
 }
