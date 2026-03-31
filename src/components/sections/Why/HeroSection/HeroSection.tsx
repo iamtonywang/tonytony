@@ -185,9 +185,6 @@ export default function HeroSection() {
             )}
           </div>
         )}
-        <div className={styles.brandText}>
-          TONYWANG
-        </div>
       </div>
     </section>
   );
