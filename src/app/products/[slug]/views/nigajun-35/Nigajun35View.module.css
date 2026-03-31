@@ -436,7 +436,7 @@
   .detailOverlayInner {
     width: min(94vw, 560px);
     padding: 0 16px 0;
-    transform: translateY(18%);
+    transform: translateY(13%);
   }
 }
 
