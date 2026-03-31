@@ -3,6 +3,7 @@ import {
   ProductListSection,
 } from "@/components/sections/Product";
 import { getPublicProducts } from "./_server/getPublicProducts";
+import listStyles from "@/components/sections/Product/ProductListSection/ProductListSection.module.css";
 
 const FIXED_ORDER = [
   "nigajun-44",
@@ -32,9 +33,9 @@ export default async function ProductsPage() {
 
   return (
     <>
-      <ProductHeroSection>
-        <ProductListSection items={filteredAndSorted} />
-      </ProductHeroSection>
+      <ProductHeroSection />
+      <div className={listStyles.productGlowLine} aria-hidden="true" />
+      <ProductListSection items={filteredAndSorted} />
     </>
   );
 }
