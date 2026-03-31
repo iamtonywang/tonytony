@@ -100,7 +100,7 @@
 
 @media (min-width: 769px) {
   .ourWorkTextOverlay {
-    transform: translateY(-10%);
+    transform: translateY(-5%);
   }
 }
 
