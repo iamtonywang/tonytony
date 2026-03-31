@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./ProductHeroSection.module.css";
 
 const HERO_LINES = [
@@ -22,6 +22,84 @@ export default function ProductHeroSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeLineIndex, setActiveLineIndex] = useState(0);
   const [isSequenceComplete, setIsSequenceComplete] = useState(false);
+
+  const tryPlayVideo = useCallback(async (videoEl: HTMLVideoElement) => {
+    try {
+      await videoEl.play();
+      setIsPlaying(true);
+      return;
+    } catch {}
+
+    // Fallback for autoplay restrictions: retry in muted mode.
+    videoEl.muted = true;
+    try {
+      await videoEl.play();
+      setIsPlaying(true);
+    } catch {
+      setIsPlaying(false);
+    }
+  }, []);
+
+  const mountVideoOverlay = useCallback(() => {
+    if (!videoOverlayRef.current) {
+      return null;
+    }
+
+    const existingVideo = videoOverlayRef.current.querySelector("video");
+    if (existingVideo) {
+      videoRef.current = existingVideo;
+      return existingVideo;
+    }
+
+    const videoEl = document.createElement("video");
+    videoEl.className = styles.videoElement;
+    videoEl.muted = true;
+    videoEl.playsInline = true;
+    videoEl.loop = false;
+    videoEl.preload = "metadata";
+    videoEl.setAttribute("aria-hidden", "true");
+    videoEl.addEventListener("ended", () => {
+      try {
+        videoEl.pause();
+        videoEl.currentTime = videoEl.duration;
+      } catch {}
+      setIsPlaying(false);
+      setActiveLineIndex(HERO_LINES.length - 1);
+      setIsSequenceComplete(true);
+    });
+    videoEl.addEventListener("timeupdate", () => {
+      const duration = videoEl.duration;
+
+      if (!duration || Number.isNaN(duration)) {
+        return;
+      }
+
+      const segment = duration / HERO_LINES.length;
+      const nextIndex = Math.min(
+        HERO_LINES.length - 1,
+        Math.floor(videoEl.currentTime / segment)
+      );
+
+      setActiveLineIndex(nextIndex);
+    });
+    videoRef.current = videoEl;
+
+    const sourcePc = document.createElement("source");
+    sourcePc.src = "/landing-assets/products-hero-pc.mp4";
+    sourcePc.type = "video/mp4";
+    sourcePc.media = "(min-width: 769px)";
+
+    const sourceMobile = document.createElement("source");
+    sourceMobile.src = "/landing-assets/products-hero-mobile.mp4";
+    sourceMobile.type = "video/mp4";
+    sourceMobile.media = "(max-width: 768px)";
+
+    videoEl.appendChild(sourcePc);
+    videoEl.appendChild(sourceMobile);
+    videoOverlayRef.current.appendChild(videoEl);
+
+    return videoEl;
+  }, [styles.videoElement]);
 
   const handleToggle = async () => {
     const videoEl = videoRef.current;
@@ -65,67 +143,37 @@ export default function ProductHeroSection() {
   }, []);
 
   useEffect(() => {
-    let hasMountedVideo = false;
+    if (showVideo) {
+      const mountedVideo = mountVideoOverlay();
+      if (mountedVideo && mountedVideo.paused) {
+        void tryPlayVideo(mountedVideo);
+      }
+    }
+  }, [showVideo, mountVideoOverlay, tryPlayVideo]);
 
-    const mountVideoOverlay = () => {
-      if (hasMountedVideo || !videoOverlayRef.current) {
-        return;
+  useEffect(() => {
+    const handlePageShow = () => {
+      if (!showVideo) {
+        setShowVideo(true);
       }
 
-      const videoEl = document.createElement("video");
-      videoEl.className = styles.videoElement;
-      videoEl.muted = true;
-      videoEl.playsInline = true;
-      videoEl.loop = false;
-      videoEl.preload = "metadata";
-      videoEl.setAttribute("aria-hidden", "true");
-      videoEl.addEventListener("ended", () => {
-        try {
-          videoEl.pause();
-          videoEl.currentTime = videoEl.duration;
-        } catch {}
-        setIsPlaying(false);
-        setActiveLineIndex(HERO_LINES.length - 1);
-        setIsSequenceComplete(true);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const videoEl = mountVideoOverlay();
+          if (!videoEl) {
+            return;
+          }
+
+          if (videoEl.paused) {
+            void tryPlayVideo(videoEl);
+          }
+        });
       });
-      videoEl.addEventListener("timeupdate", () => {
-        const duration = videoEl.duration;
-
-        if (!duration || Number.isNaN(duration)) {
-          return;
-        }
-
-        const segment = duration / HERO_LINES.length;
-        const nextIndex = Math.min(
-          HERO_LINES.length - 1,
-          Math.floor(videoEl.currentTime / segment)
-        );
-
-        setActiveLineIndex(nextIndex);
-      });
-      videoRef.current = videoEl;
-
-      const sourcePc = document.createElement("source");
-      sourcePc.src = "/landing-assets/products-hero-pc.mp4";
-      sourcePc.type = "video/mp4";
-      sourcePc.media = "(min-width: 769px)";
-
-      const sourceMobile = document.createElement("source");
-      sourceMobile.src = "/landing-assets/products-hero-mobile.mp4";
-      sourceMobile.type = "video/mp4";
-      sourceMobile.media = "(max-width: 768px)";
-
-      videoEl.appendChild(sourcePc);
-      videoEl.appendChild(sourceMobile);
-
-      videoOverlayRef.current.appendChild(videoEl);
-      hasMountedVideo = true;
     };
 
-    if (showVideo) {
-      mountVideoOverlay();
-    }
-  }, [showVideo, styles.videoElement]);
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, [showVideo, mountVideoOverlay, tryPlayVideo]);
 
   return (
     <section className={styles.heroSection}>
