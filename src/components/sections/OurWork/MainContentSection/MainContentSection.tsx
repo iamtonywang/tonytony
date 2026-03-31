@@ -71,7 +71,11 @@ export default function MainContentSection() {
                 <div className={styles.ourWorkOverlayLine}>나는 운명이라 생각했다</div>
                 <div className={styles.ourWorkOverlayLine}>그래 거창함은 없다 운명이라 생각했다</div>
                 <div className={styles.ourWorkOverlayLine}>
-                  세상에 태어난 이유이고 인류의 질병에 오로지 해결점을 찾고 싶었다
+                  <span>
+                    세상에 태어난 이유이고 인류의 질병에
+                    <br className={styles.mobileOnlyBreak} />
+                    오로지 해결점을 찾고 싶었다
+                  </span>
                 </div>
                 <div className={styles.ourWorkOverlayLine}>28년 생명공학 연구 개발을 하면서</div>
                 <div className={styles.ourWorkOverlayLine}>단 한번도</div>

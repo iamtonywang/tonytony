@@ -133,6 +133,10 @@
   font-size: 14px;
 }
 
+.mobileOnlyBreak {
+  display: none;
+}
+
 .ourWorkBottomCopy {
   width: 100%;
   max-width: min(92vw, 820px);
@@ -214,5 +218,9 @@
 
   .statementSmallBlock .ourWorkOverlayLine {
     font-size: 13px;
+  }
+
+  .mobileOnlyBreak {
+    display: inline;
   }
 }
