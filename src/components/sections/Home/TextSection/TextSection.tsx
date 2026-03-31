@@ -20,6 +20,7 @@ export default function TextSection() {
             src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG plant cell genetic protein visual"
           />
+          <div className={styles.statementGradientOverlay} aria-hidden="true" />
         </div>
       </div>
     </section>
