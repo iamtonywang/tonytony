@@ -162,13 +162,13 @@
 }
 
 .statementBottomGlowLine {
-  width: 100%;
+  width: 74%;
   height: 1px;
   position: relative;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.18);
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
-  margin: 4px 0 10px 0;
+  margin: 8px auto 10px auto;
   flex: 0 0 auto;
 }
 
