@@ -4,11 +4,24 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.css";
 
 const WHY_LINES = [
-  "WHY?",
   "TONYWANG",
-  "식물세포유전자단백질연구개발",
-  "분자생물바이오생명공학",
-  "I will prove that Tonywang is the best",
+  "If only I could go back like Benjamin Burton.",
+  "If you could increase shorter telomeres?",
+  "What if you could rewind that watch?",
+  "It's not age that your skin is getting old, it's because your cells are tired",
+  "Okay.",
+  "I spent 28 years studying cells",
+  "Everyone must have had a crazy challenge at least once in their lives",
+  "And.",
+  "With countless sighs, tears, and heart-wrenching pain",
+  "I realized that I had failed and failed like crazy",
+  "It is divided into those who challenge and those who give up",
+  "Yes, this is life",
+  "It's a trail of time that everyone experiences in a panoramic life",
+  "The failure and success we have in the 8.2 billion population is a part of that",
+  "The only genetic protein that transforms new skin tissue",
+  "Plant Cell Gene Protein",
+  "SINCE  August 2025 TONYWANG",
 ] as const;
 
 export default function HeroSection() {
