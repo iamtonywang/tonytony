@@ -132,6 +132,43 @@
   }
 }
 
+/* Subtle animated glow line between statement and visual */
+.statementGlowLine {
+  width: 100%;
+  max-width: 880px;
+  height: 1px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+  margin: 8px auto 6px auto;
+  flex: 0 0 auto;
+}
+
+.statementGlowLine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.85),
+    transparent
+  );
+  animation: statementGlowSweep 4.2s linear infinite;
+}
+
+@keyframes statementGlowSweep {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
 /* Inline statement visual block under SEO text */
 .statementVisualBlock {
   width: 100vw;
