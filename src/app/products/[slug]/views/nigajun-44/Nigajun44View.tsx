@@ -160,7 +160,59 @@ export default function Nigajun44View({ product }: Props) {
 
           <div className={styles.detailVisualOverlay} draggable={false}>
             <div className={styles.detailOverlayInner}>
-              <h1 className={styles.detailTitle}>TONYWANG</h1>
+              <p className={styles.detailOverlayHeading}>TONYWANG</p>
+              <p className={styles.detailOverlayText}>NIGAJUN 44</p>
+              <p className={styles.detailOverlayText}>Proteo Phyto Complex</p>
+              <p className={styles.detailOverlayText}>
+                I welcome you to those who truly want to transform
+              </p>
+
+              <p className={styles.detailOverlayText}>
+                <span className={styles.pcOnly}>
+                  가치를 모르는자 자신을 사랑하지 않는자 의문을 가지는자
+                </span>
+                <span className={styles.mobileOnly}>
+                  가치를 모르는자<br />
+                  자신을 사랑하지 않는자<br />
+                  의문을 가지는자
+                </span>
+              </p>
+
+              <p className={styles.detailOverlayText}>
+                자격이 없다 여기서 나가라<br />
+                진정으로 변혁을 원하는 자 환영한다
+              </p>
+
+              <p className={styles.detailOverlayText}>
+                피부 독소 개선, 피부 변혁, 트러블 개선 통합적인 CARE 구축.
+              </p>
+              <p className={styles.detailOverlayText}>
+                독소가 제거된 피부는 오염이 안된 1급수 물과 같다.
+              </p>
+              <p className={styles.detailOverlayText}>고통스러운 피부 트러블 개선 된다</p>
+
+              <p className={styles.detailOverlayText}>긴 설명이 뭐가 필요해 거짓은 필요치 않아</p>
+              <p className={styles.detailOverlayText}>
+                성분이 뭐고 어떤 구조라고 떠들고 싶지 않아
+              </p>
+
+              <p className={styles.detailOverlayText}>최고라고 말할 필요도 없어</p>
+              <p className={styles.detailOverlayText}>우리 스스로 얘기하는건 모순이잔아</p>
+              <p className={styles.detailOverlayText}>그래 그렇지만</p>
+              <p className={styles.detailOverlayText}>다들 자기 것들이 최고라고 얘기해</p>
+
+              <p className={styles.detailOverlayText}>나는 그들과 같은 존재가 되기 싫어</p>
+
+              <p className={styles.detailOverlayText}>I don't like lying</p>
+
+              <p className={styles.detailOverlayText}>나는 거짓이 싫을 뿐이고</p>
+              <p className={styles.detailOverlayText}>
+                누군가를 속이며 이익을 만들고 싶지 않아
+              </p>
+              <p className={styles.detailOverlayText}>그것은 매우 역겨운 행동이야</p>
+              <p className={styles.detailOverlayText}>그래</p>
+              <p className={styles.detailOverlayText}>그런게 너무 싫었고 역겨웠어</p>
+              <p className={styles.detailOverlayText}>TONYWANG Since August 2025</p>
 
               <p className={styles.detailPriceRow}>
                 {typeof product?.finalPriceAmount === "number" ? (
@@ -173,10 +225,6 @@ export default function Nigajun44View({ product }: Props) {
                   Coming Soon
                 </button>
               </div>
-
-              <p className={styles.detailDescription}>
-                {product?.shortDescription ?? "Core product information placeholder."}
-              </p>
             </div>
           </div>
         </div>
@@ -185,9 +233,39 @@ export default function Nigajun44View({ product }: Props) {
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
       <section className={styles.detailCopySection}>
+        <p className={styles.detailCopyText}>A New Challenge</p>
+        <p className={styles.detailCopyText}>Entering the cosmetic market,</p>
         <p className={styles.detailCopyText}>
-          Detailed product statement placeholder.
+          I spent another five years transforming
         </p>
+        <p className={styles.detailCopyText}>
+          the substance through continuous research.
+        </p>
+        <p className={styles.detailCopyText}>
+          The result was the birth of a cosmetic product with remarkable
+        </p>
+        <p className={styles.detailCopyText}>
+          effects: helping prevent skin aging, protecting
+        </p>
+        <p className={styles.detailCopyText}>
+          the skin from toxic cosmetic contamination,
+        </p>
+        <p className={styles.detailCopyText}>
+          improving skin troubles caused by surfactants, and restoring damaged skin tissue.
+        </p>
+        <p className={styles.detailCopyText}>
+          Yet the market still does not fully understand our recombinant protein technology.
+        </p>
+        <p className={styles.detailCopyText}>
+          The reality is that a research and development system built at the level
+        </p>
+        <p className={styles.detailCopyText}>
+          of bio-pharmaceutical innovation is not properly recognized.
+        </p>
+        <p className={styles.detailCopyText}>But our conviction remains unchanged.</p>
+        <p className={styles.detailCopyText}>We speak only the truth.</p>
+        <p className={styles.detailCopyText}>Bio Must Prove Itself Through Results</p>
+        <p className={styles.detailCopyText}>TONYWANG Since August 2025</p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
