@@ -331,7 +331,6 @@
 .detailVisualMedia {
   position: relative;
   width: 100vw;
-
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 
@@ -413,7 +412,7 @@
   .detailVisualMedia {
   position: relative;
   width: 100vw;
-
+  height: 88vh;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 
@@ -469,4 +468,7 @@
     background: transparent;
   }
 }
+
+
+
 
