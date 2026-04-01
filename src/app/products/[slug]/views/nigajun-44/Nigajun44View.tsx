@@ -75,6 +75,7 @@ export default function Nigajun44View({ product }: Props) {
   const [activeLineIndex, setActiveLineIndex] = useState(0);
   const [linePhase, setLinePhase] = useState<"enter" | "exit">("enter");
   const [showFinalBlock, setShowFinalBlock] = useState(false);
+  const [videoDuration, setVideoDuration] = useState(64);
 
   useEffect(() => {
     let isMounted = true;
@@ -94,6 +95,12 @@ export default function Nigajun44View({ product }: Props) {
       videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
+      videoEl.addEventListener("loadedmetadata", () => {
+        const duration = videoEl.duration;
+        if (Number.isFinite(duration) && duration > 0) {
+          setVideoDuration(duration);
+        }
+      });
       videoEl.addEventListener("play", () => {
         setIsPlaying(true);
       });
@@ -102,9 +109,16 @@ export default function Nigajun44View({ product }: Props) {
       });
       videoEl.addEventListener("ended", () => {
         try {
-          videoEl.currentTime = videoEl.duration;
+          videoEl.pause();
+          videoEl.currentTime = 0;
         } catch {}
+        setHideText(false);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
         setIsPlaying(false);
+        videoEl.remove();
+        hasMountedVideo = false;
       });
 
       // connect asset source (single pc asset as default)
@@ -159,8 +173,13 @@ export default function Nigajun44View({ product }: Props) {
     }
 
     const isLast = activeLineIndex >= HERO_SEQUENCE.length - 1;
-    const lineVisibleMs = 2800;
-    const lineExitMs = 1000;
+    const availableDuration = Math.max(8, videoDuration - 5);
+    const stepDuration = availableDuration / HERO_SEQUENCE.length;
+    const exitAt = stepDuration * 0.72;
+    const nextAt = stepDuration;
+
+    const lineVisibleMs = Math.max(300, Math.round(exitAt * 1000));
+    const nextStepMs = Math.max(lineVisibleMs + 100, Math.round(nextAt * 1000));
 
     setLinePhase("enter");
 
@@ -175,13 +194,13 @@ export default function Nigajun44View({ product }: Props) {
       }
 
       setActiveLineIndex((prev) => Math.min(prev + 1, HERO_SEQUENCE.length - 1));
-    }, lineVisibleMs + lineExitMs);
+    }, nextStepMs);
 
     return () => {
       clearTimeout(exitTimer);
       clearTimeout(nextTimer);
     };
-  }, [hideText, isPlaying, activeLineIndex, showFinalBlock]);
+  }, [hideText, isPlaying, activeLineIndex, showFinalBlock, videoDuration]);
 
   return (
     <article className={styles.detailPage}>
