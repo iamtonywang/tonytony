@@ -331,7 +331,6 @@
 .detailVisualMedia {
   position: relative;
   width: 100vw;
-  height: 85vh;
 
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -414,7 +413,6 @@
   .detailVisualMedia {
   position: relative;
   width: 100vw;
-  height: 85vh;
 
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -465,12 +463,10 @@
 }
 
 @media (min-width: 769px) {
-  .detailVisualMedia {
-    height: 78vh;
-  }
   .detailVisualImage {
     object-fit: cover;
     object-position: center 10%;
     background: transparent;
   }
 }
+
