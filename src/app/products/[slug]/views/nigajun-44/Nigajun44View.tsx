@@ -251,13 +251,31 @@ export default function Nigajun44View({ product }: Props) {
           the skin from toxic cosmetic contamination,
         </p>
         <p className={styles.detailCopyText}>
-          improving skin troubles caused by surfactants, and restoring damaged skin tissue.
+          <span className={styles.pcOnly}>
+            improving skin troubles caused by surfactants, and restoring damaged skin tissue.
+          </span>
+          <span className={styles.mobileOnly}>
+            improving skin troubles caused by surfactants,<br />
+            and restoring damaged skin tissue.
+          </span>
         </p>
         <p className={styles.detailCopyText}>
-          Yet the market still does not fully understand our recombinant protein technology.
+          <span className={styles.pcOnly}>
+            Yet the market still does not fully understand our recombinant protein technology.
+          </span>
+          <span className={styles.mobileOnly}>
+            Yet the market still does not fully understand<br />
+            our recombinant protein technology.
+          </span>
         </p>
         <p className={styles.detailCopyText}>
-          The reality is that a research and development system built at the level
+          <span className={styles.pcOnly}>
+            The reality is that a research and development system built at the level
+          </span>
+          <span className={styles.mobileOnly}>
+            The reality is that a research and development system<br />
+            built at the level
+          </span>
         </p>
         <p className={styles.detailCopyText}>
           of bio-pharmaceutical innovation is not properly recognized.
