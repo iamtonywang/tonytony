@@ -273,8 +273,8 @@ export default function Nigajun44View({ product }: Props) {
             The reality is that a research and development system built at the level
           </span>
           <span className={styles.mobileOnly}>
-            The reality is that a research and development system<br />
-            built at the level
+            The reality is that a research and development<br />
+            system built at the level
           </span>
         </p>
         <p className={styles.detailCopyText}>
