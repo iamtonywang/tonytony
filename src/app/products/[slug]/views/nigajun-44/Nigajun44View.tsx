@@ -81,6 +81,7 @@ const HERO_FINAL_BLOCK = [
 export default function Nigajun44View({ product }: Props) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
+  const isTogglePendingRef = useRef(false);
   const [hideText, setHideText] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeLineIndex, setActiveLineIndex] = useState(0);
@@ -253,20 +254,39 @@ export default function Nigajun44View({ product }: Props) {
             <button
               type="button"
               className={styles.playButton}
-              onClick={() => {
+              onClick={async () => {
+                if (isTogglePendingRef.current) {
+                  return;
+                }
+
                 const video = videoOverlayRef.current?.querySelector("video") as HTMLVideoElement | null;
                 if (!video) {
                   return;
                 }
+
+                isTogglePendingRef.current = true;
                 try {
-                  if (video.paused) {
+                  if (video.paused || video.ended) {
+                    if (video.ended) {
+                      try {
+                        video.currentTime = 0;
+                      } catch {}
+                    }
                     video.muted = false;
-                    void video.play();
+                    await video.play();
+                    setIsPlaying(true);
                   } else {
                     video.pause();
-                    video.currentTime = 0;
+                    setIsPlaying(false);
                   }
-                } catch {}
+                } catch (error) {
+                  if (!(error instanceof DOMException && error.name === "AbortError")) {
+                    console.error(error);
+                  }
+                  setIsPlaying(false);
+                } finally {
+                  isTogglePendingRef.current = false;
+                }
               }}
               aria-label="Toggle video playback"
             />
