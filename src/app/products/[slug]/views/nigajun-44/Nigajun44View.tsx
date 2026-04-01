@@ -11,11 +11,6 @@ interface Props {
 const HERO_SEQUENCE = [
   "TONYWANG",
   "NIGAJUN 44",
-  "Plant Cell Gene Recombination",
-  "Protein Laboratory",
-  "If only I could go back like Benjamin Burton.",
-  "If you could increase shorter telomeres?",
-  "What if you could rewind that watch?",
   "It's not age that your skin is getting old,",
   "it's because your cells are tired",
   "Okay.",
@@ -25,7 +20,6 @@ const HERO_SEQUENCE = [
   "And.",
   "With countless sighs, tears,",
   "and heart-wrenching pain",
-  "I realized that I had failed and failed like crazy",
   "It is divided into those",
   "who challenge and those who give up",
   "Yes, this is life",
@@ -50,11 +44,6 @@ const HERO_EMPHASIS = [
 const HERO_FINAL_BLOCK = [
   "TONYWANG",
   "NIGAJUN 44",
-  "Plant Cell Gene Recombination",
-  "Protein Laboratory",
-  "If only I could go back like Benjamin Burton.",
-  "If you could increase shorter telomeres?",
-  "What if you could rewind that watch?",
   "It's not age that your skin is getting old,",
   "it's because your cells are tired",
   "Okay.",
@@ -64,7 +53,6 @@ const HERO_FINAL_BLOCK = [
   "And.",
   "With countless sighs, tears,",
   "and heart-wrenching pain",
-  "I realized that I had failed and failed like crazy",
   "It is divided into those",
   "who challenge and those who give up",
   "Yes, this is life",
@@ -171,9 +159,8 @@ export default function Nigajun44View({ product }: Props) {
     }
 
     const isLast = activeLineIndex >= HERO_SEQUENCE.length - 1;
-    const lineVisibleMs = 1800;
-    const lineExitMs = 450;
-    const finalBlockDelayMs = 1200;
+    const lineVisibleMs = 2800;
+    const lineExitMs = 1000;
 
     setLinePhase("enter");
 
@@ -183,9 +170,7 @@ export default function Nigajun44View({ product }: Props) {
 
     const nextTimer = window.setTimeout(() => {
       if (isLast) {
-        window.setTimeout(() => {
-          setShowFinalBlock(true);
-        }, finalBlockDelayMs);
+        setShowFinalBlock(true);
         return;
       }
 
