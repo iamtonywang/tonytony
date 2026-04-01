@@ -138,6 +138,20 @@ export default function Nigajun35View({ product }: Props) {
       </section>
       <div className={styles.detailTopGlowLine} aria-hidden="true" />
 
+      <section className={styles.detailIntroSection}>
+        <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
+        <p className={styles.detailIntroLead}>Our Work</p>
+        <p className={styles.detailIntroText}>
+          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
+        </p>
+        <p className={styles.detailIntroText}>
+          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
+        </p>
+      </section>
+
+      <div className={styles.detailMidGlowLine} aria-hidden="true" />
+
+
       <section className={styles.detailVisualSection}>
         <div className={styles.detailVisualMedia}>
           <img
@@ -194,4 +208,5 @@ export default function Nigajun35View({ product }: Props) {
     </article>
   );
 }
+
 
