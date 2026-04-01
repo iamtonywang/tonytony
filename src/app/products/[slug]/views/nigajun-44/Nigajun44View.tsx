@@ -138,11 +138,8 @@ export default function Nigajun44View({ product }: Props) {
 
       <section className={styles.detailIntroSection}>
         <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <p className={styles.detailIntroLead}>NIGAJUN 44</p>
-        <p className={styles.detailIntroText}>Proteo Phyto Complex</p>
-        <p className={styles.detailIntroText}>TONYWANG</p>
-        <p className={styles.detailIntroText}>NIGAJUN 44</p>
-        <p className={styles.detailIntroText}>Proteo Phyto Complex</p>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 44</h2>
+        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
         <p className={styles.detailIntroText}>
           I welcome you to those who truly want to transform
         </p>
