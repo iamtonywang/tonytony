@@ -170,9 +170,9 @@ export default function Nigajun44View({ product }: Props) {
     }
 
     const isLast = activeLineIndex >= HERO_SEQUENCE.length - 1;
-    const lineVisibleMs = 1450;
-    const lineExitMs = 320;
-    const finalBlockDelayMs = 900;
+    const lineVisibleMs = 1800;
+    const lineExitMs = 450;
+    const finalBlockDelayMs = 1200;
 
     setLinePhase("enter");
 
