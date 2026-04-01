@@ -441,10 +441,12 @@
 }
 
 @media (min-width: 769px) {
+  .detailVisualMedia {
+    height: 78vh;
+  }
   .detailVisualImage {
-    object-fit: contain;
-    object-position: center;
-    height: auto;
+    object-fit: cover;
+    object-position: center 10%;
     background: transparent;
   }
 }
