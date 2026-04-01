@@ -112,13 +112,11 @@ export default function Nigajun44View({ product }: Props) {
           videoEl.pause();
           videoEl.currentTime = 0;
         } catch {}
-        setHideText(false);
+        setHideText(true);
         setActiveLineIndex(0);
         setLinePhase("enter");
         setShowFinalBlock(false);
         setIsPlaying(false);
-        videoEl.remove();
-        hasMountedVideo = false;
       });
 
       // connect asset source (single pc asset as default)
