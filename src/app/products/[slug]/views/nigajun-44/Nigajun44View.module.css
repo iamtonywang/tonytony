@@ -464,12 +464,17 @@
 }
 
 @media (min-width: 769px) {
+  .detailVisualOverlay {
+    align-items: center;
+  }
+
   .detailVisualImage {
     object-fit: cover;
     object-position: center 10%;
     background: transparent;
   }
 }
+
 
 
 
