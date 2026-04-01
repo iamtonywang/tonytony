@@ -76,6 +76,75 @@
   justify-content: flex-end;
 }
 
+.heroFallbackText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.heroFallbackText p {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 300;
+}
+
+.heroMotionOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  padding: 16px;
+}
+
+.heroSequenceLine {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.heroSequenceEnter {
+  animation: heroLineEnter 0.55s ease forwards;
+}
+
+.heroSequenceExit {
+  animation: heroLineExit 0.35s ease forwards;
+}
+
+.heroSequenceEmphasis {
+  font-size: 35px;
+  line-height: 1.12;
+}
+
+.heroFinalBlock {
+  width: min(92vw, 860px);
+  max-height: 72vh;
+  overflow: auto;
+  padding: 8px 12px;
+  animation: heroFinalBlockIn 0.6s ease forwards;
+}
+
+.heroFinalLine {
+  margin: 0 0 4px;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.heroFinalLineEmphasis {
+  font-size: 35px;
+  line-height: 1.12;
+}
+
 .playButton {
   position: absolute;
   top: 50%;
@@ -160,6 +229,17 @@
   .videoElement {
     object-position: center 15%;
   }
+
+  .heroSequenceLine,
+  .heroFinalLine,
+  .heroFallbackText p {
+    font-size: 12px;
+  }
+
+  .heroSequenceEmphasis,
+  .heroFinalLineEmphasis {
+    font-size: 35px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -195,6 +275,39 @@
 @media (max-width: 768px) {
   .heroOverlay h1:nth-of-type(2) {
     font-size: 13px;
+  }
+}
+
+@keyframes heroLineEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroLineExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes heroFinalBlockIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

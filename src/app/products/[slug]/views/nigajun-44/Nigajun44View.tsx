@@ -8,10 +8,84 @@ interface Props {
   product?: ProductMinimal;
 }
 
+const HERO_SEQUENCE = [
+  "TONYWANG",
+  "NIGAJUN 44",
+  "Plant Cell Gene Recombination",
+  "Protein Laboratory",
+  "If only I could go back like Benjamin Burton.",
+  "If you could increase shorter telomeres?",
+  "What if you could rewind that watch?",
+  "It's not age that your skin is getting old,",
+  "it's because your cells are tired",
+  "Okay.",
+  "I spent 28 years studying cells",
+  "Everyone must have had a crazy challenge",
+  "at least once in their lives",
+  "And.",
+  "With countless sighs, tears,",
+  "and heart-wrenching pain",
+  "I realized that I had failed and failed like crazy",
+  "It is divided into those",
+  "who challenge and those who give up",
+  "Yes, this is life",
+  "It's a trail of time that everyone",
+  "experiences in a panoramic life",
+  "The failure and success we have in the",
+  "8.2 billion population is a part of that",
+  "The only genetic protein",
+  "that transforms new skin tissue",
+  "Plant Cell Gene Protein",
+  "SINCE  August 2025 TONYWANG",
+];
+
+const HERO_EMPHASIS = [
+  "TONYWANG",
+  "NIGAJUN 44",
+  "Okay.",
+  "And.",
+  "Yes, this is life",
+];
+
+const HERO_FINAL_BLOCK = [
+  "TONYWANG",
+  "NIGAJUN 44",
+  "Plant Cell Gene Recombination",
+  "Protein Laboratory",
+  "If only I could go back like Benjamin Burton.",
+  "If you could increase shorter telomeres?",
+  "What if you could rewind that watch?",
+  "It's not age that your skin is getting old,",
+  "it's because your cells are tired",
+  "Okay.",
+  "I spent 28 years studying cells",
+  "Everyone must have had a crazy challenge",
+  "at least once in their lives",
+  "And.",
+  "With countless sighs, tears,",
+  "and heart-wrenching pain",
+  "I realized that I had failed and failed like crazy",
+  "It is divided into those",
+  "who challenge and those who give up",
+  "Yes, this is life",
+  "It's a trail of time that everyone",
+  "experiences in a panoramic life",
+  "The failure and success we have in the",
+  "8.2 billion population is a part of that",
+  "The only genetic protein",
+  "that transforms new skin tissue",
+  "Plant Cell Gene Protein",
+  "SINCE  August 2025 TONYWANG",
+].join("\n");
+
 export default function Nigajun44View({ product }: Props) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const [hideText, setHideText] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [activeLineIndex, setActiveLineIndex] = useState(0);
+  const [linePhase, setLinePhase] = useState<"enter" | "exit">("enter");
+  const [showFinalBlock, setShowFinalBlock] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -31,10 +105,17 @@ export default function Nigajun44View({ product }: Props) {
       videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
+      videoEl.addEventListener("play", () => {
+        setIsPlaying(true);
+      });
+      videoEl.addEventListener("pause", () => {
+        setIsPlaying(false);
+      });
       videoEl.addEventListener("ended", () => {
         try {
           videoEl.currentTime = videoEl.duration;
         } catch {}
+        setIsPlaying(false);
       });
 
       // connect asset source (single pc asset as default)
@@ -76,6 +157,46 @@ export default function Nigajun44View({ product }: Props) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!hideText || !isPlaying) {
+      setActiveLineIndex(0);
+      setLinePhase("enter");
+      setShowFinalBlock(false);
+      return;
+    }
+
+    if (showFinalBlock) {
+      return;
+    }
+
+    const isLast = activeLineIndex >= HERO_SEQUENCE.length - 1;
+    const lineVisibleMs = 1450;
+    const lineExitMs = 320;
+    const finalBlockDelayMs = 900;
+
+    setLinePhase("enter");
+
+    const exitTimer = window.setTimeout(() => {
+      setLinePhase("exit");
+    }, lineVisibleMs);
+
+    const nextTimer = window.setTimeout(() => {
+      if (isLast) {
+        window.setTimeout(() => {
+          setShowFinalBlock(true);
+        }, finalBlockDelayMs);
+        return;
+      }
+
+      setActiveLineIndex((prev) => Math.min(prev + 1, HERO_SEQUENCE.length - 1));
+    }, lineVisibleMs + lineExitMs);
+
+    return () => {
+      clearTimeout(exitTimer);
+      clearTimeout(nextTimer);
+    };
+  }, [hideText, isPlaying, activeLineIndex, showFinalBlock]);
+
   return (
     <article className={styles.detailPage}>
       <section className={styles.heroSection}>
@@ -91,26 +212,44 @@ export default function Nigajun44View({ product }: Props) {
             <h1 className={styles.productTitle}>
               {product?.productName ?? "NIGAJUN 44"}
             </h1>
-
-            <h1
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                textAlign: "center",
-                opacity: hideText ? 0 : 1,
-                transition: "opacity 2s ease",
-              }}
-            >
-              <span>TONYWANGNIGAJUN 44</span>
-              <br />
-              <span>Development of Plant Cell Genetic Protein</span>
-              <br />
-              <span>Molecular Bio-Bio-Bioengineering</span>
-              <br />
-              <span>If you don&apos;t know the value, go away</span>
-            </h1>
+            {!hideText && (
+              <div className={styles.heroFallbackText}>
+                <p>TONYWANG</p>
+                <p>NIGAJUN 44</p>
+                <p>Plant Cell Gene Recombination</p>
+                <p>Protein Laboratory</p>
+              </div>
+            )}
+            {hideText && (
+              <div className={styles.heroMotionOverlay}>
+                {!showFinalBlock ? (
+                  <p
+                    className={`${styles.heroSequenceLine} ${
+                      linePhase === "enter" ? styles.heroSequenceEnter : styles.heroSequenceExit
+                    } ${
+                      HERO_EMPHASIS.includes(HERO_SEQUENCE[activeLineIndex])
+                        ? styles.heroSequenceEmphasis
+                        : ""
+                    }`}
+                  >
+                    {HERO_SEQUENCE[activeLineIndex]}
+                  </p>
+                ) : (
+                  <div className={styles.heroFinalBlock}>
+                    {HERO_FINAL_BLOCK.split("\n").map((line, idx) => (
+                      <p
+                        key={`${line}-${idx}`}
+                        className={`${styles.heroFinalLine} ${
+                          HERO_EMPHASIS.includes(line) ? styles.heroFinalLineEmphasis : ""
+                        }`}
+                      >
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
             <button
               type="button"
               className={styles.playButton}
