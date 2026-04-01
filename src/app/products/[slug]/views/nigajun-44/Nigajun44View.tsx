@@ -138,12 +138,13 @@ export default function Nigajun44View({ product }: Props) {
 
       <section className={styles.detailIntroSection}>
         <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <p className={styles.detailIntroLead}>Our Work</p>
+        <p className={styles.detailIntroLead}>NIGAJUN 44</p>
+        <p className={styles.detailIntroText}>Proteo Phyto Complex</p>
+        <p className={styles.detailIntroText}>TONYWANG</p>
+        <p className={styles.detailIntroText}>NIGAJUN 44</p>
+        <p className={styles.detailIntroText}>Proteo Phyto Complex</p>
         <p className={styles.detailIntroText}>
-          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
-        </p>
-        <p className={styles.detailIntroText}>
-          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
+          I welcome you to those who truly want to transform
         </p>
       </section>
 
@@ -154,7 +155,7 @@ export default function Nigajun44View({ product }: Props) {
         <div className={styles.detailVisualMedia}>
           <img
             className={styles.detailVisualImage}
-            src="/landing-assets/product-hero-main.webp"
+            src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG product visual"
             draggable={false}
           />
@@ -206,5 +207,6 @@ export default function Nigajun44View({ product }: Props) {
     </article>
   );
 }
+
 
 
