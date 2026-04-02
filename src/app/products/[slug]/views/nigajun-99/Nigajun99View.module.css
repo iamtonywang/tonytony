@@ -373,6 +373,22 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
+.pcOnly {
+  display: inline;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .pcOnly {
+    display: none;
+  }
+  .mobileOnly {
+    display: inline;
+  }
+}
 @media (max-width: 768px) {
   .detailTopGlowLine,
   .detailMidGlowLine,

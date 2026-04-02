@@ -239,9 +239,12 @@ export default function Nigajun99View({ product }: Props) {
           <br />
           Someone has to shout the truth and correct the wrongs and purify the dirty with lies and deceit
           <br />
-          Since August 
-          <br />
-          2025 TONYWANG
+          <span className={styles.pcOnly}>Since August 2025 TONYWANG</span>
+          <span className={styles.mobileOnly}>
+            Since August
+            <br />
+            2025 TONYWANG
+          </span>
         </p>
       </section>
 
