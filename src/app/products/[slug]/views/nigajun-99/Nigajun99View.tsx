@@ -182,13 +182,21 @@ export default function Nigajun99View({ product }: Props) {
                 그러나 현실은 거짓에 불과하다
               </p>
               <p className={styles.detailDescription}>
-                피부 가려움증의 생물학적 메커니즘 모르고 단순 항염 케미컬 물질과 천염물질
+                피부 가려움증의 생물학적 메커니즘 모르고
+                <br className={styles.mobileOnly} />
+                단순 항염 케미컬 물질과 천염물질
               </p>
               <p className={styles.detailDescription}>
-                그리고 각종 헤게모니 원료를 앞세워 해결하기에는 부족한 부분이 많다
+                그리고
+                <br className={styles.mobileOnly} />
+                각종 헤게모니 원료를 앞세워 해결하기에는
+                <br className={styles.mobileOnly} />
+                부족한 부분이 많다
               </p>
               <p className={styles.detailDescription}>
-                과대하게 부풀린 홍보는 가려움에 의한 고통스런 유저들에게 더 고통과 좌절감을 줄뿐이다
+                과대하게 부풀린 홍보는 가려움에 의한
+                <br className={styles.mobileOnly} />
+                고통스런 유저들에게 더 고통과 좌절감을 줄뿐이다
               </p>
               <p className={styles.detailDescription}>
                 이제 그만 멈춰라
