@@ -183,7 +183,13 @@ export default function Nigajun28View({ product }: Props) {
                 </span>
               </p>
               <p className={styles.detailOverlayText}>
-                잇몸 조직은 끊임없이 염증 반응과 회복 과정을 반복하는 생체 조직 이야
+                <span className={styles.pcOnly}>
+                  잇몸 조직은 끊임없이 염증 반응과 회복 과정을 반복하는 생체 조직 이야
+                </span>
+                <span className={styles.mobileOnly}>
+                  잇몸 조직은 끊임없이 염증 반응과 회복 과정을<br />
+                  반복하는 생체 조직 이야
+                </span>
               </p>
               <p className={styles.detailOverlayText}>Genetic Toothpaste는 바로 이 지점에서 시작했어</p>
               <p className={styles.detailOverlayText}>
@@ -193,7 +199,13 @@ export default function Nigajun28View({ product }: Props) {
               <p className={styles.detailOverlayText}>Proteo Phyto Complex로</p>
               <p className={styles.detailOverlayText}>설계된 활성 분자 시스템은 식물세포에서</p>
               <p className={styles.detailOverlayText}>
-                유래한 단백질, 펩타이드, 폴리페놀 및 항산화 생체 분자가 결합된
+                <span className={styles.pcOnly}>
+                  유래한 단백질, 펩타이드, 폴리페놀 및 항산화 생체 분자가 결합된
+                </span>
+                <span className={styles.mobileOnly}>
+                  유래한 단백질, 펩타이드, 폴리페놀 및 항산화<br />
+                  생체 분자가 결합된
+                </span>
               </p>
               <p className={styles.detailOverlayText}>Bioactive Molecular 시스템이다</p>
               <p className={styles.detailOverlayText}>Since August 2025 TONYWAN</p>
