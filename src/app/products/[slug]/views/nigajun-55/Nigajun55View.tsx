@@ -170,24 +170,24 @@ export default function Nigajun55View({ product }: Props) {
 
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>TONYWANG</p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                튼살(striae distensae)은 단순한 피부 표면의 물리적 손상이 아니다
+                튼살(striae distensae)은 단순한 피부 표면의<br className={styles.mobileOnly} />물리적 손상이 아니다
               </p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>피부 세포의 세포신호 전달(cellular signaling)과</p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                단백질 발현 조절(protein expression modulation) 재활성화 중점
+                단백질 발현 조절(protein expression modulation)<br className={styles.mobileOnly} />재활성화 중점
               </p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                Bio-Active Complex는 섬유아세포의 대사 활성도를 증가
+                Bio-Active Complex는 섬유아세포의<br className={styles.mobileOnly} />대사 활성도를 증가
               </p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                콜라겐 합성 경로와 ECM 리모델링 경로를 동시에 유도한다.
+                콜라겐 합성 경로와 ECM 리모델링 경로를<br className={styles.mobileOnly} />동시에 유도한다.
               </p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                특히 성장 인자 신호와 유사한 세포 활성 환경을 형성하여
+                특히 성장 인자 신호와 유사한<br className={styles.mobileOnly} />세포 활성 환경을 형성하여
               </p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>진피 조직 내 콜라겐 재배열(collagen re-organization),</p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                엘라스틴 네트워크 복원, 세포외기질 재구성을 촉진한다.
+                엘라스틴 네트워크 복원,<br className={styles.mobileOnly} />세포외기질 재구성을 촉진한다.
               </p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>Since August 2025 TONYWANG</p>
 
