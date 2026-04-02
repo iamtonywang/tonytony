@@ -426,6 +426,10 @@
     line-height: 1.5;
   }
 
+  .korText {
+    font-size: 12px;
+  }
+
   .detailVisualMedia {
   position: relative;
   width: 100vw;

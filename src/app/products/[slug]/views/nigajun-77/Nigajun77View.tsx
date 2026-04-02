@@ -168,37 +168,37 @@ export default function Nigajun77View({ product }: Props) {
                 ) : null}
               </p>
 
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 종아리는 특별한 지방 조직이다.
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 움직임이 많지만 지방은 쉽게 사라지지 않는다.
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 이유는 단순하다.
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 종아리 지방은 부종이 아니라 대사 환경에 의해 유지된다.
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방세포는 단순히 지방을 저장하는 저장소가 아니다.
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방세포는 에너지 저장 모드와 에너지 소비 모드 사이를 오가는 대사 세포다.
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 문제는 대부분의 종아리 지방이 저장 모드에 고정되어 있다는 것이다.
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방 합성 효소 FAS · ACC 경로가 억제되면서
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방세포는 더 이상 축적 환경을 유지하기 어렵다.
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방 조직 주변에서 나타나는 저등급 염증(low-grade inflammation)
               </p>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방 축적을 유지시키는 중요한 조건이다
               </p>
 
