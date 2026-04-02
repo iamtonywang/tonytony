@@ -221,10 +221,16 @@ export default function Nigajun82View({ product }: Props) {
                 If these changes accumulate
               </p>
               <p className={styles.detailDescription}>
-                The main reason is the formation of an environment favorable for
+                <span className={styles.pcOnly}>
+                  The main reason is the formation of an environment favorable for
+                </span>
+                <span className={styles.mobileOnly}>
+                  The main reason is the formation of an environment favorable for pathogenic microbial growth.
+                </span>
               </p>
               <p className={styles.detailDescription}>
-                pathogenic microbial growth.
+                <span className={styles.pcOnly}>pathogenic microbial growth.</span>
+                <span className={styles.mobileOnly}></span>
               </p>
               <p className={styles.detailDescription}>
                 The unpleasant smell caused by secretions.
