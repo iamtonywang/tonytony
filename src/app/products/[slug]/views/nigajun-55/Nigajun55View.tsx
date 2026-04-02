@@ -168,12 +168,6 @@ export default function Nigajun55View({ product }: Props) {
                 ) : null}
               </p>
 
-              <div className={styles.detailCtaRow}>
-                <button className={styles.detailBuyButton} disabled>
-                  Coming Soon
-                </button>
-              </div>
-
               <p className={styles.detailOverlayText}>TONYWANG</p>
               <p className={styles.detailOverlayText}>튼살(striae distensae)은 단순한 피부 표면의 물리적 손상이 아니다</p>
               <p className={styles.detailOverlayText}>피부 세포의 세포신호 전달(cellular signaling)과</p>
@@ -184,6 +178,12 @@ export default function Nigajun55View({ product }: Props) {
               <p className={styles.detailOverlayText}>진피 조직 내 콜라겐 재배열(collagen re-organization),</p>
               <p className={styles.detailOverlayText}>엘라스틴 네트워크 복원, 세포외기질 재구성을 촉진한다.</p>
               <p className={styles.detailOverlayText}>Since August 2025 TONYWANG</p>
+
+              <div className={styles.detailCtaRow}>
+                <button className={styles.detailBuyButton} disabled>
+                  Coming Soon
+                </button>
+              </div>
             </div>
           </div>
         </div>
