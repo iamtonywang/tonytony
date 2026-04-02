@@ -252,7 +252,13 @@ export default function Nigajun82View({ product }: Props) {
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
       <section className={styles.detailCopySection}>
-        <p className={styles.detailCopyText}>Since August 2025 TONYWANG</p>
+        <p className={styles.detailCopyText}>TONYWANG</p>
+        <p className={styles.detailCopyText}>
+          Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
+        </p>
+        <p className={styles.detailCopyText}>
+          Since August 2025 TONYWANG
+        </p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
