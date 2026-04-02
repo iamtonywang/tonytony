@@ -175,7 +175,45 @@ export default function Nigajun99View({ product }: Props) {
               </div>
 
               <p className={styles.detailDescription}>
-                {product?.shortDescription ?? "Core product information placeholder."}
+                TONYWANG
+              </p>
+
+              <p className={styles.detailDescription}>
+                피부 가려움증 매우 괴롭고 힘든 고통스런 질환이다
+              </p>
+              <p className={styles.detailDescription}>
+                많은 기업들이 개선 할수 있다고 한다
+              </p>
+              <p className={styles.detailDescription}>
+                그러나 현실은 거짓에 불과하다
+              </p>
+              <p className={styles.detailDescription}>
+                피부 가려움증의 생물학적 메커니즘 모르고 단순 항염 케미컬 물질과 천염물질
+              </p>
+              <p className={styles.detailDescription}>
+                그리고 각종 헤게모니 원료를 앞세워 해결하기에는 부족한 부분이 많다
+              </p>
+              <p className={styles.detailDescription}>
+                과대하게 부풀린 홍보는 가려움에 의한 고통스런 유저들에게 더 고통과 좌절감을 줄뿐이다
+              </p>
+              <p className={styles.detailDescription}>
+                이제 그만 멈춰라
+              </p>
+              <p className={styles.detailDescription}>
+                거짓에 의한 상처받는고통이 더욱 크다
+              </p>
+
+              <p className={styles.detailDescription}>
+                The itching of the skin is a very painful and painful condition
+              </p>
+              <p className={styles.detailDescription}>
+                Many companies can improve But the reality is just a lie
+              </p>
+              <p className={styles.detailDescription}>
+                I don&apos;t know the biological mechanism of skin itching To solve with simple anti-inflammatory chemicals, sea salt substances, and various hegemonic raw materials
+              </p>
+              <p className={styles.detailDescription}>
+                There are many disadvantages Excessive publicity will only cause more pain and frustration for users suffering from the itching. Stop it now. The pain of being hurt by lies is even greater
               </p>
             </div>
           </div>
