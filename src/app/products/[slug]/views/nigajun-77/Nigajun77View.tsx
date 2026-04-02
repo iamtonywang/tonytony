@@ -168,12 +168,6 @@ export default function Nigajun77View({ product }: Props) {
                 ) : null}
               </p>
 
-              <div className={styles.detailCtaRow}>
-                <button className={styles.detailBuyButton} disabled>
-                  Coming Soon
-                </button>
-              </div>
-
               <p className={styles.detailOverlayText}>
                 종아리는 특별한 지방 조직이다.
               </p>
@@ -241,6 +235,12 @@ export default function Nigajun77View({ product }: Props) {
               <p className={styles.detailOverlayText}>
                 be an important condition for maintaining fat accumulation
               </p>
+
+              <div className={styles.detailCtaRow}>
+                <button className={styles.detailBuyButton} disabled>
+                  Coming Soon
+                </button>
+              </div>
             </div>
           </div>
         </div>
