@@ -139,14 +139,9 @@ export default function Nigajun82View({ product }: Props) {
       <div className={styles.detailTopGlowLine} aria-hidden="true" />
 
       <section className={styles.detailIntroSection}>
-        <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <p className={styles.detailIntroLead}>Our Work</p>
-        <p className={styles.detailIntroText}>
-          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
-        </p>
-        <p className={styles.detailIntroText}>
-          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
-        </p>
+        <h1 className={styles.detailIntroTitle}>TONY WANG</h1>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 99</h2>
+        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
       </section>
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
@@ -156,7 +151,7 @@ export default function Nigajun82View({ product }: Props) {
         <div className={styles.detailVisualMedia}>
           <img
             className={styles.detailVisualImage}
-            src="/landing-assets/product-hero-main.webp"
+            src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG product visual"
             draggable={false}
           />
@@ -179,7 +174,75 @@ export default function Nigajun82View({ product }: Props) {
               </div>
 
               <p className={styles.detailDescription}>
-                {product?.shortDescription ?? "Core product information placeholder."}
+                질염은 단순한 오염 상태로 정의되지 않는다.
+              </p>
+              <p className={styles.detailDescription}>
+                질 내부 환경에서 여러 생물학적 조건이 동시에 변화할 때
+              </p>
+              <p className={styles.detailDescription}>
+                병원성 미생물 활동 조건이 형성.
+              </p>
+              <p className={styles.detailDescription}>
+                미생물 군집 구조 변화 점막 단백질 구조 변화
+              </p>
+              <p className={styles.detailDescription}>
+                효소 활성 변화 호르몬 환경 변화
+              </p>
+              <p className={styles.detailDescription}>
+                이러한 변화가 누적되면
+              </p>
+              <p className={styles.detailDescription}>
+                병원성 미생물 증식에 유리한 환경이 형성이 주원인이다
+              </p>
+              <p className={styles.detailDescription}>
+                분비물에 의한 불쾌한 냄새. 가려움.
+              </p>
+              <p className={styles.detailDescription}>
+                단순한 향기제로 이를 개선 할수 없다
+              </p>
+              <p className={styles.detailDescription}>
+                항균 세척제로 원인을 개선한다는 것은 속임수에 불과하다
+              </p>
+
+              <p className={styles.detailDescription}>
+                vaginitis is not defined as a simple state of contamination.
+              </p>
+              <p className={styles.detailDescription}>
+                When multiple biological conditions change simultaneously in the
+              </p>
+              <p className={styles.detailDescription}>
+                internal environment of the vagina Pathogenic microbial
+              </p>
+              <p className={styles.detailDescription}>
+                activity conditions are formed.
+              </p>
+              <p className={styles.detailDescription}>
+                Changes in microbial community structure Changes in mucosal protein structure
+              </p>
+              <p className={styles.detailDescription}>
+                Enzyme Activity Change Hormone Environment Change
+              </p>
+              <p className={styles.detailDescription}>
+                If these changes accumulate
+              </p>
+              <p className={styles.detailDescription}>
+                The main reason is the formation of an environment favorable for
+              </p>
+              <p className={styles.detailDescription}>
+                pathogenic microbial growth.
+              </p>
+              <p className={styles.detailDescription}>
+                The unpleasant smell caused by secretions.
+              </p>
+              <p className={styles.detailDescription}>
+                Itching. A simple fragrance cannot improve it.
+              </p>
+              <p className={styles.detailDescription}>
+                It is only a trick to improve the cause with antibacterial cleaning agents
+              </p>
+
+              <p className={styles.detailDescription}>
+                Since August 2025 TONYWANG
               </p>
             </div>
           </div>
@@ -189,9 +252,7 @@ export default function Nigajun82View({ product }: Props) {
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
       <section className={styles.detailCopySection}>
-        <p className={styles.detailCopyText}>
-          Detailed product statement placeholder.
-        </p>
+        <p className={styles.detailCopyText}>Since August 2025 TONYWANG</p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
@@ -208,5 +269,6 @@ export default function Nigajun82View({ product }: Props) {
     </article>
   );
 }
+
 
 
