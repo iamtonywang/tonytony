@@ -235,7 +235,13 @@ export default function Nigajun99View({ product }: Props) {
 
       <section className={styles.detailCopySection}>
         <p className={styles.detailCopyText}>
-          Detailed product statement placeholder.
+          TONYWANG
+          <br />
+          Someone has to shout the truth and correct the wrongs and purify the dirty with lies and deceit
+          <br />
+          Since August 
+          <br />
+          2025 TONYWANG
         </p>
       </section>
 
