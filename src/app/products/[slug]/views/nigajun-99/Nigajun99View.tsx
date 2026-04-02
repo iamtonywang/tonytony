@@ -140,13 +140,9 @@ export default function Nigajun99View({ product }: Props) {
 
       <section className={styles.detailIntroSection}>
         <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <p className={styles.detailIntroLead}>Our Work</p>
-        <p className={styles.detailIntroText}>
-          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
-        </p>
-        <p className={styles.detailIntroText}>
-          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
-        </p>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 99</h2>
+        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
+        <p className={styles.detailIntroText}>Skincare for alleviating itching on the skin</p>
       </section>
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
@@ -156,7 +152,7 @@ export default function Nigajun99View({ product }: Props) {
         <div className={styles.detailVisualMedia}>
           <img
             className={styles.detailVisualImage}
-            src="/landing-assets/product-hero-main.webp"
+            src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG product visual"
             draggable={false}
           />
@@ -208,5 +204,6 @@ export default function Nigajun99View({ product }: Props) {
     </article>
   );
 }
+
 
 
