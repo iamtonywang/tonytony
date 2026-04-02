@@ -173,7 +173,13 @@ export default function Nigajun17View({ product }: Props) {
               <p className={styles.detailOverlayText}>생물학적 관점에서 질환의 핵심은</p>
               <p className={styles.detailOverlayText}>경로(Process) 가 아니라 단백질(Protein)</p>
               <p className={styles.detailOverlayText}>
-                세포는 특정 신호에 반응하여 단백질을 과다 또는 과소 발현하고,
+                <span className={styles.pcOnly}>
+                  세포는 특정 신호에 반응하여 단백질을 과다 또는 과소 발현하고,
+                </span>
+                <span className={styles.mobileOnly}>
+                  세포는 특정 신호에 반응하여 단백질을<br />
+                  과다 또는 과소 발현하고,
+                </span>
               </p>
               <p className={styles.detailOverlayText}>
                 이런 불균형이 두피 환경과 모낭 기능의 변화를 유도
@@ -187,10 +193,22 @@ export default function Nigajun17View({ product }: Props) {
                 전사 조절 인자를 통해 모낭 구조 안정성을 지원하고,
               </p>
               <p className={styles.detailOverlayText}>
-                MMP 억제 단백질을 활용하여 모낭 구조 붕괴를 억제하며
+                <span className={styles.pcOnly}>
+                  MMP 억제 단백질을 활용하여 모낭 구조 붕괴를 억제하며
+                </span>
+                <span className={styles.mobileOnly}>
+                  MMP 억제 단백질을 활용하여 모낭 구조<br />
+                  붕괴를 억제하며
+                </span>
               </p>
               <p className={styles.detailOverlayText}>
-                염증 반응의 악순환을 차단하고 MMP-9 억제 단백질을 통해
+                <span className={styles.pcOnly}>
+                  염증 반응의 악순환을 차단하고 MMP-9 억제 단백질을 통해
+                </span>
+                <span className={styles.mobileOnly}>
+                  염증 반응의 악순환을 차단하고 MMP-9 억제<br />
+                  단백질을 통해
+                </span>
               </p>
               <p className={styles.detailOverlayText}>
                 염증 조직 손상을 완화하여 두피 환경의 균형 지원
