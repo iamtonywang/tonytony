@@ -320,6 +320,13 @@
   padding: 10px 22px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  margin-top: 24px;
+}
+
+.detailOverlayText {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 300;
 }
 
 .detailDescription {
@@ -412,6 +419,11 @@
   .detailCopyText {
     font-size: 12px;
     line-height: 1.8;
+  }
+
+  .detailOverlayText {
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .detailVisualMedia {
