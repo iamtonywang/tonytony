@@ -167,12 +167,6 @@ export default function Nigajun35View({ product }: Props) {
                 ) : null}
               </p>
 
-              <div className={styles.detailCtaRow}>
-                <button className={styles.detailBuyButton} disabled>
-                  Coming Soon
-                </button>
-              </div>
-
               <p className={styles.detailOverlayText}>
                 나는 흔한 성분으로 연구하지 않아
               </p>
@@ -221,6 +215,12 @@ export default function Nigajun35View({ product }: Props) {
               <p className={styles.detailOverlayText}>
                 피부 밀도 개선 피부 수분 활성 최적화
               </p>
+
+              <div className={styles.detailCtaRow}>
+                <button className={styles.detailBuyButton} disabled>
+                  Coming Soon
+                </button>
+              </div>
             </div>
           </div>
         </div>
