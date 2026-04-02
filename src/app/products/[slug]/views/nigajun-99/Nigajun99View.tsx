@@ -207,7 +207,8 @@ export default function Nigajun99View({ product }: Props) {
                 I don&apos;t know the biological mechanism of skin itching To solve with simple anti-inflammatory chemicals, sea salt substances, and various hegemonic raw materials
               </p>
               <p className={styles.detailDescription}>
-                There are many disadvantages Excessive publicity will only cause more pain and frustration for users suffering from the itching.<br />
+                There are many disadvantages<br />
+                Excessive publicity will only cause more pain and frustration for users suffering from the itching.<br />
                 Stop it now.<br />
                 The pain of being hurt by lies is even greater
               </p>
