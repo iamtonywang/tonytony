@@ -202,13 +202,14 @@ export default function Nigajun82View({ product }: Props) {
                 vaginitis is not defined as a simple state of contamination.
               </p>
               <p className={styles.detailDescription}>
-                When multiple biological conditions change simultaneously in the
-              </p>
-              <p className={styles.detailDescription}>
-                internal environment of the vagina Pathogenic microbial
-              </p>
-              <p className={styles.detailDescription}>
-                activity conditions are formed.
+                <span className={styles.pcOnly}>
+                  When multiple biological conditions change simultaneously in the favorable for pathogenic microbial growth.
+                </span>
+                <span className={styles.mobileOnly}>
+                  When multiple biological conditions change<br />
+                  simultaneously in the<br />
+                  favorable for pathogenic microbial growth.
+                </span>
               </p>
               <p className={styles.detailDescription}>
                 Changes in microbial community structure Changes in mucosal protein structure
