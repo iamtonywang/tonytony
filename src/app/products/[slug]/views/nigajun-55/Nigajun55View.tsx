@@ -179,7 +179,7 @@ export default function Nigajun55View({ product }: Props) {
               <p className={styles.detailOverlayText}>엘라스틴 네트워크 복원, 세포외기질 재구성을 촉진한다.</p>
               <p className={styles.detailOverlayText}>Since August 2025 TONYWANG</p>
 
-              <div className={styles.detailCtaRow}>
+              <div className={styles.detailCtaRow} style={{ marginTop: '24px' }}>
                 <button className={styles.detailBuyButton} disabled>
                   Coming Soon
                 </button>
