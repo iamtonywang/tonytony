@@ -173,7 +173,14 @@ export default function Nigajun28View({ product }: Props) {
               <p className={styles.detailOverlayText}>세균을 제거하고, 입안을 깨끗하게 만드는 것.</p>
               <p className={styles.detailOverlayText}>하지만 구강 건강은 단순한 세정의 문제가 아냐</p>
               <p className={styles.detailOverlayText}>
-                구강은 수많은 미생물과 세포가 공존하는 생물학적 생태계이며,
+                <span className={styles.pcOnly}>
+                  구강은 수많은 미생물과 세포가 공존하는 생물학적 생태계이며,
+                </span>
+                <span className={styles.mobileOnly}>
+                  구강은 수많은 미생물과 세포가 공존하는
+                  <br />
+                  생물학적 생태계이며,
+                </span>
               </p>
               <p className={styles.detailOverlayText}>
                 잇몸 조직은 끊임없이 염증 반응과 회복 과정을 반복하는 생체 조직 이야
