@@ -140,13 +140,9 @@ export default function Nigajun28View({ product }: Props) {
 
       <section className={styles.detailIntroSection}>
         <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <p className={styles.detailIntroLead}>Our Work</p>
-        <p className={styles.detailIntroText}>
-          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
-        </p>
-        <p className={styles.detailIntroText}>
-          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
-        </p>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 28</h2>
+        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
+        <p className={styles.detailIntroText}>New Oral Care</p>
       </section>
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
@@ -156,7 +152,7 @@ export default function Nigajun28View({ product }: Props) {
         <div className={styles.detailVisualMedia}>
           <img
             className={styles.detailVisualImage}
-            src="/landing-assets/product-hero-main.webp"
+            src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG product visual"
             draggable={false}
           />
@@ -172,15 +168,34 @@ export default function Nigajun28View({ product }: Props) {
                 ) : null}
               </p>
 
+              <p className={styles.detailOverlayText}>TONYWANG</p>
+              <p className={styles.detailOverlayText}>수십 년 동안 치약은 같은 방식으로 만들어졌어.</p>
+              <p className={styles.detailOverlayText}>세균을 제거하고, 입안을 깨끗하게 만드는 것.</p>
+              <p className={styles.detailOverlayText}>하지만 구강 건강은 단순한 세정의 문제가 아냐</p>
+              <p className={styles.detailOverlayText}>
+                구강은 수많은 미생물과 세포가 공존하는 생물학적 생태계이며,
+              </p>
+              <p className={styles.detailOverlayText}>
+                잇몸 조직은 끊임없이 염증 반응과 회복 과정을 반복하는 생체 조직 이야
+              </p>
+              <p className={styles.detailOverlayText}>Genetic Toothpaste는 바로 이 지점에서 시작했어</p>
+              <p className={styles.detailOverlayText}>
+                치약을 단순한 세정 제품이 아니라 구강 조직의 생물학적
+              </p>
+              <p className={styles.detailOverlayText}>신호를 조절하는 바이오 플랫폼으로 재정의했어.</p>
+              <p className={styles.detailOverlayText}>Proteo Phyto Complex로</p>
+              <p className={styles.detailOverlayText}>설계된 활성 분자 시스템은 식물세포에서</p>
+              <p className={styles.detailOverlayText}>
+                유래한 단백질, 펩타이드, 폴리페놀 및 항산화 생체 분자가 결합된
+              </p>
+              <p className={styles.detailOverlayText}>Bioactive Molecular 시스템이다</p>
+              <p className={styles.detailOverlayText}>Since August 2025 TONYWAN</p>
+
               <div className={styles.detailCtaRow}>
                 <button className={styles.detailBuyButton} disabled>
                   Coming Soon
                 </button>
               </div>
-
-              <p className={styles.detailDescription}>
-                {product?.shortDescription ?? "Core product information placeholder."}
-              </p>
             </div>
           </div>
         </div>
@@ -189,9 +204,11 @@ export default function Nigajun28View({ product }: Props) {
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
       <section className={styles.detailCopySection}>
+        <p className={styles.detailCopyText}>TONYWANG</p>
         <p className={styles.detailCopyText}>
-          Detailed product statement placeholder.
+          Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
         </p>
+        <p className={styles.detailCopyText}>Since August 2025 TONYWANG</p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
@@ -208,5 +225,6 @@ export default function Nigajun28View({ product }: Props) {
     </article>
   );
 }
+
 
 
