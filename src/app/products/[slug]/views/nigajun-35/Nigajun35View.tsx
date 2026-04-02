@@ -139,14 +139,9 @@ export default function Nigajun35View({ product }: Props) {
       <div className={styles.detailTopGlowLine} aria-hidden="true" />
 
       <section className={styles.detailIntroSection}>
-        <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <p className={styles.detailIntroLead}>Our Work</p>
-        <p className={styles.detailIntroText}>
-          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
-        </p>
-        <p className={styles.detailIntroText}>
-          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
-        </p>
+        <h1 className={styles.detailIntroTitle}>TONY WANG</h1>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 35</h2>
+        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
       </section>
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
@@ -156,7 +151,7 @@ export default function Nigajun35View({ product }: Props) {
         <div className={styles.detailVisualMedia}>
           <img
             className={styles.detailVisualImage}
-            src="/landing-assets/product-hero-main.webp"
+            src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG product visual"
             draggable={false}
           />
@@ -178,8 +173,53 @@ export default function Nigajun35View({ product }: Props) {
                 </button>
               </div>
 
-              <p className={styles.detailDescription}>
-                {product?.shortDescription ?? "Core product information placeholder."}
+              <p className={styles.detailOverlayText}>
+                나는 흔한 성분으로 연구하지 않아
+              </p>
+              <p className={styles.detailOverlayText}>
+                천연 성분, 나노 입자, 줄기세포, 성장 인자, 리포좀, 비타민.
+              </p>
+              <p className={styles.detailOverlayText}>
+                이러한 익숙한 성분들은 우리의 연구 방향과 달라
+              </p>
+              <p className={styles.detailOverlayText}>
+                식물 세포 단백질 재조합 유전자 변환 기술 기반
+              </p>
+              <p className={styles.detailOverlayText}>
+                새로운 단백질(Gene-Derived Protein) 개발
+              </p>
+              <p className={styles.detailOverlayText}>
+                나는 Chemical 합성 원료 기반 연구를 진행하지 않아.
+              </p>
+              <p className={styles.detailOverlayText}>
+                ProteoPhytoComplex™ Skin Science
+              </p>
+              <p className={styles.detailOverlayText}>
+                단백질 기반 성분이 피부의 핵심 구조 세포인
+              </p>
+              <p className={styles.detailOverlayText}>
+                섬유아세포(Fibroblast)의 수용체 신호 전달
+              </p>
+              <p className={styles.detailOverlayText}>
+                다음과 같은 피부 구조 개선 메커니즘이 작동.
+              </p>
+              <p className={styles.detailOverlayText}>
+                Crater-like Pore Improvement
+              </p>
+              <p className={styles.detailOverlayText}>
+                단백질 활성화 분화구 형태 모공 개선.
+              </p>
+              <p className={styles.detailOverlayText}>
+                피부 표면 밀도 강화 피부 탄력 개선
+              </p>
+              <p className={styles.detailOverlayText}>
+                NMF (Natural Moisturizing Factor)
+              </p>
+              <p className={styles.detailOverlayText}>
+                모공 케어 피부 건조 개선
+              </p>
+              <p className={styles.detailOverlayText}>
+                피부 밀도 개선 피부 수분 활성 최적화
               </p>
             </div>
           </div>
@@ -189,8 +229,12 @@ export default function Nigajun35View({ product }: Props) {
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
       <section className={styles.detailCopySection}>
+        <p className={styles.detailCopyText}>TONYWANG</p>
         <p className={styles.detailCopyText}>
-          Detailed product statement placeholder.
+          Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
+        </p>
+        <p className={styles.detailCopyText}>
+          Since August 2025 TONYWANG
         </p>
       </section>
 
@@ -208,5 +252,6 @@ export default function Nigajun35View({ product }: Props) {
     </article>
   );
 }
+
 
 
