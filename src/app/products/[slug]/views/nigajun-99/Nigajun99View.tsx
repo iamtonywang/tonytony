@@ -168,15 +168,9 @@ export default function Nigajun99View({ product }: Props) {
                 ) : null}
               </p>
 
-              <div className={styles.detailCtaRow}>
-                <button className={styles.detailBuyButton} disabled>
-                  Coming Soon
-                </button>
-              </div>
 
-              <p className={styles.detailDescription}>
-                TONYWANG
-              </p>
+
+
 
               <p className={styles.detailDescription}>
                 피부 가려움증 매우 괴롭고 힘든 고통스런 질환이다
@@ -215,6 +209,12 @@ export default function Nigajun99View({ product }: Props) {
               <p className={styles.detailDescription}>
                 There are many disadvantages Excessive publicity will only cause more pain and frustration for users suffering from the itching. Stop it now. The pain of being hurt by lies is even greater
               </p>
+
+              <div className={styles.detailCtaRow}>
+                <button className={styles.detailBuyButton} disabled>
+                  Coming Soon
+                </button>
+              </div>
             </div>
           </div>
         </div>
