@@ -213,10 +213,14 @@ export default function Nigajun77View({ product }: Props) {
                 There is a lot of movement, but fat does not disappear easily. The reason is simple.
               </p>
               <p className={styles.detailOverlayText}>
-                Calf fat is maintained by metabolic environment, not by edema.
-              </p>
-              <p className={styles.detailOverlayText}>
-                Fat cells are not just stores of fat.
+                <span className={styles.pcOnly}>
+                  Calf fat is maintained by metabolic environment, not by edema. Fat cells are not just stores of fat.
+                </span>
+                <span className={styles.mobileOnly} style={{ fontSize: "11px" }}>
+                  Calf fat is maintained by metabolic environment, not by edema.
+                  <br />
+                  Fat cells are not just stores of fat.
+                </span>
               </p>
               <p className={styles.detailOverlayText}>
                 Adipocytes are metabolic cells that move between the energy storage mode and the energy consumption mode.
@@ -227,7 +231,10 @@ export default function Nigajun77View({ product }: Props) {
                 fixed in storage mode.
               </p>
               <p className={styles.detailOverlayText}>
-                As the fat synthase FAS ACC pathway is suppressed
+                <span className={styles.pcOnly}>As the fat synthase FAS ACC pathway is suppressed</span>
+                <span className={styles.mobileOnly} style={{ fontSize: "11px" }}>
+                  As the fat synthase FAS ACC pathway is suppressed
+                </span>
               </p>
               <p className={styles.detailOverlayText}>
                 Adipocytes are no longer able to maintain an accumulation environment.
