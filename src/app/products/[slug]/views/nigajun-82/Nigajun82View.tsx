@@ -167,12 +167,6 @@ export default function Nigajun82View({ product }: Props) {
                 ) : null}
               </p>
 
-              <div className={styles.detailCtaRow}>
-                <button className={styles.detailBuyButton} disabled>
-                  Coming Soon
-                </button>
-              </div>
-
               <p className={styles.detailDescription}>
                 질염은 단순한 오염 상태로 정의되지 않는다.
               </p>
@@ -244,6 +238,12 @@ export default function Nigajun82View({ product }: Props) {
               <p className={styles.detailDescription}>
                 Since August 2025 TONYWANG
               </p>
+
+              <div className={styles.detailCtaRow}>
+                <button className={styles.detailBuyButton} disabled>
+                  Coming Soon
+                </button>
+              </div>
             </div>
           </div>
         </div>
