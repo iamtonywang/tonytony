@@ -181,13 +181,7 @@ export default function Nigajun77View({ product }: Props) {
                 종아리 지방은 부종이 아니라 대사 환경에 의해 유지된다.
               </p>
               <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                <span className={styles.pcOnly}>
-                  지방세포는 단순히 지방을 저장하는<br />
-                  저장소가 아니다.
-                </span>
-                <span className={styles.mobileOnly}>
-                  지방세포는 단순히 지방을 저장하는 저장소가 아니다.
-                </span>
+                지방세포는 단순히 지방을 저장하는 저장소가 아니다.
               </p>
               <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방세포는 에너지 저장 모드와 에너지 소비 모드 사이를
