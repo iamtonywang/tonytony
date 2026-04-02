@@ -36,13 +36,19 @@ const BACKGROUND_LINES = [
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const hasScheduledVideoRef = useRef(false);
   const [showVideo, setShowVideo] = useState(false);
+  const [pendingPlay, setPendingPlay] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeLineIndex, setActiveLineIndex] = useState(0);
   const [linePhase, setLinePhase] = useState<"enter" | "exit">("enter");
   const [showFinalStack, setShowFinalStack] = useState(false);
 
   useEffect(() => {
+    if (hasScheduledVideoRef.current) {
+      return;
+    }
+    hasScheduledVideoRef.current = true;
     const timer = setTimeout(() => {
       setShowVideo(true);
     }, 2000);
@@ -101,20 +107,68 @@ export default function HeroSection() {
       if (finalTimeout) clearTimeout(finalTimeout);
     };
   }, [isPlaying]);
+
+  useEffect(() => {
+    if (!showVideo || !pendingPlay) {
+      return;
+    }
+
+    const videoEl = videoRef.current;
+    if (!videoEl) {
+      return;
+    }
+
+    let cancelled = false;
+    const tryPlay = async () => {
+      videoEl.muted = false;
+      try {
+        await videoEl.play();
+        if (!cancelled) {
+          setIsPlaying(true);
+        }
+      } catch {
+        if (!cancelled) {
+          setIsPlaying(false);
+        }
+      } finally {
+        if (!cancelled) {
+          setPendingPlay(false);
+        }
+      }
+    };
+
+    void tryPlay();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [showVideo, pendingPlay]);
+
   const handleToggle = async () => {
     const videoEl = videoRef.current;
-    if (!videoEl) return;
+    if (!videoEl) {
+      if (!showVideo) {
+        setPendingPlay(true);
+      }
+      return;
+    }
 
     if (videoEl.paused) {
+      setPendingPlay(false);
       videoEl.muted = false;
-      await videoEl.play().catch(() => {});
-      setIsPlaying(true);
+      try {
+        await videoEl.play();
+        setIsPlaying(true);
+      } catch {
+        setIsPlaying(false);
+      }
       return;
     }
 
     videoEl.pause();
     videoEl.currentTime = 0;
     setIsPlaying(false);
+    setPendingPlay(false);
   };
 
   const handleVideoEnded = () => {
@@ -123,6 +177,7 @@ export default function HeroSection() {
     videoEl.pause();
     videoEl.currentTime = 0;
     setIsPlaying(false);
+    setPendingPlay(false);
   };
 
   return (
@@ -155,49 +210,50 @@ export default function HeroSection() {
             </div>
           )}
 
-          <button
-            type="button"
-            className={styles.playButton}
-            onClick={handleToggle}
-            aria-label={isPlaying ? "Pause video" : "Play video"}
-          />
-
-          {!showVideo && (
-            <div className={styles.fallbackOverlay}>
-              <p className={styles.heroText}>
-                {BACKGROUND_LINES.map((line) => (
-                  <span key={line}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
-              </p>
-            </div>
-          )}
-
-          {showVideo && isPlaying && (
-            <div className={styles.motionOverlay}>
-              {!showFinalStack ? (
-                <p
-                  key={activeLineIndex}
-                  className={`${styles.heroText} ${
-                    linePhase === "exit" ? styles.heroTextExit : styles.heroTextEnter
-                  }`}
-                >
-                  {HERO_LINES[activeLineIndex]}
-                </p>
-              ) : (
-                <div className={styles.finalStack}>
-                  {HERO_LINES.map((line) => (
-                    <p key={line} className={styles.finalStackLine}>
+          <div className={styles.heroOverlay}>
+            {!showVideo && (
+              <div className={styles.fallbackOverlay}>
+                <p className={styles.heroText}>
+                  {BACKGROUND_LINES.map((line) => (
+                    <span key={line}>
                       {line}
-                    </p>
+                      <br />
+                    </span>
                   ))}
-                </div>
-              )}
-            </div>
-          )}
+                </p>
+              </div>
+            )}
+
+            {showVideo && isPlaying && (
+              <div className={styles.motionOverlay}>
+                {!showFinalStack ? (
+                  <p
+                    key={activeLineIndex}
+                    className={`${styles.heroText} ${
+                      linePhase === "exit" ? styles.heroTextExit : styles.heroTextEnter
+                    }`}
+                  >
+                    {HERO_LINES[activeLineIndex]}
+                  </p>
+                ) : (
+                  <div className={styles.finalStack}>
+                    {HERO_LINES.map((line) => (
+                      <p key={line} className={styles.finalStackLine}>
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
+        <button
+          type="button"
+          className={styles.playButton}
+          onClick={handleToggle}
+          aria-label={isPlaying ? "Pause video" : "Play video"}
+        />
       </div>
     </section>
   );

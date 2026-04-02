@@ -4,6 +4,75 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Nigajun99View.module.css";
 import type { ProductMinimal } from "@/app/products/_server/types";
 
+// 99 전용 시퀀스/강조/최종 블록 상수 (파일 내 전용, 44 복붙 금지)
+const HERO_SEQUENCE: string[] = [
+  "TONYWANG",
+  "NIGAJUN 99",
+  "Shout out that it hurts",
+  "shout about bullying",
+  "Shout out that you want to cry",
+  "No one knows your pain",
+  "It's a hell of a life",
+  "I fell for it",
+  "He said he would fix everything",
+  "But",
+  "It was all a lie",
+  "hold in contempt",
+  "I hate you.",
+  "It was not a human being",
+  "Curse them",
+  "TONYWANG",
+  "28 years",
+  "I studied skin diseases",
+  "I've done my research",
+  "I developed bacteria",
+  "And.",
+  "I'm gonna tell you that everyone's been tricked",
+  "It was all a lie. Let me tell you",
+];
+
+// 라인 강조 여부(인덱스 기준). 필요한 라인만 true.
+const HERO_EMPHASIS: boolean[] = [
+  true,  // "TONYWANG"
+  false, // "NIGAJUN 99"
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  true,  // "TONYWANG" (두 번째 TONYWANG)
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+];
+
+// 최종 블록 표시용(필요 시 전체 문구 합본)
+const HERO_FINAL_BLOCK: string = `TONYWANG
+The itching of the skin is a very painful and painful condition
+Many companies can improve
+But the reality is just a lie
+I don't know the biological mechanism of skin
+itching To solve with simple anti-inflammatory
+chemicals, sea salt substances, and various hegemonic raw materials
+There are many disadvantages Excessive publicity
+will only cause more pain and frustration
+for users suffering from the itching.
+Stop it now.
+The pain of being hurt by lies is even greater
+SINCE August 2025 TONYWANG`;
+
 interface Props {
   product?: ProductMinimal;
 }
@@ -12,6 +81,14 @@ export default function Nigajun99View({ product }: Props) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const [hideText, setHideText] = useState(false);
+
+  // Hero 시퀀스 제어용 최소 상태 (hideText와 역할 분리)
+  const [hasPlaybackStarted, setHasPlaybackStarted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [activeLineIndex, setActiveLineIndex] = useState<number>(0);
+  const [linePhase, setLinePhase] = useState<"enter" | "hold" | "exit">("enter");
+  const [showFinalBlock, setShowFinalBlock] = useState(false);
+  const [videoDuration, setVideoDuration] = useState<number | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -31,10 +108,42 @@ export default function Nigajun99View({ product }: Props) {
       videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
+
+      // loadedmetadata: 유효 duration만 반영
+      videoEl.addEventListener("loadedmetadata", () => {
+        const d = Number.isFinite(videoEl.duration) ? videoEl.duration : NaN;
+        if (!Number.isNaN(d) && d > 0 && d !== Infinity) {
+          setVideoDuration(d);
+        }
+      });
+
+      // play: 실제 재생 성공 시에만 시퀀스 시작
+      videoEl.addEventListener("play", () => {
+        setIsPlaying(true);
+        setHasPlaybackStarted(true);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
+      });
+
+      // pause: 0초 복귀는 버튼/ended에서 처리되므로 상태만 초기화
+      videoEl.addEventListener("pause", () => {
+        setIsPlaying(false);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
+      });
+
       videoEl.addEventListener("ended", () => {
         try {
-          videoEl.currentTime = videoEl.duration;
+          videoEl.pause();
+          videoEl.currentTime = 0;
         } catch {}
+        // 종료 후 상태 초기화
+        setIsPlaying(false);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
       });
 
       // connect asset source (single pc asset as default)
@@ -76,6 +185,81 @@ export default function Nigajun99View({ product }: Props) {
     };
   }, []);
 
+  // duration 기반 시퀀스 진행 (균등 분배)
+  useEffect(() => {
+    if (!hasPlaybackStarted || !isPlaying) {
+      return;
+    }
+    if (!videoDuration || !Number.isFinite(videoDuration) || videoDuration <= 0) {
+      return;
+    }
+
+    const totalLines = HERO_SEQUENCE.length;
+    if (totalLines === 0) {
+      return;
+    }
+
+    const timers: number[] = [];
+
+    // 마지막 2초는 최종 블록 전용으로 예약
+    const FINAL_BLOCK_MS = 2000;
+    const effective = Math.max(0, videoDuration * 1000 - FINAL_BLOCK_MS);
+
+    // 유효 시간이 없다면, 바로 최종 블록을 2초만 노출
+    if (effective === 0) {
+      setShowFinalBlock(true);
+      const hideFinal = window.setTimeout(() => {
+        setShowFinalBlock(false);
+      }, FINAL_BLOCK_MS);
+      timers.push(hideFinal);
+      return () => {
+        timers.forEach((id) => clearTimeout(id));
+      };
+    }
+
+    const sliceMs = effective / totalLines;
+    // 각 라인의 enter:hold:exit = 20%:60%:20%
+    const enterMs = sliceMs * 0.2;
+    const holdMs = sliceMs * 0.6;
+    const exitMs = sliceMs * 0.2;
+
+    // 라인별 스케줄
+    for (let i = 0; i < totalLines; i++) {
+      const base = Math.max(0, Math.round(sliceMs * i));
+
+      const tEnter = window.setTimeout(() => {
+        setActiveLineIndex(i);
+        setLinePhase("enter");
+      }, base);
+      timers.push(tEnter);
+
+      const tHold = window.setTimeout(() => {
+        setLinePhase("hold");
+      }, base + Math.round(enterMs));
+      timers.push(tHold);
+
+      const tExit = window.setTimeout(() => {
+        setLinePhase("exit");
+      }, base + Math.round(enterMs + holdMs));
+      timers.push(tExit);
+    }
+
+    // 최종 블록: 마지막 라인 종료 직후 등장, 정확히 2초만 표시
+    const lastLineEnd = Math.round(sliceMs * totalLines);
+    const tFinalShow = window.setTimeout(() => {
+      setShowFinalBlock(true);
+      const tFinalHide = window.setTimeout(() => {
+        setShowFinalBlock(false);
+      }, FINAL_BLOCK_MS);
+      timers.push(tFinalHide);
+    }, lastLineEnd);
+    timers.push(tFinalShow);
+
+    return () => {
+      timers.forEach((id) => clearTimeout(id));
+    };
+  }, [hasPlaybackStarted, isPlaying, videoDuration]);
+
   return (
     <article className={styles.detailPage}>
       <section className={styles.heroSection}>
@@ -93,25 +277,55 @@ export default function Nigajun99View({ product }: Props) {
             </h1>
 
             <h1
+              className={styles.videoTextWrap}
               style={{
                 position: "absolute",
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 textAlign: "center",
-                opacity: hideText ? 0 : 1,
+                // 재생 중에는 시퀀스가 보이도록, hideText가 true여도 보이게 함
+                opacity: hideText && !isPlaying ? 0 : 1,
                 transition: "opacity 2s ease",
               }}
             >
-              <span>TONYWANGNIGAJUN 99</span>
-              <br />
-              <span>Development of Plant Cell Genetic Protein</span>
-              <br />
-              <span>Molecular Bio-Bio-Bioengineering</span>
-              <br />
-              <span>You must be freed from pain</span>
-              <br />
-              <span>What&apos;s the new change?</span>
+              {/* 재생 전: 기존 intro 문구 유지 (hideText로 페이드) */}
+              {!isPlaying && (
+                <>
+                  <span>TONYWANGNIGAJUN 99</span>
+                  <br />
+                  <span>Development of Plant Cell Genetic Protein</span>
+                  <br />
+                  <span>Molecular Bio-Bio-Bioengineering</span>
+                  <br />
+                  <span>You must be freed from pain</span>
+                  <br />
+                  <span>What&apos;s the new change?</span>
+                </>
+              )}
+
+              {/* 재생 중: 시퀀스 또는 최종 블록 */}
+              {isPlaying && !showFinalBlock && (
+                <span
+                  className={[
+                    styles.videoText,
+                    HERO_EMPHASIS[activeLineIndex] ? styles.videoTextEmphasis : "",
+                    linePhase === "exit" ? styles.videoTextExit : "",
+                  ].join(" ")}
+                >
+                  {HERO_SEQUENCE[activeLineIndex]}
+                </span>
+              )}
+              {isPlaying && showFinalBlock && (
+                <span
+                  className={[
+                    styles.videoFinalBlock,
+                    HERO_FINAL_BLOCK.includes("TONYWANG") ? styles.videoTextEmphasis : "",
+                  ].join(" ")}
+                >
+                  {HERO_FINAL_BLOCK}
+                </span>
+              )}
             </h1>
             <button
               type="button"
@@ -124,10 +338,22 @@ export default function Nigajun99View({ product }: Props) {
                 try {
                   if (video.paused) {
                     video.muted = false;
-                    void video.play();
+                    const p = video.play();
+                    if (p && typeof p.then === "function") {
+                      p.then(() => {
+                        // 재생 성공 시 상태는 play 이벤트에서 설정
+                      }).catch(() => {
+                        // 재생 실패 시 아무 것도 하지 않음(상태 전환 금지)
+                      });
+                    }
                   } else {
                     video.pause();
                     video.currentTime = 0;
+                    // 정지 시 시퀀스 상태 초기화
+                    setIsPlaying(false);
+                    setActiveLineIndex(0);
+                    setLinePhase("enter");
+                    setShowFinalBlock(false);
                   }
                 } catch {}
               }}

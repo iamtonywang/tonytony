@@ -75,6 +75,7 @@
 .backgroundLayer {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.2));
   background-image: url("/landing-assets/why-hero-pc.webp");
   background-repeat: no-repeat;
@@ -85,6 +86,7 @@
 .videoOverlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
 }
 

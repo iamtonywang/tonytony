@@ -34,7 +34,7 @@ const BACKGROUND_LINES = [
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
-  const videoOverlayRef = useRef<HTMLDivElement | null>(null);
+  const hasScheduledVideoRef = useRef(false);
   const [showVideo, setShowVideo] = useState(false);
   const [pendingPlay, setPendingPlay] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -44,6 +44,10 @@ export default function HeroSection() {
   const [showFinalStack, setShowFinalStack] = useState(false);
 
   useEffect(() => {
+    if (hasScheduledVideoRef.current) {
+      return;
+    }
+    hasScheduledVideoRef.current = true;
     const timer = setTimeout(() => {
       setShowVideo(true);
     }, 2000);
@@ -102,60 +106,46 @@ export default function HeroSection() {
     };
   }, [isPlaying]);
   useEffect(() => {
-    let hasMountedVideo = false;
+    if (!showVideo || !pendingPlay) {
+      return;
+    }
 
-    const mountVideoOverlay = () => {
-      if (hasMountedVideo || !videoOverlayRef.current) {
-        return;
-      }
+    const videoEl = videoRef.current;
+    if (!videoEl) {
+      return;
+    }
 
-      const videoEl = document.createElement("video");
-      videoEl.className = styles.videoElement;
-      videoEl.muted = true;
-      videoEl.autoplay = false;
-      videoEl.playsInline = true;
-      videoEl.loop = false;
-      videoEl.preload = "metadata";
-      videoEl.setAttribute("aria-hidden", "true");
-      videoEl.addEventListener("play", () => setIsPlaying(true));
-      videoEl.addEventListener("pause", () => setIsPlaying(false));
-      videoEl.addEventListener("ended", () => setIsPlaying(false));
-
-      const sourcePc = document.createElement("source");
-      sourcePc.src = "/landing-assets/why-hero-pc.mp4";
-      sourcePc.type = "video/mp4";
-      sourcePc.media = "(min-width: 769px)";
-
-      const sourceMobile = document.createElement("source");
-      sourceMobile.src = "/landing-assets/why-hero-mobile.mp4";
-      sourceMobile.type = "video/mp4";
-      sourceMobile.media = "(max-width: 768px)";
-
-      videoEl.appendChild(sourcePc);
-      videoEl.appendChild(sourceMobile);
-
-      videoRef.current = videoEl;
-      videoOverlayRef.current.appendChild(videoEl);
-      hasMountedVideo = true;
-
-      if (pendingPlay) {
-        videoEl.muted = false;
-        void videoEl.play().catch(() => {});
-        setPendingPlay(false);
+    let cancelled = false;
+    const tryPlay = async () => {
+      videoEl.muted = false;
+      try {
+        await videoEl.play();
+        if (!cancelled) {
+          setIsPlaying(true);
+        }
+      } catch {
+        if (!cancelled) {
+          setIsPlaying(false);
+        }
+      } finally {
+        if (!cancelled) {
+          setPendingPlay(false);
+        }
       }
     };
 
-    if (showVideo) {
-      mountVideoOverlay();
-    }
-  }, [showVideo, pendingPlay, styles.videoElement]);
+    void tryPlay();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [showVideo, pendingPlay]);
 
   const handleToggle = async () => {
     const videoEl = videoRef.current;
     if (!videoEl) {
       if (!showVideo) {
         setPendingPlay(true);
-        setShowVideo(true);
       }
       return;
     }
@@ -169,6 +159,16 @@ export default function HeroSection() {
     videoEl.pause();
     videoEl.currentTime = 0;
     setIsPlaying(false);
+    setPendingPlay(false);
+  };
+
+  const handleVideoEnded = () => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+    videoEl.pause();
+    videoEl.currentTime = 0;
+    setIsPlaying(false);
+    setPendingPlay(false);
   };
 
   return (
@@ -176,9 +176,67 @@ export default function HeroSection() {
       <div ref={heroVisualRef} className={styles.heroVisual}>
         <div className={styles.videoArea}>
           <div className={styles.backgroundLayer} />
-          {showVideo && (
-            <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
-          )}
+          <div className={styles.videoOverlay} aria-hidden="true">
+            {showVideo && (
+              <video
+                ref={videoRef}
+                className={styles.videoElement}
+                muted
+                playsInline
+                preload="metadata"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onEnded={handleVideoEnded}
+              >
+                <source
+                  src="/landing-assets/why-hero-pc.mp4"
+                  type="video/mp4"
+                  media="(min-width: 769px)"
+                />
+                <source
+                  src="/landing-assets/why-hero-mobile.mp4"
+                  type="video/mp4"
+                  media="(max-width: 768px)"
+                />
+              </video>
+            )}
+          </div>
+          <div className={styles.heroOverlay}>
+            {!showVideo && (
+              <div className={styles.fallbackOverlay}>
+                <p className={styles.heroText}>
+                  {BACKGROUND_LINES.map((line) => (
+                    <span key={line}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              </div>
+            )}
+            {showVideo && isPlaying && (
+              <div className={styles.motionOverlay}>
+                {!showFinalStack ? (
+                  <p
+                    key={activeLineIndex}
+                    className={`${styles.heroText} ${
+                      linePhase === "exit" ? styles.heroTextExit : styles.heroTextEnter
+                    }`}
+                  >
+                    {WHY_LINES[activeLineIndex]}
+                  </p>
+                ) : (
+                  <div className={styles.finalStack}>
+                    {WHY_LINES.map((line) => (
+                      <p key={line} className={styles.finalStackLine}>
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
         <button
           type="button"
@@ -186,40 +244,6 @@ export default function HeroSection() {
           onClick={handleToggle}
           aria-label={isPlaying ? "Pause video" : "Play video"}
         />
-        {!showVideo && (
-          <div className={styles.fallbackOverlay}>
-            <p className={styles.heroText}>
-              {BACKGROUND_LINES.map((line) => (
-                <span key={line}>
-                  {line}
-                  <br />
-                </span>
-              ))}
-            </p>
-          </div>
-        )}
-        {showVideo && isPlaying && (
-          <div className={styles.motionOverlay}>
-            {!showFinalStack ? (
-              <p
-                key={activeLineIndex}
-                className={`${styles.heroText} ${
-                  linePhase === "exit" ? styles.heroTextExit : styles.heroTextEnter
-                }`}
-              >
-                {WHY_LINES[activeLineIndex]}
-              </p>
-            ) : (
-              <div className={styles.finalStack}>
-                {WHY_LINES.map((line) => (
-                  <p key={line} className={styles.finalStackLine}>
-                    {line}
-                  </p>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
       </div>
     </section>
   );

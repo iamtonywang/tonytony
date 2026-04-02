@@ -51,11 +51,11 @@ export default function ProductHeroSection() {
     videoEl.addEventListener("ended", () => {
       try {
         videoEl.pause();
-        videoEl.currentTime = videoEl.duration;
+        videoEl.currentTime = 0;
       } catch {}
       setIsPlaying(false);
-      setActiveLineIndex(HERO_LINES.length - 1);
-      setIsSequenceComplete(true);
+      setActiveLineIndex(0);
+      setIsSequenceComplete(false);
     });
     videoEl.addEventListener("timeupdate", () => {
       const duration = videoEl.duration;
@@ -113,8 +113,12 @@ export default function ProductHeroSection() {
         setIsSequenceComplete(false);
       }
       videoEl.muted = false;
-      await videoEl.play().catch(() => {});
-      setIsPlaying(true);
+      try {
+        await videoEl.play();
+        setIsPlaying(true);
+      } catch {
+        setIsPlaying(false);
+      }
       return;
     }
 
@@ -136,23 +140,6 @@ export default function ProductHeroSection() {
     if (showVideo) {
       void mountVideoOverlay();
     }
-  }, [showVideo, mountVideoOverlay]);
-
-  useEffect(() => {
-    const handlePageShow = () => {
-      if (!showVideo) {
-        setShowVideo(true);
-      }
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          void mountVideoOverlay();
-        });
-      });
-    };
-
-    window.addEventListener("pageshow", handlePageShow);
-    return () => window.removeEventListener("pageshow", handlePageShow);
   }, [showVideo, mountVideoOverlay]);
 
   return (

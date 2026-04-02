@@ -75,7 +75,7 @@ export default function Nigajun44View({ product }: Props) {
   const [activeLineIndex, setActiveLineIndex] = useState(0);
   const [linePhase, setLinePhase] = useState<"enter" | "exit">("enter");
   const [showFinalBlock, setShowFinalBlock] = useState(false);
-  const [videoDuration, setVideoDuration] = useState(64);
+  const [videoDuration, setVideoDuration] = useState<number | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -137,7 +137,6 @@ export default function Nigajun44View({ product }: Props) {
           if (entry && entry.isIntersecting && !hasScheduled) {
             hasScheduled = true;
             timeoutId = window.setTimeout(() => {
-              setHideText(true);
               mountVideoOverlay();
               observer.disconnect();
             }, 2000);
@@ -163,6 +162,14 @@ export default function Nigajun44View({ product }: Props) {
       setActiveLineIndex(0);
       setLinePhase("enter");
       setShowFinalBlock(false);
+      return;
+    }
+
+    if (videoDuration === null) {
+      return;
+    }
+
+    if (!Number.isFinite(videoDuration) || videoDuration <= 0) {
       return;
     }
 
@@ -225,7 +232,7 @@ export default function Nigajun44View({ product }: Props) {
             )}
             {hideText && (
               <div className={styles.heroMotionOverlay}>
-                {!showFinalBlock ? (
+                {isPlaying && !showFinalBlock ? (
                   <p
                     className={`${styles.heroSequenceLine} ${
                       linePhase === "enter" ? styles.heroSequenceEnter : styles.heroSequenceExit
@@ -237,7 +244,7 @@ export default function Nigajun44View({ product }: Props) {
                   >
                     {HERO_SEQUENCE[activeLineIndex]}
                   </p>
-                ) : (
+                ) : isPlaying && showFinalBlock ? (
                   <div className={styles.heroFinalBlock}>
                     {HERO_FINAL_BLOCK.split("\n").map((line, idx) => (
                       <p
@@ -250,7 +257,7 @@ export default function Nigajun44View({ product }: Props) {
                       </p>
                     ))}
                   </div>
-                )}
+                ) : null}
               </div>
             )}
             <button
@@ -276,7 +283,11 @@ export default function Nigajun44View({ product }: Props) {
                     }
                     video.muted = false;
                     await video.play();
+                    setHideText(true);
                     setIsPlaying(true);
+                    setActiveLineIndex(0);
+                    setLinePhase("enter");
+                    setShowFinalBlock(false);
                   } else {
                     video.pause();
                     setIsPlaying(false);

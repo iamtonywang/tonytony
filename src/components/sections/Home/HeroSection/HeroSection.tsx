@@ -75,6 +75,7 @@ export default function HeroSection() {
     let hasMountedVideo = false;
     let timeoutId: number | null = null;
     let observer: IntersectionObserver | null = null;
+    let hasScheduledMount = false;
 
     const mountVideoOverlay = () => {
       if (!isMounted || hasMountedVideo || !videoOverlayRef.current) {
@@ -127,7 +128,8 @@ export default function HeroSection() {
       observer = new IntersectionObserver(
         (entries) => {
           const [entry] = entries;
-          if (entry && entry.isIntersecting) {
+          if (entry && entry.isIntersecting && !hasScheduledMount) {
+            hasScheduledMount = true;
             timeoutId = window.setTimeout(() => {
               setHideText(true);
               mountVideoOverlay();
@@ -218,7 +220,6 @@ export default function HeroSection() {
 
     if (video.paused) {
       video.muted = false;
-      video.currentTime = 0;
       const playResult = await video.play().catch(() => null);
       if (playResult === undefined || playResult) {
         setIsPlaying(true);
@@ -253,10 +254,11 @@ export default function HeroSection() {
         />
         <div className={styles.heroOverlay}>
           <p className={`${styles.introText} ${hideText ? styles.introTextHidden : ""}`}>
-            TONY WANG<br/>
-            Plant Cell Genetic Protein Laboratory<br/>
-            식물세포유전자단백질연구개발<br/>
-            분자생물학 바이오생명공학연구소
+            TONY WANG<br />
+            Plant Cell Genetic Protein Laboratory<br />
+            식물세포유전자단백질연구개발<br />
+            분자생물학 바이오생명공학연구소<br />
+            My job is to develop a plant cell gene protein
           </p>
 
           <div
