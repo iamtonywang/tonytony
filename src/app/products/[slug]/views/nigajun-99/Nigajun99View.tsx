@@ -236,7 +236,13 @@ export default function Nigajun99View({ product }: Props) {
       <section className={styles.detailCopySection}>
         <p className={styles.detailCopyText}>TONYWANG</p>
         <p className={styles.detailCopyText}>
-          Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
+          <span className={styles.pcOnly}>
+            Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
+          </span>
+          <span className={styles.mobileOnly}>
+            Someone needs to shout the truth, correct the wrongs<br />
+            and clean up the dirt with lies and tricks
+          </span>
         </p>
         <p className={styles.detailCopyText}>
           Since August 2025 TONYWANG
