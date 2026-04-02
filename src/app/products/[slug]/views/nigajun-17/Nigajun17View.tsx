@@ -139,13 +139,9 @@ export default function Nigajun17View({ product }: Props) {
 
       <section className={styles.detailIntroSection}>
         <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <p className={styles.detailIntroLead}>Our Work</p>
-        <p className={styles.detailIntroText}>
-          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
-        </p>
-        <p className={styles.detailIntroText}>
-          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
-        </p>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 17 Hyper</h2>
+        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
+        <p className={styles.detailIntroText}>Hair Cream</p>
       </section>
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
@@ -155,7 +151,7 @@ export default function Nigajun17View({ product }: Props) {
         <div className={styles.detailVisualMedia}>
           <img
             className={styles.detailVisualImage}
-            src="/landing-assets/product-hero-main.webp"
+            src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG product visual"
             draggable={false}
           />
@@ -171,15 +167,41 @@ export default function Nigajun17View({ product }: Props) {
                 ) : null}
               </p>
 
+              <p className={styles.detailOverlayText}>나는 모발이 새로 난다고 말할수 없어</p>
+              <p className={styles.detailOverlayText}>그것은 매우 큰 거짓이기 때문이다</p>
+              <p className={styles.detailOverlayText}>왜 두피 질환과 탈모는 반복되는가.</p>
+              <p className={styles.detailOverlayText}>생물학적 관점에서 질환의 핵심은</p>
+              <p className={styles.detailOverlayText}>경로(Process) 가 아니라 단백질(Protein)</p>
+              <p className={styles.detailOverlayText}>
+                세포는 특정 신호에 반응하여 단백질을 과다 또는 과소 발현하고,
+              </p>
+              <p className={styles.detailOverlayText}>
+                이런 불균형이 두피 환경과 모낭 기능의 변화를 유도
+              </p>
+              <p className={styles.detailOverlayText}>가장 근본적인 개선 전략은</p>
+              <p className={styles.detailOverlayText}>
+                단백질 조절 신호 경로 제어 세포 기능 정상화
+              </p>
+              <p className={styles.detailOverlayText}>조직 환경 회복 생물학적 순서</p>
+              <p className={styles.detailOverlayText}>
+                전사 조절 인자를 통해 모낭 구조 안정성을 지원하고,
+              </p>
+              <p className={styles.detailOverlayText}>
+                MMP 억제 단백질을 활용하여 모낭 구조 붕괴를 억제하며
+              </p>
+              <p className={styles.detailOverlayText}>
+                염증 반응의 악순환을 차단하고 MMP-9 억제 단백질을 통해
+              </p>
+              <p className={styles.detailOverlayText}>
+                염증 조직 손상을 완화하여 두피 환경의 균형 지원
+              </p>
+              <p className={styles.detailOverlayText}>Since August 2025 TONYWAN</p>
+
               <div className={styles.detailCtaRow}>
                 <button className={styles.detailBuyButton} disabled>
                   Coming Soon
                 </button>
               </div>
-
-              <p className={styles.detailDescription}>
-                {product?.shortDescription ?? "Core product information placeholder."}
-              </p>
             </div>
           </div>
         </div>
@@ -188,9 +210,11 @@ export default function Nigajun17View({ product }: Props) {
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
       <section className={styles.detailCopySection}>
+        <p className={styles.detailCopyText}>TONYWANG</p>
         <p className={styles.detailCopyText}>
-          Detailed product statement placeholder.
+          Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
         </p>
+        <p className={styles.detailCopyText}>Since August 2025 TONYWANG</p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
@@ -207,5 +231,6 @@ export default function Nigajun17View({ product }: Props) {
     </article>
   );
 }
+
 
 

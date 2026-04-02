@@ -318,6 +318,13 @@
   padding: 10px 22px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  margin-top: 24px;
+}
+
+.detailOverlayText {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 300;
 }
 
 .detailDescription {
@@ -460,7 +467,7 @@
   .detailOverlayInner {
     width: min(94vw, 560px);
     padding: 0 16px 0;
-    transform: translateY(-30%);
+    transform: translateY(20%);
   }
 }
 
