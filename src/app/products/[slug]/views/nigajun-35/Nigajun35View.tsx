@@ -171,7 +171,7 @@ export default function Nigajun35View({ product }: Props) {
                 나는 흔한 성분으로 연구하지 않아
               </p>
               <p className={styles.detailOverlayText}>
-                천연 성분, 나노 입자, 줄기세포, 성장 인자, 리포좀, 비타민.
+                천연 성분, 나노 입자, 줄기세포, 성장 인자, 리포좀.
               </p>
               <p className={styles.detailOverlayText}>
                 이러한 익숙한 성분들은 우리의 연구 방향과 달라
