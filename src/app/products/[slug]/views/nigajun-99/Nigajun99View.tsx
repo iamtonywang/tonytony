@@ -210,7 +210,7 @@ export default function Nigajun99View({ product }: Props) {
                 There are many disadvantages Excessive publicity will only cause more pain and frustration for users suffering from the itching. Stop it now. The pain of being hurt by lies is even greater
               </p>
 
-              <div className={styles.detailCtaRow}>
+              <div className={styles.detailCtaRow} style={{ marginTop: '24px' }}>
                 <button className={styles.detailBuyButton} disabled>
                   Coming Soon
                 </button>
