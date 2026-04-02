@@ -193,7 +193,13 @@ export default function Nigajun28View({ product }: Props) {
               </p>
               <p className={styles.detailOverlayText}>Genetic Toothpaste는 바로 이 지점에서 시작했어</p>
               <p className={styles.detailOverlayText}>
-                치약을 단순한 세정 제품이 아니라 구강 조직의 생물학적
+                <span className={styles.pcOnly}>
+                  치약을 단순한 세정 제품이 아니라 구강 조직의 생물학적
+                </span>
+                <span className={styles.mobileOnly}>
+                  치약을 단순한 세정 제품이 아니라<br />
+                  구강 조직의 생물학적
+                </span>
               </p>
               <p className={styles.detailOverlayText}>신호를 조절하는 바이오 플랫폼으로 재정의했어.</p>
               <p className={styles.detailOverlayText}>Proteo Phyto Complex로</p>
