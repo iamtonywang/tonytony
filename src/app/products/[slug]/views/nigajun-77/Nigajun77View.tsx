@@ -140,13 +140,9 @@ export default function Nigajun77View({ product }: Props) {
 
       <section className={styles.detailIntroSection}>
         <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <p className={styles.detailIntroLead}>Our Work</p>
-        <p className={styles.detailIntroText}>
-          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
-        </p>
-        <p className={styles.detailIntroText}>
-          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
-        </p>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 77</h2>
+        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex.</h3>
+        <p className={styles.detailIntroText}>Lower Body Fat Improvement Cream</p>
       </section>
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
@@ -156,7 +152,7 @@ export default function Nigajun77View({ product }: Props) {
         <div className={styles.detailVisualMedia}>
           <img
             className={styles.detailVisualImage}
-            src="/landing-assets/product-hero-main.webp"
+            src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG product visual"
             draggable={false}
           />
@@ -178,8 +174,72 @@ export default function Nigajun77View({ product }: Props) {
                 </button>
               </div>
 
-              <p className={styles.detailDescription}>
-                {product?.shortDescription ?? "Core product information placeholder."}
+              <p className={styles.detailOverlayText}>
+                종아리는 특별한 지방 조직이다.
+              </p>
+              <p className={styles.detailOverlayText}>
+                움직임이 많지만 지방은 쉽게 사라지지 않는다.
+              </p>
+              <p className={styles.detailOverlayText}>
+                이유는 단순하다.
+              </p>
+              <p className={styles.detailOverlayText}>
+                종아리 지방은 부종이 아니라 대사 환경에 의해 유지된다.
+              </p>
+              <p className={styles.detailOverlayText}>
+                지방세포는 단순히 지방을 저장하는 저장소가 아니다.
+              </p>
+              <p className={styles.detailOverlayText}>
+                지방세포는 에너지 저장 모드와 에너지 소비 모드 사이를 오가는 대사 세포다.
+              </p>
+              <p className={styles.detailOverlayText}>
+                문제는 대부분의 종아리 지방이 저장 모드에 고정되어 있다는 것이다.
+              </p>
+              <p className={styles.detailOverlayText}>
+                지방 합성 효소 FAS · ACC 경로가 억제되면서
+              </p>
+              <p className={styles.detailOverlayText}>
+                지방세포는 더 이상 축적 환경을 유지하기 어렵다.
+              </p>
+              <p className={styles.detailOverlayText}>
+                지방 조직 주변에서 나타나는 저등급 염증(low-grade inflammation)
+              </p>
+              <p className={styles.detailOverlayText}>
+                지방 축적을 유지시키는 중요한 조건이다
+              </p>
+
+              <p className={styles.detailOverlayText}>
+                The calf is a special fat tissue.
+              </p>
+              <p className={styles.detailOverlayText}>
+                There is a lot of movement, but fat does not disappear easily.
+              </p>
+              <p className={styles.detailOverlayText}>
+                The reason is simple.
+              </p>
+              <p className={styles.detailOverlayText}>
+                Calf fat is maintained by metabolic environment, not by edema.
+              </p>
+              <p className={styles.detailOverlayText}>
+                Fat cells are not just stores of fat.
+              </p>
+              <p className={styles.detailOverlayText}>
+                Adipocytes are metabolic cells that move between the energy storage mode and the energy consumption mode.
+              </p>
+              <p className={styles.detailOverlayText}>
+                The problem is that most calf fat is fixed in storage mode.
+              </p>
+              <p className={styles.detailOverlayText}>
+                As the fat synthase FAS ACC pathway is suppressed
+              </p>
+              <p className={styles.detailOverlayText}>
+                Adipocytes are no longer able to maintain an accumulation environment.
+              </p>
+              <p className={styles.detailOverlayText}>
+                Low-grade inflammation around adipose tissue
+              </p>
+              <p className={styles.detailOverlayText}>
+                be an important condition for maintaining fat accumulation
               </p>
             </div>
           </div>
@@ -189,8 +249,12 @@ export default function Nigajun77View({ product }: Props) {
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
       <section className={styles.detailCopySection}>
+        <p className={styles.detailCopyText}>TONYWANG</p>
         <p className={styles.detailCopyText}>
-          Detailed product statement placeholder.
+          Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
+        </p>
+        <p className={styles.detailCopyText}>
+          Since August 2025 TONYWANG
         </p>
       </section>
 
@@ -208,5 +272,6 @@ export default function Nigajun77View({ product }: Props) {
     </article>
   );
 }
+
 
 
