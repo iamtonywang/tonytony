@@ -184,10 +184,22 @@ export default function Nigajun77View({ product }: Props) {
                 지방세포는 단순히 지방을 저장하는 저장소가 아니다.
               </p>
               <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                지방세포는 에너지 저장 모드와 에너지 소비 모드 사이를 오가는 대사 세포다.
+                <span className={styles.pcOnly}>
+                  지방세포는 에너지 저장 모드와 에너지 소비 모드 사이를 오가는 대사 세포다.
+                </span>
+                <span className={styles.mobileOnly}>
+                  지방세포는 에너지 저장 모드와 에너지 소비 모드 사이를<br />
+                  오가는 대사 세포다.
+                </span>
               </p>
               <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                문제는 대부분의 종아리 지방이 저장 모드에 고정되어 있다는 것이다.
+                <span className={styles.pcOnly}>
+                  문제는 대부분의 종아리 지방이 저장 모드에 고정되어 있다는 것이다.
+                </span>
+                <span className={styles.mobileOnly}>
+                  문제는 대부분의 종아리 지방이 저장 모드에<br />
+                  고정되어 있다는 것이다.
+                </span>
               </p>
               <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방 합성 효소 FAS · ACC 경로가 억제되면서
@@ -206,10 +218,12 @@ export default function Nigajun77View({ product }: Props) {
                 The calf is a special fat tissue.
               </p>
               <p className={styles.detailOverlayText}>
-                There is a lot of movement, but fat does not disappear easily.
-              </p>
-              <p className={styles.detailOverlayText}>
-                The reason is simple.
+                <span className={styles.pcOnly}>
+                  There is a lot of movement, but fat does not disappear easily. The reason is simple.
+                </span>
+                <span className={styles.mobileOnly}>
+                  There is a lot of movement, but fat does not disappear easily. The reason is simple.
+                </span>
               </p>
               <p className={styles.detailOverlayText}>
                 Calf fat is maintained by metabolic environment, not by edema.
@@ -221,7 +235,13 @@ export default function Nigajun77View({ product }: Props) {
                 Adipocytes are metabolic cells that move between the energy storage mode and the energy consumption mode.
               </p>
               <p className={styles.detailOverlayText}>
-                The problem is that most calf fat is fixed in storage mode.
+                <span className={styles.pcOnly}>
+                  The problem is that most calf fat is fixed in storage mode.
+                </span>
+                <span className={styles.mobileOnly}>
+                  The problem is that most calf fat is<br />
+                  fixed in storage mode.
+                </span>
               </p>
               <p className={styles.detailOverlayText}>
                 As the fat synthase FAS ACC pathway is suppressed
