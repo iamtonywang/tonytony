@@ -140,13 +140,9 @@ export default function Nigajun55View({ product }: Props) {
 
       <section className={styles.detailIntroSection}>
         <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <p className={styles.detailIntroLead}>Our Work</p>
-        <p className={styles.detailIntroText}>
-          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
-        </p>
-        <p className={styles.detailIntroText}>
-          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
-        </p>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 55</h2>
+        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
+        <p className={styles.detailIntroText}>striae distensae Cream</p>
       </section>
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
@@ -156,7 +152,7 @@ export default function Nigajun55View({ product }: Props) {
         <div className={styles.detailVisualMedia}>
           <img
             className={styles.detailVisualImage}
-            src="/landing-assets/product-hero-main.webp"
+            src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG product visual"
             draggable={false}
           />
@@ -178,9 +174,16 @@ export default function Nigajun55View({ product }: Props) {
                 </button>
               </div>
 
-              <p className={styles.detailDescription}>
-                {product?.shortDescription ?? "Core product information placeholder."}
-              </p>
+              <p className={styles.detailOverlayText}>TONYWANG</p>
+              <p className={styles.detailOverlayText}>튼살(striae distensae)은 단순한 피부 표면의 물리적 손상이 아니다</p>
+              <p className={styles.detailOverlayText}>피부 세포의 세포신호 전달(cellular signaling)과</p>
+              <p className={styles.detailOverlayText}>단백질 발현 조절(protein expression modulation) 재활성화 중점</p>
+              <p className={styles.detailOverlayText}>Bio-Active Complex는 섬유아세포의 대사 활성도를 증가</p>
+              <p className={styles.detailOverlayText}>콜라겐 합성 경로와 ECM 리모델링 경로를 동시에 유도한다.</p>
+              <p className={styles.detailOverlayText}>특히 성장 인자 신호와 유사한 세포 활성 환경을 형성하여</p>
+              <p className={styles.detailOverlayText}>진피 조직 내 콜라겐 재배열(collagen re-organization),</p>
+              <p className={styles.detailOverlayText}>엘라스틴 네트워크 복원, 세포외기질 재구성을 촉진한다.</p>
+              <p className={styles.detailOverlayText}>Since August 2025 TONYWANG</p>
             </div>
           </div>
         </div>
@@ -189,9 +192,11 @@ export default function Nigajun55View({ product }: Props) {
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
       <section className={styles.detailCopySection}>
+        <p className={styles.detailCopyText}>TONYWANG</p>
         <p className={styles.detailCopyText}>
-          Detailed product statement placeholder.
+          Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
         </p>
+        <p className={styles.detailCopyText}>Since August 2025 TONYWANG</p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
@@ -208,5 +213,6 @@ export default function Nigajun55View({ product }: Props) {
     </article>
   );
 }
+
 
 
