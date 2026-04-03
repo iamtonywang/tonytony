@@ -196,7 +196,7 @@ export default function Nigajun17View({ product }: Props) {
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 textAlign: "center",
-                opacity: hideText && !isPlaying ? 0 : 1,
+                opacity: showFinalBlock || isPlaying ? 1 : (hideText ? 0 : 1),
                 transition: "opacity 2s ease",
               }}
             >
@@ -237,15 +237,29 @@ export default function Nigajun17View({ product }: Props) {
               onClick={() => {
                 const video = videoOverlayRef.current?.querySelector("video") as HTMLVideoElement | null;
                 if (!video) {
+                  // 2초 이전 클릭 → 의도 저장
+                  setPendingPlay(true);
                   return;
                 }
                 try {
                   if (video.paused) {
                     video.muted = false;
-                    void video.play();
+                    const p = video.play();
+                    if (p && typeof p.then === "function") {
+                      p.then(() => {
+                        // 재생 성공 시 상태는 play 이벤트에서 설정
+                      }).catch(() => {
+                        // 실패 시 상태 전환 금지
+                      });
+                    }
                   } else {
                     video.pause();
                     video.currentTime = 0;
+                    // 정지 시 시퀀스 상태 초기화
+                    setIsPlaying(false);
+                    setActiveLineIndex(0);
+                    setLinePhase("enter");
+                    setShowFinalBlock(false);
                   }
                 } catch {}
               }}
