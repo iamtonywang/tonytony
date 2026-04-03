@@ -39,7 +39,8 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
     .in('product_status', ['active', 'sold_out']);
 
   if (productsError) {
-    throw new Error(`Failed to load public products: ${productsError.message}`);
+    console.error("Supabase error:", productsError.message);
+    return [];
   }
 
   const productRows: ProductRowWithId[] = Array.isArray(products) ? products : [];

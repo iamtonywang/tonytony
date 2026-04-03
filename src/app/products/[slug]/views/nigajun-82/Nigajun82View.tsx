@@ -7,15 +7,36 @@ import type { ProductMinimal } from "@/app/products/_server/types";
 // 82 전용 시퀀스 상수(파일 내 전용, 원문/순서 변경 없음)
 const HERO_SEQUENCE_82: string[] = [
   "TONYWANG",
-  "NIGAJUN 82",
-  "Development of Plant Cell Genetic Protein",
-  "Molecular Bio-Bio-Bioengineering",
-  "You have to love yourself",
+  "NIGAJUN82",
+  "I love you.for ever",
+  "I want to be the only woman you have",
+  "I want to be a woman loved by you",
+  "Because I love you",
+  "I want to be by your side all the time",
+  "You need to know how I feel",
+  "Our time",
+  "our place",
+  "The path we walked",
+  "I love all of this",
+  "I don't want to lose you to anyone else then",
+  "I think I'll be so sad",
+  "I don't think I can handle it",
+  "I always pray to the Lord",
+  "i want us to be happy forever",
+  "Pray for our love to be with you forever",
+  "When I see you, my heart always beats vigorously",
+  "When I think of you, my heart heats up",
+  "I love you forever.",
 ];
 // "TONYWANG"만 강조(25px), 나머지 14px
-const HERO_EMPHASIS_82: boolean[] = [true, false, false, false, false];
+const HERO_EMPHASIS_82: boolean[] = [
+  true, // "TONYWANG"
+  false, // "NIGAJUN82"
+  false, false, false, false, false, false, false, false, false,
+  false, false, false, false, false, false, false, false, false, false,
+];
 // 최종 블록(필요 시 전체 합본 표기)
-const HERO_FINAL_BLOCK_82: string = HERO_SEQUENCE_82.join(" ");
+const HERO_FINAL_BLOCK_82: string = "Since August 2025 TONYWANG";
 
 interface Props {
   product?: ProductMinimal;
@@ -143,7 +164,7 @@ export default function Nigajun82View({ product }: Props) {
     }
 
     const timers: number[] = [];
-    const FINAL_BLOCK_MS = 2000;
+    const FINAL_BLOCK_MS = 4000;
     const effective = Math.max(0, videoDuration * 1000 - FINAL_BLOCK_MS);
 
     if (effective === 0) {
@@ -253,14 +274,7 @@ export default function Nigajun82View({ product }: Props) {
                 </span>
               )}
               {isPlaying && showFinalBlock && (
-                <span
-                  className={[
-                    styles.videoFinalBlock,
-                    HERO_FINAL_BLOCK_82.includes("TONYWANG") ? styles.videoTextEmphasis : "",
-                  ].join(" ")}
-                >
-                  {HERO_FINAL_BLOCK_82}
-                </span>
+                <span className={styles.videoFinalBlock}>{HERO_FINAL_BLOCK_82}</span>
               )}
             </h1>
             <button
