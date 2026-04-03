@@ -42,7 +42,7 @@ export async function POST(req: Request) {
   const loginId = isNonEmptyString(body?.login_id) ? body.login_id.trim() : "";
   const password = typeof body?.password === "string" ? body.password : "";
   const phoneRaw = isNonEmptyString(body?.phone) ? body.phone.trim() : "";
-  const phone = phoneRaw.replace(/\s+/g, "");
+  const phone = phoneRaw.replace(/\D/g, "");
 
   // Basic server-side validation (client format checks only; final shape check stays here).
   const minPasswordLength = 6;

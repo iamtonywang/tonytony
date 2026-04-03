@@ -26,7 +26,7 @@ export default function SignupForm() {
     setSuccess(null);
 
     const loginIdTrimmed = loginId.trim();
-    const phoneTrimmed = phone.trim().replace(/\s+/g, "");
+    const phoneTrimmed = phone.trim().replace(/\D/g, "");
 
     // Client-side format validation only.
     if (!loginIdTrimmed) {
