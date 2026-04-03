@@ -4,6 +4,33 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Nigajun28View.module.css";
 import type { ProductMinimal } from "@/app/products/_server/types";
 
+// 28 전용 시퀀스(원문/순서 그대로 적용)
+const HERO_SEQUENCE_28: string[] = [
+  "TONYWANG",
+  "NIGAJUN 28",
+  "New Oral Care",
+  "I don't like the smell",
+  "I hate it",
+  "Smell is a scary thing",
+  "I can't even kiss the woman I love",
+  "I'm ashamed of her",
+  "How can I get rid of the smell?",
+  "I want to talk to people a lot",
+  "I want to sit close to the woman I love and talk to",
+  "I have bad breath",
+  "I don't like the smell",
+  "This is so embarrassing.",
+  "Oh, my God. How do we solve this problem?",
+  "I hate fibroblasts",
+  "I want to kiss the woman I love",
+  "I'd like to talk to you in person",
+  "Proteo Phyto Complex",
+  "Genetic Toothpaste",
+  "Since August 2025 TONYWANG",
+];
+// TONYWANG만 25px, 나머지 14px
+const HERO_EMPHASIS_28: boolean[] = HERO_SEQUENCE_28.map((line) => line === "TONYWANG");
+
 interface Props {
   product?: ProductMinimal;
 }
@@ -12,6 +39,13 @@ export default function Nigajun28View({ product }: Props) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const [hideText, setHideText] = useState(false);
+  // 시퀀스 제어 상태 (hideText는 2초 intro 전용 유지)
+  const [hasPlaybackStarted, setHasPlaybackStarted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [activeLineIndex, setActiveLineIndex] = useState<number>(0);
+  const [linePhase, setLinePhase] = useState<"enter" | "hold" | "exit">("enter");
+  const [showFinalBlock, setShowFinalBlock] = useState(false); // 28은 최종 블록 미사용(단일 마지막 문구)
+  const [videoDuration, setVideoDuration] = useState<number | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -31,11 +65,37 @@ export default function Nigajun28View({ product }: Props) {
       videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
+      // loadedmetadata: 유효 duration 저장
+      videoEl.addEventListener("loadedmetadata", () => {
+        const d = Number.isFinite(videoEl.duration) ? videoEl.duration : NaN;
+        if (!Number.isNaN(d) && d > 0 && d !== Infinity) {
+          setVideoDuration(d);
+        }
+      });
+      // play: 실제 재생 성공 시만 시퀀스 시작
+      videoEl.addEventListener("play", () => {
+        setIsPlaying(true);
+        setHasPlaybackStarted(true);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
+      });
+      // pause: 상태 초기화(0초 복귀는 버튼/ended에서 처리)
+      videoEl.addEventListener("pause", () => {
+        setIsPlaying(false);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
+      });
       videoEl.addEventListener("ended", () => {
         try {
           videoEl.pause();
           videoEl.currentTime = 0;
         } catch {}
+        setIsPlaying(false);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
       });
 
       // connect asset source (single pc asset as default)
@@ -77,6 +137,68 @@ export default function Nigajun28View({ product }: Props) {
     };
   }, []);
 
+  // duration 기반 시퀀스 진행
+  useEffect(() => {
+    if (!hasPlaybackStarted || !isPlaying) return;
+    if (!videoDuration || !Number.isFinite(videoDuration) || videoDuration <= 0) return;
+
+    const total = HERO_SEQUENCE_28.length;
+    if (total === 0) return;
+
+    const timers: number[] = [];
+    const LAST_HOLD_MS = 2000; // 마지막 단일 문구 유지 시간
+    const effective = Math.max(0, videoDuration * 1000 - LAST_HOLD_MS);
+
+    const lastIndex = total - 1;
+    const linesToDistribute = Math.max(0, total - 1); // 마지막 문구 제외하고 분배
+
+    if (linesToDistribute === 0) {
+      const showLast = window.setTimeout(() => {
+        setActiveLineIndex(lastIndex);
+        setLinePhase("enter");
+      }, 0);
+      timers.push(showLast);
+      return () => {
+        timers.forEach((id) => clearTimeout(id));
+      };
+    }
+
+    const sliceMs = effective / linesToDistribute;
+    const enterMs = sliceMs * 0.2;
+    const holdMs = sliceMs * 0.6;
+
+    // 앞 라인들 스케줄링(마지막 제외)
+    for (let i = 0; i < linesToDistribute; i++) {
+      const base = Math.max(0, Math.round(sliceMs * i));
+      const tEnter = window.setTimeout(() => {
+        setActiveLineIndex(i);
+        setLinePhase("enter");
+      }, base);
+      timers.push(tEnter);
+
+      const tHold = window.setTimeout(() => {
+        setLinePhase("hold");
+      }, base + Math.round(enterMs));
+      timers.push(tHold);
+
+      const tExit = window.setTimeout(() => {
+        setLinePhase("exit");
+      }, base + Math.round(enterMs + holdMs));
+      timers.push(tExit);
+    }
+
+    // 마지막 문구: 앞 라인 종료 직후 표시, 2초 유지(상태 전환만)
+    const lastStart = Math.round(sliceMs * linesToDistribute);
+    const tLast = window.setTimeout(() => {
+      setActiveLineIndex(lastIndex);
+      setLinePhase("enter");
+    }, lastStart);
+    timers.push(tLast);
+
+    return () => {
+      timers.forEach((id) => clearTimeout(id));
+    };
+  }, [hasPlaybackStarted, isPlaying, videoDuration]);
   return (
     <article className={styles.detailPage}>
       <section className={styles.heroSection}>
@@ -94,25 +216,44 @@ export default function Nigajun28View({ product }: Props) {
             </h1>
 
             <h1
+              className={styles.videoTextWrap}
               style={{
                 position: "absolute",
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 textAlign: "center",
-                opacity: hideText ? 0 : 1,
+                opacity: hideText && !isPlaying ? 0 : 1,
                 transition: "opacity 2s ease",
               }}
             >
-              <span>TONYWANG</span>
-              <br />
-              <span>NIGAJUN 28</span>
-              <br />
-              <span>Development of Plant Cell Genetic Protein</span>
-              <br />
-              <span>Molecular Bio-Bio-Bioengineering</span>
-              <br />
-              <span>Do the best you can in your life</span>
+              {/* 재생 전: 기존 intro 문구 유지 */}
+              {!isPlaying && (
+                <>
+                  <span>TONYWANG</span>
+                  <br />
+                  <span>NIGAJUN 28</span>
+                  <br />
+                  <span>Development of Plant Cell Genetic Protein</span>
+                  <br />
+                  <span>Molecular Bio-Bio-Bioengineering</span>
+                  <br />
+                  <span>Do the best you can in your life</span>
+                </>
+              )}
+
+              {/* 재생 중: 항상 1줄만 출력, 최종 블록 미사용 */}
+              {isPlaying && !showFinalBlock && (
+                <span
+                  className={[
+                    styles.videoText,
+                    HERO_EMPHASIS_28[activeLineIndex] ? styles.videoTextEmphasis : "",
+                    linePhase === "exit" ? styles.videoTextExit : "",
+                  ].join(" ")}
+                >
+                  {HERO_SEQUENCE_28[activeLineIndex]}
+                </span>
+              )}
             </h1>
             <button
               type="button"
