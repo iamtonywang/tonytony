@@ -520,6 +520,12 @@ end
 $$;
 
 -- 02_core_tables
+-- 인증/로그인 정책(설계 원칙 요약)
+-- - verification(이메일 확인 / SMS OTP)은 사용하지 않는다. 가입 직후 즉시 사용 가능.
+-- - authentication은 Supabase Auth가 담당하며 비밀번호 검증/세션 생성 역할만 수행한다.
+-- - Auth 인증 식별축은 email이며, phone은 회원 정보 수집 항목이다.
+-- - 로그인 UX는 login_id + password로 입력받되, 서버 축에서 login_id → email 조회 후 Auth(email+password)로 인증한다.
+-- - public.users는 도메인 계정 원본이며 auth_user_id, login_id, phone, email, user_status, last_login_at을 관리한다.
 create table users (
   id bigserial primary key,
   auth_user_id uuid not null,
@@ -2000,6 +2006,32 @@ as $$
     where u.auth_user_id = auth.uid()
       and a.admin_status = 'active'
   );
+$$;
+
+-- login_id 기반 로그인 선판정용 서버 전용 보안 조회
+-- 역할:
+-- - 입력된 login_id로 public.users에서 email과 user_status를 안전하게 조회한다
+-- - 비밀번호 검증/세션 생성/인증 호출 책임은 없다
+-- - 미존재/중복/email 없음은 행 미반환으로 처리하여 상위 서버가 차단 판단하도록 한다
+create or replace function login_lookup_email_and_status(p_login_id text)
+returns table (
+  email text,
+  user_status user_status
+)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  with matched as (
+    select u.email, u.user_status
+    from users u
+    where u.login_id = p_login_id
+      and u.email is not null
+  )
+  select m.email, m.user_status
+  from matched m
+  where (select count(*) from matched) = 1;
 $$;
 
 create policy users_select_own

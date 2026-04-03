@@ -150,6 +150,10 @@ sales_metrics
 6. 인증 / 회원 / 프로필 구조
 6.1 인증 구조 원칙
 비밀번호와 세션은 Supabase Auth가 관리한다.
+verification(이메일 확인 / SMS OTP)은 사용하지 않는다. 가입 직후 즉시 사용 가능한 계정을 생성한다.
+authentication은 Supabase Auth가 담당하며 역할은 비밀번호 검증과 세션 생성으로 한정한다.
+이메일(email)은 Auth 인증 식별축으로 사용한다.
+phone은 인증 수단이 아니라 회원 정보 입력 항목이다.
 우리 서비스의 users 테이블은 비밀번호 저장 테이블이 아니다.
 즉 구조는 다음과 같다.
 Auth
@@ -157,18 +161,19 @@ Auth
 → users.auth_user_id 로 연결
 → users.id(bigint)를 내부 관계 PK로 사용
 6.2 회원가입 구조
-초기 회원가입은 최소 정보만 받는다.
+초기 회원가입은 아래 최소 정보를 받는다.
 회원가입 시 입력:
 login_id
 password
 phone
+email
 회원가입 시 저장:
 auth_user_id
 login_id
 phone
+email
 user_status
 초기 회원가입 시 저장하지 않는 것:
-email
 real_name
 zipcode
 address1
@@ -198,6 +203,17 @@ phone / email는 user_profiles에 두지 않는다.
 UUID(auth_user_id)는 내부 연결용이다.
 화면에 절대 노출하지 않는다.
 화면 식별 기준은 login_id / phone / email / real_name / 주소다.
+6.7 로그인 구조 원칙
+로그인 화면 입력 UX는 login_id + password를 유지한다.
+실제 인증 흐름은 login_id → (서버 축의 안전한 조회 구조 필요) → email 확보 → Auth(email + password) 로그인으로 한다.
+public.users.user_status는 로그인 전 선판정한다(서버 축). Auth 메타데이터(raw_user_meta_data)는 핵심 판정 기준으로 사용하지 않는다.
+6.8 로그인용 보안 조회 RPC 기준
+서버 전용 선판정 조회 RPC가 존재한다(로그인용).
+입력값은 login_id 1개다.
+반환값은 email, user_status 2개만 가진다.
+서버는 이 조회 결과로 user_status를 먼저 판정하고, active일 때만 Auth(email + password) 인증으로 연결한다.
+미존재 / 중복 / email 없음은 로그인 차단 대상으로 간주한다.
+해당 RPC는 비밀번호 검증/세션 생성 책임이 없다.
 7. 관리자 권한 구조
 admins는 별도 로그인 계정 테이블이 아니다.
 users 중 일부에 관리자 역할을 추가 부여하는 구조다.
@@ -785,7 +801,7 @@ BoardSection은 구조상 포함되지만 초기 렌더에는 포함하지 않�
 주문 생성 전 검증은 모두 서버 기준
 27.5 인증 페이지
 CSR 폼 기준
-회원가입은 login_id / password / phone 최소 구조
+회원가입은 login_id / password / phone / email 최소 구조
 추가 정보는 구매 또는 마이페이지에서 확정
 27.6 마이페이지
 마이페이지는 1개 Shell로 유지한다.
