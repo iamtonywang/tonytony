@@ -75,6 +75,13 @@ export async function POST(req: Request) {
     .limit(1);
 
   if (loginDupError) {
+    console.error(
+      "[signup][login-dup-check]",
+      loginDupError?.code,
+      loginDupError?.message,
+      loginDupError?.details,
+      loginDupError?.hint,
+    );
     return NextResponse.json(
       { ok: false, message: "회원가입에 실패했습니다." },
       { status: 500 },
@@ -95,6 +102,13 @@ export async function POST(req: Request) {
     .limit(1);
 
   if (phoneDupError) {
+    console.error(
+      "[signup][phone-dup-check]",
+      phoneDupError?.code,
+      phoneDupError?.message,
+      phoneDupError?.details,
+      phoneDupError?.hint,
+    );
     return NextResponse.json(
       { ok: false, message: "회원가입에 실패했습니다." },
       { status: 500 },
