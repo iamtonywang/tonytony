@@ -136,6 +136,14 @@ export async function POST(req: Request) {
     );
   }
 
+  // 지시문에 맞게, 이 단계의 성공 판정은 user 존재로만 처리한다.
+  if (!hasUser) {
+    return NextResponse.json(
+      { ok: false, message: "회원가입에 실패했습니다." },
+      { status: 400 },
+    );
+  }
+
   return NextResponse.json({ ok: true });
 }
 
