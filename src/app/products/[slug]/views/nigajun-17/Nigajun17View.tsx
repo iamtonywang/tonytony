@@ -4,6 +4,32 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Nigajun17View.module.css";
 import type { ProductMinimal } from "@/app/products/_server/types";
 
+// 17 전용 시퀀스(원문/순서 그대로 적용)
+const HERO_SEQUENCE_17: string[] = [
+  "TONYWANG",
+  "NIGAJUN 17",
+  "protein hair cream",
+  "It's all false that hair is created",
+  "I always cheated on him like that",
+  "I don't want to do that.",
+  "I can't make that promise",
+  "Lies are unforgivable",
+  "Isn't it sad that you don't have hair",
+  "You can take care of yourself more",
+  "Emphasize your personality as much as possible",
+  "You love yourself",
+  "Respect yourself",
+  "Showing off as much as you want",
+  "You have more personality than any other model",
+  "People respect you",
+  "Hair doesn't matter",
+  "Put a spell on yourself",
+  "You are an attractive person",
+  "Since August 2025 TONYWANG",
+];
+// TONYWANG만 25px, 나머지 14px
+const HERO_EMPHASIS_17: boolean[] = HERO_SEQUENCE_17.map((line) => line === "TONYWANG");
+
 interface Props {
   product?: ProductMinimal;
 }
@@ -12,6 +38,13 @@ export default function Nigajun17View({ product }: Props) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const [hideText, setHideText] = useState(false);
+  // 시퀀스 제어 상태 (hideText는 2초 intro 전용 유지)
+  const [hasPlaybackStarted, setHasPlaybackStarted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [activeLineIndex, setActiveLineIndex] = useState<number>(0);
+  const [linePhase, setLinePhase] = useState<"enter" | "hold" | "exit">("enter");
+  const [showFinalBlock, setShowFinalBlock] = useState(false);
+  const [videoDuration, setVideoDuration] = useState<number | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -77,6 +110,68 @@ export default function Nigajun17View({ product }: Props) {
     };
   }, []);
 
+  // duration 기반 시퀀스 진행
+  useEffect(() => {
+    if (!hasPlaybackStarted || !isPlaying) return;
+    if (!videoDuration || !Number.isFinite(videoDuration) || videoDuration <= 0) return;
+
+    const total = HERO_SEQUENCE_17.length;
+    if (total === 0) return;
+
+    const timers: number[] = [];
+    const LAST_HOLD_MS = 2000; // 마지막 단일 문구 유지 시간
+    const effective = Math.max(0, videoDuration * 1000 - LAST_HOLD_MS);
+
+    const lastIndex = total - 1;
+    const linesToDistribute = Math.max(0, total - 1); // 마지막 문구 제외하고 분배
+
+    if (linesToDistribute === 0) {
+      const showLast = window.setTimeout(() => {
+        setActiveLineIndex(lastIndex);
+        setLinePhase("enter");
+      }, 0);
+      timers.push(showLast);
+      return () => {
+        timers.forEach((id) => clearTimeout(id));
+      };
+    }
+
+    const sliceMs = effective / linesToDistribute;
+    const enterMs = sliceMs * 0.2;
+    const holdMs = sliceMs * 0.6;
+
+    // 앞 라인들 스케줄링(마지막 제외)
+    for (let i = 0; i < linesToDistribute; i++) {
+      const base = Math.max(0, Math.round(sliceMs * i));
+      const tEnter = window.setTimeout(() => {
+        setActiveLineIndex(i);
+        setLinePhase("enter");
+      }, base);
+      timers.push(tEnter);
+
+      const tHold = window.setTimeout(() => {
+        setLinePhase("hold");
+      }, base + Math.round(enterMs));
+      timers.push(tHold);
+
+      const tExit = window.setTimeout(() => {
+        setLinePhase("exit");
+      }, base + Math.round(enterMs + holdMs));
+      timers.push(tExit);
+    }
+
+    // 마지막 문구: 앞 라인 종료 직후 표시, 2초 유지(상태 전환만)
+    const lastStart = Math.round(sliceMs * linesToDistribute);
+    const tLast = window.setTimeout(() => {
+      setActiveLineIndex(lastIndex);
+      setLinePhase("enter");
+    }, lastStart);
+    timers.push(tLast);
+
+    return () => {
+      timers.forEach((id) => clearTimeout(id));
+    };
+  }, [hasPlaybackStarted, isPlaying, videoDuration]);
   return (
     <article className={styles.detailPage}>
       <section className={styles.heroSection}>
@@ -93,25 +188,44 @@ export default function Nigajun17View({ product }: Props) {
               {product?.productName ?? "NIGAJUN 17"}
             </h1>
             <h1
+              className={styles.videoTextWrap}
               style={{
                 position: "absolute",
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 textAlign: "center",
-                opacity: hideText ? 0 : 1,
+                opacity: hideText && !isPlaying ? 0 : 1,
                 transition: "opacity 2s ease",
               }}
             >
-              <span>TONYWANG</span>
-              <br />
-              <span>NIGAJUN 17</span>
-              <br />
-              <span>Development of Plant Cell Genetic Protein</span>
-              <br />
-              <span>Molecular Bio-Bio-Bioengineering</span>
-              <br />
-              <span>Life is beautiful and tearful</span>
+              {/* 재생 전: 기존 intro 문구 유지 */}
+              {!isPlaying && (
+                <>
+                  <span>TONYWANG</span>
+                  <br />
+                  <span>NIGAJUN 17</span>
+                  <br />
+                  <span>Development of Plant Cell Genetic Protein</span>
+                  <br />
+                  <span>Molecular Bio-Bio-Bioengineering</span>
+                  <br />
+                  <span>Life is beautiful and tearful</span>
+                </>
+              )}
+
+              {/* 재생 중: 항상 1줄만 출력, 최종 블록 미사용 */}
+              {isPlaying && !showFinalBlock && (
+                <span
+                  className={[
+                    styles.videoText,
+                    HERO_EMPHASIS_17[activeLineIndex] ? styles.videoTextEmphasis : "",
+                    linePhase === "exit" ? styles.videoTextExit : "",
+                  ].join(" ")}
+                >
+                  {HERO_SEQUENCE_17[activeLineIndex]}
+                </span>
+              )}
             </h1>
             <button
               type="button"
