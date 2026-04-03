@@ -46,6 +46,7 @@ export default function Nigajun17View({ product }: Props) {
   const [linePhase, setLinePhase] = useState<"enter" | "hold" | "exit">("enter");
   const [showFinalBlock, setShowFinalBlock] = useState(false);
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
+  const [pendingPlay, setPendingPlay] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -65,11 +66,37 @@ export default function Nigajun17View({ product }: Props) {
       videoEl.loop = false;
       videoEl.preload = "metadata";
       videoEl.setAttribute("aria-hidden", "true");
+      // 이벤트 리스너 연결
+      videoEl.addEventListener("loadedmetadata", () => {
+        const d = videoEl.duration;
+        if (Number.isFinite(d) && d > 0) {
+          setVideoDuration(d);
+        }
+      });
+      videoEl.addEventListener("play", () => {
+        setHasPlaybackStarted(true);
+        setIsPlaying(true);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
+      });
+      videoEl.addEventListener("pause", () => {
+        setIsPlaying(false);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
+        setPendingPlay(false);
+      });
       videoEl.addEventListener("ended", () => {
         try {
           videoEl.pause();
           videoEl.currentTime = 0;
         } catch {}
+        setIsPlaying(false);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
+        setPendingPlay(false);
       });
 
       // connect asset source (single pc asset as default)
@@ -110,6 +137,35 @@ export default function Nigajun17View({ product }: Props) {
       cancelAnimationFrame(rafId);
     };
   }, []);
+
+  // pendingPlay 소비: mount 이후 자동 재생 시도
+  useEffect(() => {
+    if (!pendingPlay) return;
+    const videoEl = videoOverlayRef.current?.querySelector("video") as HTMLVideoElement | null;
+    if (!videoEl) return;
+
+    let cancelled = false;
+    const run = async () => {
+      try {
+        videoEl.muted = false;
+        await videoEl.play();
+        if (cancelled) return;
+        setHasPlaybackStarted(true);
+        setIsPlaying(true);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
+      } catch {
+        if (!cancelled) setIsPlaying(false);
+      } finally {
+        if (!cancelled) setPendingPlay(false);
+      }
+    };
+    void run();
+    return () => {
+      cancelled = true;
+    };
+  }, [pendingPlay]);
 
   // duration 기반 시퀀스 진행
   useEffect(() => {
@@ -196,12 +252,12 @@ export default function Nigajun17View({ product }: Props) {
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 textAlign: "center",
-                opacity: showFinalBlock || isPlaying ? 1 : (hideText ? 0 : 1),
+                opacity: (!hasPlaybackStarted && hideText && !isPlaying) ? 0 : 1,
                 transition: "opacity 2s ease",
               }}
             >
-              {/* 재생 전: 기존 intro 문구 유지 */}
-              {!isPlaying && (
+              {/* 렌더 분기 */}
+              {!hasPlaybackStarted && !hideText && (
                 <>
                   <span>TONYWANG</span>
                   <br />
@@ -215,8 +271,7 @@ export default function Nigajun17View({ product }: Props) {
                 </>
               )}
 
-              {/* 재생 중: 1줄 시퀀스 또는 최종 블록 */}
-              {isPlaying && !showFinalBlock && (
+              {hasPlaybackStarted && isPlaying && !showFinalBlock && (
                 <span
                   className={[
                     styles.videoText,
@@ -227,14 +282,15 @@ export default function Nigajun17View({ product }: Props) {
                   {HERO_SEQUENCE_17[activeLineIndex]}
                 </span>
               )}
-              {isPlaying && showFinalBlock && (
+              {hasPlaybackStarted && showFinalBlock && (
                 <span className={styles.videoFinalBlock}>{HERO_FINAL_BLOCK_17}</span>
               )}
+              {!( (!hasPlaybackStarted && !hideText) || (hasPlaybackStarted && isPlaying && !showFinalBlock) || (hasPlaybackStarted && showFinalBlock) ) ? "" : null}
             </h1>
             <button
               type="button"
               className={styles.playButton}
-              onClick={() => {
+              onClick={async () => {
                 const video = videoOverlayRef.current?.querySelector("video") as HTMLVideoElement | null;
                 if (!video) {
                   // 2초 이전 클릭 → 의도 저장
@@ -244,24 +300,25 @@ export default function Nigajun17View({ product }: Props) {
                 try {
                   if (video.paused) {
                     video.muted = false;
-                    const p = video.play();
-                    if (p && typeof p.then === "function") {
-                      p.then(() => {
-                        // 재생 성공 시 상태는 play 이벤트에서 설정
-                      }).catch(() => {
-                        // 실패 시 상태 전환 금지
-                      });
-                    }
+                    await video.play();
+                    setHasPlaybackStarted(true);
+                    setIsPlaying(true);
+                    setActiveLineIndex(0);
+                    setLinePhase("enter");
+                    setShowFinalBlock(false);
                   } else {
                     video.pause();
                     video.currentTime = 0;
-                    // 정지 시 시퀀스 상태 초기화
                     setIsPlaying(false);
                     setActiveLineIndex(0);
                     setLinePhase("enter");
                     setShowFinalBlock(false);
+                    setPendingPlay(false);
                   }
-                } catch {}
+                } catch {
+                  setIsPlaying(false);
+                  return;
+                }
               }}
               aria-label="Toggle video playback"
             />
