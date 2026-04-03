@@ -1,6 +1,7 @@
 import 'server-only';
 
-import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 // Debug env loading (temporary, per instruction)
 console.log('ENV URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
@@ -11,7 +12,7 @@ console.log('CWD:', process.cwd());
  * Returns a server-only, read-only configured Supabase client.
  * Throws a descriptive error when required environment variables are missing.
  */
-export function getSupabaseServerClient(): SupabaseClient {
+export function getSupabaseServerClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -22,11 +23,28 @@ export function getSupabaseServerClient(): SupabaseClient {
     throw new Error('Missing required environment variable: NEXT_PUBLIC_SUPABASE_ANON_KEY');
   }
 
-  return createClient(url, anonKey, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-      detectSessionInUrl: false,
+  const cookieStore = cookies();
+
+  return createServerClient(url, anonKey, {
+    cookies: {
+      get(name: string) {
+        return cookieStore.get(name)?.value;
+      },
+      set(name: string, value: string, options: CookieOptions) {
+        cookieStore.set({
+          name,
+          value,
+          ...options,
+        });
+      },
+      remove(name: string, options: CookieOptions) {
+        cookieStore.set({
+          name,
+          value: '',
+          ...options,
+          maxAge: 0,
+        });
+      },
     },
   });
 }
