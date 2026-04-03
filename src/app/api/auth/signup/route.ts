@@ -33,6 +33,7 @@ export async function POST(req: Request) {
     const parsed = (await req.json()) as SignupRequestBody;
     body = parsed;
   } catch {
+    console.error("[signup][400][bad-json]");
     return NextResponse.json(
       { ok: false, message: "잘못된 요청 형식입니다." },
       { status: 400 },
@@ -47,18 +48,21 @@ export async function POST(req: Request) {
   // Basic server-side validation (client format checks only; final shape check stays here).
   const minPasswordLength = 6;
   if (!loginId) {
+    console.error("[signup][400][invalid-login-id]", loginId);
     return NextResponse.json(
       { ok: false, message: "로그인 ID를 입력해 주세요." },
       { status: 400 },
     );
   }
   if (!password || password.length < minPasswordLength) {
+    console.error("[signup][400][invalid-password]", loginId, phone);
     return NextResponse.json(
       { ok: false, message: "비밀번호를 올바르게 입력해 주세요." },
       { status: 400 },
     );
   }
   if (!phone || !validateBasicPhone(phone)) {
+    console.error("[signup][400][invalid-phone]", phone);
     return NextResponse.json(
       { ok: false, message: "전화번호를 올바르게 입력해 주세요." },
       { status: 400 },
@@ -137,6 +141,7 @@ export async function POST(req: Request) {
   });
 
   if (error) {
+    console.error("[signup][400][signUp-error]", loginId, phone);
     return NextResponse.json(
       { ok: false, message: "회원가입에 실패했습니다." },
       { status: 400 },
@@ -147,6 +152,7 @@ export async function POST(req: Request) {
   const hasUser = Boolean(data?.user);
   const hasSession = Boolean((data as { session?: unknown } | undefined)?.session);
   if (!hasUser && !hasSession) {
+    console.error("[signup][400][no-user-no-session]");
     return NextResponse.json(
       { ok: false, message: "회원가입에 실패했습니다." },
       { status: 400 },
@@ -155,6 +161,7 @@ export async function POST(req: Request) {
 
   // 지시문에 맞게, 이 단계의 성공 판정은 user 존재로만 처리한다.
   if (!hasUser) {
+    console.error("[signup][400][no-user]");
     return NextResponse.json(
       { ok: false, message: "회원가입에 실패했습니다." },
       { status: 400 },
