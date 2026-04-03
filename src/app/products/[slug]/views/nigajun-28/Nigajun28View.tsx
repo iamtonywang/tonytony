@@ -33,7 +33,8 @@ export default function Nigajun28View({ product }: Props) {
       videoEl.setAttribute("aria-hidden", "true");
       videoEl.addEventListener("ended", () => {
         try {
-          videoEl.currentTime = videoEl.duration;
+          videoEl.pause();
+          videoEl.currentTime = 0;
         } catch {}
       });
 
