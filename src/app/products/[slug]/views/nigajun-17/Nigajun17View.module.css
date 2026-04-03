@@ -221,6 +221,13 @@
   transform: translateY(18px);
 }
 
+.videoFinalBlock {
+  display: inline-block;
+  font-size: 14px;
+  opacity: 0.95;
+  white-space: pre-line;
+}
+
 @keyframes videoTextEnter {
   from {
     opacity: 0;

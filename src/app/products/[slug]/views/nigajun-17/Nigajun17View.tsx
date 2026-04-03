@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Nigajun17View.module.css";
 import type { ProductMinimal } from "@/app/products/_server/types";
 
-// 17 전용 시퀀스(원문/순서 그대로 적용)
+// 17 전용 시퀀스(원문/순서 그대로 적용, 마지막 단일 문구는 별도 상수로 처리)
 const HERO_SEQUENCE_17: string[] = [
   "TONYWANG",
   "NIGAJUN 17",
@@ -25,10 +25,11 @@ const HERO_SEQUENCE_17: string[] = [
   "Hair doesn't matter",
   "Put a spell on yourself",
   "You are an attractive person",
-  "Since August 2025 TONYWANG",
 ];
 // TONYWANG만 25px, 나머지 14px
 const HERO_EMPHASIS_17: boolean[] = HERO_SEQUENCE_17.map((line) => line === "TONYWANG");
+// 마지막 단일 문구(2초 유지)
+const HERO_FINAL_BLOCK_17 = "Since August 2025 TONYWANG";
 
 interface Props {
   product?: ProductMinimal;
@@ -123,17 +124,14 @@ export default function Nigajun17View({ product }: Props) {
     const effective = Math.max(0, videoDuration * 1000 - LAST_HOLD_MS);
 
     const lastIndex = total - 1;
-    const linesToDistribute = Math.max(0, total - 1); // 마지막 문구 제외하고 분배
+    const linesToDistribute = Math.max(0, total); // 최종 블록은 별도 처리, 본문 라인 전부 분배
 
     if (linesToDistribute === 0) {
-      const showLast = window.setTimeout(() => {
-        setActiveLineIndex(lastIndex);
-        setLinePhase("enter");
-      }, 0);
-      timers.push(showLast);
-      return () => {
-        timers.forEach((id) => clearTimeout(id));
-      };
+      // 본문 라인이 전혀 없으면 곧바로 최종 블록 2초만 표시
+      setShowFinalBlock(true);
+      const tHide = window.setTimeout(() => setShowFinalBlock(false), LAST_HOLD_MS);
+      timers.push(tHide);
+      return () => { timers.forEach((id) => clearTimeout(id)); };
     }
 
     const sliceMs = effective / linesToDistribute;
@@ -160,13 +158,16 @@ export default function Nigajun17View({ product }: Props) {
       timers.push(tExit);
     }
 
-    // 마지막 문구: 앞 라인 종료 직후 표시, 2초 유지(상태 전환만)
-    const lastStart = Math.round(sliceMs * linesToDistribute);
-    const tLast = window.setTimeout(() => {
-      setActiveLineIndex(lastIndex);
-      setLinePhase("enter");
-    }, lastStart);
-    timers.push(tLast);
+    // 최종 블록: 본문 라인 종료 직후 2초만 표시
+    const finalShowAt = Math.round(sliceMs * linesToDistribute);
+    const tFinalShow = window.setTimeout(() => {
+      setShowFinalBlock(true);
+      const tFinalHide = window.setTimeout(() => {
+        setShowFinalBlock(false);
+      }, LAST_HOLD_MS);
+      timers.push(tFinalHide);
+    }, finalShowAt);
+    timers.push(tFinalShow);
 
     return () => {
       timers.forEach((id) => clearTimeout(id));
@@ -214,7 +215,7 @@ export default function Nigajun17View({ product }: Props) {
                 </>
               )}
 
-              {/* 재생 중: 항상 1줄만 출력, 최종 블록 미사용 */}
+              {/* 재생 중: 1줄 시퀀스 또는 최종 블록 */}
               {isPlaying && !showFinalBlock && (
                 <span
                   className={[
@@ -225,6 +226,9 @@ export default function Nigajun17View({ product }: Props) {
                 >
                   {HERO_SEQUENCE_17[activeLineIndex]}
                 </span>
+              )}
+              {isPlaying && showFinalBlock && (
+                <span className={styles.videoFinalBlock}>{HERO_FINAL_BLOCK_17}</span>
               )}
             </h1>
             <button
