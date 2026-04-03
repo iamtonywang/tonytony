@@ -68,19 +68,21 @@ export async function POST(req: Request) {
   const supabase = getSupabaseServerClient();
 
   // Duplicate checks happen on the server only.
-  const { data: loginRows, error: loginDupError } = await supabase
-    .from("users")
-    .select("id")
-    .eq("login_id", loginId)
-    .limit(1);
+  const { data: duplicateData, error: duplicateError } = await supabase.rpc(
+    "check_signup_duplicates",
+    {
+      p_login_id: loginId,
+      p_phone: phone,
+    },
+  );
 
-  if (loginDupError) {
+  if (duplicateError) {
     console.error(
-      "[signup][login-dup-check]",
-      loginDupError?.code,
-      loginDupError?.message,
-      loginDupError?.details,
-      loginDupError?.hint,
+      "[signup][check_signup_duplicates]",
+      duplicateError?.code,
+      duplicateError?.message,
+      duplicateError?.details,
+      duplicateError?.hint,
     );
     return NextResponse.json(
       { ok: false, message: "회원가입에 실패했습니다." },
@@ -88,34 +90,35 @@ export async function POST(req: Request) {
     );
   }
 
-  if (loginRows && loginRows.length > 0) {
+  if (!duplicateData) {
+    return NextResponse.json(
+      { ok: false, message: "회원가입에 실패했습니다." },
+      { status: 500 },
+    );
+  }
+
+  const duplicateRow = Array.isArray(duplicateData)
+    ? duplicateData[0]
+    : duplicateData;
+
+  const loginIdExistsRaw = (duplicateRow as { login_id_exists?: unknown })?.login_id_exists;
+  const phoneExistsRaw = (duplicateRow as { phone_exists?: unknown })?.phone_exists;
+
+  if (typeof loginIdExistsRaw !== "boolean" || typeof phoneExistsRaw !== "boolean") {
+    return NextResponse.json(
+      { ok: false, message: "회원가입에 실패했습니다." },
+      { status: 500 },
+    );
+  }
+
+  if (loginIdExistsRaw) {
     return NextResponse.json(
       { ok: false, message: "이미 사용 중인 로그인 ID입니다." },
       { status: 409 },
     );
   }
 
-  const { data: phoneRows, error: phoneDupError } = await supabase
-    .from("users")
-    .select("id")
-    .eq("phone", phone)
-    .limit(1);
-
-  if (phoneDupError) {
-    console.error(
-      "[signup][phone-dup-check]",
-      phoneDupError?.code,
-      phoneDupError?.message,
-      phoneDupError?.details,
-      phoneDupError?.hint,
-    );
-    return NextResponse.json(
-      { ok: false, message: "회원가입에 실패했습니다." },
-      { status: 500 },
-    );
-  }
-
-  if (phoneRows && phoneRows.length > 0) {
+  if (phoneExistsRaw) {
     return NextResponse.json(
       { ok: false, message: "이미 사용 중인 전화번호입니다." },
       { status: 409 },
