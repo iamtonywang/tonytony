@@ -142,6 +142,12 @@ export async function POST(req: Request) {
 
   if (error) {
     console.error("[signup][400][signUp-error]", loginId, phone);
+    console.error(
+      "[signup][signUp-error-detail]",
+      error.code,
+      error.message,
+      error.status,
+    );
     return NextResponse.json(
       { ok: false, message: "회원가입에 실패했습니다." },
       { status: 400 },
