@@ -34,14 +34,12 @@ export async function POST(req: Request) {
   const password = isNonEmptyString(body?.password) ? body.password : "";
 
   if (!loginId) {
-    console.error("[login][invalid-input]");
     return NextResponse.json(
       { ok: false, message: "로그인 ID를 입력해 주세요." },
       { status: 400 },
     );
   }
   if (!password) {
-    console.error("[login][invalid-input]");
     return NextResponse.json(
       { ok: false, message: "비밀번호를 올바르게 입력해 주세요." },
       { status: 400 },
@@ -56,13 +54,6 @@ export async function POST(req: Request) {
     { p_login_id: loginId },
   );
   if (lookupError) {
-    console.error(
-      "[login][rpc-error]",
-      lookupError?.code,
-      lookupError?.message,
-      lookupError?.details,
-      lookupError?.hint,
-    );
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
@@ -70,7 +61,6 @@ export async function POST(req: Request) {
   }
 
   if (!lookupData) {
-    console.error("[login][rpc-empty]");
     // no row (includes not found / duplicate / email null by contract)
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
@@ -84,7 +74,6 @@ export async function POST(req: Request) {
   const userStatus = (row as { user_status?: unknown })?.user_status;
 
   if (typeof email !== "string" || typeof userStatus !== "string") {
-    console.error("[login][rpc-empty]");
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
@@ -93,7 +82,6 @@ export async function POST(req: Request) {
 
   // user_status pre-check (allow only active)
   if (userStatus !== "active") {
-    console.error("[login][status-blocked]");
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
@@ -106,12 +94,6 @@ export async function POST(req: Request) {
     password,
   });
   if (signInError) {
-    console.error(
-      "[login][auth-error]",
-      signInError?.code,
-      signInError?.message,
-      signInError?.status,
-    );
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
