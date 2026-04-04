@@ -45,8 +45,20 @@ export default function LoginForm() {
       const ok = (data as { ok?: unknown }).ok;
       const message = (data as { message?: unknown }).message;
       if (ok === true) {
-        // 현재 persistSession: false 이므로 유지되지 않을 수 있음
-        setSuccess("로그인이 완료되었습니다.");
+        // 로그인 성공 후 세션 확인 요청을 1회 수행해 로그인 유지 여부를 검증한다.
+        try {
+          const checkRes = await fetch("/api/auth/session", { method: "GET" });
+          const checkData: unknown = await checkRes.json().catch(() => null);
+          const authenticated =
+            checkData && typeof checkData === "object"
+              ? (checkData as { authenticated?: unknown }).authenticated === true
+              : false;
+          setSuccess(
+            `로그인이 완료되었습니다. (세션 확인: ${authenticated ? "성공" : "실패"})`,
+          );
+        } catch {
+          setSuccess("로그인이 완료되었습니다. (세션 확인: 실패)");
+        }
         return;
       }
       setError(typeof message === "string" ? message : "로그인에 실패했습니다.");
