@@ -42,6 +42,36 @@ begin
 end
 $$;
 
+-- signup: SECURITY DEFINER insert-only path for public.users
+create or replace function public.create_user_after_signup(
+  p_auth_user_id uuid,
+  p_login_id text,
+  p_phone text,
+  p_email text
+)
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  insert into public.users (
+    auth_user_id,
+    login_id,
+    phone,
+    email,
+    user_status
+  )
+  values (
+    p_auth_user_id,
+    p_login_id,
+    p_phone,
+    p_email,
+    'active'
+  );
+end;
+$$;
+
 do $$
 declare
   v_labels text[];

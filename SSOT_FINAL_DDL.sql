@@ -214,6 +214,9 @@ public.users.user_status는 로그인 전 선판정한다(서버 축). Auth 메�
 서버는 이 조회 결과로 user_status를 먼저 판정하고, active일 때만 Auth(email + password) 인증으로 연결한다.
 미존재 / 중복 / email 없음은 로그인 차단 대상으로 간주한다.
 해당 RPC는 비밀번호 검증/세션 생성 책임이 없다.
+6.9 회원가입 저장 경로(보안)
+회원가입 시 public.users insert는 SECURITY DEFINER 함수(create_user_after_signup)를 통해서만 수행한다.
+route에서 direct insert는 금지하며, RLS 우회를 위해 해당 함수를 사용한다.
 7. 관리자 권한 구조
 admins는 별도 로그인 계정 테이블이 아니다.
 users 중 일부에 관리자 역할을 추가 부여하는 구조다.
