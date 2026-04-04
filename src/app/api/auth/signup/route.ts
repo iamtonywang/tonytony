@@ -130,7 +130,8 @@ export async function POST(req: Request) {
   }
 
   // Build internal email for Auth identifier (no verification step by policy)
-  const email = `${loginId}@local.user`;
+  const emailLocal = Buffer.from(loginId, "utf8").toString("hex");
+  const email = `u_${emailLocal}@example.com`;
 
   // Create auth user via email + password only (no phone, no metadata)
   const { data, error } = await supabase.auth.signUp({
