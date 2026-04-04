@@ -5,6 +5,22 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 export async function GET() {
   const supabase = getSupabaseServerClient();
 
+  // Server-side session check using getSession (single source of truth for cookie-backed auth)
+  const { data, error } = await supabase.auth.getSession();
+  if (error) {
+    return NextResponse.json({ authenticated: false });
+  }
+  const hasSession = Boolean(data?.session);
+  return NextResponse.json({ authenticated: hasSession === true });
+}
+
+import { NextResponse } from "next/server";
+
+import { getSupabaseServerClient } from "@/lib/supabase/server";
+
+export async function GET() {
+  const supabase = getSupabaseServerClient();
+
   // 서버 판정 방식: getSession (단일 사용)
   const { data, error } = await supabase.auth.getSession();
   if (error) {
