@@ -12,7 +12,7 @@ console.log('CWD:', process.cwd());
  * Returns a server-only, read-only configured Supabase client.
  * Throws a descriptive error when required environment variables are missing.
  */
-export function getSupabaseServerClient() {
+export async function getSupabaseServerClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -23,7 +23,8 @@ export function getSupabaseServerClient() {
     throw new Error('Missing required environment variable: NEXT_PUBLIC_SUPABASE_ANON_KEY');
   }
 
-  const cookieStore = cookies();
+  // In current Next.js runtime, cookies() is asynchronous and must be awaited.
+  const cookieStore = await cookies();
 
   return createServerClient(url, anonKey, {
     cookies: {

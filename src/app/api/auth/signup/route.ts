@@ -69,7 +69,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const supabase = getSupabaseServerClient();
+  const supabase = await getSupabaseServerClient();
 
   // Duplicate checks happen on the server only.
   const { data: duplicateData, error: duplicateError } = await supabase.rpc(

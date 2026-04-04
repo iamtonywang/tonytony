@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const supabase = getSupabaseServerClient();
+  const supabase = await getSupabaseServerClient();
 
   // Login lookup RPC: login_id -> email, user_status
   const { data: lookupData, error: lookupError } = await supabase.rpc(
