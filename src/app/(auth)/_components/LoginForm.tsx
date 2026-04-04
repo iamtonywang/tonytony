@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [loginId, setLoginId] = useState("");
@@ -106,6 +107,10 @@ export default function LoginForm() {
         <button type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Submitting..." : "Login"}
         </button>
+
+        <p style={{ marginTop: 12 }}>
+          <Link href="/signup">계정이 없으신가요? 회원가입</Link>
+        </p>
       </form>
     </main>
   );
