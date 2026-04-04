@@ -129,15 +129,13 @@ export async function POST(req: Request) {
     );
   }
 
-  // Create auth user; DB trigger (next stage) is responsible for creating public.users.
+  // Build internal email for Auth identifier (no verification step by policy)
+  const email = `${loginId}@local.user`;
+
+  // Create auth user via email + password only (no phone, no metadata)
   const { data, error } = await supabase.auth.signUp({
-    phone,
+    email,
     password,
-    options: {
-      data: {
-        login_id: loginId,
-      },
-    },
   });
 
   if (error) {
@@ -168,6 +166,28 @@ export async function POST(req: Request) {
   // 지시문에 맞게, 이 단계의 성공 판정은 user 존재로만 처리한다.
   if (!hasUser) {
     console.error("[signup][400][no-user]");
+    return NextResponse.json(
+      { ok: false, message: "회원가입에 실패했습니다." },
+      { status: 400 },
+    );
+  }
+
+  // Persist into public.users via SECURITY DEFINER function (no direct insert)
+  const userId = (data?.user as { id?: string } | undefined)?.id;
+  const { error: insertError } = await supabase.rpc("create_user_after_signup", {
+    p_auth_user_id: userId,
+    p_login_id: loginId,
+    p_phone: phone,
+    p_email: email,
+  });
+  if (insertError) {
+    console.error(
+      "[signup][create_user_after_signup]",
+      insertError?.code,
+      insertError?.message,
+      insertError?.details,
+      insertError?.hint,
+    );
     return NextResponse.json(
       { ok: false, message: "회원가입에 실패했습니다." },
       { status: 400 },
