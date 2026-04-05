@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.css";
 
 const HERO_LINES = [
@@ -36,7 +36,6 @@ const BACKGROUND_LINES = [
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const hasScheduledVideoRef = useRef(false);
   const [showVideo, setShowVideo] = useState(false);
   const [pendingPlay, setPendingPlay] = useState(false);
@@ -73,49 +72,7 @@ export default function HeroSection() {
     setPendingPlay(false);
   };
 
-  const mountVideoOverlay = useCallback(() => {
-    if (!videoOverlayRef.current) {
-      return null;
-    }
-    const existingVideo = videoOverlayRef.current.querySelector("video");
-    if (existingVideo) {
-      videoRef.current = existingVideo as HTMLVideoElement;
-      return existingVideo as HTMLVideoElement;
-    }
 
-    const videoEl = document.createElement("video");
-    videoEl.className = styles.videoElement;
-    videoEl.muted = true;
-    videoEl.playsInline = true;
-    videoEl.loop = false;
-    videoEl.autoplay = false;
-    videoEl.preload = "metadata";
-    videoEl.setAttribute("aria-hidden", "true");
-    videoEl.addEventListener("ended", handleVideoEnded);
-
-    const sourcePc = document.createElement("source");
-    sourcePc.src = "/landing-assets/ourwork-hero-pc.mp4";
-    sourcePc.type = "video/mp4";
-    sourcePc.media = "(min-width: 769px)";
-
-    const sourceMobile = document.createElement("source");
-    sourceMobile.src = "/landing-assets/ourwork-hero-mobile.mp4";
-    sourceMobile.type = "video/mp4";
-    sourceMobile.media = "(max-width: 768px)";
-
-    videoEl.appendChild(sourcePc);
-    videoEl.appendChild(sourceMobile);
-    videoOverlayRef.current.appendChild(videoEl);
-
-    videoRef.current = videoEl;
-    return videoEl;
-  }, [handleVideoEnded, styles.videoElement]);
-
-  useEffect(() => {
-    if (showVideo) {
-      void mountVideoOverlay();
-    }
-  }, [showVideo, mountVideoOverlay]);
 
   useEffect(() => {
     if (!isPlaying) {
@@ -241,7 +198,27 @@ export default function HeroSection() {
           <div className={styles.backgroundLayer} />
 
           {showVideo && (
-            <div ref={videoOverlayRef} className={styles.videoOverlay} />
+            <div className={styles.videoOverlay}>
+              <video
+                ref={videoRef}
+                className={styles.videoElement}
+                muted
+                playsInline
+                preload="metadata"
+                onEnded={handleVideoEnded}
+              >
+                <source
+                  src="/landing-assets/ourwork-hero-pc.mp4"
+                  type="video/mp4"
+                  media="(min-width: 769px)"
+                />
+                <source
+                  src="/landing-assets/ourwork-hero-mobile.mp4"
+                  type="video/mp4"
+                  media="(max-width: 768px)"
+                />
+              </video>
+            </div>
           )}
 
           <div className={styles.heroOverlay}>

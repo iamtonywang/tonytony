@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.css";
 
 const WHY_LINES = [
@@ -34,7 +34,6 @@ const BACKGROUND_LINES = [
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
-  const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const hasScheduledVideoRef = useRef(false);
   const [showVideo, setShowVideo] = useState(false);
   const [pendingPlay, setPendingPlay] = useState(false);
@@ -69,52 +68,6 @@ export default function HeroSection() {
     setIsPlaying(false);
     setPendingPlay(false);
   };
-
-  const mountVideoOverlay = useCallback(() => {
-    if (!videoOverlayRef.current) {
-      return null;
-    }
-    const existingVideo = videoOverlayRef.current.querySelector("video");
-    if (existingVideo) {
-      videoRef.current = existingVideo as HTMLVideoElement;
-      return existingVideo as HTMLVideoElement;
-    }
-
-    const videoEl = document.createElement("video");
-    videoEl.className = styles.videoElement;
-    videoEl.muted = true;
-    videoEl.playsInline = true;
-    videoEl.loop = false;
-    videoEl.autoplay = false;
-    videoEl.preload = "metadata";
-    videoEl.setAttribute("aria-hidden", "true");
-    videoEl.addEventListener("play", () => setIsPlaying(true));
-    videoEl.addEventListener("pause", () => setIsPlaying(false));
-    videoEl.addEventListener("ended", handleVideoEnded);
-
-    const sourcePc = document.createElement("source");
-    sourcePc.src = "/landing-assets/why-hero-pc.mp4";
-    sourcePc.type = "video/mp4";
-    sourcePc.media = "(min-width: 769px)";
-
-    const sourceMobile = document.createElement("source");
-    sourceMobile.src = "/landing-assets/why-hero-mobile.mp4";
-    sourceMobile.type = "video/mp4";
-    sourceMobile.media = "(max-width: 768px)";
-
-    videoEl.appendChild(sourcePc);
-    videoEl.appendChild(sourceMobile);
-    videoOverlayRef.current.appendChild(videoEl);
-
-    videoRef.current = videoEl;
-    return videoEl;
-  }, [handleVideoEnded, setIsPlaying, styles.videoElement]);
-
-  useEffect(() => {
-    if (showVideo) {
-      void mountVideoOverlay();
-    }
-  }, [showVideo, mountVideoOverlay]);
 
   useEffect(() => {
     if (!isPlaying) {
@@ -229,7 +182,31 @@ export default function HeroSection() {
       <div ref={heroVisualRef} className={styles.heroVisual}>
         <div className={styles.videoArea}>
           <div className={styles.backgroundLayer} />
-          <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
+          <div className={styles.videoOverlay} aria-hidden="true">
+            {showVideo && (
+              <video
+                ref={videoRef}
+                className={styles.videoElement}
+                muted
+                playsInline
+                preload="metadata"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onEnded={handleVideoEnded}
+              >
+                <source
+                  src="/landing-assets/why-hero-pc.mp4"
+                  type="video/mp4"
+                  media="(min-width: 769px)"
+                />
+                <source
+                  src="/landing-assets/why-hero-mobile.mp4"
+                  type="video/mp4"
+                  media="(max-width: 768px)"
+                />
+              </video>
+            )}
+          </div>
           <div className={styles.heroOverlay}>
             {!showVideo && (
               <div className={styles.fallbackOverlay}>
