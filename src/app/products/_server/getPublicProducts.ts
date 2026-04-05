@@ -29,7 +29,7 @@ type MediaRow = {
  * Then fetches prices and hero images with separate queries and merges them by product_id.
  */
 export async function getPublicProducts(): Promise<ProductMinimal[]> {
-  const supabase = getSupabaseServerClient();
+  const supabase = await getSupabaseServerClient();
 
   // 1) Base products under public visibility constraints
   const { data: products, error: productsError } = await supabase

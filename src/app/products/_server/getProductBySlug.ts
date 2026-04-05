@@ -18,7 +18,7 @@ type ProductRowWithId = {
  * Then fetches active price and hero image via separate queries (no nested relations).
  */
 export async function getProductBySlug(slug: string): Promise<ProductMinimal | null> {
-  const supabase = getSupabaseServerClient();
+  const supabase = await getSupabaseServerClient();
 
   // 1) Base product
   const { data, error } = await supabase
