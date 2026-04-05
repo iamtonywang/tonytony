@@ -57,6 +57,15 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
+    if (!showVideo) return;
+    const el = videoRef.current;
+    if (!el) return;
+    try {
+      el.load();
+    } catch {}
+  }, [showVideo]);
+
+  useEffect(() => {
     if (!isPlaying) {
       setActiveLineIndex(0);
       setLinePhase("enter");
