@@ -63,6 +63,16 @@ export default function HeroSection() {
     if (!el) return;
   }, [showVideo]);
 
+
+  const handleVideoEnded = () => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+    videoEl.pause();
+    videoEl.currentTime = 0;
+    setIsPlaying(false);
+    setPendingPlay(false);
+  };
+
   const mountVideoOverlay = useCallback(() => {
     if (!videoOverlayRef.current) {
       return null;
@@ -222,14 +232,7 @@ export default function HeroSection() {
     setPendingPlay(false);
   };
 
-  const handleVideoEnded = () => {
-    const videoEl = videoRef.current;
-    if (!videoEl) return;
-    videoEl.pause();
-    videoEl.currentTime = 0;
-    setIsPlaying(false);
-    setPendingPlay(false);
-  };
+
 
   return (
     <section className={styles.heroSection}>
