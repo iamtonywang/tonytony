@@ -58,23 +58,6 @@ export default function HeroSection() {
     if (!showVideo) return;
     const el = videoRef.current;
     if (!el) return;
-    const onLoadedData = () => {
-      try {
-        el.currentTime = 0;
-      } catch {}
-      try {
-        el.removeEventListener("loadeddata", onLoadedData);
-      } catch {}
-    };
-    try {
-      el.addEventListener("loadeddata", onLoadedData);
-      el.load();
-    } catch {}
-    return () => {
-      try {
-        el.removeEventListener("loadeddata", onLoadedData);
-      } catch {}
-    };
   }, [showVideo]);
 
   useEffect(() => {
