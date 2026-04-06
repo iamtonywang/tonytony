@@ -86,7 +86,7 @@ export default function LoginForm() {
             <p className={styles.sub}>Molecular Bio-Bio Technology</p>
             <p className={styles.desc}>Hi, I wish you all the best for being my friend</p>
           </div>
-          <form onSubmit={onSubmit}>
+          <form className={styles.form} onSubmit={onSubmit}>
             <div>
               <label htmlFor="login_id">Login ID</label>
               <input

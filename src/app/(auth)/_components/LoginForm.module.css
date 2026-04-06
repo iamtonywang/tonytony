@@ -48,7 +48,7 @@
   margin-top: 10px;
 }
 
-input {
+.form input {
   width: 100%;
   background: transparent;
   border: none;
@@ -59,18 +59,18 @@ input {
   outline: none;
 }
 
-input:focus {
+.form input:focus {
   border-bottom: 1px solid #ffffff;
 }
 
-label {
+.form label {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
   display: block;
   margin-bottom: 4px;
 }
 
-button {
+.form button {
   margin-top: 12px;
   width: 100%;
   background: transparent;
@@ -80,6 +80,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.form button:hover {
   border-color: #ffffff;
 }
