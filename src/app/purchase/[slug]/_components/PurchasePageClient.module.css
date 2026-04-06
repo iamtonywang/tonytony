@@ -123,6 +123,24 @@
   border-color: #ffffff;
 }
 
+.addressTextarea {
+  width: 100%;
+  min-height: 40px;
+  max-height: 60px;
+  resize: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  padding: 6px 8px;
+  font-size: 12px;
+  outline: none;
+  line-height: 1.4;
+}
+
+.addressTextarea:focus {
+  border-color: #ffffff;
+}
+
 .paymentItem {
   border: 1px solid rgba(255, 255, 255, 0.6);
   background: transparent;

@@ -114,7 +114,12 @@ export default function AddressSection({ zipcode, address1, address2, onChange, 
           </div>
           <label className={styles.field}>
             Address
-            <input value={address1} onChange={(e) => onChange("address1", e.target.value)} />
+            <textarea
+              value={address1}
+              onChange={(e) => onChange("address1", e.target.value)}
+              className={styles.addressTextarea}
+              rows={2}
+            />
           </label>
         </div>
       </div>
