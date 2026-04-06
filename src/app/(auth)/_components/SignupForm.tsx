@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import styles from "./SignupForm.module.css";
 
 function validateBasicPhone(phone: string): boolean {
   const normalized = phone.replace(/\s+/g, "");
@@ -77,60 +78,64 @@ export default function SignupForm() {
   }
 
   return (
-    <main>
-      <h1>Sign Up</h1>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="login_id">Login ID</label>
-          <input
-            id="login_id"
-            name="login_id"
-            type="text"
-            autoComplete="username"
-            value={loginId}
-            onChange={(e) => setLoginId(e.target.value)}
-            disabled={isSubmitting}
-          />
-        </div>
+    <div className={styles.container}>
+      <div className={styles.inner}>
+        <main>
+          <h1>Sign Up</h1>
+          <form onSubmit={onSubmit}>
+            <div>
+              <label htmlFor="login_id">Login ID</label>
+              <input
+                id="login_id"
+                name="login_id"
+                type="text"
+                autoComplete="username"
+                value={loginId}
+                onChange={(e) => setLoginId(e.target.value)}
+                disabled={isSubmitting}
+              />
+            </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="new-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            disabled={isSubmitting}
-          />
-        </div>
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={isSubmitting}
+              />
+            </div>
 
-        <div>
-          <label htmlFor="phone">Phone</label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            disabled={isSubmitting}
-          />
-        </div>
+            <div>
+              <label htmlFor="phone">Phone</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                disabled={isSubmitting}
+              />
+            </div>
 
-        {error ? (
-          <p role="alert" style={{ color: "crimson" }}>
-            {error}
-          </p>
-        ) : null}
-        {success ? <p style={{ color: "green" }}>{success}</p> : null}
+            {error ? (
+              <p role="alert" style={{ color: "crimson" }}>
+                {error}
+              </p>
+            ) : null}
+            {success ? <p style={{ color: "green" }}>{success}</p> : null}
 
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Sign Up"}
-        </button>
-      </form>
-    </main>
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Sign Up"}
+            </button>
+          </form>
+        </main>
+      </div>
+    </div>
   );
 }
 
