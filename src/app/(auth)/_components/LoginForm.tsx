@@ -88,7 +88,9 @@ export default function LoginForm() {
           </div>
           <form className={styles.form} onSubmit={onSubmit}>
             <div>
-              <label htmlFor="login_id">Login ID</label>
+              <label htmlFor="login_id" className={styles.centerText}>
+                Login ID
+              </label>
               <input
                 id="login_id"
                 name="login_id"
@@ -100,7 +102,9 @@ export default function LoginForm() {
               />
             </div>
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" className={styles.centerText}>
+                Password
+              </label>
               <input
                 id="password"
                 name="password"
@@ -122,7 +126,7 @@ export default function LoginForm() {
             </button>
 
             <p style={{ marginTop: 12 }}>
-              <Link href="/signup">계정이 없으신가요? 회원가입</Link>
+              <Link href="/signup">회원가입</Link>
             </p>
           </form>
         </main>

@@ -29,6 +29,10 @@
   text-align: center;
 }
 
+.centerText {
+  text-align: center;
+}
+
 .brand {
   font-size: 17px;
   font-weight: 300;
