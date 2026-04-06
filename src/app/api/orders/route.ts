@@ -34,6 +34,12 @@ function round2(n: number): number {
   return Math.round(n * 100) / 100;
 }
 
+function trimOrNull(v: unknown): string | null {
+  if (typeof v !== "string") return null;
+  const t = v.trim();
+  return t.length > 0 ? t : null;
+}
+
 export async function POST(req: Request) {
   const supabase = await getSupabaseServerClient();
 
@@ -79,8 +85,7 @@ export async function POST(req: Request) {
   if (quantity === null || quantity < 1) errors.quantity = "수량은 1 이상이어야 합니다.";
   if (!buyerName) errors.buyerName = "주문자 이름을 입력해 주세요.";
   if (!buyerPhone) errors.buyerPhone = "주문자 연락처를 입력해 주세요.";
-  if (!receiverName) errors.receiverName = "수령인 이름을 입력해 주세요.";
-  if (!receiverPhone) errors.receiverPhone = "수령인 연락처를 입력해 주세요.";
+  // 현재 구매 UI는 단일 폼 구조이며 receiver snapshot은 buyer 입력값 기준으로 서버에서 동일 매핑한다.
   if (!zipcode) errors.zipcode = "우편번호를 입력해 주세요.";
   if (!address1) errors.address1 = "주소를 입력해 주세요.";
   if (agreeToTerms !== true) errors.agreeToTerms = "약관 동의가 필요합니다.";
@@ -148,7 +153,7 @@ export async function POST(req: Request) {
     phone: string | null;
     email: string | null;
   } : null;
-  if (!userRow || typeof userRow.id !== "number") {
+  if (!userRow || typeof userRow.id !== "number" || !trimOrNull(userRow.login_id)) {
     return NextResponse.json(
       { ok: false, orderId: null, orderNumber: null, message: "user_not_found", errors: null },
       { status: 400 },
@@ -207,21 +212,53 @@ export async function POST(req: Request) {
   const finalAmount = round2(subtotalAmount - discountAmount - pointUsedAmountNorm);
 
   // 7) snapshots (input first, then defaults fallback)
-  const buyerLoginIdSnapshot = (userRow.login_id ?? "").toString().trim();
-  const buyerRealNameSnapshot = (buyerName || (profile?.real_name ?? "")).toString().trim() || null;
-  const buyerPhoneSnapshot = (buyerPhone || (userRow.phone ?? "")).toString().trim();
-  const buyerEmailSnapshot = (buyerEmail || (userRow.email ?? "")).toString().trim() || null;
+  const buyerLoginIdSnapshot = trimOrNull(userRow.login_id);
+  const buyerRealNameSnapshot = trimOrNull(buyerName) ?? trimOrNull(profile?.real_name) ?? null;
+  const buyerPhoneSnapshot = trimOrNull(buyerPhone) ?? trimOrNull(userRow.phone);
+  const buyerEmailSnapshot = trimOrNull(buyerEmail) ?? trimOrNull(userRow.email) ?? null;
 
-  const receiverNameSnapshot = (receiverName || "").toString().trim();
-  const receiverPhoneSnapshot = (receiverPhone || "").toString().trim();
-  const receiverEmailSnapshot = (receiverEmail || (userRow.email ?? "")).toString().trim();
+  const receiverNameSnapshot =
+    trimOrNull(receiverName) ??
+    trimOrNull(buyerName) ??
+    trimOrNull(profile?.real_name) ??
+    null;
+  const receiverPhoneSnapshot =
+    trimOrNull(receiverPhone) ??
+    trimOrNull(buyerPhone) ??
+    trimOrNull(userRow.phone);
+  const receiverEmailSnapshot =
+    trimOrNull(receiverEmail) ??
+    trimOrNull(buyerEmail) ??
+    trimOrNull(userRow.email) ??
+    null;
 
-  const zipcodeSnapshot = (zipcode || (profile?.zipcode ?? "")).toString().trim();
-  const address1Snapshot = (address1 || (profile?.address1 ?? "")).toString().trim();
-  const address2Snapshot = (address2 || (profile?.address2 ?? "")).toString().trim() || null;
+  const zipcodeSnapshot = trimOrNull(zipcode) ?? trimOrNull(profile?.zipcode);
+  const address1Snapshot = trimOrNull(address1) ?? trimOrNull(profile?.address1);
+  const address2Snapshot = trimOrNull(address2) ?? trimOrNull(profile?.address2) ?? null;
 
   const productSlugSnapshot = (productRow.slug || product.slug || "").toString().trim();
   const productNameSnapshot = (productRow.product_name || product.productName || "").toString().trim();
+
+  const snapshotErrors: Record<string, string> = {};
+  if (!buyerLoginIdSnapshot) snapshotErrors.buyerLoginIdSnapshot = "required";
+  if (!buyerPhoneSnapshot) snapshotErrors.buyerPhoneSnapshot = "required";
+  if (!receiverNameSnapshot) snapshotErrors.receiverNameSnapshot = "required";
+  if (!receiverPhoneSnapshot) snapshotErrors.receiverPhoneSnapshot = "required";
+  if (!receiverEmailSnapshot) snapshotErrors.receiverEmailSnapshot = "required";
+  if (!zipcodeSnapshot) snapshotErrors.zipcodeSnapshot = "required";
+  if (!address1Snapshot) snapshotErrors.address1Snapshot = "required";
+  if (Object.keys(snapshotErrors).length > 0) {
+    return NextResponse.json(
+      {
+        ok: false,
+        orderId: null,
+        orderNumber: null,
+        message: "snapshot_required_fields_missing",
+        errors: snapshotErrors,
+      },
+      { status: 400 },
+    );
+  }
 
   // Success placeholder (no actual order creation)
   return NextResponse.json({
