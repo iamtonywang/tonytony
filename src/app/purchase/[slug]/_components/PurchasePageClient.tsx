@@ -149,7 +149,6 @@ export default function PurchasePageClient({ aggregateData }: Props) {
         <section className={styles.section}>
           <h2 className={styles.title}>Quantity</h2>
           <div className={styles.quantityWrap}>
-            <label className={styles.quantityLabel}>Quantity</label>
             <input
               type="number"
               min={1}

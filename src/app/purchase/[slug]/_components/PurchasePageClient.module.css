@@ -96,6 +96,7 @@
 
 .quantityWrap {
   margin: 10px 0;
+  text-align: center;
 }
 
 .quantityLabel {
@@ -103,7 +104,7 @@
   margin-bottom: 6px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.75);
-  text-align: left;
+  text-align: center;
 }
 
 .quantityInput {
@@ -114,6 +115,7 @@
   padding: 6px 8px;
   font-size: 12px;
   outline: none;
+  text-align: center;
 }
 
 .quantityInput:focus {
