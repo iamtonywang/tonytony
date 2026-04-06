@@ -149,16 +149,15 @@ export default function PurchasePageClient({ aggregateData }: Props) {
         <section className={styles.section}>
           <h2 className={styles.title}>Quantity</h2>
           <div className={styles.quantityWrap}>
-            {[1, 2, 3, 4, 5].map((q) => (
-              <button
-                key={q}
-                type="button"
-                className={`${styles.quantityItem} ${quantity === q ? styles.active : ""}`}
-                onClick={() => setQuantity(q)}
-              >
-                {q}
-              </button>
-            ))}
+            <label className={styles.quantityLabel}>Quantity</label>
+            <input
+              type="number"
+              min={1}
+              step={1}
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              className={styles.quantityInput}
+            />
           </div>
         </section>
 

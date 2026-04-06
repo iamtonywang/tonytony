@@ -95,22 +95,28 @@
 }
 
 .quantityWrap {
-  display: flex;
-  gap: 8px;
   margin: 10px 0;
 }
 
-.quantityItem {
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: transparent;
-  color: #ffffff;
-  padding: 4px 10px;
+.quantityLabel {
+  display: block;
+  margin-bottom: 6px;
   font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: left;
 }
 
-.quantityItem:hover {
+.quantityInput {
+  width: 72px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  padding: 6px 8px;
+  font-size: 12px;
+  outline: none;
+}
+
+.quantityInput:focus {
   border-color: #ffffff;
 }
 
