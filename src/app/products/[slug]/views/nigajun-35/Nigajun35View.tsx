@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import styles from "./Nigajun35View.module.css";
 
 // 35 전용 시퀀스(원문/순서 그대로 적용)
@@ -372,9 +373,9 @@ export default function Nigajun35View({ product }: Props) {
               </p>
 
               <div className={styles.detailCtaRow}>
-                <button className={styles.detailBuyButton} disabled>
-                  Coming Soon
-                </button>
+                <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
+                  Buy Now
+                </Link>
               </div>
             </div>
           </div>

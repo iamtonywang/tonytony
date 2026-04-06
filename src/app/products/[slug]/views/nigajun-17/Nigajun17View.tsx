@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import styles from "./Nigajun17View.module.css";
 import type { ProductMinimal } from "@/app/products/_server/types";
 
@@ -406,9 +407,9 @@ export default function Nigajun17View({ product }: Props) {
               <p className={styles.detailOverlayText}>Since August 2025 TONYWAN</p>
 
               <div className={styles.detailCtaRow}>
-                <button className={styles.detailBuyButton} disabled>
-                  Coming Soon
-                </button>
+                <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
+                  Buy Now
+                </Link>
               </div>
             </div>
           </div>
