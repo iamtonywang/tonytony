@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import styles from "./LoginForm.module.css";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -76,48 +77,52 @@ export default function LoginForm() {
   }
 
   return (
-    <main>
-      <h1>Login</h1>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="login_id">Login ID</label>
-          <input
-            id="login_id"
-            name="login_id"
-            type="text"
-            autoComplete="username"
-            value={loginId}
-            onChange={(e) => setLoginId(e.target.value)}
-            disabled={isSubmitting}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            disabled={isSubmitting}
-          />
-        </div>
-        {error ? (
-          <p role="alert" style={{ color: "crimson" }}>
-            {error}
-          </p>
-        ) : null}
-        {success ? <p style={{ color: "green" }}>{success}</p> : null}
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Login"}
-        </button>
+    <div className={styles.container}>
+      <div className={styles.inner}>
+        <main>
+          <h1>Login</h1>
+          <form onSubmit={onSubmit}>
+            <div>
+              <label htmlFor="login_id">Login ID</label>
+              <input
+                id="login_id"
+                name="login_id"
+                type="text"
+                autoComplete="username"
+                value={loginId}
+                onChange={(e) => setLoginId(e.target.value)}
+                disabled={isSubmitting}
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={isSubmitting}
+              />
+            </div>
+            {error ? (
+              <p role="alert" style={{ color: "crimson" }}>
+                {error}
+              </p>
+            ) : null}
+            {success ? <p style={{ color: "green" }}>{success}</p> : null}
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Login"}
+            </button>
 
-        <p style={{ marginTop: 12 }}>
-          <Link href="/signup">계정이 없으신가요? 회원가입</Link>
-        </p>
-      </form>
-    </main>
+            <p style={{ marginTop: 12 }}>
+              <Link href="/signup">계정이 없으신가요? 회원가입</Link>
+            </p>
+          </form>
+        </main>
+      </div>
+    </div>
   );
 }
 
