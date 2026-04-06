@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseAdminClient } from "@/lib/supabase/admin";
 
 type SignupRequestBody = {
   login_id?: unknown;
@@ -183,6 +184,12 @@ export async function POST(req: Request) {
       insertError?.details,
       insertError?.hint,
     );
+    if (userId) {
+      const admin = getSupabaseAdminClient();
+      try {
+        await admin.auth.admin.deleteUser(userId, false);
+      } catch {}
+    }
     return NextResponse.json(
       { ok: false, message: "회원가입에 실패했습니다." },
       { status: 400 },
