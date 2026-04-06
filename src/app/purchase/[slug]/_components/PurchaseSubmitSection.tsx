@@ -4,9 +4,7 @@ type Props = {
   isSubmitting: boolean;
   submitMessage: string | null;
   submitErrors: Record<string, string> | null;
-  quantity: number;
   agreeToTerms: boolean;
-  onQuantityChange: (value: number) => void;
   onAgreeChange: (value: boolean) => void;
   onSubmitClick: () => void;
 };
@@ -15,9 +13,7 @@ export default function PurchaseSubmitSection({
   isSubmitting,
   submitMessage,
   submitErrors,
-  quantity,
   agreeToTerms,
-  onQuantityChange,
   onAgreeChange,
   onSubmitClick,
 }: Props) {
@@ -25,17 +21,6 @@ export default function PurchaseSubmitSection({
     <section className={styles.section}>
       <h2 className={styles.title}>Submit</h2>
       <div>
-        <div className={styles.formRow}>
-          <label className={styles.centeredText}>
-            Quantity
-            <input
-              type="number"
-              value={quantity}
-              min={1}
-              onChange={(e) => onQuantityChange(Number(e.target.value || 1))}
-            />
-          </label>
-        </div>
         <div className={styles.formRow}>
           <label className={styles.centeredText}>
             <input

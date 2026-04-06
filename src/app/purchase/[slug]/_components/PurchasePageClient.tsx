@@ -121,7 +121,12 @@ export default function PurchasePageClient({ aggregateData }: Props) {
           <p className={styles.desc}>Hi, I wish you all the best for being my friend</p>
         </div>
 
-        <ProductSummarySection product={aggregateData.product} purchasableStatus={aggregateData.purchasableStatus ?? undefined} />
+        <ProductSummarySection
+          product={aggregateData.product}
+          purchasableStatus={aggregateData.purchasableStatus ?? undefined}
+          quantity={quantity}
+          onQuantityChange={(v) => setQuantity(v)}
+        />
 
         <BuyerInfoSection
           buyerName={buyerName}
@@ -143,9 +148,7 @@ export default function PurchasePageClient({ aggregateData }: Props) {
           isSubmitting={isSubmitting}
           submitMessage={submitMessage}
           submitErrors={submitErrors}
-          quantity={quantity}
           agreeToTerms={agreeToTerms}
-          onQuantityChange={(v) => setQuantity(v)}
           onAgreeChange={(v) => setAgreeToTerms(v)}
           onSubmitClick={onSubmitClick}
         />

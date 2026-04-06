@@ -50,6 +50,15 @@
   margin-bottom: 10px;
 }
 
+.inlineFields {
+  display: flex;
+  gap: 12px;
+}
+
+.field {
+  flex: 1;
+}
+
 .centeredText {
   text-align: center;
 }
@@ -58,6 +67,20 @@
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
   margin-top: 8px;
+}
+
+.methodRow {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.methodOption {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .formRow label {
