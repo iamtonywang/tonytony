@@ -10,25 +10,22 @@ export default function PaymentMethodSection({ paymentMethod, onChange }: Props)
     <section className={styles.section}>
       <h2 className={styles.title}>Payment Method</h2>
       <div className={styles.formRow}>
-        <div className={styles.methodRow}>
-          <label className={styles.methodOption}>
-            <input
-              type="radio"
-              name="payment_method"
-              checked={paymentMethod === "card"}
-              onChange={() => onChange("paymentMethod", "card")}
-            />
+        <div className={styles.paymentWrap}>
+          <button
+            type="button"
+            className={`${styles.paymentItem} ${paymentMethod === "card" ? styles.active : ""}`}
+            onClick={() => onChange("paymentMethod", "card")}
+          >
             Card
-          </label>
-          <label className={styles.methodOption}>
-            <input
-              type="radio"
-              name="payment_method"
-              checked={paymentMethod === "cash"}
-              onChange={() => onChange("paymentMethod", "cash")}
-            />
+          </button>
+
+          <button
+            type="button"
+            className={`${styles.paymentItem} ${paymentMethod === "cash" ? styles.active : ""}`}
+            onClick={() => onChange("paymentMethod", "cash")}
+          >
             Cash
-          </label>
+          </button>
         </div>
       </div>
     </section>
