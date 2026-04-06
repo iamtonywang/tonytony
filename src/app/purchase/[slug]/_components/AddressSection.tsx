@@ -1,4 +1,5 @@
 import styles from "./PurchasePageClient.module.css";
+import { useEffect, useRef, useState } from "react";
 
 type DaumPostcodeData = {
   zonecode?: string;
@@ -10,8 +11,13 @@ type DaumPostcodeData = {
 declare global {
   interface Window {
     daum?: {
-      Postcode: new (options: { oncomplete: (data: DaumPostcodeData) => void }) => {
+      Postcode: new (options: {
+        oncomplete: (data: DaumPostcodeData) => void;
+        width?: string;
+        height?: string;
+      }) => {
         open: () => void;
+        embed: (element: HTMLElement) => void;
       };
     };
   }
@@ -50,18 +56,46 @@ async function ensureDaumPostcodeScript(): Promise<void> {
 }
 
 export default function AddressSection({ zipcode, address1, address2, onChange, onLookupResult }: Props) {
-  const handlePostcodeLookup = async () => {
-    await ensureDaumPostcodeScript();
-    const Postcode = window.daum?.Postcode;
-    if (!Postcode) return;
+  const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
+  const postcodeMountRef = useRef<HTMLDivElement | null>(null);
 
-    new Postcode({
-      oncomplete: (data) => {
-        const nextZipcode = (data.zonecode ?? "").trim();
-        const nextAddress = (data.roadAddress ?? data.address ?? data.jibunAddress ?? "").trim();
-        onLookupResult(nextZipcode, nextAddress);
-      },
-    }).open();
+  useEffect(() => {
+    if (!isPostcodeOpen) return;
+
+    let cancelled = false;
+
+    const mount = async () => {
+      await ensureDaumPostcodeScript();
+      if (cancelled) return;
+
+      const Postcode = window.daum?.Postcode;
+      if (!Postcode || !postcodeMountRef.current) return;
+
+      postcodeMountRef.current.innerHTML = "";
+      new Postcode({
+        width: "100%",
+        height: "100%",
+        oncomplete: (data) => {
+          const nextZipcode = (data.zonecode ?? "").trim();
+          const nextAddress = (data.roadAddress ?? data.address ?? data.jibunAddress ?? "").trim();
+          onLookupResult(nextZipcode, nextAddress);
+          setIsPostcodeOpen(false);
+        },
+      }).embed(postcodeMountRef.current);
+    };
+
+    mount();
+
+    return () => {
+      cancelled = true;
+      if (postcodeMountRef.current) {
+        postcodeMountRef.current.innerHTML = "";
+      }
+    };
+  }, [isPostcodeOpen, onLookupResult]);
+
+  const handlePostcodeLookup = () => {
+    setIsPostcodeOpen(true);
   };
 
   return (
@@ -90,6 +124,19 @@ export default function AddressSection({ zipcode, address1, address2, onChange, 
           <input value={address2} onChange={(e) => onChange("address2", e.target.value)} />
         </label>
       </div>
+      {isPostcodeOpen ? (
+        <div className={styles.postcodeOverlay}>
+          <div className={styles.postcodeModal}>
+            <div className={styles.postcodeHeader}>
+              <span>우편번호 찾기</span>
+              <button type="button" className={styles.postcodeClose} onClick={() => setIsPostcodeOpen(false)}>
+                닫기
+              </button>
+            </div>
+            <div ref={postcodeMountRef} />
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
