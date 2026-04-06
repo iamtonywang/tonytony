@@ -2420,6 +2420,133 @@ on sales_metrics
 for select
 using (is_admin());
 
+-- refund complete 원자 처리 RPC (invoker)
+create or replace function public.complete_refund_atomic(
+  p_refund_id bigint,
+  p_processed_by_admin_id bigint,
+  p_completed_at timestamptz
+)
+returns table (
+  refund_id bigint,
+  order_id bigint,
+  payment_id bigint,
+  refund_status public.refund_status,
+  payment_status public.payment_status,
+  order_status public.order_status,
+  completed_at timestamptz
+)
+language plpgsql
+as $$
+declare
+  v_admin_exists boolean;
+  v_refund refunds%rowtype;
+  v_payment payments%rowtype;
+  v_order orders%rowtype;
+  v_payment_amount numeric(12,2);
+begin
+  select exists (
+    select 1
+    from admins a
+    where a.id = p_processed_by_admin_id
+      and a.admin_status = 'active'
+  ) into v_admin_exists;
+
+  if not v_admin_exists then
+    raise exception 'admin_forbidden';
+  end if;
+
+  select *
+    into v_refund
+  from refunds r
+  where r.id = p_refund_id
+  for update;
+
+  if not found then
+    raise exception 'refund_not_completable';
+  end if;
+
+  if
+    v_refund.refund_status <> 'approved'
+    or v_refund.approved_at is null
+    or v_refund.completed_at is not null
+    or v_refund.rejected_at is not null
+    or v_refund.order_id is null
+    or v_refund.payment_id is null
+  then
+    raise exception 'refund_not_completable';
+  end if;
+
+  select *
+    into v_order
+  from orders o
+  where o.id = v_refund.order_id
+  for update;
+
+  if not found or v_order.order_status <> 'paid' or v_order.payment_status <> 'success' then
+    raise exception 'order_not_refundable';
+  end if;
+
+  select *
+    into v_payment
+  from payments p
+  where p.id = v_refund.payment_id
+    and p.order_id = v_refund.order_id
+  for update;
+
+  if not found then
+    raise exception 'payment_not_refundable';
+  end if;
+
+  if v_payment.payment_status <> 'success' or v_payment.approved_at is null then
+    raise exception 'payment_not_refundable';
+  end if;
+
+  v_payment_amount := coalesce(v_payment.approved_amount, v_payment.requested_amount);
+
+  -- partial refund 금지 정책: 전액 환불만 허용하며, 비교 전에 기준 결제금액이 유효해야 한다.
+  if v_payment_amount is null or v_payment_amount <= 0 or v_refund.refund_amount is null or v_refund.refund_amount <= 0 then
+    raise exception 'refund_amount_invalid';
+  end if;
+
+  if v_refund.refund_amount <> v_payment_amount then
+    raise exception 'full_refund_only';
+  end if;
+
+  -- 순서 고정: refunds -> payments -> orders
+  -- orders refunded 트리거는 같은 주문에 refunds.completed 와 payments.refunded 가 이미 있어야 통과한다.
+  update refunds
+  set
+    refund_status = 'completed',
+    processed_by_admin_id = p_processed_by_admin_id,
+    completed_at = p_completed_at
+  where id = v_refund.id;
+
+  update payments
+  set
+    payment_status = 'refunded',
+    refunded_at = p_completed_at
+  where id = v_payment.id
+    and order_id = v_order.id;
+
+  update orders
+  set
+    order_status = 'refunded',
+    payment_status = 'refunded',
+    refunded_at = p_completed_at
+  where id = v_order.id;
+
+  return query
+  select
+    v_refund.id,
+    v_refund.order_id,
+    v_refund.payment_id,
+    'completed'::public.refund_status,
+    'refunded'::public.payment_status,
+    'refunded'::public.order_status,
+    p_completed_at;
+end;
+$$;
+
 -- 14_domain_integrity FINAL
 
 -- 1) orders ↔ payments 무결성
