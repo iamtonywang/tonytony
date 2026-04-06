@@ -338,7 +338,7 @@ export async function POST(req: Request) {
   // payments insert (pending only)
   // 현재 단계는 결제 요청 레코드 생성만 수행하며 실제 PG 승인/승인금액/거래ID는 후속 단계에서 반영
   const resolvedPaymentMethod = trimOrNull(paymentMethod) ?? "manual";
-  const { error: paymentInsertError } = await supabase
+  const { data: createdPayment, error: paymentInsertError } = await supabase
     .from("payments")
     .insert({
       order_id: createdOrder.id,
@@ -374,6 +374,7 @@ export async function POST(req: Request) {
     ok: true,
     orderId: createdOrder.id,
     orderNumber: createdOrder.order_number,
+    paymentId: createdPayment?.id ?? null,
     message: "Order created",
     errors: null,
   });
