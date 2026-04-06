@@ -151,10 +151,27 @@ export async function POST(req: NextRequest) {
 
   const approvedAmount = toNumberOrNull(paymentRow.approved_amount);
   const requestedAmount = toNumberOrNull(paymentRow.requested_amount);
-  const maxRefundableAmount = approvedAmount ?? requestedAmount;
-  if (refundAmount === null || maxRefundableAmount === null || refundAmount > maxRefundableAmount) {
+  const paymentAmount = approvedAmount ?? requestedAmount;
+
+  // 전액 환불 여부 비교 전에 결제 기준 금액 자체가 유효해야 한다.
+  if (refundAmount === null || paymentAmount === null || paymentAmount <= 0) {
     return NextResponse.json(
       { ok: false, refundId: null, orderId: null, paymentId: null, message: "refund_amount_invalid", errors: null },
+      { status: 400 },
+    );
+  }
+
+  // partial refund 금지 정책: 환불은 반드시 결제 전체 금액과 동일해야 한다.
+  if (refundAmount !== paymentAmount) {
+    return NextResponse.json(
+      {
+        ok: false,
+        refundId: null,
+        orderId: null,
+        paymentId: null,
+        message: "full_refund_only",
+        errors: { refundAmount: "must_equal_full_payment_amount" },
+      },
       { status: 400 },
     );
   }

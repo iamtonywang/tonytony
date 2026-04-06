@@ -185,13 +185,13 @@ export async function POST(req: NextRequest) {
   const currentRefundAmount = toNumberOrNull(refundRow.refund_amount);
   const approvedAmount = toNumberOrNull(paymentRow.approved_amount);
   const requestedAmount = toNumberOrNull(paymentRow.requested_amount);
-  const refundableCap = approvedAmount ?? requestedAmount;
+  const paymentAmount = approvedAmount ?? requestedAmount;
 
   if (
     currentRefundAmount === null ||
     currentRefundAmount <= 0 ||
-    refundableCap === null ||
-    refundableCap <= 0
+    paymentAmount === null ||
+    paymentAmount <= 0
   ) {
     return NextResponse.json(
       { ok: false, refundId: null, orderId: null, paymentId: null, message: "refund_amount_invalid", errors: null },
@@ -199,33 +199,15 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // DDL에 누적 환불합 상한 제약이 없으므로 approve 단계에서 코드로 직접 검증한다.
-  const { data: existingRefundRows } = await supabase
-    .from("refunds")
-    .select("id, refund_amount")
-    .eq("payment_id", paymentRow.id)
-    .in("refund_status", ["approved", "completed"]);
-
-  const existingApprovedOrCompletedSum = Array.isArray(existingRefundRows)
-    ? existingRefundRows
-      .filter((r) => {
-        const id = toNumberOrNull((r as { id?: unknown }).id);
-        return id !== refundRow.id;
-      })
-      .reduce((acc, r) => {
-        const amount = toNumberOrNull((r as { refund_amount?: unknown }).refund_amount);
-        return acc + (amount ?? 0);
-      }, 0)
-    : 0;
-
-  if (existingApprovedOrCompletedSum + currentRefundAmount > refundableCap) {
+  // partial refund 금지 정책으로 approve 단계에서도 전액 환불만 허용한다.
+  if (currentRefundAmount !== paymentAmount) {
     return NextResponse.json(
       {
         ok: false,
         refundId: null,
         orderId: null,
         paymentId: null,
-        message: "refund_amount_exceeds_payment",
+        message: "full_refund_only",
         errors: null,
       },
       { status: 400 },
