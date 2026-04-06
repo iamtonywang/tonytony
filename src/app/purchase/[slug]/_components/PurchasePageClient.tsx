@@ -17,15 +17,15 @@ type Props = {
 
 export default function PurchasePageClient({ aggregateData }: Props) {
   const [quantity, setQuantity] = useState<number>(1);
-  const [buyerName, setBuyerName] = useState<string>("");
-  const [buyerPhone, setBuyerPhone] = useState<string>("");
-  const [buyerEmail, setBuyerEmail] = useState<string>("");
-  const [receiverName, setReceiverName] = useState<string>("");
-  const [receiverPhone, setReceiverPhone] = useState<string>("");
-  const [receiverEmail, setReceiverEmail] = useState<string>("");
-  const [zipcode, setZipcode] = useState<string>("");
-  const [address1, setAddress1] = useState<string>("");
-  const [address2, setAddress2] = useState<string>("");
+  const [buyerName, setBuyerName] = useState<string>(aggregateData.buyerDefaults?.name ?? "");
+  const [buyerPhone, setBuyerPhone] = useState<string>(aggregateData.buyerDefaults?.phone ?? "");
+  const [buyerEmail, setBuyerEmail] = useState<string>(aggregateData.buyerDefaults?.email ?? "");
+  const [receiverName, setReceiverName] = useState<string>(aggregateData.receiverDefaults?.name ?? "");
+  const [receiverPhone, setReceiverPhone] = useState<string>(aggregateData.receiverDefaults?.phone ?? "");
+  const [receiverEmail, setReceiverEmail] = useState<string>(aggregateData.receiverDefaults?.email ?? "");
+  const [zipcode, setZipcode] = useState<string>(aggregateData.addressDefaults?.zipcode ?? "");
+  const [address1, setAddress1] = useState<string>(aggregateData.addressDefaults?.address1 ?? "");
+  const [address2, setAddress2] = useState<string>(aggregateData.addressDefaults?.address2 ?? "");
   const [paymentMethod, setPaymentMethod] = useState<string>("");
   const [pointUsedAmount, setPointUsedAmount] = useState<number>(0);
   const [agreeToTerms, setAgreeToTerms] = useState<boolean>(false);
@@ -58,7 +58,7 @@ export default function PurchasePageClient({ aggregateData }: Props) {
 
   return (
     <div>
-      <ProductSummarySection product={aggregateData.product} />
+      <ProductSummarySection product={aggregateData.product} purchasableStatus={aggregateData.purchasableStatus ?? undefined} />
 
       <BuyerInfoSection
         buyerName={buyerName}

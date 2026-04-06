@@ -2,12 +2,27 @@ import type { ProductMinimal } from "@/app/products/_server/types";
 
 export type PurchasePageAggregateData = {
   product: ProductMinimal;
-  buyerDefaults: null;
-  receiverDefaults: null;
-  addressDefaults: null;
+  buyerDefaults: {
+    name: string | null;
+    phone: string | null;
+    email: string | null;
+  } | null;
+  receiverDefaults: {
+    name: string | null;
+    phone: string | null;
+    email: string | null;
+  } | null;
+  addressDefaults: {
+    zipcode: string | null;
+    address1: string | null;
+    address2: string | null;
+  } | null;
   points: null;
   partnerOrReferral: null;
-  purchasableStatus: null;
+  purchasableStatus: {
+    isPurchasable: boolean;
+    reason: string | null;
+  } | null;
 };
 
 // This payload defines only client-side form inputs for the skeleton.
