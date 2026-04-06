@@ -125,9 +125,11 @@ export default function LoginForm() {
               {isSubmitting ? "Submitting..." : "Login"}
             </button>
 
-            <p style={{ marginTop: 12 }}>
-              <Link href="/signup">회원가입</Link>
-            </p>
+            <div className={styles.signup}>
+              <p style={{ marginTop: 12 }}>
+                <Link href="/signup">회원가입</Link>
+              </p>
+            </div>
           </form>
         </main>
       </div>
