@@ -32,6 +32,9 @@ export default function PurchasePageClient({ aggregateData }: Props) {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
   const [submitErrors, setSubmitErrors] = useState<Record<string, string> | null>(null);
+  const [confirmMessage, setConfirmMessage] = useState<string | null>(null);
+  const [confirmErrors, setConfirmErrors] = useState<Record<string, string> | null>(null);
+  const [confirmedPaymentId, setConfirmedPaymentId] = useState<string | number | null>(null);
 
   const handleBuyerChange = (field: "buyerName" | "buyerPhone" | "buyerEmail", value: string) => {
     if (field === "buyerName") setBuyerName(value);
@@ -59,6 +62,9 @@ export default function PurchasePageClient({ aggregateData }: Props) {
     setIsSubmitting(true);
     setSubmitMessage(null);
     setSubmitErrors(null);
+    setConfirmMessage(null);
+    setConfirmErrors(null);
+    setConfirmedPaymentId(null);
     try {
       const res = await fetch("/api/orders", {
         method: "POST",
@@ -91,6 +97,85 @@ export default function PurchasePageClient({ aggregateData }: Props) {
       if (res.ok && payload && payload.ok === true) {
         setSubmitMessage(payload.message ?? "주문 검증이 완료되었습니다.");
         setSubmitErrors(null);
+
+        // 주문 생성 성공 이후 결제 확인 단계 진입 (자동 호출이 아닌, 단계적 분리)
+        const orderId: string | number | undefined = payload?.orderId;
+        const paymentId: string | number | undefined = payload?.paymentId; // 현재 구조상 미포함일 가능성 큼
+
+        if (!orderId) {
+          setConfirmMessage("결제 확인 단계로 진행하려면 orderId가 필요합니다.");
+          setConfirmErrors({ orderId: "missing" });
+          return;
+        }
+
+        if (!paymentId) {
+          setConfirmMessage("결제 확인에 필요한 paymentId가 아직 연결되지 않았습니다.");
+          setConfirmErrors({ paymentId: "missing" });
+          return;
+        }
+
+        const transactionId: string | undefined = payload?.transactionId;
+        if (!transactionId) {
+          setConfirmMessage("결제 확인에 필요한 transactionId가 아직 연결되지 않았습니다.");
+          setConfirmErrors({ transactionId: "missing" });
+          return;
+        }
+
+        // paymentId/transactionId 모두 확보된 경우에만 confirm API 호출
+        try {
+          const confirmRes = await fetch("/api/payments/confirm", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              orderId,
+              paymentId,
+              transactionId,
+            }),
+          });
+
+          let confirmPayload: any = null;
+          try {
+            confirmPayload = await confirmRes.json();
+          } catch {
+            confirmPayload = null;
+          }
+
+          if (confirmRes.ok && confirmPayload && confirmPayload.ok === true) {
+            setConfirmMessage(
+              typeof confirmPayload.message === "string" ? confirmPayload.message : "결제 확인이 완료되었습니다.",
+            );
+            setConfirmErrors(null);
+            setConfirmedPaymentId(confirmPayload.paymentId ?? paymentId);
+            return;
+          }
+
+          if (confirmRes.ok && confirmPayload && confirmPayload.ok === false) {
+            setConfirmMessage(
+              typeof confirmPayload.message === "string" ? confirmPayload.message : "결제 확인 처리 중 오류가 발생했습니다.",
+            );
+            setConfirmErrors(confirmPayload.errors ?? null);
+            setConfirmedPaymentId(null);
+            return;
+          }
+
+          // non-2xx or unparsable
+          if (confirmPayload && typeof confirmPayload === "object") {
+            setConfirmMessage(
+              typeof confirmPayload.message === "string" ? confirmPayload.message : "결제 확인 처리 중 오류가 발생했습니다.",
+            );
+            setConfirmErrors(confirmPayload.errors ?? null);
+            setConfirmedPaymentId(null);
+          } else {
+            setConfirmMessage("결제 확인 처리 중 오류가 발생했습니다.");
+            setConfirmErrors(null);
+            setConfirmedPaymentId(null);
+          }
+        } catch {
+          setConfirmMessage("결제 확인 처리 중 오류가 발생했습니다.");
+          setConfirmErrors(null);
+          setConfirmedPaymentId(null);
+        }
+
         return;
       }
 
@@ -170,6 +255,22 @@ export default function PurchasePageClient({ aggregateData }: Props) {
           onAgreeChange={(v) => setAgreeToTerms(v)}
           onSubmitClick={onSubmitClick}
         />
+
+        {confirmMessage ? (
+          <div className={styles.section}>
+            <p style={{ marginTop: 8 }}>{confirmMessage}</p>
+            {confirmErrors ? (
+              <pre style={{ marginTop: 4, color: "#b00020", whiteSpace: "pre-wrap" }}>
+                {JSON.stringify(confirmErrors, null, 2)}
+              </pre>
+            ) : null}
+            {confirmedPaymentId ? (
+              <p style={{ marginTop: 4, color: "#2e7d32" }}>
+                confirmedPaymentId: {String(confirmedPaymentId)}
+              </p>
+            ) : null}
+          </div>
+        ) : null}
 
         <OrderNoticeSection />
       </div>
