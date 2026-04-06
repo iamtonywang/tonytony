@@ -22,7 +22,7 @@ export default function PurchaseSubmitSection({
       <h2 className={styles.title}>Submit</h2>
       <div>
         <div className={styles.formRow}>
-          <label className={styles.centeredText}>
+          <label className={`${styles.centeredText} ${styles.termsText}`}>
             <input
               type="checkbox"
               checked={agreeToTerms}

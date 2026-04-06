@@ -46,6 +46,10 @@
   margin-bottom: 8px;
 }
 
+.productTitle {
+  font-size: 20px;
+}
+
 .formRow {
   margin-bottom: 10px;
 }
@@ -72,6 +76,15 @@
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
   margin-top: 8px;
+}
+
+.termsText {
+  font-size: 14px;
+}
+
+.noticeText {
+  font-size: 14px;
+  text-align: center;
 }
 
 .methodRow {
@@ -226,7 +239,7 @@
 }
 
 .formRow label {
-  font-size: 12px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   display: block;
   margin-bottom: 4px;

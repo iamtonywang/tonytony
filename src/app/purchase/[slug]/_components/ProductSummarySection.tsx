@@ -12,7 +12,7 @@ type Props = {
 export default function ProductSummarySection({ product, purchasableStatus }: Props) {
   return (
     <section className={styles.section}>
-      <h2 className={styles.title}>{product.productName ?? "Product"}</h2>
+      <h2 className={`${styles.title} ${styles.productTitle}`}>{product.productName ?? "Product"}</h2>
       {product.heroImageUrl ? <img src={product.heroImageUrl} alt={product.productName ?? "product"} /> : null}
       {typeof product.finalPriceAmount === "number" ? <p className={styles.centeredText}>Price: {product.finalPriceAmount.toLocaleString()}</p> : null}
     </section>
