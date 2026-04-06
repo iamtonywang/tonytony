@@ -1,4 +1,5 @@
 import type { ProductMinimal } from "@/app/products/_server/types";
+import styles from "./PurchasePageClient.module.css";
 
 type Props = {
   product: ProductMinimal;
@@ -8,15 +9,15 @@ type Props = {
   };
 };
 
-export default function ProductSummarySection({ product }: Props) {
+export default function ProductSummarySection({ product, purchasableStatus }: Props) {
   return (
-    <section>
-      <h1>{product.productName ?? "Product"}</h1>
+    <section className={styles.section}>
+      <h2 className={styles.title}>{product.productName ?? "Product"}</h2>
       {product.heroImageUrl ? <img src={product.heroImageUrl} alt={product.productName ?? "product"} /> : null}
-      <p>{product.shortDescription ?? ""}</p>
-      {typeof product.finalPriceAmount === "number" ? <p>Price: {product.finalPriceAmount.toLocaleString()}</p> : null}
-      {"purchasableStatus" in arguments[0] && arguments[0]?.purchasableStatus && arguments[0].purchasableStatus.isPurchasable === false ? (
-        <p>현재 구매가 불가능한 상품입니다.</p>
+      <p className={styles.submitNote}>{product.shortDescription ?? ""}</p>
+      {typeof product.finalPriceAmount === "number" ? <p className={styles.centeredText}>Price: {product.finalPriceAmount.toLocaleString()}</p> : null}
+      {purchasableStatus && purchasableStatus.isPurchasable === false ? (
+        <p className={styles.submitNote}>현재 구매가 불가능한 상품입니다.</p>
       ) : null}
     </section>
   );

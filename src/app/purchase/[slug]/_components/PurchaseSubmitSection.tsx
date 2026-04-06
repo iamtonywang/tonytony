@@ -1,3 +1,5 @@
+import styles from "./PurchasePageClient.module.css";
+
 type Props = {
   isSubmitting: boolean;
   submitMessage: string | null;
@@ -20,11 +22,11 @@ export default function PurchaseSubmitSection({
   onSubmitClick,
 }: Props) {
   return (
-    <section>
-      <h2>Submit</h2>
+    <section className={styles.section}>
+      <h2 className={styles.title}>Submit</h2>
       <div>
-        <div>
-          <label>
+        <div className={styles.formRow}>
+          <label className={styles.centeredText}>
             Quantity
             <input
               type="number"
@@ -34,8 +36,8 @@ export default function PurchaseSubmitSection({
             />
           </label>
         </div>
-        <div>
-          <label>
+        <div className={styles.formRow}>
+          <label className={styles.centeredText}>
             <input
               type="checkbox"
               checked={agreeToTerms}
@@ -47,10 +49,10 @@ export default function PurchaseSubmitSection({
         <button type="button" onClick={onSubmitClick} disabled={isSubmitting}>
           {isSubmitting ? "검증 중..." : "주문 검증"}
         </button>
-        {submitMessage ? <p>{submitMessage}</p> : null}
+        {submitMessage ? <p className={styles.submitNote}>{submitMessage}</p> : null}
         {submitErrors
           ? (
-            <div>
+            <div className={styles.submitNote}>
               {Object.entries(submitErrors).map(([field, msg]) => (
                 <p key={field}>{`${field}: ${msg}`}</p>
               ))}

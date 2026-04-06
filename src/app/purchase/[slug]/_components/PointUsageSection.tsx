@@ -1,3 +1,5 @@
+import styles from "./PurchasePageClient.module.css";
+
 type Props = {
   pointUsedAmount: number;
   onChange: (field: "pointUsedAmount", value: number) => void;
@@ -5,10 +7,10 @@ type Props = {
 
 export default function PointUsageSection({ pointUsedAmount, onChange }: Props) {
   return (
-    <section>
-      <h2>Point Usage</h2>
-      <div>
-        <label>
+    <section className={styles.section}>
+      <h2 className={styles.title}>Point Usage</h2>
+      <div className={styles.formRow}>
+        <label className={styles.centeredText}>
           Use Points
           <input
             type="number"
@@ -17,7 +19,7 @@ export default function PointUsageSection({ pointUsedAmount, onChange }: Props) 
           />
         </label>
       </div>
-      {/* Note: No validation or balance checks here (intentionally omitted). */}
+      <p className={styles.submitNote}>Point validation and balance checks are not applied yet.</p>
     </section>
   );
 }

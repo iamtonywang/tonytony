@@ -10,6 +10,7 @@ import PaymentMethodSection from "./PaymentMethodSection";
 import PointUsageSection from "./PointUsageSection";
 import PurchaseSubmitSection from "./PurchaseSubmitSection";
 import OrderNoticeSection from "./OrderNoticeSection";
+import styles from "./PurchasePageClient.module.css";
 
 type Props = {
   aggregateData: PurchasePageAggregateData;
@@ -123,46 +124,55 @@ export default function PurchasePageClient({ aggregateData }: Props) {
   };
 
   return (
-    <div>
-      <ProductSummarySection product={aggregateData.product} purchasableStatus={aggregateData.purchasableStatus ?? undefined} />
+    <div className={styles.wrapper}>
+      <div className={styles.inner}>
+        <div className={styles.headerText}>
+          <h1 className={styles.brand}>TONYWANG</h1>
+          <p className={styles.sub}>Plant Cell Genetic Protein Laboratory</p>
+          <p className={styles.sub}>Molecular Bio-Bio Technology</p>
+          <p className={styles.desc}>Hi, I wish you all the best for being my friend</p>
+        </div>
 
-      <BuyerInfoSection
-        buyerName={buyerName}
-        buyerPhone={buyerPhone}
-        buyerEmail={buyerEmail}
-        onChange={handleBuyerChange}
-      />
+        <ProductSummarySection product={aggregateData.product} purchasableStatus={aggregateData.purchasableStatus ?? undefined} />
 
-      <ReceiverInfoSection
-        receiverName={receiverName}
-        receiverPhone={receiverPhone}
-        receiverEmail={receiverEmail}
-        onChange={handleReceiverChange}
-      />
+        <BuyerInfoSection
+          buyerName={buyerName}
+          buyerPhone={buyerPhone}
+          buyerEmail={buyerEmail}
+          onChange={handleBuyerChange}
+        />
 
-      <AddressSection
-        zipcode={zipcode}
-        address1={address1}
-        address2={address2}
-        onChange={handleAddressChange}
-      />
+        <ReceiverInfoSection
+          receiverName={receiverName}
+          receiverPhone={receiverPhone}
+          receiverEmail={receiverEmail}
+          onChange={handleReceiverChange}
+        />
 
-      <PaymentMethodSection paymentMethod={paymentMethod} onChange={handlePaymentChange} />
+        <AddressSection
+          zipcode={zipcode}
+          address1={address1}
+          address2={address2}
+          onChange={handleAddressChange}
+        />
 
-      <PointUsageSection pointUsedAmount={pointUsedAmount} onChange={handlePointChange} />
+        <PaymentMethodSection paymentMethod={paymentMethod} onChange={handlePaymentChange} />
 
-      <PurchaseSubmitSection
-        isSubmitting={isSubmitting}
-        submitMessage={submitMessage}
-        submitErrors={submitErrors}
-        quantity={quantity}
-        agreeToTerms={agreeToTerms}
-        onQuantityChange={(v) => setQuantity(v)}
-        onAgreeChange={(v) => setAgreeToTerms(v)}
-        onSubmitClick={onSubmitClick}
-      />
+        <PointUsageSection pointUsedAmount={pointUsedAmount} onChange={handlePointChange} />
 
-      <OrderNoticeSection />
+        <PurchaseSubmitSection
+          isSubmitting={isSubmitting}
+          submitMessage={submitMessage}
+          submitErrors={submitErrors}
+          quantity={quantity}
+          agreeToTerms={agreeToTerms}
+          onQuantityChange={(v) => setQuantity(v)}
+          onAgreeChange={(v) => setAgreeToTerms(v)}
+          onSubmitClick={onSubmitClick}
+        />
+
+        <OrderNoticeSection />
+      </div>
     </div>
   );
 }
