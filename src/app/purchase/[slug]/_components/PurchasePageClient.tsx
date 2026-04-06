@@ -30,6 +30,10 @@ export default function PurchasePageClient({ aggregateData }: Props) {
   const [pointUsedAmount, setPointUsedAmount] = useState<number>(0);
   const [agreeToTerms, setAgreeToTerms] = useState<boolean>(false);
 
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitMessage, setSubmitMessage] = useState<string | null>(null);
+  const [submitErrors, setSubmitErrors] = useState<Record<string, string> | null>(null);
+
   const handleBuyerChange = (field: "buyerName" | "buyerPhone" | "buyerEmail", value: string) => {
     if (field === "buyerName") setBuyerName(value);
     if (field === "buyerPhone") setBuyerPhone(value);
@@ -54,6 +58,68 @@ export default function PurchasePageClient({ aggregateData }: Props) {
 
   const handlePointChange = (field: "pointUsedAmount", value: number) => {
     if (field === "pointUsedAmount") setPointUsedAmount(value);
+  };
+
+  const onSubmitClick = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setSubmitMessage(null);
+    setSubmitErrors(null);
+    try {
+      const res = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          slug: aggregateData.product.slug ?? "",
+          quantity,
+          buyerName,
+          buyerPhone,
+          buyerEmail,
+          receiverName,
+          receiverPhone,
+          receiverEmail,
+          zipcode,
+          address1,
+          address2,
+          paymentMethod,
+          pointUsedAmount,
+          agreeToTerms,
+        }),
+      });
+
+      let payload: any = null;
+      try {
+        payload = await res.json();
+      } catch {
+        payload = null;
+      }
+
+      if (res.ok && payload && payload.ok === true) {
+        setSubmitMessage(payload.message ?? "주문 검증이 완료되었습니다.");
+        setSubmitErrors(null);
+        return;
+      }
+
+      if (res.ok && payload && payload.ok === false) {
+        setSubmitMessage(typeof payload.message === "string" ? payload.message : "요청 처리 중 오류가 발생했습니다.");
+        setSubmitErrors(payload.errors ?? null);
+        return;
+      }
+
+      // non-2xx or unparsable
+      if (payload && typeof payload === "object") {
+        setSubmitMessage(typeof payload.message === "string" ? payload.message : "요청 처리 중 오류가 발생했습니다.");
+        setSubmitErrors(payload.errors ?? null);
+      } else {
+        setSubmitMessage("요청 처리 중 오류가 발생했습니다.");
+        setSubmitErrors(null);
+      }
+    } catch {
+      setSubmitMessage("요청 처리 중 오류가 발생했습니다.");
+      setSubmitErrors(null);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -86,14 +152,14 @@ export default function PurchasePageClient({ aggregateData }: Props) {
       <PointUsageSection pointUsedAmount={pointUsedAmount} onChange={handlePointChange} />
 
       <PurchaseSubmitSection
+        isSubmitting={isSubmitting}
+        submitMessage={submitMessage}
+        submitErrors={submitErrors}
         quantity={quantity}
         agreeToTerms={agreeToTerms}
         onQuantityChange={(v) => setQuantity(v)}
         onAgreeChange={(v) => setAgreeToTerms(v)}
-        onSubmit={(e) => {
-          e.preventDefault();
-          // Intentionally no submission. Placeholder only.
-        }}
+        onSubmitClick={onSubmitClick}
       />
 
       <OrderNoticeSection />

@@ -1,22 +1,28 @@
 type Props = {
+  isSubmitting: boolean;
+  submitMessage: string | null;
+  submitErrors: Record<string, string> | null;
   quantity: number;
   agreeToTerms: boolean;
   onQuantityChange: (value: number) => void;
   onAgreeChange: (value: boolean) => void;
-  onSubmit: (e: React.FormEvent) => void;
+  onSubmitClick: () => void;
 };
 
 export default function PurchaseSubmitSection({
+  isSubmitting,
+  submitMessage,
+  submitErrors,
   quantity,
   agreeToTerms,
   onQuantityChange,
   onAgreeChange,
-  onSubmit,
+  onSubmitClick,
 }: Props) {
   return (
     <section>
       <h2>Submit</h2>
-      <form onSubmit={onSubmit}>
+      <div>
         <div>
           <label>
             Quantity
@@ -38,8 +44,20 @@ export default function PurchaseSubmitSection({
             I agree to the terms
           </label>
         </div>
-        <button type="submit">Place Order (Disabled)</button>
-      </form>
+        <button type="button" onClick={onSubmitClick} disabled={isSubmitting}>
+          {isSubmitting ? "검증 중..." : "주문 검증"}
+        </button>
+        {submitMessage ? <p>{submitMessage}</p> : null}
+        {submitErrors
+          ? (
+            <div>
+              {Object.entries(submitErrors).map(([field, msg]) => (
+                <p key={field}>{`${field}: ${msg}`}</p>
+              ))}
+            </div>
+          )
+          : null}
+      </div>
     </section>
   );
 }
