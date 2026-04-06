@@ -133,7 +133,7 @@ export default function AddressSection({ zipcode, address1, address2, onChange, 
                 닫기
               </button>
             </div>
-            <div ref={postcodeMountRef} />
+            <div ref={postcodeMountRef} className={styles.postcodeBody} />
           </div>
         </div>
       ) : null}
