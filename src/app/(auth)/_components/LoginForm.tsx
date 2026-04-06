@@ -2,8 +2,10 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  const router = useRouter();
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -57,6 +59,9 @@ export default function LoginForm() {
           setSuccess(
             `로그인이 완료되었습니다. (세션 확인: ${authenticated ? "성공" : "실패"})`,
           );
+          if (authenticated) {
+            router.push("/");
+          }
         } catch {
           setSuccess("로그인이 완료되었습니다. (세션 확인: 실패)");
         }
