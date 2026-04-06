@@ -108,11 +108,12 @@
 }
 
 .quantityInput {
-  width: 72px;
+  width: 90px;
+  height: 32px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.6);
   color: #ffffff;
-  padding: 6px 8px;
+  padding: 6px 10px;
   font-size: 12px;
   outline: none;
   text-align: center;
