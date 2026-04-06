@@ -16,7 +16,6 @@ export default function ProductSummarySection({ product, purchasableStatus, quan
     <section className={styles.section}>
       <h2 className={styles.title}>{product.productName ?? "Product"}</h2>
       {product.heroImageUrl ? <img src={product.heroImageUrl} alt={product.productName ?? "product"} /> : null}
-      <p className={styles.submitNote}>{product.shortDescription ?? ""}</p>
       {typeof product.finalPriceAmount === "number" ? <p className={styles.centeredText}>Price: {product.finalPriceAmount.toLocaleString()}</p> : null}
       <div className={styles.formRow}>
         <label className={styles.centeredText}>
