@@ -260,45 +260,87 @@ export async function POST(req: Request) {
     );
   }
 
-  // Success placeholder (no actual order creation)
+  const validatedQuantity = quantity as number;
+
+  // orders insert (single row)
+  const { data: createdOrder, error: orderInsertError } = await supabase
+    .from("orders")
+    .insert({
+      user_id: userRow.id,
+      order_number: generatedOrderNumber,
+      order_status: "pending",
+      payment_status: "pending",
+      currency: ORDER_CURRENCY,
+      subtotal_amount: subtotalAmount,
+      discount_amount: discountAmount,
+      final_amount: finalAmount,
+      is_point_payment: isPointPayment,
+      point_used_amount: pointUsedAmountNorm,
+      buyer_login_id_snapshot: buyerLoginIdSnapshot,
+      buyer_real_name_snapshot: buyerRealNameSnapshot,
+      buyer_phone_snapshot: buyerPhoneSnapshot,
+      buyer_email_snapshot: buyerEmailSnapshot,
+      receiver_name: receiverNameSnapshot,
+      receiver_phone: receiverPhoneSnapshot,
+      receiver_email: receiverEmailSnapshot,
+      zipcode: zipcodeSnapshot,
+      address1: address1Snapshot,
+      address2: address2Snapshot,
+    })
+    .select("id, order_number, order_status, payment_status")
+    .single();
+
+  if (orderInsertError || !createdOrder) {
+    return NextResponse.json(
+      {
+        ok: false,
+        orderId: null,
+        orderNumber: null,
+        message: "order_insert_failed",
+        errors: null,
+      },
+      { status: 500 },
+    );
+  }
+
+  // order_items insert (single row)
+  const { error: orderItemInsertError } = await supabase
+    .from("order_items")
+    .insert({
+      order_id: createdOrder.id,
+      product_id: productRow.id,
+      product_slug: productSlugSnapshot,
+      product_name_snapshot: productNameSnapshot,
+      unit_price: unitPrice,
+      quantity: validatedQuantity,
+      line_total_amount: subtotalAmount,
+    })
+    .select("id, order_id, product_id")
+    .single();
+
+  if (orderItemInsertError) {
+    // 현재 단계는 transaction 미도입 상태의 최소 보정 처리이며,
+    // 추후 RPC/transaction 구조 확정 시 대체 필요
+    await supabase.from("orders").delete().eq("id", createdOrder.id);
+
+    return NextResponse.json(
+      {
+        ok: false,
+        orderId: null,
+        orderNumber: null,
+        message: "order_item_insert_failed",
+        errors: null,
+      },
+      { status: 500 },
+    );
+  }
+
   return NextResponse.json({
     ok: true,
-    orderId: null,
-    orderNumber: generatedOrderNumber,
-    message: "Order payload normalized",
+    orderId: createdOrder.id,
+    orderNumber: createdOrder.order_number,
+    message: "Order created",
     errors: null,
-    normalized: {
-      userId: userRow.id,
-      productId: productRow.id,
-      currency: ORDER_CURRENCY,
-      orderNumber: generatedOrderNumber,
-      amounts: {
-        unitPrice,
-        subtotalAmount,
-        discountAmount,
-        pointUsedAmount: pointUsedAmountNorm,
-        finalAmount,
-        isPointPayment,
-      },
-      snapshots: {
-        buyerLoginIdSnapshot,
-        buyerRealNameSnapshot,
-        buyerPhoneSnapshot,
-        buyerEmailSnapshot,
-        receiverNameSnapshot,
-        receiverPhoneSnapshot,
-        receiverEmailSnapshot,
-        zipcodeSnapshot,
-        address1Snapshot,
-        address2Snapshot,
-        productSlugSnapshot,
-        productNameSnapshot,
-      },
-      initialStatus: {
-        orderStatus: "pending",
-        paymentStatus: "pending",
-      },
-    },
   });
 }
 
