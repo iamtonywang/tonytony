@@ -4,10 +4,8 @@ import { useState } from "react";
 import type { PurchasePageAggregateData } from "../types";
 import ProductSummarySection from "./ProductSummarySection";
 import BuyerInfoSection from "./BuyerInfoSection";
-import ReceiverInfoSection from "./ReceiverInfoSection";
 import AddressSection from "./AddressSection";
 import PaymentMethodSection from "./PaymentMethodSection";
-import PointUsageSection from "./PointUsageSection";
 import PurchaseSubmitSection from "./PurchaseSubmitSection";
 import OrderNoticeSection from "./OrderNoticeSection";
 import styles from "./PurchasePageClient.module.css";
@@ -41,12 +39,6 @@ export default function PurchasePageClient({ aggregateData }: Props) {
     if (field === "buyerEmail") setBuyerEmail(value);
   };
 
-  const handleReceiverChange = (field: "receiverName" | "receiverPhone" | "receiverEmail", value: string) => {
-    if (field === "receiverName") setReceiverName(value);
-    if (field === "receiverPhone") setReceiverPhone(value);
-    if (field === "receiverEmail") setReceiverEmail(value);
-  };
-
   const handleAddressChange = (field: "zipcode" | "address1" | "address2", value: string) => {
     if (field === "zipcode") setZipcode(value);
     if (field === "address1") setAddress1(value);
@@ -55,10 +47,6 @@ export default function PurchasePageClient({ aggregateData }: Props) {
 
   const handlePaymentChange = (field: "paymentMethod", value: string) => {
     if (field === "paymentMethod") setPaymentMethod(value);
-  };
-
-  const handlePointChange = (field: "pointUsedAmount", value: number) => {
-    if (field === "pointUsedAmount") setPointUsedAmount(value);
   };
 
   const onSubmitClick = async () => {
@@ -142,13 +130,6 @@ export default function PurchasePageClient({ aggregateData }: Props) {
           onChange={handleBuyerChange}
         />
 
-        <ReceiverInfoSection
-          receiverName={receiverName}
-          receiverPhone={receiverPhone}
-          receiverEmail={receiverEmail}
-          onChange={handleReceiverChange}
-        />
-
         <AddressSection
           zipcode={zipcode}
           address1={address1}
@@ -157,8 +138,6 @@ export default function PurchasePageClient({ aggregateData }: Props) {
         />
 
         <PaymentMethodSection paymentMethod={paymentMethod} onChange={handlePaymentChange} />
-
-        <PointUsageSection pointUsedAmount={pointUsedAmount} onChange={handlePointChange} />
 
         <PurchaseSubmitSection
           isSubmitting={isSubmitting}
