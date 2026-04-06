@@ -304,7 +304,7 @@ export async function POST(req: Request) {
   }
 
   // order_items insert (single row)
-  const { error: orderItemInsertError } = await supabase
+  const { data: createdOrderItem, error: orderItemInsertError } = await supabase
     .from("order_items")
     .insert({
       order_id: createdOrder.id,
@@ -329,6 +329,41 @@ export async function POST(req: Request) {
         orderId: null,
         orderNumber: null,
         message: "order_item_insert_failed",
+        errors: null,
+      },
+      { status: 500 },
+    );
+  }
+
+  // payments insert (pending only)
+  // 현재 단계는 결제 요청 레코드 생성만 수행하며 실제 PG 승인/승인금액/거래ID는 후속 단계에서 반영
+  const resolvedPaymentMethod = trimOrNull(paymentMethod) ?? "manual";
+  const { error: paymentInsertError } = await supabase
+    .from("payments")
+    .insert({
+      order_id: createdOrder.id,
+      payment_method: resolvedPaymentMethod,
+      payment_status: "pending",
+      requested_amount: finalAmount,
+    })
+    .select("id, order_id")
+    .single();
+
+  if (paymentInsertError) {
+    // 현재 단계는 transaction 미도입 상태의 최소 보정 처리이며 추후 transaction/RPC 구조로 대체 필요
+    if (createdOrderItem?.id) {
+      await supabase.from("order_items").delete().eq("id", createdOrderItem.id);
+    } else {
+      await supabase.from("order_items").delete().eq("order_id", createdOrder.id);
+    }
+    await supabase.from("orders").delete().eq("id", createdOrder.id);
+
+    return NextResponse.json(
+      {
+        ok: false,
+        orderId: null,
+        orderNumber: null,
+        message: "payment_insert_failed",
         errors: null,
       },
       { status: 500 },
