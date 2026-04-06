@@ -199,6 +199,36 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // 현재 route 는 orders 동기화 실패 시 payments pending 복구를 수행하므로,
+  // payment_events 는 최종 상태 확정 이후에만 적재한다.
+  const paymentEventPayload = {
+    paymentId: updatedPayment.id,
+    orderId: updatedOrder.id,
+    transactionId: updatedPayment.transaction_id,
+    requested_amount: requestedAmount,
+    approved_amount: updatedPayment.approved_amount,
+    payment_status: updatedPayment.payment_status,
+    order_status: updatedOrder.order_status,
+    approved_at: updatedPayment.approved_at,
+  };
+
+  const { error: paymentEventInsertError } = await supabase
+    .from("payment_events")
+    .insert({
+      payment_id: updatedPayment.id,
+      event_type: "payment_confirmed",
+      raw_payload: paymentEventPayload,
+    });
+
+  if (paymentEventInsertError) {
+    // 현재 단계는 event log 적재 실패를 별도 실패로 반환하며,
+    // 추후 transaction/RPC/webhook 구조 확정 시 재설계 필요
+    return NextResponse.json(
+      { ok: false, paymentId: null, orderId: null, message: "payment_event_insert_failed", errors: null },
+      { status: 500 },
+    );
+  }
+
   return NextResponse.json(
     {
       ok: true,
