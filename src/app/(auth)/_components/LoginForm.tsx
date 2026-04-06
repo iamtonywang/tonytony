@@ -80,7 +80,12 @@ export default function LoginForm() {
     <div className={styles.container}>
       <div className={styles.inner}>
         <main>
-          <h1>Login</h1>
+          <div className={styles.headerText}>
+            <h1 className={styles.brand}>TONYWANG</h1>
+            <p className={styles.sub}>Plant Cell Genetic Protein Laboratory</p>
+            <p className={styles.sub}>Molecular Bio-Bio Technology</p>
+            <p className={styles.desc}>Hi, I wish you all the best for being my friend</p>
+          </div>
           <form onSubmit={onSubmit}>
             <div>
               <label htmlFor="login_id">Login ID</label>

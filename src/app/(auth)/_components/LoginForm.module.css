@@ -23,3 +23,63 @@
   position: relative;
   z-index: 1;
 }
+
+.headerText {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.brand {
+  font-size: 17px;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 2px 0;
+}
+
+.desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 10px;
+}
+
+input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+  color: #ffffff;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  outline: none;
+}
+
+input:focus {
+  border-bottom: 1px solid #ffffff;
+}
+
+label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin-bottom: 4px;
+}
+
+button {
+  margin-top: 12px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #ffffff;
+}
