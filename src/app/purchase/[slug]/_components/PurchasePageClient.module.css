@@ -130,7 +130,7 @@
 .postcodeOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,8 +140,9 @@
 .postcodeModal {
   width: min(92vw, 440px);
   height: min(70vh, 560px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(20, 20, 20, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  color: #111111;
   padding: 10px;
 }
 
@@ -149,6 +150,7 @@
   width: 100%;
   min-height: 420px;
   height: 420px;
+  background: #ffffff;
 }
 
 .postcodeHeader {
@@ -157,20 +159,20 @@
   justify-content: space-between;
   margin-bottom: 8px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #111111;
 }
 
 .postcodeClose {
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: transparent;
-  color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  color: #111111;
   padding: 4px 8px;
   font-size: 12px;
   cursor: pointer;
 }
 
 .postcodeClose:hover {
-  border-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.3);
 }
 
 .formRow label {

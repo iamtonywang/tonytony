@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import type { PurchasePageAggregateData } from "../types";
 import ProductSummarySection from "./ProductSummarySection";
 import BuyerInfoSection from "./BuyerInfoSection";
@@ -45,10 +45,10 @@ export default function PurchasePageClient({ aggregateData }: Props) {
     if (field === "address2") setAddress2(value);
   };
 
-  const handleAddressLookupResult = (nextZipcode: string, nextAddress1: string) => {
+  const handleAddressLookupResult = useCallback((nextZipcode: string, nextAddress1: string) => {
     setZipcode(nextZipcode);
     setAddress1(nextAddress1);
-  };
+  }, []);
 
   const handlePaymentChange = (field: "paymentMethod", value: string) => {
     if (field === "paymentMethod") setPaymentMethod(value);

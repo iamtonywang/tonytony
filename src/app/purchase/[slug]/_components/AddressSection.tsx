@@ -77,7 +77,7 @@ export default function AddressSection({ zipcode, address1, address2, onChange, 
         height: "100%",
         oncomplete: (data) => {
           const nextZipcode = (data.zonecode ?? "").trim();
-          const nextAddress = (data.roadAddress ?? data.address ?? data.jibunAddress ?? "").trim();
+          const nextAddress = (data.roadAddress ?? data.jibunAddress ?? "").trim();
           onLookupResult(nextZipcode, nextAddress);
           setIsPostcodeOpen(false);
         },
