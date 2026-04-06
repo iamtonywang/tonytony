@@ -59,6 +59,11 @@
   flex: 1;
 }
 
+.fieldButtonWrap {
+  display: flex;
+  align-items: flex-end;
+}
+
 .centeredText {
   text-align: center;
 }
@@ -106,6 +111,20 @@
 .active {
   border-color: #ffffff;
   background: rgba(255, 255, 255, 0.1);
+}
+
+.lookupButton {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: #ffffff;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.lookupButton:hover {
+  border-color: #ffffff;
 }
 
 .formRow label {

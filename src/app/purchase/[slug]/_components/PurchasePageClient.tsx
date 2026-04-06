@@ -45,6 +45,11 @@ export default function PurchasePageClient({ aggregateData }: Props) {
     if (field === "address2") setAddress2(value);
   };
 
+  const handleAddressLookupResult = (nextZipcode: string, nextAddress1: string) => {
+    setZipcode(nextZipcode);
+    setAddress1(nextAddress1);
+  };
+
   const handlePaymentChange = (field: "paymentMethod", value: string) => {
     if (field === "paymentMethod") setPaymentMethod(value);
   };
@@ -140,6 +145,7 @@ export default function PurchasePageClient({ aggregateData }: Props) {
           address1={address1}
           address2={address2}
           onChange={handleAddressChange}
+          onLookupResult={handleAddressLookupResult}
         />
 
         <PaymentMethodSection paymentMethod={paymentMethod} onChange={handlePaymentChange} />

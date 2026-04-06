@@ -1,13 +1,69 @@
 import styles from "./PurchasePageClient.module.css";
 
+type DaumPostcodeData = {
+  zonecode?: string;
+  address?: string;
+  roadAddress?: string;
+  jibunAddress?: string;
+};
+
+declare global {
+  interface Window {
+    daum?: {
+      Postcode: new (options: { oncomplete: (data: DaumPostcodeData) => void }) => {
+        open: () => void;
+      };
+    };
+  }
+}
+
 type Props = {
   zipcode: string;
   address1: string;
   address2: string;
   onChange: (field: "zipcode" | "address1" | "address2", value: string) => void;
+  onLookupResult: (zipcode: string, address1: string) => void;
 };
 
-export default function AddressSection({ zipcode, address1, address2, onChange }: Props) {
+async function ensureDaumPostcodeScript(): Promise<void> {
+  if (typeof window === "undefined") return;
+  if (window.daum?.Postcode) return;
+
+  const existing = document.getElementById("daum-postcode-script") as HTMLScriptElement | null;
+  if (existing) {
+    await new Promise<void>((resolve, reject) => {
+      existing.addEventListener("load", () => resolve(), { once: true });
+      existing.addEventListener("error", () => reject(new Error("postcode_script_load_failed")), { once: true });
+    });
+    return;
+  }
+
+  await new Promise<void>((resolve, reject) => {
+    const script = document.createElement("script");
+    script.id = "daum-postcode-script";
+    script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("postcode_script_load_failed"));
+    document.body.appendChild(script);
+  });
+}
+
+export default function AddressSection({ zipcode, address1, address2, onChange, onLookupResult }: Props) {
+  const handlePostcodeLookup = async () => {
+    await ensureDaumPostcodeScript();
+    const Postcode = window.daum?.Postcode;
+    if (!Postcode) return;
+
+    new Postcode({
+      oncomplete: (data) => {
+        const nextZipcode = (data.zonecode ?? "").trim();
+        const nextAddress = (data.roadAddress ?? data.address ?? data.jibunAddress ?? "").trim();
+        onLookupResult(nextZipcode, nextAddress);
+      },
+    }).open();
+  };
+
   return (
     <section className={styles.section}>
       <h2 className={styles.title}>Address</h2>
@@ -17,6 +73,11 @@ export default function AddressSection({ zipcode, address1, address2, onChange }
             Postal Code
             <input value={zipcode} onChange={(e) => onChange("zipcode", e.target.value)} />
           </label>
+          <div className={styles.fieldButtonWrap}>
+            <button type="button" className={styles.lookupButton} onClick={handlePostcodeLookup}>
+              우편번호 찾기
+            </button>
+          </div>
           <label className={styles.field}>
             Address
             <input value={address1} onChange={(e) => onChange("address1", e.target.value)} />
