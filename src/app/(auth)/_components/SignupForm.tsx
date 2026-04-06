@@ -81,10 +81,17 @@ export default function SignupForm() {
     <div className={styles.container}>
       <div className={styles.inner}>
         <main>
-          <h1>Sign Up</h1>
-          <form onSubmit={onSubmit}>
+          <div className={styles.headerText}>
+            <h1 className={styles.brand}>TONYWANG</h1>
+            <p className={styles.sub}>Plant Cell Genetic Protein Laboratory</p>
+            <p className={styles.sub}>Molecular Bio-Bio Technology</p>
+            <p className={styles.desc}>Hi, I wish you all the best for being my friend</p>
+          </div>
+          <form className={styles.form} onSubmit={onSubmit}>
             <div>
-              <label htmlFor="login_id">Login ID</label>
+              <label htmlFor="login_id" className={styles.centerText}>
+                Login ID
+              </label>
               <input
                 id="login_id"
                 name="login_id"
@@ -97,7 +104,9 @@ export default function SignupForm() {
             </div>
 
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" className={styles.centerText}>
+                Password
+              </label>
               <input
                 id="password"
                 name="password"
@@ -110,7 +119,9 @@ export default function SignupForm() {
             </div>
 
             <div>
-              <label htmlFor="phone">Phone</label>
+              <label htmlFor="phone" className={styles.centerText}>
+                Phone
+              </label>
               <input
                 id="phone"
                 name="phone"
