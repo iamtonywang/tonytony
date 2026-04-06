@@ -30,6 +30,10 @@ function toNumberOrNull(v: unknown): number | null {
   return null;
 }
 
+function round2(n: number): number {
+  return Math.round(n * 100) / 100;
+}
+
 export async function POST(req: Request) {
   const supabase = await getSupabaseServerClient();
 
@@ -127,12 +131,137 @@ export async function POST(req: Request) {
     );
   }
 
+  // ----------------------------------------------------------------------------
+  // Normalization before insert (no DB writes in this step)
+  // ----------------------------------------------------------------------------
+
+  // 1) users: id, login_id, phone, email
+  const uid = userData.user.id;
+  const { data: userRows } = await supabase
+    .from("users")
+    .select("id, login_id, phone, email")
+    .eq("auth_user_id", uid)
+    .limit(1);
+  const userRow = Array.isArray(userRows) && userRows.length === 1 ? userRows[0] as {
+    id: number;
+    login_id: string | null;
+    phone: string | null;
+    email: string | null;
+  } : null;
+  if (!userRow || typeof userRow.id !== "number") {
+    return NextResponse.json(
+      { ok: false, orderId: null, orderNumber: null, message: "user_not_found", errors: null },
+      { status: 400 },
+    );
+  }
+
+  // 2) user_profiles: real_name, zipcode, address1, address2
+  const { data: profileRows } = await supabase
+    .from("user_profiles")
+    .select("real_name, zipcode, address1, address2")
+    .eq("user_id", userRow.id)
+    .limit(1);
+  const profile = Array.isArray(profileRows) && profileRows.length === 1 ? profileRows[0] as {
+    real_name: string | null;
+    zipcode: string | null;
+    address1: string | null;
+    address2: string | null;
+  } : null;
+
+  // 3) products row for id + snapshots
+  const { data: productRows } = await supabase
+    .from("products")
+    .select("id, slug, product_name, product_status, is_visible")
+    .eq("slug", slug)
+    .limit(1);
+  const productRow = Array.isArray(productRows) && productRows.length === 1 ? productRows[0] as {
+    id: number;
+    slug: string | null;
+    product_name: string | null;
+    product_status: string | null;
+    is_visible: boolean | null;
+  } : null;
+
+  if (!productRow || typeof productRow.id !== "number") {
+    return NextResponse.json(
+      { ok: false, orderId: null, orderNumber: null, message: "product_id_not_found", errors: null },
+      { status: 400 },
+    );
+  }
+
+  // 4) currency (temporary fixed)
+  // 현재 레포에 통화 정책 부재로 인해 1차 임시 고정값. 추후 정책 확정 시 분리 필요
+  const ORDER_CURRENCY = "KRW";
+
+  // 5) order_number (temporary generation)
+  // 현재 레포에 주문번호 정책 부재로 인한 1차 임시 생성 규칙. 실제 insert 단계 전 정책 재검토 필요
+  const generatedOrderNumber = `ORD-${Date.now()}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+
+  // 6) amounts (minimal rule: no discounts/points, final=subtotal)
+  // 현재 할인/포인트 정책 미구현 상태의 1차 최소 규칙
+  const unitPrice = typeof product.finalPriceAmount === "number" ? product.finalPriceAmount : 0;
+  const subtotalAmount = round2(unitPrice * (quantity ?? 1));
+  const discountAmount = 0;
+  const pointUsedAmountNorm = 0;
+  const isPointPayment = false;
+  const finalAmount = round2(subtotalAmount - discountAmount - pointUsedAmountNorm);
+
+  // 7) snapshots (input first, then defaults fallback)
+  const buyerLoginIdSnapshot = (userRow.login_id ?? "").toString().trim();
+  const buyerRealNameSnapshot = (buyerName || (profile?.real_name ?? "")).toString().trim() || null;
+  const buyerPhoneSnapshot = (buyerPhone || (userRow.phone ?? "")).toString().trim();
+  const buyerEmailSnapshot = (buyerEmail || (userRow.email ?? "")).toString().trim() || null;
+
+  const receiverNameSnapshot = (receiverName || "").toString().trim();
+  const receiverPhoneSnapshot = (receiverPhone || "").toString().trim();
+  const receiverEmailSnapshot = (receiverEmail || (userRow.email ?? "")).toString().trim();
+
+  const zipcodeSnapshot = (zipcode || (profile?.zipcode ?? "")).toString().trim();
+  const address1Snapshot = (address1 || (profile?.address1 ?? "")).toString().trim();
+  const address2Snapshot = (address2 || (profile?.address2 ?? "")).toString().trim() || null;
+
+  const productSlugSnapshot = (productRow.slug || product.slug || "").toString().trim();
+  const productNameSnapshot = (productRow.product_name || product.productName || "").toString().trim();
+
   // Success placeholder (no actual order creation)
   return NextResponse.json({
     ok: true,
     orderId: null,
-    message: "Order API skeleton validated",
+    orderNumber: generatedOrderNumber,
+    message: "Order payload normalized",
     errors: null,
+    normalized: {
+      userId: userRow.id,
+      productId: productRow.id,
+      currency: ORDER_CURRENCY,
+      orderNumber: generatedOrderNumber,
+      amounts: {
+        unitPrice,
+        subtotalAmount,
+        discountAmount,
+        pointUsedAmount: pointUsedAmountNorm,
+        finalAmount,
+        isPointPayment,
+      },
+      snapshots: {
+        buyerLoginIdSnapshot,
+        buyerRealNameSnapshot,
+        buyerPhoneSnapshot,
+        buyerEmailSnapshot,
+        receiverNameSnapshot,
+        receiverPhoneSnapshot,
+        receiverEmailSnapshot,
+        zipcodeSnapshot,
+        address1Snapshot,
+        address2Snapshot,
+        productSlugSnapshot,
+        productNameSnapshot,
+      },
+      initialStatus: {
+        orderStatus: "pending",
+        paymentStatus: "pending",
+      },
+    },
   });
 }
 
