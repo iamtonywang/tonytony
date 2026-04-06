@@ -94,6 +94,26 @@
   margin-top: 8px;
 }
 
+.quantityWrap {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.quantityItem {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: #ffffff;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quantityItem:hover {
+  border-color: #ffffff;
+}
+
 .paymentItem {
   border: 1px solid rgba(255, 255, 255, 0.6);
   background: transparent;

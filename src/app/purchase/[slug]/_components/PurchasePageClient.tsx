@@ -129,8 +129,6 @@ export default function PurchasePageClient({ aggregateData }: Props) {
         <ProductSummarySection
           product={aggregateData.product}
           purchasableStatus={aggregateData.purchasableStatus ?? undefined}
-          quantity={quantity}
-          onQuantityChange={(v) => setQuantity(v)}
         />
 
         <BuyerInfoSection
@@ -147,6 +145,22 @@ export default function PurchasePageClient({ aggregateData }: Props) {
           onChange={handleAddressChange}
           onLookupResult={handleAddressLookupResult}
         />
+
+        <section className={styles.section}>
+          <h2 className={styles.title}>Quantity</h2>
+          <div className={styles.quantityWrap}>
+            {[1, 2, 3, 4, 5].map((q) => (
+              <button
+                key={q}
+                type="button"
+                className={`${styles.quantityItem} ${quantity === q ? styles.active : ""}`}
+                onClick={() => setQuantity(q)}
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        </section>
 
         <PaymentMethodSection paymentMethod={paymentMethod} onChange={handlePaymentChange} />
 
