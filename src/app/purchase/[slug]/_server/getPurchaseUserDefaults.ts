@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
 type Defaults = {
   buyerDefaults: {
@@ -21,7 +21,7 @@ type Defaults = {
 };
 
 export async function getPurchaseUserDefaults(): Promise<Defaults> {
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerReadonlyClient();
 
   // Identify current user via session
   const { data: userData } = await supabase.auth.getUser();

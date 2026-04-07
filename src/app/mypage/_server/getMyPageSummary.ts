@@ -1,9 +1,9 @@
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 import type { MyPageSummary } from "../types";
 
 // 마이페이지 상위 1회 최소 조회만 담당, 목록/무거운 데이터는 하위 섹션 개별 fetch 전제
 export async function getMyPageSummary(): Promise<MyPageSummary | null> {
-	const supabase = await getSupabaseServerClient();
+	const supabase = await getSupabaseServerReadonlyClient();
 
 	const { data: userData } = await supabase.auth.getUser();
 	if (!userData?.user) {

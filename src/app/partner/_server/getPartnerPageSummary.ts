@@ -1,9 +1,9 @@
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 import type { PartnerPageSummary } from "../types";
 
 // 파트너페이지 상위 1회 최소 조회만 담당, 목록 데이터는 하위 섹션 개별 fetch 전제
 export async function getPartnerPageSummary(): Promise<PartnerPageSummary | null> {
-	const supabase = await getSupabaseServerClient();
+	const supabase = await getSupabaseServerReadonlyClient();
 
 	const SALES_COMMISSION_RATE = 0.1;
 	const POINT_PER_ORDER = 5000;
