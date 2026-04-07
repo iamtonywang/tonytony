@@ -22,40 +22,15 @@ export default function Page({ searchParams }: { searchParams?: SearchParams }) 
 	const orderId = normalizeSingle(searchParams?.orderId);
 	const amount = normalizeSingle(searchParams?.amount);
 
-	// 정책 고정:
-	// - transactionId = paymentKey
-	// - orderId/amount 를 transactionId 로 사용하지 않는다.
-	const transactionId = paymentKey ?? null;
+	// 서버 컴포넌트: storage 접근 금지. 하위 클라이언트 컴포넌트로 전달만 한다.
+	const SuccessClient = require("./SuccessClient").default as (props: {
+		paymentKey: string | null;
+		orderId: string | null;
+		amount: string | null;
+	}) => JSX.Element;
 
-	// 화면 렌더 규칙:
-	// A) paymentKey 또는 orderId 누락
-	if (!paymentKey || !orderId) {
-		return (
-			<div style={{ padding: 24 }}>
-				<h1 style={{ marginBottom: 8 }}>결제 확인 정보를 받지 못했습니다</h1>
-				<p style={{ marginBottom: 8 }}>
-					paymentKey 또는 orderId가 없어 확인을 진행할 수 없습니다.
-				</p>
-				{amount ? <p style={{ color: "#666" }}>amount: {amount}</p> : null}
-			</div>
-		);
-	}
-
-	// B) paymentKey / orderId 는 있으나 paymentId 미확보 상태
-	// 현재 단계에서는 success 페이지 단독으로 paymentId를 알 수 없으므로 confirm 호출 금지
 	return (
-		<div style={{ padding: 24 }}>
-			<h1 style={{ marginBottom: 8 }}>결제 승인 정보는 도착했습니다</h1>
-			<p style={{ marginBottom: 8 }}>
-				paymentId가 아직 연결되지 않아 최종 결제 확인을 진행할 수 없습니다.
-			</p>
-			<div style={{ marginTop: 12 }}>
-				<p style={{ margin: 0 }}>orderId: {orderId}</p>
-				<p style={{ margin: 0 }}>paymentKey(transactionId): {transactionId}</p>
-				{amount ? <p style={{ margin: 0 }}>amount: {amount}</p> : null}
-			</div>
-			{/* TODO: 추후 paymentId 전달 구조가 연결되면 /api/payments/confirm 호출을 이 페이지에서 수행한다. */}
-		</div>
+		<SuccessClient paymentKey={paymentKey} orderId={orderId} amount={amount} />
 	);
 }
 

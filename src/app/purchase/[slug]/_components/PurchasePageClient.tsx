@@ -98,6 +98,20 @@ export default function PurchasePageClient({ aggregateData }: Props) {
         setSubmitMessage(payload.message ?? "주문 검증이 완료되었습니다.");
         setSubmitErrors(null);
 
+        // Toss 성공 페이지에서 paymentId/orderId를 이어받기 위해 세션 저장소에 임시 저장
+        try {
+          if (typeof window !== "undefined" && window.sessionStorage) {
+            if (payload?.paymentId != null) {
+              window.sessionStorage.setItem("pendingPaymentId", String(payload.paymentId));
+            }
+            if (payload?.orderId != null) {
+              window.sessionStorage.setItem("pendingOrderId", String(payload.orderId));
+            }
+          }
+        } catch {
+          // 저장 실패가 나더라도 주문 성공 자체를 실패로 바꾸지 않는다.
+        }
+
         // 주문 생성 성공 이후 결제 확인 단계 진입 (자동 호출이 아닌, 단계적 분리)
         const orderId: string | number | undefined = payload?.orderId;
         const paymentId: string | number | undefined = payload?.paymentId; // 현재 구조상 미포함일 가능성 큼
