@@ -32,27 +32,19 @@ export async function getSupabaseServerClient() {
         return cookieStore.get(name)?.value;
       },
       set(name: string, value: string, options: CookieOptions) {
-        try {
-          cookieStore.set({
-            name,
-            value,
-            ...options,
-          });
-        } catch {
-          // swallow cookie write errors in Server Component render context
-        }
+        cookieStore.set({
+          name,
+          value,
+          ...options,
+        });
       },
       remove(name: string, options: CookieOptions) {
-        try {
-          cookieStore.set({
-            name,
-            value: '',
-            ...options,
-            maxAge: 0,
-          });
-        } catch {
-          // swallow cookie write errors in Server Component render context
-        }
+        cookieStore.set({
+          name,
+          value: '',
+          ...options,
+          maxAge: 0,
+        });
       },
     },
   });
