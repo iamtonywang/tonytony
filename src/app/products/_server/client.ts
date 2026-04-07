@@ -1,5 +1,5 @@
 import 'server-only';
 
-// Re-export readonly client for server-rendered product utilities
-export { getSupabaseServerReadonlyClient as getSupabaseServerClient } from '@/lib/supabase/server-readonly';
+// Re-export PUBLIC client for server-rendered product utilities (catalog is public)
+export { getSupabasePublicClient as getSupabaseServerClient } from '@/lib/supabase/public';
 
