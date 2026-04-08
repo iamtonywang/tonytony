@@ -24,6 +24,20 @@ export default function Header({ authenticated, loginId, isPartner }: HeaderProp
     setIsMenuOpen(false);
   };
 
+  const renderLoginId = () => {
+    // 로그인 아이디는 5자리까지만 노출, 전체값은 title로만 유지
+    const raw = loginId?.trim() ?? "";
+    if (!raw) {
+      return <span className={styles.link}>ACCOUNT</span>;
+    }
+    const visible = raw.length > 5 ? `@${raw.slice(0, 5)}…` : `@${raw}`;
+    return (
+      <span className={styles.link} title={raw}>
+        {visible}
+      </span>
+    );
+  };
+
   const handleLogout = async () => {
     if (isLoggingOut) return;
     setIsLoggingOut(true);
@@ -32,7 +46,7 @@ export default function Header({ authenticated, loginId, isPartner }: HeaderProp
         method: "POST",
       });
       if (res.ok) {
-        router.push("/");
+        router.replace("/");
         router.refresh();
         return;
       }
@@ -78,7 +92,6 @@ export default function Header({ authenticated, loginId, isPartner }: HeaderProp
             </Link>
           ) : (
             <>
-              <span className={styles.link}>{loginId ?? "로그인중"}</span>
               <Link href="/mypage" className={styles.link} onClick={handleMenuClose}>
                 My Page
               </Link>
@@ -87,9 +100,25 @@ export default function Header({ authenticated, loginId, isPartner }: HeaderProp
                   Partner
                 </Link>
               ) : null}
-              <button type="button" className={styles.link} onClick={handleLogout} disabled={isLoggingOut}>
+              <button
+                type="button"
+                className={styles.link}
+                onClick={handleLogout}
+                disabled={isLoggingOut}
+                // 버튼 기본 스타일 제거: 텍스트 링크처럼 보이도록 최소 reset
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  margin: 0,
+                  cursor: "pointer",
+                  font: "inherit",
+                  color: "inherit",
+                }}
+              >
                 {isLoggingOut ? "로그아웃중" : "Logout"}
               </button>
+              {renderLoginId()}
             </>
           )}
         </div>

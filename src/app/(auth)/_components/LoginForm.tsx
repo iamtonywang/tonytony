@@ -50,7 +50,9 @@ export default function LoginForm() {
       const message = (data as { message?: unknown }).message;
       if (ok === true) {
         setSuccess("로그인이 완료되었습니다.");
-        router.push("/");
+        // 로그인 직후 상단 Header props(authenticated, loginId, isPartner) 재계산 목적
+        router.replace("/");
+        router.refresh();
         return;
       }
       setError(typeof message === "string" ? message : "로그인에 실패했습니다.");
