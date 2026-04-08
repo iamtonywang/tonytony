@@ -224,9 +224,21 @@ export async function POST(req: Request) {
     .limit(1);
 
   if (usersFetchError) {
+    const firstUsersRow =
+      Array.isArray(usersRows) && usersRows.length > 0
+        ? (usersRows[0] as { id?: unknown; login_id?: unknown; auth_user_id?: unknown })
+        : null;
     console.error("[login-route][users-fetch-error]", {
-      ...debugPayload,
+      authUserId,
+      loginId: loginId?.trim() ?? null,
+      lookupEmail: email,
       usersRowsLength: Array.isArray(usersRows) ? usersRows.length : null,
+      firstUsersRowSummary: {
+        hasId: !!firstUsersRow && typeof firstUsersRow.id === "number",
+        hasLoginId: !!firstUsersRow && typeof firstUsersRow.login_id === "string",
+        hasAuthUserId: !!firstUsersRow && typeof firstUsersRow.auth_user_id === "string",
+      },
+      reason: "users-fetch-query-failed",
       error: {
         message: usersFetchError.message,
         details: usersFetchError.details ?? null,
@@ -303,9 +315,21 @@ export async function POST(req: Request) {
       .limit(1);
 
     if (verifyError) {
+      const firstVerifiedRow =
+        Array.isArray(verifyRows) && verifyRows.length > 0
+          ? (verifyRows[0] as { id?: unknown; login_id?: unknown; auth_user_id?: unknown })
+          : null;
       console.error("[login-route][users-verify-error]", {
-        ...debugPayload,
+        authUserId,
+        loginId: loginId?.trim() ?? null,
+        lookupEmail: email,
         verifiedUsersRowsLength: Array.isArray(verifyRows) ? verifyRows.length : null,
+        firstVerifiedRowSummary: {
+          hasId: !!firstVerifiedRow && typeof firstVerifiedRow.id === "number",
+          hasLoginId: !!firstVerifiedRow && typeof firstVerifiedRow.login_id === "string",
+          hasAuthUserId: !!firstVerifiedRow && typeof firstVerifiedRow.auth_user_id === "string",
+        },
+        reason: "users-verify-query-failed",
         error: {
           message: verifyError.message,
           details: verifyError.details ?? null,
