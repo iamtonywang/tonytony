@@ -62,14 +62,37 @@ export default function MyPageShell({ summary }: Props) {
 					</nav>
 
 					{activeTab === "profile" ? (
-						<div className={styles.profileSection}>
-							<ProfileSection summary={summary} />
+						<div className={styles.sectionBox}>
+							<h2 className={styles.sectionTitle}>Profile</h2>
+							<div className={styles.profileSection}>
+								<ProfileSection summary={summary} />
+							</div>
 						</div>
 					) : null}
-					{activeTab === "orders" ? <OrdersSection /> : null}
-					{activeTab === "refunds" ? <RefundsSection /> : null}
-					{activeTab === "inquiries" ? <InquiriesSection /> : null}
-					{activeTab === "partner" ? <PartnerSection /> : null}
+					{activeTab === "orders" ? (
+						<div className={styles.sectionBox}>
+							<h2 className={styles.sectionTitle}>Orders</h2>
+							<OrdersSection />
+						</div>
+					) : null}
+					{activeTab === "refunds" ? (
+						<div className={styles.sectionBox}>
+							<h2 className={styles.sectionTitle}>Refunds</h2>
+							<RefundsSection />
+						</div>
+					) : null}
+					{activeTab === "inquiries" ? (
+						<div className={styles.sectionBox}>
+							<h2 className={styles.sectionTitle}>Inquiries</h2>
+							<InquiriesSection />
+						</div>
+					) : null}
+					{activeTab === "partner" ? (
+						<div className={styles.sectionBox}>
+							<h2 className={styles.sectionTitle}>Partner</h2>
+							<PartnerSection />
+						</div>
+					) : null}
 				</div>
 			</div>
 		</div>
