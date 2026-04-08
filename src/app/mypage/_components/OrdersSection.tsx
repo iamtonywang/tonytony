@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import styles from "./MyPage.module.css";
 
 type OrderItem = {
 	orderNumber: string | null;
@@ -79,7 +80,7 @@ export default function OrdersSection() {
 		return (
 			<section>
 				<h2 style={{ marginBottom: 8 }}>주문</h2>
-				<p style={{ margin: 0 }}>주문 내역이 없습니다.</p>
+				<div className={styles.emptyState}>주문 내역이 없습니다</div>
 			</section>
 		);
 	}
