@@ -91,18 +91,22 @@
 
 .sectionBox {
   width: 100%;
-  max-width: 420px;
-  margin: 18px auto;
-  padding: 14px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 360px;
+  margin: 16px auto;
+  padding: 14px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  text-align: center;
+}
+
+.sectionBox * {
   text-align: center;
 }
 
 .sectionTitle {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .emptyState {
