@@ -100,6 +100,16 @@ export async function POST(req: Request) {
     );
   }
 
+  // Diagnostic payload for 500-branch isolation.
+  // Security guard: do NOT log password, tokens, cookies, session object, or Authorization header.
+  const debugPayload = {
+    loginId: loginId?.trim() ?? null,
+    authUserId: signInData?.user?.id ?? null,
+    signInEmail: signInData?.user?.email ?? null,
+    signInPhone: signInData?.user?.phone ?? null,
+    lookupEmail: typeof email === "string" ? email : null,
+  };
+
   const authUserId = signInData?.user?.id ?? null;
   if (!authUserId) {
     return NextResponse.json(
@@ -116,6 +126,16 @@ export async function POST(req: Request) {
     .limit(1);
 
   if (usersFetchError) {
+    console.error("[login-route][users-fetch-error]", {
+      ...debugPayload,
+      usersRowsLength: Array.isArray(usersRows) ? usersRows.length : null,
+      error: {
+        message: usersFetchError.message,
+        details: usersFetchError.details ?? null,
+        hint: usersFetchError.hint ?? null,
+        code: usersFetchError.code ?? null,
+      },
+    });
     return NextResponse.json(
       { ok: false, message: "로그인 후 사용자 정보를 확인하지 못했습니다." },
       { status: 500 },
@@ -139,14 +159,38 @@ export async function POST(req: Request) {
       : email;
 
     const fallbackLoginId = loginId.trim().toLowerCase();
+    console.info("[login-route][backfill-start]", {
+      p_auth_user_id: authUserId,
+      p_login_id: fallbackLoginId,
+      p_phone: fallbackPhone,
+      p_email: safeEmail,
+      ...debugPayload,
+    });
     const { error: backfillError } = await supabase.rpc("create_user_after_signup", {
       p_auth_user_id: authUserId,
       p_login_id: fallbackLoginId,
       p_phone: fallbackPhone,
       p_email: safeEmail,
     });
+    console.info("[login-route][backfill-done]", {
+      p_auth_user_id: authUserId,
+      p_login_id: fallbackLoginId,
+      p_phone: fallbackPhone,
+      p_email: safeEmail,
+      ...debugPayload,
+      backfillOk: !backfillError,
+    });
 
     if (backfillError) {
+      console.error("[login-route][users-backfill-error]", {
+        ...debugPayload,
+        error: {
+          message: backfillError.message,
+          details: backfillError.details ?? null,
+          hint: backfillError.hint ?? null,
+          code: backfillError.code ?? null,
+        },
+      });
       return NextResponse.json(
         { ok: false, message: "로그인 후 사용자 정보를 생성하지 못했습니다." },
         { status: 500 },
@@ -161,6 +205,16 @@ export async function POST(req: Request) {
       .limit(1);
 
     if (verifyError) {
+      console.error("[login-route][users-verify-error]", {
+        ...debugPayload,
+        verifiedUsersRowsLength: Array.isArray(verifyRows) ? verifyRows.length : null,
+        error: {
+          message: verifyError.message,
+          details: verifyError.details ?? null,
+          hint: verifyError.hint ?? null,
+          code: verifyError.code ?? null,
+        },
+      });
       return NextResponse.json(
         { ok: false, message: "로그인 후 사용자 정보를 확인하지 못했습니다." },
         { status: 500 },
@@ -173,6 +227,13 @@ export async function POST(req: Request) {
         : null;
 
     if (!verifiedUserRow || typeof verifiedUserRow.id !== "number") {
+      console.error("[login-route][verified-user-missing]", {
+        ...debugPayload,
+        usersRowsLength: Array.isArray(usersRows) ? usersRows.length : null,
+        verifiedUsersRowsLength: Array.isArray(verifyRows) ? verifyRows.length : null,
+        hasVerifiedUserId: !!verifiedUserRow && typeof verifiedUserRow.id === "number",
+        hasVerifiedLoginId: !!verifiedUserRow && typeof verifiedUserRow.login_id === "string",
+      });
       return NextResponse.json(
         { ok: false, message: "로그인 후 사용자 정보가 누락되었습니다." },
         { status: 500 },
