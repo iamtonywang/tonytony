@@ -11,6 +11,23 @@ function isNonEmptyString(v: unknown): v is string {
   return typeof v === "string" && v.trim().length > 0;
 }
 
+type SupabaseErrorLike = {
+  message?: string | null;
+  details?: string | null;
+  hint?: string | null;
+  code?: string | null;
+};
+
+function toErrorMeta(err: unknown) {
+  const e = (err ?? null) as SupabaseErrorLike | null;
+  return {
+    message: typeof e?.message === "string" ? e.message : null,
+    details: typeof e?.details === "string" ? e.details : null,
+    hint: typeof e?.hint === "string" ? e.hint : null,
+    code: typeof e?.code === "string" ? e.code : null,
+  };
+}
+
 export async function POST(req: Request) {
   const contentType = req.headers.get("content-type")?.toLowerCase() ?? "";
   if (!contentType.includes("application/json")) {
@@ -24,6 +41,15 @@ export async function POST(req: Request) {
   try {
     body = (await req.json()) as LoginRequestBody;
   } catch {
+    console.error("[login-route][400][body-parse]", {
+      loginId: null,
+      authUserId: null,
+      signInEmail: null,
+      signInPhone: null,
+      lookupEmail: null,
+      reason: "invalid-json-body",
+      ...toErrorMeta(null),
+    });
     return NextResponse.json(
       { ok: false, message: "잘못된 요청 형식입니다." },
       { status: 400 },
@@ -34,12 +60,30 @@ export async function POST(req: Request) {
   const password = isNonEmptyString(body?.password) ? body.password : "";
 
   if (!loginId) {
+    console.error("[login-route][400][invalid-input-login-id]", {
+      loginId: loginId?.trim() ?? null,
+      authUserId: null,
+      signInEmail: null,
+      signInPhone: null,
+      lookupEmail: null,
+      reason: "missing-login-id",
+      ...toErrorMeta(null),
+    });
     return NextResponse.json(
       { ok: false, message: "로그인 ID를 입력해 주세요." },
       { status: 400 },
     );
   }
   if (!password) {
+    console.error("[login-route][400][invalid-input-password]", {
+      loginId: loginId?.trim() ?? null,
+      authUserId: null,
+      signInEmail: null,
+      signInPhone: null,
+      lookupEmail: null,
+      reason: "missing-password",
+      ...toErrorMeta(null),
+    });
     return NextResponse.json(
       { ok: false, message: "비밀번호를 올바르게 입력해 주세요." },
       { status: 400 },
@@ -54,6 +98,15 @@ export async function POST(req: Request) {
     { p_login_id: loginId },
   );
   if (lookupError) {
+    console.error("[login-route][400][lookup-error]", {
+      loginId: loginId?.trim() ?? null,
+      authUserId: null,
+      signInEmail: null,
+      signInPhone: null,
+      lookupEmail: null,
+      reason: "login-lookup-failed",
+      ...toErrorMeta(lookupError),
+    });
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
@@ -62,6 +115,15 @@ export async function POST(req: Request) {
 
   if (!lookupData) {
     // no row (includes not found / duplicate / email null by contract)
+    console.error("[login-route][400][lookup-empty]", {
+      loginId: loginId?.trim() ?? null,
+      authUserId: null,
+      signInEmail: null,
+      signInPhone: null,
+      lookupEmail: null,
+      reason: "lookup-data-empty",
+      ...toErrorMeta(null),
+    });
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
@@ -74,6 +136,15 @@ export async function POST(req: Request) {
   const userStatus = (row as { user_status?: unknown })?.user_status;
 
   if (typeof email !== "string" || typeof userStatus !== "string") {
+    console.error("[login-route][400][lookup-shape-invalid]", {
+      loginId: loginId?.trim() ?? null,
+      authUserId: null,
+      signInEmail: null,
+      signInPhone: null,
+      lookupEmail: typeof email === "string" ? email : null,
+      reason: "lookup-email-or-status-invalid",
+      ...toErrorMeta(null),
+    });
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
@@ -82,6 +153,15 @@ export async function POST(req: Request) {
 
   // user_status pre-check (allow only active)
   if (userStatus !== "active") {
+    console.error("[login-route][400][user-status-blocked]", {
+      loginId: loginId?.trim() ?? null,
+      authUserId: null,
+      signInEmail: null,
+      signInPhone: null,
+      lookupEmail: email,
+      reason: "user-status-not-active",
+      ...toErrorMeta(null),
+    });
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
@@ -94,6 +174,15 @@ export async function POST(req: Request) {
     password,
   });
   if (signInError) {
+    console.error("[login-route][400][signin-error]", {
+      loginId: loginId?.trim() ?? null,
+      authUserId: signInData?.user?.id ?? null,
+      signInEmail: signInData?.user?.email ?? null,
+      signInPhone: signInData?.user?.phone ?? null,
+      lookupEmail: email,
+      reason: "sign-in-failed",
+      ...toErrorMeta(signInError),
+    });
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
@@ -112,6 +201,15 @@ export async function POST(req: Request) {
 
   const authUserId = signInData?.user?.id ?? null;
   if (!authUserId) {
+    console.error("[login-route][400][missing-auth-user-id]", {
+      loginId: loginId?.trim() ?? null,
+      authUserId: signInData?.user?.id ?? null,
+      signInEmail: signInData?.user?.email ?? null,
+      signInPhone: signInData?.user?.phone ?? null,
+      lookupEmail: email,
+      reason: "missing-auth-user-id-after-signin",
+      ...toErrorMeta(null),
+    });
     return NextResponse.json(
       { ok: false, message: "로그인에 실패했습니다." },
       { status: 400 },
