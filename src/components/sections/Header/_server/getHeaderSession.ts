@@ -33,7 +33,7 @@ export async function getHeaderSession(): Promise<HeaderSession> {
 
   if (!userRow || typeof userRow.id !== "number") {
     return {
-      authenticated: true,
+      authenticated: false,
       loginId: null,
       isPartner: false,
     };
