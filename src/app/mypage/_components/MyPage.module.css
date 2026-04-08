@@ -17,6 +17,11 @@
 .pageInner {
   position: relative;
   z-index: 1;
+  padding: 24px;
+}
+
+.contentWrap {
+  padding-top: 30vh;
 }
 
 .headerText {
@@ -52,14 +57,16 @@
 
 .navWrap {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 12px;
-  margin: 16px 0;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0;
 }
 
 .navItem {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -71,6 +78,15 @@
 
 .active {
   color: #ffffff;
+}
+
+.profileSection {
+  text-align: center;
+}
+
+.profileSection :where(p, li, div) {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .emptyState {
