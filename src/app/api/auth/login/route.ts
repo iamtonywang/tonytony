@@ -89,7 +89,7 @@ export async function POST(req: Request) {
   }
 
   // Auth: email + password only when status is active
-  const { error: signInError } = await supabase.auth.signInWithPassword({
+  const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
@@ -100,7 +100,86 @@ export async function POST(req: Request) {
     );
   }
 
-  // Note: persistSession is false in current server client; session persistence is not finalized here.
+  const authUserId = signInData?.user?.id ?? null;
+  if (!authUserId) {
+    return NextResponse.json(
+      { ok: false, message: "로그인에 실패했습니다." },
+      { status: 400 },
+    );
+  }
+
+  // users row 존재 확인
+  const { data: usersRows, error: usersFetchError } = await supabase
+    .from("users")
+    .select("id, login_id")
+    .eq("auth_user_id", authUserId)
+    .limit(1);
+
+  if (usersFetchError) {
+    return NextResponse.json(
+      { ok: false, message: "로그인 후 사용자 정보를 확인하지 못했습니다." },
+      { status: 500 },
+    );
+  }
+
+  const existingUserRow =
+    Array.isArray(usersRows) && usersRows.length === 1
+      ? (usersRows[0] as { id: number; login_id: string | null })
+      : null;
+
+  // users row 누락 시 backfill 생성
+  if (!existingUserRow || typeof existingUserRow.id !== "number") {
+    const authPhoneRaw = signInData.user.phone;
+    const authPhone = typeof authPhoneRaw === "string" ? authPhoneRaw.trim() : "";
+    const fallbackPhone = authPhone.length > 0 ? authPhone : `u-${authUserId.replace(/-/g, "").slice(0, 20)}`;
+
+    const authEmailRaw = signInData.user.email;
+    const safeEmail = typeof authEmailRaw === "string" && authEmailRaw.trim().length > 0
+      ? authEmailRaw.trim()
+      : email;
+
+    const fallbackLoginId = loginId.trim().toLowerCase();
+    const { error: backfillError } = await supabase.rpc("create_user_after_signup", {
+      p_auth_user_id: authUserId,
+      p_login_id: fallbackLoginId,
+      p_phone: fallbackPhone,
+      p_email: safeEmail,
+    });
+
+    if (backfillError) {
+      return NextResponse.json(
+        { ok: false, message: "로그인 후 사용자 정보를 생성하지 못했습니다." },
+        { status: 500 },
+      );
+    }
+
+    // backfill 생성 확인
+    const { data: verifyRows, error: verifyError } = await supabase
+      .from("users")
+      .select("id, login_id")
+      .eq("auth_user_id", authUserId)
+      .limit(1);
+
+    if (verifyError) {
+      return NextResponse.json(
+        { ok: false, message: "로그인 후 사용자 정보를 확인하지 못했습니다." },
+        { status: 500 },
+      );
+    }
+
+    const verifiedUserRow =
+      Array.isArray(verifyRows) && verifyRows.length === 1
+        ? (verifyRows[0] as { id: number; login_id: string | null })
+        : null;
+
+    if (!verifiedUserRow || typeof verifiedUserRow.id !== "number") {
+      return NextResponse.json(
+        { ok: false, message: "로그인 후 사용자 정보가 누락되었습니다." },
+        { status: 500 },
+      );
+    }
+  }
+
   return NextResponse.json({ ok: true });
 }
 
