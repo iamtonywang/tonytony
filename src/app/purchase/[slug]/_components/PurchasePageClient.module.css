@@ -253,6 +253,7 @@
   color: #ffffff;
   padding: 8px 0;
   outline: none;
+  text-align: center;
 }
 
 .formRow input:not([type="checkbox"]):focus {
