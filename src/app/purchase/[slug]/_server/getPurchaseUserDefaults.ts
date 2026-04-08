@@ -20,6 +20,13 @@ type Defaults = {
   } | null;
 };
 
+type ProfileRow = {
+  real_name: string | null;
+  zipcode: string | null;
+  address1: string | null;
+  address2: string | null;
+};
+
 export async function getPurchaseUserDefaults(): Promise<Defaults> {
   const supabase = await getSupabaseServerReadonlyClient();
 
@@ -48,14 +55,14 @@ export async function getPurchaseUserDefaults(): Promise<Defaults> {
   } : null;
 
   // Load profile by users.id when present
-  let profile: { real_name: string | null; zipcode: string | null; address1: string | null; address2: string | null } | null = null;
+  let profile: ProfileRow | null = null;
   if (userRow && typeof userRow.id === "number") {
     const { data: profileRows } = await supabase
       .from("user_profiles")
       .select("real_name, zipcode, address1, address2")
       .eq("user_id", userRow.id)
       .limit(1);
-    profile = Array.isArray(profileRows) && profileRows.length === 1 ? profileRows[0] as typeof profile : null;
+    profile = Array.isArray(profileRows) && profileRows.length === 1 ? (profileRows[0] as ProfileRow) : null;
   }
 
   const realName = profile?.real_name ?? null;
