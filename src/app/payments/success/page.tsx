@@ -1,3 +1,5 @@
+import type { ReactElement } from "react";
+
 // Toss Payments 성공 리다이렉트 진입 페이지
 // - searchParams 로 paymentKey / orderId / amount 를 수신한다.
 // - 정책: Toss 의 paymentKey 를 우리 시스템의 transactionId 로 사용한다.
@@ -27,7 +29,7 @@ export default function Page({ searchParams }: { searchParams?: SearchParams }) 
 		paymentKey: string | null;
 		orderId: string | null;
 		amount: string | null;
-	}) => JSX.Element;
+	}) => ReactElement;
 
 	return (
 		<SuccessClient paymentKey={paymentKey} orderId={orderId} amount={amount} />
