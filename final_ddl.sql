@@ -2422,6 +2422,152 @@ on sales_metrics
 for select
 using (is_admin());
 
+-- partner settlement request 원자 생성 RPC
+create or replace function public.create_partner_settlement_request_atomic()
+returns table (
+  requested_count integer,
+  request_amount numeric(12,2)
+)
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_user_id bigint;
+  v_partner_id bigint;
+  v_bank_account_id bigint;
+  v_request_id bigint;
+  v_requested_count integer;
+  v_request_amount numeric(12,2);
+  v_inserted_sum numeric(12,2);
+begin
+  select u.id
+    into v_user_id
+  from users u
+  where u.auth_user_id = auth.uid()
+  limit 1;
+
+  if v_user_id is null then
+    raise exception 'partner_user_not_found';
+  end if;
+
+  select p.id
+    into v_partner_id
+  from partners p
+  where p.user_id = v_user_id
+    and p.partner_status = 'active'
+  limit 1;
+
+  if v_partner_id is null then
+    raise exception 'partner_not_active_or_not_found';
+  end if;
+
+  -- partner당 1계좌(unique) 구조이므로 1건만 조회한다.
+  select pba.id
+    into v_bank_account_id
+  from partner_bank_accounts pba
+  where pba.partner_id = v_partner_id
+  limit 1;
+
+  if v_bank_account_id is null then
+    raise exception 'partner_bank_account_not_found';
+  end if;
+
+  with eligible as (
+    select
+      s.id as settlement_id,
+      s.settlement_amount
+    from settlements s
+    join orders o on o.id = s.order_id
+    where s.partner_id = v_partner_id
+      and s.settlement_status = 'confirmed'
+      and s.settlement_available_at <= now()
+      and s.settlement_status <> 'paid'
+      and s.settlement_status <> 'cancelled'
+      and s.settlement_paid_at is null
+      and s.cancelled_at is null
+      and o.order_status <> 'refunded'
+      and not exists (
+        select 1
+        from partner_settlement_request_items psi
+        where psi.settlement_id = s.id
+      )
+  )
+  select
+    count(*)::integer,
+    coalesce(sum(e.settlement_amount), 0)::numeric(12,2)
+  into v_requested_count, v_request_amount
+  from eligible e;
+
+  if v_requested_count is null or v_requested_count = 0 then
+    raise exception 'no_settlements_available';
+  end if;
+
+  if v_request_amount is null or v_request_amount <= 0 then
+    raise exception 'invalid_request_amount';
+  end if;
+
+  insert into partner_settlement_requests (
+    partner_id,
+    bank_account_id,
+    request_amount,
+    request_status,
+    requested_at
+  )
+  values (
+    v_partner_id,
+    v_bank_account_id,
+    v_request_amount,
+    'pending',
+    now()
+  )
+  returning id into v_request_id;
+
+  with eligible as (
+    select
+      s.id as settlement_id,
+      s.settlement_amount
+    from settlements s
+    join orders o on o.id = s.order_id
+    where s.partner_id = v_partner_id
+      and s.settlement_status = 'confirmed'
+      and s.settlement_available_at <= now()
+      and s.settlement_status <> 'paid'
+      and s.settlement_status <> 'cancelled'
+      and s.settlement_paid_at is null
+      and s.cancelled_at is null
+      and o.order_status <> 'refunded'
+      and not exists (
+        select 1
+        from partner_settlement_request_items psi
+        where psi.settlement_id = s.id
+      )
+  )
+  insert into partner_settlement_request_items (
+    request_id,
+    settlement_id,
+    amount_snapshot
+  )
+  select
+    v_request_id,
+    e.settlement_id,
+    e.settlement_amount
+  from eligible e;
+
+  select coalesce(sum(psi.amount_snapshot), 0)::numeric(12,2)
+    into v_inserted_sum
+  from partner_settlement_request_items psi
+  where psi.request_id = v_request_id;
+
+  if v_inserted_sum <> v_request_amount then
+    raise exception 'request_amount_mismatch';
+  end if;
+
+  return query
+  select v_requested_count, v_request_amount;
+end;
+$$;
+
 -- refund complete 원자 처리 RPC (invoker)
 create or replace function public.complete_refund_atomic(
   p_refund_id bigint,
