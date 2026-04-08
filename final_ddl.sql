@@ -2074,6 +2074,8 @@ on users
 for select
 using (is_admin());
 
+grant select on table public.users to authenticated;
+
 create policy user_profiles_select_own
 on user_profiles
 for select
