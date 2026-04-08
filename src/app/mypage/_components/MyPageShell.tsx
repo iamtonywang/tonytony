@@ -28,71 +28,58 @@ export default function MyPageShell({ summary }: Props) {
 						<p className={styles.desc}>May you always be blessed</p>
 					</div>
 
-					<nav className={styles.navWrap}>
-						<button
-							className={`${styles.navItem} ${activeTab === "profile" ? styles.active : ""}`}
-							onClick={() => setActiveTab("profile")}
-						>
-							Profile
-						</button>
-						<button
-							className={`${styles.navItem} ${activeTab === "orders" ? styles.active : ""}`}
-							onClick={() => setActiveTab("orders")}
-						>
-							Orders
-						</button>
-						<button
-							className={`${styles.navItem} ${activeTab === "refunds" ? styles.active : ""}`}
-							onClick={() => setActiveTab("refunds")}
-						>
-							Refunds
-						</button>
-						<button
-							className={`${styles.navItem} ${activeTab === "inquiries" ? styles.active : ""}`}
-							onClick={() => setActiveTab("inquiries")}
-						>
-							Inquiries
-						</button>
-						<button
-							className={`${styles.navItem} ${activeTab === "partner" ? styles.active : ""}`}
-							onClick={() => setActiveTab("partner")}
-						>
-							Partner
-						</button>
+					<nav className={styles.navList}>
+						<div className={styles.navBox}>
+							<button
+								className={`${styles.navItem} ${activeTab === "profile" ? styles.active : ""}`}
+								onClick={() => setActiveTab("profile")}
+							>
+								Profile
+							</button>
+						</div>
+						<div className={styles.navBox}>
+							<button
+								className={`${styles.navItem} ${activeTab === "orders" ? styles.active : ""}`}
+								onClick={() => setActiveTab("orders")}
+							>
+								Orders
+							</button>
+						</div>
+						<div className={styles.navBox}>
+							<button
+								className={`${styles.navItem} ${activeTab === "refunds" ? styles.active : ""}`}
+								onClick={() => setActiveTab("refunds")}
+							>
+								Refunds
+							</button>
+						</div>
+						<div className={styles.navBox}>
+							<button
+								className={`${styles.navItem} ${activeTab === "inquiries" ? styles.active : ""}`}
+								onClick={() => setActiveTab("inquiries")}
+							>
+								Inquiries
+							</button>
+						</div>
+						<div className={styles.navBox}>
+							<button
+								className={`${styles.navItem} ${activeTab === "partner" ? styles.active : ""}`}
+								onClick={() => setActiveTab("partner")}
+							>
+								Partner
+							</button>
+						</div>
 					</nav>
 
 					{activeTab === "profile" ? (
-						<div className={styles.sectionBox}>
-							<h2 className={styles.sectionTitle}>Profile</h2>
-							<div className={styles.profileSection}>
-								<ProfileSection summary={summary} />
-							</div>
+						<div className={styles.profileSection}>
+							<ProfileSection summary={summary} />
 						</div>
 					) : null}
-					{activeTab === "orders" ? (
-						<div className={styles.sectionBox}>
-							<h2 className={styles.sectionTitle}>Orders</h2>
-							<OrdersSection />
-						</div>
-					) : null}
-					{activeTab === "refunds" ? (
-						<div className={styles.sectionBox}>
-							<h2 className={styles.sectionTitle}>Refunds</h2>
-							<RefundsSection />
-						</div>
-					) : null}
-					{activeTab === "inquiries" ? (
-						<div className={styles.sectionBox}>
-							<h2 className={styles.sectionTitle}>Inquiries</h2>
-							<InquiriesSection />
-						</div>
-					) : null}
-					{activeTab === "partner" ? (
-						<div className={styles.sectionBox}>
-							<h2 className={styles.sectionTitle}>Partner</h2>
-							<PartnerSection />
-						</div>
-					) : null}
+					{activeTab === "orders" ? <OrdersSection /> : null}
+					{activeTab === "refunds" ? <RefundsSection /> : null}
+					{activeTab === "inquiries" ? <InquiriesSection /> : null}
+					{activeTab === "partner" ? <PartnerSection /> : null}
 				</div>
 			</div>
 		</div>

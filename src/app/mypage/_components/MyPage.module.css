@@ -34,18 +34,24 @@
   font-weight: 300;
   color: #ffffff;
   margin-bottom: 6px;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
 }
 
 .sub {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.8);
   margin: 2px 0;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
 }
 
 .desc {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   margin-top: 10px;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
 }
 
 .pageTitle {
@@ -53,23 +59,36 @@
   font-size: 20px;
   color: #ffffff;
   margin-top: 20px;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
 }
 
-.navWrap {
+.navList {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin: 18px 0;
 }
 
+.navBox {
+  width: 100%;
+  max-width: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  text-align: center;
+  padding: 10px 12px;
+}
+
 .navItem {
+  width: 100%;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
   background: transparent;
   border: none;
   cursor: pointer;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
 }
 
 .navItem:hover {
@@ -87,26 +106,6 @@
 .profileSection :where(p, li, div) {
   text-align: center;
   color: rgba(255, 255, 255, 0.9);
-}
-
-.sectionBox {
-  width: 100%;
-  max-width: 360px;
-  margin: 16px auto;
-  padding: 14px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: transparent;
-  text-align: center;
-}
-
-.sectionBox * {
-  text-align: center;
-}
-
-.sectionTitle {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 8px;
 }
 
 .emptyState {
