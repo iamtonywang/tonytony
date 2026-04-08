@@ -34,7 +34,6 @@ const BACKGROUND_LINES = [
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
-  const hasScheduledVideoRef = useRef(false);
   const [showVideo, setShowVideo] = useState(false);
   const [pendingPlay, setPendingPlay] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -44,13 +43,9 @@ export default function HeroSection() {
   const [showFinalStack, setShowFinalStack] = useState(false);
 
   useEffect(() => {
-    if (hasScheduledVideoRef.current) {
-      return;
-    }
-    hasScheduledVideoRef.current = true;
-    const timer = setTimeout(() => {
-      setShowVideo(true);
-    }, 2000);
+		// Strict Mode: allow this effect twice; cleanup cancels prior timer,
+		// then a fresh timer is registered so one valid timer remains.
+		const timer = setTimeout(() => setShowVideo(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
