@@ -39,40 +39,44 @@ export async function getProductBySlug(slug: string): Promise<ProductMinimal | n
 
   const base = mapProductRowToMinimal(row);
 
-  // 2) Active price for this product_id
+  // 2) Active price and hero image (run in parallel after base.id is known)
   let finalPriceAmount: number | null = null;
-  {
-    const { data: priceRows, error: pricesError } = await supabase
+  let heroImageUrl: string | null = null;
+  const [pricesResult, mediaResult] = await Promise.all([
+    supabase
       .from('product_prices')
       .select('product_id, final_price_amount')
       .eq('product_id', row.id)
       .eq('is_active', true)
-      .limit(2); // safety; unique active per product expected
-    if (pricesError) {
-      throw new Error(`Failed to load active product price: ${pricesError.message}`);
-    }
-    if (Array.isArray(priceRows) && priceRows.length === 1) {
-      finalPriceAmount = priceRows[0]?.final_price_amount ?? null;
-    } else {
-      // none or multiple -> do not choose arbitrarily
-      finalPriceAmount = null;
-    }
-  }
-
-  // 3) Hero image for this product_id
-  let heroImageUrl: string | null = null;
-  {
-    const { data: mediaRows, error: mediaError } = await supabase
+      .limit(2),
+    supabase
       .from('product_media')
       .select('product_id, file_url, is_primary')
       .eq('product_id', row.id)
       .eq('media_type', 'hero_image')
       .eq('is_active', true)
-      .limit(5); // small upper bound; we'll verify primary uniqueness
-    if (mediaError) {
-      throw new Error(`Failed to load hero image media: ${mediaError.message}`);
+      .limit(5),
+  ]);
+
+  // prices fallback
+  if (pricesResult.error) {
+    console.error(`Failed to load active product price: ${pricesResult.error.message}`);
+    finalPriceAmount = null;
+  } else {
+    const priceRows = Array.isArray(pricesResult.data) ? pricesResult.data : [];
+    if (priceRows.length === 1) {
+      finalPriceAmount = priceRows[0]?.final_price_amount ?? null;
+    } else {
+      finalPriceAmount = null;
     }
-    const list = Array.isArray(mediaRows) ? mediaRows : [];
+  }
+
+  // media fallback
+  if (mediaResult.error) {
+    console.error(`Failed to load hero image media: ${mediaResult.error.message}`);
+    heroImageUrl = null;
+  } else {
+    const list = Array.isArray(mediaResult.data) ? mediaResult.data : [];
     const primaries = list.filter((r) => r.is_primary === true && !!r.file_url);
     if (primaries.length === 1) {
       heroImageUrl = primaries[0]?.file_url ?? null;

@@ -29,7 +29,7 @@ type MediaRow = {
  * Then fetches prices and hero images with separate queries and merges them by product_id.
  */
 export async function getPublicProducts(): Promise<ProductMinimal[]> {
-  const supabase = await getSupabaseServerClient();
+	const supabase = await getSupabaseServerClient();
 
   // 1) Base products under public visibility constraints
   const { data: products, error: productsError } = await supabase
@@ -57,17 +57,25 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
     return [];
   }
 
-  // 4) Active prices by product_id
-  const { data: priceRows, error: pricesError } = await supabase
-    .from('product_prices')
-    .select('product_id, final_price_amount')
-    .in('product_id', productIds)
-    .eq('is_active', true);
+	// 4) Active prices and hero images by product_id (run in parallel)
+	const [pricesResult, mediaResult] = await Promise.all([
+		supabase
+			.from('product_prices')
+			.select('product_id, final_price_amount')
+			.in('product_id', productIds)
+			.eq('is_active', true),
+		supabase
+			.from('product_media')
+			.select('product_id, file_url, is_primary')
+			.in('product_id', productIds)
+			.eq('media_type', 'hero_image')
+			.eq('is_active', true),
+	]);
 
-  if (pricesError) {
-    throw new Error(`Failed to load active product prices: ${pricesError.message}`);
-  }
-  const prices: PriceRow[] = Array.isArray(priceRows) ? priceRows : [];
+	// prices fallback
+	const prices: PriceRow[] = pricesResult.error
+		? (console.error(`Failed to load active product prices: ${pricesResult.error.message}`), [])
+		: (Array.isArray(pricesResult.data) ? pricesResult.data : []);
   const priceByProductId = new Map<number, number | null>();
   // Unique active per product is enforced; if multiple appear, last write wins but should not happen.
   for (const pr of prices) {
@@ -76,18 +84,10 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
     }
   }
 
-  // 5) Hero image candidates by product_id
-  const { data: mediaRows, error: mediaError } = await supabase
-    .from('product_media')
-    .select('product_id, file_url, is_primary')
-    .in('product_id', productIds)
-    .eq('media_type', 'hero_image')
-    .eq('is_active', true);
-
-  if (mediaError) {
-    throw new Error(`Failed to load hero image media: ${mediaError.message}`);
-  }
-  const medias: MediaRow[] = Array.isArray(mediaRows) ? mediaRows : [];
+	// 5) Hero image candidates by product_id (fallback)
+	const medias: MediaRow[] = mediaResult.error
+		? (console.error(`Failed to load hero image media: ${mediaResult.error.message}`), [])
+		: (Array.isArray(mediaResult.data) ? mediaResult.data : []);
 
   // Build primary-only map; if not exactly one primary per product, keep null.
   const heroImageByProductId = new Map<number, string | null>();
