@@ -19,6 +19,60 @@
   z-index: 1;
 }
 
+.headerText {
+  margin: 24px 0 18px;
+  text-align: center;
+}
+
+.brand {
+  font-size: 17px;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 2px 0;
+}
+
+.desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 10px;
+}
+
+.pageTitle {
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.navWrap {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.navItem {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  color: #ffffff;
+}
+
+.active {
+  color: #ffffff;
+}
+
 .emptyState {
   text-align: center;
   font-size: 14px;

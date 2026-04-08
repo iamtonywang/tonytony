@@ -19,14 +19,45 @@ export default function MyPageShell({ summary }: Props) {
 	return (
 		<div className={styles.pageBackground}>
 			<div className={styles.pageInner} style={{ padding: 24 }}>
-				<h1 style={{ marginBottom: 12 }}>마이페이지</h1>
+				<h1 className={styles.pageTitle}>My Page</h1>
+				<div className={styles.headerText}>
+					<h1 className={styles.brand}>TONYWANG</h1>
+					<p className={styles.sub}>plant cell genetic protein</p>
+					<p className={styles.sub}>Bioengineering Laboratory</p>
+					<p className={styles.desc}>May you always be blessed</p>
+				</div>
 
-				<nav style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-					<button onClick={() => setActiveTab("profile")}>프로필</button>
-					<button onClick={() => setActiveTab("orders")}>주문</button>
-					<button onClick={() => setActiveTab("refunds")}>환불</button>
-					<button onClick={() => setActiveTab("inquiries")}>문의</button>
-					<button onClick={() => setActiveTab("partner")}>파트너</button>
+				<nav className={styles.navWrap}>
+					<button
+						className={`${styles.navItem} ${activeTab === "profile" ? styles.active : ""}`}
+						onClick={() => setActiveTab("profile")}
+					>
+						Profile
+					</button>
+					<button
+						className={`${styles.navItem} ${activeTab === "orders" ? styles.active : ""}`}
+						onClick={() => setActiveTab("orders")}
+					>
+						Orders
+					</button>
+					<button
+						className={`${styles.navItem} ${activeTab === "refunds" ? styles.active : ""}`}
+						onClick={() => setActiveTab("refunds")}
+					>
+						Refunds
+					</button>
+					<button
+						className={`${styles.navItem} ${activeTab === "inquiries" ? styles.active : ""}`}
+						onClick={() => setActiveTab("inquiries")}
+					>
+						Inquiries
+					</button>
+					<button
+						className={`${styles.navItem} ${activeTab === "partner" ? styles.active : ""}`}
+						onClick={() => setActiveTab("partner")}
+					>
+						Partner
+					</button>
 				</nav>
 
 				{activeTab === "profile" ? <ProfileSection summary={summary} /> : null}
