@@ -1,6 +1,6 @@
 import "server-only";
 
-import { requireActiveAdminReadonly } from "./requireActiveAdminReadonly";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
 export type OrdersModuleSummary = {
 	total: number;
@@ -16,22 +16,7 @@ export type OrdersModuleSummary = {
 const STATUSES = ["pending", "paid", "preparing", "shipped", "completed", "cancelled", "refunded"] as const;
 
 export async function getOrdersModuleSummary(): Promise<OrdersModuleSummary> {
-	const empty: OrdersModuleSummary = {
-		total: 0,
-		pending: 0,
-		paid: 0,
-		preparing: 0,
-		shipped: 0,
-		completed: 0,
-		cancelled: 0,
-		refunded: 0,
-	};
-
-	const r = await requireActiveAdminReadonly();
-	if (!r.ok) {
-		return empty;
-	}
-	const { supabase } = r;
+	const supabase = await getSupabaseServerReadonlyClient();
 
 	const [totalRes, ...statusRes] = await Promise.all([
 		supabase.from("orders").select("*", { count: "exact", head: true }),
