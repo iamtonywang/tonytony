@@ -9,9 +9,10 @@ type HeaderProps = {
   authenticated: boolean;
   loginId: string | null;
   isPartner: boolean;
+  isAdmin: boolean;
 };
 
-export default function Header({ authenticated, loginId, isPartner }: HeaderProps) {
+export default function Header({ authenticated, loginId, isPartner, isAdmin }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const router = useRouter();
@@ -95,6 +96,11 @@ export default function Header({ authenticated, loginId, isPartner }: HeaderProp
               <Link href="/mypage" className={styles.link} onClick={handleMenuClose}>
                 My Page
               </Link>
+              {isAdmin ? (
+                <Link href="/admin" className={styles.link} onClick={handleMenuClose}>
+                  Admin
+                </Link>
+              ) : null}
               {isPartner ? (
                 <Link href="/partner" className={styles.link} onClick={handleMenuClose}>
                   Partner

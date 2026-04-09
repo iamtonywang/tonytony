@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 type PartnerItem = {
@@ -97,6 +98,11 @@ export default function PartnerSection() {
 							? "신청 대기 있음"
 							: "신청 대기 없음"}
 				</p>
+				{item.isPartner ? (
+					<p style={{ margin: "12px 0 0 0" }}>
+						<Link href="/partner">파트너 대시보드로 이동</Link>
+					</p>
+				) : null}
 			</article>
 		</section>
 	);

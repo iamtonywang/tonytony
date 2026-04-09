@@ -36,6 +36,7 @@ export default async function RootLayout({
           authenticated={headerSession.authenticated}
           loginId={headerSession.loginId}
           isPartner={headerSession.isPartner}
+          isAdmin={headerSession.isAdmin}
         />
         <main>{children}</main>
         <Footer />

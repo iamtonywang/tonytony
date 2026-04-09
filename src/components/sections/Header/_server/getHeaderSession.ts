@@ -6,6 +6,7 @@ export type HeaderSession = {
   authenticated: boolean;
   loginId: string | null;
   isPartner: boolean;
+  isAdmin: boolean;
 };
 
 export async function getHeaderSession(): Promise<HeaderSession> {
@@ -17,6 +18,7 @@ export async function getHeaderSession(): Promise<HeaderSession> {
       authenticated: false,
       loginId: null,
       isPartner: false,
+      isAdmin: false,
     };
   }
 
@@ -36,19 +38,28 @@ export async function getHeaderSession(): Promise<HeaderSession> {
       authenticated: false,
       loginId: null,
       isPartner: false,
+      isAdmin: false,
     };
   }
 
-  const { data: partnerRows } = await supabase
-    .from("partners")
-    .select("id")
-    .eq("user_id", userRow.id)
-    .limit(1);
+  const [partnersResult, adminsResult] = await Promise.all([
+    supabase.from("partners").select("id").eq("user_id", userRow.id).limit(1),
+    supabase
+      .from("admins")
+      .select("admin_status")
+      .eq("user_id", userRow.id)
+      .eq("admin_status", "active")
+      .limit(1),
+  ]);
+
+  const partnerRows = partnersResult.data;
+  const adminRows = adminsResult.data;
 
   return {
     authenticated: true,
     loginId: userRow.login_id ?? null,
     isPartner: Array.isArray(partnerRows) && partnerRows.length === 1,
+    isAdmin: Array.isArray(adminRows) && adminRows.length === 1,
   };
 }
 
