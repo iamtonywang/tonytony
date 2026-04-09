@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type ApplicationRow = {
 	loginId: string;
@@ -46,6 +46,8 @@ export default function Page() {
 	const [selectedLoginId, setSelectedLoginId] = useState<string | null>(null);
 	const [detail, setDetail] = useState<DetailData | null>(null);
 	const isDetailOpen = useMemo(() => typeof selectedLoginId === "string" && selectedLoginId.length > 0, [selectedLoginId]);
+	const hasFetchedApplicationsRef = useRef(false);
+	const hasFetchedPartnersRef = useRef(false);
 
 	const refetchPartnersPage = async (page: number) => {
 		try {
@@ -66,6 +68,9 @@ export default function Page() {
 
 	// 신청 목록 로드
 	useEffect(() => {
+		if (appPage === 1 && hasFetchedApplicationsRef.current) return;
+		if (appPage === 1) hasFetchedApplicationsRef.current = true;
+
 		const run = async () => {
 			const res = await fetch(`/api/admin/partners/applications?page=${appPage}`, { cache: "no-store" });
 			if (!res.ok) { setAppRows([]); setAppHasNext(false); return; }
@@ -78,6 +83,9 @@ export default function Page() {
 
 	// 파트너 목록 로드
 	useEffect(() => {
+		if (parPage === 1 && hasFetchedPartnersRef.current) return;
+		if (parPage === 1) hasFetchedPartnersRef.current = true;
+
 		void refetchPartnersPage(parPage);
 	}, [parPage]);
 

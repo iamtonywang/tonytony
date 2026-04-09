@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 
 type ListItem = {
 	loginId: string;
@@ -22,8 +23,12 @@ export default function UserList({ selectedLoginId, onSelectLoginId }: Props) {
 	const [rows, setRows] = useState<ListItem[]>([]);
 	const [hasNext, setHasNext] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const hasFetchedRef = useRef(false);
 
 	useEffect(() => {
+		if (page === 1 && hasFetchedRef.current) return;
+		if (page === 1) hasFetchedRef.current = true;
+
 		const run = async () => {
 			setLoading(true);
 			const res = await fetch(`/api/admin/users/list?page=${page}`, { cache: "no-store" });
