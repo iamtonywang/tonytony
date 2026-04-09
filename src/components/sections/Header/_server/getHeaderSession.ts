@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 
 import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
@@ -9,7 +10,7 @@ export type HeaderSession = {
   isAdmin: boolean;
 };
 
-export async function getHeaderSession(): Promise<HeaderSession> {
+export const getHeaderSession = cache(async function getHeaderSession(): Promise<HeaderSession> {
   const supabase = await getSupabaseServerReadonlyClient();
   const { data: userData } = await supabase.auth.getUser();
 
@@ -61,5 +62,5 @@ export async function getHeaderSession(): Promise<HeaderSession> {
     isPartner: Array.isArray(partnerRows) && partnerRows.length === 1,
     isAdmin: Array.isArray(adminRows) && adminRows.length === 1,
   };
-}
+});
 
