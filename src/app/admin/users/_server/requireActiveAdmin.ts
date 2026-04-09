@@ -1,15 +1,15 @@
 import "server-only";
 
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
-export type ActiveAdminClient = Awaited<ReturnType<typeof getSupabaseServerClient>>;
+export type ActiveAdminClient = Awaited<ReturnType<typeof getSupabaseServerReadonlyClient>>;
 
 export type RequireAdminFailureReason = "unauthorized" | "user_not_found" | "forbidden";
 
 export async function requireActiveAdmin(): Promise<
 	{ ok: true; supabase: ActiveAdminClient } | { ok: false; reason: RequireAdminFailureReason }
 > {
-	const supabase = await getSupabaseServerClient();
+	const supabase = await getSupabaseServerReadonlyClient();
 	const { data: auth } = await supabase.auth.getUser();
 	if (!auth?.user) {
 		return { ok: false, reason: "unauthorized" };
