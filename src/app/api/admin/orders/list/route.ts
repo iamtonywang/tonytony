@@ -53,6 +53,15 @@ export async function GET(req: NextRequest) {
 		.range(from, to);
 
 	if (error) {
+		console.error("[admin-orders][list-fetch-error]", {
+			page,
+			from,
+			to,
+			message: error.message,
+			details: error.details,
+			hint: error.hint,
+			code: error.code,
+		});
 		return NextResponse.json(
 			{ ok: false, items: [], total: 0, hasNext: false, message: "orders_fetch_failed" },
 			{ status: 500 },
