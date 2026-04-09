@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
 type SettlementHistoryItem = {
   settlementStatus: string;
@@ -11,7 +11,7 @@ type SettlementHistoryItem = {
 };
 
 export async function GET(_req: NextRequest) {
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerReadonlyClient();
 
   const { data: userData } = await supabase.auth.getUser();
   if (!userData?.user) {
