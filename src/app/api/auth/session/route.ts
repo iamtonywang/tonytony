@@ -1,7 +1,7 @@
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
 export async function GET() {
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerReadonlyClient();
   const { data } = await supabase.auth.getUser();
 
   return Response.json({

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
 type OrderItem = {
   orderNumber: string;
@@ -14,7 +14,7 @@ type OrderItem = {
 };
 
 export async function GET(_req: NextRequest) {
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerReadonlyClient();
 
   // auth
   const { data: userData } = await supabase.auth.getUser();
