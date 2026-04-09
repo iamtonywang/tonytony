@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
 function maskAccountNumber(raw: string | null): string | null {
 	if (!raw) return null;
@@ -12,7 +12,7 @@ function maskAccountNumber(raw: string | null): string | null {
 }
 
 export async function GET(_req: NextRequest, ctx: { params: Promise<{ loginId: string }> }) {
-	const supabase = await getSupabaseServerClient();
+	const supabase = await getSupabaseServerReadonlyClient();
 	// 관리자 active 검증
 	const { data: auth } = await supabase.auth.getUser();
 	if (!auth?.user) {

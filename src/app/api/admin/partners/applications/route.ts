@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
 const PAGE_SIZE = 20;
 
 export async function GET(req: NextRequest) {
-	const supabase = await getSupabaseServerClient();
+	const supabase = await getSupabaseServerReadonlyClient();
 	// 관리자 active 검증
 	const { data: auth } = await supabase.auth.getUser();
 	if (!auth?.user) {
