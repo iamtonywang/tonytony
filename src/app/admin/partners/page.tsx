@@ -47,6 +47,23 @@ export default function Page() {
 	const [detail, setDetail] = useState<DetailData | null>(null);
 	const isDetailOpen = useMemo(() => typeof selectedLoginId === "string" && selectedLoginId.length > 0, [selectedLoginId]);
 
+	const refetchPartnersPage = async (page: number) => {
+		try {
+			const res = await fetch(`/api/admin/partners/list?page=${page}`, { cache: "no-store" });
+			if (!res.ok) {
+				setParRows([]);
+				setParHasNext(false);
+				return;
+			}
+			const data = await res.json() as { ok: boolean; items: PartnerRow[]; hasNext: boolean };
+			setParRows(Array.isArray(data.items) ? data.items : []);
+			setParHasNext(Boolean(data.hasNext));
+		} catch {
+			setParRows([]);
+			setParHasNext(false);
+		}
+	};
+
 	// 신청 목록 로드
 	useEffect(() => {
 		const run = async () => {
@@ -61,14 +78,7 @@ export default function Page() {
 
 	// 파트너 목록 로드
 	useEffect(() => {
-		const run = async () => {
-			const res = await fetch(`/api/admin/partners/list?page=${parPage}`, { cache: "no-store" });
-			if (!res.ok) { setParRows([]); setParHasNext(false); return; }
-			const data = await res.json() as { ok: boolean; items: PartnerRow[]; hasNext: boolean };
-			setParRows(Array.isArray(data.items) ? data.items : []);
-			setParHasNext(Boolean(data.hasNext));
-		};
-		run().catch(() => { setParRows([]); setParHasNext(false); });
+		void refetchPartnersPage(parPage);
 	}, [parPage]);
 
 	// 상세 로드
@@ -98,6 +108,7 @@ export default function Page() {
 			setAppHasNext(Boolean(data.hasNext));
 		}
 		// 선택된 상세도 같다면 새로 로드
+		await refetchPartnersPage(parPage);
 		if (selectedLoginId === loginId) {
 			const d = await fetch(`/api/admin/partners/detail/${encodeURIComponent(loginId)}`, { cache: "no-store" });
 			if (d.ok) {
@@ -119,6 +130,7 @@ export default function Page() {
 			setAppRows(Array.isArray(data.items) ? data.items : []);
 			setAppHasNext(Boolean(data.hasNext));
 		}
+		await refetchPartnersPage(parPage);
 		if (selectedLoginId === loginId) {
 			const d = await fetch(`/api/admin/partners/detail/${encodeURIComponent(loginId)}`, { cache: "no-store" });
 			if (d.ok) {
@@ -135,6 +147,7 @@ export default function Page() {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ loginId }),
 		});
+		await refetchPartnersPage(parPage);
 		if (selectedLoginId === loginId) {
 			const d = await fetch(`/api/admin/partners/detail/${encodeURIComponent(loginId)}`, { cache: "no-store" });
 			if (d.ok) {
@@ -149,6 +162,7 @@ export default function Page() {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ loginId }),
 		});
+		await refetchPartnersPage(parPage);
 		if (selectedLoginId === loginId) {
 			const d = await fetch(`/api/admin/partners/detail/${encodeURIComponent(loginId)}`, { cache: "no-store" });
 			if (d.ok) {
