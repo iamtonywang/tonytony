@@ -1,6 +1,6 @@
 import "server-only";
 
-import { requireActiveAdmin } from "./requireActiveAdmin";
+import { requireActiveAdminReadonly } from "./requireActiveAdminReadonly";
 
 export type OrdersModuleSummary = {
 	total: number;
@@ -27,7 +27,7 @@ export async function getOrdersModuleSummary(): Promise<OrdersModuleSummary> {
 		refunded: 0,
 	};
 
-	const r = await requireActiveAdmin();
+	const r = await requireActiveAdminReadonly();
 	if (!r.ok) {
 		return empty;
 	}
