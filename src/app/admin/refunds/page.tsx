@@ -1,9 +1,18 @@
+import { getRefundsModuleSummary } from "./_server/getRefundsModuleSummary";
+import RefundSummary from "./_components/RefundSummary";
+import RefundsModuleClient from "./_components/RefundsModuleClient";
+
 export default async function Page() {
+	const summary = await getRefundsModuleSummary();
+
 	return (
-		<div style={{ textAlign: "center" }}>
-			<h1 style={{ margin: "12px 0 16px" }}>RefundsModule</h1>
-			<p style={{ color: "rgba(255,255,255,0.85)" }}>목록/필터/페이지네이션/상세 패널은 후속 구현 예정입니다.</p>
+		<div style={{ maxWidth: 1080, margin: "0 auto" }}>
+			<h1 style={{ textAlign: "center", margin: "12px 0 8px" }}>Refunds Module</h1>
+			<p style={{ textAlign: "center", color: "rgba(255,255,255,0.85)", marginBottom: 20 }}>
+				환불 통계 · 목록(20건 단위) · 상세(선택 시 조회)
+			</p>
+			<RefundSummary data={summary} />
+			<RefundsModuleClient />
 		</div>
 	);
 }
-

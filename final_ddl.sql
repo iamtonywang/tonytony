@@ -1100,6 +1100,7 @@ create table refunds (
   approved_at timestamptz,
   rejected_at timestamptz,
   completed_at timestamptz,
+  rejection_reason text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
 
@@ -2842,3 +2843,7 @@ create trigger trg_partner_point_logs_no_delete before delete on partner_point_l
 
 drop trigger if exists trg_audit_logs_no_delete on audit_logs;
 create trigger trg_audit_logs_no_delete before delete on audit_logs for each row execute function prevent_physical_delete();
+
+-- idempotent: 기존 DB에 rejection_reason 이 없을 때만 추가
+alter table public.refunds
+  add column if not exists rejection_reason text;
