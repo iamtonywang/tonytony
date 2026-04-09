@@ -11,7 +11,7 @@ function maskAccountNumber(raw: string | null): string | null {
 	return `${"*".repeat(maskedLen)}${visible}`;
 }
 
-export async function GET(_req: NextRequest, ctx: { params: { loginId: string } }) {
+export async function GET(_req: NextRequest, ctx: { params: Promise<{ loginId: string }> }) {
 	const supabase = await getSupabaseServerClient();
 	// 관리자 active 검증
 	const { data: auth } = await supabase.auth.getUser();
@@ -28,7 +28,8 @@ export async function GET(_req: NextRequest, ctx: { params: { loginId: string } 
 		return NextResponse.json({ ok: false, item: null, message: "admin_forbidden" }, { status: 403 });
 	}
 
-	const loginId = decodeURIComponent(ctx.params.loginId ?? "").trim();
+	const params = await ctx.params;
+	const loginId = decodeURIComponent(params.loginId ?? "").trim();
 	if (!loginId) {
 		return NextResponse.json({ ok: false, item: null, message: "invalid_login_id" }, { status: 400 });
 	}
