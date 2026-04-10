@@ -430,10 +430,16 @@
 }
 
 .detailIntroSection,
-.detailCopySection,
-.detailVisualSection {
+.detailCopySection {
   width: min(1120px, 92vw);
   margin: 0 auto;
+}
+
+.detailVisualSection {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
 .detailIntroSection {
@@ -511,9 +517,10 @@
 .detailVisualMedia {
   position: relative;
   width: 100vw;
+  max-width: 100vw;
+  min-height: 80vh;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-
   overflow: hidden;
 }
 
@@ -557,8 +564,7 @@
   .detailBottomGlowLine,
   .detailEndGlowLine,
   .detailIntroSection,
-  .detailCopySection,
-  .detailVisualSection {
+  .detailCopySection {
     width: min(1120px, 94vw);
   }
 
@@ -598,14 +604,14 @@
   }
 
   .detailVisualMedia {
-  position: relative;
-  width: 100vw;
-  height: 88vh;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-
-  overflow: hidden;
-}
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    min-height: 88vh;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    overflow: hidden;
+  }
 }
 
 @keyframes detailGlowSweep {
@@ -652,12 +658,6 @@
 @media (min-width: 769px) {
   .detailVisualOverlay {
     align-items: center;
-  }
-
-  .detailVisualImage {
-    object-fit: cover;
-    object-position: center 10%;
-    background: transparent;
   }
 }
 
