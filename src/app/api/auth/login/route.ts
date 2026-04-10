@@ -152,32 +152,6 @@ export async function POST(req: Request) {
         { status: 500 },
       );
     }
-
-    // backfill 생성 확인
-    const { data: verifyRows, error: verifyError } = await supabase
-      .from("users")
-      .select("id, login_id")
-      .eq("auth_user_id", authUserId)
-      .limit(1);
-
-    if (verifyError) {
-      return NextResponse.json(
-        { ok: false, message: "로그인 후 사용자 정보를 확인하지 못했습니다." },
-        { status: 500 },
-      );
-    }
-
-    const verifiedUserRow =
-      Array.isArray(verifyRows) && verifyRows.length === 1
-        ? (verifyRows[0] as { id: number; login_id: string | null })
-        : null;
-
-    if (!verifiedUserRow || typeof verifiedUserRow.id !== "number") {
-      return NextResponse.json(
-        { ok: false, message: "로그인 후 사용자 정보가 누락되었습니다." },
-        { status: 500 },
-      );
-    }
   }
 
   return NextResponse.json({ ok: true });
