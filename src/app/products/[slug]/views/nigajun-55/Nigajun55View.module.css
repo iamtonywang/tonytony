@@ -511,7 +511,8 @@
   position: relative;
   width: 100vw;
   max-width: 100vw;
-  min-height: 80vh;
+  min-height: 100vh;
+  height: 100vh;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   overflow: hidden;
@@ -534,8 +535,8 @@
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 55%,
-    rgba(0, 0, 0, 0.6) 75%,
-    rgba(0, 0, 0, 0.95) 100%
+    rgba(0, 0, 0, 0.42) 75%,
+    rgba(0, 0, 0, 0.72) 100%
   );
 }
 
@@ -557,8 +558,7 @@
   .detailBottomGlowLine,
   .detailEndGlowLine,
   .detailIntroSection,
-  .detailCopySection,
-  .detailVisualSection {
+  .detailCopySection {
     width: min(1120px, 94vw);
   }
 
@@ -596,7 +596,8 @@
     position: relative;
     width: 100vw;
     max-width: 100vw;
-    min-height: 88vh;
+    min-height: 85vh;
+    height: 85vh;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     overflow: hidden;
