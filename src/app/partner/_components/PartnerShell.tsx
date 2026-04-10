@@ -5,7 +5,6 @@ import type { PartnerPageSummary } from "../types";
 import SettlementRequestsSection from "./SettlementRequestsSection";
 import SettlementHistorySection from "./SettlementHistorySection";
 import BankAccountSection from "./BankAccountSection";
-import PointLogsSection from "./PointLogsSection";
 import styles from "./PartnerShell.module.css";
 
 type Props = {
@@ -196,12 +195,14 @@ export default function PartnerShell({ summary }: Props) {
 					{openSection === "points" ? (
 						<div className={styles.accordionPanel}>
 							<div className={styles.panelInner}>
-								<PointLogsSection />
+								<div className={styles.pointValuePlaceholder} aria-hidden />
 							</div>
 						</div>
 					) : null}
 				</div>
 			</div>
+
+			<div className={styles.pageFooterDivider} aria-hidden />
 		</div>
 	);
 }

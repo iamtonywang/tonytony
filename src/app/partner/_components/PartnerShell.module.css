@@ -137,3 +137,15 @@
 .boxTitle {
   font-size: 14px;
 }
+
+.pointValuePlaceholder {
+  min-height: 8px;
+}
+
+.pageFooterDivider {
+  width: 100%;
+  max-width: 420px;
+  height: 1px;
+  margin: 28px auto 0;
+  background: rgba(255, 255, 255, 0.18);
+}
