@@ -1,25 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
+import { requireActiveAdmin } from "@/app/admin/users/_server/requireActiveAdmin";
 
 const PAGE_SIZE = 20;
 
 export async function GET(req: NextRequest) {
-	const supabase = await getSupabaseServerReadonlyClient();
-	// 관리자 active 검증
-	const { data: auth } = await supabase.auth.getUser();
-	if (!auth?.user) {
-		return NextResponse.json({ ok: false, items: [], hasNext: false, message: "Unauthorized" }, { status: 401 });
-	}
-	const { data: meRows } = await supabase.from("users").select("id").eq("auth_user_id", auth.user.id).limit(1);
-	const me = Array.isArray(meRows) && meRows.length === 1 ? (meRows[0] as { id: number }) : null;
-	if (!me) {
-		return NextResponse.json({ ok: false, items: [], hasNext: false, message: "user_not_found" }, { status: 404 });
-	}
-	const { data: adminRows } = await supabase.from("admins").select("id").eq("user_id", me.id).eq("admin_status", "active").limit(1);
-	if (!Array.isArray(adminRows) || adminRows.length !== 1) {
+	const r = await requireActiveAdmin();
+	if (!r.ok) {
+		if (r.reason === "unauthorized") {
+			return NextResponse.json({ ok: false, items: [], hasNext: false, message: "Unauthorized" }, { status: 401 });
+		}
+		if (r.reason === "user_not_found") {
+			return NextResponse.json({ ok: false, items: [], hasNext: false, message: "user_not_found" }, { status: 404 });
+		}
 		return NextResponse.json({ ok: false, items: [], hasNext: false, message: "admin_forbidden" }, { status: 403 });
 	}
+	const { supabase } = r;
 
 	// 페이지네이션
 	const url = new URL(req.url);
@@ -55,4 +51,3 @@ export async function GET(req: NextRequest) {
 
 	return NextResponse.json({ ok: true, items, hasNext, message: null }, { status: 200 });
 }
-
