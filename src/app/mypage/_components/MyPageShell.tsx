@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function MyPageShell({ summary }: Props) {
-	const [openSection, setOpenSection] = useState<MyPageTab>("profile");
+	const [openSection, setOpenSection] = useState<MyPageTab | null>("profile");
 
 	return (
 		<div className={styles.pageBackground}>
@@ -33,7 +33,7 @@ export default function MyPageShell({ summary }: Props) {
 							<button
 								type="button"
 								className={`${styles.navItem} ${openSection === "profile" ? styles.active : ""}`}
-								onClick={() => setOpenSection("profile")}
+								onClick={() => setOpenSection((prev) => (prev === "profile" ? null : "profile"))}
 							>
 								Profile
 							</button>
@@ -50,14 +50,16 @@ export default function MyPageShell({ summary }: Props) {
 							<button
 								type="button"
 								className={`${styles.navItem} ${openSection === "orders" ? styles.active : ""}`}
-								onClick={() => setOpenSection("orders")}
+								onClick={() => setOpenSection((prev) => (prev === "orders" ? null : "orders"))}
 							>
 								Orders
 							</button>
 						</div>
 						{openSection === "orders" ? (
 							<div className={styles.accordionPanel}>
-								<OrdersSection />
+								<div className={styles.panelKorean}>
+									<OrdersSection />
+								</div>
 							</div>
 						) : null}
 
@@ -65,14 +67,16 @@ export default function MyPageShell({ summary }: Props) {
 							<button
 								type="button"
 								className={`${styles.navItem} ${openSection === "refunds" ? styles.active : ""}`}
-								onClick={() => setOpenSection("refunds")}
+								onClick={() => setOpenSection((prev) => (prev === "refunds" ? null : "refunds"))}
 							>
 								Refunds
 							</button>
 						</div>
 						{openSection === "refunds" ? (
 							<div className={styles.accordionPanel}>
-								<RefundsSection />
+								<div className={styles.panelKorean}>
+									<RefundsSection />
+								</div>
 							</div>
 						) : null}
 
@@ -80,14 +84,16 @@ export default function MyPageShell({ summary }: Props) {
 							<button
 								type="button"
 								className={`${styles.navItem} ${openSection === "inquiries" ? styles.active : ""}`}
-								onClick={() => setOpenSection("inquiries")}
+								onClick={() => setOpenSection((prev) => (prev === "inquiries" ? null : "inquiries"))}
 							>
 								Inquiries
 							</button>
 						</div>
 						{openSection === "inquiries" ? (
 							<div className={styles.accordionPanel}>
-								<InquiriesSection />
+								<div className={styles.panelKorean}>
+									<InquiriesSection />
+								</div>
 							</div>
 						) : null}
 
@@ -95,14 +101,16 @@ export default function MyPageShell({ summary }: Props) {
 							<button
 								type="button"
 								className={`${styles.navItem} ${openSection === "partner" ? styles.active : ""}`}
-								onClick={() => setOpenSection("partner")}
+								onClick={() => setOpenSection((prev) => (prev === "partner" ? null : "partner"))}
 							>
 								Partner
 							</button>
 						</div>
 						{openSection === "partner" ? (
 							<div className={styles.accordionPanel}>
-								<PartnerSection />
+								<div className={styles.panelKorean}>
+									<PartnerSection />
+								</div>
 							</div>
 						) : null}
 					</div>

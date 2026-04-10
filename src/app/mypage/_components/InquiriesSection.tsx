@@ -86,7 +86,7 @@ export default function InquiriesSection() {
 		<section>
 			<h2 style={{ marginBottom: 8 }}>문의</h2>
 			<div style={{ display: "grid", gap: 8 }}>
-				{items.map((item, index) => (
+				{items.slice(0, 1).map((item, index) => (
 					<article key={`${item.orderNumber ?? "inquiry"}-${index}`} style={{ border: "1px solid #ddd", padding: 8 }}>
 						<p style={{ margin: "0 0 4px 0" }}>문의유형: {item.inquiryType ?? "-"}</p>
 						<p style={{ margin: "0 0 4px 0" }}>문의상태: {item.inquiryStatus ?? "-"}</p>

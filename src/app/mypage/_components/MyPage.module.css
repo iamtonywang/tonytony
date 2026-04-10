@@ -90,6 +90,34 @@
   text-align: center;
 }
 
+/* 펼침 영역 내 한글 본문·제목 14px 통일 (Profile 영문 블록은 .profileSection으로 제외) */
+.panelKorean section h2,
+.panelKorean section p,
+.panelKorean section a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+}
+
+.panelKorean section article,
+.panelKorean section article p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+}
+
+.panelText {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+}
+
 .navItem {
   width: 100%;
   font-size: 14px;
