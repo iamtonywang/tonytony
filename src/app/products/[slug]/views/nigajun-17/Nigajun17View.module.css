@@ -141,6 +141,81 @@
   line-height: 1.6;
 }
 
+.boardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.writeButton {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 14px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.boardList {
+  width: 100%;
+}
+
+.boardItem {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 0;
+}
+
+.boardItem:last-child {
+  border-bottom: none;
+}
+
+.boardRow {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.boardPreviewAuthor {
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.boardPreviewText {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.boardExpanded {
+  margin-top: 8px;
+  text-align: left;
+}
+
+.boardMeta,
+.boardDate,
+.boardContent {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 2px 0;
+}
+
 .ctaButton {
   margin-top: 10px;
   padding: 10px 14px;

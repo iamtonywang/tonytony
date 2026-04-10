@@ -35,6 +35,45 @@ interface Props {
   product?: ProductMinimal;
 }
 
+const PINNED_NOTICE = {
+  author: "TONYWANG",
+  preview: "공지 내용은 추후 등록 예정입니다...",
+  type: "Notice",
+  date: "2026.04.10",
+  content: "공지 내용은 추후 등록 예정입니다.",
+} as const;
+
+const BOARD_ITEMS = [
+  {
+    author: "user***",
+    preview: "피부가 좋아졌어요...",
+    type: "Review",
+    date: "2026.04.10",
+    content: "피부가 많이 좋아졌어요. 재구매 의사 있습니다.",
+  },
+  {
+    author: "user***",
+    preview: "배송은 언제 되나요...",
+    type: "Inquiry",
+    date: "2026.04.11",
+    content: "배송 일정이 궁금합니다.",
+  },
+  {
+    author: "user***",
+    preview: "향이 은은해서 좋아요",
+    type: "Review",
+    date: "2026.04.12",
+    content: "향이 은은해서 데일리로 쓰기 좋습니다.",
+  },
+  {
+    author: "user***",
+    preview: "문의 드립니다",
+    type: "Inquiry",
+    date: "2026.04.13",
+    content: "제품 구성 문의드립니다.",
+  },
+];
+
 export default function Nigajun55View({ product }: Props) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
@@ -46,6 +85,7 @@ export default function Nigajun55View({ product }: Props) {
   const [linePhase, setLinePhase] = useState<"enter" | "hold" | "exit">("enter");
   const [showFinalBlock, setShowFinalBlock] = useState(false); // 55는 최종 블록 미사용(단일 마지막 문구)
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
+  const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -369,8 +409,55 @@ export default function Nigajun55View({ product }: Props) {
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
 
       <section className={styles.boardSection}>
-        <h2 className={styles.sectionTitle}>Board</h2>
-        <p className={styles.sectionText}>Review and inquiry area placeholder.</p>
+        <div className={styles.boardHeader}>
+          <h2 className={styles.sectionTitle}>Board</h2>
+          <button type="button" className={styles.writeButton}>
+            Write
+          </button>
+        </div>
+
+        <div className={styles.boardList}>
+          <div className={styles.boardItem}>
+            <button
+              type="button"
+              className={styles.boardRow}
+              onClick={() => setOpenBoardIndex((prev) => (prev === 0 ? null : 0))}
+            >
+              <span className={styles.boardPreviewAuthor}>{PINNED_NOTICE.author}</span>
+              <span className={styles.boardPreviewText}>{PINNED_NOTICE.preview}</span>
+            </button>
+            {openBoardIndex === 0 ? (
+              <div className={styles.boardExpanded}>
+                <div className={styles.boardMeta}>{PINNED_NOTICE.type}</div>
+                <div className={styles.boardDate}>{PINNED_NOTICE.date}</div>
+                <div className={styles.boardContent}>{PINNED_NOTICE.content}</div>
+              </div>
+            ) : null}
+          </div>
+
+          {BOARD_ITEMS.map((item, i) => {
+            const rowIndex = i + 1;
+            return (
+              <div key={`board-row-${rowIndex}`} className={styles.boardItem}>
+                <button
+                  type="button"
+                  className={styles.boardRow}
+                  onClick={() => setOpenBoardIndex((prev) => (prev === rowIndex ? null : rowIndex))}
+                >
+                  <span className={styles.boardPreviewAuthor}>{item.author}</span>
+                  <span className={styles.boardPreviewText}>{item.preview}</span>
+                </button>
+                {openBoardIndex === rowIndex ? (
+                  <div className={styles.boardExpanded}>
+                    <div className={styles.boardMeta}>{item.type}</div>
+                    <div className={styles.boardDate}>{item.date}</div>
+                    <div className={styles.boardContent}>{item.content}</div>
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       <section className={styles.informationSection}>
