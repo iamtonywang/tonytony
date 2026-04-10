@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { getSupabaseServerClient } from './client';
+import { getSupabasePublicClient } from './client';
 import { mapProductRowToMinimal, withMergedExtras } from './productMappers';
 import type { ProductMinimal } from './types';
 
@@ -29,7 +29,7 @@ type MediaRow = {
  * Then fetches prices and hero images with separate queries and merges them by product_id.
  */
 export async function getPublicProducts(): Promise<ProductMinimal[]> {
-	const supabase = await getSupabaseServerClient();
+	const supabase = await getSupabasePublicClient();
 
   // 1) Base products under public visibility constraints
   const { data: products, error: productsError } = await supabase

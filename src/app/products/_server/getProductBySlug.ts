@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { getSupabaseServerClient } from './client';
+import { getSupabasePublicClient } from './client';
 import { mapProductRowToMinimal, withMergedExtras } from './productMappers';
 import type { ProductMinimal } from './types';
 
@@ -18,7 +18,7 @@ type ProductRowWithId = {
  * Then fetches active price and hero image via separate queries (no nested relations).
  */
 export async function getProductBySlug(slug: string): Promise<ProductMinimal | null> {
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabasePublicClient();
 
   // 1) Base product
   const { data, error } = await supabase
