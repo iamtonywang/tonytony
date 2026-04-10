@@ -18,18 +18,17 @@ const STATUSES = ["pending", "paid", "preparing", "shipped", "completed", "cance
 export async function getOrdersModuleSummary(): Promise<OrdersModuleSummary> {
 	const supabase = await getSupabaseServerReadonlyClient();
 
-	const [totalRes, ...statusRes] = await Promise.all([
-		supabase.from("orders").select("*", { count: "exact", head: true }),
-		...STATUSES.map((s) =>
-			supabase.from("orders").select("*", { count: "exact", head: true }).eq("order_status", s),
-		),
-	]);
-
-	const total = totalRes.count ?? 0;
-	const counts = Object.fromEntries(STATUSES.map((s, i) => [s, statusRes[i]?.count ?? 0])) as Record<
-		(typeof STATUSES)[number],
-		number
-	>;
+	const { data } = await supabase.from("orders").select("order_status");
+	const rows = Array.isArray(data) ? (data as Array<{ order_status: string | null }>) : [];
+	const counts = Object.fromEntries(STATUSES.map((s) => [s, 0])) as Record<(typeof STATUSES)[number], number>;
+	for (const row of rows) {
+		const status = row.order_status;
+		if (typeof status !== "string") continue;
+		if (status in counts) {
+			counts[status as (typeof STATUSES)[number]] += 1;
+		}
+	}
+	const total = rows.length;
 
 	return {
 		total,
