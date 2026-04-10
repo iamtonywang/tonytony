@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { getHeaderSession } from "@/components/sections/Header/_server/getHeaderSession";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
@@ -15,19 +16,18 @@ type SettlementRequestItem = {
 };
 
 export async function GET(_req: NextRequest) {
-  const supabase = await getSupabaseServerReadonlyClient();
-
-  // auth
-  const { data: userData } = await supabase.auth.getUser();
-  if (!userData?.user) {
+  const headerSession = await getHeaderSession();
+  if (!headerSession.authenticated || !headerSession.loginId) {
     return NextResponse.json({ ok: false, items: [], message: "Unauthorized" }, { status: 401 });
   }
+
+  const supabase = await getSupabaseServerReadonlyClient();
 
   // users.id 내부 조회 (응답 노출 금지)
   const { data: usersRows } = await supabase
     .from("users")
     .select("id")
-    .eq("auth_user_id", userData.user.id)
+    .eq("login_id", headerSession.loginId)
     .limit(1);
   const userRow = Array.isArray(usersRows) && usersRows.length === 1 ? (usersRows[0] as { id: number }) : null;
   if (!userRow || typeof userRow.id !== "number") {
