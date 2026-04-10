@@ -132,7 +132,7 @@ export default function ProductHeroSection() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowVideo(true);
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 

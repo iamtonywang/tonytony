@@ -223,7 +223,7 @@ export default function Nigajun44View({ product }: Props) {
             timeoutId = window.setTimeout(() => {
               mountVideoOverlay();
               observer.disconnect();
-            }, 2000);
+            }, 1000);
           }
         },
         { threshold: 0.2 }

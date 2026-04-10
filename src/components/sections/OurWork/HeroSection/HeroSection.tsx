@@ -46,7 +46,7 @@ export default function HeroSection() {
   useEffect(() => {
 		// Strict Mode: allow this effect to run twice; cleanup clears prior timer,
 		// and this re-registers a fresh timer so one valid timer survives.
-		const timer = setTimeout(() => setShowVideo(true), 2000);
+		const timer = setTimeout(() => setShowVideo(true), 1000);
 
     return () => clearTimeout(timer);
   }, []);

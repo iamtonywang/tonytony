@@ -204,7 +204,7 @@ export default function Nigajun17View({ product }: Props) {
               setHideText(true);
               mountVideoOverlay();
               observer.disconnect();
-            }, 2000);
+            }, 1000);
           }
         },
         { threshold: 0.2 }
