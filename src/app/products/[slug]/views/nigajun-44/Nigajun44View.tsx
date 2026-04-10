@@ -611,50 +611,83 @@ export default function Nigajun44View({ product }: Props) {
         {isInfoOpen && (
           <div className={styles.informationContent}>
             <div className={styles.infoBlock}>
-              <div className={styles.infoTitle}>사용방법</div>
-              <div className={styles.infoText}>저녁 취침 전 사용</div>
+              <div className={styles.infoTitle}>사용방법 및 보관·규칙사항</div>
+              <div className={styles.infoText}>
+                필수 사용 사항
+                <br />
+                저녁 취침 전 사용
+              </div>
             </div>
 
             <div className={styles.infoBlock}>
-              <div className={styles.infoTitle}>금지사항</div>
+              <div className={styles.infoTitle}>절대 금지 사항</div>
               <div className={styles.infoText}>타사 제품 혼용 금지</div>
             </div>
 
             <div className={styles.infoBlock}>
-              <div className={styles.infoTitle}>보관</div>
+              <div className={styles.infoTitle}>보관 사항</div>
               <div className={styles.infoText}>97% 단백질 · 필수 냉장 보관</div>
             </div>
 
             <div className={styles.infoBlock}>
-              <div className={styles.infoTitle}>권장</div>
+              <div className={styles.infoTitle}>권장 사항</div>
               <div className={styles.infoText}>
                 44일 Soft 메이크업 사용 차단용 화장품 사용 금지
               </div>
             </div>
 
             <div className={styles.infoBlock}>
-              <div className={styles.infoTitle}>주의사항</div>
+              <div className={styles.infoTitle}>사용 시 주의사항</div>
               <div className={styles.infoText}>
+                [사용할 때의 주의사항]
+                <br />
                 화장품 사용 시 또는 사용 후 직사광선에 의하여
                 <br />
-                붉은 반점, 부어오름, 가려움증 등의 이상 증상 시 전문가 상담
+                사용 부위가 붉은 반점, 부어오름 또는 가려움증 등의
                 <br />
-                상처 부위 사용 금지
+                이상 증상이나 부작용이 있는 경우에는
+                <br />
+                전문의 등과 상담할 것
+                <br />
+                상처가 있는 부위 등에는 사용을 자제할 것
               </div>
             </div>
 
             <div className={styles.infoBlock}>
-              <div className={styles.infoTitle}>제품 정보</div>
+              <div className={styles.infoTitle}>보관 및 취급 시 주의사항</div>
+              <div className={styles.infoText}>
+                어린이의 손이 닿지 않는 곳에 보관할 것
+                <br />
+                직사광선을 피해서 보관할 것
+              </div>
+            </div>
+
+            <div className={styles.infoBlock}>
+              <div className={styles.infoTitle}>제품 전체 정보</div>
               <div className={styles.infoText}>
                 제품명 nigajun 44
                 <br />
                 용량 50ML
                 <br />
-                사용기한 제조일로부터 18개월 / 개봉 후 8개월
+                제품주요사항 얼굴 피부용
+                <br />
+                사용 기한 제조일로부터 18개월 / 개봉 후 8개월
+                <br />
+                사용 방법 아침·저녁 적당량을 얼굴 전체에 두텁게 흡수
+                <br />
+                제품 개발사 TONYWANG
+                <br />
+                화장품 제조업자 제품 내 별도 표기
+                <br />
+                화장품 판매업자 제품 내 별도 표기
                 <br />
                 제조국 대한민국
                 <br />
-                고객센터 070 4488 8800
+                기능성 심사 필 여부 _
+                <br />
+                소비자 상담실 070 4488 8800
+                <br />
+                품질보증기준 본 제품은 공정거래위원회 고시 소비자분쟁해결 기준에 의거 교환 또는 보상 받을 수 있습니다.
               </div>
             </div>
           </div>
