@@ -1,5 +1,6 @@
 import 'server-only';
 
+import { getHeaderSession } from "@/components/sections/Header/_server/getHeaderSession";
 import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
 
 type Defaults = {
@@ -28,13 +29,8 @@ type ProfileRow = {
 };
 
 export async function getPurchaseUserDefaults(): Promise<Defaults> {
-  const supabase = await getSupabaseServerReadonlyClient();
-
-  // Identify current user via session
-  const { data: userData } = await supabase.auth.getUser();
-  const authUserId = userData?.user?.id ?? null;
-  const authEmail = (userData?.user as { email?: string } | undefined)?.email ?? null;
-  if (!authUserId) {
+  const headerSession = await getHeaderSession();
+  if (!headerSession.authenticated || !headerSession.loginId) {
     return {
       buyerDefaults: null,
       receiverDefaults: null,
@@ -42,11 +38,13 @@ export async function getPurchaseUserDefaults(): Promise<Defaults> {
     };
   }
 
+  const supabase = await getSupabaseServerReadonlyClient();
+
   // Load own users row (RLS should permit own row selection)
   const { data: usersRows } = await supabase
     .from("users")
     .select("id, phone, email")
-    .eq("auth_user_id", authUserId)
+    .eq("login_id", headerSession.loginId)
     .limit(1);
   const userRow = Array.isArray(usersRows) && usersRows.length === 1 ? usersRows[0] as {
     id: number;
@@ -67,7 +65,7 @@ export async function getPurchaseUserDefaults(): Promise<Defaults> {
 
   const realName = profile?.real_name ?? null;
   const phone = (userRow?.phone ?? null);
-  const email = (userRow?.email ?? authEmail ?? null);
+  const email = (userRow?.email ?? null);
 
   return {
     buyerDefaults: {
