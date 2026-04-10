@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export type SettlementRequestSelection = {
 	loginId: string;
@@ -25,41 +25,66 @@ type Props = {
 	refreshKey: number;
 };
 
+type ListLoadResult = { items: ListItem[]; total: number; hasNext: boolean };
+
+/** Dedupes one in-flight initial list fetch across StrictMode mount/remount (same JS realm). */
+let sharedInitialListFetch: Promise<ListLoadResult> | null = null;
+
+async function loadListPage(pageNum: number): Promise<ListLoadResult> {
+	const res = await fetch(`/api/admin/settlements/list?page=${pageNum}`, { cache: "no-store" });
+	if (!res.ok) {
+		return { items: [], total: 0, hasNext: false };
+	}
+	const data = (await res.json()) as {
+		ok?: boolean;
+		items?: ListItem[];
+		total?: number;
+		hasNext?: boolean;
+	};
+	return {
+		items: Array.isArray(data.items) ? data.items : [],
+		total: typeof data.total === "number" ? data.total : 0,
+		hasNext: Boolean(data.hasNext),
+	};
+}
+
 export default function SettlementRequestList({ selected, onSelect, refreshKey }: Props) {
 	const [page, setPage] = useState(1);
 	const [rows, setRows] = useState<ListItem[]>([]);
 	const [total, setTotal] = useState(0);
 	const [hasNext, setHasNext] = useState(false);
 	const [loading, setLoading] = useState(true);
-	const hasFetchedRef = useRef(false);
 
 	useEffect(() => {
+		let cancelled = false;
 		const isInitialPage1 = page === 1 && refreshKey === 0;
-		if (isInitialPage1 && hasFetchedRef.current) return;
-		if (isInitialPage1) hasFetchedRef.current = true;
 
-		const run = async () => {
-			setLoading(true);
-			const res = await fetch(`/api/admin/settlements/list?page=${page}`, { cache: "no-store" });
-			if (!res.ok) {
-				setRows([]);
-				setTotal(0);
-				setHasNext(false);
-				setLoading(false);
-				return;
-			}
-			const data = (await res.json()) as {
-				ok?: boolean;
-				items?: ListItem[];
-				total?: number;
-				hasNext?: boolean;
-			};
-			setRows(Array.isArray(data.items) ? data.items : []);
-			setTotal(typeof data.total === "number" ? data.total : 0);
-			setHasNext(Boolean(data.hasNext));
+		const apply = (r: ListLoadResult) => {
+			if (cancelled) return;
+			setRows(r.items);
+			setTotal(r.total);
+			setHasNext(r.hasNext);
 			setLoading(false);
 		};
-		void run();
+
+		if (isInitialPage1) {
+			setLoading(true);
+			if (!sharedInitialListFetch) {
+				sharedInitialListFetch = loadListPage(page).finally(() => {
+					sharedInitialListFetch = null;
+				});
+			}
+			void sharedInitialListFetch.then(apply);
+			return () => {
+				cancelled = true;
+			};
+		}
+
+		setLoading(true);
+		void loadListPage(page).then(apply);
+		return () => {
+			cancelled = true;
+		};
 	}, [page, refreshKey]);
 
 	return (

@@ -1,5 +1,7 @@
 import "server-only";
 
+import { cache } from "react";
+
 import { getHeaderSession } from "@/components/sections/Header/_server/getHeaderSession";
 
 export type AdminSession = {
@@ -10,13 +12,10 @@ export type AdminSession = {
 };
 
 /**
- * Minimal admin session lookup for AdminLayout guard.
- * - Reads current auth user
- * - Resolves users.id and login_id
- * - Resolves admins row with admin_status='active'
- * - Returns only safe display fields (no UUIDs, no bigint PK exposure)
+ * AdminLayout guard: delegates to getHeaderSession() only (no extra auth.getUser).
+ * Wrapped in React.cache so repeated calls in the same RSC request share work with RootLayout.
  */
-export async function getAdminSession(): Promise<AdminSession> {
+export const getAdminSession = cache(async function getAdminSession(): Promise<AdminSession> {
 	const headerSession = await getHeaderSession();
 
 	return {
@@ -25,5 +24,5 @@ export async function getAdminSession(): Promise<AdminSession> {
 		adminRole: null,
 		loginId: headerSession.loginId,
 	};
-}
+});
 
