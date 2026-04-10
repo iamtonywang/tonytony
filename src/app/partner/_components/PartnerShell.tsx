@@ -19,7 +19,8 @@ export default function PartnerShell({ summary }: Props) {
 	return (
 		<div className={styles.partnerWrap}>
 			<h1 className={styles.partnerTitle}>TONYWANG</h1>
-			<p className={styles.partnerSubtitle}>파트너/정산</p>
+			<p className={styles.partnerSubtitle}>Congratulations on your profit</p>
+			<p className={styles.partnerSubtitle}>Partner Center</p>
 
 			<nav className={styles.partnerNav}>
 				<button type="button" onClick={() => setActiveTab("summary")}>
