@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
 	const from = (page - 1) * PAGE_SIZE;
 	const to = from + PAGE_SIZE - 1;
 
-	const [listRes, countRes] = await Promise.all([
+	const [listRes, nextCheckRes] = await Promise.all([
 		supabase
 			.from("orders")
 			.select(
@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
 			)
 			.order("ordered_at", { ascending: false })
 			.range(from, to),
-		supabase.from("orders").select("id", { count: "exact", head: true }),
+		supabase.from("orders").select("id").order("ordered_at", { ascending: false }).range(to + 1, to + 1),
 	]);
 
 	if (listRes.error) {
@@ -73,8 +73,8 @@ export async function GET(req: NextRequest) {
 		orderedAt: row.ordered_at,
 	}));
 
-	const total = typeof countRes.count === "number" ? countRes.count : 0;
-	const hasNext = to + 1 < total;
+	const hasNext = Array.isArray(nextCheckRes.data) && nextCheckRes.data.length > 0;
+	const total = hasNext ? from + PAGE_SIZE + 1 : from + rows.length;
 
 	return NextResponse.json({ ok: true, items, total, hasNext, message: null }, { status: 200 });
 }
