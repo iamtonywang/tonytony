@@ -61,6 +61,8 @@
 .ourWorkVisualMedia {
   position: relative;
   width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
   height: 100vh;
   overflow: hidden;
 }
@@ -216,11 +218,19 @@
   }
 
   .ourWorkVisualMedia {
-    height: 70vh;
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 85vh;
+    height: 85vh;
+    overflow: hidden;
   }
 
   .ourWorkVisualImage {
+    display: block;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
     object-position: center;
   }
 

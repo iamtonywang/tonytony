@@ -316,6 +316,8 @@
 .statementVisualMedia {
   position: relative;
   width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
   height: 100vh;
   overflow: hidden;
 }
@@ -507,11 +509,15 @@
 
   .statementVisualMedia {
     position: relative;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 85vh;
     height: 85vh;
     overflow: hidden;
   }
 
   .statementVisualImage {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
