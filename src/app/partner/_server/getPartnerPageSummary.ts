@@ -1,8 +1,27 @@
 import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
+import { getHeaderSession } from "@/components/sections/Header/_server/getHeaderSession";
 import type { PartnerPageSummary } from "../types";
 
 // 파트너페이지 상위 1회 최소 조회만 담당, 목록 데이터는 하위 섹션 개별 fetch 전제
 export async function getPartnerPageSummary(): Promise<PartnerPageSummary | null> {
+	const headerSession = await getHeaderSession();
+	if (!headerSession.authenticated || !headerSession.loginId) {
+		return {
+			partnerStatus: null,
+			hasBankAccount: false,
+			loginId: null,
+			realName: null,
+			phone: null,
+			email: null,
+			partnerCode: null,
+			todaySalesAmount: { gross: null, commission: null, point: null },
+			monthSalesAmount: { gross: null, commission: null, point: null },
+			waitingSettlementAmount: { commission: null },
+			availableSettlementAmount: { commission: null },
+			productSalesSummary: [],
+		};
+	}
+
 	const supabase = await getSupabaseServerReadonlyClient();
 
 	const SALES_COMMISSION_RATE = 0.1;
@@ -30,16 +49,11 @@ export async function getPartnerPageSummary(): Promise<PartnerPageSummary | null
 		productSalesSummary: [],
 	};
 
-	const { data: userData } = await supabase.auth.getUser();
-	if (!userData?.user) {
-		return defaultSummary;
-	}
-
 	// users
 	const { data: usersRows } = await supabase
 		.from("users")
 		.select("id, login_id, phone, email")
-		.eq("auth_user_id", userData.user.id)
+		.eq("login_id", headerSession.loginId)
 		.limit(1);
 	const userRow = Array.isArray(usersRows) && usersRows.length === 1
 		? (usersRows[0] as { id: number; login_id: string | null; phone: string | null; email: string | null })
