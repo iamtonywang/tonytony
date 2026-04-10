@@ -8,6 +8,8 @@ export type HeaderSession = {
   loginId: string | null;
   isPartner: boolean;
   isAdmin: boolean;
+  /** Resolved `users.id` when authenticated; not used by Header, for server reuse */
+  userId: number | null;
 };
 
 export const getHeaderSession = cache(async function getHeaderSession(): Promise<HeaderSession> {
@@ -20,6 +22,7 @@ export const getHeaderSession = cache(async function getHeaderSession(): Promise
       loginId: null,
       isPartner: false,
       isAdmin: false,
+      userId: null,
     };
   }
 
@@ -27,11 +30,12 @@ export const getHeaderSession = cache(async function getHeaderSession(): Promise
     .from("users")
     .select("id, login_id")
     .eq("auth_user_id", userData.user.id)
-    .limit(1);
+    .maybeSingle();
 
   const userRow =
-    Array.isArray(usersRows) && usersRows.length === 1
-      ? (usersRows[0] as { id: number; login_id: string | null })
+    usersRows &&
+    typeof (usersRows as { id: unknown }).id === "number"
+      ? (usersRows as { id: number; login_id: string | null })
       : null;
 
   if (!userRow || typeof userRow.id !== "number") {
@@ -40,6 +44,7 @@ export const getHeaderSession = cache(async function getHeaderSession(): Promise
       loginId: null,
       isPartner: false,
       isAdmin: false,
+      userId: null,
     };
   }
 
@@ -47,7 +52,7 @@ export const getHeaderSession = cache(async function getHeaderSession(): Promise
     supabase.from("partners").select("id").eq("user_id", userRow.id).limit(1),
     supabase
       .from("admins")
-      .select("admin_status")
+      .select("id")
       .eq("user_id", userRow.id)
       .eq("admin_status", "active")
       .limit(1),
@@ -61,6 +66,7 @@ export const getHeaderSession = cache(async function getHeaderSession(): Promise
     loginId: userRow.login_id ?? null,
     isPartner: Array.isArray(partnerRows) && partnerRows.length === 1,
     isAdmin: Array.isArray(adminRows) && adminRows.length === 1,
+    userId: userRow.id,
   };
 });
 

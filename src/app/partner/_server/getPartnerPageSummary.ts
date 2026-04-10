@@ -4,8 +4,8 @@ import type { PartnerPageSummary } from "../types";
 
 // 파트너페이지 상위 1회 최소 조회만 담당, 목록 데이터는 하위 섹션 개별 fetch 전제
 export async function getPartnerPageSummary(): Promise<PartnerPageSummary | null> {
-	const headerSession = await getHeaderSession();
-	if (!headerSession.authenticated || !headerSession.loginId) {
+	const session = await getHeaderSession();
+	if (!session.authenticated || !session.loginId || typeof session.userId !== "number") {
 		return {
 			partnerStatus: null,
 			hasBankAccount: false,
@@ -49,11 +49,11 @@ export async function getPartnerPageSummary(): Promise<PartnerPageSummary | null
 		productSalesSummary: [],
 	};
 
-	// users
+	// users — reuse shared session user id (same row as getHeaderSession) to avoid a second login_id resolution path
 	const { data: usersRows } = await supabase
 		.from("users")
 		.select("id, login_id, phone, email")
-		.eq("login_id", headerSession.loginId)
+		.eq("id", session.userId)
 		.limit(1);
 	const userRow = Array.isArray(usersRows) && usersRows.length === 1
 		? (usersRows[0] as { id: number; login_id: string | null; phone: string | null; email: string | null })
