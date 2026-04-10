@@ -47,23 +47,33 @@
   margin-bottom: 20px;
 }
 
-.summaryBox {
+.summaryButton {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.22);
   background: transparent;
   padding: 10px 14px;
   text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
-.boxLabel {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
+.summaryButton:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.summaryPanel {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  text-align: center;
 }
 
 .boxValue {
   font-size: 14px;
   color: #ffffff;
-  margin-top: 4px;
 }
 
 .sectionStack {

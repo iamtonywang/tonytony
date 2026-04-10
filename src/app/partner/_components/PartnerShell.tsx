@@ -12,6 +12,8 @@ type Props = {
 	summary: PartnerPageSummary | null;
 };
 
+type SummaryKey = "todaySales" | "monthlySales" | "pendingSettlement" | "availableSettlement";
+
 type AccordionKey = "settlementRequest" | "settlementHistory" | "bankAccount" | "productSales" | "points";
 
 function formatCurrency(v: number | null | undefined) {
@@ -44,6 +46,7 @@ function ProductSalesPanel({ summary }: { summary: PartnerPageSummary | null }) 
 }
 
 export default function PartnerShell({ summary }: Props) {
+	const [openSummary, setOpenSummary] = useState<SummaryKey | null>(null);
 	const [openSection, setOpenSection] = useState<AccordionKey | null>(null);
 
 	const toggle = (key: AccordionKey) => {
@@ -60,21 +63,68 @@ export default function PartnerShell({ summary }: Props) {
 			</div>
 
 			<div className={styles.summaryStack}>
-				<div className={styles.summaryBox}>
-					<div className={styles.boxLabel}>Today Sales</div>
-					<div className={styles.boxValue}>{formatCurrency(summary?.todaySalesAmount?.gross)}</div>
+				<div className={styles.accordionItem}>
+					<button
+						type="button"
+						className={styles.summaryButton}
+						onClick={() => setOpenSummary((prev) => (prev === "todaySales" ? null : "todaySales"))}
+					>
+						<span className={styles.sectionLabel}>Today Sales</span>
+					</button>
+					{openSummary === "todaySales" ? (
+						<div className={styles.summaryPanel}>
+							<div className={styles.boxValue}>{formatCurrency(summary?.todaySalesAmount?.gross)}</div>
+						</div>
+					) : null}
 				</div>
-				<div className={styles.summaryBox}>
-					<div className={styles.boxLabel}>Monthly Sales</div>
-					<div className={styles.boxValue}>{formatCurrency(summary?.monthSalesAmount?.gross)}</div>
+
+				<div className={styles.accordionItem}>
+					<button
+						type="button"
+						className={styles.summaryButton}
+						onClick={() => setOpenSummary((prev) => (prev === "monthlySales" ? null : "monthlySales"))}
+					>
+						<span className={styles.sectionLabel}>Monthly Sales</span>
+					</button>
+					{openSummary === "monthlySales" ? (
+						<div className={styles.summaryPanel}>
+							<div className={styles.boxValue}>{formatCurrency(summary?.monthSalesAmount?.gross)}</div>
+						</div>
+					) : null}
 				</div>
-				<div className={styles.summaryBox}>
-					<div className={styles.boxLabel}>Pending Settlement</div>
-					<div className={styles.boxValue}>{formatCurrency(summary?.waitingSettlementAmount?.commission)}</div>
+
+				<div className={styles.accordionItem}>
+					<button
+						type="button"
+						className={styles.summaryButton}
+						onClick={() =>
+							setOpenSummary((prev) => (prev === "pendingSettlement" ? null : "pendingSettlement"))
+						}
+					>
+						<span className={styles.sectionLabel}>Pending Settlement</span>
+					</button>
+					{openSummary === "pendingSettlement" ? (
+						<div className={styles.summaryPanel}>
+							<div className={styles.boxValue}>{formatCurrency(summary?.waitingSettlementAmount?.commission)}</div>
+						</div>
+					) : null}
 				</div>
-				<div className={styles.summaryBox}>
-					<div className={styles.boxLabel}>Available Settlement</div>
-					<div className={styles.boxValue}>{formatCurrency(summary?.availableSettlementAmount?.commission)}</div>
+
+				<div className={styles.accordionItem}>
+					<button
+						type="button"
+						className={styles.summaryButton}
+						onClick={() =>
+							setOpenSummary((prev) => (prev === "availableSettlement" ? null : "availableSettlement"))
+						}
+					>
+						<span className={styles.sectionLabel}>Available Settlement</span>
+					</button>
+					{openSummary === "availableSettlement" ? (
+						<div className={styles.summaryPanel}>
+							<div className={styles.boxValue}>{formatCurrency(summary?.availableSettlementAmount?.commission)}</div>
+						</div>
+					) : null}
 				</div>
 			</div>
 
