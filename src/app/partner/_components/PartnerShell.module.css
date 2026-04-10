@@ -1,0 +1,44 @@
+.partnerWrap {
+  padding: 24px;
+  font-size: 14px;
+}
+
+.partnerTitle {
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+}
+
+.partnerSubtitle {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+.partnerNav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.partnerWrap :global(h2) {
+  font-size: 14px;
+}
+
+.partnerWrap :global(p) {
+  font-size: 14px;
+}
+
+.partnerWrap :global(button) {
+  font-size: 14px;
+}
+
+.boxTitle {
+  font-size: 14px;
+}
+
+.boxValue {
+  font-size: 18px;
+}
