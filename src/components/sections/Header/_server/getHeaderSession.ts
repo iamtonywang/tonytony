@@ -14,22 +14,34 @@ export type HeaderSession = {
 
 export const getHeaderSession = cache(async function getHeaderSession(): Promise<HeaderSession> {
   const supabase = await getSupabaseServerReadonlyClient();
-  const { data: userData } = await supabase.auth.getUser();
 
-  if (!userData?.user) {
-    return {
-      authenticated: false,
-      loginId: null,
-      isPartner: false,
-      isAdmin: false,
-      userId: null,
-    };
+  const guest: HeaderSession = {
+    authenticated: false,
+    loginId: null,
+    isPartner: false,
+    isAdmin: false,
+    userId: null,
+  };
+
+  let authUser: { id: string } | null = null;
+  try {
+    const result = await supabase.auth.getUser();
+    if (result.error) {
+      return guest;
+    }
+    authUser = result.data?.user ?? null;
+  } catch {
+    return guest;
+  }
+
+  if (!authUser) {
+    return guest;
   }
 
   const { data: usersRows } = await supabase
     .from("users")
     .select("id, login_id")
-    .eq("auth_user_id", userData.user.id)
+    .eq("auth_user_id", authUser.id)
     .maybeSingle();
 
   const userRow =
@@ -39,13 +51,7 @@ export const getHeaderSession = cache(async function getHeaderSession(): Promise
       : null;
 
   if (!userRow || typeof userRow.id !== "number") {
-    return {
-      authenticated: false,
-      loginId: null,
-      isPartner: false,
-      isAdmin: false,
-      userId: null,
-    };
+    return guest;
   }
 
   const [partnersResult, adminsResult] = await Promise.all([
