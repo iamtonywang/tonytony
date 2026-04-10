@@ -205,11 +205,3 @@
   border-color: #ffffff;
   background: rgba(255, 255, 255, 0.05);
 }
-
-.pageFooterDivider {
-  width: 100%;
-  max-width: 420px;
-  height: 1px;
-  margin: 28px auto 0;
-  background: rgba(255, 255, 255, 0.18);
-}

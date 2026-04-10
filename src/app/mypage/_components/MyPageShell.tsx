@@ -116,8 +116,6 @@ export default function MyPageShell({ summary }: Props) {
 						</div>
 					) : null}
 				</div>
-
-				<div className={styles.pageFooterDivider} aria-hidden />
 			</div>
 		</div>
 	);
