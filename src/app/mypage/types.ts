@@ -6,5 +6,5 @@ export type MyPageSummary = {
 	isPartner: boolean;
 };
 
-export type MyPageTab = "profile" | "orders" | "refunds" | "inquiries" | "partner";
+export type MyPageTab = "profile" | "orders" | "refunds" | "partner";
 

@@ -12,6 +12,7 @@ export default function ProfileSection({ summary }: Props) {
 			<div>
 				<p className={styles.profileText}>login_ {summary?.loginId ?? "-"}</p>
 				<p className={styles.profileText}>Name {summary?.realName ?? "-"}</p>
+				<p className={styles.profileText}>HP {summary?.phone ?? "-"}</p>
 				<p className={styles.profileText}>Email {summary?.email ?? "-"}</p>
 				<p className={styles.profileText}>Partner: {summary?.isPartner ? "YES" : "NO"}</p>
 			</div>

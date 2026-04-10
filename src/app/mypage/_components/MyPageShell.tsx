@@ -1,11 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { MyPageSummary, MyPageTab } from "../types";
 import ProfileSection from "./ProfileSection";
 import OrdersSection from "./OrdersSection";
 import RefundsSection from "./RefundsSection";
-import InquiriesSection from "./InquiriesSection";
 import PartnerSection from "./PartnerSection";
 import styles from "./MyPage.module.css";
 
@@ -14,6 +14,7 @@ type Props = {
 };
 
 export default function MyPageShell({ summary }: Props) {
+	const router = useRouter();
 	const [openSection, setOpenSection] = useState<MyPageTab | null>("profile");
 
 	return (
@@ -83,23 +84,6 @@ export default function MyPageShell({ summary }: Props) {
 						<div className={styles.navBox}>
 							<button
 								type="button"
-								className={`${styles.navItem} ${openSection === "inquiries" ? styles.active : ""}`}
-								onClick={() => setOpenSection((prev) => (prev === "inquiries" ? null : "inquiries"))}
-							>
-								Inquiries
-							</button>
-						</div>
-						{openSection === "inquiries" ? (
-							<div className={styles.accordionPanel}>
-								<div className={styles.panelKorean}>
-									<InquiriesSection />
-								</div>
-							</div>
-						) : null}
-
-						<div className={styles.navBox}>
-							<button
-								type="button"
 								className={`${styles.navItem} ${openSection === "partner" ? styles.active : ""}`}
 								onClick={() => setOpenSection((prev) => (prev === "partner" ? null : "partner"))}
 							>
@@ -114,6 +98,23 @@ export default function MyPageShell({ summary }: Props) {
 							</div>
 						) : null}
 					</div>
+
+					{summary?.isPartner ? (
+						<div
+							className={styles.partnerCtaBox}
+							onClick={() => router.push("/partner")}
+							role="button"
+							tabIndex={0}
+							onKeyDown={(e) => {
+								if (e.key === "Enter" || e.key === " ") {
+									e.preventDefault();
+									router.push("/partner");
+								}
+							}}
+						>
+							<div className={styles.partnerCtaTitle}>Partner Center</div>
+						</div>
+					) : null}
 				</div>
 			</div>
 		</div>
