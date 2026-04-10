@@ -143,12 +143,23 @@
   line-height: 1.6;
 }
 
-.boardHeader {
+.boardTopHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
+}
+
+.boardTopTitle {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: left;
+  font-family: inherit;
 }
 
 .writeButton {
@@ -163,8 +174,8 @@
 }
 
 .writeButton:hover {
-  border-color: #ff7f00;
-  color: #ff7f00;
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 .boardList {

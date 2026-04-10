@@ -478,14 +478,14 @@ export default function Nigajun35View({ product }: Props) {
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
 
-      <section className={styles.boardSection}>
-        <div className={styles.boardHeader}>
-          <h2 className={styles.sectionTitle}>Board</h2>
-          <button type="button" className={styles.writeButton}>
-            Write
-          </button>
-        </div>
+      <div className={styles.boardTopHeader}>
+        <h2 className={styles.boardTopTitle}>Ask me Questions TONYWANG</h2>
+        <button type="button" className={styles.writeButton}>
+          Write
+        </button>
+      </div>
 
+      <section className={styles.boardSection}>
         <div className={styles.boardList}>
           <div className={styles.boardItem}>
             <button
