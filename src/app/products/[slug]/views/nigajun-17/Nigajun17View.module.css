@@ -147,18 +147,16 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 12px;
-  padding-right: 72px;
+  padding-right: 88px;
 }
 
 .boardTopTitle {
-  margin: 0;
-  width: 100%;
+  width: calc(100% - 96px);
   text-align: center;
-  color: rgba(255, 255, 255, 0.92);
   font-size: 16px;
   line-height: 1.2;
-  font-weight: 500;
-  font-family: inherit;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 auto;
 }
 
 .boardTopTitleMain,
@@ -172,6 +170,8 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 3;
+  pointer-events: auto;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
@@ -179,18 +179,24 @@
   padding: 4px 10px;
   font-family: inherit;
   cursor: pointer !important;
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease,
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
     transform 0.1s ease !important;
 }
 
 .boardTopHeader .writeButton:hover {
   border-color: #ffffff !important;
   color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18) inset;
 }
 
 .boardTopHeader .writeButton:active {
   transform: translateY(calc(-50% + 1px)) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
 }
 
 .boardList {
