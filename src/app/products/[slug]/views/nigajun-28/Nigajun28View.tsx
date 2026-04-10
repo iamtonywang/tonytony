@@ -464,7 +464,10 @@ export default function Nigajun28View({ product }: Props) {
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
 
       <div className={styles.boardTopHeader}>
-        <h2 className={styles.boardTopTitle}>Ask me Questions TONYWANG</h2>
+        <h2 className={styles.boardTopTitle}>
+          <span className={styles.boardTitleBrand}>TONYWANG</span>
+          <span className={styles.boardTitleSub}>Ask me Questions</span>
+        </h2>
         <button type="button" className={styles.writeButton}>
           Write
         </button>

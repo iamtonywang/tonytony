@@ -224,16 +224,27 @@
 .boardTopTitle {
   width: calc(100% - 96px);
   text-align: center;
-  font-size: 16px;
   line-height: 1.2;
-  color: rgba(255, 255, 255, 0.92);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.boardTopTitleMain,
-.boardTopTitleBrand {
-  font-size: inherit;
-  margin-left: 0;
+.boardTopTitle span {
+  line-height: 1.1;
+}
+
+.boardTitleBrand {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.boardTitleSub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 2px;
 }
 
 .boardTopHeader .writeButton {
