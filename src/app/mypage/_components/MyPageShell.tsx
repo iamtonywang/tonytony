@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function MyPageShell({ summary }: Props) {
-	const [activeTab, setActiveTab] = useState<MyPageTab>("profile");
+	const [openSection, setOpenSection] = useState<MyPageTab>("profile");
 
 	return (
 		<div className={styles.pageBackground}>
@@ -28,58 +28,84 @@ export default function MyPageShell({ summary }: Props) {
 						<p className={styles.desc}>May you always be blessed</p>
 					</div>
 
-					<nav className={styles.navList}>
+					<div className={styles.accordionWrap}>
 						<div className={styles.navBox}>
 							<button
-								className={`${styles.navItem} ${activeTab === "profile" ? styles.active : ""}`}
-								onClick={() => setActiveTab("profile")}
+								type="button"
+								className={`${styles.navItem} ${openSection === "profile" ? styles.active : ""}`}
+								onClick={() => setOpenSection("profile")}
 							>
 								Profile
 							</button>
 						</div>
+						{openSection === "profile" ? (
+							<div className={styles.accordionPanel}>
+								<div className={styles.profileSection}>
+									<ProfileSection summary={summary} />
+								</div>
+							</div>
+						) : null}
+
 						<div className={styles.navBox}>
 							<button
-								className={`${styles.navItem} ${activeTab === "orders" ? styles.active : ""}`}
-								onClick={() => setActiveTab("orders")}
+								type="button"
+								className={`${styles.navItem} ${openSection === "orders" ? styles.active : ""}`}
+								onClick={() => setOpenSection("orders")}
 							>
 								Orders
 							</button>
 						</div>
+						{openSection === "orders" ? (
+							<div className={styles.accordionPanel}>
+								<OrdersSection />
+							</div>
+						) : null}
+
 						<div className={styles.navBox}>
 							<button
-								className={`${styles.navItem} ${activeTab === "refunds" ? styles.active : ""}`}
-								onClick={() => setActiveTab("refunds")}
+								type="button"
+								className={`${styles.navItem} ${openSection === "refunds" ? styles.active : ""}`}
+								onClick={() => setOpenSection("refunds")}
 							>
 								Refunds
 							</button>
 						</div>
+						{openSection === "refunds" ? (
+							<div className={styles.accordionPanel}>
+								<RefundsSection />
+							</div>
+						) : null}
+
 						<div className={styles.navBox}>
 							<button
-								className={`${styles.navItem} ${activeTab === "inquiries" ? styles.active : ""}`}
-								onClick={() => setActiveTab("inquiries")}
+								type="button"
+								className={`${styles.navItem} ${openSection === "inquiries" ? styles.active : ""}`}
+								onClick={() => setOpenSection("inquiries")}
 							>
 								Inquiries
 							</button>
 						</div>
+						{openSection === "inquiries" ? (
+							<div className={styles.accordionPanel}>
+								<InquiriesSection />
+							</div>
+						) : null}
+
 						<div className={styles.navBox}>
 							<button
-								className={`${styles.navItem} ${activeTab === "partner" ? styles.active : ""}`}
-								onClick={() => setActiveTab("partner")}
+								type="button"
+								className={`${styles.navItem} ${openSection === "partner" ? styles.active : ""}`}
+								onClick={() => setOpenSection("partner")}
 							>
 								Partner
 							</button>
 						</div>
-					</nav>
-
-					{activeTab === "profile" ? (
-						<div className={styles.profileSection}>
-							<ProfileSection summary={summary} />
-						</div>
-					) : null}
-					{activeTab === "orders" ? <OrdersSection /> : null}
-					{activeTab === "refunds" ? <RefundsSection /> : null}
-					{activeTab === "inquiries" ? <InquiriesSection /> : null}
-					{activeTab === "partner" ? <PartnerSection /> : null}
+						{openSection === "partner" ? (
+							<div className={styles.accordionPanel}>
+								<PartnerSection />
+							</div>
+						) : null}
+					</div>
 				</div>
 			</div>
 		</div>

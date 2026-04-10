@@ -63,21 +63,31 @@
     "Noto Sans KR", sans-serif;
 }
 
-.navList {
+.accordionWrap {
+  width: 100%;
+  max-width: 420px;
+  margin: 18px auto 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 10px;
-  margin: 18px 0;
 }
 
 .navBox {
   width: 100%;
-  max-width: 220px;
+  max-width: 420px;
+  margin: 0 auto;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: transparent;
   text-align: center;
   padding: 10px 12px;
+}
+
+.accordionPanel {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .navItem {
@@ -106,6 +116,25 @@
 .profileSection :where(p, li, div) {
   text-align: center;
   color: rgba(255, 255, 255, 0.9);
+}
+
+.profileTitle {
+  font-size: 17px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 0 8px;
+  font-weight: 600;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+}
+
+.profileText {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin: 4px 0;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
 }
 
 .emptyState {
