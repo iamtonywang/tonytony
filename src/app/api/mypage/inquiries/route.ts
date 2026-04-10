@@ -9,7 +9,6 @@ type InquiryItem = {
   subject: string;
   createdAt: string;
   answeredAt: string | null;
-  orderNumber: string | null;
 };
 
 export async function GET(_req: NextRequest) {
@@ -31,10 +30,10 @@ export async function GET(_req: NextRequest) {
     return NextResponse.json({ ok: false, items: [], message: "user_not_found" }, { status: 404 });
   }
 
-  // 본인 문의 목록 (DDL 기준 실제 컬럼: user_id, order_id, title, inquiry_status, created_at, answered_at)
+  // 본인 문의 목록 (DDL 기준 실제 컬럼: user_id, title, inquiry_status, created_at, answered_at)
   const { data: inquiryRows, error: inquiryErr } = await supabase
     .from("inquiries")
-    .select("order_id, title, inquiry_status, created_at, answered_at")
+    .select("title, inquiry_status, created_at, answered_at")
     .eq("user_id", userRow.id)
     .order("created_at", { ascending: false });
 
@@ -43,7 +42,6 @@ export async function GET(_req: NextRequest) {
   }
 
   const inquiries = Array.isArray(inquiryRows) ? (inquiryRows as Array<{
-    order_id: number | null;
     title: string;
     inquiry_status: string;
     created_at: string;
@@ -54,22 +52,6 @@ export async function GET(_req: NextRequest) {
     return NextResponse.json({ ok: true, items: [], message: null }, { status: 200 });
   }
 
-  const orderIds = Array.from(
-    new Set(inquiries.map((i) => i.order_id).filter((v): v is number => typeof v === "number")),
-  );
-
-  // 주문 연결이 있는 경우에만 order_number 최소 포함
-  const { data: orderRows } = await supabase
-    .from("orders")
-    .select("id, order_number")
-    .in("id", orderIds);
-  const orderNumberMap = new Map<number, string | null>();
-  if (Array.isArray(orderRows)) {
-    for (const row of orderRows as Array<{ id: number; order_number: string | null }>) {
-      orderNumberMap.set(row.id, row.order_number ?? null);
-    }
-  }
-
   const items: InquiryItem[] = inquiries.map((i) => ({
     // final_ddl.sql의 inquiries 테이블에는 "type" 컬럼이 없어 현재 단계에서는 null로 고정
     inquiryType: null,
@@ -77,7 +59,6 @@ export async function GET(_req: NextRequest) {
     subject: i.title,
     createdAt: i.created_at,
     answeredAt: i.answered_at ?? null,
-    orderNumber: typeof i.order_id === "number" ? (orderNumberMap.get(i.order_id) ?? null) : null,
   }));
 
   return NextResponse.json({ ok: true, items, message: null }, { status: 200 });
