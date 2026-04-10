@@ -1,12 +1,11 @@
 import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly";
+import { getHeaderSession } from "@/components/sections/Header/_server/getHeaderSession";
 import type { MyPageSummary } from "../types";
 
 // 마이페이지 상위 1회 최소 조회만 담당, 목록/무거운 데이터는 하위 섹션 개별 fetch 전제
 export async function getMyPageSummary(): Promise<MyPageSummary | null> {
-	const supabase = await getSupabaseServerReadonlyClient();
-
-	const { data: userData } = await supabase.auth.getUser();
-	if (!userData?.user) {
+	const headerSession = await getHeaderSession();
+	if (!headerSession.authenticated || !headerSession.loginId) {
 		return {
 			loginId: null,
 			realName: null,
@@ -16,11 +15,13 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 		};
 	}
 
+	const supabase = await getSupabaseServerReadonlyClient();
+
 	// users
 	const { data: usersRows } = await supabase
 		.from("users")
 		.select("id, login_id, phone, email")
-		.eq("auth_user_id", userData.user.id)
+		.eq("login_id", headerSession.loginId)
 		.limit(1);
 	const userRow = Array.isArray(usersRows) && usersRows.length === 1
 		? (usersRows[0] as { id: number; login_id: string | null; phone: string | null; email: string | null })
