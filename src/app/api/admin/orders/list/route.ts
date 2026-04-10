@@ -43,23 +43,25 @@ export async function GET(req: NextRequest) {
 	const from = (page - 1) * PAGE_SIZE;
 	const to = from + PAGE_SIZE - 1;
 
-	const { data, error, count } = await supabase
-		.from("orders")
-		.select(
-			"order_number, buyer_login_id_snapshot, buyer_real_name_snapshot, buyer_phone_snapshot, order_status, payment_status, final_amount, ordered_at",
-			{ count: "exact" },
-		)
-		.order("ordered_at", { ascending: false })
-		.range(from, to);
+	const [listRes, countRes] = await Promise.all([
+		supabase
+			.from("orders")
+			.select(
+				"order_number, buyer_login_id_snapshot, buyer_real_name_snapshot, buyer_phone_snapshot, order_status, payment_status, final_amount, ordered_at",
+			)
+			.order("ordered_at", { ascending: false })
+			.range(from, to),
+		supabase.from("orders").select("id", { count: "exact", head: true }),
+	]);
 
-	if (error) {
+	if (listRes.error) {
 		return NextResponse.json(
 			{ ok: false, items: [], total: 0, hasNext: false, message: "orders_fetch_failed" },
 			{ status: 500 },
 		);
 	}
 
-	const rows = Array.isArray(data) ? (data as OrderRow[]) : [];
+	const rows = Array.isArray(listRes.data) ? (listRes.data as OrderRow[]) : [];
 	const items = rows.map((row) => ({
 		orderNumber: row.order_number,
 		buyerLoginIdSnapshot: row.buyer_login_id_snapshot,
@@ -71,7 +73,7 @@ export async function GET(req: NextRequest) {
 		orderedAt: row.ordered_at,
 	}));
 
-	const total = typeof count === "number" ? count : 0;
+	const total = typeof countRes.count === "number" ? countRes.count : 0;
 	const hasNext = to + 1 < total;
 
 	return NextResponse.json({ ok: true, items, total, hasNext, message: null }, { status: 200 });
