@@ -141,6 +141,34 @@
   line-height: 1.6;
 }
 
+.informationToggle {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.informationTitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.informationContent {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.informationContent p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 2px 0;
+  line-height: 1.2;
+}
+
 .boardTopHeader {
   position: relative;
   display: flex;

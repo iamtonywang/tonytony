@@ -128,6 +128,7 @@ export default function Nigajun35View({ product }: Props) {
   const [showFinalBlock, setShowFinalBlock] = useState(false); // 35는 최종 블록 미사용
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -534,8 +535,21 @@ export default function Nigajun35View({ product }: Props) {
       </section>
 
       <section className={styles.informationSection}>
-        <h2 className={styles.sectionTitle}>Information</h2>
-        <p className={styles.sectionText}>Detailed information placeholder.</p>
+        <button
+          type="button"
+          className={styles.informationToggle}
+          onClick={() => setIsInfoOpen((prev) => !prev)}
+        >
+          <span className={styles.informationTitle}>Information</span>
+        </button>
+
+        {isInfoOpen && (
+          <div className={styles.informationContent}>
+            <p>제품 핵심 설명입니다.</p>
+            <p>사용 방법 및 특징을 간단히 설명합니다.</p>
+            <p>주의사항 또는 추가 정보가 들어갑니다.</p>
+          </div>
+        )}
       </section>
     </article>
   );
