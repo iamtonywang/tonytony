@@ -227,7 +227,13 @@
   font-size: 14px;
   padding: 4px 10px;
   cursor: pointer;
+  transition: all 0.2s ease;
   font-family: inherit;
+}
+
+.writeButton:hover {
+  border-color: #ff7f00;
+  color: #ff7f00;
 }
 
 .boardList {
@@ -249,19 +255,31 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  justify-content: center;
   background: transparent;
   border: none;
   color: #ffffff;
   padding: 0;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   font-family: inherit;
+  transition: color 0.2s ease;
+}
+
+.boardRow:hover {
+  color: #ff7f00;
+}
+
+.boardRow:hover .boardPreviewAuthor,
+.boardRow:hover .boardPreviewText {
+  color: #ff7f00;
 }
 
 .boardPreviewAuthor {
   flex: 0 0 auto;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.92);
+  text-align: center;
 }
 
 .boardPreviewText {
@@ -272,11 +290,12 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 }
 
 .boardExpanded {
   margin-top: 8px;
-  text-align: left;
+  text-align: center;
 }
 
 .boardMeta,

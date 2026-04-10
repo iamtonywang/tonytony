@@ -67,6 +67,48 @@ const BOARD_ITEMS = [
     date: "2026.04.13",
     content: "제품 구성 문의드립니다.",
   },
+  {
+    author: "user***",
+    preview: "재구매 문의입니다...",
+    type: "Inquiry",
+    date: "2026.04.14",
+    content: "재구매 가능한지 알려주세요.",
+  },
+  {
+    author: "user***",
+    preview: "사용법이 궁금해요",
+    type: "Review",
+    date: "2026.04.15",
+    content: "아침 저녁 사용량 가이드 부탁드립니다.",
+  },
+  {
+    author: "user***",
+    preview: "만족스러워요",
+    type: "Review",
+    date: "2026.04.16",
+    content: "전반적으로 만족합니다.",
+  },
+  {
+    author: "user***",
+    preview: "포장 상태 좋아요",
+    type: "Review",
+    date: "2026.04.17",
+    content: "포장이 꼼꼼했습니다.",
+  },
+  {
+    author: "user***",
+    preview: "유통기한 문의",
+    type: "Inquiry",
+    date: "2026.04.18",
+    content: "유통기한 확인 부탁드립니다.",
+  },
+  {
+    author: "user***",
+    preview: "추천합니다",
+    type: "Review",
+    date: "2026.04.19",
+    content: "지인에게도 추천했습니다.",
+  },
 ];
 
 export default function Nigajun77View({ product }: Props) {
