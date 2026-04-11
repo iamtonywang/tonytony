@@ -526,8 +526,8 @@
   position: relative;
   width: 100vw;
   max-width: 100vw;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 130vh;
+  height: 130vh;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   overflow: hidden;
@@ -619,8 +619,8 @@
     position: relative;
     width: 100vw;
     max-width: 100vw;
-    min-height: 85vh;
-    height: 85vh;
+    min-height: 110vh;
+    height: 110vh;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     overflow: hidden;
