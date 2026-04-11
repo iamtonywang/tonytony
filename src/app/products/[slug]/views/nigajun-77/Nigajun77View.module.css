@@ -537,13 +537,16 @@
 
 .detailGradientOverlay {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0) 55%,
-    rgba(0, 0, 0, 0.5) 75%,
-    rgba(0, 0, 0, 0.82) 100%
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.6) 55%,
+    rgba(0, 0, 0, 0.9) 100%
   );
 }
 
@@ -633,28 +636,36 @@
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: stretch;
-  padding: clamp(20px, 4vw, 48px);
-  padding-bottom: clamp(56px, 9vh, 108px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  transform: translateY(5%);
   pointer-events: none;
   user-select: none;
 }
 
 .detailOverlayInner {
-  width: 100%;
-  min-height: 100%;
+  width: min(760px, 100%);
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
   text-align: center;
   pointer-events: auto;
 }
 
+@media (min-width: 769px) {
+  .detailVisualOverlay {
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
   .detailVisualOverlay {
-    padding: 18px;
-    padding-bottom: clamp(40px, 6vh, 68px);
+    transform: translateY(15%);
+    padding: 16px;
   }
 }
 
