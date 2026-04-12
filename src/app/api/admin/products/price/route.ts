@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -94,7 +95,17 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json({ ok: false, message: "product_not_found" }, { status: 404 });
 	}
 
-	const { error: deactivateErr } = await supabase
+	const serviceUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+	const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+	if (!serviceUrl || !serviceRoleKey) {
+		return NextResponse.json({ ok: false, message: "server_misconfigured" }, { status: 500 });
+	}
+
+	const serviceSupabase = createClient(serviceUrl, serviceRoleKey, {
+		auth: { autoRefreshToken: false, persistSession: false },
+	});
+
+	const { error: deactivateErr } = await serviceSupabase
 		.from("product_prices")
 		.update({
 			is_active: false,
@@ -120,7 +131,7 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json({ ok: false, message: "deactivate_failed" }, { status: 500 });
 	}
 
-	const { error: insertErr } = await supabase.from("product_prices").insert({
+	const { error: insertErr } = await serviceSupabase.from("product_prices").insert({
 		product_id: productRow.id,
 		currency: DEFAULT_CURRENCY,
 		price_amount: priceAmount,
