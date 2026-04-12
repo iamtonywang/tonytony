@@ -461,6 +461,8 @@ export default function Nigajun99View({ product }: Props) {
                 The pain of being hurt by lies is even greater
               </p>
 
+              <p className={styles.heroPrice}>₩49,000</p>
+
               <div className={styles.detailCtaRow} style={{ marginTop: '24px' }}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
                   Buy Now

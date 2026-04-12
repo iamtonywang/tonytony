@@ -359,6 +359,8 @@ export default function Nigajun55View({ product }: Props) {
               </p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>Since August 2025 TONYWANG</p>
 
+              <p className={styles.heroPrice}>₩49,000</p>
+
               <div className={styles.detailCtaRow} style={{ marginTop: '24px' }}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
                   Buy Now

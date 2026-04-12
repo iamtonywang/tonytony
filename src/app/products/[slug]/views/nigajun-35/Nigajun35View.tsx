@@ -385,6 +385,8 @@ export default function Nigajun35View({ product }: Props) {
                 피부 밀도 개선 피부 수분 활성 최적화
               </p>
 
+              <p className={styles.heroPrice}>₩49,000</p>
+
               <div className={styles.detailCtaRow}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
                   Buy Now

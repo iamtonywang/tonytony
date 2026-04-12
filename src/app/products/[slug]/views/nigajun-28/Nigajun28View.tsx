@@ -372,6 +372,8 @@ export default function Nigajun28View({ product }: Props) {
               <p className={styles.detailOverlayText}>Bioactive Molecular 시스템이다</p>
               <p className={styles.detailOverlayText}>Since August 2025 TONYWAN</p>
 
+              <p className={styles.heroPrice}>₩49,000</p>
+
               <div className={styles.detailCtaRow}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
                   Buy Now

@@ -436,6 +436,8 @@ export default function Nigajun82View({ product }: Props) {
                 Since August 2025 TONYWANG
               </p>
 
+              <p className={styles.heroPrice}>₩49,000</p>
+
               <div className={styles.detailCtaRow}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
                   Buy Now
