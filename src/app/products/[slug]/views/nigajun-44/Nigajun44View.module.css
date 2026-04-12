@@ -323,6 +323,18 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
+.policyTitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 8px 0 4px;
+  text-align: center;
+}
+
+.policyHighlight {
+  color: #ff7f00;
+  font-weight: 500;
+}
+
 .boardNotice p {
   margin: 6px 0;
   position: relative;

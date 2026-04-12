@@ -536,8 +536,17 @@ export default function Nigajun82View({ product }: Props) {
           <span className={styles.boardTitleSub}>Ask me Questions</span>
         </h2>
         <div className={styles.boardNotice}>
-          <p>Inquiry  Login 사용자 사용 합니다</p>
-          <p>Review  제품 구입 유저만 가능 합니다</p>
+          <div className={styles.policyTitle}>Policy</div>
+
+          <p>
+            <span className={styles.policyHighlight}>Inquiry</span>
+            &nbsp;Login 사용자 사용 합니다
+          </p>
+
+          <p>
+            <span className={styles.policyHighlight}>Review</span>
+            &nbsp;제품 구입 유저만 가능 합니다
+          </p>
         </div>
         <div className={styles.boardActions}>
           <button type="button" className={styles.boardActionBtn}>
