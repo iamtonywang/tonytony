@@ -114,11 +114,18 @@
 
 .coreInfoSection,
 .ctaSection,
-.boardSection,
 .informationSection {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 16px;
+}
+
+.boardSection {
+  width: 92%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .productTitle {
@@ -305,8 +312,12 @@
 
 .boardItem {
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 5px 0;
+}
+
+.boardList > .boardItem:first-child {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
 }
 
 .boardItem:last-child {
@@ -316,9 +327,10 @@
 .boardRow {
   width: 100%;
   display: flex;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
   justify-content: center;
+  min-height: 24px;
   background: transparent;
   border: none;
   color: #ffffff;
@@ -343,6 +355,7 @@
   font-size: 14px;
   color: rgba(255, 255, 255, 0.92);
   text-align: center;
+  line-height: 1.15;
 }
 
 .boardPreviewText {
@@ -354,10 +367,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  line-height: 1.15;
 }
 
 .boardExpanded {
-  margin-top: 8px;
+  margin-top: 4px;
+  padding-bottom: 2px;
   text-align: center;
 }
 
@@ -367,6 +382,7 @@
   font-size: 14px;
   color: rgba(255, 255, 255, 0.88);
   margin: 2px 0;
+  line-height: 1.15;
 }
 
 .ctaButton {
