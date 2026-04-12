@@ -101,11 +101,11 @@ export default async function Page({
 		notFound();
 	}
 
-	const priceRead = await getAdminProductPriceBySlug(slug);
+	const priceData = await getAdminProductPriceBySlug(slug);
 	const fmt = (n: number | null) => (typeof n === "number" && Number.isFinite(n) ? String(n) : "—");
-	const finalPriceLabel = fmt(priceRead.finalPriceAmount);
-	const basePriceLabel = fmt(priceRead.priceAmount);
-	const discountLabel = fmt(priceRead.discountAmount);
+	const finalPriceLabel = fmt(priceData.finalPriceAmount);
+	const basePriceLabel = fmt(priceData.priceAmount);
+	const discountLabel = fmt(priceData.discountAmount);
 
 	let statusLine: string | null = null;
 	if (sp.saved === "1") {
@@ -125,7 +125,7 @@ export default async function Page({
 			</p>
 			<h1 style={{ textAlign: "center", margin: "12px 0 8px" }}>{displayTitle}</h1>
 			<p style={{ textAlign: "center", color: "rgba(255,255,255,0.85)", marginBottom: 24 }}>
-				slug: {slug}
+				slug: {priceData.slug ?? slug}
 			</p>
 
 			<div style={sectionStyle}>
@@ -140,9 +140,9 @@ export default async function Page({
 					가격 정책 및 표시 가격 관리입니다. 금액은 서버에서 확정합니다.
 				</p>
 				<div style={{ marginBottom: 16, opacity: 0.9 }}>
-					{priceRead.currency ? (
+					{priceData.currency ? (
 						<p style={{ margin: "0 0 6px" }}>
-							<strong>Currency</strong>: {priceRead.currency}
+							<strong>Currency</strong>: {priceData.currency}
 						</p>
 					) : null}
 					<p style={{ margin: "0 0 6px" }}>
