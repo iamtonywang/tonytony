@@ -153,8 +153,10 @@
 }
 
 .informationTitle {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 17px;
+  color: #ffffff;
 }
 
 .informationContent {
@@ -227,6 +229,8 @@
 }
 
 .boardActionBtn {
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
   font-size: 14px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   padding: 4px 10px;
@@ -241,6 +245,8 @@
 }
 
 .boardType {
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.85);
   margin-right: 4px;
@@ -248,6 +254,13 @@
 
 .boardRow:hover .boardType {
   color: #ff7f00;
+}
+
+.boardActionBtn:hover,
+.boardType,
+.informationTitle {
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
 }
 
 .boardList {
