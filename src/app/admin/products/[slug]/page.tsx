@@ -88,12 +88,61 @@ async function submitPrice(formData: FormData) {
 	redirect(`/admin/products/${slug}?err=${encodeURIComponent(message)}`);
 }
 
+async function submitInquiryAnswer(formData: FormData) {
+	"use server";
+
+	const slugRaw = formData.get("slug");
+	const slug = typeof slugRaw === "string" ? slugRaw.trim() : "";
+	if (!slug || !ALLOWED_SLUGS.has(slug)) {
+		notFound();
+	}
+
+	const idRaw = formData.get("inquiryId");
+	const inquiryId =
+		typeof idRaw === "string" ? Number(idRaw.trim()) : typeof idRaw === "number" ? Number(idRaw) : NaN;
+	const answerRaw = formData.get("answerContent");
+	const answerContent = typeof answerRaw === "string" ? answerRaw.trim() : "";
+
+	if (!Number.isFinite(inquiryId) || inquiryId <= 0) {
+		redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent("invalid_inquiry_id")}`);
+	}
+	if (answerContent.length === 0) {
+		redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent("answer_content_required")}`);
+	}
+
+	const origin = await getRequestOrigin();
+	const cookieHeader = (await headers()).get("cookie") ?? "";
+
+	const res = await fetch(`${origin}/api/admin/products/inquiry`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			...(cookieHeader ? { Cookie: cookieHeader } : {}),
+		},
+		body: JSON.stringify({ inquiryId, answerContent }),
+	});
+
+	let message = "failed";
+	try {
+		const data = (await res.json()) as { ok?: boolean; message?: string };
+		if (data.ok === true) {
+			revalidatePath(`/admin/products/${slug}`);
+			redirect(`/admin/products/${slug}?inq_saved=1`);
+		}
+		if (typeof data.message === "string") message = data.message;
+	} catch {
+		message = "invalid_response";
+	}
+
+	redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent(message)}`);
+}
+
 export default async function Page({
 	params,
 	searchParams,
 }: Readonly<{
 	params: Promise<{ slug: string }>;
-	searchParams: Promise<{ saved?: string; err?: string }>;
+	searchParams: Promise<{ saved?: string; err?: string; inq_saved?: string; inq_err?: string }>;
 }>) {
 	const { slug } = await params;
 	const sp = await searchParams;
@@ -118,6 +167,13 @@ export default async function Page({
 		statusLine = "저장되었습니다.";
 	} else if (typeof sp.err === "string" && sp.err.length > 0) {
 		statusLine = `실패: ${decodeURIComponent(sp.err)}`;
+	}
+
+	let inquiryStatusLine: string | null = null;
+	if (sp.inq_saved === "1") {
+		inquiryStatusLine = "문의 답변이 저장되었습니다.";
+	} else if (typeof sp.inq_err === "string" && sp.inq_err.length > 0) {
+		inquiryStatusLine = `문의 저장 실패: ${decodeURIComponent(sp.inq_err)}`;
 	}
 
 	const displayTitle = slugToDisplayTitle(slug);
@@ -251,6 +307,9 @@ export default async function Page({
 			</div>
 			<div style={sectionStyle}>
 				<strong>Inquiry Management</strong>
+				{inquiryStatusLine ? (
+					<p style={{ marginTop: 8, marginBottom: 0, opacity: 0.9 }}>{inquiryStatusLine}</p>
+				) : null}
 				{inquiries.length === 0 ? (
 					<p style={{ marginTop: 8, opacity: 0.8 }}>등록된 문의가 없습니다.</p>
 				) : (
@@ -281,9 +340,66 @@ export default async function Page({
 									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
 										<strong>답변</strong>: {replyLabel}
 									</p>
-									<p style={{ margin: 0, opacity: 0.95 }}>
+									<p style={{ margin: "0 0 8px", opacity: 0.95 }}>
 										<strong>생성일</strong>: {row.createdAt}
 									</p>
+									{row.answerContent ? (
+										<div style={{ marginTop: 8, opacity: 0.95 }}>
+											<p style={{ margin: "0 0 4px", whiteSpace: "pre-wrap" }}>
+												<strong>답변내용</strong>: {row.answerContent}
+											</p>
+											<p style={{ margin: "0 0 4px" }}>
+												<strong>답변자</strong>: TONYWANG
+											</p>
+											{row.answeredAt ? (
+												<p style={{ margin: 0 }}>
+													<strong>답변일</strong>: {row.answeredAt}
+												</p>
+											) : null}
+										</div>
+									) : (
+										<form action={submitInquiryAnswer} style={{ marginTop: 8 }}>
+											<input type="hidden" name="slug" value={slug} />
+											<input type="hidden" name="inquiryId" value={String(row.id)} />
+											<label
+												style={{ display: "block", marginBottom: 4, opacity: 0.88 }}
+												htmlFor={`inq-answer-${row.id}`}
+											>
+												답변 작성
+											</label>
+											<textarea
+												id={`inq-answer-${row.id}`}
+												name="answerContent"
+												required
+												rows={4}
+												style={{
+													width: "100%",
+													maxWidth: 520,
+													boxSizing: "border-box",
+													padding: 8,
+													background: "transparent",
+													color: "rgba(255,255,255,0.92)",
+													border: "1px solid rgba(255,255,255,0.3)",
+													borderRadius: 2,
+												}}
+											/>
+											<div style={{ marginTop: 6 }}>
+												<button
+													type="submit"
+													style={{
+														cursor: "pointer",
+														padding: "8px 16px",
+														border: "1px solid rgba(255,255,255,0.2)",
+														borderRadius: 2,
+														color: "rgba(255,255,255,0.92)",
+														background: "transparent",
+													}}
+												>
+													답변 저장
+												</button>
+											</div>
+										</form>
+									)}
 								</li>
 							);
 						})}
