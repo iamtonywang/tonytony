@@ -148,7 +148,7 @@ const BOARD_ITEMS = [
   },
 ];
 
-export default function Nigajun44View({ product }: Props) {
+function HeroSection({ product }: { product?: ProductMinimal }) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const isTogglePendingRef = useRef(false);
@@ -158,8 +158,6 @@ export default function Nigajun44View({ product }: Props) {
   const [linePhase, setLinePhase] = useState<"enter" | "exit">("enter");
   const [showFinalBlock, setShowFinalBlock] = useState(false);
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
-  const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
-  const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -292,104 +290,263 @@ export default function Nigajun44View({ product }: Props) {
   }, [hideText, isPlaying, activeLineIndex, showFinalBlock, videoDuration]);
 
   return (
-    <article className={styles.detailPage}>
-      <section className={styles.heroSection}>
-        <div ref={heroVisualRef} className={styles.heroVisual}>
-          <div className={styles.videoArea}>
-            <div
-              className={styles.backgroundLayer}
-              style={{ backgroundImage: "url('/landing-assets/nigajun-44-hero-pc.webp.webp')" }}
-            />
-            <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
+    <section className={styles.heroSection}>
+      <div ref={heroVisualRef} className={styles.heroVisual}>
+        <div className={styles.videoArea}>
+          <div
+            className={styles.backgroundLayer}
+            style={{ backgroundImage: "url('/landing-assets/nigajun-44-hero-pc.webp.webp')" }}
+          />
+          <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
+        </div>
+        <div className={styles.heroOverlay}>
+          <h1 className={styles.productTitle}>
+            {product?.productName ?? "NIGAJUN 44"}
+          </h1>
+          {!hideText && (
+            <div className={styles.heroFallbackText}>
+              <p>TONYWANG</p>
+              <p>NIGAJUN 44</p>
+              <p>Plant Cell Gene Recombination</p>
+              <p>Protein Laboratory</p>
+            </div>
+          )}
+          {hideText && (
+            <div className={styles.heroMotionOverlay}>
+              {isPlaying && !showFinalBlock ? (
+                <p
+                  className={`${styles.heroSequenceLine} ${
+                    linePhase === "enter" ? styles.heroSequenceEnter : styles.heroSequenceExit
+                  } ${
+                    HERO_EMPHASIS.includes(HERO_SEQUENCE[activeLineIndex])
+                      ? styles.heroSequenceEmphasis
+                      : ""
+                  }`}
+                >
+                  {HERO_SEQUENCE[activeLineIndex]}
+                </p>
+              ) : isPlaying && showFinalBlock ? (
+                <div className={styles.heroFinalBlock}>
+                  {HERO_FINAL_BLOCK.split("\n").map((line, idx) => (
+                    <p
+                      key={`${line}-${idx}`}
+                      className={`${styles.heroFinalLine} ${
+                        HERO_EMPHASIS.includes(line) ? styles.heroFinalLineEmphasis : ""
+                      }`}
+                    >
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          )}
+          <button
+            type="button"
+            className={styles.playButton}
+            onClick={async () => {
+              if (isTogglePendingRef.current) {
+                return;
+              }
+
+              const video = videoOverlayRef.current?.querySelector("video") as HTMLVideoElement | null;
+              if (!video) {
+                return;
+              }
+
+              isTogglePendingRef.current = true;
+              try {
+                if (video.paused || video.ended) {
+                  if (video.ended) {
+                    try {
+                      video.currentTime = 0;
+                    } catch {}
+                  }
+                  video.muted = false;
+                  await video.play();
+                  setHideText(true);
+                  setIsPlaying(true);
+                  setActiveLineIndex(0);
+                  setLinePhase("enter");
+                  setShowFinalBlock(false);
+                } else {
+                  video.pause();
+                  setIsPlaying(false);
+                }
+              } catch (error) {
+                if (!(error instanceof DOMException && error.name === "AbortError")) {
+                  console.error(error);
+                }
+                setIsPlaying(false);
+              } finally {
+                isTogglePendingRef.current = false;
+              }
+            }}
+            aria-label="Toggle video playback"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DetailVisualSection({ product }: { product?: ProductMinimal }) {
+  return (
+    <section className={styles.detailVisualSection}>
+      <div className={styles.detailVisualMedia}>
+        <img
+          className={styles.detailVisualImage}
+          src="/landing-assets/hero-main-pc.webp"
+          alt="TONYWANG product visual"
+          draggable={false}
+          loading="lazy"
+          decoding="async"
+        />
+        <div className={styles.detailGradientOverlay} aria-hidden="true" />
+
+        <div className={styles.detailVisualOverlay} draggable={false}>
+          <div className={styles.detailOverlayInner}>
+            <p className={styles.detailOverlayHeading}>TONYWANG</p>
+            <p className={styles.detailOverlayText}>NIGAJUN 44</p>
+            <p className={styles.detailOverlayText}>Proteo Phyto Complex</p>
+            <p className={styles.detailOverlayText}>
+              I welcome you to those who truly want to transform
+            </p>
+
+            <p className={styles.detailOverlayText}>
+              <span className={styles.pcOnly}>
+                가치를 모르는자 자신을 사랑하지 않는자 의문을 가지는자
+              </span>
+              <span className={styles.mobileOnly}>
+                가치를 모르는자<br />
+                자신을 사랑하지 않는자<br />
+                의문을 가지는자
+              </span>
+            </p>
+
+            <p className={styles.detailOverlayText}>
+              자격이 없다 여기서 나가라<br />
+              진정으로 변혁을 원하는 자 환영한다
+            </p>
+
+            <p className={styles.detailOverlayText}>
+              피부 독소 개선, 피부 변혁, 트러블 개선 통합적인 CARE 구축.
+            </p>
+            <p className={styles.detailOverlayText}>
+              독소가 제거된 피부는 오염이 안된 1급수 물과 같다.
+            </p>
+            <p className={styles.detailOverlayText}>고통스러운 피부 트러블 개선 된다</p>
+
+            <p className={styles.detailOverlayText}>긴 설명이 뭐가 필요해 거짓은 필요치 않아</p>
+            <p className={styles.detailOverlayText}>
+              성분이 뭐고 어떤 구조라고 떠들고 싶지 않아
+            </p>
+
+            <p className={styles.detailOverlayText}>최고라고 말할 필요도 없어</p>
+            <p className={styles.detailOverlayText}>우리 스스로 얘기하는건 모순이잔아</p>
+            <p className={styles.detailOverlayText}>그래 그렇지만</p>
+            <p className={styles.detailOverlayText}>다들 자기 것들이 최고라고 얘기해</p>
+
+            <p className={styles.detailOverlayText}>나는 그들과 같은 존재가 되기 싫어</p>
+
+            <p className={styles.detailOverlayText}>I don't like lying</p>
+
+            <p className={styles.detailOverlayText}>나는 거짓이 싫을 뿐이고</p>
+            <p className={styles.detailOverlayText}>
+              누군가를 속이며 이익을 만들고 싶지 않아
+            </p>
+            <p className={styles.detailOverlayText}>그것은 매우 역겨운 행동이야</p>
+            <p className={styles.detailOverlayText}>그래</p>
+            <p className={styles.detailOverlayText}>그런게 너무 싫었고 역겨웠어</p>
+            <p className={styles.detailOverlayText}>TONYWANG Since August 2025</p>
+
+            <p className={styles.detailPriceRow}>
+              {typeof product?.finalPriceAmount === "number" ? (
+                <span>· {product.finalPriceAmount.toLocaleString()}</span>
+              ) : null}
+            </p>
+
+            <div className={styles.detailCtaRow}>
+              <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
+                Buy Now
+              </Link>
+            </div>
           </div>
-          <div className={styles.heroOverlay}>
-            <h1 className={styles.productTitle}>
-              {product?.productName ?? "NIGAJUN 44"}
-            </h1>
-            {!hideText && (
-              <div className={styles.heroFallbackText}>
-                <p>TONYWANG</p>
-                <p>NIGAJUN 44</p>
-                <p>Plant Cell Gene Recombination</p>
-                <p>Protein Laboratory</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BoardSection() {
+  const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
+
+  return (
+    <>
+      <div className={styles.boardTopHeader}>
+        <h2 className={styles.boardTopTitle}>
+          <span className={styles.boardTitleBrand}>TONYWANG</span>
+          <span className={styles.boardTitleSub}>Ask me Questions</span>
+        </h2>
+        <button type="button" className={styles.writeButton}>
+          Write
+        </button>
+      </div>
+
+      <section className={styles.boardSection}>
+        <div className={styles.boardList}>
+          <div className={styles.boardItem}>
+            <button
+              type="button"
+              className={styles.boardRow}
+              onClick={() => setOpenBoardIndex((prev) => (prev === 0 ? null : 0))}
+            >
+              <span className={styles.boardPreviewAuthor}>{PINNED_NOTICE.author}</span>
+              <span className={styles.boardPreviewText}>{PINNED_NOTICE.preview}</span>
+            </button>
+            {openBoardIndex === 0 ? (
+              <div className={styles.boardExpanded}>
+                <div className={styles.boardMeta}>{PINNED_NOTICE.type}</div>
+                <div className={styles.boardDate}>{PINNED_NOTICE.date}</div>
+                <div className={styles.boardContent}>{PINNED_NOTICE.content}</div>
               </div>
-            )}
-            {hideText && (
-              <div className={styles.heroMotionOverlay}>
-                {isPlaying && !showFinalBlock ? (
-                  <p
-                    className={`${styles.heroSequenceLine} ${
-                      linePhase === "enter" ? styles.heroSequenceEnter : styles.heroSequenceExit
-                    } ${
-                      HERO_EMPHASIS.includes(HERO_SEQUENCE[activeLineIndex])
-                        ? styles.heroSequenceEmphasis
-                        : ""
-                    }`}
-                  >
-                    {HERO_SEQUENCE[activeLineIndex]}
-                  </p>
-                ) : isPlaying && showFinalBlock ? (
-                  <div className={styles.heroFinalBlock}>
-                    {HERO_FINAL_BLOCK.split("\n").map((line, idx) => (
-                      <p
-                        key={`${line}-${idx}`}
-                        className={`${styles.heroFinalLine} ${
-                          HERO_EMPHASIS.includes(line) ? styles.heroFinalLineEmphasis : ""
-                        }`}
-                      >
-                        {line}
-                      </p>
-                    ))}
+            ) : null}
+          </div>
+
+          {BOARD_ITEMS.map((item, i) => {
+            const rowIndex = i + 1;
+            return (
+              <div key={`board-row-${rowIndex}`} className={styles.boardItem}>
+                <button
+                  type="button"
+                  className={styles.boardRow}
+                  onClick={() => setOpenBoardIndex((prev) => (prev === rowIndex ? null : rowIndex))}
+                >
+                  <span className={styles.boardPreviewAuthor}>{item.author}</span>
+                  <span className={styles.boardPreviewText}>{item.preview}</span>
+                </button>
+                {openBoardIndex === rowIndex ? (
+                  <div className={styles.boardExpanded}>
+                    <div className={styles.boardMeta}>{item.type}</div>
+                    <div className={styles.boardDate}>{item.date}</div>
+                    <div className={styles.boardContent}>{item.content}</div>
                   </div>
                 ) : null}
               </div>
-            )}
-            <button
-              type="button"
-              className={styles.playButton}
-              onClick={async () => {
-                if (isTogglePendingRef.current) {
-                  return;
-                }
-
-                const video = videoOverlayRef.current?.querySelector("video") as HTMLVideoElement | null;
-                if (!video) {
-                  return;
-                }
-
-                isTogglePendingRef.current = true;
-                try {
-                  if (video.paused || video.ended) {
-                    if (video.ended) {
-                      try {
-                        video.currentTime = 0;
-                      } catch {}
-                    }
-                    video.muted = false;
-                    await video.play();
-                    setHideText(true);
-                    setIsPlaying(true);
-                    setActiveLineIndex(0);
-                    setLinePhase("enter");
-                    setShowFinalBlock(false);
-                  } else {
-                    video.pause();
-                    setIsPlaying(false);
-                  }
-                } catch (error) {
-                  if (!(error instanceof DOMException && error.name === "AbortError")) {
-                    console.error(error);
-                  }
-                  setIsPlaying(false);
-                } finally {
-                  isTogglePendingRef.current = false;
-                }
-              }}
-              aria-label="Toggle video playback"
-            />
-          </div>
+            );
+          })}
         </div>
       </section>
+    </>
+  );
+}
+
+export default function Nigajun44View({ product }: Props) {
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
+
+  return (
+    <article className={styles.detailPage}>
+      <HeroSection product={product} />
       <div className={styles.detailTopGlowLine} aria-hidden="true" />
 
       <section className={styles.detailIntroSection}>
@@ -403,88 +560,7 @@ export default function Nigajun44View({ product }: Props) {
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
 
-
-      <section className={styles.detailVisualSection}>
-        <div className={styles.detailVisualMedia}>
-          <img
-            className={styles.detailVisualImage}
-            src="/landing-assets/hero-main-pc.webp"
-            alt="TONYWANG product visual"
-            draggable={false}
-          />
-          <div className={styles.detailGradientOverlay} aria-hidden="true" />
-
-          <div className={styles.detailVisualOverlay} draggable={false}>
-            <div className={styles.detailOverlayInner}>
-              <p className={styles.detailOverlayHeading}>TONYWANG</p>
-              <p className={styles.detailOverlayText}>NIGAJUN 44</p>
-              <p className={styles.detailOverlayText}>Proteo Phyto Complex</p>
-              <p className={styles.detailOverlayText}>
-                I welcome you to those who truly want to transform
-              </p>
-
-              <p className={styles.detailOverlayText}>
-                <span className={styles.pcOnly}>
-                  가치를 모르는자 자신을 사랑하지 않는자 의문을 가지는자
-                </span>
-                <span className={styles.mobileOnly}>
-                  가치를 모르는자<br />
-                  자신을 사랑하지 않는자<br />
-                  의문을 가지는자
-                </span>
-              </p>
-
-              <p className={styles.detailOverlayText}>
-                자격이 없다 여기서 나가라<br />
-                진정으로 변혁을 원하는 자 환영한다
-              </p>
-
-              <p className={styles.detailOverlayText}>
-                피부 독소 개선, 피부 변혁, 트러블 개선 통합적인 CARE 구축.
-              </p>
-              <p className={styles.detailOverlayText}>
-                독소가 제거된 피부는 오염이 안된 1급수 물과 같다.
-              </p>
-              <p className={styles.detailOverlayText}>고통스러운 피부 트러블 개선 된다</p>
-
-              <p className={styles.detailOverlayText}>긴 설명이 뭐가 필요해 거짓은 필요치 않아</p>
-              <p className={styles.detailOverlayText}>
-                성분이 뭐고 어떤 구조라고 떠들고 싶지 않아
-              </p>
-
-              <p className={styles.detailOverlayText}>최고라고 말할 필요도 없어</p>
-              <p className={styles.detailOverlayText}>우리 스스로 얘기하는건 모순이잔아</p>
-              <p className={styles.detailOverlayText}>그래 그렇지만</p>
-              <p className={styles.detailOverlayText}>다들 자기 것들이 최고라고 얘기해</p>
-
-              <p className={styles.detailOverlayText}>나는 그들과 같은 존재가 되기 싫어</p>
-
-              <p className={styles.detailOverlayText}>I don't like lying</p>
-
-              <p className={styles.detailOverlayText}>나는 거짓이 싫을 뿐이고</p>
-              <p className={styles.detailOverlayText}>
-                누군가를 속이며 이익을 만들고 싶지 않아
-              </p>
-              <p className={styles.detailOverlayText}>그것은 매우 역겨운 행동이야</p>
-              <p className={styles.detailOverlayText}>그래</p>
-              <p className={styles.detailOverlayText}>그런게 너무 싫었고 역겨웠어</p>
-              <p className={styles.detailOverlayText}>TONYWANG Since August 2025</p>
-
-              <p className={styles.detailPriceRow}>
-                {typeof product?.finalPriceAmount === "number" ? (
-                  <span>· {product.finalPriceAmount.toLocaleString()}</span>
-                ) : null}
-              </p>
-
-              <div className={styles.detailCtaRow}>
-                <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
-                  Buy Now
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DetailVisualSection product={product} />
 
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
@@ -544,60 +620,7 @@ export default function Nigajun44View({ product }: Props) {
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
 
-      <div className={styles.boardTopHeader}>
-        <h2 className={styles.boardTopTitle}>
-          <span className={styles.boardTitleBrand}>TONYWANG</span>
-          <span className={styles.boardTitleSub}>Ask me Questions</span>
-        </h2>
-        <button type="button" className={styles.writeButton}>
-          Write
-        </button>
-      </div>
-
-      <section className={styles.boardSection}>
-        <div className={styles.boardList}>
-          <div className={styles.boardItem}>
-            <button
-              type="button"
-              className={styles.boardRow}
-              onClick={() => setOpenBoardIndex((prev) => (prev === 0 ? null : 0))}
-            >
-              <span className={styles.boardPreviewAuthor}>{PINNED_NOTICE.author}</span>
-              <span className={styles.boardPreviewText}>{PINNED_NOTICE.preview}</span>
-            </button>
-            {openBoardIndex === 0 ? (
-              <div className={styles.boardExpanded}>
-                <div className={styles.boardMeta}>{PINNED_NOTICE.type}</div>
-                <div className={styles.boardDate}>{PINNED_NOTICE.date}</div>
-                <div className={styles.boardContent}>{PINNED_NOTICE.content}</div>
-              </div>
-            ) : null}
-          </div>
-
-          {BOARD_ITEMS.map((item, i) => {
-            const rowIndex = i + 1;
-            return (
-              <div key={`board-row-${rowIndex}`} className={styles.boardItem}>
-                <button
-                  type="button"
-                  className={styles.boardRow}
-                  onClick={() => setOpenBoardIndex((prev) => (prev === rowIndex ? null : rowIndex))}
-                >
-                  <span className={styles.boardPreviewAuthor}>{item.author}</span>
-                  <span className={styles.boardPreviewText}>{item.preview}</span>
-                </button>
-                {openBoardIndex === rowIndex ? (
-                  <div className={styles.boardExpanded}>
-                    <div className={styles.boardMeta}>{item.type}</div>
-                    <div className={styles.boardDate}>{item.date}</div>
-                    <div className={styles.boardContent}>{item.content}</div>
-                  </div>
-                ) : null}
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      <BoardSection />
 
       <section className={styles.informationSection}>
         <button
@@ -696,6 +719,3 @@ export default function Nigajun44View({ product }: Props) {
     </article>
   );
 }
-
-
-
