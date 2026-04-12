@@ -396,7 +396,11 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
               ) : null}
             </p>
 
-            <p className={styles.heroPrice}>₩49,000</p>
+            <p className={styles.heroPrice}>
+              {typeof product?.finalPriceAmount === "number" ? (
+                <>₩{product.finalPriceAmount.toLocaleString()}</>
+              ) : null}
+            </p>
 
             <div className={styles.detailCtaRow}>
               <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
