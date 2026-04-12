@@ -105,6 +105,18 @@ export async function POST(req: NextRequest) {
 		.eq("is_active", true);
 
 	if (deactivateErr) {
+		console.error(
+			"admin_products_price_deactivate_failed",
+			JSON.stringify({
+				label: "admin_products_price_deactivate_failed",
+				slug,
+				productId: productRow.id,
+				message: deactivateErr.message,
+				code: deactivateErr.code,
+				details: deactivateErr.details,
+				hint: deactivateErr.hint,
+			}),
+		);
 		return NextResponse.json({ ok: false, message: "deactivate_failed" }, { status: 500 });
 	}
 
@@ -120,6 +132,18 @@ export async function POST(req: NextRequest) {
 	});
 
 	if (insertErr) {
+		console.error(
+			"admin_products_price_insert_failed",
+			JSON.stringify({
+				label: "admin_products_price_insert_failed",
+				slug,
+				productId: productRow.id,
+				message: insertErr.message,
+				code: insertErr.code,
+				details: insertErr.details,
+				hint: insertErr.hint,
+			}),
+		);
 		return NextResponse.json({ ok: false, message: "insert_failed" }, { status: 500 });
 	}
 
