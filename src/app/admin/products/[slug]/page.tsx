@@ -102,10 +102,11 @@ export default async function Page({
 	}
 
 	const priceData = await getAdminProductPriceBySlug(slug);
-	const fmt = (n: number | null) => (typeof n === "number" && Number.isFinite(n) ? String(n) : "—");
-	const finalPriceLabel = fmt(priceData.finalPriceAmount);
-	const basePriceLabel = fmt(priceData.priceAmount);
-	const discountLabel = fmt(priceData.discountAmount);
+	const numStr = (n: number | null) =>
+		typeof n === "number" && Number.isFinite(n) ? String(n) : "";
+	const finalPriceStr = numStr(priceData.finalPriceAmount);
+	const basePriceStr = numStr(priceData.priceAmount);
+	const discountStr = numStr(priceData.discountAmount);
 
 	let statusLine: string | null = null;
 	if (sp.saved === "1") {
@@ -129,12 +130,6 @@ export default async function Page({
 			</p>
 
 			<div style={sectionStyle}>
-				<strong>Basic Information</strong>
-				<p style={{ marginTop: 8, opacity: 0.8 }}>
-					상품 기본 메타데이터 영역입니다. 후속 단계에서 연동합니다.
-				</p>
-			</div>
-			<div style={sectionStyle}>
 				<strong>Price Management</strong>
 				<p style={{ marginTop: 8, opacity: 0.8, marginBottom: 12 }}>
 					가격 정책 및 표시 가격 관리입니다. 금액은 서버에서 확정합니다.
@@ -146,13 +141,13 @@ export default async function Page({
 						</p>
 					) : null}
 					<p style={{ margin: "0 0 6px" }}>
-						<strong>Current Final Price</strong>: {finalPriceLabel}
+						<strong>Current Final Price</strong>: {finalPriceStr}
 					</p>
 					<p style={{ margin: "0 0 6px" }}>
-						<strong>Current Base Price</strong>: {basePriceLabel}
+						<strong>Current Base Price</strong>: {basePriceStr}
 					</p>
 					<p style={{ margin: 0 }}>
-						<strong>Current Discount Amount</strong>: {discountLabel}
+						<strong>Current Discount Amount</strong>: {discountStr}
 					</p>
 				</div>
 				<form action={submitPrice}>
