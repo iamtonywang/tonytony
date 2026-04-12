@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
-import { getProductBySlug } from "@/app/products/_server/getProductBySlug";
+import { getAdminProductPriceBySlug } from "@/app/admin/products/_server/getAdminProductPriceBySlug";
 
 const ALLOWED_SLUGS = new Set([
 	"nigajun-44",
@@ -101,10 +101,11 @@ export default async function Page({
 		notFound();
 	}
 
-	const product = await getProductBySlug(slug);
-	const finalPrice = product?.finalPriceAmount;
-	const finalPriceLabel =
-		typeof finalPrice === "number" && Number.isFinite(finalPrice) ? String(finalPrice) : "—";
+	const priceRead = await getAdminProductPriceBySlug(slug);
+	const fmt = (n: number | null) => (typeof n === "number" && Number.isFinite(n) ? String(n) : "—");
+	const finalPriceLabel = fmt(priceRead.finalPriceAmount);
+	const basePriceLabel = fmt(priceRead.priceAmount);
+	const discountLabel = fmt(priceRead.discountAmount);
 
 	let statusLine: string | null = null;
 	if (sp.saved === "1") {
@@ -139,16 +140,19 @@ export default async function Page({
 					가격 정책 및 표시 가격 관리입니다. 금액은 서버에서 확정합니다.
 				</p>
 				<div style={{ marginBottom: 16, opacity: 0.9 }}>
+					{priceRead.currency ? (
+						<p style={{ margin: "0 0 6px" }}>
+							<strong>Currency</strong>: {priceRead.currency}
+						</p>
+					) : null}
 					<p style={{ margin: "0 0 6px" }}>
 						<strong>Current Final Price</strong>: {finalPriceLabel}
 					</p>
 					<p style={{ margin: "0 0 6px" }}>
-						<strong>Current Base Price</strong>: —{" "}
-						<span style={{ opacity: 0.75 }}>(조회 미지원)</span>
+						<strong>Current Base Price</strong>: {basePriceLabel}
 					</p>
 					<p style={{ margin: 0 }}>
-						<strong>Current Discount Amount</strong>: —{" "}
-						<span style={{ opacity: 0.75 }}>(조회 미지원)</span>
+						<strong>Current Discount Amount</strong>: {discountLabel}
 					</p>
 				</div>
 				<form action={submitPrice}>
