@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 
 import { getAdminProductPriceBySlug } from "@/app/admin/products/_server/getAdminProductPriceBySlug";
 import { getAdminProductInquiriesBySlug } from "@/app/admin/products/_server/getAdminProductInquiriesBySlug";
+import { getAdminProductReviewsBySlug } from "@/app/admin/products/_server/getAdminProductReviewsBySlug";
 
 const ALLOWED_SLUGS = new Set([
 	"nigajun-44",
@@ -173,9 +174,10 @@ export default async function Page({
 		notFound();
 	}
 
-	const [priceData, inquiries] = await Promise.all([
+	const [priceData, inquiries, reviews] = await Promise.all([
 		getAdminProductPriceBySlug(slug),
 		getAdminProductInquiriesBySlug(slug),
+		getAdminProductReviewsBySlug(slug),
 	]);
 	const finalPriceLabel =
 		typeof priceData.finalPriceAmount === "number" ? String(priceData.finalPriceAmount) : "";
@@ -430,9 +432,39 @@ export default async function Page({
 			</div>
 			<div style={sectionStyle}>
 				<strong>Review Management</strong>
-				<p style={{ marginTop: 8, opacity: 0.8 }}>
-					리뷰 모더레이션·노출 설정 placeholder입니다.
-				</p>
+				{reviews.length === 0 ? (
+					<p style={{ marginTop: 8, opacity: 0.8 }}>등록된 리뷰가 없습니다.</p>
+				) : (
+					<ul style={{ margin: "12px 0 0", padding: 0, listStyle: "none" }}>
+						{reviews.map((row) => (
+							<li
+								key={row.id}
+								style={{
+									marginBottom: 14,
+									paddingBottom: 12,
+									borderBottom: "1px solid rgba(255,255,255,0.12)",
+								}}
+							>
+								<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+									<strong>작성자</strong>: {row.authorLabel}
+								</p>
+								<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+									<strong>평점</strong>:{" "}
+									{row.rating !== null && row.rating !== undefined ? String(row.rating) : "—"}
+								</p>
+								<p style={{ margin: "0 0 4px", opacity: 0.95, whiteSpace: "pre-wrap" }}>
+									<strong>리뷰내용</strong>: {row.content}
+								</p>
+								<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+									<strong>상태</strong>: {row.reviewStatus}
+								</p>
+								<p style={{ margin: 0, opacity: 0.95 }}>
+									<strong>생성일</strong>: {row.createdAt}
+								</p>
+							</li>
+						))}
+					</ul>
+				)}
 			</div>
 			<div style={sectionStyle}>
 				<strong>Sales Status</strong>
