@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./Nigajun44View.module.css";
-import type { ProductMinimal } from "@/app/products/_server/types";
+import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 
 interface Props {
   product?: ProductMinimal;
+  boardItems: ProductBoardItem[];
 }
 
 const HERO_SEQUENCE = [
@@ -74,9 +75,6 @@ const PINNED_NOTICE = {
   date: "2026.04.10",
   content: "공지 내용",
 } as const;
-
-const BOARD_ITEMS: { author: string; preview: string; type: string; date: string; content: string }[] =
-  [];
 
 function HeroSection({ product }: { product?: ProductMinimal }) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
@@ -408,9 +406,23 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
   );
 }
 
-function BoardSection() {
+function BoardSection({ boardItems }: { boardItems: ProductBoardItem[] }) {
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
-  const [isSecret, setIsSecret] = useState(false);
+  const [boardTab, setBoardTab] = useState<"inquiry" | "review" | "secret">("inquiry");
+
+  const filteredBoardItems = useMemo(() => {
+    if (boardTab === "inquiry") {
+      return boardItems.filter((i) => i.type === "Inquiry" && !i.isPrivate);
+    }
+    if (boardTab === "review") {
+      return boardItems.filter((i) => i.type === "Review" && !i.isPrivate);
+    }
+    return boardItems.filter((i) => i.isPrivate);
+  }, [boardItems, boardTab]);
+
+  useEffect(() => {
+    setOpenBoardIndex(null);
+  }, [boardTab]);
 
   return (
     <>
@@ -433,16 +445,24 @@ function BoardSection() {
           </p>
         </div>
         <div className={styles.boardActions}>
-          <button type="button" className={styles.boardActionBtn}>
+          <button
+            type="button"
+            className={`${styles.boardActionBtn} ${boardTab === "inquiry" ? styles.boardActionBtnActive : ""}`}
+            onClick={() => setBoardTab("inquiry")}
+          >
             Inquiry
           </button>
-          <button type="button" className={styles.boardActionBtn}>
+          <button
+            type="button"
+            className={`${styles.boardActionBtn} ${boardTab === "review" ? styles.boardActionBtnActive : ""}`}
+            onClick={() => setBoardTab("review")}
+          >
             Review
           </button>
           <button
             type="button"
-            className={`${styles.boardActionBtn} ${isSecret ? styles.boardActionBtnActive : ""}`}
-            onClick={() => setIsSecret((prev) => !prev)}
+            className={`${styles.boardActionBtn} ${boardTab === "secret" ? styles.boardActionBtnActive : ""}`}
+            onClick={() => setBoardTab("secret")}
           >
             Secret
           </button>
@@ -470,10 +490,10 @@ function BoardSection() {
             ) : null}
           </div>
 
-          {BOARD_ITEMS.map((item, i) => {
+          {filteredBoardItems.map((item, i) => {
             const rowIndex = i + 1;
             return (
-              <div key={`board-row-${rowIndex}`} className={styles.boardItem}>
+              <div key={item.id} className={styles.boardItem}>
                 <button
                   type="button"
                   className={styles.boardRow}
@@ -499,7 +519,7 @@ function BoardSection() {
   );
 }
 
-export default function Nigajun44View({ product }: Props) {
+export default function Nigajun44View({ product, boardItems }: Props) {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   return (
@@ -578,7 +598,7 @@ export default function Nigajun44View({ product }: Props) {
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
 
-      <BoardSection />
+      <BoardSection boardItems={boardItems} />
 
       <section className={styles.informationSection}>
         <button

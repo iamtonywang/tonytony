@@ -10,3 +10,14 @@ export type ProductMinimal = {
   isVisible: boolean | null;
 };
 
+/** Product detail board row (inquiries + reviews merged on server). */
+export type ProductBoardItem = {
+  id: string;
+  author: string;
+  preview: string;
+  type: "Inquiry" | "Review";
+  date: string;
+  content: string;
+  isPrivate: boolean;
+};
+

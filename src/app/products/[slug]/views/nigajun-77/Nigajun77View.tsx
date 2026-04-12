@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./Nigajun77View.module.css";
-import type { ProductMinimal } from "@/app/products/_server/types";
+import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 
 // 77 전용 시퀀스(원문/순서 그대로 적용)
 const HERO_SEQUENCE_77: string[] = [
@@ -28,6 +28,7 @@ const HERO_EMPHASIS_77: boolean[] = HERO_SEQUENCE_77.map((line) => line === "TON
 
 interface Props {
   product?: ProductMinimal;
+  boardItems: ProductBoardItem[];
 }
 
 const PINNED_NOTICE = {
@@ -38,10 +39,7 @@ const PINNED_NOTICE = {
   content: "공지 내용",
 } as const;
 
-const BOARD_ITEMS: { author: string; preview: string; type: string; date: string; content: string }[] =
-  [];
-
-export default function Nigajun77View({ product }: Props) {
+export default function Nigajun77View({ product, boardItems }: Props) {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const [hideText, setHideText] = useState(false);
@@ -53,8 +51,22 @@ export default function Nigajun77View({ product }: Props) {
   const [showFinalBlock, setShowFinalBlock] = useState(false); // 77은 최종 블록 미사용
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
-  const [isSecret, setIsSecret] = useState(false);
+  const [boardTab, setBoardTab] = useState<"inquiry" | "review" | "secret">("inquiry");
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+
+  const filteredBoardItems = useMemo(() => {
+    if (boardTab === "inquiry") {
+      return boardItems.filter((i) => i.type === "Inquiry" && !i.isPrivate);
+    }
+    if (boardTab === "review") {
+      return boardItems.filter((i) => i.type === "Review" && !i.isPrivate);
+    }
+    return boardItems.filter((i) => i.isPrivate);
+  }, [boardItems, boardTab]);
+
+  useEffect(() => {
+    setOpenBoardIndex(null);
+  }, [boardTab]);
 
   useEffect(() => {
     let isMounted = true;
@@ -444,16 +456,24 @@ export default function Nigajun77View({ product }: Props) {
           </p>
         </div>
         <div className={styles.boardActions}>
-          <button type="button" className={styles.boardActionBtn}>
+          <button
+            type="button"
+            className={`${styles.boardActionBtn} ${boardTab === "inquiry" ? styles.boardActionBtnActive : ""}`}
+            onClick={() => setBoardTab("inquiry")}
+          >
             Inquiry
           </button>
-          <button type="button" className={styles.boardActionBtn}>
+          <button
+            type="button"
+            className={`${styles.boardActionBtn} ${boardTab === "review" ? styles.boardActionBtnActive : ""}`}
+            onClick={() => setBoardTab("review")}
+          >
             Review
           </button>
           <button
             type="button"
-            className={`${styles.boardActionBtn} ${isSecret ? styles.boardActionBtnActive : ""}`}
-            onClick={() => setIsSecret((prev) => !prev)}
+            className={`${styles.boardActionBtn} ${boardTab === "secret" ? styles.boardActionBtnActive : ""}`}
+            onClick={() => setBoardTab("secret")}
           >
             Secret
           </button>
@@ -481,10 +501,10 @@ export default function Nigajun77View({ product }: Props) {
             ) : null}
           </div>
 
-          {BOARD_ITEMS.map((item, i) => {
+          {filteredBoardItems.map((item, i) => {
             const rowIndex = i + 1;
             return (
-              <div key={`board-row-${rowIndex}`} className={styles.boardItem}>
+              <div key={item.id} className={styles.boardItem}>
                 <button
                   type="button"
                   className={styles.boardRow}
