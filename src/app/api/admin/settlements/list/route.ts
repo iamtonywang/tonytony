@@ -39,24 +39,14 @@ export async function GET(req: NextRequest) {
 	const pageParam = url.searchParams.get("page");
 	const page = Math.max(1, Number.isFinite(Number(pageParam)) ? Number(pageParam) : 1);
 	const from = (page - 1) * PAGE_SIZE;
-	const to = from + PAGE_SIZE - 1;
-
-	const { count: totalCount, error: countErr } = await supabase
-		.from("partner_settlement_requests")
-		.select("*", { count: "exact", head: true });
-
-	if (countErr) {
-		return NextResponse.json(
-			{ ok: false, items: [], total: 0, hasNext: false, message: "count_failed" },
-			{ status: 500 },
-		);
-	}
+	// Fetch PAGE_SIZE+1 rows to detect next page without a full-table exact count.
+	const listRangeEnd = from + PAGE_SIZE;
 
 	const { data, error } = await supabase
 		.from("partner_settlement_requests")
 		.select("partner_id, request_amount, request_status, requested_at, paid_at")
 		.order("requested_at", { ascending: false })
-		.range(from, to);
+		.range(from, listRangeEnd);
 
 	if (error) {
 		return NextResponse.json(
@@ -65,7 +55,22 @@ export async function GET(req: NextRequest) {
 		);
 	}
 
-	const rows = Array.isArray(data) ? (data as ReqRow[]) : [];
+	const rawRows = Array.isArray(data) ? (data as ReqRow[]) : [];
+	const hasNext = rawRows.length > PAGE_SIZE;
+	const rows = hasNext ? rawRows.slice(0, PAGE_SIZE) : rawRows;
+
+	let total: number;
+	if (!hasNext) {
+		total = from + rows.length;
+	} else {
+		const { count: estCount, error: estErr } = await supabase
+			.from("partner_settlement_requests")
+			.select("*", { count: "estimated", head: true });
+		total =
+			!estErr && typeof estCount === "number"
+				? estCount
+				: from + PAGE_SIZE + 1;
+	}
 	const partnerIds = Array.from(new Set(rows.map((x) => x.partner_id).filter((id) => typeof id === "number")));
 
 	const partnerToUserId = new Map<number, number>();
@@ -118,9 +123,6 @@ export async function GET(req: NextRequest) {
 			paidAt: row.paid_at ?? null,
 		};
 	});
-
-	const total = typeof totalCount === "number" ? totalCount : 0;
-	const hasNext = to + 1 < total;
 
 	return NextResponse.json({ ok: true, items, total, hasNext, message: null }, { status: 200 });
 }
