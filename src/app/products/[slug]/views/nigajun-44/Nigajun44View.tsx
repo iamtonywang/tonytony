@@ -410,6 +410,7 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
 
 function BoardSection() {
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
+  const [isSecret, setIsSecret] = useState(false);
 
   return (
     <>
@@ -437,6 +438,13 @@ function BoardSection() {
           </button>
           <button type="button" className={styles.boardActionBtn}>
             Review
+          </button>
+          <button
+            type="button"
+            className={`${styles.boardActionBtn} ${isSecret ? styles.boardActionBtnActive : ""}`}
+            onClick={() => setIsSecret((prev) => !prev)}
+          >
+            Secret
           </button>
         </div>
       </div>

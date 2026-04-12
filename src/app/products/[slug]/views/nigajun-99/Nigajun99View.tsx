@@ -102,6 +102,7 @@ export default function Nigajun99View({ product }: Props) {
   const [showFinalBlock, setShowFinalBlock] = useState(false);
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
+  const [isSecret, setIsSecret] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   useEffect(() => {
@@ -511,6 +512,13 @@ export default function Nigajun99View({ product }: Props) {
           </button>
           <button type="button" className={styles.boardActionBtn}>
             Review
+          </button>
+          <button
+            type="button"
+            className={`${styles.boardActionBtn} ${isSecret ? styles.boardActionBtnActive : ""}`}
+            onClick={() => setIsSecret((prev) => !prev)}
+          >
+            Secret
           </button>
         </div>
       </div>
