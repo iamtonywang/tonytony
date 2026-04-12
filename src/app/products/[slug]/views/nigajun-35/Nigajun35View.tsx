@@ -330,12 +330,6 @@ export default function Nigajun35View({ product }: Props) {
             <div className={styles.detailOverlayInner}>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
 
-              <p className={styles.detailPriceRow}>
-                {typeof product?.finalPriceAmount === "number" ? (
-                  <span>· {product.finalPriceAmount.toLocaleString()}</span>
-                ) : null}
-              </p>
-
               <p className={styles.detailOverlayText}>
                 나는 흔한 성분으로 연구하지 않아
               </p>
@@ -385,7 +379,11 @@ export default function Nigajun35View({ product }: Props) {
                 피부 밀도 개선 피부 수분 활성 최적화
               </p>
 
-              <p className={styles.heroPrice}>₩49,000</p>
+              <p className={styles.heroPrice}>
+                {typeof product?.finalPriceAmount === "number"
+                  ? `₩${product.finalPriceAmount.toLocaleString()}`
+                  : null}
+              </p>
 
               <div className={styles.detailCtaRow}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>

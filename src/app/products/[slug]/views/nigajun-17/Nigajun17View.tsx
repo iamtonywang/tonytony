@@ -365,12 +365,6 @@ export default function Nigajun17View({ product }: Props) {
             <div className={styles.detailOverlayInner}>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
 
-              <p className={styles.detailPriceRow}>
-                {typeof product?.finalPriceAmount === "number" ? (
-                  <span>· {product.finalPriceAmount.toLocaleString()}</span>
-                ) : null}
-              </p>
-
               <p className={styles.detailOverlayText}>나는 모발이 새로 난다고 말할수 없어</p>
               <p className={styles.detailOverlayText}>그것은 매우 큰 거짓이기 때문이다</p>
               <p className={styles.detailOverlayText}>왜 두피 질환과 탈모는 반복되는가.</p>
@@ -419,7 +413,11 @@ export default function Nigajun17View({ product }: Props) {
               </p>
               <p className={styles.detailOverlayText}>Since August 2025 TONYWAN</p>
 
-              <p className={styles.heroPrice}>₩49,000</p>
+              <p className={styles.heroPrice}>
+                {typeof product?.finalPriceAmount === "number"
+                  ? `₩${product.finalPriceAmount.toLocaleString()}`
+                  : null}
+              </p>
 
               <div className={styles.detailCtaRow}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>

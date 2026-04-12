@@ -318,12 +318,6 @@ export default function Nigajun28View({ product }: Props) {
             <div className={styles.detailOverlayInner}>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
 
-              <p className={styles.detailPriceRow}>
-                {typeof product?.finalPriceAmount === "number" ? (
-                  <span>· {product.finalPriceAmount.toLocaleString()}</span>
-                ) : null}
-              </p>
-
               <p className={styles.detailOverlayText}>TONYWANG</p>
               <p className={styles.detailOverlayText}>수십 년 동안 치약은 같은 방식으로 만들어졌어.</p>
               <p className={styles.detailOverlayText}>세균을 제거하고, 입안을 깨끗하게 만드는 것.</p>
@@ -372,7 +366,11 @@ export default function Nigajun28View({ product }: Props) {
               <p className={styles.detailOverlayText}>Bioactive Molecular 시스템이다</p>
               <p className={styles.detailOverlayText}>Since August 2025 TONYWAN</p>
 
-              <p className={styles.heroPrice}>₩49,000</p>
+              <p className={styles.heroPrice}>
+                {typeof product?.finalPriceAmount === "number"
+                  ? `₩${product.finalPriceAmount.toLocaleString()}`
+                  : null}
+              </p>
 
               <div className={styles.detailCtaRow}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>

@@ -402,16 +402,6 @@ export default function Nigajun99View({ product }: Props) {
             <div className={styles.detailOverlayInner}>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
 
-              <p className={styles.detailPriceRow}>
-                {typeof product?.finalPriceAmount === "number" ? (
-                  <span>· {product.finalPriceAmount.toLocaleString()}</span>
-                ) : null}
-              </p>
-
-
-
-
-
               <p className={styles.detailDescription}>
                 피부 가려움증 매우 괴롭고 힘든 고통스런 질환이다
               </p>
@@ -461,7 +451,11 @@ export default function Nigajun99View({ product }: Props) {
                 The pain of being hurt by lies is even greater
               </p>
 
-              <p className={styles.heroPrice}>₩49,000</p>
+              <p className={styles.heroPrice}>
+                {typeof product?.finalPriceAmount === "number"
+                  ? `₩${product.finalPriceAmount.toLocaleString()}`
+                  : null}
+              </p>
 
               <div className={styles.detailCtaRow} style={{ marginTop: '24px' }}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>

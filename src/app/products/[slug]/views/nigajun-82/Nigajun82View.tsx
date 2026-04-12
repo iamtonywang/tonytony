@@ -351,12 +351,6 @@ export default function Nigajun82View({ product }: Props) {
             <div className={styles.detailOverlayInner}>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
 
-              <p className={styles.detailPriceRow}>
-                {typeof product?.finalPriceAmount === "number" ? (
-                  <span>· {product.finalPriceAmount.toLocaleString()}</span>
-                ) : null}
-              </p>
-
               <p className={styles.detailDescription}>
                 질염은 단순한 오염 상태로 정의되지 않는다.
               </p>
@@ -436,7 +430,11 @@ export default function Nigajun82View({ product }: Props) {
                 Since August 2025 TONYWANG
               </p>
 
-              <p className={styles.heroPrice}>₩49,000</p>
+              <p className={styles.heroPrice}>
+                {typeof product?.finalPriceAmount === "number"
+                  ? `₩${product.finalPriceAmount.toLocaleString()}`
+                  : null}
+              </p>
 
               <div className={styles.detailCtaRow}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>

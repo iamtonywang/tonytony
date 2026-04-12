@@ -326,12 +326,6 @@ export default function Nigajun77View({ product }: Props) {
             <div className={styles.detailOverlayInner}>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
 
-              <p className={styles.detailPriceRow}>
-                {typeof product?.finalPriceAmount === "number" ? (
-                  <span>· {product.finalPriceAmount.toLocaleString()}</span>
-                ) : null}
-              </p>
-
               <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 종아리는 특별한 지방 조직이다.
               </p>
@@ -400,7 +394,11 @@ export default function Nigajun77View({ product }: Props) {
                 be an important condition for maintaining fat accumulation
               </p>
 
-              <p className={styles.heroPrice}>₩49,000</p>
+              <p className={styles.heroPrice}>
+                {typeof product?.finalPriceAmount === "number"
+                  ? `₩${product.finalPriceAmount.toLocaleString()}`
+                  : null}
+              </p>
 
               <div className={styles.detailCtaRow}>
               <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>

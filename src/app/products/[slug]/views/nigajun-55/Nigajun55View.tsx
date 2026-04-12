@@ -330,12 +330,6 @@ export default function Nigajun55View({ product }: Props) {
             <div className={styles.detailOverlayInner}>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
 
-              <p className={styles.detailPriceRow}>
-                {typeof product?.finalPriceAmount === "number" ? (
-                  <span>· {product.finalPriceAmount.toLocaleString()}</span>
-                ) : null}
-              </p>
-
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>TONYWANG</p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
                 튼살(striae distensae)은 단순한 피부 표면의<br className={styles.mobileOnly} />물리적 손상이 아니다
@@ -359,7 +353,11 @@ export default function Nigajun55View({ product }: Props) {
               </p>
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>Since August 2025 TONYWANG</p>
 
-              <p className={styles.heroPrice}>₩49,000</p>
+              <p className={styles.heroPrice}>
+                {typeof product?.finalPriceAmount === "number"
+                  ? `₩${product.finalPriceAmount.toLocaleString()}`
+                  : null}
+              </p>
 
               <div className={styles.detailCtaRow} style={{ marginTop: '24px' }}>
                 <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
