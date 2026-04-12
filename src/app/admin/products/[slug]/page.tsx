@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
 import { getAdminProductPriceBySlug } from "@/app/admin/products/_server/getAdminProductPriceBySlug";
+import { getAdminProductInquiriesBySlug } from "@/app/admin/products/_server/getAdminProductInquiriesBySlug";
 
 const ALLOWED_SLUGS = new Set([
 	"nigajun-44",
@@ -101,7 +102,10 @@ export default async function Page({
 		notFound();
 	}
 
-	const priceData = await getAdminProductPriceBySlug(slug);
+	const [priceData, inquiries] = await Promise.all([
+		getAdminProductPriceBySlug(slug),
+		getAdminProductInquiriesBySlug(slug),
+	]);
 	const finalPriceLabel =
 		typeof priceData.finalPriceAmount === "number" ? String(priceData.finalPriceAmount) : "";
 	const basePriceLabel =
@@ -247,9 +251,44 @@ export default async function Page({
 			</div>
 			<div style={sectionStyle}>
 				<strong>Inquiry Management</strong>
-				<p style={{ marginTop: 8, opacity: 0.8 }}>
-					문의 접수·응대 현황을 둘 자리입니다. 아직 데이터 없음.
-				</p>
+				{inquiries.length === 0 ? (
+					<p style={{ marginTop: 8, opacity: 0.8 }}>등록된 문의가 없습니다.</p>
+				) : (
+					<ul style={{ margin: "12px 0 0", padding: 0, listStyle: "none" }}>
+						{inquiries.map((row) => {
+							const replyLabel = row.answerContent ? "답변완료" : "미답변";
+							return (
+								<li
+									key={row.id}
+									style={{
+										marginBottom: 14,
+										paddingBottom: 12,
+										borderBottom: "1px solid rgba(255,255,255,0.12)",
+									}}
+								>
+									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+										<strong>작성자</strong>: {row.authorLabel}
+									</p>
+									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+										<strong>제목</strong>: {row.title}
+									</p>
+									<p style={{ margin: "0 0 4px", opacity: 0.95, whiteSpace: "pre-wrap" }}>
+										<strong>문의내용</strong>: {row.content}
+									</p>
+									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+										<strong>상태</strong>: {row.inquiryStatus}
+									</p>
+									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+										<strong>답변</strong>: {replyLabel}
+									</p>
+									<p style={{ margin: 0, opacity: 0.95 }}>
+										<strong>생성일</strong>: {row.createdAt}
+									</p>
+								</li>
+							);
+						})}
+					</ul>
+				)}
 			</div>
 			<div style={sectionStyle}>
 				<strong>Review Management</strong>
