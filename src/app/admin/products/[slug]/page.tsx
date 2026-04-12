@@ -132,10 +132,61 @@ export default async function Page({
 
 			<div style={sectionStyle}>
 				<strong>Price Management</strong>
-				<p style={{ marginTop: 8, opacity: 0.8, marginBottom: 12 }}>
-					가격 정책 및 표시 가격 관리입니다. 금액은 서버에서 확정합니다.
-				</p>
-				<div style={{ marginBottom: 16, opacity: 0.9 }}>
+				<style
+					dangerouslySetInnerHTML={{
+						__html: `
+.ap-price-details { margin-top: 12px; }
+.ap-price-details > summary.ap-price-summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 4px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  color: rgba(255,255,255,0.92);
+  background: transparent;
+  user-select: none;
+}
+.ap-price-details > summary.ap-price-summary::-webkit-details-marker { display: none; }
+.ap-price-details > summary.ap-price-summary::marker { content: ''; }
+.ap-price-details > summary.ap-price-summary:hover {
+  border-color: rgba(255,255,255,0.38);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+.ap-price-details .ap-price-panel { margin-top: 12px; padding-top: 4px; }
+.ap-price-details .ap-price-input {
+  width: 100%;
+  max-width: 320px;
+  padding: 8px;
+  box-sizing: border-box;
+  background: transparent;
+  color: rgba(255,255,255,0.92);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 2px;
+}
+.ap-price-details .ap-price-input:hover { border-color: rgba(255,255,255,0.45); }
+.ap-price-details .ap-price-input:focus { outline: none; border-color: rgba(255,255,255,0.52); }
+.ap-price-details .ap-price-save {
+  cursor: pointer;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  color: rgba(255,255,255,0.92);
+  background: transparent;
+}
+.ap-price-details .ap-price-save:hover {
+  border-color: rgba(255,255,255,0.38);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+`,
+					}}
+				/>
+				<div style={{ marginTop: 8, marginBottom: 4, opacity: 0.9 }}>
 					{priceData.currency ? (
 						<p style={{ margin: "0 0 6px" }}>
 							<strong>Currency</strong>: {priceData.currency}
@@ -151,35 +202,48 @@ export default async function Page({
 						<strong>Current Discount Amount</strong>: {discountLabel}
 					</p>
 				</div>
-				<form action={submitPrice}>
-					<input type="hidden" name="slug" value={slug} />
-					<div style={{ marginBottom: 10 }}>
-						<label style={{ display: "block", marginBottom: 4, opacity: 0.9 }}>priceAmount</label>
-						<input
-							type="number"
-							min={0}
-							step="0.01"
-							name="priceAmount"
-							required
-							style={{ width: "100%", maxWidth: 320, padding: 8, boxSizing: "border-box" }}
-						/>
+				<details className="ap-price-details">
+					<summary className="ap-price-summary">가격 수정</summary>
+					<div className="ap-price-panel">
+						<form action={submitPrice}>
+							<input type="hidden" name="slug" value={slug} />
+							<div style={{ marginBottom: 10 }}>
+								<label
+									style={{ display: "block", marginBottom: 4, color: "rgba(255,255,255,0.88)" }}
+								>
+									priceAmount
+								</label>
+								<input
+									type="number"
+									min={0}
+									step="0.01"
+									name="priceAmount"
+									required
+									className="ap-price-input"
+								/>
+							</div>
+							<div style={{ marginBottom: 10 }}>
+								<label
+									style={{ display: "block", marginBottom: 4, color: "rgba(255,255,255,0.88)" }}
+								>
+									discountAmount
+								</label>
+								<input
+									type="number"
+									min={0}
+									step="0.01"
+									name="discountAmount"
+									required
+									className="ap-price-input"
+								/>
+							</div>
+							<button type="submit" className="ap-price-save">
+								저장
+							</button>
+							{statusLine ? <p style={{ marginTop: 8, opacity: 0.85 }}>{statusLine}</p> : null}
+						</form>
 					</div>
-					<div style={{ marginBottom: 10 }}>
-						<label style={{ display: "block", marginBottom: 4, opacity: 0.9 }}>discountAmount</label>
-						<input
-							type="number"
-							min={0}
-							step="0.01"
-							name="discountAmount"
-							required
-							style={{ width: "100%", maxWidth: 320, padding: 8, boxSizing: "border-box" }}
-						/>
-					</div>
-					<button type="submit" style={{ padding: "8px 16px", marginBottom: 8 }}>
-						저장
-					</button>
-					{statusLine ? <p style={{ marginTop: 8, opacity: 0.85 }}>{statusLine}</p> : null}
-				</form>
+				</details>
 			</div>
 			<div style={sectionStyle}>
 				<strong>Inquiry Management</strong>
