@@ -15,19 +15,13 @@ const HERO_LINES = [
 ];
 
 export default function ProductHeroSection() {
-  const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const videoOverlayRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const lastTimelineLineIndexRef = useRef(-1);
   const [showVideo, setShowVideo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeLineIndex, setActiveLineIndex] = useState(0);
   const [isSequenceComplete, setIsSequenceComplete] = useState(false);
-
-  // Autoplay 제거: 재생은 클릭 시에만 이루어지도록 변경
-  const tryPlayVideo = useCallback(async (_videoEl: HTMLVideoElement) => {
-    // intentionally no-op to prevent autoplay
-    setIsPlaying(false);
-  }, []);
 
   const mountVideoOverlay = useCallback(() => {
     if (!videoOverlayRef.current) {
@@ -53,6 +47,7 @@ export default function ProductHeroSection() {
         videoEl.pause();
         videoEl.currentTime = 0;
       } catch {}
+      lastTimelineLineIndexRef.current = -1;
       setIsPlaying(false);
       setActiveLineIndex(0);
       setIsSequenceComplete(false);
@@ -70,7 +65,10 @@ export default function ProductHeroSection() {
         Math.floor(videoEl.currentTime / segment)
       );
 
-      setActiveLineIndex(nextIndex);
+      if (nextIndex !== lastTimelineLineIndexRef.current) {
+        lastTimelineLineIndexRef.current = nextIndex;
+        setActiveLineIndex(nextIndex);
+      }
     });
     videoRef.current = videoEl;
 
@@ -89,7 +87,7 @@ export default function ProductHeroSection() {
     videoOverlayRef.current.appendChild(videoEl);
 
     return videoEl;
-  }, [styles.videoElement]);
+  }, []);
 
   const handleToggle = async () => {
     const videoEl = videoRef.current;
@@ -109,6 +107,7 @@ export default function ProductHeroSection() {
         } catch {}
       }
       if (videoEl.currentTime === 0 || isSequenceComplete) {
+        lastTimelineLineIndexRef.current = -1;
         setActiveLineIndex(0);
         setIsSequenceComplete(false);
       }
@@ -124,6 +123,7 @@ export default function ProductHeroSection() {
 
     videoEl.pause();
     videoEl.currentTime = 0;
+    lastTimelineLineIndexRef.current = -1;
     setIsPlaying(false);
     setActiveLineIndex(0);
     setIsSequenceComplete(false);
@@ -144,7 +144,7 @@ export default function ProductHeroSection() {
 
   return (
     <section className={styles.heroSection}>
-      <div ref={heroVisualRef} className={styles.heroVisual}>
+      <div className={styles.heroVisual}>
         <div className={styles.videoArea}>
           <div className={styles.backgroundLayer} />
           {showVideo && (
