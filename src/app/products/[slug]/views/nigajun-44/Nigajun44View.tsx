@@ -390,16 +390,10 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
             <p className={styles.detailOverlayText}>그런게 너무 싫었고 역겨웠어</p>
             <p className={styles.detailOverlayText}>TONYWANG Since August 2025</p>
 
-            <p className={styles.detailPriceRow}>
-              {typeof product?.finalPriceAmount === "number" ? (
-                <span>· {product.finalPriceAmount.toLocaleString()}</span>
-              ) : null}
-            </p>
-
             <p className={styles.heroPrice}>
-              {typeof product?.finalPriceAmount === "number" ? (
-                <>₩{product.finalPriceAmount.toLocaleString()}</>
-              ) : null}
+              {typeof product?.finalPriceAmount === "number"
+                ? `₩${product.finalPriceAmount.toLocaleString()}`
+                : null}
             </p>
 
             <div className={styles.detailCtaRow}>
