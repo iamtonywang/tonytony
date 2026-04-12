@@ -146,10 +146,12 @@ export default function ProductHeroSection() {
     <section className={styles.heroSection}>
       <div className={styles.heroVisual}>
         <div className={styles.videoArea}>
-          <div className={styles.backgroundLayer} />
-          {showVideo && (
-            <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
-          )}
+          {showVideo ? (
+            <>
+              <div className={styles.backgroundLayer} />
+              <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
+            </>
+          ) : null}
         </div>
         <div className={styles.heroOverlay}>
           <div className={styles.heroSequence} aria-hidden="true">
