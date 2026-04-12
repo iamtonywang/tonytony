@@ -80,13 +80,14 @@ export async function POST(req: NextRequest) {
 		.from("inquiries")
 		.select("id")
 		.eq("id", inquiryId)
+		.eq("inquiry_status", "active")
 		.limit(1);
 
 	if (selErr) {
 		return NextResponse.json({ ok: false, message: "inquiry_lookup_failed" }, { status: 500 });
 	}
 	if (!Array.isArray(existing) || existing.length !== 1) {
-		return NextResponse.json({ ok: false, message: "inquiry_not_found" }, { status: 404 });
+		return NextResponse.json({ ok: false, message: "inquiry_not_answerable" }, { status: 404 });
 	}
 
 	const nowIso = new Date().toISOString();
@@ -101,13 +102,14 @@ export async function POST(req: NextRequest) {
 			updated_at: nowIso,
 		})
 		.eq("id", inquiryId)
+		.eq("inquiry_status", "active")
 		.select("id");
 
 	if (upErr) {
 		return NextResponse.json({ ok: false, message: "update_failed" }, { status: 500 });
 	}
 	if (!Array.isArray(updated) || updated.length !== 1) {
-		return NextResponse.json({ ok: false, message: "update_no_row" }, { status: 500 });
+		return NextResponse.json({ ok: false, message: "inquiry_not_answerable" }, { status: 404 });
 	}
 
 	return NextResponse.json({ ok: true }, { status: 200 });
