@@ -1,8 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { notFound, useParams } from "next/navigation";
-import { useState, type FormEvent } from "react";
+import { notFound, redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
+
+import { getProductBySlug } from "@/app/products/_server/getProductBySlug";
 
 const ALLOWED_SLUGS = new Set([
 	"nigajun-44",
@@ -33,82 +34,83 @@ const sectionStyle = {
 	textAlign: "left" as const,
 };
 
-function PriceManagementForm({ slug }: { slug: string }) {
-	const [priceAmount, setPriceAmount] = useState("");
-	const [discountAmount, setDiscountAmount] = useState("");
-	const [statusLine, setStatusLine] = useState<string | null>(null);
-	const [pending, setPending] = useState(false);
-
-	async function onSubmit(e: FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-		setStatusLine(null);
-		setPending(true);
-		try {
-			const pa = Number(priceAmount);
-			const da = Number(discountAmount);
-			const res = await fetch("/api/admin/products/price", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					slug,
-					priceAmount: pa,
-					discountAmount: da,
-				}),
-			});
-			const data = (await res.json()) as { ok?: boolean; message?: string };
-			if (data.ok === true) {
-				setStatusLine("저장되었습니다.");
-			} else {
-				setStatusLine(`실패: ${typeof data.message === "string" ? data.message : res.status}`);
-			}
-		} catch {
-			setStatusLine("실패: network");
-		} finally {
-			setPending(false);
-		}
-	}
-
-	return (
-		<form onSubmit={onSubmit}>
-			<div style={{ marginBottom: 10 }}>
-				<label style={{ display: "block", marginBottom: 4, opacity: 0.9 }}>priceAmount</label>
-				<input
-					type="number"
-					min={0}
-					step="0.01"
-					value={priceAmount}
-					onChange={(e) => setPriceAmount(e.target.value)}
-					required
-					style={{ width: "100%", maxWidth: 320, padding: 8, boxSizing: "border-box" }}
-				/>
-			</div>
-			<div style={{ marginBottom: 10 }}>
-				<label style={{ display: "block", marginBottom: 4, opacity: 0.9 }}>discountAmount</label>
-				<input
-					type="number"
-					min={0}
-					step="0.01"
-					value={discountAmount}
-					onChange={(e) => setDiscountAmount(e.target.value)}
-					required
-					style={{ width: "100%", maxWidth: 320, padding: 8, boxSizing: "border-box" }}
-				/>
-			</div>
-			<button type="submit" disabled={pending} style={{ padding: "8px 16px", marginBottom: 8 }}>
-				{pending ? "저장 중…" : "저장"}
-			</button>
-			{statusLine ? <p style={{ marginTop: 8, opacity: 0.85 }}>{statusLine}</p> : null}
-		</form>
-	);
+async function getRequestOrigin(): Promise<string> {
+	const h = await headers();
+	const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
+	const isLocal = host.startsWith("localhost") || host.startsWith("127.");
+	const proto = h.get("x-forwarded-proto") ?? (isLocal ? "http" : "https");
+	return `${proto}://${host}`;
 }
 
-export default function Page() {
-	const raw = useParams()?.slug;
-	const slug = typeof raw === "string" ? raw : Array.isArray(raw) ? raw[0] : "";
+async function submitPrice(formData: FormData) {
+	"use server";
 
-	const allowed = slug.length > 0 && ALLOWED_SLUGS.has(slug);
-	if (!allowed) {
+	const slugRaw = formData.get("slug");
+	const slug = typeof slugRaw === "string" ? slugRaw.trim() : "";
+	if (!slug || !ALLOWED_SLUGS.has(slug)) {
 		notFound();
+	}
+
+	const priceRaw = formData.get("priceAmount");
+	const discountRaw = formData.get("discountAmount");
+	const priceAmount = typeof priceRaw === "string" ? Number(priceRaw) : Number(priceRaw);
+	const discountAmount = typeof discountRaw === "string" ? Number(discountRaw) : Number(discountRaw);
+
+	const origin = await getRequestOrigin();
+	const cookieHeader = (await headers()).get("cookie") ?? "";
+
+	const res = await fetch(`${origin}/api/admin/products/price`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			...(cookieHeader ? { Cookie: cookieHeader } : {}),
+		},
+		body: JSON.stringify({
+			slug,
+			priceAmount,
+			discountAmount,
+		}),
+	});
+
+	let message = "failed";
+	try {
+		const data = (await res.json()) as { ok?: boolean; message?: string };
+		if (data.ok === true) {
+			revalidatePath(`/admin/products/${slug}`);
+			redirect(`/admin/products/${slug}?saved=1`);
+		}
+		if (typeof data.message === "string") message = data.message;
+	} catch {
+		message = "invalid_response";
+	}
+
+	redirect(`/admin/products/${slug}?err=${encodeURIComponent(message)}`);
+}
+
+export default async function Page({
+	params,
+	searchParams,
+}: Readonly<{
+	params: Promise<{ slug: string }>;
+	searchParams: Promise<{ saved?: string; err?: string }>;
+}>) {
+	const { slug } = await params;
+	const sp = await searchParams;
+
+	if (!slug || !ALLOWED_SLUGS.has(slug)) {
+		notFound();
+	}
+
+	const product = await getProductBySlug(slug);
+	const finalPrice = product?.finalPriceAmount;
+	const finalPriceLabel =
+		typeof finalPrice === "number" && Number.isFinite(finalPrice) ? String(finalPrice) : "—";
+
+	let statusLine: string | null = null;
+	if (sp.saved === "1") {
+		statusLine = "저장되었습니다.";
+	} else if (typeof sp.err === "string" && sp.err.length > 0) {
+		statusLine = `실패: ${decodeURIComponent(sp.err)}`;
 	}
 
 	const displayTitle = slugToDisplayTitle(slug);
@@ -136,7 +138,48 @@ export default function Page() {
 				<p style={{ marginTop: 8, opacity: 0.8, marginBottom: 12 }}>
 					가격 정책 및 표시 가격 관리입니다. 금액은 서버에서 확정합니다.
 				</p>
-				<PriceManagementForm slug={slug} />
+				<div style={{ marginBottom: 16, opacity: 0.9 }}>
+					<p style={{ margin: "0 0 6px" }}>
+						<strong>Current Final Price</strong>: {finalPriceLabel}
+					</p>
+					<p style={{ margin: "0 0 6px" }}>
+						<strong>Current Base Price</strong>: —{" "}
+						<span style={{ opacity: 0.75 }}>(조회 미지원)</span>
+					</p>
+					<p style={{ margin: 0 }}>
+						<strong>Current Discount Amount</strong>: —{" "}
+						<span style={{ opacity: 0.75 }}>(조회 미지원)</span>
+					</p>
+				</div>
+				<form action={submitPrice}>
+					<input type="hidden" name="slug" value={slug} />
+					<div style={{ marginBottom: 10 }}>
+						<label style={{ display: "block", marginBottom: 4, opacity: 0.9 }}>priceAmount</label>
+						<input
+							type="number"
+							min={0}
+							step="0.01"
+							name="priceAmount"
+							required
+							style={{ width: "100%", maxWidth: 320, padding: 8, boxSizing: "border-box" }}
+						/>
+					</div>
+					<div style={{ marginBottom: 10 }}>
+						<label style={{ display: "block", marginBottom: 4, opacity: 0.9 }}>discountAmount</label>
+						<input
+							type="number"
+							min={0}
+							step="0.01"
+							name="discountAmount"
+							required
+							style={{ width: "100%", maxWidth: 320, padding: 8, boxSizing: "border-box" }}
+						/>
+					</div>
+					<button type="submit" style={{ padding: "8px 16px", marginBottom: 8 }}>
+						저장
+					</button>
+					{statusLine ? <p style={{ marginTop: 8, opacity: 0.85 }}>{statusLine}</p> : null}
+				</form>
 			</div>
 			<div style={sectionStyle}>
 				<strong>Inquiry Management</strong>
