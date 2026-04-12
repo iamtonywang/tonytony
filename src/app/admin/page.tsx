@@ -10,6 +10,7 @@ export default async function Page() {
 
 			<div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
 				<Link href="/admin/users">/admin/users</Link>
+				<Link href="/admin/products">/admin/products</Link>
 				<Link href="/admin/orders">/admin/orders</Link>
 				<Link href="/admin/refunds">/admin/refunds</Link>
 				<Link href="/admin/partners">/admin/partners</Link>
