@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
+import { useState, type FormEvent } from "react";
 
 const ALLOWED_SLUGS = new Set([
 	"nigajun-44",
@@ -30,13 +33,81 @@ const sectionStyle = {
 	textAlign: "left" as const,
 };
 
-export default async function Page({
-	params,
-}: Readonly<{
-	params: Promise<{ slug: string }>;
-}>) {
-	const { slug } = await params;
-	if (!ALLOWED_SLUGS.has(slug)) {
+function PriceManagementForm({ slug }: { slug: string }) {
+	const [priceAmount, setPriceAmount] = useState("");
+	const [discountAmount, setDiscountAmount] = useState("");
+	const [statusLine, setStatusLine] = useState<string | null>(null);
+	const [pending, setPending] = useState(false);
+
+	async function onSubmit(e: FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+		setStatusLine(null);
+		setPending(true);
+		try {
+			const pa = Number(priceAmount);
+			const da = Number(discountAmount);
+			const res = await fetch("/api/admin/products/price", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					slug,
+					priceAmount: pa,
+					discountAmount: da,
+				}),
+			});
+			const data = (await res.json()) as { ok?: boolean; message?: string };
+			if (data.ok === true) {
+				setStatusLine("저장되었습니다.");
+			} else {
+				setStatusLine(`실패: ${typeof data.message === "string" ? data.message : res.status}`);
+			}
+		} catch {
+			setStatusLine("실패: network");
+		} finally {
+			setPending(false);
+		}
+	}
+
+	return (
+		<form onSubmit={onSubmit}>
+			<div style={{ marginBottom: 10 }}>
+				<label style={{ display: "block", marginBottom: 4, opacity: 0.9 }}>priceAmount</label>
+				<input
+					type="number"
+					min={0}
+					step="0.01"
+					value={priceAmount}
+					onChange={(e) => setPriceAmount(e.target.value)}
+					required
+					style={{ width: "100%", maxWidth: 320, padding: 8, boxSizing: "border-box" }}
+				/>
+			</div>
+			<div style={{ marginBottom: 10 }}>
+				<label style={{ display: "block", marginBottom: 4, opacity: 0.9 }}>discountAmount</label>
+				<input
+					type="number"
+					min={0}
+					step="0.01"
+					value={discountAmount}
+					onChange={(e) => setDiscountAmount(e.target.value)}
+					required
+					style={{ width: "100%", maxWidth: 320, padding: 8, boxSizing: "border-box" }}
+				/>
+			</div>
+			<button type="submit" disabled={pending} style={{ padding: "8px 16px", marginBottom: 8 }}>
+				{pending ? "저장 중…" : "저장"}
+			</button>
+			{statusLine ? <p style={{ marginTop: 8, opacity: 0.85 }}>{statusLine}</p> : null}
+		</form>
+	);
+}
+
+export default function Page() {
+	const raw = useParams()?.slug;
+	const slug = typeof raw === "string" ? raw : Array.isArray(raw) ? raw[0] : "";
+
+	const allowed = slug.length > 0 && ALLOWED_SLUGS.has(slug);
+	if (!allowed) {
 		notFound();
 	}
 
@@ -62,9 +133,10 @@ export default async function Page({
 			</div>
 			<div style={sectionStyle}>
 				<strong>Price Management</strong>
-				<p style={{ marginTop: 8, opacity: 0.8 }}>
-					가격 정책 및 표시 가격 관리 영역입니다. placeholder입니다.
+				<p style={{ marginTop: 8, opacity: 0.8, marginBottom: 12 }}>
+					가격 정책 및 표시 가격 관리입니다. 금액은 서버에서 확정합니다.
 				</p>
+				<PriceManagementForm slug={slug} />
 			</div>
 			<div style={sectionStyle}>
 				<strong>Inquiry Management</strong>
