@@ -535,9 +535,18 @@ export default function Nigajun82View({ product }: Props) {
           <span className={styles.boardTitleBrand}>TONYWANG</span>
           <span className={styles.boardTitleSub}>Ask me Questions</span>
         </h2>
-        <button type="button" className={styles.writeButton}>
-          Write
-        </button>
+        <div className={styles.boardNotice}>
+          <p>Inquiry  Login 사용자 사용 합니다</p>
+          <p>Review  제품 구입 유저만 가능 합니다</p>
+        </div>
+        <div className={styles.boardActions}>
+          <button type="button" className={styles.boardActionBtn}>
+            Inquiry
+          </button>
+          <button type="button" className={styles.boardActionBtn}>
+            Review
+          </button>
+        </div>
       </div>
 
       <section className={styles.boardSection}>
@@ -548,6 +557,7 @@ export default function Nigajun82View({ product }: Props) {
               className={styles.boardRow}
               onClick={() => setOpenBoardIndex((prev) => (prev === 0 ? null : 0))}
             >
+              <span className={styles.boardType}>[{PINNED_NOTICE.type}]</span>
               <span className={styles.boardPreviewAuthor}>{PINNED_NOTICE.author}</span>
               <span className={styles.boardPreviewText}>{PINNED_NOTICE.preview}</span>
             </button>
@@ -569,6 +579,7 @@ export default function Nigajun82View({ product }: Props) {
                   className={styles.boardRow}
                   onClick={() => setOpenBoardIndex((prev) => (prev === rowIndex ? null : rowIndex))}
                 >
+                  <span className={styles.boardType}>[{item.type}]</span>
                   <span className={styles.boardPreviewAuthor}>{item.author}</span>
                   <span className={styles.boardPreviewText}>{item.preview}</span>
                 </button>
