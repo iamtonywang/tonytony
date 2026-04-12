@@ -113,14 +113,14 @@
 }
 
 .coreInfoSection,
-.ctaSection,
-.informationSection {
+.ctaSection {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 16px;
 }
 
-.boardSection {
+.boardSection,
+.informationSection {
   width: 92%;
   max-width: 720px;
   margin: 0 auto;
