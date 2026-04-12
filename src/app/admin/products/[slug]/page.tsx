@@ -102,11 +102,12 @@ export default async function Page({
 	}
 
 	const priceData = await getAdminProductPriceBySlug(slug);
-	const numStr = (n: number | null) =>
-		typeof n === "number" && Number.isFinite(n) ? String(n) : "";
-	const finalPriceStr = numStr(priceData.finalPriceAmount);
-	const basePriceStr = numStr(priceData.priceAmount);
-	const discountStr = numStr(priceData.discountAmount);
+	const finalPriceLabel =
+		typeof priceData.finalPriceAmount === "number" ? String(priceData.finalPriceAmount) : "";
+	const basePriceLabel =
+		typeof priceData.priceAmount === "number" ? String(priceData.priceAmount) : "";
+	const discountLabel =
+		typeof priceData.discountAmount === "number" ? String(priceData.discountAmount) : "";
 
 	let statusLine: string | null = null;
 	if (sp.saved === "1") {
@@ -141,13 +142,13 @@ export default async function Page({
 						</p>
 					) : null}
 					<p style={{ margin: "0 0 6px" }}>
-						<strong>Current Final Price</strong>: {finalPriceStr}
+						<strong>Current Final Price</strong>: {finalPriceLabel}
 					</p>
 					<p style={{ margin: "0 0 6px" }}>
-						<strong>Current Base Price</strong>: {basePriceStr}
+						<strong>Current Base Price</strong>: {basePriceLabel}
 					</p>
 					<p style={{ margin: 0 }}>
-						<strong>Current Discount Amount</strong>: {discountStr}
+						<strong>Current Discount Amount</strong>: {discountLabel}
 					</p>
 				</div>
 				<form action={submitPrice}>
