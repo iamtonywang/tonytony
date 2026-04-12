@@ -38,10 +38,10 @@ interface Props {
 
 const PINNED_NOTICE = {
   author: "TONYWANG",
-  preview: "공지 내용은 추후 등록 예정입니다...",
+  preview: "공지 내용",
   type: "Notice",
   date: "2026.04.10",
-  content: "공지 내용은 추후 등록 예정입니다.",
+  content: "공지 내용",
 } as const;
 
 const BOARD_ITEMS = [
