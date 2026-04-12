@@ -406,9 +406,18 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
   );
 }
 
-function BoardSection({ boardItems }: { boardItems: ProductBoardItem[] }) {
+function BoardSection({
+  boardItems,
+  productSlug,
+}: {
+  boardItems: ProductBoardItem[];
+  productSlug: string | null;
+}) {
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
   const [boardTab, setBoardTab] = useState<"inquiry" | "review" | "secret">("inquiry");
+  const [showInquiryForm, setShowInquiryForm] = useState(false);
+  const [inquiryContent, setInquiryContent] = useState("");
+  const inquirySendingRef = useRef(false);
 
   const filteredBoardItems = useMemo(() => {
     if (boardTab === "inquiry") {
@@ -423,6 +432,35 @@ function BoardSection({ boardItems }: { boardItems: ProductBoardItem[] }) {
   useEffect(() => {
     setOpenBoardIndex(null);
   }, [boardTab]);
+
+  const handleInquirySubmit = async () => {
+    const slug = productSlug?.trim() ?? "";
+    if (!slug) {
+      window.alert("상품 정보가 없습니다.");
+      return;
+    }
+    const content = inquiryContent.trim();
+    if (!content) return;
+    if (inquirySendingRef.current) return;
+    inquirySendingRef.current = true;
+    try {
+      const res = await fetch("/api/products/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, content }),
+      });
+      const data = (await res.json()) as { ok?: boolean; message?: string };
+      if (data.ok) {
+        window.location.reload();
+        return;
+      }
+      window.alert(data.message ?? "저장에 실패했습니다.");
+    } catch {
+      window.alert("네트워크 오류가 발생했습니다.");
+    } finally {
+      inquirySendingRef.current = false;
+    }
+  };
 
   return (
     <>
@@ -448,7 +486,10 @@ function BoardSection({ boardItems }: { boardItems: ProductBoardItem[] }) {
           <button
             type="button"
             className={`${styles.boardActionBtn} ${boardTab === "inquiry" ? styles.boardActionBtnActive : ""}`}
-            onClick={() => setBoardTab("inquiry")}
+            onClick={() => {
+              setBoardTab("inquiry");
+              setShowInquiryForm(true);
+            }}
           >
             Inquiry
           </button>
@@ -468,6 +509,38 @@ function BoardSection({ boardItems }: { boardItems: ProductBoardItem[] }) {
           </button>
         </div>
       </div>
+
+      {boardTab === "inquiry" && showInquiryForm ? (
+        <div
+          style={{
+            maxWidth: 720,
+            margin: "0 auto 16px",
+            padding: "0 16px",
+            color: "#fff",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          <label style={{ display: "block", marginBottom: 8, fontSize: 13 }}>문의 작성</label>
+          <textarea
+            value={inquiryContent}
+            onChange={(e) => setInquiryContent(e.target.value)}
+            rows={5}
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              padding: 8,
+              fontSize: 14,
+              borderRadius: 4,
+            }}
+            placeholder="내용을 입력하세요"
+          />
+          <div style={{ marginTop: 8, display: "flex", gap: 8 }}>
+            <button type="button" onClick={handleInquirySubmit} style={{ padding: "6px 14px", fontSize: 14, cursor: "pointer" }}>
+              작성
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       <section className={styles.boardSection}>
         <div className={styles.boardList}>
@@ -598,7 +671,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
 
-      <BoardSection boardItems={boardItems} />
+      <BoardSection boardItems={boardItems} productSlug={product?.slug ?? null} />
 
       <section className={styles.informationSection}>
         <button

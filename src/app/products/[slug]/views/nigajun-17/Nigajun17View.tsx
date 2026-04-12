@@ -59,6 +59,9 @@ export default function Nigajun17View({ product, boardItems }: Props) {
   const [pendingPlay, setPendingPlay] = useState(false);
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
   const [boardTab, setBoardTab] = useState<"inquiry" | "review" | "secret">("inquiry");
+  const [showInquiryForm, setShowInquiryForm] = useState(false);
+  const [inquiryContent, setInquiryContent] = useState("");
+  const inquirySendingRef = useRef(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   const filteredBoardItems = useMemo(() => {
@@ -74,6 +77,35 @@ export default function Nigajun17View({ product, boardItems }: Props) {
   useEffect(() => {
     setOpenBoardIndex(null);
   }, [boardTab]);
+
+  const handleInquirySubmit = async () => {
+    const slug = product?.slug?.trim() ?? "";
+    if (!slug) {
+      window.alert("상품 정보가 없습니다.");
+      return;
+    }
+    const content = inquiryContent.trim();
+    if (!content) return;
+    if (inquirySendingRef.current) return;
+    inquirySendingRef.current = true;
+    try {
+      const res = await fetch("/api/products/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, content }),
+      });
+      const data = (await res.json()) as { ok?: boolean; message?: string };
+      if (data.ok) {
+        window.location.reload();
+        return;
+      }
+      window.alert(data.message ?? "저장에 실패했습니다.");
+    } catch {
+      window.alert("네트워크 오류가 발생했습니다.");
+    } finally {
+      inquirySendingRef.current = false;
+    }
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -476,7 +508,10 @@ export default function Nigajun17View({ product, boardItems }: Props) {
           <button
             type="button"
             className={`${styles.boardActionBtn} ${boardTab === "inquiry" ? styles.boardActionBtnActive : ""}`}
-            onClick={() => setBoardTab("inquiry")}
+            onClick={() => {
+              setBoardTab("inquiry");
+              setShowInquiryForm(true);
+            }}
           >
             Inquiry
           </button>
@@ -496,6 +531,38 @@ export default function Nigajun17View({ product, boardItems }: Props) {
           </button>
         </div>
       </div>
+
+      {boardTab === "inquiry" && showInquiryForm ? (
+        <div
+          style={{
+            maxWidth: 720,
+            margin: "0 auto 16px",
+            padding: "0 16px",
+            color: "#fff",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          <label style={{ display: "block", marginBottom: 8, fontSize: 13 }}>문의 작성</label>
+          <textarea
+            value={inquiryContent}
+            onChange={(e) => setInquiryContent(e.target.value)}
+            rows={5}
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              padding: 8,
+              fontSize: 14,
+              borderRadius: 4,
+            }}
+            placeholder="내용을 입력하세요"
+          />
+          <div style={{ marginTop: 8, display: "flex", gap: 8 }}>
+            <button type="button" onClick={handleInquirySubmit} style={{ padding: "6px 14px", fontSize: 14, cursor: "pointer" }}>
+              작성
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       <section className={styles.boardSection}>
         <div className={styles.boardList}>
