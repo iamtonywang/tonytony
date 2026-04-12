@@ -60,29 +60,51 @@ async function submitPrice(formData: FormData) {
 	const origin = await getRequestOrigin();
 	const cookieHeader = (await headers()).get("cookie") ?? "";
 
-	const res = await fetch(`${origin}/api/admin/products/price`, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			...(cookieHeader ? { Cookie: cookieHeader } : {}),
-		},
-		body: JSON.stringify({
-			slug,
-			priceAmount,
-			discountAmount,
-		}),
-	});
-
 	let message = "failed";
+	let priceSaveOk = false;
+
 	try {
-		const data = (await res.json()) as { ok?: boolean; message?: string };
-		if (data.ok === true) {
-			revalidatePath(`/admin/products/${slug}`);
-			redirect(`/admin/products/${slug}?saved=1`);
+		const res = await fetch(`${origin}/api/admin/products/price`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				...(cookieHeader ? { Cookie: cookieHeader } : {}),
+			},
+			body: JSON.stringify({
+				slug,
+				priceAmount,
+				discountAmount,
+			}),
+		});
+
+		const text = await res.text();
+
+		let data: { ok?: boolean; message?: string } | undefined;
+		try {
+			data = JSON.parse(text) as { ok?: boolean; message?: string };
+		} catch {
+			console.error(
+				"admin_products_price_response_parse_failed",
+				JSON.stringify({ slug, status: res.status, text }),
+			);
+			message = "invalid_response";
 		}
-		if (typeof data.message === "string") message = data.message;
-	} catch {
+
+		if (message !== "invalid_response") {
+			if (data?.ok === true) {
+				priceSaveOk = true;
+			} else if (typeof data?.message === "string") {
+				message = data.message;
+			}
+		}
+	} catch (error) {
+		console.error("admin_products_price_fetch_failed", error);
 		message = "invalid_response";
+	}
+
+	if (priceSaveOk) {
+		revalidatePath(`/admin/products/${slug}`);
+		redirect(`/admin/products/${slug}?saved=1`);
 	}
 
 	redirect(`/admin/products/${slug}?err=${encodeURIComponent(message)}`);
