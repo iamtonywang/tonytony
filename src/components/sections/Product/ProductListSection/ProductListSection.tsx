@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -58,6 +58,8 @@ export default function ProductListSection({ items }: ProductListSectionProps) {
             src="/landing-assets/hero-main-pc.webp"
             alt="TONYWANG product visual"
             draggable={false}
+            loading="lazy"
+            decoding="async"
           />
           <div className={styles.productGradientOverlay} aria-hidden="true" />
           <div
@@ -76,10 +78,9 @@ export default function ProductListSection({ items }: ProductListSectionProps) {
             <div className={styles.productOverlayDivider} aria-hidden="true" />
             <ul key={animKey} className={styles.productOverlayList} draggable={false}>
               {items.map((item) => {
-                const key = item.slug ?? Math.random().toString(36);
                 if (!item.slug) return null;
                 return (
-                  <li key={key} className={styles.productOverlayItem}>
+                  <li key={item.slug} className={styles.productOverlayItem}>
                     <Link href={`/products/${item.slug}`} className={styles.productOverlayLink}>
                       {item.productName ?? ""}
                     </Link>
