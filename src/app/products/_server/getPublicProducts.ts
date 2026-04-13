@@ -30,15 +30,19 @@ type MediaRow = {
  */
 export async function getPublicProducts(): Promise<ProductMinimal[]> {
 	const totalStart = Date.now();
+	const clientStart = Date.now();
 	const supabase = await getSupabasePublicClient();
+	console.log("[supabase_client_create]", Date.now() - clientStart, "ms");
 
   // 1) Base products under public visibility constraints
+  const queryStart = Date.now();
   const productsStart = Date.now();
   const { data: products, error: productsError } = await supabase
     .from('products')
     .select('id, slug, product_name, short_description, product_status, is_visible')
     .eq('is_visible', true)
     .in('product_status', ['active', 'sold_out']);
+  console.log("[products_query_only]", Date.now() - queryStart, "ms");
   console.log("[products_query]", Date.now() - productsStart, "ms");
 
   if (productsError) {
