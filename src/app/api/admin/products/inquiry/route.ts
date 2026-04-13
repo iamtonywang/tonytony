@@ -84,7 +84,16 @@ export async function POST(req: NextRequest) {
 			.select("id");
 
 		if (hideErr) {
-			return NextResponse.json({ ok: false, message: "update_failed" }, { status: 500 });
+			return NextResponse.json(
+				{
+					ok: false,
+					message: "update_failed",
+					code: hideErr.code,
+					detail: hideErr.details,
+					hint: hideErr.hint,
+				},
+				{ status: 500 },
+			);
 		}
 		if (!Array.isArray(hiddenRows) || hiddenRows.length !== 1) {
 			return NextResponse.json({ ok: false, message: "inquiry_not_found" }, { status: 404 });
