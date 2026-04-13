@@ -205,7 +205,7 @@ async function hideInquiry(formData: FormData) {
 		};
 		if (data.ok === true) {
 			revalidatePath(`/admin/products/${slug}`);
-			redirect(`/admin/products/${slug}?inq_hidden=1`);
+			redirect(`/admin/products/${slug}`);
 		}
 		if (typeof data.message === "string" && data.message.trim() !== "") {
 			message = [data.message, data.code, data.error, data.detail, data.hint].filter(Boolean).join(" | ");
