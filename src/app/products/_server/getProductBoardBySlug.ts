@@ -1,5 +1,6 @@
 import 'server-only';
 
+import { getHeaderSession } from '@/components/sections/Header/_server/getHeaderSession';
 import { getSupabaseServerReadonlyClient } from '@/lib/supabase/server-readonly';
 import type { ProductBoardItem } from './types';
 
@@ -25,6 +26,9 @@ function previewFromText(text: string, maxLen: number): string {
  */
 export async function getProductBoardBySlug(slug: string): Promise<ProductBoardItem[]> {
   const supabase = await getSupabaseServerReadonlyClient();
+  const session = await getHeaderSession();
+  const viewerUserId = session.userId;
+  const viewerIsAdmin = session.isAdmin;
 
   const { data: prodRows, error: prodErr } = await supabase
     .from('products')
@@ -101,19 +105,27 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
     created_at: string;
     answer_content: string | null;
   }>) {
-    const author = loginByUserId.get(Number(row.user_id))?.trim() || 'User';
+    const authorUserId = Number(row.user_id);
+    const isPrivate = row.is_private === true;
+    const author = loginByUserId.get(authorUserId)?.trim() || 'User';
     let content = row.content ?? '';
     if (row.answer_content?.trim()) {
       content = `${content}\n\n[답변]\n${row.answer_content.trim()}`;
     }
+    const canViewFullContent =
+      !isPrivate ||
+      (viewerUserId !== null && authorUserId === viewerUserId) ||
+      viewerIsAdmin;
     items.push({
       id: `inquiry-${row.id}`,
       author,
+      authorUserId,
       preview: previewFromText(row.title ?? '', 80),
       type: 'Inquiry',
       date: formatBoardDate(row.created_at),
       content,
-      isPrivate: row.is_private === true,
+      isPrivate,
+      canViewFullContent,
       _sortMs: new Date(row.created_at).getTime(),
     });
   }
@@ -125,16 +137,24 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
     is_private: boolean;
     created_at: string;
   }>) {
-    const author = loginByUserId.get(Number(row.user_id))?.trim() || 'User';
+    const authorUserId = Number(row.user_id);
+    const isPrivate = row.is_private === true;
+    const author = loginByUserId.get(authorUserId)?.trim() || 'User';
     const c = row.content ?? '';
+    const canViewFullContent =
+      !isPrivate ||
+      (viewerUserId !== null && authorUserId === viewerUserId) ||
+      viewerIsAdmin;
     items.push({
       id: `review-${row.id}`,
       author,
+      authorUserId,
       preview: previewFromText(c, 80),
       type: 'Review',
       date: formatBoardDate(row.created_at),
       content: c,
-      isPrivate: row.is_private === true,
+      isPrivate,
+      canViewFullContent,
       _sortMs: new Date(row.created_at).getTime(),
     });
   }

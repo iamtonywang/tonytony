@@ -5,6 +5,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 type Body = {
   slug?: unknown;
   content?: unknown;
+  isPrivate?: unknown;
 };
 
 const ELIGIBLE_ORDER_STATUSES = ["paid", "preparing", "shipped", "completed"] as const;
@@ -92,6 +93,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, message: "content_required" }, { status: 400 });
   }
 
+  const isPrivate = body.isPrivate === true;
+
   const { data: userRows, error: userErr } = await supabase
     .from("users")
     .select("id")
@@ -131,7 +134,7 @@ export async function POST(req: NextRequest) {
     user_id: userId,
     order_id: orderId,
     content,
-    is_private: false,
+    is_private: isPrivate,
     review_status: "active",
   });
 

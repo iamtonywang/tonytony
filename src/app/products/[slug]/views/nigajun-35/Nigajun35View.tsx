@@ -30,6 +30,7 @@ const HERO_SEQUENCE_35: string[] = [
 // TONYWANG만 25px, 나머지 14px
 const HERO_EMPHASIS_35: boolean[] = HERO_SEQUENCE_35.map((line) => line === "TONYWANG");
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
+import { maskBoardAuthor } from "@/app/products/boardMask";
 
 interface Props {
   product?: ProductMinimal;
@@ -63,14 +64,16 @@ export default function Nigajun35View({ product, boardItems }: Props) {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [reviewContent, setReviewContent] = useState("");
   const reviewSendingRef = useRef(false);
+  const [inquiryIsPrivate, setInquiryIsPrivate] = useState(false);
+  const [reviewIsPrivate, setReviewIsPrivate] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   const filteredBoardItems = useMemo(() => {
     if (boardTab === "inquiry") {
-      return boardItems.filter((i) => i.type === "Inquiry" && !i.isPrivate);
+      return boardItems.filter((i) => i.type === "Inquiry");
     }
     if (boardTab === "review") {
-      return boardItems.filter((i) => i.type === "Review" && !i.isPrivate);
+      return boardItems.filter((i) => i.type === "Review");
     }
     return boardItems.filter((i) => i.isPrivate);
   }, [boardItems, boardTab]);
@@ -93,10 +96,11 @@ export default function Nigajun35View({ product, boardItems }: Props) {
       const res = await fetch("/api/products/inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, content }),
+        body: JSON.stringify({ slug, content, isPrivate: inquiryIsPrivate }),
       });
       const data = (await res.json()) as { ok?: boolean; message?: string };
       if (data.ok) {
+        setInquiryIsPrivate(false);
         window.location.reload();
         return;
       }
@@ -122,10 +126,11 @@ export default function Nigajun35View({ product, boardItems }: Props) {
       const res = await fetch("/api/products/review", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, content }),
+        body: JSON.stringify({ slug, content, isPrivate: reviewIsPrivate }),
       });
       const data = (await res.json()) as { ok?: boolean; message?: string };
       if (data.ok) {
+        setReviewIsPrivate(false);
         window.location.reload();
         return;
       }
@@ -559,6 +564,23 @@ export default function Nigajun35View({ product, boardItems }: Props) {
             }}
             placeholder="내용을 입력하세요"
           />
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              marginTop: 8,
+              fontSize: 13,
+              cursor: "pointer",
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={inquiryIsPrivate}
+              onChange={(e) => setInquiryIsPrivate(e.target.checked)}
+            />
+            비밀글
+          </label>
           <div style={{ marginTop: 8, display: "flex", gap: 8 }}>
             <button type="button" onClick={handleInquirySubmit} style={{ padding: "6px 14px", fontSize: 14, cursor: "pointer" }}>
               작성
@@ -591,6 +613,23 @@ export default function Nigajun35View({ product, boardItems }: Props) {
             }}
             placeholder="리뷰 내용을 입력하세요"
           />
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              marginTop: 8,
+              fontSize: 13,
+              cursor: "pointer",
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={reviewIsPrivate}
+              onChange={(e) => setReviewIsPrivate(e.target.checked)}
+            />
+            비밀글
+          </label>
           <div style={{ marginTop: 8, display: "flex", gap: 8 }}>
             <button type="button" onClick={handleReviewSubmit} style={{ padding: "6px 14px", fontSize: 14, cursor: "pointer" }}>
               리뷰 등록
@@ -630,14 +669,18 @@ export default function Nigajun35View({ product, boardItems }: Props) {
                   onClick={() => setOpenBoardIndex((prev) => (prev === rowIndex ? null : rowIndex))}
                 >
                   <span className={styles.boardType}>[{item.type}]</span>
-                  <span className={styles.boardPreviewAuthor}>{item.author}</span>
-                  <span className={styles.boardPreviewText}>{item.preview}</span>
+                  <span className={styles.boardPreviewAuthor}>
+                    {item.isPrivate ? maskBoardAuthor(item.author) : item.author}
+                  </span>
+                  <span className={styles.boardPreviewText}>{item.isPrivate ? "비밀글입니다" : item.preview}</span>
                 </button>
                 {openBoardIndex === rowIndex ? (
                   <div className={styles.boardExpanded}>
                     <div className={styles.boardMeta}>{item.type}</div>
                     <div className={styles.boardDate}>{item.date}</div>
-                    <div className={styles.boardContent}>{item.content}</div>
+                    <div className={styles.boardContent}>
+                      {item.isPrivate && !item.canViewFullContent ? "비밀글입니다" : item.content}
+                    </div>
                   </div>
                 ) : null}
               </div>
