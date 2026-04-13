@@ -366,15 +366,7 @@ export default async function Page({
 										borderBottom: "1px solid rgba(255,255,255,0.12)",
 									}}
 								>
-									<div
-										style={{
-											border: "1px solid rgba(255,255,255,0.18)",
-											borderRadius: 4,
-											padding: 10,
-											marginBottom: 16,
-											background: "rgba(255,255,255,0.03)",
-										}}
-									>
+									<div>
 										<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
 											<strong>작성자</strong>: {row.authorLabel}
 										</p>
@@ -408,20 +400,7 @@ export default async function Page({
 										</p>
 									</div>
 									{row.answerContent ? (
-										<div
-											style={{
-												border: "1px solid rgba(255,255,255,0.28)",
-												borderLeft: "3px solid rgba(255,255,255,0.42)",
-												borderRadius: 4,
-												padding: 10,
-												paddingLeft: 22,
-												background: "rgba(255,255,255,0.06)",
-												opacity: 0.95,
-											}}
-										>
-											<p style={{ margin: "0 0 8px", fontSize: 12, opacity: 0.92 }}>
-												관리자 답변
-											</p>
+										<div>
 											<p style={{ margin: "0 0 4px", whiteSpace: "pre-wrap" }}>
 												<strong>답변내용</strong>: {row.answerContent}
 											</p>
@@ -435,16 +414,8 @@ export default async function Page({
 											) : null}
 										</div>
 									) : (
-										<div
-											style={{
-												border: "1px solid rgba(255,255,255,0.24)",
-												borderRadius: 4,
-												padding: 10,
-												marginTop: 0,
-												background: "rgba(255,255,255,0.05)",
-											}}
-										>
-											<form action={submitInquiryAnswer}>
+										<div>
+											<form action={submitInquiryAnswer} style={{ marginTop: 8 }}>
 												<input type="hidden" name="slug" value={slug} />
 												<input type="hidden" name="inquiryId" value={String(row.id)} />
 												<label
