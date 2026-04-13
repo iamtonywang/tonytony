@@ -33,11 +33,13 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
 	const supabase = await getSupabasePublicClient();
 
   // 1) Base products under public visibility constraints
+  const productsStart = Date.now();
   const { data: products, error: productsError } = await supabase
     .from('products')
     .select('id, slug, product_name, short_description, product_status, is_visible')
     .eq('is_visible', true)
     .in('product_status', ['active', 'sold_out']);
+  console.log("[products_query]", Date.now() - productsStart, "ms");
 
   if (productsError) {
     console.error("Supabase error:", productsError.message);
@@ -61,17 +63,27 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
 	// 4) Active prices and hero images by product_id (run in parallel)
 	const promiseStart = Date.now();
 	const [pricesResult, mediaResult] = await Promise.all([
-		supabase
-			.from('product_prices')
-			.select('product_id, final_price_amount')
-			.in('product_id', productIds)
-			.eq('is_active', true),
-		supabase
-			.from('product_media')
-			.select('product_id, file_url, is_primary')
-			.in('product_id', productIds)
-			.eq('media_type', 'hero_image')
-			.eq('is_active', true),
+		(async () => {
+			const pricesStart = Date.now();
+			const result = await supabase
+				.from('product_prices')
+				.select('product_id, final_price_amount')
+				.in('product_id', productIds)
+				.eq('is_active', true);
+			console.log("[product_prices]", Date.now() - pricesStart, "ms");
+			return result;
+		})(),
+		(async () => {
+			const mediaStart = Date.now();
+			const result = await supabase
+				.from('product_media')
+				.select('product_id, file_url, is_primary')
+				.in('product_id', productIds)
+				.eq('media_type', 'hero_image')
+				.eq('is_active', true);
+			console.log("[product_media]", Date.now() - mediaStart, "ms");
+			return result;
+		})(),
 	]);
 	console.log("[promise_all]", Date.now() - promiseStart, "ms");
 
@@ -79,6 +91,7 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
 	const prices: PriceRow[] = pricesResult.error
 		? (console.error(`Failed to load active product prices: ${pricesResult.error.message}`), [])
 		: (Array.isArray(pricesResult.data) ? pricesResult.data : []);
+  const priceMapStart = Date.now();
   const priceByProductId = new Map<number, number | null>();
   // Unique active per product is enforced; if multiple appear, last write wins but should not happen.
   for (const pr of prices) {
@@ -86,6 +99,7 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
       priceByProductId.set(pr.product_id, pr.final_price_amount ?? null);
     }
   }
+  console.log("[price_map]", Date.now() - priceMapStart, "ms");
 
 	// 5) Hero image candidates by product_id (fallback)
 	const medias: MediaRow[] = mediaResult.error
@@ -93,6 +107,7 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
 		: (Array.isArray(mediaResult.data) ? mediaResult.data : []);
 
   // Build primary-only map; if not exactly one primary per product, keep null.
+  const heroMapStart = Date.now();
   const heroImageByProductId = new Map<number, string | null>();
   {
     const grouped = new Map<number, MediaRow[]>();
@@ -113,8 +128,10 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
       }
     }
   }
+  console.log("[hero_map]", Date.now() - heroMapStart, "ms");
 
   // 6) Merge by product_id into minimal shape
+  const mergeStart = Date.now();
   const result: ProductMinimal[] = productRows.map((row) => {
     const base = mapProductRowToMinimal(row);
     const finalPriceAmount = priceByProductId.has(row.id)
@@ -125,6 +142,7 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
       : null;
     return withMergedExtras(base, { finalPriceAmount, heroImageUrl });
   });
+  console.log("[merge_map]", Date.now() - mergeStart, "ms");
 
   // 8) Do not sort here (8 fixed order is page layer responsibility)
 	console.log("[total]", Date.now() - totalStart, "ms");
