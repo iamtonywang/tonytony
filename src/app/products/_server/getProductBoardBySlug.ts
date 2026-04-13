@@ -28,17 +28,13 @@ export async function getProductBoardBySlug(
   slug: string,
   sharedProductRow?: ProductSharedRow | null,
 ): Promise<ProductBoardItem[]> {
-  const totalStart = Date.now();
   const supabase = await getSupabaseServerReadonlyClient();
-  const headerSessionStart = Date.now();
   const session = await getHeaderSession();
-  console.log(`[board_header_session] ${Date.now() - headerSessionStart} ms`);
   const viewerUserId = session.userId;
   const viewerIsAdmin = session.isAdmin;
 
   let productId: number | null = sharedProductRow?.id ?? null;
   if (productId === null) {
-    const productsQueryStart = Date.now();
     const { data: prodRows, error: prodErr } = await supabase
       .from('products')
       .select('id')
@@ -46,27 +42,18 @@ export async function getProductBoardBySlug(
       .eq('is_visible', true)
       .in('product_status', ['active', 'sold_out'])
       .limit(1);
-    console.log(`[board_products_query] ${Date.now() - productsQueryStart} ms`);
     if (!prodErr && prodRows?.length) {
       productId = (prodRows[0] as { id: number }).id;
     }
     if (prodErr || !prodRows?.length) {
-      console.log(`[board_total] ${Date.now() - totalStart} ms`);
-      console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
       return [];
     }
-  } else {
-    console.log('[board_products_query] 0 ms');
   }
 
   if (productId === null) {
-    console.log(`[board_total] ${Date.now() - totalStart} ms`);
-    console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
     return [];
   }
 
-  const boardPromiseAllStart = Date.now();
-  const inquiriesQueryStart = Date.now();
   const inquiriesPromise = supabase
     .from('inquiries')
     .select(
@@ -86,12 +73,7 @@ export async function getProductBoardBySlug(
     )
     .eq('product_id', productId)
     .in('inquiry_status', ['active', 'answered'])
-    .order('created_at', { ascending: false })
-    .then((res) => {
-      console.log(`[board_inquiries_query] ${Date.now() - inquiriesQueryStart} ms`);
-      return res;
-    });
-  const reviewsQueryStart = Date.now();
+    .order('created_at', { ascending: false });
   const reviewsPromise = supabase
     .from('reviews')
     .select(
@@ -109,16 +91,11 @@ export async function getProductBoardBySlug(
     )
     .eq('product_id', productId)
     .eq('review_status', 'active')
-    .order('created_at', { ascending: false })
-    .then((res) => {
-      console.log(`[board_reviews_query] ${Date.now() - reviewsQueryStart} ms`);
-      return res;
-    });
+    .order('created_at', { ascending: false });
   const [inqRes, revRes] = await Promise.all([
     inquiriesPromise,
     reviewsPromise,
   ]);
-  console.log(`[board_promise_all] ${Date.now() - boardPromiseAllStart} ms`);
 
   if (inqRes.error) {
     console.error(`getProductBoardBySlug inquiries: ${inqRes.error.message}`);
@@ -133,7 +110,6 @@ export async function getProductBoardBySlug(
   type UsersJoinRow = { login_id?: string | null };
   type UsersJoin = UsersJoinRow | UsersJoinRow[] | null;
 
-  const mergeStart = Date.now();
   type Sortable = ProductBoardItem & { _sortMs: number };
   const items: Sortable[] = [];
 
@@ -221,8 +197,5 @@ export async function getProductBoardBySlug(
 
   items.sort((a, b) => b._sortMs - a._sortMs);
   const result = items.map(({ _sortMs: _s, ...rest }) => rest);
-  console.log(`[board_merge] ${Date.now() - mergeStart} ms`);
-  console.log(`[board_total] ${Date.now() - totalStart} ms`);
-  console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
   return result;
 }
