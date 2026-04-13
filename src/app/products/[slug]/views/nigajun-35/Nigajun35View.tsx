@@ -671,6 +671,12 @@ export default function Nigajun35View({ product, boardItems }: Props) {
 
           {filteredBoardItems.map((item, i) => {
             const rowIndex = i + 1;
+            const preview =
+              item.isPrivate
+                ? "비밀글입니다"
+                : item.content.length > 8
+                  ? item.content.slice(0, 8) + "..."
+                  : item.content;
             return (
               <div key={item.id} className={styles.boardItem}>
                 <button
@@ -682,7 +688,12 @@ export default function Nigajun35View({ product, boardItems }: Props) {
                   <span className={styles.boardPreviewAuthor}>
                     {item.isPrivate ? maskBoardAuthor(item.author) : item.author}
                   </span>
-                  <span className={styles.boardPreviewText}>{item.isPrivate ? "비밀글입니다" : item.preview}</span>
+                  <span
+                    className={styles.boardPreviewText}
+                    style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+                  >
+                    {preview}
+                  </span>
                 </button>
                 {openBoardIndex === rowIndex ? (
                   <div className={styles.boardExpanded}>
