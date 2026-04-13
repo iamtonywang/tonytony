@@ -195,13 +195,19 @@ async function hideInquiry(formData: FormData) {
 
 	let message = "failed";
 	try {
-		const data = (await res.json()) as { ok?: boolean; message?: string };
+		const data = (await res.json()) as {
+			ok?: boolean;
+			message?: string;
+			code?: string;
+			detail?: string;
+			hint?: string;
+		};
 		if (data.ok === true) {
 			revalidatePath(`/admin/products/${slug}`);
 			redirect(`/admin/products/${slug}?inq_hidden=1`);
 		}
 		if (typeof data.message === "string" && data.message.trim() !== "") {
-			message = data.message.trim();
+			message = [data.message, data.code, data.detail, data.hint].filter(Boolean).join(" | ");
 		} else if (!res.ok) {
 			message = `http_${res.status}`;
 		}
