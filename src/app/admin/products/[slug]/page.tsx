@@ -164,12 +164,66 @@ async function submitInquiryAnswer(formData: FormData) {
 	redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent(message)}`);
 }
 
+async function hideInquiry(formData: FormData) {
+	"use server";
+
+	const slugRaw = formData.get("slug");
+	const slug = typeof slugRaw === "string" ? slugRaw.trim() : "";
+	if (!slug || !ALLOWED_SLUGS.has(slug)) {
+		notFound();
+	}
+
+	const idRaw = formData.get("inquiryId");
+	const inquiryId =
+		typeof idRaw === "string" ? Number(idRaw.trim()) : typeof idRaw === "number" ? Number(idRaw) : NaN;
+
+	if (!Number.isFinite(inquiryId) || inquiryId <= 0) {
+		redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent("invalid_inquiry_id")}`);
+	}
+
+	const origin = await getRequestOrigin();
+	const cookieHeader = (await headers()).get("cookie") ?? "";
+
+	const res = await fetch(`${origin}/api/admin/products/inquiry`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			...(cookieHeader ? { Cookie: cookieHeader } : {}),
+		},
+		body: JSON.stringify({ action: "hide", inquiryId }),
+	});
+
+	let message = "failed";
+	try {
+		const data = (await res.json()) as { ok?: boolean; message?: string };
+		if (data.ok === true) {
+			revalidatePath(`/admin/products/${slug}`);
+			redirect(`/admin/products/${slug}?inq_hidden=1`);
+		}
+		if (typeof data.message === "string" && data.message.trim() !== "") {
+			message = data.message.trim();
+		} else if (!res.ok) {
+			message = `http_${res.status}`;
+		}
+	} catch {
+		message = "invalid_response";
+	}
+
+	redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent(message)}`);
+}
+
 export default async function Page({
 	params,
 	searchParams,
 }: Readonly<{
 	params: Promise<{ slug: string }>;
-	searchParams: Promise<{ saved?: string; err?: string; inq_saved?: string; inq_err?: string }>;
+	searchParams: Promise<{
+		saved?: string;
+		err?: string;
+		inq_saved?: string;
+		inq_err?: string;
+		inq_hidden?: string;
+	}>;
 }>) {
 	const { slug } = await params;
 	const sp = await searchParams;
@@ -200,6 +254,11 @@ export default async function Page({
 	let inquirySavedLine: string | null = null;
 	if (sp.inq_saved === "1") {
 		inquirySavedLine = "문의 답변이 저장되었습니다.";
+	}
+
+	let inquiryHiddenLine: string | null = null;
+	if (sp.inq_hidden === "1") {
+		inquiryHiddenLine = "문의가 숨김 처리되었습니다.";
 	}
 
 	const displayTitle = slugToDisplayTitle(slug);
@@ -351,6 +410,9 @@ export default async function Page({
 				{inquirySavedLine ? (
 					<p style={{ marginTop: 8, marginBottom: 0, opacity: 0.9 }}>{inquirySavedLine}</p>
 				) : null}
+				{inquiryHiddenLine ? (
+					<p style={{ marginTop: 8, marginBottom: 0, opacity: 0.9 }}>{inquiryHiddenLine}</p>
+				) : null}
 				{inquiries.length === 0 ? (
 					<p style={{ marginTop: 8, opacity: 0.8 }}>등록된 문의가 없습니다.</p>
 				) : (
@@ -398,6 +460,11 @@ export default async function Page({
 										<p style={{ margin: 0, opacity: 0.95 }}>
 											<strong>생성일</strong>: {row.createdAt}
 										</p>
+										<form action={hideInquiry} style={{ marginTop: 8 }}>
+											<input type="hidden" name="slug" value={slug} />
+											<input type="hidden" name="inquiryId" value={row.id} />
+											<button type="submit">삭제</button>
+										</form>
 									</div>
 									{row.answerContent ? (
 										<div>

@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 
 type Body = {
+	action?: unknown;
 	inquiryId?: unknown;
 	answerContent?: unknown;
 };
@@ -61,6 +62,35 @@ export async function POST(req: NextRequest) {
 		body = (await req.json()) as Body;
 	} catch {
 		return NextResponse.json({ ok: false, message: "invalid_json" }, { status: 400 });
+	}
+
+	const rawAction = typeof body.action === "string" ? body.action.trim() : "";
+	if (rawAction === "hide") {
+		const hideInquiryId = parseInquiryId(body.inquiryId);
+		if (hideInquiryId === null) {
+			return NextResponse.json({ ok: false, message: "inquiry_id_required" }, { status: 400 });
+		}
+
+		const { supabase } = ctx;
+		const nowIso = new Date().toISOString();
+
+		const { data: hiddenRows, error: hideErr } = await supabase
+			.from("inquiries")
+			.update({
+				inquiry_status: "hidden",
+				updated_at: nowIso,
+			})
+			.eq("id", hideInquiryId)
+			.select("id");
+
+		if (hideErr) {
+			return NextResponse.json({ ok: false, message: "update_failed" }, { status: 500 });
+		}
+		if (!Array.isArray(hiddenRows) || hiddenRows.length !== 1) {
+			return NextResponse.json({ ok: false, message: "inquiry_not_found" }, { status: 404 });
+		}
+
+		return NextResponse.json({ ok: true }, { status: 200 });
 	}
 
 	const inquiryId = parseInquiryId(body.inquiryId);
