@@ -371,7 +371,7 @@ export default async function Page({
 											border: "1px solid rgba(255,255,255,0.18)",
 											borderRadius: 4,
 											padding: 10,
-											marginBottom: 10,
+											marginBottom: 16,
 											background: "rgba(255,255,255,0.03)",
 										}}
 									>
@@ -414,12 +414,13 @@ export default async function Page({
 												borderLeft: "3px solid rgba(255,255,255,0.42)",
 												borderRadius: 4,
 												padding: 10,
+												paddingLeft: 22,
 												background: "rgba(255,255,255,0.06)",
 												opacity: 0.95,
 											}}
 										>
 											<p style={{ margin: "0 0 8px", fontSize: 12, opacity: 0.92 }}>
-												<strong>관리자 답변</strong>
+												관리자 답변
 											</p>
 											<p style={{ margin: "0 0 4px", whiteSpace: "pre-wrap" }}>
 												<strong>답변내용</strong>: {row.answerContent}
