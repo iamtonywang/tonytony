@@ -8,7 +8,17 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 	const headerSessionStart = Date.now();
 	const headerSession = await getHeaderSession();
 	console.log(`[mypage_header_session] ${Date.now() - headerSessionStart} ms`);
+	console.log(
+		`[mypage_header_session_result] ${JSON.stringify({
+			authenticated: headerSession.authenticated,
+			hasLoginId: !!headerSession.loginId,
+			hasUserId: headerSession.userId !== null,
+			isPartner: headerSession.isPartner,
+			isAdmin: headerSession.isAdmin,
+		})}`,
+	);
 	if (!headerSession.authenticated || !headerSession.loginId) {
+		console.log("[mypage_early_return] no_auth_or_login_id");
 		console.log(`[mypage_total] ${Date.now() - totalStart} ms`);
 		return {
 			loginId: null,
@@ -22,6 +32,7 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 	const supabase = await getSupabaseServerReadonlyClient();
 
 	// users
+	console.log("[mypage_step] users_query_start");
 	const usersQueryStart = Date.now();
 	const { data: usersRows } = await supabase
 		.from("users")
@@ -34,6 +45,7 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 		: null;
 
 	if (!userRow || typeof userRow.id !== "number") {
+		console.log("[mypage_early_return] no_user_row");
 		console.log(`[mypage_total] ${Date.now() - totalStart} ms`);
 		return {
 			loginId: null,
@@ -45,6 +57,7 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 	}
 
 	// user_profiles
+	console.log("[mypage_step] user_profiles_query_start");
 	const profilesQueryStart = Date.now();
 	const { data: profileRows } = await supabase
 		.from("user_profiles")
@@ -55,8 +68,12 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 	const profile = Array.isArray(profileRows) && profileRows.length === 1
 		? (profileRows[0] as { real_name: string | null })
 		: null;
+	if (!profile) {
+		console.log("[mypage_early_return] no_profile_row");
+	}
 
 	// partners (partner 여부)
+	console.log("[mypage_step] partners_query_start");
 	const partnersQueryStart = Date.now();
 	const { data: partnerRows } = await supabase
 		.from("partners")
@@ -74,6 +91,9 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 		email: (userRow.email ?? null),
 		isPartner,
 	};
+	if (!profile) {
+		console.log("[mypage_early_return] fallback_summary");
+	}
 	console.log(`[mypage_merge] ${Date.now() - mergeStart} ms`);
 	console.log(`[mypage_total] ${Date.now() - totalStart} ms`);
 	return summary;
