@@ -22,6 +22,7 @@ export async function getProductBySlug(slug: string): Promise<ProductMinimal | n
   const supabase = await getSupabasePublicClient();
 
   // 1) Base product
+  const productsQueryStart = Date.now();
   const { data, error } = await supabase
     .from('products')
     .select('id, slug, product_name, short_description, product_status, is_visible')
@@ -29,13 +30,14 @@ export async function getProductBySlug(slug: string): Promise<ProductMinimal | n
     .eq('is_visible', true)
     .in('product_status', ['active', 'sold_out'])
     .limit(1);
+  console.log(`[product_products_query] ${Date.now() - productsQueryStart} ms`);
 
   if (error) {
     throw new Error(`Failed to load product by slug: ${error.message}`);
   }
   const row: ProductRowWithId | null = Array.isArray(data) && data.length > 0 ? (data[0] as ProductRowWithId) : null;
   if (!row) {
-    console.log(`[getProductBySlug_total] ${Date.now() - totalStart} ms`);
+    console.log(`[product_total] ${Date.now() - totalStart} ms`);
     return null;
   }
 
@@ -44,21 +46,35 @@ export async function getProductBySlug(slug: string): Promise<ProductMinimal | n
   // 2) Active price and hero image (run in parallel after base.id is known)
   let finalPriceAmount: number | null = null;
   let heroImageUrl: string | null = null;
+  const promiseAllStart = Date.now();
+  const pricesQueryStart = Date.now();
+  const pricesPromise = supabase
+    .from('product_prices')
+    .select('product_id, final_price_amount')
+    .eq('product_id', row.id)
+    .eq('is_active', true)
+    .limit(2)
+    .then((res) => {
+      console.log(`[product_prices_query] ${Date.now() - pricesQueryStart} ms`);
+      return res;
+    });
+  const mediaQueryStart = Date.now();
+  const mediaPromise = supabase
+    .from('product_media')
+    .select('product_id, file_url, is_primary')
+    .eq('product_id', row.id)
+    .eq('media_type', 'hero_image')
+    .eq('is_active', true)
+    .limit(5)
+    .then((res) => {
+      console.log(`[product_media_query] ${Date.now() - mediaQueryStart} ms`);
+      return res;
+    });
   const [pricesResult, mediaResult] = await Promise.all([
-    supabase
-      .from('product_prices')
-      .select('product_id, final_price_amount')
-      .eq('product_id', row.id)
-      .eq('is_active', true)
-      .limit(2),
-    supabase
-      .from('product_media')
-      .select('product_id, file_url, is_primary')
-      .eq('product_id', row.id)
-      .eq('media_type', 'hero_image')
-      .eq('is_active', true)
-      .limit(5),
+    pricesPromise,
+    mediaPromise,
   ]);
+  console.log(`[product_promise_all] ${Date.now() - promiseAllStart} ms`);
 
   // prices fallback
   if (pricesResult.error) {
@@ -87,8 +103,10 @@ export async function getProductBySlug(slug: string): Promise<ProductMinimal | n
     }
   }
 
+  const mergeStart = Date.now();
   const result = withMergedExtras(base, { finalPriceAmount, heroImageUrl });
-  console.log(`[getProductBySlug_total] ${Date.now() - totalStart} ms`);
+  console.log(`[product_merge] ${Date.now() - mergeStart} ms`);
+  console.log(`[product_total] ${Date.now() - totalStart} ms`);
   return result;
 }
 
