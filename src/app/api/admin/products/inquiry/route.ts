@@ -88,6 +88,7 @@ export async function POST(req: NextRequest) {
 				{
 					ok: false,
 					message: "update_failed",
+					error: hideErr.message,
 					code: hideErr.code,
 					detail: hideErr.details,
 					hint: hideErr.hint,
