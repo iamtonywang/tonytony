@@ -29,6 +29,7 @@ type MediaRow = {
  * Then fetches prices and hero images with separate queries and merges them by product_id.
  */
 export async function getPublicProducts(): Promise<ProductMinimal[]> {
+	const totalStart = Date.now();
 	const supabase = await getSupabasePublicClient();
 
   // 1) Base products under public visibility constraints
@@ -58,6 +59,7 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
   }
 
 	// 4) Active prices and hero images by product_id (run in parallel)
+	const promiseStart = Date.now();
 	const [pricesResult, mediaResult] = await Promise.all([
 		supabase
 			.from('product_prices')
@@ -71,6 +73,7 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
 			.eq('media_type', 'hero_image')
 			.eq('is_active', true),
 	]);
+	console.log("[promise_all]", Date.now() - promiseStart, "ms");
 
 	// prices fallback
 	const prices: PriceRow[] = pricesResult.error
@@ -124,6 +127,7 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
   });
 
   // 8) Do not sort here (8 fixed order is page layer responsibility)
+	console.log("[total]", Date.now() - totalStart, "ms");
   return result;
 }
 
