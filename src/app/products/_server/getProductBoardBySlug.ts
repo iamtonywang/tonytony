@@ -48,14 +48,38 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
     supabase
       .from('inquiries')
       .select(
-        'id, user_id, title, content, is_private, inquiry_status, created_at, answer_content',
+        `
+        id,
+        content,
+        is_private,
+        created_at,
+        user_id,
+        title,
+        inquiry_status,
+        answer_content,
+        users:users (
+          login_id
+        )
+      `,
       )
       .eq('product_id', productId)
       .in('inquiry_status', ['active', 'answered'])
       .order('created_at', { ascending: false }),
     supabase
       .from('reviews')
-      .select('id, user_id, content, is_private, review_status, created_at')
+      .select(
+        `
+        id,
+        content,
+        is_private,
+        created_at,
+        user_id,
+        review_status,
+        users:users (
+          login_id
+        )
+      `,
+      )
       .eq('product_id', productId)
       .eq('review_status', 'active')
       .order('created_at', { ascending: false }),
@@ -71,26 +95,14 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
   const inquiries = Array.isArray(inqRes.data) ? inqRes.data : [];
   const reviews = Array.isArray(revRes.data) ? revRes.data : [];
 
-  const userIds = new Set<number>();
-  for (const r of inquiries as { user_id: number }[]) {
-    userIds.add(Number(r.user_id));
-  }
-  for (const r of reviews as { user_id: number }[]) {
-    userIds.add(Number(r.user_id));
-  }
-
-  const loginByUserId = new Map<number, string>();
-  if (userIds.size > 0) {
-    const { data: usersData, error: usersErr } = await supabase
-      .from('users')
-      .select('id, login_id')
-      .in('id', [...userIds]);
-
-    if (!usersErr && Array.isArray(usersData)) {
-      for (const u of usersData as { id: number; login_id: string }[]) {
-        loginByUserId.set(Number(u.id), u.login_id ?? '');
-      }
+  function loginIdFromUsersEmbed(users: unknown): string | null {
+    if (users == null) return null;
+    const row = Array.isArray(users) ? users[0] : users;
+    if (row && typeof row === 'object' && 'login_id' in row) {
+      const v = (row as { login_id: unknown }).login_id;
+      return typeof v === 'string' ? v : null;
     }
+    return null;
   }
 
   type Sortable = ProductBoardItem & { _sortMs: number };
@@ -104,10 +116,12 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
     is_private: boolean;
     created_at: string;
     answer_content: string | null;
+    users?: unknown;
   }>) {
     const authorUserId = Number(row.user_id);
     const isPrivate = row.is_private === true;
-    const author = loginByUserId.get(authorUserId)?.trim() || 'User';
+    const rawLogin = loginIdFromUsersEmbed(row.users)?.trim() || '';
+    const author = rawLogin.length > 0 ? rawLogin : 'User';
     let content = row.content ?? '';
     if (row.answer_content?.trim()) {
       content = `${content}\n\n[답변]\n${row.answer_content.trim()}`;
@@ -136,10 +150,12 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
     content: string;
     is_private: boolean;
     created_at: string;
+    users?: unknown;
   }>) {
     const authorUserId = Number(row.user_id);
     const isPrivate = row.is_private === true;
-    const author = loginByUserId.get(authorUserId)?.trim() || 'User';
+    const rawLogin = loginIdFromUsersEmbed(row.users)?.trim() || '';
+    const author = rawLogin.length > 0 ? rawLogin : 'User';
     const c = row.content ?? '';
     const canViewFullContent =
       !isPrivate ||
