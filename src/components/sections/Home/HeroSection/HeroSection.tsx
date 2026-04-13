@@ -243,7 +243,7 @@ export default function HeroSection() {
     <section className={styles.heroSection}>
       <div ref={heroVisualRef} className={styles.heroVisual}>
         <div className={styles.videoArea}>
-          <div className={styles.backgroundLayer} />
+          <div className={`${styles.backgroundLayer} ${hasVideo ? styles.backgroundLayerVisible : ""}`} />
           <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
         </div>
         <button
