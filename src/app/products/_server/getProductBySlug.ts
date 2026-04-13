@@ -2,42 +2,42 @@ import 'server-only';
 
 import { getSupabasePublicClient } from './client';
 import { mapProductRowToMinimal, withMergedExtras } from './productMappers';
-import type { ProductMinimal } from './types';
-
-type ProductRowWithId = {
-  id: number;
-  slug: string | null;
-  product_name: string | null;
-  short_description: string | null;
-  product_status: string | null;
-  is_visible: boolean | null;
-};
+import type { ProductMinimal, ProductSharedRow } from './types';
 
 /**
  * Loads one publicly visible product by slug.
  * Then fetches active price and hero image via separate queries (no nested relations).
  */
-export async function getProductBySlug(slug: string): Promise<ProductMinimal | null> {
+export async function getProductBySlug(
+  slug: string,
+  sharedProductRow?: ProductSharedRow | null,
+): Promise<ProductMinimal | null> {
   const totalStart = Date.now();
   const supabase = await getSupabasePublicClient();
 
   // 1) Base product
-  const productsQueryStart = Date.now();
-  const { data, error } = await supabase
-    .from('products')
-    .select('id, slug, product_name, short_description, product_status, is_visible')
-    .eq('slug', slug)
-    .eq('is_visible', true)
-    .in('product_status', ['active', 'sold_out'])
-    .limit(1);
-  console.log(`[product_products_query] ${Date.now() - productsQueryStart} ms`);
+  let row: ProductSharedRow | null = sharedProductRow ?? null;
+  if (row === null) {
+    const productsQueryStart = Date.now();
+    const { data, error } = await supabase
+      .from('products')
+      .select('id, slug, product_name, short_description, product_status, is_visible')
+      .eq('slug', slug)
+      .eq('is_visible', true)
+      .in('product_status', ['active', 'sold_out'])
+      .limit(1);
+    console.log(`[product_products_query] ${Date.now() - productsQueryStart} ms`);
 
-  if (error) {
-    throw new Error(`Failed to load product by slug: ${error.message}`);
+    if (error) {
+      throw new Error(`Failed to load product by slug: ${error.message}`);
+    }
+    row = Array.isArray(data) && data.length > 0 ? (data[0] as ProductSharedRow) : null;
+  } else {
+    console.log('[product_products_query] 0 ms');
   }
-  const row: ProductRowWithId | null = Array.isArray(data) && data.length > 0 ? (data[0] as ProductRowWithId) : null;
   if (!row) {
     console.log(`[product_total] ${Date.now() - totalStart} ms`);
+    console.log(`[getProductBySlug_total] ${Date.now() - totalStart} ms`);
     return null;
   }
 
@@ -107,6 +107,7 @@ export async function getProductBySlug(slug: string): Promise<ProductMinimal | n
   const result = withMergedExtras(base, { finalPriceAmount, heroImageUrl });
   console.log(`[product_merge] ${Date.now() - mergeStart} ms`);
   console.log(`[product_total] ${Date.now() - totalStart} ms`);
+  console.log(`[getProductBySlug_total] ${Date.now() - totalStart} ms`);
   return result;
 }
 

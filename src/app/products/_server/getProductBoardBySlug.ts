@@ -2,7 +2,7 @@ import 'server-only';
 
 import { getHeaderSession } from '@/components/sections/Header/_server/getHeaderSession';
 import { getSupabaseServerReadonlyClient } from '@/lib/supabase/server-readonly';
-import type { ProductBoardItem } from './types';
+import type { ProductBoardItem, ProductSharedRow } from './types';
 
 function formatBoardDate(iso: string): string {
   const d = new Date(iso);
@@ -24,7 +24,10 @@ function previewFromText(text: string, maxLen: number): string {
 /**
  * Loads inquiry + review rows visible to the current session (RLS) for a public product slug.
  */
-export async function getProductBoardBySlug(slug: string): Promise<ProductBoardItem[]> {
+export async function getProductBoardBySlug(
+  slug: string,
+  sharedProductRow?: ProductSharedRow | null,
+): Promise<ProductBoardItem[]> {
   const totalStart = Date.now();
   const supabase = await getSupabaseServerReadonlyClient();
   const headerSessionStart = Date.now();
@@ -33,22 +36,34 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
   const viewerUserId = session.userId;
   const viewerIsAdmin = session.isAdmin;
 
-  const productsQueryStart = Date.now();
-  const { data: prodRows, error: prodErr } = await supabase
-    .from('products')
-    .select('id')
-    .eq('slug', slug)
-    .eq('is_visible', true)
-    .in('product_status', ['active', 'sold_out'])
-    .limit(1);
-  console.log(`[board_products_query] ${Date.now() - productsQueryStart} ms`);
-
-  if (prodErr || !prodRows?.length) {
-    console.log(`[board_total] ${Date.now() - totalStart} ms`);
-    return [];
+  let productId: number | null = sharedProductRow?.id ?? null;
+  if (productId === null) {
+    const productsQueryStart = Date.now();
+    const { data: prodRows, error: prodErr } = await supabase
+      .from('products')
+      .select('id')
+      .eq('slug', slug)
+      .eq('is_visible', true)
+      .in('product_status', ['active', 'sold_out'])
+      .limit(1);
+    console.log(`[board_products_query] ${Date.now() - productsQueryStart} ms`);
+    if (!prodErr && prodRows?.length) {
+      productId = (prodRows[0] as { id: number }).id;
+    }
+    if (prodErr || !prodRows?.length) {
+      console.log(`[board_total] ${Date.now() - totalStart} ms`);
+      console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
+      return [];
+    }
+  } else {
+    console.log('[board_products_query] 0 ms');
   }
 
-  const productId = (prodRows[0] as { id: number }).id;
+  if (productId === null) {
+    console.log(`[board_total] ${Date.now() - totalStart} ms`);
+    console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
+    return [];
+  }
 
   const boardPromiseAllStart = Date.now();
   const inquiriesQueryStart = Date.now();
@@ -208,5 +223,6 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
   const result = items.map(({ _sortMs: _s, ...rest }) => rest);
   console.log(`[board_merge] ${Date.now() - mergeStart} ms`);
   console.log(`[board_total] ${Date.now() - totalStart} ms`);
+  console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
   return result;
 }

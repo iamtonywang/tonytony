@@ -10,6 +10,15 @@ export type ProductMinimal = {
   isVisible: boolean | null;
 };
 
+export type ProductSharedRow = {
+  id: number;
+  slug: string | null;
+  product_name: string | null;
+  short_description: string | null;
+  product_status: string | null;
+  is_visible: boolean | null;
+};
+
 /** Product detail board row (inquiries + reviews merged on server). */
 export type ProductBoardItem = {
   id: string;
