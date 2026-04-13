@@ -695,11 +695,32 @@ export default function Nigajun82View({ product, boardItems }: Props) {
             <button
               type="button"
               className={styles.boardRow}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 8,
+                width: "100%",
+              }}
               onClick={() => setOpenBoardIndex((prev) => (prev === 0 ? null : 0))}
             >
-              <span className={styles.boardType}>[{PINNED_NOTICE.type}]</span>
-              <span className={styles.boardPreviewAuthor}>{PINNED_NOTICE.author}</span>
-              <span className={styles.boardPreviewText}>{PINNED_NOTICE.preview}</span>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+                <span className={styles.boardType}>[{PINNED_NOTICE.type}]</span>
+                <span className={styles.boardPreviewAuthor}>{PINNED_NOTICE.author}</span>
+              </div>
+              <div
+                className={styles.boardPreviewText}
+                style={{
+                  flex: 1,
+                  minWidth: 0,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {PINNED_NOTICE.preview}
+              </div>
+              <div style={{ flexShrink: 0, fontSize: 12, opacity: 0.6 }}>{PINNED_NOTICE.date}</div>
             </button>
             {openBoardIndex === 0 ? (
               <div className={styles.boardExpanded}>
@@ -723,18 +744,34 @@ export default function Nigajun82View({ product, boardItems }: Props) {
                 <button
                   type="button"
                   className={styles.boardRow}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: 8,
+                    width: "100%",
+                  }}
                   onClick={() => setOpenBoardIndex((prev) => (prev === rowIndex ? null : rowIndex))}
                 >
-                  <span className={styles.boardType}>[{item.type}]</span>
-                  <span className={styles.boardPreviewAuthor}>
-                    {item.isPrivate ? maskBoardAuthor(item.author) : item.author}
-                  </span>
-                  <span
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+                    <span className={styles.boardType}>[{item.type}]</span>
+                    <span className={styles.boardPreviewAuthor}>
+                      {item.isPrivate ? maskBoardAuthor(item.author) : item.author}
+                    </span>
+                  </div>
+                  <div
                     className={styles.boardPreviewText}
-                    style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+                    style={{
+                      flex: 1,
+                      minWidth: 0,
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
                   >
                     {preview}
-                  </span>
+                  </div>
+                  <div style={{ flexShrink: 0, fontSize: 12, opacity: 0.6 }}>{item.date}</div>
                 </button>
                 {openBoardIndex === rowIndex ? (
                   <div className={styles.boardExpanded}>
