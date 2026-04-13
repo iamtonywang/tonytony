@@ -27,10 +27,13 @@ function previewFromText(text: string, maxLen: number): string {
 export async function getProductBoardBySlug(slug: string): Promise<ProductBoardItem[]> {
   const totalStart = Date.now();
   const supabase = await getSupabaseServerReadonlyClient();
+  const headerSessionStart = Date.now();
   const session = await getHeaderSession();
+  console.log(`[board_header_session] ${Date.now() - headerSessionStart} ms`);
   const viewerUserId = session.userId;
   const viewerIsAdmin = session.isAdmin;
 
+  const productsQueryStart = Date.now();
   const { data: prodRows, error: prodErr } = await supabase
     .from('products')
     .select('id')
@@ -38,19 +41,21 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
     .eq('is_visible', true)
     .in('product_status', ['active', 'sold_out'])
     .limit(1);
+  console.log(`[board_products_query] ${Date.now() - productsQueryStart} ms`);
 
   if (prodErr || !prodRows?.length) {
-    console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
+    console.log(`[board_total] ${Date.now() - totalStart} ms`);
     return [];
   }
 
   const productId = (prodRows[0] as { id: number }).id;
 
-  const [inqRes, revRes] = await Promise.all([
-    supabase
-      .from('inquiries')
-      .select(
-        `
+  const boardPromiseAllStart = Date.now();
+  const inquiriesQueryStart = Date.now();
+  const inquiriesPromise = supabase
+    .from('inquiries')
+    .select(
+      `
         id,
         content,
         is_private,
@@ -63,14 +68,19 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
           login_id
         )
       `,
-      )
-      .eq('product_id', productId)
-      .in('inquiry_status', ['active', 'answered'])
-      .order('created_at', { ascending: false }),
-    supabase
-      .from('reviews')
-      .select(
-        `
+    )
+    .eq('product_id', productId)
+    .in('inquiry_status', ['active', 'answered'])
+    .order('created_at', { ascending: false })
+    .then((res) => {
+      console.log(`[board_inquiries_query] ${Date.now() - inquiriesQueryStart} ms`);
+      return res;
+    });
+  const reviewsQueryStart = Date.now();
+  const reviewsPromise = supabase
+    .from('reviews')
+    .select(
+      `
         id,
         content,
         is_private,
@@ -81,11 +91,19 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
           login_id
         )
       `,
-      )
-      .eq('product_id', productId)
-      .eq('review_status', 'active')
-      .order('created_at', { ascending: false }),
+    )
+    .eq('product_id', productId)
+    .eq('review_status', 'active')
+    .order('created_at', { ascending: false })
+    .then((res) => {
+      console.log(`[board_reviews_query] ${Date.now() - reviewsQueryStart} ms`);
+      return res;
+    });
+  const [inqRes, revRes] = await Promise.all([
+    inquiriesPromise,
+    reviewsPromise,
   ]);
+  console.log(`[board_promise_all] ${Date.now() - boardPromiseAllStart} ms`);
 
   if (inqRes.error) {
     console.error(`getProductBoardBySlug inquiries: ${inqRes.error.message}`);
@@ -100,6 +118,7 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
   type UsersJoinRow = { login_id?: string | null };
   type UsersJoin = UsersJoinRow | UsersJoinRow[] | null;
 
+  const mergeStart = Date.now();
   type Sortable = ProductBoardItem & { _sortMs: number };
   const items: Sortable[] = [];
 
@@ -187,6 +206,7 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
 
   items.sort((a, b) => b._sortMs - a._sortMs);
   const result = items.map(({ _sortMs: _s, ...rest }) => rest);
-  console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
+  console.log(`[board_merge] ${Date.now() - mergeStart} ms`);
+  console.log(`[board_total] ${Date.now() - totalStart} ms`);
   return result;
 }
