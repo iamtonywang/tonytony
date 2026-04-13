@@ -95,7 +95,8 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
   const inquiries = Array.isArray(inqRes.data) ? inqRes.data : [];
   const reviews = Array.isArray(revRes.data) ? revRes.data : [];
 
-  type UsersJoin = { login_id?: string | null } | null;
+  type UsersJoinRow = { login_id?: string | null };
+  type UsersJoin = UsersJoinRow | UsersJoinRow[] | null;
 
   type Sortable = ProductBoardItem & { _sortMs: number };
   const items: Sortable[] = [];
@@ -112,8 +113,16 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
   }>) {
     const authorUserId = Number(row.user_id);
     const isPrivate = row.is_private === true;
-    const raw = row.users?.login_id ?? 'User';
-    const author = raw.length >= 3 ? raw.slice(0, 3) + '***' : raw;
+    const u = row.users;
+    const login =
+      u != null && !Array.isArray(u) && typeof u.login_id === 'string'
+        ? u.login_id
+        : Array.isArray(u) && typeof u[0]?.login_id === 'string'
+          ? u[0].login_id
+          : '';
+
+    const author =
+      login.length >= 3 ? login.slice(0, 3) + '***' : login || 'User';
     let content = row.content ?? '';
     if (row.answer_content?.trim()) {
       content = `${content}\n\n[답변]\n${row.answer_content.trim()}`;
@@ -146,8 +155,16 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
   }>) {
     const authorUserId = Number(row.user_id);
     const isPrivate = row.is_private === true;
-    const raw = row.users?.login_id ?? 'User';
-    const author = raw.length >= 3 ? raw.slice(0, 3) + '***' : raw;
+    const u = row.users;
+    const login =
+      u != null && !Array.isArray(u) && typeof u.login_id === 'string'
+        ? u.login_id
+        : Array.isArray(u) && typeof u[0]?.login_id === 'string'
+          ? u[0].login_id
+          : '';
+
+    const author =
+      login.length >= 3 ? login.slice(0, 3) + '***' : login || 'User';
     const c = row.content ?? '';
     const canViewFullContent =
       !isPrivate ||
