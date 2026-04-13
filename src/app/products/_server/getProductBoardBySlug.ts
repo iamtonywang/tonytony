@@ -28,12 +28,14 @@ export async function getProductBoardBySlug(
   slug: string,
   sharedProductRow?: ProductSharedRow | null,
 ): Promise<ProductBoardItem[]> {
+  const totalStart = Date.now();
   const supabase = await getSupabaseServerReadonlyClient();
   const session = await getHeaderSession();
   const viewerUserId = session.userId;
   const viewerIsAdmin = session.isAdmin;
 
   let productId: number | null = sharedProductRow?.id ?? null;
+  const productIdQueryStart = Date.now();
   if (productId === null) {
     const { data: prodRows, error: prodErr } = await supabase
       .from('products')
@@ -46,14 +48,19 @@ export async function getProductBoardBySlug(
       productId = (prodRows[0] as { id: number }).id;
     }
     if (prodErr || !prodRows?.length) {
+      console.log(`[getProductBoardBySlug] slug=${slug} product_query_ms=${Date.now() - productIdQueryStart}`);
+      console.log(`[getProductBoardBySlug] slug=${slug} total_ms=${Date.now() - totalStart}`);
       return [];
     }
   }
+  console.log(`[getProductBoardBySlug] slug=${slug} product_query_ms=${Date.now() - productIdQueryStart}`);
 
   if (productId === null) {
+    console.log(`[getProductBoardBySlug] slug=${slug} total_ms=${Date.now() - totalStart}`);
     return [];
   }
 
+  const inquiriesQueryStart = Date.now();
   const inquiriesPromise = supabase
     .from('inquiries')
     .select(
@@ -73,7 +80,12 @@ export async function getProductBoardBySlug(
     )
     .eq('product_id', productId)
     .in('inquiry_status', ['active', 'answered'])
-    .order('created_at', { ascending: false });
+    .order('created_at', { ascending: false })
+    .then((res) => {
+      console.log(`[getProductBoardBySlug] slug=${slug} inquiries_query_ms=${Date.now() - inquiriesQueryStart}`);
+      return res;
+    });
+  const reviewsQueryStart = Date.now();
   const reviewsPromise = supabase
     .from('reviews')
     .select(
@@ -91,11 +103,17 @@ export async function getProductBoardBySlug(
     )
     .eq('product_id', productId)
     .eq('review_status', 'active')
-    .order('created_at', { ascending: false });
+    .order('created_at', { ascending: false })
+    .then((res) => {
+      console.log(`[getProductBoardBySlug] slug=${slug} reviews_query_ms=${Date.now() - reviewsQueryStart}`);
+      return res;
+    });
+  const parallelQueryStart = Date.now();
   const [inqRes, revRes] = await Promise.all([
     inquiriesPromise,
     reviewsPromise,
   ]);
+  console.log(`[getProductBoardBySlug] slug=${slug} board_parallel_ms=${Date.now() - parallelQueryStart}`);
 
   if (inqRes.error) {
     console.error(`getProductBoardBySlug inquiries: ${inqRes.error.message}`);
@@ -113,6 +131,7 @@ export async function getProductBoardBySlug(
   type Sortable = ProductBoardItem & { _sortMs: number };
   const items: Sortable[] = [];
 
+  const mappingStart = Date.now();
   for (const row of inquiries as Array<{
     id: number;
     user_id: number;
@@ -197,5 +216,7 @@ export async function getProductBoardBySlug(
 
   items.sort((a, b) => b._sortMs - a._sortMs);
   const result = items.map(({ _sortMs: _s, ...rest }) => rest);
+  console.log(`[getProductBoardBySlug] slug=${slug} mapping_ms=${Date.now() - mappingStart}`);
+  console.log(`[getProductBoardBySlug] slug=${slug} total_ms=${Date.now() - totalStart}`);
   return result;
 }
