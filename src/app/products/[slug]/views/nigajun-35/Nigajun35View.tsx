@@ -558,9 +558,14 @@ export default function Nigajun35View({ product, boardItems }: Props) {
             style={{
               width: "100%",
               boxSizing: "border-box",
-              padding: 8,
-              fontSize: 14,
+              minHeight: 200,
+              padding: 16,
+              fontSize: 16,
+              lineHeight: 1.7,
               borderRadius: 4,
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.15)",
+              resize: "none",
             }}
             placeholder="내용을 입력하세요"
           />
@@ -607,9 +612,14 @@ export default function Nigajun35View({ product, boardItems }: Props) {
             style={{
               width: "100%",
               boxSizing: "border-box",
-              padding: 8,
-              fontSize: 14,
+              minHeight: 200,
+              padding: 16,
+              fontSize: 16,
+              lineHeight: 1.7,
               borderRadius: 4,
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.15)",
+              resize: "none",
             }}
             placeholder="리뷰 내용을 입력하세요"
           />
