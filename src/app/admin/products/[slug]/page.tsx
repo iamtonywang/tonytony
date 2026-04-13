@@ -366,39 +366,61 @@ export default async function Page({
 										borderBottom: "1px solid rgba(255,255,255,0.12)",
 									}}
 								>
-									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-										<strong>작성자</strong>: {row.authorLabel}
-									</p>
-									<p style={{ margin: "0 0 4px", opacity: 0.88, fontSize: 12 }}>
-										<span
+									<div
+										style={{
+											border: "1px solid rgba(255,255,255,0.18)",
+											borderRadius: 4,
+											padding: 10,
+											marginBottom: 10,
+											background: "rgba(255,255,255,0.03)",
+										}}
+									>
+										<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+											<strong>작성자</strong>: {row.authorLabel}
+										</p>
+										<p style={{ margin: "0 0 4px", opacity: 0.88, fontSize: 12 }}>
+											<span
+												style={{
+													display: "inline-block",
+													padding: "2px 8px",
+													border: "1px solid rgba(255,255,255,0.22)",
+													borderRadius: 2,
+													color: "rgba(255,255,255,0.88)",
+												}}
+											>
+												{row.isPrivate === true ? "비밀글" : "일반글"}
+											</span>
+										</p>
+										<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+											<strong>제목</strong>: {row.title}
+										</p>
+										<p style={{ margin: "0 0 4px", opacity: 0.95, whiteSpace: "pre-wrap" }}>
+											<strong>문의내용</strong>: {row.content}
+										</p>
+										<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+											<strong>상태</strong>: {row.inquiryStatus}
+										</p>
+										<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
+											<strong>답변</strong>: {replyLabel}
+										</p>
+										<p style={{ margin: 0, opacity: 0.95 }}>
+											<strong>생성일</strong>: {row.createdAt}
+										</p>
+									</div>
+									{row.answerContent ? (
+										<div
 											style={{
-												display: "inline-block",
-												padding: "2px 8px",
-												border: "1px solid rgba(255,255,255,0.22)",
-												borderRadius: 2,
-												color: "rgba(255,255,255,0.88)",
+												border: "1px solid rgba(255,255,255,0.28)",
+												borderLeft: "3px solid rgba(255,255,255,0.42)",
+												borderRadius: 4,
+												padding: 10,
+												background: "rgba(255,255,255,0.06)",
+												opacity: 0.95,
 											}}
 										>
-											{row.isPrivate === true ? "비밀글" : "일반글"}
-										</span>
-									</p>
-									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-										<strong>제목</strong>: {row.title}
-									</p>
-									<p style={{ margin: "0 0 4px", opacity: 0.95, whiteSpace: "pre-wrap" }}>
-										<strong>문의내용</strong>: {row.content}
-									</p>
-									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-										<strong>상태</strong>: {row.inquiryStatus}
-									</p>
-									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-										<strong>답변</strong>: {replyLabel}
-									</p>
-									<p style={{ margin: "0 0 8px", opacity: 0.95 }}>
-										<strong>생성일</strong>: {row.createdAt}
-									</p>
-									{row.answerContent ? (
-										<div style={{ marginTop: 8, opacity: 0.95 }}>
+											<p style={{ margin: "0 0 8px", fontSize: 12, opacity: 0.92 }}>
+												<strong>관리자 답변</strong>
+											</p>
 											<p style={{ margin: "0 0 4px", whiteSpace: "pre-wrap" }}>
 												<strong>답변내용</strong>: {row.answerContent}
 											</p>
@@ -412,47 +434,57 @@ export default async function Page({
 											) : null}
 										</div>
 									) : (
-										<form action={submitInquiryAnswer} style={{ marginTop: 8 }}>
-											<input type="hidden" name="slug" value={slug} />
-											<input type="hidden" name="inquiryId" value={String(row.id)} />
-											<label
-												style={{ display: "block", marginBottom: 4, opacity: 0.88 }}
-												htmlFor={`inq-answer-${row.id}`}
-											>
-												답변 작성
-											</label>
-											<textarea
-												id={`inq-answer-${row.id}`}
-												name="answerContent"
-												required
-												rows={4}
-												style={{
-													width: "100%",
-													maxWidth: 520,
-													boxSizing: "border-box",
-													padding: 8,
-													background: "transparent",
-													color: "rgba(255,255,255,0.92)",
-													border: "1px solid rgba(255,255,255,0.3)",
-													borderRadius: 2,
-												}}
-											/>
-											<div style={{ marginTop: 6 }}>
-												<button
-													type="submit"
-													style={{
-														cursor: "pointer",
-														padding: "8px 16px",
-														border: "1px solid rgba(255,255,255,0.2)",
-														borderRadius: 2,
-														color: "rgba(255,255,255,0.92)",
-														background: "transparent",
-													}}
+										<div
+											style={{
+												border: "1px solid rgba(255,255,255,0.24)",
+												borderRadius: 4,
+												padding: 10,
+												marginTop: 0,
+												background: "rgba(255,255,255,0.05)",
+											}}
+										>
+											<form action={submitInquiryAnswer}>
+												<input type="hidden" name="slug" value={slug} />
+												<input type="hidden" name="inquiryId" value={String(row.id)} />
+												<label
+													style={{ display: "block", marginBottom: 4, opacity: 0.88 }}
+													htmlFor={`inq-answer-${row.id}`}
 												>
-													답변 저장
-												</button>
-											</div>
-										</form>
+													답변 작성
+												</label>
+												<textarea
+													id={`inq-answer-${row.id}`}
+													name="answerContent"
+													required
+													rows={4}
+													style={{
+														width: "100%",
+														maxWidth: 520,
+														boxSizing: "border-box",
+														padding: 8,
+														background: "transparent",
+														color: "rgba(255,255,255,0.92)",
+														border: "1px solid rgba(255,255,255,0.3)",
+														borderRadius: 2,
+													}}
+												/>
+												<div style={{ marginTop: 6 }}>
+													<button
+														type="submit"
+														style={{
+															cursor: "pointer",
+															padding: "8px 16px",
+															border: "1px solid rgba(255,255,255,0.2)",
+															borderRadius: 2,
+															color: "rgba(255,255,255,0.92)",
+															background: "transparent",
+														}}
+													>
+														답변 저장
+													</button>
+												</div>
+											</form>
+										</div>
 									)}
 								</li>
 							);
