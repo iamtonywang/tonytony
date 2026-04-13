@@ -14,7 +14,7 @@ async function getWritableAdminContextWithAdminId(): Promise<
 	const supabase = await getSupabaseServerClient();
 	const { data: auth } = await supabase.auth.getUser();
 	if (!auth?.user) {
-		return { ok: false, status: 401, message: "Unauthorized" };
+		return { ok: false, status: 401, message: "unauthorized" };
 	}
 	const { data: meRows } = await supabase.from("users").select("id").eq("auth_user_id", auth.user.id).limit(1);
 	const me = Array.isArray(meRows) && meRows.length === 1 ? (meRows[0] as { id: number }) : null;

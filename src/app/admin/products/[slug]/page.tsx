@@ -152,7 +152,11 @@ async function submitInquiryAnswer(formData: FormData) {
 			revalidatePath(`/admin/products/${slug}`);
 			redirect(`/admin/products/${slug}?inq_saved=1`);
 		}
-		if (typeof data.message === "string") message = data.message;
+		if (typeof data.message === "string" && data.message.trim() !== "") {
+			message = data.message.trim();
+		} else if (!res.ok) {
+			message = `http_${res.status}`;
+		}
 	} catch {
 		message = "invalid_response";
 	}
@@ -193,11 +197,9 @@ export default async function Page({
 		statusLine = `실패: ${decodeURIComponent(sp.err)}`;
 	}
 
-	let inquiryStatusLine: string | null = null;
+	let inquirySavedLine: string | null = null;
 	if (sp.inq_saved === "1") {
-		inquiryStatusLine = "문의 답변이 저장되었습니다.";
-	} else if (typeof sp.inq_err === "string" && sp.inq_err.length > 0) {
-		inquiryStatusLine = `문의 저장 실패: ${decodeURIComponent(sp.inq_err)}`;
+		inquirySavedLine = "문의 답변이 저장되었습니다.";
 	}
 
 	const displayTitle = slugToDisplayTitle(slug);
@@ -331,8 +333,23 @@ export default async function Page({
 			</div>
 			<div style={sectionStyle}>
 				<strong>Inquiry Management</strong>
-				{inquiryStatusLine ? (
-					<p style={{ marginTop: 8, marginBottom: 0, opacity: 0.9 }}>{inquiryStatusLine}</p>
+				{typeof sp.inq_err === "string" && sp.inq_err.length > 0 ? (
+					<p
+						role="alert"
+						style={{
+							marginTop: 8,
+							marginBottom: 8,
+							color: "rgb(248, 113, 113)",
+							fontFamily: "ui-monospace, Consolas, monospace",
+							wordBreak: "break-word",
+							whiteSpace: "pre-wrap",
+						}}
+					>
+						inq_err: {sp.inq_err}
+					</p>
+				) : null}
+				{inquirySavedLine ? (
+					<p style={{ marginTop: 8, marginBottom: 0, opacity: 0.9 }}>{inquirySavedLine}</p>
 				) : null}
 				{inquiries.length === 0 ? (
 					<p style={{ marginTop: 8, opacity: 0.8 }}>등록된 문의가 없습니다.</p>
