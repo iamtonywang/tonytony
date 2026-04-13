@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./Nigajun99View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
-import { maskBoardAuthor } from "@/app/products/boardMask";
+import { formatBoardRowAuthor } from "@/app/products/boardMask";
 
 // 99 전용 시퀀스/강조/최종 블록 상수 (파일 내 전용, 44 복붙 금지)
 const HERO_SEQUENCE: string[] = [
@@ -632,7 +632,8 @@ export default function Nigajun99View({ product, boardItems }: Props) {
               lineHeight: 1.7,
               borderRadius: 4,
               background: "transparent",
-              border: "1px solid rgba(255,255,255,0.15)",
+              color: "#ffffff",
+              border: "1px solid rgba(255,255,255,0.2)",
               resize: "none",
             }}
             placeholder="내용을 입력하세요"
@@ -686,7 +687,8 @@ export default function Nigajun99View({ product, boardItems }: Props) {
               lineHeight: 1.7,
               borderRadius: 4,
               background: "transparent",
-              border: "1px solid rgba(255,255,255,0.15)",
+              color: "#ffffff",
+              border: "1px solid rgba(255,255,255,0.2)",
               resize: "none",
             }}
             placeholder="리뷰 내용을 입력하세요"
@@ -725,15 +727,24 @@ export default function Nigajun99View({ product, boardItems }: Props) {
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
-                gap: 8,
+                gap: 12,
                 width: "100%",
               }}
               onClick={() => setOpenBoardIndex((prev) => (prev === 0 ? null : 0))}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  flexShrink: 0,
+                  minWidth: 110,
+                }}
+              >
                 <span className={styles.boardType}>[{PINNED_NOTICE.type}]</span>
-                <span className={styles.boardPreviewAuthor}>{PINNED_NOTICE.author}</span>
+                <span className={styles.boardPreviewAuthor}>
+                  {formatBoardRowAuthor(PINNED_NOTICE.author)}
+                </span>
               </div>
               <div
                 className={styles.boardPreviewText}
@@ -747,7 +758,6 @@ export default function Nigajun99View({ product, boardItems }: Props) {
               >
                 {PINNED_NOTICE.preview}
               </div>
-              <div style={{ flexShrink: 0, fontSize: 12, opacity: 0.6 }}>{PINNED_NOTICE.date}</div>
             </button>
             {openBoardIndex === 0 ? (
               <div className={styles.boardExpanded}>
@@ -774,16 +784,23 @@ export default function Nigajun99View({ product, boardItems }: Props) {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: 8,
+                    gap: 12,
                     width: "100%",
                   }}
                   onClick={() => setOpenBoardIndex((prev) => (prev === rowIndex ? null : rowIndex))}
                 >
-                  <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      flexShrink: 0,
+                      minWidth: 110,
+                    }}
+                  >
                     <span className={styles.boardType}>[{item.type}]</span>
                     <span className={styles.boardPreviewAuthor}>
-                      {item.isPrivate ? maskBoardAuthor(item.author) : item.author}
+                      {formatBoardRowAuthor(item.author)}
                     </span>
                   </div>
                   <div
@@ -798,7 +815,6 @@ export default function Nigajun99View({ product, boardItems }: Props) {
                   >
                     {preview}
                   </div>
-                  <div style={{ flexShrink: 0, fontSize: 12, opacity: 0.6 }}>{item.date}</div>
                 </button>
                 {openBoardIndex === rowIndex ? (
                   <div className={styles.boardExpanded}>
