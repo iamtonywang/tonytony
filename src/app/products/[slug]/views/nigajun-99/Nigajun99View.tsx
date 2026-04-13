@@ -101,7 +101,7 @@ export default function Nigajun99View({ product, boardItems }: Props) {
   const [showFinalBlock, setShowFinalBlock] = useState(false);
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
-  const [boardTab, setBoardTab] = useState<"inquiry" | "review" | "secret">("inquiry");
+  const [boardTab, setBoardTab] = useState<"inquiry" | "review">("inquiry");
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const [inquiryContent, setInquiryContent] = useState("");
   const inquirySendingRef = useRef(false);
@@ -116,10 +116,7 @@ export default function Nigajun99View({ product, boardItems }: Props) {
     if (boardTab === "inquiry") {
       return boardItems.filter((i) => i.type === "Inquiry");
     }
-    if (boardTab === "review") {
-      return boardItems.filter((i) => i.type === "Review");
-    }
-    return boardItems.filter((i) => i.isPrivate);
+    return boardItems.filter((i) => i.type === "Review");
   }, [boardItems, boardTab]);
 
   useEffect(() => {
@@ -607,13 +604,6 @@ export default function Nigajun99View({ product, boardItems }: Props) {
             }}
           >
             Review
-          </button>
-          <button
-            type="button"
-            className={`${styles.boardActionBtn} ${boardTab === "secret" ? styles.boardActionBtnActive : ""}`}
-            onClick={() => setBoardTab("secret")}
-          >
-            Secret
           </button>
         </div>
       </div>
