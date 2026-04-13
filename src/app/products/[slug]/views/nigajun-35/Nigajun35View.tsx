@@ -60,6 +60,9 @@ export default function Nigajun35View({ product, boardItems }: Props) {
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const [inquiryContent, setInquiryContent] = useState("");
   const inquirySendingRef = useRef(false);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [reviewContent, setReviewContent] = useState("");
+  const reviewSendingRef = useRef(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   const filteredBoardItems = useMemo(() => {
@@ -102,6 +105,35 @@ export default function Nigajun35View({ product, boardItems }: Props) {
       window.alert("네트워크 오류가 발생했습니다.");
     } finally {
       inquirySendingRef.current = false;
+    }
+  };
+
+  const handleReviewSubmit = async () => {
+    const slug = product?.slug?.trim() ?? "";
+    if (!slug) {
+      window.alert("상품 정보가 없습니다.");
+      return;
+    }
+    const content = reviewContent.trim();
+    if (!content) return;
+    if (reviewSendingRef.current) return;
+    reviewSendingRef.current = true;
+    try {
+      const res = await fetch("/api/products/review", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, content }),
+      });
+      const data = (await res.json()) as { ok?: boolean; message?: string };
+      if (data.ok) {
+        window.location.reload();
+        return;
+      }
+      window.alert(data.message ?? "리뷰 등록에 실패했습니다.");
+    } catch {
+      window.alert("네트워크 오류가 발생했습니다.");
+    } finally {
+      reviewSendingRef.current = false;
     }
   };
 
@@ -486,7 +518,10 @@ export default function Nigajun35View({ product, boardItems }: Props) {
           <button
             type="button"
             className={`${styles.boardActionBtn} ${boardTab === "review" ? styles.boardActionBtnActive : ""}`}
-            onClick={() => setBoardTab("review")}
+            onClick={() => {
+              setBoardTab("review");
+              setShowReviewForm(true);
+            }}
           >
             Review
           </button>
@@ -527,6 +562,38 @@ export default function Nigajun35View({ product, boardItems }: Props) {
           <div style={{ marginTop: 8, display: "flex", gap: 8 }}>
             <button type="button" onClick={handleInquirySubmit} style={{ padding: "6px 14px", fontSize: 14, cursor: "pointer" }}>
               작성
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {boardTab === "review" && showReviewForm ? (
+        <div
+          style={{
+            maxWidth: 720,
+            margin: "0 auto 16px",
+            padding: "0 16px",
+            color: "#fff",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          <label style={{ display: "block", marginBottom: 8, fontSize: 13 }}>리뷰 작성</label>
+          <textarea
+            value={reviewContent}
+            onChange={(e) => setReviewContent(e.target.value)}
+            rows={5}
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              padding: 8,
+              fontSize: 14,
+              borderRadius: 4,
+            }}
+            placeholder="리뷰 내용을 입력하세요"
+          />
+          <div style={{ marginTop: 8, display: "flex", gap: 8 }}>
+            <button type="button" onClick={handleReviewSubmit} style={{ padding: "6px 14px", fontSize: 14, cursor: "pointer" }}>
+              리뷰 등록
             </button>
           </div>
         </div>
