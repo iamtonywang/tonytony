@@ -78,6 +78,9 @@ export async function POST(req: NextRequest) {
 			.from("inquiries")
 			.update({
 				inquiry_status: "hidden",
+				answer_content: null,
+				answered_at: null,
+				answered_by_admin_id: null,
 				updated_at: nowIso,
 			})
 			.eq("id", hideInquiryId)
