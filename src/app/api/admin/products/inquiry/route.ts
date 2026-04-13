@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
 		.from("inquiries")
 		.select("id")
 		.eq("id", inquiryId)
-		.eq("inquiry_status", "active")
+		.in("inquiry_status", ["active", "answered"])
 		.limit(1);
 
 	if (selErr) {
@@ -102,7 +102,7 @@ export async function POST(req: NextRequest) {
 			updated_at: nowIso,
 		})
 		.eq("id", inquiryId)
-		.eq("inquiry_status", "active")
+		.in("inquiry_status", ["active", "answered"])
 		.select("id");
 
 	if (upErr) {
