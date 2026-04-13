@@ -95,15 +95,7 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
   const inquiries = Array.isArray(inqRes.data) ? inqRes.data : [];
   const reviews = Array.isArray(revRes.data) ? revRes.data : [];
 
-  function loginIdFromUsersEmbed(users: unknown): string | null {
-    if (users == null) return null;
-    const row = Array.isArray(users) ? users[0] : users;
-    if (row && typeof row === 'object' && 'login_id' in row) {
-      const v = (row as { login_id: unknown }).login_id;
-      return typeof v === 'string' ? v : null;
-    }
-    return null;
-  }
+  type UsersJoin = { login_id?: string | null } | null;
 
   type Sortable = ProductBoardItem & { _sortMs: number };
   const items: Sortable[] = [];
@@ -116,12 +108,12 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
     is_private: boolean;
     created_at: string;
     answer_content: string | null;
-    users?: unknown;
+    users?: UsersJoin;
   }>) {
     const authorUserId = Number(row.user_id);
     const isPrivate = row.is_private === true;
-    const rawLogin = loginIdFromUsersEmbed(row.users)?.trim() || '';
-    const author = rawLogin.length > 0 ? rawLogin : 'User';
+    const raw = row.users?.login_id ?? 'User';
+    const author = raw.length >= 3 ? raw.slice(0, 3) + '***' : raw;
     let content = row.content ?? '';
     if (row.answer_content?.trim()) {
       content = `${content}\n\n[답변]\n${row.answer_content.trim()}`;
@@ -150,12 +142,12 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
     content: string;
     is_private: boolean;
     created_at: string;
-    users?: unknown;
+    users?: UsersJoin;
   }>) {
     const authorUserId = Number(row.user_id);
     const isPrivate = row.is_private === true;
-    const rawLogin = loginIdFromUsersEmbed(row.users)?.trim() || '';
-    const author = rawLogin.length > 0 ? rawLogin : 'User';
+    const raw = row.users?.login_id ?? 'User';
+    const author = raw.length >= 3 ? raw.slice(0, 3) + '***' : raw;
     const c = row.content ?? '';
     const canViewFullContent =
       !isPrivate ||
