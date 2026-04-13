@@ -6,6 +6,12 @@ import styles from "./Nigajun44View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 import { formatBoardRowAuthor } from "@/app/products/boardMask";
 
+function maskBoardAuthor(author: string) {
+  if (!author) return "User";
+  if (author.length <= 2) return author[0] + "*";
+  return author[0] + "*".repeat(author.length - 2) + author.slice(-1);
+}
+
 interface Props {
   product?: ProductMinimal;
   boardItems: ProductBoardItem[];
@@ -732,7 +738,7 @@ function BoardSection({
                   >
                     <span className={styles.boardType}>[{item.type}]</span>
                     <span className={styles.boardPreviewAuthor}>
-                      {formatBoardRowAuthor(item.author)}
+                      {item.isPrivate ? maskBoardAuthor(item.author) : item.author}
                     </span>
                   </div>
                   <div
