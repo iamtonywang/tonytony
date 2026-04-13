@@ -22,8 +22,6 @@ export default async function Page() {
 				<Link href="/admin/refunds">refunds</Link>
 				<Link href="/admin/partners">partners</Link>
 				<Link href="/admin/settlements">settlements</Link>
-				<Link href="/admin/boards">boards</Link>
-				<Link href="/admin/metrics">metrics</Link>
 			</div>
 
 			<div style={{ marginTop: 20, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
