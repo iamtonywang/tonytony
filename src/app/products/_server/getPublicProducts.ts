@@ -47,6 +47,17 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
   }
 
   const productRows: ProductRowWithId[] = Array.isArray(products) ? products : [];
+  console.log("[products_rows]", productRows.length);
+  console.log(
+    "[products_sample]",
+    productRows.slice(0, 5).map((row) => ({
+      id: row.id,
+      slug: row.slug,
+      product_name: row.product_name,
+      product_status: row.product_status,
+      is_visible: row.is_visible,
+    }))
+  );
   if (productRows.length === 0) {
     // 3) If no base products, do not run follow-up queries
     return [];
@@ -56,6 +67,7 @@ export async function getPublicProducts(): Promise<ProductMinimal[]> {
   const productIds = productRows
     .map((p) => p.id)
     .filter((id): id is number => typeof id === 'number');
+  console.log("[product_ids]", productIds.length);
   if (productIds.length === 0) {
     return [];
   }
