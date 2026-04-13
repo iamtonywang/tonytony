@@ -369,6 +369,19 @@ export default async function Page({
 									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
 										<strong>작성자</strong>: {row.authorLabel}
 									</p>
+									<p style={{ margin: "0 0 4px", opacity: 0.88, fontSize: 12 }}>
+										<span
+											style={{
+												display: "inline-block",
+												padding: "2px 8px",
+												border: "1px solid rgba(255,255,255,0.22)",
+												borderRadius: 2,
+												color: "rgba(255,255,255,0.88)",
+											}}
+										>
+											{row.isPrivate === true ? "비밀글" : "일반글"}
+										</span>
+									</p>
 									<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
 										<strong>제목</strong>: {row.title}
 									</p>
