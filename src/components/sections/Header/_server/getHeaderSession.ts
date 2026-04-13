@@ -13,7 +13,6 @@ export type HeaderSession = {
 };
 
 export const getHeaderSession = cache(async function getHeaderSession(): Promise<HeaderSession> {
-  console.log("[header_session_start]");
   const supabase = await getSupabaseServerReadonlyClient();
 
   const guest: HeaderSession = {
@@ -27,30 +26,15 @@ export const getHeaderSession = cache(async function getHeaderSession(): Promise
   let authUser: { id: string } | null = null;
   try {
     const result = await supabase.auth.getUser();
-    console.log(
-      `[header_session_auth] ${JSON.stringify({
-        hasUser: !!result.data?.user,
-        error: result.error?.message ?? null,
-      })}`,
-    );
     if (result.error) {
-      console.log("[header_session_return] auth_error");
       return guest;
     }
     authUser = result.data?.user ?? null;
   } catch {
-    console.log(
-      `[header_session_auth] ${JSON.stringify({
-        hasUser: false,
-        error: "exception",
-      })}`,
-    );
-    console.log("[header_session_return] auth_error");
     return guest;
   }
 
   if (!authUser) {
-    console.log("[header_session_return] no_auth_user");
     return guest;
   }
 
@@ -65,16 +49,8 @@ export const getHeaderSession = cache(async function getHeaderSession(): Promise
     typeof (usersRows as { id: unknown }).id === "number"
       ? (usersRows as { id: number; login_id: string | null })
       : null;
-  console.log(
-    `[header_session_user_row] ${JSON.stringify({
-      hasUserRow: !!userRow,
-      loginId: userRow?.login_id ?? null,
-      userId: userRow?.id ?? null,
-    })}`,
-  );
 
   if (!userRow || typeof userRow.id !== "number") {
-    console.log("[header_session_return] no_user_row");
     return guest;
   }
 
@@ -92,13 +68,6 @@ export const getHeaderSession = cache(async function getHeaderSession(): Promise
   const adminRows = adminsResult.data;
   const isPartner = Array.isArray(partnerRows) && partnerRows.length === 1;
   const isAdmin = Array.isArray(adminRows) && adminRows.length === 1;
-  console.log(
-    `[header_session_roles] ${JSON.stringify({
-      isPartner,
-      isAdmin,
-    })}`,
-  );
-  console.log("[header_session_return] authenticated");
 
   return {
     authenticated: true,
