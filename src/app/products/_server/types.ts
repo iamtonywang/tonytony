@@ -20,6 +20,7 @@ export type ProductBoardItem = {
   type: "Inquiry" | "Review";
   date: string;
   content: string;
+  answerContent?: string | null;
   isPrivate: boolean;
   /** 비밀글이 아니거나, 현재 세션이 작성자 본인·활성 관리자일 때만 전문 표시. */
   canViewFullContent: boolean;

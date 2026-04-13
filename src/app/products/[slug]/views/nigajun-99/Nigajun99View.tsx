@@ -821,7 +821,18 @@ export default function Nigajun99View({ product, boardItems }: Props) {
                     <div className={styles.boardMeta}>{item.type}</div>
                     <div className={styles.boardDate}>{item.date}</div>
                     <div className={styles.boardContent}>
-                      {item.isPrivate && !item.canViewFullContent ? "비밀글입니다" : item.content}
+                      {item.isPrivate && !item.canViewFullContent ? (
+                        "비밀글입니다"
+                      ) : (
+                        <>
+                          <div>{item.content}</div>
+                          {item.answerContent && (
+                            <div style={{ marginTop: 8 }}>
+                              <strong>답변</strong>: {item.answerContent}
+                            </div>
+                          )}
+                        </>
+                      )}
                     </div>
                   </div>
                 ) : null}

@@ -123,10 +123,7 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
 
     const author =
       login.length >= 3 ? login.slice(0, 3) + '***' : login || 'User';
-    let content = row.content ?? '';
-    if (row.answer_content?.trim()) {
-      content = `${content}\n\n[답변]\n${row.answer_content.trim()}`;
-    }
+    const content = row.content ?? '';
     const canViewFullContent =
       !isPrivate ||
       (viewerUserId !== null && authorUserId === viewerUserId) ||
@@ -139,6 +136,7 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
       type: 'Inquiry',
       date: formatBoardDate(row.created_at),
       content,
+      answerContent: row.answer_content ?? null,
       isPrivate,
       canViewFullContent,
       _sortMs: new Date(row.created_at).getTime(),
@@ -178,6 +176,7 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
       type: 'Review',
       date: formatBoardDate(row.created_at),
       content: c,
+      answerContent: null,
       isPrivate,
       canViewFullContent,
       _sortMs: new Date(row.created_at).getTime(),
