@@ -15,6 +15,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const headerSession = await getHeaderSession();
+  console.log(
+    `[layout_header_session] ${JSON.stringify({
+      authenticated: headerSession.authenticated,
+      hasLoginId: !!headerSession.loginId,
+      hasUserId: headerSession.userId !== null,
+      isPartner: headerSession.isPartner,
+      isAdmin: headerSession.isAdmin,
+    })}`,
+  );
 
   return (
     <html lang="en">
