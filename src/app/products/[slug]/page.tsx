@@ -30,12 +30,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound();
   }
 
-  const promiseAllStart = Date.now();
   const [product, boardItems] = await Promise.all([
     getProductBySlug(slug, sharedProductRow),
     getProductBoardBySlug(slug, sharedProductRow),
   ]);
-  console.log(`[detail_page_promise_all] ${Date.now() - promiseAllStart} ms`);
 
   if (product === null) {
     notFound();
