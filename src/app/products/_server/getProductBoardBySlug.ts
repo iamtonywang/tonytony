@@ -81,6 +81,7 @@ export async function getProductBoardBySlug(
     .eq('product_id', productId)
     .in('inquiry_status', ['active', 'answered'])
     .order('created_at', { ascending: false })
+    .limit(10)
     .then((res) => {
       console.log(`[getProductBoardBySlug] slug=${slug} inquiries_query_ms=${Date.now() - inquiriesQueryStart}`);
       return res;
@@ -104,6 +105,7 @@ export async function getProductBoardBySlug(
     .eq('product_id', productId)
     .eq('review_status', 'active')
     .order('created_at', { ascending: false })
+    .limit(10)
     .then((res) => {
       console.log(`[getProductBoardBySlug] slug=${slug} reviews_query_ms=${Date.now() - reviewsQueryStart}`);
       return res;
