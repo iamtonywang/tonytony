@@ -18,6 +18,7 @@ type ProductRowWithId = {
  * Then fetches active price and hero image via separate queries (no nested relations).
  */
 export async function getProductBySlug(slug: string): Promise<ProductMinimal | null> {
+  const totalStart = Date.now();
   const supabase = await getSupabasePublicClient();
 
   // 1) Base product
@@ -34,6 +35,7 @@ export async function getProductBySlug(slug: string): Promise<ProductMinimal | n
   }
   const row: ProductRowWithId | null = Array.isArray(data) && data.length > 0 ? (data[0] as ProductRowWithId) : null;
   if (!row) {
+    console.log(`[getProductBySlug_total] ${Date.now() - totalStart} ms`);
     return null;
   }
 
@@ -85,6 +87,8 @@ export async function getProductBySlug(slug: string): Promise<ProductMinimal | n
     }
   }
 
-  return withMergedExtras(base, { finalPriceAmount, heroImageUrl });
+  const result = withMergedExtras(base, { finalPriceAmount, heroImageUrl });
+  console.log(`[getProductBySlug_total] ${Date.now() - totalStart} ms`);
+  return result;
 }
 

@@ -25,6 +25,7 @@ function previewFromText(text: string, maxLen: number): string {
  * Loads inquiry + review rows visible to the current session (RLS) for a public product slug.
  */
 export async function getProductBoardBySlug(slug: string): Promise<ProductBoardItem[]> {
+  const totalStart = Date.now();
   const supabase = await getSupabaseServerReadonlyClient();
   const session = await getHeaderSession();
   const viewerUserId = session.userId;
@@ -39,6 +40,7 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
     .limit(1);
 
   if (prodErr || !prodRows?.length) {
+    console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
     return [];
   }
 
@@ -184,5 +186,7 @@ export async function getProductBoardBySlug(slug: string): Promise<ProductBoardI
   }
 
   items.sort((a, b) => b._sortMs - a._sortMs);
-  return items.map(({ _sortMs: _s, ...rest }) => rest);
+  const result = items.map(({ _sortMs: _s, ...rest }) => rest);
+  console.log(`[getProductBoardBySlug_total] ${Date.now() - totalStart} ms`);
+  return result;
 }
