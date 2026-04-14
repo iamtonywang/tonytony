@@ -594,6 +594,22 @@
   border-color: #ff7f00;
 }
 
+.detailOverlayHeading {
+  margin: 0 0 10px;
+  font-size: clamp(20px, 2.1vw, 30px);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.detailOverlayText {
+  margin: 0 0 10px;
+  font-size: clamp(13px, 1.08vw, 16px);
+  line-height: 1.65;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+}
+
 .detailDescription {
   margin: 0 auto;
   max-width: 760px;
@@ -726,7 +742,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 25%;
+  padding-top: 32%;
 }
 
 .detailOverlayInner {

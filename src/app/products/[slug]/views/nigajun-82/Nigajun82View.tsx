@@ -38,7 +38,7 @@ const HERO_EMPHASIS_82: boolean[] = [
   false, false, false, false, false, false, false, false, false, false,
 ];
 // 최종 블록(필요 시 전체 합본 표기)
-const HERO_FINAL_BLOCK_82: string = "Since August 2025 TONYWANG";
+const HERO_FINAL_BLOCK_82: string = "SINCE May 2026";
 
 interface Props {
   product?: ProductMinimal;
@@ -428,6 +428,8 @@ export default function Nigajun82View({ product, boardItems }: Props) {
 
           <div className={styles.detailVisualOverlay} draggable={false}>
             <div className={styles.detailOverlayInner}>
+              <p className={styles.detailOverlayHeading}>TONYWANG</p>
+              <p className={styles.detailOverlayText}>NIGAJUN82</p>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
 
               <p className={styles.detailDescription}>
@@ -462,7 +464,7 @@ export default function Nigajun82View({ product, boardItems }: Props) {
               </p>
 
               <p className={styles.detailDescription}>
-                Since August 2025 TONYWANG
+                SINCE May 2026
               </p>
 
               <p className={styles.heroPrice}>
@@ -489,7 +491,7 @@ export default function Nigajun82View({ product, boardItems }: Props) {
           Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
         </p>
         <p className={styles.detailCopyText}>
-          Since August 2025 TONYWANG
+          SINCE May 2026
         </p>
       </section>
 
