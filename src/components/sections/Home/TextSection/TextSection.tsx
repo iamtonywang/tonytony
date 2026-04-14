@@ -74,7 +74,7 @@ export default function TextSection() {
               <div className={styles.textLine}>바이오와 향장학은 분야가 너무 달라</div>
               <div className={styles.textLine}>하찮다고 생각했어 지금도 같은 생각이야</div>
               <div className={styles.textLine}>쓰레기 보다 못한 스킨케어 를 부숴버리고 싶어</div>
-              <div className={styles.textLine + " " + styles.textOrangePrimary}>I don't like lying</div>
+              <div className={`${styles.textLine} ${styles.textHighlight}`}>I don't like lying</div>
               <div className={styles.textLine}>나는 거짓이 싫다</div>
               <div className={styles.textLine}>원하는 것을 이루기 위해서는 미쳐야 한다</div>
               <div className={styles.textLine + " " + styles.textOrangeSecondary}>창조란?</div>
