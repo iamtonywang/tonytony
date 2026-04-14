@@ -480,6 +480,9 @@ export default function Nigajun99View({ product, boardItems }: Props) {
           <div className={styles.detailVisualOverlay} draggable={false}>
             <div className={styles.detailOverlayInner}>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
+              <p className={styles.detailOverlayText}>
+                NIGAJUN99
+              </p>
 
               <p className={styles.detailDescription}>
                 피부 가려움증 매우 괴롭고 힘든 고통스런 질환이다
@@ -513,21 +516,11 @@ export default function Nigajun99View({ product, boardItems }: Props) {
               <p className={styles.detailDescription}>
                 거짓에 의한 상처받는고통이 더욱 크다
               </p>
-
-              <p className={styles.detailDescription}>
-                The itching of the skin is a very painful and painful condition
+              <p className={styles.detailOverlayText}>
+                거짓에 의한 상처받는고통이 더욱 크다
               </p>
-              <p className={styles.detailDescription}>
-                Many companies can improve But the reality is just a lie
-              </p>
-              <p className={styles.detailDescription}>
-                I don&apos;t know the biological mechanism of skin itching To solve with simple anti-inflammatory chemicals, sea salt substances, and various hegemonic raw materials
-              </p>
-              <p className={styles.detailDescription}>
-                There are many disadvantages<br />
-                Excessive publicity will only cause more pain and frustration for users suffering from the itching.<br />
-                Stop it now.<br />
-                The pain of being hurt by lies is even greater
+              <p className={styles.detailOverlayText}>
+                SINCE May 2026
               </p>
 
               <p className={styles.heroPrice}>
