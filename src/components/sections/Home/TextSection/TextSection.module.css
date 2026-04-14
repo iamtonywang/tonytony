@@ -541,12 +541,19 @@
   }
 
   .textLine {
-    font-size: 12px;
+    font-size: 12.5px;
     line-height: 1.35;
+    font-weight: 500;
   }
 
   .textHero {
     font-size: 15px;
+  }
+
+  .textHeroStrong {
+    color: #ff8a3d;
+    font-size: 17px;
+    font-weight: 500;
   }
 
   .textOrangePrimary {
@@ -563,6 +570,12 @@
 
   .textHighlight {
     font-size: 17px;
+  }
+
+  .textHighlightStrong {
+    color: #ff8a3d;
+    font-size: 19px;
+    font-weight: 500;
   }
 
   .mobileLineBreak {
@@ -584,6 +597,7 @@
     line-height: 1.4;
     margin-top: 4px;
     margin-bottom: 4px;
+    font-weight: 500;
   }
 
 }

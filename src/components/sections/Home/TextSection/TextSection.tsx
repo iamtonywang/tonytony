@@ -66,7 +66,9 @@ export default function TextSection() {
               className={styles.statementTextInner + " " + styles.statementPrimaryBlock}
               draggable={false}
             >
-              <div className={styles.textLine + " " + styles.textHero}>HEY</div>
+              <div className={`${styles.textLine} ${styles.textHero} ${styles.textHeroStrong}`}>
+                HEY
+              </div>
               <div className={styles.textLine}>
                 <span>내가 스킨케어를 연구하고 개발한다는 것은 </span>
                 <span className={styles.mobileLineBreak}>상상도 하지 않았어</span>
@@ -74,7 +76,9 @@ export default function TextSection() {
               <div className={styles.textLine}>바이오와 향장학은 분야가 너무 달라</div>
               <div className={styles.textLine}>하찮다고 생각했어 지금도 같은 생각이야</div>
               <div className={styles.textLine}>쓰레기 보다 못한 스킨케어 를 부숴버리고 싶어</div>
-              <div className={`${styles.textLine} ${styles.textHighlight}`}>I don't like lying</div>
+              <div className={`${styles.textLine} ${styles.textHighlight} ${styles.textHighlightStrong}`}>
+                I don&apos;t like lying
+              </div>
               <div className={styles.textLine}>나는 거짓이 싫다</div>
               <div className={styles.textLine}>원하는 것을 이루기 위해서는 미쳐야 한다</div>
               <div className={styles.textLine + " " + styles.textOrangeSecondary}>창조란?</div>
@@ -84,7 +88,9 @@ export default function TextSection() {
                 <span>스킨케어로도 세상을 뒤집어 놓을수있다는 것을 </span>
                 <span className={styles.mobileLineBreak}>보여줄려고 해</span>
               </div>
-              <div className={styles.textLine + " " + styles.textSectionTitle}>식물 세포 유전자 단백질</div>
+              <div className={styles.textLine + " " + styles.textSectionTitle}>
+                Plant Cell Genetic Protein
+              </div>
               <div className={styles.textLine}>세균이 지배하는 피부에 세균를 지휘하는 마에스트로</div>
               <div className={styles.textLine}>새로운 피부 조직을 변혁 시키는 유일한 유전자 단백질</div>
               <div className={styles.textLine}>나에게 가장 큰 힘은 입증이다 그것이 나에게 있다</div>
