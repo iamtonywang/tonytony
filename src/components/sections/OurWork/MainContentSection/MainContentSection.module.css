@@ -238,7 +238,9 @@
 
   .ourWorkOverlayLine {
     font-size: 14px;
-    line-height: 1.65;
+    line-height: 1.4;
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
 
   .statementSmallBlock .ourWorkOverlayLine {
