@@ -82,9 +82,9 @@ export default function HeroSection() {
     }
 
     const lineCount = WHY_LINES.length;
-    const lineVisibleMs = 2250;
-    const lineExitMs = 360;
-    const finalStackDelayMs = 900;
+    const lineVisibleMs = 1500;
+    const lineExitMs = 180;
+    const finalStackDelayMs = 400;
     let visibleTimeout: ReturnType<typeof setTimeout> | null = null;
     let exitTimeout: ReturnType<typeof setTimeout> | null = null;
     let finalTimeout: ReturnType<typeof setTimeout> | null = null;
