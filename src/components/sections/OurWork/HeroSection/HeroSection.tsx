@@ -218,8 +218,8 @@ export default function HeroSection() {
             {!showVideo && (
               <div className={styles.fallbackOverlay}>
                 <p className={styles.heroText}>
-                  {BACKGROUND_LINES.map((line) => (
-                    <span key={line}>
+                  {BACKGROUND_LINES.map((line, index) => (
+                    <span key={`${line}-${index}`}>
                       {line}
                       <br />
                     </span>
@@ -241,8 +241,8 @@ export default function HeroSection() {
                   </p>
                 ) : (
                   <div className={styles.finalStack}>
-                    {HERO_LINES.map((line) => (
-                      <p key={line} className={styles.finalStackLine}>
+                    {HERO_LINES.map((line, index) => (
+                      <p key={`${line}-${index}`} className={styles.finalStackLine}>
                         {line}
                       </p>
                     ))}
