@@ -404,6 +404,11 @@ export default function Nigajun77View({ product, boardItems }: Props) {
           <div className={styles.detailVisualOverlay} draggable={false}>
             <div className={styles.detailOverlayInner}>
               <h1 className={styles.detailTitle}>TONYWANG</h1>
+              <p className={`${styles.detailOverlayText} ${styles.detailSubTitle14}`}>NIGAJUN77</p>
+              <p className={`${styles.detailOverlayText} ${styles.detailSubTitle14}`}>Proteo Phyto Complex</p>
+              <p className={`${styles.detailOverlayText} ${styles.detailSubTitle14}`}>
+                Lower Body Fat Improvement Cream
+              </p>
 
               <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 종아리는 특별한 지방 조직이다.

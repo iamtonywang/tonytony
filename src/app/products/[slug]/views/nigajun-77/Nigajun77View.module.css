@@ -593,6 +593,10 @@
   font-weight: 300;
 }
 
+.detailSubTitle14 {
+  font-size: 14px;
+}
+
 .detailDescription {
   margin: 0 auto;
   max-width: 760px;
