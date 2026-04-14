@@ -598,6 +598,10 @@
   font-size: 14px;
 }
 
+.mobileBreak {
+  display: inline;
+}
+
 .detailDescription {
   margin: 0 auto;
   max-width: 760px;
@@ -695,9 +699,15 @@
     line-height: 1.8;
   }
 
+  .mobileBreak {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
   .detailOverlayText {
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 13px;
+    font-weight: 500;
   }
 
   .korText {

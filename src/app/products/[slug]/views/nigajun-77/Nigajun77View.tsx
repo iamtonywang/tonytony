@@ -441,8 +441,9 @@ export default function Nigajun77View({ product, boardItems }: Props) {
               <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방세포는 더 이상 축적 환경을 유지하기 어렵다.
               </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                지방 조직 주변에서 나타나는 저등급 염증(low-grade inflammation)
+              <p className={styles.detailOverlayText}>
+                지방 조직 주변에서 나타나는 저등급 염증
+                <span className={styles.mobileBreak}>(low-grade inflammation)</span>
               </p>
               <p className={`${styles.detailOverlayText} ${styles.korText}`}>
                 지방 축적을 유지시키는 중요한 조건이다
