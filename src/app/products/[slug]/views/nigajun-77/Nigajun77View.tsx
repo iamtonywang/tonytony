@@ -443,36 +443,6 @@ export default function Nigajun77View({ product, boardItems }: Props) {
                 지방 축적을 유지시키는 중요한 조건이다
               </p>
 
-              <p className={styles.detailOverlayText}>
-                The calf is a special fat tissue.
-              </p>
-              <p className={styles.detailOverlayText}>
-                There is a lot of movement, but fat does not disappear easily. The reason is simple.
-              </p>
-              <p className={styles.detailOverlayText}>
-                Calf fat is maintained by metabolic environment, not by edema. Fat cells are not just stores of fat.
-              </p>
-              <p className={styles.detailOverlayText}>
-                Adipocytes are metabolic cells that move between the energy storage mode and the energy consumption mode.
-              </p>
-              <p className={styles.detailOverlayText}>
-                The problem is that most calf fat is
-                <br className={styles.mobileOnly} />
-                fixed in storage mode.
-              </p>
-              <p className={styles.detailOverlayText}>
-                As the fat synthase FAS ACC pathway is suppressed
-              </p>
-              <p className={styles.detailOverlayText}>
-                Adipocytes are no longer able to maintain an accumulation environment.
-              </p>
-              <p className={styles.detailOverlayText}>
-                Low-grade inflammation around adipose tissue
-              </p>
-              <p className={styles.detailOverlayText}>
-                be an important condition for maintaining fat accumulation
-              </p>
-
               <p className={styles.heroPrice}>
                 {typeof product?.finalPriceAmount === "number"
                   ? `₩${product.finalPriceAmount.toLocaleString()}`
