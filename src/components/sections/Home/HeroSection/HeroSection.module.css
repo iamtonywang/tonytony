@@ -216,31 +216,29 @@
   transform: translateY(0) scale(1) rotate(0deg);
   filter: blur(0);
   transition:
-    opacity 750ms ease,
-    transform 750ms ease,
-    filter 750ms ease;
+    opacity 820ms ease,
+    transform 820ms ease,
+    filter 820ms ease;
   will-change: opacity, transform, filter;
 }
 
 .videoTextEnter {
-  animation: homeHeroTextEnter 700ms ease forwards;
+  animation: homeHeroTextEnter 650ms ease forwards;
 }
 
 .videoTextExit {
   opacity: 0;
-  transform: translateY(-40px) scale(0.92) rotate(-18deg);
+  transform: translateY(-44px) scale(0.9) rotate(-24deg);
   filter: blur(12px);
 }
 
 @keyframes homeHeroTextEnter {
   from {
     opacity: 0;
-    transform: translateY(18px) scale(1.02);
     filter: blur(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
     filter: blur(0);
   }
 }
