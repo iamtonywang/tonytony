@@ -663,6 +663,16 @@
   color: rgba(255, 255, 255, 0.94);
 }
 
+.titleTony {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.titleNigajun {
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .detailTitleSmall {
   font-size: 14px;
   font-weight: 500;
@@ -670,9 +680,9 @@
 
 .detailOverlayText {
   margin: 0 0 10px;
-  font-size: clamp(13px, 1.08vw, 16px);
-  line-height: 1.65;
+  font-size: 14px;
   font-weight: 500;
+  line-height: 1.65;
   color: rgba(255, 255, 255, 0.82);
 }
 

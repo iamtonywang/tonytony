@@ -347,14 +347,8 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
 
         <div className={styles.detailVisualOverlay} draggable={false}>
           <div className={styles.detailOverlayInner}>
-            <p className={styles.detailOverlayHeading}>TONYWANG</p>
-            <p className={`${styles.detailOverlayHeading} ${styles.detailTitleSmall}`}>
-              NIGAJUN 44
-            </p>
-            <p className={styles.detailOverlayText}>Proteo Phyto Complex</p>
-            <p className={styles.detailOverlayText}>
-              I welcome you to those who truly want to transform
-            </p>
+            <p className={`${styles.detailOverlayHeading} ${styles.titleTony}`}>TONYWANG</p>
+            <p className={`${styles.detailOverlayText} ${styles.titleNigajun}`}>NIGAJUN44</p>
 
             <p className={styles.detailOverlayText}>
               <span className={styles.pcOnly}>
