@@ -81,6 +81,11 @@
   padding: 0 12px;
 }
 
+.motionOverlay .heroText {
+  white-space: nowrap;
+  width: max-content;
+}
+
 .heroText {
   margin: 0;
   color: inherit;
@@ -153,9 +158,9 @@
     top: 54%;
   }
 
-  .heroText {
+  .motionOverlay .heroText {
     font-size: 25px;
-    line-height: 1.35;
+    line-height: 1.45;
   }
 
   .finalStackLine {
