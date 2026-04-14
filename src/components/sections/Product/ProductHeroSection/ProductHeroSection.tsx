@@ -157,13 +157,16 @@ export default function ProductHeroSection() {
               {HERO_LINES[activeLineIndex]}
             </p>
           </div>
-          <div className={styles.heroStaticBlock}>
-            <div className={styles.heroSubLine}>plant cell genetic protein</div>
-            <div className={styles.heroSubLine}>Institute Bio-Bioengineering</div>
-            <div className={styles.heroSubLine}>식물세포유전자단백질</div>
-            <div className={styles.heroSubLine}>바이오생명공학연구소</div>
-            <div className={styles.heroSubLine}>My job is to develop a plant cell gene protein</div>
-          </div>
+          {!showVideo ? (
+            <div className={styles.heroStaticBlock}>
+              <div className={styles.heroStaticTitle}>TONYWANG</div>
+              <div className={styles.heroSubLine}>plant cell genetic protein</div>
+              <div className={styles.heroSubLine}>Institute Bio-Bioengineering</div>
+              <div className={styles.heroSubLine}>식물세포유전자단백질</div>
+              <div className={styles.heroSubLine}>바이오생명공학연구소</div>
+              <div className={styles.heroSubLine}>My job is to develop a plant cell gene protein</div>
+            </div>
+          ) : null}
         </div>
         <button
           type="button"

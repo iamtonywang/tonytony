@@ -15,6 +15,14 @@
   text-align: center;
 }
 
+.heroStaticTitle {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 400;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .heroSubLine {
   font-size: 14px;
   line-height: 1.5;
