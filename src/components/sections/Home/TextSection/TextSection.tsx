@@ -89,7 +89,7 @@ export default function TextSection() {
               <div className={styles.textLine}>새로운 피부 조직을 변혁 시키는 유일한 유전자 단백질</div>
               <div className={styles.textLine}>나에게 가장 큰 힘은 입증이다 그것이 나에게 있다</div>
               <div className={styles.textLine}>바이오는 입증으로 모든 걸 증명하는 것이다</div>
-              <div className={styles.textLine}>Since 2025 August TONYWANG</div>
+              <div className={styles.textLine}>SINCE May 2026</div>
             </div>
           </div>
         </div>
