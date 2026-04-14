@@ -3,24 +3,34 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.css";
 
-const HERO_BLOCKS = [
-  ["HEY", "TONY WANG"],
-  ["Why?"],
-  ["Did you come out into the", "world?"],
-  ["NIGAJUN", "SKINCARE"],
-  ["I wanted"],
-  ["enjoy it"],
-  ["Okay."],
-  ["waste"],
-  ["Fake"],
-  ["All"],
-  ["Throw it away"],
-  ["What's the best"],
-  ["I will show you."],
-  ["NIGAJUN"],
-  ["TONY WANG"],
-  ["TONY WANG", "SINCE May 2026"],
+const HERO_LINES = [
+  "HEY",
+  "TONY WANG",
+  "Why?",
+  "Did you come out into the world?",
+  "NIGAJUN",
+  "SKINCARE",
+  "I wanted",
+  "enjoy it",
+  "Okay.",
+  "waste",
+  "Fake",
+  "All",
+  "Throw it away",
+  "What's the best",
+  "I will show you.",
+  "NIGAJUN",
+  "TONY WANG",
+  "TONY WANG",
+  "SINCE May 2026",
 ];
+
+const TYPE_SPEED_MS = 110;
+const LINE_HOLD_MS = 1800;
+const PRE_EXIT_HOLD_MS = 250;
+const EXIT_MS = 750;
+const NEXT_LINE_DELAY_MS = 350;
+const PENULTIMATE_HOLD_MS = 2200;
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
@@ -30,8 +40,9 @@ export default function HeroSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasVideo, setHasVideo] = useState(false);
   const [hasPlaybackStarted, setHasPlaybackStarted] = useState(false);
-  const [blockIndex, setBlockIndex] = useState(0);
-  const [typedLines, setTypedLines] = useState<string[]>([]);
+  const [lineIndex, setLineIndex] = useState(0);
+  const [typedText, setTypedText] = useState("");
+  const [isTextEntering, setIsTextEntering] = useState(false);
   const [isTextExiting, setIsTextExiting] = useState(false);
 
   useEffect(() => {
@@ -130,8 +141,9 @@ export default function HeroSection() {
       video.currentTime = 0;
       setIsPlaying(false);
       setHasPlaybackStarted(false);
-      setBlockIndex(0);
-      setTypedLines([]);
+      setLineIndex(0);
+      setTypedText("");
+      setIsTextEntering(false);
       setIsTextExiting(false);
     };
 
@@ -151,53 +163,63 @@ export default function HeroSection() {
         setTimeout(resolve, ms);
       });
 
-    const runBlocks = async () => {
+    const runLines = async () => {
       let current = 0;
-      setBlockIndex(0);
-      setTypedLines([]);
+      setLineIndex(0);
+      setTypedText("");
+      setIsTextEntering(false);
       setIsTextExiting(false);
 
-      while (!cancelled && current < HERO_BLOCKS.length) {
-        const lines = HERO_BLOCKS[current];
-        const buffer: string[] = [];
+      while (!cancelled && current < HERO_LINES.length) {
+        const line = HERO_LINES[current];
+        setTypedText("");
+        setIsTextEntering(true);
+        setIsTextExiting(false);
+        setLineIndex(current);
 
-        for (let i = 0; i < lines.length; i += 1) {
-          const line = lines[i];
-          let typed = "";
-
-          for (const ch of line) {
-            if (cancelled) return;
-            typed += ch;
-            buffer[i] = typed;
-            setTypedLines([...buffer]);
-            await sleep(65);
-          }
-
+        let typed = "";
+        for (const ch of line) {
           if (cancelled) return;
-          await sleep(220);
+          typed += ch;
+          setTypedText(typed);
+          await sleep(TYPE_SPEED_MS);
         }
 
         if (cancelled) return;
-        await sleep(900);
+        const isPenultimate = current === HERO_LINES.length - 2;
+        const isLast = current === HERO_LINES.length - 1;
+
+        await sleep(isPenultimate ? PENULTIMATE_HOLD_MS : LINE_HOLD_MS);
+        if (cancelled) return;
+        await sleep(PRE_EXIT_HOLD_MS);
         if (cancelled) return;
 
+        if (isLast) {
+          setIsTextEntering(false);
+          return;
+        }
+
+        setIsTextEntering(false);
         setIsTextExiting(true);
-        await sleep(650);
+        await sleep(EXIT_MS);
         if (cancelled) return;
 
-        setTypedLines([]);
+        setTypedText("");
         setIsTextExiting(false);
+        await sleep(NEXT_LINE_DELAY_MS);
+        if (cancelled) return;
         current += 1;
-        setBlockIndex(current);
+        setLineIndex(current);
       }
 
       if (cancelled) return;
-      setTypedLines([]);
+      setTypedText("");
+      setIsTextEntering(false);
       setIsTextExiting(false);
-      setBlockIndex(0);
+      setLineIndex(0);
     };
 
-    runBlocks();
+    runLines();
 
     return () => {
       cancelled = true;
@@ -223,8 +245,9 @@ export default function HeroSection() {
       video.currentTime = 0;
       setIsPlaying(false);
       setHasPlaybackStarted(false);
-      setBlockIndex(0);
-      setTypedLines([]);
+      setLineIndex(0);
+      setTypedText("");
+      setIsTextEntering(false);
       setIsTextExiting(false);
     }
   };
@@ -255,14 +278,12 @@ export default function HeroSection() {
             className={`${styles.videoTextWrap} ${hideText ? styles.videoTextWrapVisible : ""}`}
             aria-hidden="true"
           >
-            {hasPlaybackStarted ? (
-              <p className={`${styles.videoText} ${isTextExiting ? styles.videoTextExit : ""}`}>
-                {typedLines.map((line, i) => (
-                  <span key={`${blockIndex}-${i}`}>
-                    {line}
-                    {i < typedLines.length - 1 ? <br /> : null}
-                  </span>
-                ))}
+            {hasPlaybackStarted && typedText ? (
+              <p
+                key={lineIndex}
+                className={`${styles.videoText} ${isTextEntering ? styles.videoTextEnter : ""} ${isTextExiting ? styles.videoTextExit : ""}`}
+              >
+                {typedText}
               </p>
             ) : null}
           </div>
