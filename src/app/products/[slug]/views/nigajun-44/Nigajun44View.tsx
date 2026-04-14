@@ -387,7 +387,9 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
 
             <p className={styles.detailOverlayText}>나는 그들과 같은 존재가 되기 싫어</p>
 
-            <p className={styles.detailOverlayText}>I don't like lying</p>
+            <p className={`${styles.detailOverlayText} ${styles.detailHighlightSmall}`}>
+              I don&apos;t like lying
+            </p>
 
             <p className={styles.detailOverlayText}>나는 거짓이 싫을 뿐이고</p>
             <p className={styles.detailOverlayText}>
