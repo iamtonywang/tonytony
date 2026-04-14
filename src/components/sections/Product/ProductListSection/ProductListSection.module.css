@@ -159,7 +159,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 .productOverlayItem {
@@ -183,6 +183,15 @@
 .productOverlayItem:nth-child(8) { animation-delay: 2.3s; }
 
 .productOverlayLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 132px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  box-sizing: border-box;
+  background: transparent;
   color: #ffffff;
   text-decoration: none;
   font-size: 17px;
@@ -195,6 +204,8 @@
 .productOverlayLink:hover,
 .productOverlayLink:focus {
   color: #ff7f00;
+  border-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.04);
   outline: none;
 }
 
@@ -293,5 +304,7 @@
 
   .productOverlayLink {
     font-size: 17px;
+    min-width: 118px;
+    padding: 7px 12px;
   }
 }
