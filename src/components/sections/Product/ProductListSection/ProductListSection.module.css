@@ -302,9 +302,14 @@
     object-position: center;
   }
 
+  .productOverlayList {
+    gap: 6px;
+  }
+
   .productOverlayLink {
-    font-size: 17px;
-    min-width: 118px;
-    padding: 7px 12px;
+    min-width: 104px;
+    padding: 6px 10px;
+    line-height: 1.1;
+    font-size: 16px;
   }
 }
