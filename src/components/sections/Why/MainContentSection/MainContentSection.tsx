@@ -58,12 +58,6 @@ export default function MainContentSection() {
             <div key={animKey} className={styles.whyTextInner}>
               <div className={styles.whyOverlayLine}>TONYWANG</div>
               <div className={styles.whyOverlayLine}>Plant Cell Gene Protein</div>
-              <div className={styles.whyOverlayLine}>
-                Biopharmaceutical Bacteria, Viruses, Cells mRNA Platform-Based Design
-              </div>
-              <div className={styles.whyOverlayLine}>
-                Natural product-based plant cell gene protein platform technology
-              </div>
               <div className={styles.statementSmallBlock}>
                 <div className={styles.whyOverlayLine}>벤자민 버튼! 처럼 돌아갈수만 있다면 . . . .</div>
                 <div className={styles.whyOverlayLine}>짧아진 텔로미어를 늘릴수 있다면 ?</div>
@@ -92,7 +86,9 @@ export default function MainContentSection() {
                 <div className={styles.whyOverlayLine}>식물세포 DNA 클로닝 재조합</div>
                 <div className={styles.whyOverlayLine}>세포 간 유전자 융합을 통해 제3의 단백질 창출</div>
               </div>
-              <div className={styles.whyOverlayLine}>SINCE  August 2025 TONYWANG</div>
+              <div className={`${styles.whyOverlayLine} ${styles.sinceSmall}`}>
+                SINCE May 2026
+              </div>
             </div>
           </div>
         </div>

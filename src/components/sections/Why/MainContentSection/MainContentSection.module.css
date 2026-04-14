@@ -122,6 +122,10 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
+.sinceSmall {
+  font-size: 14px;
+}
+
 .whyTextOverlayVisible .whyOverlayLine {
   animation-play-state: running;
 }
