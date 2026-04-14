@@ -729,16 +729,11 @@
 
 .detailVisualOverlay {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: auto;
+  inset: 0;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  padding-bottom: clamp(24px, 6vh, 64px);
-  pointer-events: none;
-  user-select: none;
+  align-items: flex-start;
+  padding-top: 120px;
 }
 
 .detailOverlayInner {
