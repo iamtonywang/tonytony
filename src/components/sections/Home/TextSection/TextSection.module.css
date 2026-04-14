@@ -328,7 +328,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(35%) brightness(0.68) contrast(0.92);
   -webkit-user-drag: none;
   user-select: none;
 }
@@ -523,7 +522,6 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: grayscale(35%) brightness(0.68) contrast(0.92);
   }
 
   .statementTextOverlay {
