@@ -88,16 +88,16 @@
 
 .productGradientOverlay {
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 55%;
+  height: auto;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.6) 55%,
-    rgba(0, 0, 0, 0.9) 100%
+    rgba(95, 95, 95, 0.55),
+    rgba(95, 95, 95, 0.65)
   );
 }
 
@@ -105,23 +105,16 @@
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   gap: 16px;
   padding: 16px;
-  transform: translateY(5%);
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-touch-callout: none;
-}
-
-@media (min-width: 769px) {
-  .productTextOverlay {
-    transform: translateY(0);
-  }
 }
 
 .productOverlayCopy {
@@ -260,10 +253,6 @@
 }
 
 @media (max-width: 768px) {
-  .productTextOverlay {
-    transform: translateY(15%);
-  }
-
   .productSeoTitle,
   .productBottomTitle {
     font-size: 25px;
