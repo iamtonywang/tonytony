@@ -202,8 +202,8 @@
 .videoText {
   margin: 0;
   color: #ffffff;
-  font-size: 14px;
-  line-height: 1.45;
+  font-size: 17px;
+  line-height: 1.5;
   letter-spacing: 0.01em;
   text-align: center;
   white-space: normal;
@@ -214,17 +214,14 @@
   width: 100%;
   opacity: 1;
   transform: translateY(0) rotate(0deg);
-  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: blur(0);
+  transition: opacity 650ms ease, transform 650ms ease, filter 650ms ease;
 }
 
 .videoTextExit {
   opacity: 0;
-  transform: translateY(-26px) rotate(-29deg);
-  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.videoTextEmphasis {
-  font-size: 25px;
+  transform: translateY(-10px);
+  filter: blur(6px);
 }
 
 @media (max-width: 768px) {
@@ -238,10 +235,7 @@
     max-width: calc(100vw - 32px);
   }
   .videoText {
-    font-size: 13px;
-    line-height: 1.45;
-  }
-  .videoTextEmphasis {
-    font-size: 18px;
+    font-size: 17px;
+    line-height: 1.5;
   }
 }

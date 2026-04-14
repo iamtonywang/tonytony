@@ -3,60 +3,24 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.css";
 
-const HERO_SEQUENCE = [
-  "HEY",
-  "TONY WANG",
-  "Do you know the reality?",
-  "People don't know TONY WANG",
-  "I don't have a presence",
-  "No one knows TONY WANG",
-  "Why is it coming out to the world?",
-  "I want to prove that I'm the best",
-  "And",
-  "I want to enjoy the new challenge to my heart's content",
-  "revolution",
-  "Not everyone can do it",
-  "TONY WANG",
-  "only one who can do it",
-  "It's only possible for the Creation",
-  "Creation !",
-  "You have to be crazy to have it"
+const HERO_BLOCKS = [
+  ["HEY", "TONY WANG"],
+  ["Why?"],
+  ["Did you come out into the", "world?"],
+  ["NIGAJUN", "SKINCARE"],
+  ["I wanted"],
+  ["enjoy it"],
+  ["Okay."],
+  ["waste"],
+  ["Fake"],
+  ["All"],
+  ["Throw it away"],
+  ["What's the best"],
+  ["I will show you."],
+  ["NIGAJUN"],
+  ["TONY WANG"],
+  ["TONY WANG", "SINCE May 2026"],
 ];
-
-const EMPHASIS_TEXT = [
-  "HEY",
-  "TONY WANG",
-  "And",
-  "revolution",
-  "TONY WNG",
-  "Creation !"
-];
-
-const HERO_FINAL_BLOCK = (
-  <>
-    TONY WANG<br />
-    All right.<br />
-    I've been studying cells for 28 years<br />
-    I've never thought about making trashy cosmetics<br />
-    It's their lies that made me angry<br />
-    I decided to change all my trashy cosmetics<br />
-    I decided to make a crazy new creation this time<br />
-    I researched and developed NIGAJUN<br />
-    I want to prove that the past and present are the first<br />
-    I want to show you that I'm the best<br />
-    I think it's going to be a fun game<br />
-    I thought about it and decided<br />
-    You can turn the world around with skincare<br />
-    What excites me even more is that<br />
-    It's a bad skincare culture that only lies<br />
-    I want to break it down<br />
-    You have to be crazy to win<br />
-    This is my TONY WANG's belief<br />
-    You have to be crazy to get what you want<br />
-    It's a very good and valuable work<br />
-    TONY WANG
-  </>
-);
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
@@ -65,10 +29,10 @@ export default function HeroSection() {
   const [hideText, setHideText] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasVideo, setHasVideo] = useState(false);
-  const [seqIndex, setSeqIndex] = useState(0);
-  const [showFinalBlock, setShowFinalBlock] = useState(false);
   const [hasPlaybackStarted, setHasPlaybackStarted] = useState(false);
-  const [isSequenceExiting, setIsSequenceExiting] = useState(false);
+  const [blockIndex, setBlockIndex] = useState(0);
+  const [typedLines, setTypedLines] = useState<string[]>([]);
+  const [isTextExiting, setIsTextExiting] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -166,7 +130,9 @@ export default function HeroSection() {
       video.currentTime = 0;
       setIsPlaying(false);
       setHasPlaybackStarted(false);
-      setIsSequenceExiting(false);
+      setBlockIndex(0);
+      setTypedLines([]);
+      setIsTextExiting(false);
     };
 
     video.addEventListener("ended", handleEnded);
@@ -178,39 +144,63 @@ export default function HeroSection() {
   useEffect(() => {
     if (!hasPlaybackStarted) return;
 
-    setSeqIndex(0);
-    setShowFinalBlock(false);
-    setIsSequenceExiting(false);
+    let cancelled = false;
 
-    let currentIndex = 0;
-    let stepTimeout: ReturnType<typeof setTimeout> | null = null;
-    let exitTimeout: ReturnType<typeof setTimeout> | null = null;
+    const sleep = (ms: number) =>
+      new Promise<void>((resolve) => {
+        setTimeout(resolve, ms);
+      });
 
-    const runSequence = () => {
-      exitTimeout = setTimeout(() => {
-        setIsSequenceExiting(true);
-      }, 3360);
+    const runBlocks = async () => {
+      let current = 0;
+      setBlockIndex(0);
+      setTypedLines([]);
+      setIsTextExiting(false);
 
-      stepTimeout = setTimeout(() => {
-        currentIndex += 1;
+      while (!cancelled && current < HERO_BLOCKS.length) {
+        const lines = HERO_BLOCKS[current];
+        const buffer: string[] = [];
 
-        if (currentIndex >= HERO_SEQUENCE.length) {
-          setIsSequenceExiting(false);
-          setShowFinalBlock(true);
-          return;
+        for (let i = 0; i < lines.length; i += 1) {
+          const line = lines[i];
+          let typed = "";
+
+          for (const ch of line) {
+            if (cancelled) return;
+            typed += ch;
+            buffer[i] = typed;
+            setTypedLines([...buffer]);
+            await sleep(65);
+          }
+
+          if (cancelled) return;
+          await sleep(220);
         }
 
-        setSeqIndex(currentIndex);
-        setIsSequenceExiting(false);
-        runSequence();
-      }, 4440);
+        if (cancelled) return;
+        await sleep(900);
+        if (cancelled) return;
+
+        setIsTextExiting(true);
+        await sleep(650);
+        if (cancelled) return;
+
+        setTypedLines([]);
+        setIsTextExiting(false);
+        current += 1;
+        setBlockIndex(current);
+      }
+
+      if (cancelled) return;
+      setTypedLines([]);
+      setIsTextExiting(false);
+      setBlockIndex(0);
     };
 
-    runSequence();
+    runBlocks();
 
     return () => {
-      if (exitTimeout) clearTimeout(exitTimeout);
-      if (stepTimeout) clearTimeout(stepTimeout);
+      cancelled = true;
     };
   }, [hasPlaybackStarted]);
 
@@ -233,9 +223,9 @@ export default function HeroSection() {
       video.currentTime = 0;
       setIsPlaying(false);
       setHasPlaybackStarted(false);
-      setSeqIndex(0);
-      setShowFinalBlock(false);
-      setIsSequenceExiting(false);
+      setBlockIndex(0);
+      setTypedLines([]);
+      setIsTextExiting(false);
     }
   };
 
@@ -266,22 +256,14 @@ export default function HeroSection() {
             aria-hidden="true"
           >
             {hasPlaybackStarted ? (
-              showFinalBlock ? (
-                <p className={styles.videoText}>
-                  {HERO_FINAL_BLOCK}
-                </p>
-              ) : (
-                <p
-                  key={seqIndex}
-                  className={`
-                    ${styles.videoText}
-                    ${isSequenceExiting ? styles.videoTextExit : ""}
-                    ${EMPHASIS_TEXT.includes(HERO_SEQUENCE[seqIndex]) ? styles.videoTextEmphasis : ""}
-                  `}
-                >
-                  {HERO_SEQUENCE[seqIndex]}
-                </p>
-              )
+              <p className={`${styles.videoText} ${isTextExiting ? styles.videoTextExit : ""}`}>
+                {typedLines.map((line, i) => (
+                  <span key={`${blockIndex}-${i}`}>
+                    {line}
+                    {i < typedLines.length - 1 ? <br /> : null}
+                  </span>
+                ))}
+              </p>
             ) : null}
           </div>
 
