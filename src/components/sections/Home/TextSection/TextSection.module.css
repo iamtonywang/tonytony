@@ -342,9 +342,9 @@
   mix-blend-mode: multiply;
   background: linear-gradient(
     to bottom,
-    rgba(95, 95, 95, 0.42) 0%,
-    rgba(95, 95, 95, 0.58) 45%,
-    rgba(95, 95, 95, 0.72) 100%
+    rgba(95, 95, 95, 0.55) 0%,
+    rgba(95, 95, 95, 0.65) 40%,
+    rgba(95, 95, 95, 0.8) 100%
   );
 }
 
