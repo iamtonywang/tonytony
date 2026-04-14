@@ -306,7 +306,13 @@ function HeroSection({ product }: { product?: ProductMinimal }) {
                   setShowFinalBlock(false);
                 } else {
                   video.pause();
+                  try {
+                    video.currentTime = 0;
+                  } catch {}
                   setIsPlaying(false);
+                  setActiveLineIndex(0);
+                  setLinePhase("enter");
+                  setShowFinalBlock(false);
                 }
               } catch (error) {
                 if (!(error instanceof DOMException && error.name === "AbortError")) {
