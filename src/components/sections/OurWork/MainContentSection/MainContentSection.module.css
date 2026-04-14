@@ -112,13 +112,13 @@
 }
 
 .ourWorkOverlayLine {
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   opacity: 0;
   transform: translateY(6px);
   animation: ourWorkLineIn 1.2s ease forwards paused;
   font-size: 17px;
-  line-height: 1.5;
+  line-height: 1.65;
   font-weight: 400;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
@@ -234,7 +234,7 @@
 
   .ourWorkOverlayLine {
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.65;
   }
 
   .statementSmallBlock .ourWorkOverlayLine {
