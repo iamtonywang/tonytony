@@ -56,7 +56,9 @@ export default function MainContentSection() {
             aria-hidden="true"
           >
             <div key={animKey} className={styles.ourWorkTextInner}>
-              <div className={styles.ourWorkOverlayLine}>TONYWANG</div>
+              <div className={`${styles.ourWorkOverlayLine} ${styles.tonyOffset}`}>
+                TONYWANG
+              </div>
               <div className={styles.ourWorkOverlayLine}>Plant Cell Gene Protein</div>
               <div className={styles.statementSmallBlock}>
                 <div className={styles.ourWorkOverlayLine}>나는 28년간 인류의 질병</div>
