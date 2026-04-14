@@ -265,9 +265,8 @@
 
 @media (max-width: 768px) {
   .productTextOverlay {
-    transform: none;
     justify-content: flex-start;
-    padding-top: 80px;
+    padding-top: 90px;
   }
 
   .productSeoTitle,
