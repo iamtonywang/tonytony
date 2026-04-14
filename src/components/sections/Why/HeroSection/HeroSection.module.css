@@ -144,6 +144,9 @@
 
 .motionOverlay .heroText {
   font-size: 25px;
+  line-height: 1.45;
+  white-space: nowrap;
+  width: max-content;
 }
 
 .fallbackOverlay .heroText {
