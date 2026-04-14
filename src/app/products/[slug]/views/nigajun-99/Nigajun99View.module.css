@@ -763,8 +763,11 @@
   pointer-events: auto;
 }
 
-
-
-
+@media (max-width: 768px) {
+  .detailOverlayText,
+  .detailOverlayHeading {
+    font-weight: 500;
+  }
+}
 
 
