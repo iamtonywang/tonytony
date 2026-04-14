@@ -448,9 +448,6 @@ export default function Nigajun77View({ product, boardItems }: Props) {
                 지방 축적을 유지시키는 중요한 조건이다
               </p>
               <p className={styles.detailOverlayText}>
-                지방 축적을 유지시키는 중요한 조건이다
-              </p>
-              <p className={styles.detailOverlayText}>
                 SINCE May 2026
               </p>
 
