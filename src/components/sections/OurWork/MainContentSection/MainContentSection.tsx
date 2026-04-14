@@ -79,7 +79,9 @@ export default function MainContentSection() {
                 </div>
                 <div className={styles.ourWorkOverlayLine}>28년 생명공학 연구 개발을 하면서</div>
                 <div className={styles.ourWorkOverlayLine}>단 한번도</div>
-                <div className={styles.ourWorkOverlayLine}>화장품 따위는 만들 생각이 없었다</div>
+                <div className={styles.ourWorkOverlayLine}>
+                  <span className={styles.heroOrangeLine}>화장품 따위는 만들 생각이 없었다</span>
+                </div>
                 <div className={styles.ourWorkOverlayLine}>나의 창작 연구는</div>
                 <div className={styles.ourWorkOverlayLine}>줄기세포 NO, 리포좀 NO,</div>
                 <div className={styles.ourWorkOverlayLine}>엑소좀 NO, 성장인자 NO,</div>
