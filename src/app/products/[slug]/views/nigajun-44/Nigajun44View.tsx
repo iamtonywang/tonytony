@@ -371,9 +371,6 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
             </p>
 
             <p className={styles.detailOverlayText}>
-              피부 독소 개선, 피부 변혁, 트러블 개선 통합적인 CARE 구축.
-            </p>
-            <p className={styles.detailOverlayText}>
               독소가 제거된 피부는 오염이 안된 1급수 물과 같다.
             </p>
             <p className={styles.detailOverlayText}>고통스러운 피부 트러블 개선 된다</p>
