@@ -124,7 +124,7 @@
 
 .finalStackLine {
   margin: 0;
-  font-size: 25px;
+  font-size: 14px;
   line-height: 1.4;
   font-weight: 300;
   text-align: center;
@@ -153,9 +153,13 @@
     top: 54%;
   }
 
-  .heroText,
-  .finalStackLine {
+  .heroText {
     font-size: 25px;
+    line-height: 1.35;
+  }
+
+  .finalStackLine {
+    font-size: 14px;
     line-height: 1.35;
   }
 }
