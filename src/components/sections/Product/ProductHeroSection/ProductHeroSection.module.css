@@ -10,6 +10,17 @@
   pointer-events: none;
 }
 
+.heroStaticBlock {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.heroSubLine {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
 .heroSection {
   width: 100vw;
   max-width: 100vw;
