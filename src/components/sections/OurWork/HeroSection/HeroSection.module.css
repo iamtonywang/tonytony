@@ -91,6 +91,10 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
+.fallbackOverlay .heroText {
+  font-size: 14px;
+}
+
 .brandText {
   position: absolute;
   right: 24px;
