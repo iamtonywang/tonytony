@@ -580,4 +580,10 @@
     line-height: 1.45;
   }
 
+  .statementPrimaryBlock .textLine {
+    line-height: 1.4;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
 }
