@@ -23,7 +23,7 @@ const HERO_LINES = [
   "Not me, but my alter ego,",
   "NIGAJUN",
   "TONYWANG",
-  "SINCE  August 2025 ByTONYWANG",
+  "SINCE May 2026",
 ] as const;
 
 const BACKGROUND_LINES = [
