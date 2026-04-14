@@ -253,6 +253,12 @@
 }
 
 @media (max-width: 768px) {
+  .productTextOverlay {
+    transform: none;
+    justify-content: flex-start;
+    padding-top: 80px;
+  }
+
   .productSeoTitle,
   .productBottomTitle {
     font-size: 25px;
