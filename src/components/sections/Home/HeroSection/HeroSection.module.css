@@ -223,7 +223,7 @@
 }
 
 .videoTextEnter {
-  animation: homeHeroTextEnter 650ms ease forwards;
+  animation: homeHeroTextEnter 650ms ease;
 }
 
 .videoTextExit {

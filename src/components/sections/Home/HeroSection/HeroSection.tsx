@@ -201,6 +201,8 @@ export default function HeroSection() {
         }
 
         setIsTextEntering(false);
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+        if (cancelled) return;
         setIsTextExiting(true);
         await sleep(EXIT_MS);
         if (cancelled) return;
