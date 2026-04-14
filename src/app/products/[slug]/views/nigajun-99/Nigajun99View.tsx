@@ -479,8 +479,11 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
           <div className={styles.detailVisualOverlay} draggable={false}>
             <div className={styles.detailOverlayInner}>
-              <h1 className={styles.detailTitle}>TONYWANG</h1>
-              <p className={styles.detailOverlayText}>
+              <p className={`${styles.detailOverlayHeading} ${styles.titleMain}`}>
+                TONYWANG
+              </p>
+
+              <p className={`${styles.detailOverlayText} ${styles.titleSub}`}>
                 NIGAJUN99
               </p>
 
@@ -514,9 +517,6 @@ export default function Nigajun99View({ product, boardItems }: Props) {
                 이제 그만 멈춰라
               </p>
               <p className={styles.detailDescription}>
-                거짓에 의한 상처받는고통이 더욱 크다
-              </p>
-              <p className={styles.detailOverlayText}>
                 거짓에 의한 상처받는고통이 더욱 크다
               </p>
               <p className={styles.detailOverlayText}>

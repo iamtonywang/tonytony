@@ -595,6 +595,14 @@
   border-color: #ff7f00;
 }
 
+.detailOverlayHeading {
+  margin: 0 0 14px;
+  font-size: clamp(20px, 2.1vw, 30px);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.94);
+}
+
 .detailOverlayText {
   font-size: 14px;
   line-height: 1.5;
@@ -764,8 +772,18 @@
 }
 
 @media (max-width: 768px) {
-  .detailOverlayText,
-  .detailOverlayHeading {
+  .detailOverlayText {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .titleMain {
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .titleSub {
+    font-size: 14px;
     font-weight: 500;
   }
 }
