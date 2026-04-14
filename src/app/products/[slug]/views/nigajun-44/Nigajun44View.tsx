@@ -373,8 +373,6 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
             <p className={styles.detailOverlayText}>
               독소가 제거된 피부는 오염이 안된 1급수 물과 같다.
             </p>
-            <p className={styles.detailOverlayText}>고통스러운 피부 트러블 개선 된다</p>
-
             <p className={styles.detailOverlayText}>긴 설명이 뭐가 필요해 거짓은 필요치 않아</p>
             <p className={styles.detailOverlayText}>
               성분이 뭐고 어떤 구조라고 떠들고 싶지 않아
