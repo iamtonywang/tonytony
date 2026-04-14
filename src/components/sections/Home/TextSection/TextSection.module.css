@@ -384,7 +384,12 @@
   -webkit-touch-callout: none;
 }
 
-
+.statementPrimaryBlock .textLine {
+  font-weight: 400;
+  line-height: 1.65;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
 
 /* Overlay sequential statement text (CSS-only animation) */
 .textLine {

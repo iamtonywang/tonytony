@@ -61,7 +61,11 @@ export default function TextSection() {
             aria-hidden="true"
             draggable={false}
           >
-            <div key={animKey} className={styles.statementTextInner} draggable={false}>
+            <div
+              key={animKey}
+              className={styles.statementTextInner + " " + styles.statementPrimaryBlock}
+              draggable={false}
+            >
               <div className={styles.textLine + " " + styles.textHero}>HEY</div>
               <div className={styles.textLine}>나는 이렇게 나를 정리해 망설이는 시간은 멍청하고 아까워</div>
               <div className={styles.textLine}>그냥 아무 생각 하지마</div>
