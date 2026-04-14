@@ -58,12 +58,6 @@ export default function MainContentSection() {
             <div key={animKey} className={styles.ourWorkTextInner}>
               <div className={styles.ourWorkOverlayLine}>TONYWANG</div>
               <div className={styles.ourWorkOverlayLine}>Plant Cell Gene Protein</div>
-              <div className={styles.ourWorkOverlayLine}>
-                Biopharmaceutical Bacteria, Viruses, Cells mRNA Platform-Based Design
-              </div>
-              <div className={styles.ourWorkOverlayLine}>
-                Natural product-based plant cell gene protein platform technology
-              </div>
               <div className={styles.statementSmallBlock}>
                 <div className={styles.ourWorkOverlayLine}>나는 28년간 인류의 질병</div>
                 <div className={styles.ourWorkOverlayLine}>질병을 유발하는 악성균을 치료할 유전자 단백질을 찾고자</div>
