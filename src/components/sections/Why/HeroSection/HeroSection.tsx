@@ -4,24 +4,33 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.css";
 
 const WHY_LINES = [
-  "TONYWANG",
-  "If only I could go back like Benjamin Burton.",
-  "If you could increase shorter telomeres?",
-  "What if you could rewind that watch?",
-  "It's not age that your skin is getting old, it's because your cells are tired",
+  "TONY WANG",
+  "I found it",
+  "Benjamin Burton",
+  "Telomere",
+  "rewind the clock",
+  "28 years of cell research",
+  "I found it",
+  "I got it",
+  "I made it my own",
+  "Creation",
+  "You have to go crazy",
+  "so",
+  "I can have it",
+  "anyone",
+  "at least once",
+  "Success",
+  "Failed",
+  "I experienced it",
   "Okay.",
-  "I spent 28 years studying cells",
-  "Everyone must have had a crazy challenge at least once in their lives",
-  "And.",
-  "With countless sighs, tears, and heart-wrenching pain",
-  "I realized that I had failed and failed like crazy",
-  "It is divided into those who challenge and those who give up",
-  "Yes, this is life",
-  "It's a trail of time that everyone experiences in a panoramic life",
-  "The failure and success we have in the 8.2 billion population is a part of that",
-  "The only genetic protein that transforms new skin tissue",
-  "Plant Cell Gene Protein",
-  "SINCE  August 2025 TONYWANG",
+  "This is life",
+  "Sigh",
+  "Tears",
+  "And",
+  "a throbbing pain",
+  "Let's overcome it",
+  "to be able to get",
+  "SINCE May 2026",
 ] as const;
 
 const BACKGROUND_LINES = [
@@ -206,8 +215,8 @@ export default function HeroSection() {
             {!showVideo && (
               <div className={styles.fallbackOverlay}>
                 <p className={styles.heroText}>
-                  {BACKGROUND_LINES.map((line) => (
-                    <span key={line}>
+                  {BACKGROUND_LINES.map((line, index) => (
+                    <span key={`${line}-${index}`}>
                       {line}
                       <br />
                     </span>
@@ -228,8 +237,8 @@ export default function HeroSection() {
                   </p>
                 ) : (
                   <div className={styles.finalStack}>
-                    {WHY_LINES.map((line) => (
-                      <p key={line} className={styles.finalStackLine}>
+                    {WHY_LINES.map((line, index) => (
+                      <p key={`${line}-${index}`} className={styles.finalStackLine}>
                         {line}
                       </p>
                     ))}
