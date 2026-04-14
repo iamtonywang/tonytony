@@ -457,6 +457,9 @@ export default function Nigajun35View({ product, boardItems }: Props) {
               <p className={styles.detailOverlayText}>
                 피부 밀도 개선 피부 수분 활성 최적화
               </p>
+              <p className={styles.detailOverlayText}>
+                SINCE May 2026
+              </p>
 
               <p className={styles.heroPrice}>
                 {typeof product?.finalPriceAmount === "number"

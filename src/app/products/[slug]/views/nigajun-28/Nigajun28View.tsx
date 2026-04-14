@@ -28,7 +28,7 @@ const HERO_SEQUENCE_28: string[] = [
   "I'd like to talk to you in person",
   "Proteo Phyto Complex",
   "Genetic Toothpaste",
-  "Since August 2025 TONYWANG",
+  "SINCE May 2026",
 ];
 // TONYWANG만 25px, 나머지 14px
 const HERO_EMPHASIS_28: boolean[] = HERO_SEQUENCE_28.map((line) => line === "TONYWANG");
@@ -443,7 +443,7 @@ export default function Nigajun28View({ product, boardItems }: Props) {
                 </span>
               </p>
               <p className={styles.detailOverlayText}>Bioactive Molecular 시스템이다</p>
-              <p className={styles.detailOverlayText}>Since August 2025 TONYWAN</p>
+              <p className={styles.detailOverlayText}>SINCE May 2026</p>
 
               <p className={styles.heroPrice}>
                 {typeof product?.finalPriceAmount === "number"
@@ -468,7 +468,7 @@ export default function Nigajun28View({ product, boardItems }: Props) {
         <p className={styles.detailCopyText}>
           Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
         </p>
-        <p className={styles.detailCopyText}>Since August 2025 TONYWANG</p>
+        <p className={styles.detailCopyText}>SINCE May 2026</p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />

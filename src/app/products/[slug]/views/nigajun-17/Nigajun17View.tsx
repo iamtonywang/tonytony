@@ -31,7 +31,7 @@ const HERO_SEQUENCE_17: string[] = [
 // TONYWANG만 25px, 나머지 14px
 const HERO_EMPHASIS_17: boolean[] = HERO_SEQUENCE_17.map((line) => line === "TONYWANG");
 // 마지막 단일 문구(2초 유지)
-const HERO_FINAL_BLOCK_17 = "Since August 2025 TONYWANG";
+const HERO_FINAL_BLOCK_17 = "SINCE May 2026";
 
 interface Props {
   product?: ProductMinimal;
@@ -490,7 +490,7 @@ export default function Nigajun17View({ product, boardItems }: Props) {
               <p className={styles.detailOverlayText}>
                 염증 조직 손상을 완화하여 두피 환경의 균형 지원
               </p>
-              <p className={styles.detailOverlayText}>Since August 2025 TONYWAN</p>
+              <p className={styles.detailOverlayText}>SINCE May 2026</p>
 
               <p className={styles.heroPrice}>
                 {typeof product?.finalPriceAmount === "number"
@@ -515,7 +515,7 @@ export default function Nigajun17View({ product, boardItems }: Props) {
         <p className={styles.detailCopyText}>
           Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
         </p>
-        <p className={styles.detailCopyText}>Since August 2025 TONYWANG</p>
+        <p className={styles.detailCopyText}>SINCE May 2026</p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />

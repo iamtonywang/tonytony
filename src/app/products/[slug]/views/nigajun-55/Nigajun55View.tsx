@@ -27,7 +27,7 @@ const HERO_SEQUENCE_55: string[] = [
   "Formation of linear atrophy tissue",
   "Proteo Phyto Complex",
   "Hyper  striae distensae Cream",
-  "Since August 2025 TONYWANG",
+  "SINCE May 2026",
 ];
 // TONYWANG만 25px, 나머지 14px
 const HERO_EMPHASIS_55: boolean[] = HERO_SEQUENCE_55.map((line) => line === "TONYWANG");
@@ -430,7 +430,7 @@ export default function Nigajun55View({ product, boardItems }: Props) {
               <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
                 엘라스틴 네트워크 복원,<br className={styles.mobileOnly} />세포외기질 재구성을 촉진한다.
               </p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>Since August 2025 TONYWANG</p>
+              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>SINCE May 2026</p>
 
               <p className={styles.heroPrice}>
                 {typeof product?.finalPriceAmount === "number"
@@ -455,7 +455,7 @@ export default function Nigajun55View({ product, boardItems }: Props) {
         <p className={styles.detailCopyText}>
           Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
         </p>
-        <p className={styles.detailCopyText}>Since August 2025 TONYWANG</p>
+        <p className={styles.detailCopyText}>SINCE May 2026</p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
