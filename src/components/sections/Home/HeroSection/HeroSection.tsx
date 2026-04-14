@@ -25,10 +25,10 @@ const HERO_LINES = [
   "SINCE May 2026",
 ];
 
-const TYPE_SPEED_MS = 110;
-const LINE_HOLD_MS = 1800;
-const PRE_EXIT_HOLD_MS = 250;
-const EXIT_MS = 750;
+const TYPE_SPEED_MS = 180;
+const LINE_HOLD_MS = 2400;
+const PRE_EXIT_HOLD_MS = 400;
+const EXIT_MS = 1000;
 const NEXT_LINE_DELAY_MS = 350;
 const PENULTIMATE_HOLD_MS = 2200;
 
