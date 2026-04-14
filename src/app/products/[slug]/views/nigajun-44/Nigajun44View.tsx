@@ -396,7 +396,7 @@ function DetailVisualSection({ product }: { product?: ProductMinimal }) {
             <p className={styles.detailOverlayText}>그것은 매우 역겨운 행동이야</p>
             <p className={styles.detailOverlayText}>그래</p>
             <p className={styles.detailOverlayText}>그런게 너무 싫었고 역겨웠어</p>
-            <p className={styles.detailOverlayText}>TONYWANG Since August 2025</p>
+            <p className={styles.detailOverlayText}>SINCE May 2026</p>
 
             <p className={styles.heroPrice}>
               {typeof product?.finalPriceAmount === "number"
@@ -860,7 +860,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <p className={styles.detailCopyText}>But our conviction remains unchanged.</p>
         <p className={styles.detailCopyText}>We speak only the truth.</p>
         <p className={styles.detailCopyText}>Bio Must Prove Itself Through Results</p>
-        <p className={styles.detailCopyText}>TONYWANG Since August 2025</p>
+        <p className={styles.detailCopyText}>SINCE May 2026</p>
       </section>
 
       <div className={styles.detailEndGlowLine} aria-hidden="true" />
