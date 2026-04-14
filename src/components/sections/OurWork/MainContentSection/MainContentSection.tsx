@@ -82,7 +82,7 @@ export default function MainContentSection() {
                 <div className={styles.ourWorkOverlayLine}>바이오 의약품 세균, 바이러스, 세포 mRNA</div>
                 <div className={styles.ourWorkOverlayLine}>천연물 기반 식물세포 유전자 단백질 플랫폼</div>
               </div>
-              <div className={styles.ourWorkOverlayLine}>SINCE  August 2025 TONYWANG</div>
+              <div className={styles.ourWorkOverlayLine}>SINCE May 2026</div>
             </div>
           </div>
         </div>
