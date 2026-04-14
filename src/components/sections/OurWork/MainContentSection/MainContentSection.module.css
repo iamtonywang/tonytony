@@ -124,7 +124,7 @@
 }
 
 .tonyOffset {
-  margin-top: 12px;
+  transform: translateY(12px);
 }
 
 .ourWorkTextOverlayVisible .ourWorkOverlayLine {
