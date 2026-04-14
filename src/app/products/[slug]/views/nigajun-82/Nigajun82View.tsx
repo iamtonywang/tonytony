@@ -462,50 +462,6 @@ export default function Nigajun82View({ product, boardItems }: Props) {
               </p>
 
               <p className={styles.detailDescription}>
-                vaginitis is not defined as a simple state of contamination.
-              </p>
-              <p className={styles.detailDescription}>
-                <span className={styles.pcOnly}>
-                  When multiple biological conditions change simultaneously in the favorable for pathogenic microbial growth.
-                </span>
-                <span className={styles.mobileOnly}>
-                  When multiple biological conditions change<br />
-                  simultaneously in the<br />
-                  favorable for pathogenic microbial growth.
-                </span>
-              </p>
-              <p className={styles.detailDescription}>
-                Changes in microbial community structure Changes in mucosal protein structure
-              </p>
-              <p className={styles.detailDescription}>
-                Enzyme Activity Change Hormone Environment Change
-              </p>
-              <p className={styles.detailDescription}>
-                If these changes accumulate
-              </p>
-              <p className={styles.detailDescription}>
-                <span className={styles.pcOnly}>
-                  The main reason is the formation of an environment favorable for
-                </span>
-                <span className={styles.mobileOnly}>
-                  The main reason is the formation of an environment favorable for pathogenic microbial growth.
-                </span>
-              </p>
-              <p className={styles.detailDescription}>
-                <span className={styles.pcOnly}>pathogenic microbial growth.</span>
-                <span className={styles.mobileOnly}></span>
-              </p>
-              <p className={styles.detailDescription}>
-                The unpleasant smell caused by secretions.
-              </p>
-              <p className={styles.detailDescription}>
-                Itching. A simple fragrance cannot improve it.
-              </p>
-              <p className={styles.detailDescription}>
-                It is only a trick to improve the cause with antibacterial cleaning agents
-              </p>
-
-              <p className={styles.detailDescription}>
                 Since August 2025 TONYWANG
               </p>
 
