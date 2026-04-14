@@ -239,15 +239,7 @@ export default function HeroSection() {
                   >
                     {HERO_LINES[activeLineIndex]}
                   </p>
-                ) : (
-                  <div className={styles.finalStack}>
-                    {HERO_LINES.map((line, index) => (
-                      <p key={`${line}-${index}`} className={styles.finalStackLine}>
-                        {line}
-                      </p>
-                    ))}
-                  </div>
-                )}
+                ) : null}
               </div>
             )}
           </div>
