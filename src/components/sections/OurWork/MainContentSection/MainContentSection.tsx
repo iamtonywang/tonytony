@@ -60,7 +60,11 @@ export default function MainContentSection() {
               <div className={styles.ourWorkOverlayLine}>Plant Cell Gene Protein</div>
               <div className={styles.statementSmallBlock}>
                 <div className={styles.ourWorkOverlayLine}>나는 28년간 인류의 질병</div>
-                <div className={styles.ourWorkOverlayLine}>질병을 유발하는 악성균을 치료할 유전자 단백질을 찾고자</div>
+                <div className={styles.ourWorkOverlayLine}>
+                  질병을 유발하는 악성균을 치료할
+                  <span className={styles.mobileBreak} />
+                  유전자 단백질을 찾고자
+                </div>
                 <div className={styles.ourWorkOverlayLine}>모든 것을 걸었고 모든 것을 버렸다</div>
                 <div className={styles.ourWorkOverlayLine}>나는 운명이라 생각했다</div>
                 <div className={styles.ourWorkOverlayLine}>그래 거창함은 없다 운명이라 생각했다</div>

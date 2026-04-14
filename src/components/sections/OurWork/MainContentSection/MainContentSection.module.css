@@ -190,7 +190,15 @@
   }
 }
 
+.mobileBreak {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .mobileBreak {
+    display: block;
+  }
+
   .ourWorkSeoTitle,
   .ourWorkBottomTitle {
     font-size: 25px;
