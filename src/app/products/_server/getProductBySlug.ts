@@ -12,12 +12,10 @@ export async function getProductBySlug(
   slug: string,
   sharedProductRow?: ProductSharedRow | null,
 ): Promise<ProductMinimal | null> {
-  const totalStart = Date.now();
   const supabase = await getSupabasePublicClient();
 
   // 1) Base product
   let row: ProductSharedRow | null = sharedProductRow ?? null;
-  const baseQueryStart = Date.now();
   if (row === null) {
     const { data, error } = await supabase
       .from('products')
@@ -32,15 +30,11 @@ export async function getProductBySlug(
     }
     row = Array.isArray(data) && data.length > 0 ? (data[0] as ProductSharedRow) : null;
   }
-  console.log(`[getProductBySlug] slug=${slug} base_query_ms=${Date.now() - baseQueryStart}`);
   if (!row) {
-    console.log(`[getProductBySlug] slug=${slug} total_ms=${Date.now() - totalStart}`);
     return null;
   }
 
-  const mappingStart = Date.now();
   const base = mapProductRowToMinimal(row);
-  console.log(`[getProductBySlug] slug=${slug} map_base_ms=${Date.now() - mappingStart}`);
 
   // 2) Active price and hero image (run in parallel after base.id is known)
   let finalPriceAmount: number | null = null;
@@ -58,12 +52,10 @@ export async function getProductBySlug(
     .eq('media_type', 'hero_image')
     .eq('is_active', true)
     .limit(5);
-  const extrasQueryStart = Date.now();
   const [pricesResult, mediaResult] = await Promise.all([
     pricesPromise,
     mediaPromise,
   ]);
-  console.log(`[getProductBySlug] slug=${slug} extras_query_ms=${Date.now() - extrasQueryStart}`);
 
   // prices fallback
   if (pricesResult.error) {
@@ -92,10 +84,7 @@ export async function getProductBySlug(
     }
   }
 
-  const mergeStart = Date.now();
   const result = withMergedExtras(base, { finalPriceAmount, heroImageUrl });
-  console.log(`[getProductBySlug] slug=${slug} merge_ms=${Date.now() - mergeStart}`);
-  console.log(`[getProductBySlug] slug=${slug} total_ms=${Date.now() - totalStart}`);
   return result;
 }
 

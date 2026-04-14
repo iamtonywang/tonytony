@@ -23,14 +23,12 @@ export async function getSupabaseServerReadonlyClient() {
 
 	return createServerClient(url, anonKey, {
 		cookies: {
-			get(name: string) {
-				return cookieStore.get(name)?.value;
+			getAll() {
+				return cookieStore.getAll();
 			},
-			// Readonly adapter: no cookie mutations
-			set(_name: string, _value: string, _options: CookieOptions) {
-				// no-op
-			},
-			remove(_name: string, _options: CookieOptions) {
+			// Readonly adapter: this path never performs auth recovery or cookie cleanup.
+			// Invalid token cleanup is handled in proxy flow.
+			setAll(_cookiesToSet: Array<{ name: string; value: string; options: CookieOptions }>) {
 				// no-op
 			},
 		},

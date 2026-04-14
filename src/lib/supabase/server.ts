@@ -3,11 +3,6 @@ import 'server-only';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
-// Debug env loading (temporary, per instruction)
-console.log('ENV URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
-console.log('ENV KEY:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-console.log('CWD:', process.cwd());
-
 /**
  * Returns a server-only, read-only configured Supabase client.
  * Throws a descriptive error when required environment variables are missing.
@@ -28,23 +23,17 @@ export async function getSupabaseServerClient() {
 
   return createServerClient(url, anonKey, {
     cookies: {
-      get(name: string) {
-        return cookieStore.get(name)?.value;
+      getAll() {
+        return cookieStore.getAll();
       },
-      set(name: string, value: string, options: CookieOptions) {
-        cookieStore.set({
-          name,
-          value,
-          ...options,
-        });
-      },
-      remove(name: string, options: CookieOptions) {
-        cookieStore.set({
-          name,
-          value: '',
-          ...options,
-          maxAge: 0,
-        });
+      setAll(cookiesToSet: Array<{ name: string; value: string; options: CookieOptions }>) {
+        try {
+          for (const { name, value, options } of cookiesToSet) {
+            cookieStore.set(name, value, options);
+          }
+        } catch {
+          // If called from a Server Component, middleware will handle session refresh cookies.
+        }
       },
     },
   });
