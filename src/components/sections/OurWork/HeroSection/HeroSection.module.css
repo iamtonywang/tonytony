@@ -27,7 +27,9 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url("/landing-assets/ourwork-hero-pc.webp");
+  background-image:
+    linear-gradient(rgba(95, 95, 95, 0.66), rgba(95, 95, 95, 0.66)),
+    url("/landing-assets/ourwork-hero-pc.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -138,7 +140,9 @@
 
 @media (max-width: 768px) {
   .backgroundLayer {
-    background-image: url("/landing-assets/ourwork-hero-mobile.webp");
+    background-image:
+      linear-gradient(rgba(95, 95, 95, 0.66), rgba(95, 95, 95, 0.66)),
+      url("/landing-assets/ourwork-hero-mobile.webp");
   }
 
   .heroOverlay {
