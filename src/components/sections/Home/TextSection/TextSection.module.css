@@ -556,7 +556,7 @@
   }
 
   .textLine {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.35;
     color: #ffffff;
     font-weight: 500;
@@ -574,7 +574,7 @@
   }
 
   .textOrangePrimary {
-    font-size: 14px;
+    font-size: 16px;
     color: #ffffff;
   }
 
@@ -584,12 +584,12 @@
   }
 
   .textSectionTitle {
-    font-size: 14px;
+    font-size: 16px;
     color: #ffffff;
   }
 
   .textSmall {
-    font-size: 14px;
+    font-size: 16px;
     color: #ffffff;
   }
 

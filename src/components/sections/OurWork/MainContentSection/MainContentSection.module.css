@@ -302,7 +302,7 @@
   }
 
   .ourWorkOverlayLine {
-    font-size: 12.5px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.4;
     margin-top: 4px;
@@ -318,7 +318,7 @@
   }
 
   .ourWorkOverlayLine.textSmall {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .ourWorkOverlayLine.textLarge.textLargeMobileMedium {
@@ -326,7 +326,7 @@
   }
 
   .statementSmallBlock .ourWorkOverlayLine.textSmall {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .mobileOnlyBreak {
