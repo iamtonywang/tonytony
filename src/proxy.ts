@@ -58,19 +58,8 @@ async function recordSiteVisitSafe(params: {
 	isAuthenticated: boolean;
 	path: string;
 	referrer: string | null;
-	/** 로그 전용(RPC body 미포함) */
-	hasAnonKeyForLog: boolean;
 }): Promise<void> {
 	const { supabaseUrl, serviceRoleKey } = params;
-	const visitorPrefix =
-		params.visitorToken && params.visitorToken.length > 0
-			? `${params.visitorToken.slice(0, 6)}…`
-			: "none";
-
-	console.log(
-		"[proxy][visit] start",
-		`pathname=${params.path} hasServiceRoleKey=${Boolean(serviceRoleKey.trim())} hasSupabaseUrl=${Boolean(supabaseUrl?.trim())} hasAnonKey=${params.hasAnonKeyForLog} isAuthenticated=${params.isAuthenticated} hasVisitorToken=${Boolean(params.visitorToken)} visitDate=${params.visitDate} visitorPrefix=${visitorPrefix}`,
-	);
 
 	if (!serviceRoleKey.trim()) {
 		console.warn("[proxy][visit] skipped: missing SUPABASE_SERVICE_ROLE_KEY");
@@ -103,13 +92,8 @@ async function recordSiteVisitSafe(params: {
 			);
 			return;
 		}
-
-		console.log(
-			"[proxy][visit] recorded",
-			`path=${params.path} authenticated=${params.isAuthenticated}`,
-		);
 	} catch (e) {
-		console.warn("[proxy][visit] record_site_daily_visit error", e);
+		console.error("[proxy][visit] record_site_daily_visit error", e);
 	}
 }
 
@@ -225,7 +209,6 @@ export async function proxy(request: NextRequest) {
 				isAuthenticated,
 				path: pathname,
 				referrer: request.headers.get("referer") ?? null,
-				hasAnonKeyForLog: Boolean(anonKey?.trim()),
 			});
 		}
 	}
