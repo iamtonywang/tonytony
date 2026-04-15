@@ -18,15 +18,14 @@ const HERO_LINES = [
   "Throw it away",
   "What's the best",
   "I will show you.",
-
-  // 추가 문구
   "plant cell genetic protein",
   "Institute Bio-Bioengineering",
   "This is my TONY WANG's belief",
   "It's a very good and valuable work",
   "I don't like lying",
+] as const;
 
-  // 엔딩 블록
+const HERO_FINAL_STACK_LINES = [
   "TONY WANG",
   "All right.",
   "I've been studying cells for 28 years",
@@ -49,14 +48,13 @@ const HERO_LINES = [
   "It's a very good and valuable work",
   "TONY WANG",
   "SINCE May 2026",
-];
+] as const;
 
 const LINE_HOLD_MS = 1050;
 const PRE_EXIT_HOLD_MS = 180;
 const EXIT_MS = 820;
 const NEXT_LINE_DELAY_MS = 180;
 const PENULTIMATE_HOLD_MS = 1800;
-const FINAL_LINE_HOLD_MS = 1200;
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
@@ -70,6 +68,7 @@ export default function HeroSection() {
   const [typedText, setTypedText] = useState("");
   const [isTextEntering, setIsTextEntering] = useState(false);
   const [isTextExiting, setIsTextExiting] = useState(false);
+  const [showFinalStack, setShowFinalStack] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -171,6 +170,7 @@ export default function HeroSection() {
       setTypedText("");
       setIsTextEntering(false);
       setIsTextExiting(false);
+      setShowFinalStack(false);
     };
 
     video.addEventListener("ended", handleEnded);
@@ -191,12 +191,15 @@ export default function HeroSection() {
 
     const runLines = async () => {
       let current = 0;
+      setShowFinalStack(false);
       setLineIndex(0);
       setTypedText("");
       setIsTextEntering(false);
       setIsTextExiting(false);
 
-      while (!cancelled && current < HERO_LINES.length) {
+      const lineCount = HERO_LINES.length;
+
+      while (!cancelled && current < lineCount) {
         const line = HERO_LINES[current];
         if (cancelled) return;
         setLineIndex(current);
@@ -204,16 +207,8 @@ export default function HeroSection() {
         setIsTextEntering(true);
         setIsTextExiting(false);
 
-        const lineCount = HERO_LINES.length;
         const isPenultimate = current === lineCount - 2;
         const isLast = current === lineCount - 1;
-
-        if (isLast) {
-          await sleep(FINAL_LINE_HOLD_MS);
-          if (cancelled) return;
-          setIsTextEntering(false);
-          return;
-        }
 
         await sleep(isPenultimate ? PENULTIMATE_HOLD_MS : LINE_HOLD_MS);
         if (cancelled) return;
@@ -229,6 +224,13 @@ export default function HeroSection() {
 
         setTypedText("");
         setIsTextExiting(false);
+
+        if (isLast) {
+          setIsTextEntering(false);
+          setShowFinalStack(true);
+          return;
+        }
+
         await sleep(NEXT_LINE_DELAY_MS);
         if (cancelled) return;
         current += 1;
@@ -239,6 +241,7 @@ export default function HeroSection() {
       setTypedText("");
       setIsTextEntering(false);
       setIsTextExiting(false);
+      setShowFinalStack(false);
       setLineIndex(0);
     };
 
@@ -262,6 +265,7 @@ export default function HeroSection() {
       } else {
         setIsPlaying(false);
         setHasPlaybackStarted(false);
+        setShowFinalStack(false);
       }
     } else {
       video.pause();
@@ -272,6 +276,7 @@ export default function HeroSection() {
       setTypedText("");
       setIsTextEntering(false);
       setIsTextExiting(false);
+      setShowFinalStack(false);
     }
   };
 
@@ -301,13 +306,23 @@ export default function HeroSection() {
             className={`${styles.videoTextWrap} ${hideText ? styles.videoTextWrapVisible : ""}`}
             aria-hidden="true"
           >
-            {hasPlaybackStarted && typedText ? (
+            {hasPlaybackStarted && !showFinalStack && typedText ? (
               <p
                 key={lineIndex}
                 className={`${styles.videoText} ${isTextEntering ? styles.videoTextEnter : ""} ${isTextExiting ? styles.videoTextExit : ""}`}
               >
                 {typedText}
               </p>
+            ) : null}
+
+            {hasPlaybackStarted && showFinalStack ? (
+              <div className={styles.finalStack}>
+                {HERO_FINAL_STACK_LINES.map((line, index) => (
+                  <p key={`${line}-${index}`} className={styles.finalStackLine}>
+                    {line}
+                  </p>
+                ))}
+              </div>
             ) : null}
           </div>
 
