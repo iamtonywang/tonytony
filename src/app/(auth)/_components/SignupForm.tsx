@@ -1,7 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./SignupForm.module.css";
+
+const SUCCESS_NAV_DELAY_MS = 1000;
 
 function validateBasicPhone(phone: string): boolean {
   const normalized = phone.replace(/\s+/g, "");
@@ -9,6 +12,9 @@ function validateBasicPhone(phone: string): boolean {
 }
 
 export default function SignupForm() {
+  const router = useRouter();
+  const navigateTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
+
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
@@ -18,6 +24,14 @@ export default function SignupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const minPasswordLength = useMemo(() => 6, []);
+
+  useEffect(() => {
+    return () => {
+      if (navigateTimerRef.current !== null) {
+        window.clearTimeout(navigateTimerRef.current);
+      }
+    };
+  }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -66,6 +80,13 @@ export default function SignupForm() {
 
       if (ok === true) {
         setSuccess("회원가입 요청이 완료되었습니다.");
+        if (navigateTimerRef.current !== null) {
+          window.clearTimeout(navigateTimerRef.current);
+        }
+        navigateTimerRef.current = window.setTimeout(() => {
+          navigateTimerRef.current = null;
+          router.replace("/login");
+        }, SUCCESS_NAV_DELAY_MS);
         return;
       }
 
