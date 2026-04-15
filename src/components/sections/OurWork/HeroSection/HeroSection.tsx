@@ -20,6 +20,13 @@ const HERO_LINES = [
   "My 28 years",
   "From now on,",
   "You'll be surprised",
+  "There was a reason",
+  "That's the creation",
+  "Yeah, I want to have you",
+  "Not me, but my alter ego,",
+  "organize myself like this",
+  "And that's when I thought and decided",
+  "Plant Cell Gene Protein",
   "TONYWANG",
   "SINCE May 2026",
 ] as const;
