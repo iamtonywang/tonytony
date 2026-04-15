@@ -109,8 +109,8 @@
   margin-top: 8px;
   margin-bottom: 8px;
   opacity: 0;
-  transform: translateY(6px);
-  animation: ourWorkLineIn 1.2s ease forwards paused;
+  transform: translateY(2px);
+  animation: textSlideIn 0.9s ease-out forwards;
   font-size: 17px;
   line-height: 1.65;
   font-weight: 400;
@@ -142,16 +142,42 @@
   color: #ff7a00;
 }
 
+.ourWorkTextOverlay .ourWorkOverlayLine {
+  animation-play-state: paused;
+}
+
 .ourWorkTextOverlayVisible .ourWorkOverlayLine {
   animation-play-state: running;
 }
 
-.ourWorkOverlayLine:nth-child(1) { animation-delay: 0.2s; }
-.ourWorkOverlayLine:nth-child(2) { animation-delay: 0.5s; }
-.ourWorkOverlayLine:nth-child(3) { animation-delay: 0.8s; }
-.ourWorkOverlayLine:nth-child(4) { animation-delay: 1.1s; }
-.ourWorkOverlayLine:nth-child(5) { animation-delay: 1.4s; }
-.ourWorkOverlayLine:nth-child(6) { animation-delay: 1.7s; }
+.ourWorkTextInner > .ourWorkOverlayLine:nth-child(1) { animation-delay: 0.2s; }
+.ourWorkTextInner > .ourWorkOverlayLine:nth-child(2) { animation-delay: 0.58s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(1) { animation-delay: 0.96s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(2) { animation-delay: 1.34s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(3) { animation-delay: 1.72s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(4) { animation-delay: 2.1s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(5) { animation-delay: 2.48s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(6) { animation-delay: 2.86s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(7) { animation-delay: 3.24s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(8) { animation-delay: 3.62s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(9) { animation-delay: 4s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(10) { animation-delay: 4.38s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(11) { animation-delay: 4.76s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(12) { animation-delay: 5.14s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(13) { animation-delay: 5.52s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(14) { animation-delay: 5.9s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(15) { animation-delay: 6.28s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(16) { animation-delay: 6.66s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(17) { animation-delay: 7.04s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(18) { animation-delay: 7.42s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(19) { animation-delay: 7.8s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(20) { animation-delay: 8.18s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(21) { animation-delay: 8.56s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(22) { animation-delay: 8.94s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(23) { animation-delay: 9.32s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(24) { animation-delay: 9.7s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(25) { animation-delay: 10.08s; }
+.statementSmallBlock .ourWorkOverlayLine:nth-child(26) { animation-delay: 10.46s; }
 
 .statementSmallBlock .ourWorkOverlayLine.textSmall {
   font-size: 14px;
@@ -189,7 +215,11 @@
   font-weight: 300;
 }
 
-@keyframes ourWorkLineIn {
+@keyframes textSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
