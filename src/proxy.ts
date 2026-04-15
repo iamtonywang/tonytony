@@ -28,6 +28,21 @@ function getSupabaseAuthCookies(request: NextRequest): string[] {
 		.map((cookie) => cookie.name);
 }
 
+/** 문서·페이지 요청만 방문 기록. 정적 에셋·미디어 경로는 제외. */
+function isDocumentPathForVisitLog(pathname: string): boolean {
+	if (pathname.startsWith("/api") || pathname.startsWith("/_next")) {
+		return false;
+	}
+	if (pathname.startsWith("/landing-assets")) {
+		return false;
+	}
+	const lower = pathname.toLowerCase();
+	if (/\.(mp4|webp|jpe?g|png|gif|svg)$/.test(lower)) {
+		return false;
+	}
+	return true;
+}
+
 function shortRpcErrorBody(text: string, maxLen = 240): string {
 	const s = text.replace(/\s+/g, " ").trim();
 	if (s.length <= maxLen) return s;
@@ -179,8 +194,7 @@ export async function proxy(request: NextRequest) {
 	}
 
 	const pathname = request.nextUrl.pathname;
-	const shouldRecordVisit =
-		!pathname.startsWith("/api") && !pathname.startsWith("/_next");
+	const shouldRecordVisit = isDocumentPathForVisitLog(pathname);
 
 	if (shouldRecordVisit) {
 		let visitDateStr: string;

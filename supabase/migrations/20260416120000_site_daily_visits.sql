@@ -45,6 +45,7 @@ create policy site_daily_visits_select_admin_only
   using (is_admin());
 
 -- service_role 전용: proxy 등 백엔드에서만 호출
+-- dedup: ON CONFLICT 대신 NOT EXISTS (부분 unique와 ON CONFLICT 타겟 불일치 42P10 방지)
 create or replace function public.record_site_daily_visit(
   p_visit_date date,
   p_auth_user_id uuid,
@@ -65,7 +66,8 @@ begin
     end if;
     insert into public.site_daily_visits (
       visit_date, visited_at, auth_user_id, visitor_token, is_authenticated, path, referrer
-    ) values (
+    )
+    select
       p_visit_date,
       now(),
       p_auth_user_id,
@@ -73,8 +75,12 @@ begin
       true,
       nullif(p_path, ''),
       nullif(p_referrer, '')
-    )
-    on conflict (auth_user_id, visit_date) where auth_user_id is not null do nothing;
+    where not exists (
+      select 1
+      from public.site_daily_visits s
+      where s.visit_date = p_visit_date
+        and s.auth_user_id = p_auth_user_id
+    );
     return;
   end if;
 
@@ -84,7 +90,8 @@ begin
 
   insert into public.site_daily_visits (
     visit_date, visited_at, auth_user_id, visitor_token, is_authenticated, path, referrer
-  ) values (
+  )
+  select
     p_visit_date,
     now(),
     null,
@@ -92,8 +99,12 @@ begin
     false,
     nullif(p_path, ''),
     nullif(p_referrer, '')
-  )
-  on conflict (visitor_token, visit_date) where visitor_token is not null do nothing;
+  where not exists (
+    select 1
+    from public.site_daily_visits s
+    where s.visit_date = p_visit_date
+      and s.visitor_token = btrim(p_visitor_token)
+  );
 end;
 $$;
 
