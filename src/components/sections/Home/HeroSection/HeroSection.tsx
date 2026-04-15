@@ -50,15 +50,15 @@ const HERO_FINAL_STACK_LINES = [
   "SINCE May 2026",
 ] as const;
 
-const LINE_HOLD_MS = 1850;
-const PRE_EXIT_HOLD_MS = 260;
-const EXIT_MS = 980;
-const NEXT_LINE_DELAY_MS = 260;
+const LINE_HOLD_MS = 1470;
+const PRE_EXIT_HOLD_MS = 210;
+const EXIT_MS = 780;
+const NEXT_LINE_DELAY_MS = 210;
 /** Second-to-last line: slightly longer read before exit (scaled with LINE_HOLD_MS vs prior script). */
-const PENULTIMATE_HOLD_MS = 3100;
-const FINAL_STACK_DELAY_MS = 650;
-const FINAL_STACK_FADE_IN_MS = 700;
-const FINAL_STACK_VISIBLE_HOLD_MS = 3200;
+const PENULTIMATE_HOLD_MS = 2460;
+const FINAL_STACK_DELAY_MS = 520;
+const FINAL_STACK_FADE_IN_MS = 560;
+const FINAL_STACK_VISIBLE_HOLD_MS = 2400;
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
@@ -97,12 +97,12 @@ export default function HeroSection() {
 
       // attach desktop/mobile sources with media queries
       const sourcePc = document.createElement("source");
-      sourcePc.src = "/landing-assets/home-hero-pc.mp4";
+      sourcePc.src = "/landing-assets/ourwork-hero-pc.mp4";
       sourcePc.type = "video/mp4";
       sourcePc.media = "(min-width: 769px)";
 
       const sourceMobile = document.createElement("source");
-      sourceMobile.src = "/landing-assets/home-hero-mobile.mp4";
+      sourceMobile.src = "/landing-assets/ourwork-hero-mobile.mp4";
       sourceMobile.type = "video/mp4";
       sourceMobile.media = "(max-width: 768px)";
 

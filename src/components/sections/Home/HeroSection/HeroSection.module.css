@@ -59,10 +59,12 @@
 .backgroundLayer {
   position: absolute;
   inset: 0;
-  background-image: url("/landing-assets/home-hero-pc.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background:
+    linear-gradient(rgba(95, 95, 95, 0.66), rgba(95, 95, 95, 0.66)),
+    url("/landing-assets/home-hero-pc.webp");
   background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .videoOverlay {
@@ -131,7 +133,9 @@
 
 @media (max-width: 768px) {
   .backgroundLayer {
-    background-image: url("/landing-assets/home-hero-mobile.webp");
+    background:
+      linear-gradient(rgba(95, 95, 95, 0.66), rgba(95, 95, 95, 0.66)),
+      url("/landing-assets/home-hero-mobile.webp");
   }
   .heroSection {
     min-height: 100vh;
