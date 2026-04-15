@@ -216,9 +216,9 @@
   transform: translateY(0) scale(1) rotate(0deg);
   filter: blur(0);
   transition:
-    opacity 820ms ease,
-    transform 820ms ease,
-    filter 820ms ease;
+    opacity 980ms ease,
+    transform 980ms ease,
+    filter 980ms ease;
   will-change: opacity, transform, filter;
 }
 
@@ -259,6 +259,7 @@
   }
 }
 
+/* Fade-in duration matches HeroSection.tsx FINAL_STACK_FADE_IN_MS (max 700ms). */
 .finalStack {
   display: flex;
   flex-direction: column;
@@ -268,6 +269,13 @@
   color: #ffffff;
   opacity: 0;
   animation: homeHeroFinalStackFadeIn 700ms ease forwards;
+}
+
+.finalStackSettled {
+  animation: none;
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 .finalStackLine {

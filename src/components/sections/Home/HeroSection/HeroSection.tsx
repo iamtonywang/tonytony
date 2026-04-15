@@ -50,11 +50,15 @@ const HERO_FINAL_STACK_LINES = [
   "SINCE May 2026",
 ] as const;
 
-const LINE_HOLD_MS = 1050;
-const PRE_EXIT_HOLD_MS = 180;
-const EXIT_MS = 820;
-const NEXT_LINE_DELAY_MS = 180;
-const PENULTIMATE_HOLD_MS = 1800;
+const LINE_HOLD_MS = 1850;
+const PRE_EXIT_HOLD_MS = 260;
+const EXIT_MS = 980;
+const NEXT_LINE_DELAY_MS = 260;
+/** Second-to-last line: slightly longer read before exit (scaled with LINE_HOLD_MS vs prior script). */
+const PENULTIMATE_HOLD_MS = 3100;
+const FINAL_STACK_DELAY_MS = 650;
+const FINAL_STACK_FADE_IN_MS = 700;
+const FINAL_STACK_VISIBLE_HOLD_MS = 3200;
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
@@ -69,6 +73,7 @@ export default function HeroSection() {
   const [isTextEntering, setIsTextEntering] = useState(false);
   const [isTextExiting, setIsTextExiting] = useState(false);
   const [showFinalStack, setShowFinalStack] = useState(false);
+  const [finalStackSettled, setFinalStackSettled] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -180,6 +185,23 @@ export default function HeroSection() {
   }, [hasVideo]);
 
   useEffect(() => {
+    if (!showFinalStack) {
+      setFinalStackSettled(false);
+      return;
+    }
+
+    setFinalStackSettled(false);
+    const emphasisDoneMs = FINAL_STACK_FADE_IN_MS + FINAL_STACK_VISIBLE_HOLD_MS;
+    const id = window.setTimeout(() => {
+      setFinalStackSettled(true);
+    }, emphasisDoneMs);
+
+    return () => {
+      window.clearTimeout(id);
+    };
+  }, [showFinalStack]);
+
+  useEffect(() => {
     if (!hasPlaybackStarted) return;
 
     let cancelled = false;
@@ -192,6 +214,7 @@ export default function HeroSection() {
     const runLines = async () => {
       let current = 0;
       setShowFinalStack(false);
+      setFinalStackSettled(false);
       setLineIndex(0);
       setTypedText("");
       setIsTextEntering(false);
@@ -227,6 +250,8 @@ export default function HeroSection() {
 
         if (isLast) {
           setIsTextEntering(false);
+          await sleep(FINAL_STACK_DELAY_MS);
+          if (cancelled) return;
           setShowFinalStack(true);
           return;
         }
@@ -316,7 +341,9 @@ export default function HeroSection() {
             ) : null}
 
             {hasPlaybackStarted && showFinalStack ? (
-              <div className={styles.finalStack}>
+              <div
+                className={`${styles.finalStack} ${finalStackSettled ? styles.finalStackSettled : ""}`}
+              >
                 {HERO_FINAL_STACK_LINES.map((line, index) => (
                   <p key={`${line}-${index}`} className={styles.finalStackLine}>
                     {line}
