@@ -65,10 +65,7 @@ export async function getProductBoardBySlug(
         user_id,
         title,
         inquiry_status,
-        answer_content,
-        users:users (
-          login_id
-        )
+        answer_content
       `,
     )
     .eq('product_id', productId)
@@ -84,10 +81,7 @@ export async function getProductBoardBySlug(
         is_private,
         created_at,
         user_id,
-        review_status,
-        users:users (
-          login_id
-        )
+        review_status
       `,
     )
     .eq('product_id', productId)
@@ -109,8 +103,32 @@ export async function getProductBoardBySlug(
   const inquiries = Array.isArray(inqRes.data) ? inqRes.data : [];
   const reviews = Array.isArray(revRes.data) ? revRes.data : [];
 
-  type UsersJoinRow = { login_id?: string | null };
-  type UsersJoin = UsersJoinRow | UsersJoinRow[] | null;
+  const authorUserIds = Array.from(
+    new Set<number>([
+      ...inquiries
+        .map((row) => Number((row as { user_id: unknown }).user_id))
+        .filter((id) => Number.isFinite(id)),
+      ...reviews
+        .map((row) => Number((row as { user_id: unknown }).user_id))
+        .filter((id) => Number.isFinite(id)),
+    ]),
+  );
+
+  const loginByUserId = new Map<number, string>();
+  if (authorUserIds.length > 0) {
+    const { data: boardUsersRows, error: boardUsersErr } = await supabase
+      .from('public_board_users')
+      .select('id, login_id')
+      .in('id', authorUserIds);
+
+    if (boardUsersErr) {
+      console.error(`getProductBoardBySlug board users: ${boardUsersErr.message}`);
+    } else if (Array.isArray(boardUsersRows)) {
+      for (const row of boardUsersRows as Array<{ id: number; login_id: string | null }>) {
+        loginByUserId.set(Number(row.id), row.login_id ?? '');
+      }
+    }
+  }
 
   type Sortable = ProductBoardItem & { _sortMs: number };
   const items: Sortable[] = [];
@@ -123,17 +141,10 @@ export async function getProductBoardBySlug(
     is_private: boolean;
     created_at: string;
     answer_content: string | null;
-    users?: UsersJoin;
   }>) {
     const authorUserId = Number(row.user_id);
     const isPrivate = row.is_private === true;
-    const u = row.users;
-    const login =
-      u != null && !Array.isArray(u) && typeof u.login_id === 'string'
-        ? u.login_id
-        : Array.isArray(u) && typeof u[0]?.login_id === 'string'
-          ? u[0].login_id
-          : '';
+    const login = loginByUserId.get(authorUserId) ?? '';
 
     const author =
       login.length >= 3 ? login.slice(0, 3) + '***' : login || 'User';
@@ -163,17 +174,10 @@ export async function getProductBoardBySlug(
     content: string;
     is_private: boolean;
     created_at: string;
-    users?: UsersJoin;
   }>) {
     const authorUserId = Number(row.user_id);
     const isPrivate = row.is_private === true;
-    const u = row.users;
-    const login =
-      u != null && !Array.isArray(u) && typeof u.login_id === 'string'
-        ? u.login_id
-        : Array.isArray(u) && typeof u[0]?.login_id === 'string'
-          ? u[0].login_id
-          : '';
+    const login = loginByUserId.get(authorUserId) ?? '';
 
     const author =
       login.length >= 3 ? login.slice(0, 3) + '***' : login || 'User';
