@@ -5,6 +5,8 @@ import { getSupabaseServerReadonlyClient } from "@/lib/supabase/server-readonly"
 export type AdminDashboardSummary = {
 	visits: {
 		available: boolean;
+		todayVisitors: number;
+		last7DaysUniqueVisitors: number;
 		totalLabel: string;
 		subLabel: string;
 	};
@@ -30,9 +32,13 @@ export type AdminDashboardSummary = {
 	};
 };
 
+type VisitStatsRow = {
+	todayVisitors?: number;
+	last7DaysUniqueVisitors?: number;
+};
+
 /**
  * 단일 진입점에서 /admin 메인 대시보드용 요약만 병렬 조회합니다.
- * (방문 로그 테이블 없음 → visits 는 문구만 반환)
  */
 export async function getAdminDashboardSummary(): Promise<AdminDashboardSummary> {
 	const supabase = await getSupabaseServerReadonlyClient();
@@ -42,6 +48,7 @@ export async function getAdminDashboardSummary(): Promise<AdminDashboardSummary>
 	const sinceIso = since.toISOString();
 
 	const [
+		visitStatsRes,
 		totalUsersRes,
 		recentUsersRes,
 		totalOrdersRes,
@@ -51,6 +58,7 @@ export async function getAdminDashboardSummary(): Promise<AdminDashboardSummary>
 		settlementPendingRes,
 		settlementApprovedRes,
 	] = await Promise.all([
+		supabase.rpc("admin_dashboard_site_visit_stats"),
 		supabase.from("users").select("*", { count: "exact", head: true }),
 		supabase.from("users").select("*", { count: "exact", head: true }).gte("created_at", sinceIso),
 		supabase.from("orders").select("*", { count: "exact", head: true }),
@@ -67,6 +75,18 @@ export async function getAdminDashboardSummary(): Promise<AdminDashboardSummary>
 			.eq("request_status", "approved"),
 	]);
 
+	let todayVisitors = 0;
+	let last7Unique = 0;
+	let visitsAvailable = false;
+
+	if (!visitStatsRes.error && visitStatsRes.data != null) {
+		const row = visitStatsRes.data as VisitStatsRow;
+		todayVisitors = typeof row.todayVisitors === "number" ? row.todayVisitors : 0;
+		last7Unique =
+			typeof row.last7DaysUniqueVisitors === "number" ? row.last7DaysUniqueVisitors : 0;
+		visitsAvailable = true;
+	}
+
 	const totalUsers = totalUsersRes.count ?? 0;
 	const recent7Days = recentUsersRes.count ?? 0;
 	const totalOrders = totalOrdersRes.count ?? 0;
@@ -81,9 +101,13 @@ export async function getAdminDashboardSummary(): Promise<AdminDashboardSummary>
 
 	return {
 		visits: {
-			available: false,
-			totalLabel: "집계 준비중",
-			subLabel: "방문 로그 미구현",
+			available: visitsAvailable,
+			todayVisitors,
+			last7DaysUniqueVisitors: last7Unique,
+			totalLabel: String(todayVisitors),
+			subLabel: visitsAvailable
+				? `최근 7일 고유 방문 ${last7Unique}명 (KST)`
+				: "방문 통계를 불러오지 못했습니다. DB 마이그레이션 적용 여부를 확인해 주세요.",
 		},
 		signups: {
 			totalUsers,

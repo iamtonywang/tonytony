@@ -1,82 +1,193 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-function isRefreshTokenNotFoundError(error: unknown): boolean {
-  const message =
-    error instanceof Error
-      ? error.message
-      : typeof error === "string"
-        ? error
-        : "";
+import { getKstDateString } from "@/lib/metrics/kstDate";
 
-  const lowered = message.toLowerCase();
-  return lowered.includes("invalid refresh token") || lowered.includes("refresh token not found");
+/**
+ * 익명 방문자 dedup 전용. Supabase auth / sb- / auth-token / refresh 계열과 이름·역할이 완전히 분리됨.
+ * 로그인 인증에 사용하지 않음.
+ */
+const VISITOR_TOKEN_COOKIE = "tonytony_visitor_token";
+
+function isRefreshTokenNotFoundError(error: unknown): boolean {
+	const message =
+		error instanceof Error
+			? error.message
+			: typeof error === "string"
+				? error
+				: "";
+
+	const lowered = message.toLowerCase();
+	return lowered.includes("invalid refresh token") || lowered.includes("refresh token not found");
 }
 
 function getSupabaseAuthCookies(request: NextRequest): string[] {
-  return request.cookies
-    .getAll()
-    .filter((cookie) => cookie.name.startsWith("sb-") && cookie.name.includes("auth-token"))
-    .map((cookie) => cookie.name);
+	return request.cookies
+		.getAll()
+		.filter((cookie) => cookie.name.startsWith("sb-") && cookie.name.includes("auth-token"))
+		.map((cookie) => cookie.name);
+}
+
+async function recordSiteVisitSafe(params: {
+	supabaseUrl: string;
+	serviceRoleKey: string;
+	visitDate: string;
+	authUserId: string | null;
+	visitorToken: string | null;
+	isAuthenticated: boolean;
+	path: string;
+	referrer: string | null;
+}): Promise<void> {
+	const { supabaseUrl, serviceRoleKey } = params;
+	if (!serviceRoleKey.trim()) {
+		return;
+	}
+
+	try {
+		const res = await fetch(`${supabaseUrl}/rest/v1/rpc/record_site_daily_visit`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				apikey: serviceRoleKey,
+				Authorization: `Bearer ${serviceRoleKey}`,
+			},
+			body: JSON.stringify({
+				p_visit_date: params.visitDate,
+				p_auth_user_id: params.authUserId,
+				p_visitor_token: params.visitorToken,
+				p_is_authenticated: params.isAuthenticated,
+				p_path: params.path,
+				p_referrer: params.referrer,
+			}),
+		});
+
+		if (!res.ok) {
+			console.warn("[proxy][visit] record_site_daily_visit failed", res.status);
+		}
+	} catch (e) {
+		console.warn("[proxy][visit] record_site_daily_visit error", e);
+	}
 }
 
 export async function proxy(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({
-    request,
-  });
+	let supabaseResponse = NextResponse.next({
+		request,
+	});
 
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !anonKey) {
-    return supabaseResponse;
-  }
+	const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+	const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  const supabase = createServerClient(url, anonKey, {
-    cookies: {
-      getAll() {
-        return request.cookies.getAll();
-      },
-      setAll(cookiesToSet: Array<{ name: string; value: string; options: CookieOptions }>) {
-        for (const { name, value } of cookiesToSet) {
-          request.cookies.set(name, value);
-        }
+	const existingVisitor = request.cookies.get(VISITOR_TOKEN_COOKIE)?.value ?? null;
+	let visitorToken = existingVisitor;
+	const isNewVisitorToken = !visitorToken;
+	if (!visitorToken) {
+		visitorToken = crypto.randomUUID();
+		request.cookies.set(VISITOR_TOKEN_COOKIE, visitorToken);
+		supabaseResponse.cookies.set(VISITOR_TOKEN_COOKIE, visitorToken, {
+			path: "/",
+			sameSite: "lax",
+			httpOnly: true,
+			maxAge: 60 * 60 * 24 * 400,
+			secure: process.env.NODE_ENV === "production",
+		});
+	}
 
-        supabaseResponse = NextResponse.next({
-          request,
-        });
+	if (!url || !anonKey) {
+		return supabaseResponse;
+	}
 
-        for (const { name, value, options } of cookiesToSet) {
-          supabaseResponse.cookies.set(name, value, options);
-        }
-      },
-    },
-  });
+	const supabase = createServerClient(url, anonKey, {
+		cookies: {
+			getAll() {
+				return request.cookies.getAll();
+			},
+			setAll(cookiesToSet: Array<{ name: string; value: string; options: CookieOptions }>) {
+				for (const { name, value } of cookiesToSet) {
+					request.cookies.set(name, value);
+				}
 
-  try {
-    await supabase.auth.getClaims();
-  } catch (error) {
-    if (isRefreshTokenNotFoundError(error)) {
-      const authCookieNames = getSupabaseAuthCookies(request);
+				supabaseResponse = NextResponse.next({
+					request,
+				});
 
-      if (authCookieNames.length > 0) {
-        console.warn("[proxy] cleared invalid Supabase auth cookies for refresh token fallback");
-      }
+				for (const { name, value, options } of cookiesToSet) {
+					supabaseResponse.cookies.set(name, value, options);
+				}
 
-      // Remove only Supabase auth-token cookies (including chunked variants).
-      for (const name of authCookieNames) {
-        supabaseResponse.cookies.set(name, "", {
-          maxAge: 0,
-          path: "/",
-        });
-      }
-    }
-  }
+				if (isNewVisitorToken) {
+					supabaseResponse.cookies.set(VISITOR_TOKEN_COOKIE, visitorToken!, {
+						path: "/",
+						sameSite: "lax",
+						httpOnly: true,
+						maxAge: 60 * 60 * 24 * 400,
+						secure: process.env.NODE_ENV === "production",
+					});
+				}
+			},
+		},
+	});
 
-  return supabaseResponse;
+	try {
+		await supabase.auth.getClaims();
+	} catch (error) {
+		if (isRefreshTokenNotFoundError(error)) {
+			const authCookieNames = getSupabaseAuthCookies(request);
+
+			if (authCookieNames.length > 0) {
+				console.warn("[proxy] cleared invalid Supabase auth cookies for refresh token fallback");
+			}
+
+			for (const name of authCookieNames) {
+				supabaseResponse.cookies.set(name, "", {
+					maxAge: 0,
+					path: "/",
+				});
+			}
+		}
+	}
+
+	const pathname = request.nextUrl.pathname;
+	const shouldRecordVisit =
+		!pathname.startsWith("/api") && !pathname.startsWith("/_next");
+
+	if (shouldRecordVisit) {
+		let visitDateStr: string;
+		try {
+			visitDateStr = getKstDateString();
+		} catch {
+			visitDateStr = "";
+		}
+
+		if (visitDateStr) {
+			let authUserId: string | null = null;
+			try {
+				const { data } = await supabase.auth.getUser();
+				authUserId = data.user?.id ?? null;
+			} catch {
+				authUserId = null;
+			}
+
+			const isAuthenticated = Boolean(authUserId);
+			const serviceRole = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
+
+			void recordSiteVisitSafe({
+				supabaseUrl: url,
+				serviceRoleKey: serviceRole,
+				visitDate: visitDateStr,
+				authUserId: isAuthenticated ? authUserId : null,
+				visitorToken: isAuthenticated ? null : visitorToken,
+				isAuthenticated,
+				path: pathname,
+				referrer: request.headers.get("referer") ?? null,
+			});
+		}
+	}
+
+	return supabaseResponse;
 }
 
 export const config = {
-  matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
-  ],
+	matcher: [
+		"/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+	],
 };
