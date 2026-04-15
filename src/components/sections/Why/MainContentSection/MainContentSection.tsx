@@ -18,7 +18,7 @@ export default function MainContentSection() {
           setVisible(false);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
     );
 
     if (overlayRef.current) {
