@@ -13,7 +13,7 @@ function validateBasicPhone(phone: string): boolean {
 
 export default function SignupForm() {
   const router = useRouter();
-  const navigateTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
+  const navigateTimerRef = useRef<number | null>(null);
 
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
