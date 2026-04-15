@@ -696,6 +696,10 @@
     line-height: 1.8;
   }
 
+  .detailOverlayText {
+    font-weight: 500;
+  }
+
   .detailVisualMedia {
     position: relative;
     width: 100vw;
