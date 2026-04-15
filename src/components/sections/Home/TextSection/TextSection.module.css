@@ -320,10 +320,11 @@
   min-height: 100vh;
   height: 100vh;
   overflow: hidden;
+  background-color: #5f5f5f;
 }
 
 .statementVisualImage {
-  display: block;
+  display: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -333,18 +334,7 @@
 }
 
 .statementGradientOverlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(95, 95, 95, 0.8) 0%,
-    rgba(95, 95, 95, 0.83) 40%,
-    rgba(95, 95, 95, 0.86) 100%
-  );
+  display: none;
 }
 
 .statementTextOverlay {
