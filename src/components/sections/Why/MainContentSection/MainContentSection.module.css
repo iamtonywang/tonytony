@@ -197,11 +197,11 @@
   .whyOverlayLine {
     font-size: 14px;
     line-height: 1.5;
-    font-weight: 400;
   }
 
   .statementSmallBlock .whyOverlayLine {
     font-size: 12px;
+    font-weight: 400;
   }
 
   .mobileOnlyBreak {
