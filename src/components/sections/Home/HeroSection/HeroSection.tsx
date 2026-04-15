@@ -10,8 +10,7 @@ const HERO_LINES = [
   "Did you come out into the world?",
   "NIGAJUN",
   "SKINCARE",
-  "I wanted",
-  "enjoy it",
+  "I wanted enjoy it",
   "Okay.",
   "waste",
   "Fake",
@@ -19,8 +18,35 @@ const HERO_LINES = [
   "Throw it away",
   "What's the best",
   "I will show you.",
-  "NIGAJUN",
+
+  // 추가 문구
+  "plant cell genetic protein",
+  "Institute Bio-Bioengineering",
+  "This is my TONY WANG's belief",
+  "It's a very good and valuable work",
+  "I don't like lying",
+
+  // 엔딩 블록
   "TONY WANG",
+  "All right.",
+  "I've been studying cells for 28 years",
+  "I've never thought about making trashy cosmetics",
+  "It's their lies that made me angry",
+  "I decided to change all my trashy cosmetics",
+  "I decided to make a crazy new creation this time",
+  "I researched and developed NIGAJUN",
+  "I want to prove that the past and present are the first",
+  "I want to show you that I'm the best",
+  "I think it's going to be a fun game",
+  "I thought about it and decided",
+  "You can turn the world around with skincare",
+  "What excites me even more is that",
+  "It's a bad skincare culture that only lies",
+  "I want to break it down",
+  "You have to be crazy to win",
+  "This is my TONY WANG's belief",
+  "You have to be crazy to get what you want",
+  "It's a very good and valuable work",
   "TONY WANG",
   "SINCE May 2026",
 ];
@@ -30,7 +56,7 @@ const PRE_EXIT_HOLD_MS = 180;
 const EXIT_MS = 820;
 const NEXT_LINE_DELAY_MS = 180;
 const PENULTIMATE_HOLD_MS = 1800;
-const FINAL_LINE_HOLD_UNTIL_ENDED = true;
+const FINAL_LINE_HOLD_MS = 1200;
 
 export default function HeroSection() {
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
@@ -178,18 +204,21 @@ export default function HeroSection() {
         setIsTextEntering(true);
         setIsTextExiting(false);
 
-        const isPenultimate = current === HERO_LINES.length - 2;
-        const isLast = current === HERO_LINES.length - 1;
+        const lineCount = HERO_LINES.length;
+        const isPenultimate = current === lineCount - 2;
+        const isLast = current === lineCount - 1;
+
+        if (isLast) {
+          await sleep(FINAL_LINE_HOLD_MS);
+          if (cancelled) return;
+          setIsTextEntering(false);
+          return;
+        }
 
         await sleep(isPenultimate ? PENULTIMATE_HOLD_MS : LINE_HOLD_MS);
         if (cancelled) return;
         await sleep(PRE_EXIT_HOLD_MS);
         if (cancelled) return;
-
-        if (isLast && FINAL_LINE_HOLD_UNTIL_ENDED) {
-          setIsTextEntering(false);
-          return;
-        }
 
         setIsTextEntering(false);
         await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
