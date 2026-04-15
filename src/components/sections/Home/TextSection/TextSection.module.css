@@ -430,6 +430,10 @@
   font-weight: 300;
 }
 
+.brandOrangeText {
+  color: #ff6a00;
+}
+
 .mobileLineBreak {
   display: inline;
 }
@@ -586,6 +590,10 @@
     color: #ffffff;
     font-size: 20px;
     font-weight: 500;
+  }
+
+  .brandOrangeText {
+    color: #ff6a00;
   }
 
   .mobileLineBreak {

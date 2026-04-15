@@ -226,6 +226,14 @@
   will-change: opacity, transform, filter;
 }
 
+.brandOrangeText {
+  color: #ff6a00;
+}
+
+.plantProteinText {
+  font-size: 20px;
+}
+
 .videoTextEnter {
   animation: homeHeroTextEnter 650ms ease;
 }

@@ -22,7 +22,7 @@ const HERO_LINES = [
   "Institute Bio-Bioengineering",
   "This is my TONY WANG's belief",
   "It's a very good and valuable work",
-  "I don't like lying",
+  "I Don't Like Lying",
 ] as const;
 
 const HERO_FINAL_STACK_LINES = [
@@ -334,7 +334,7 @@ export default function HeroSection() {
             {hasPlaybackStarted && !showFinalStack && typedText ? (
               <p
                 key={lineIndex}
-                className={`${styles.videoText} ${isTextEntering ? styles.videoTextEnter : ""} ${isTextExiting ? styles.videoTextExit : ""}`}
+                className={`${styles.videoText} ${typedText === "HEY" || typedText === "I Don't Like Lying" || typedText === "plant cell genetic protein" ? styles.brandOrangeText : ""} ${typedText === "plant cell genetic protein" ? styles.plantProteinText : ""} ${isTextEntering ? styles.videoTextEnter : ""} ${isTextExiting ? styles.videoTextExit : ""}`}
               >
                 {typedText}
               </p>
