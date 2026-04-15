@@ -422,6 +422,8 @@
   transform: translateY(0);
   transition: opacity 0.45s ease, transform 0.45s ease;
   animation: videoTextEnter 0.45s ease both;
+  white-space: nowrap;
+  width: max-content;
 }
 
 .videoTextEmphasis {
