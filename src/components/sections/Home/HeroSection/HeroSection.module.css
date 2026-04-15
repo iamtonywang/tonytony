@@ -59,7 +59,7 @@
 .backgroundLayer {
   position: absolute;
   inset: 0;
-  background:
+  background-image:
     linear-gradient(rgba(95, 95, 95, 0.66), rgba(95, 95, 95, 0.66)),
     url("/landing-assets/home-hero-pc.webp");
   background-position: center;
@@ -133,7 +133,7 @@
 
 @media (max-width: 768px) {
   .backgroundLayer {
-    background:
+    background-image:
       linear-gradient(rgba(95, 95, 95, 0.66), rgba(95, 95, 95, 0.66)),
       url("/landing-assets/home-hero-mobile.webp");
   }
