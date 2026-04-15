@@ -540,41 +540,51 @@
     margin-top: 0;
   }
 
+  .statementTextOverlay {
+    color: #ffffff;
+  }
+
   .textLine {
-    font-size: 12.5px;
+    font-size: 14px;
     line-height: 1.35;
+    color: #ffffff;
     font-weight: 500;
   }
 
   .textHero {
-    font-size: 15px;
+    font-size: 20px;
+    color: #ffffff;
   }
 
   .textHeroStrong {
-    color: #ff8a3d;
-    font-size: 17px;
+    color: #ffffff;
+    font-size: 20px;
     font-weight: 500;
   }
 
   .textOrangePrimary {
-    font-size: 15px;
+    font-size: 14px;
+    color: #ffffff;
   }
 
   .textOrangeSecondary {
-    font-size: 15px;
+    font-size: 20px;
+    color: #ffffff;
   }
 
   .textSectionTitle {
-    font-size: 15px;
+    font-size: 14px;
+    color: #ffffff;
   }
 
   .textHighlight {
-    font-size: 17px;
+    font-size: 20px;
+    color: #ffffff;
   }
 
   .textHighlightStrong {
-    color: #ff8a3d;
-    font-size: 19px;
+    color: #ffffff;
+    font-size: 20px;
     font-weight: 500;
   }
 
