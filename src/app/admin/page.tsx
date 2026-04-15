@@ -1,6 +1,11 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 
+import { getAdminDashboardSummary } from "./_server/getAdminDashboardSummary";
+
 export default async function Page() {
+	const summary = await getAdminDashboardSummary();
+
 	const moduleLinkStyle = {
 		display: "inline-flex",
 		alignItems: "center",
@@ -15,14 +20,32 @@ export default async function Page() {
 		color: "rgba(255,255,255,0.92)",
 	};
 
-	const statCardStyle = {
+	const statCardStyle: CSSProperties = {
 		border: "1px solid rgba(255,255,255,0.2)",
-		padding: 8,
-		minHeight: 72,
+		padding: "14px 16px",
+		borderRadius: 8,
+		textAlign: "center" as const,
 	};
 
 	const statTitleStyle = {
 		fontSize: 14,
+		display: "block",
+		marginBottom: 8,
+		color: "rgba(255,255,255,0.95)",
+	};
+
+	const statPrimaryStyle = {
+		fontSize: 28,
+		fontWeight: 600 as const,
+		lineHeight: 1.2,
+		color: "#ffffff",
+	};
+
+	const statSecondaryStyle = {
+		fontSize: 12,
+		lineHeight: 1.45,
+		marginTop: 8,
+		color: "rgba(255,255,255,0.78)",
 	};
 
 	return (
@@ -69,27 +92,55 @@ export default async function Page() {
 				</Link>
 			</div>
 
-			<div style={{ marginTop: 20, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
+			<div
+				style={{
+					marginTop: 24,
+					display: "grid",
+					gridTemplateColumns: "1fr",
+					gap: 12,
+					maxWidth: 480,
+					marginLeft: "auto",
+					marginRight: "auto",
+				}}
+			>
 				<div style={statCardStyle}>
 					<strong style={statTitleStyle}>방문 통계</strong>
+					<div style={statPrimaryStyle}>{summary.visits.totalLabel}</div>
+					<div style={statSecondaryStyle}>{summary.visits.subLabel}</div>
 				</div>
+
 				<div style={statCardStyle}>
 					<strong style={statTitleStyle}>회원가입 통계</strong>
+					<div style={statPrimaryStyle}>{summary.signups.totalUsers}</div>
+					<div style={statSecondaryStyle}>최근 7일 가입 {summary.signups.recent7Days}명</div>
 				</div>
+
 				<div style={statCardStyle}>
 					<strong style={statTitleStyle}>판매 요약</strong>
+					<div style={statPrimaryStyle}>{summary.sales.totalOrders}</div>
+					<div style={statSecondaryStyle}>결제 대기(pending) {summary.sales.pendingOrders}건</div>
 				</div>
+
 				<div style={statCardStyle}>
 					<strong style={statTitleStyle}>환불 요약</strong>
+					<div style={statPrimaryStyle}>{summary.refunds.pendingRefunds}</div>
+					<div style={statSecondaryStyle}>요청(requested) · 승인(approved) {summary.refunds.approvedRefunds}건</div>
 				</div>
+
 				<div style={statCardStyle}>
 					<strong style={statTitleStyle}>정산 요약</strong>
+					<div style={statPrimaryStyle}>{summary.settlements.requestedCount}</div>
+					<div style={statSecondaryStyle}>
+						접수 대기(pending) · 승인·지급 단계(approved) {summary.settlements.payableCount}건
+					</div>
 				</div>
+
 				<div style={statCardStyle}>
 					<strong style={statTitleStyle}>운영 경고/대기 건수</strong>
+					<div style={statPrimaryStyle}>{summary.alerts.totalPendingCount}</div>
+					<div style={statSecondaryStyle}>{summary.alerts.breakdownLabel}</div>
 				</div>
 			</div>
 		</div>
 	);
 }
-
