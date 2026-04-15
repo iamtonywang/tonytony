@@ -243,8 +243,8 @@
   }
 
   .ourWorkTextOverlay {
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding-top: 24px;
     padding-bottom: 24px;
   }
