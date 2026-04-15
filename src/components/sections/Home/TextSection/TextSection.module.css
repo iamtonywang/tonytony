@@ -78,7 +78,7 @@
   margin: 0;
   font-size: 35px;
   line-height: 1.08;
-  font-weight: 500;
+  font-weight: 300;
   letter-spacing: 0.04em;
 }
 
@@ -86,7 +86,7 @@
   margin: 0;
   font-size: 17px;
   line-height: 1.35;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.02em;
 }
 
@@ -110,7 +110,7 @@
   margin: 4px 0 0 0;
   font-size: 17px;
   line-height: 1.4;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 @media (max-width: 768px) {
@@ -379,7 +379,7 @@
 }
 
 .statementPrimaryBlock .textLine {
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.65;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -559,7 +559,7 @@
     font-size: 16px;
     line-height: 1.35;
     color: #ffffff;
-    font-weight: 500;
+    font-weight: 300;
   }
 
   .textHero {
@@ -570,7 +570,7 @@
   .textHeroStrong {
     color: #ffffff;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 300;
   }
 
   .textOrangePrimary {
@@ -601,7 +601,7 @@
   .textHighlightStrong {
     color: #ffffff;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 300;
   }
 
   .brandOrangeText {
@@ -627,7 +627,7 @@
     line-height: 1.4;
     margin-top: 4px;
     margin-bottom: 4px;
-    font-weight: 500;
+    font-weight: 300;
   }
 
 }
