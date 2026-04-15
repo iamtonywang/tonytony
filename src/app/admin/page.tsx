@@ -22,35 +22,37 @@ export default async function Page() {
 
 	const statCardStyle: CSSProperties = {
 		border: "1px solid rgba(255,255,255,0.2)",
-		padding: "14px 16px",
-		borderRadius: 8,
+		padding: "8px 12px",
+		borderRadius: 6,
 		textAlign: "center" as const,
+		boxSizing: "border-box",
+		width: "100%",
 	};
 
 	const statTitleStyle = {
-		fontSize: 14,
+		fontSize: 13,
 		display: "block",
-		marginBottom: 8,
+		marginBottom: 4,
 		color: "rgba(255,255,255,0.95)",
 	};
 
 	const statPrimaryStyle = {
-		fontSize: 28,
+		fontSize: 22,
 		fontWeight: 600 as const,
-		lineHeight: 1.2,
+		lineHeight: 1.15,
 		color: "#ffffff",
 	};
 
 	const statSecondaryStyle = {
-		fontSize: 12,
-		lineHeight: 1.45,
-		marginTop: 8,
+		fontSize: 11,
+		lineHeight: 1.35,
+		marginTop: 4,
 		color: "rgba(255,255,255,0.78)",
 	};
 
 	return (
 		<div style={{ textAlign: "center" }}>
-			<h1 style={{ margin: "12px 0 16px" }}>Admin Dashboard</h1>
+			<h1 style={{ margin: "10px 0 12px" }}>Admin Dashboard</h1>
 
 			<style
 				dangerouslySetInnerHTML={{
@@ -94,13 +96,15 @@ export default async function Page() {
 
 			<div
 				style={{
-					marginTop: 24,
+					marginTop: 16,
 					display: "grid",
 					gridTemplateColumns: "1fr",
-					gap: 12,
-					maxWidth: 480,
+					gap: 10,
+					maxWidth: 440,
+					width: "100%",
 					marginLeft: "auto",
 					marginRight: "auto",
+					padding: "0 4px",
 				}}
 			>
 				<div style={statCardStyle}>
