@@ -72,11 +72,6 @@ export default function MainContentSection() {
                   도전을 해보았을 것이다
                 </span>
               </div>
-                <div className={styles.whyOverlayLine}>그리고 . . . . . .</div>
-                <div className={styles.whyOverlayLine}>셀 수 없는 한숨과 눈물 그리고 가슴 저미 는 고통을 받으며</div>
-                <div className={styles.whyOverlayLine}>미친 듯이 실패하고 좌절하면서 실패한 것을 깨달고</div>
-                <div className={styles.whyOverlayLine}>도전하는 자 포기하는 자 로 나뉜다</div>
-                <div className={styles.whyOverlayLine}>그래 이게 인생이야</div>
                 <div className={styles.whyOverlayLine}>파노라마 같은 인생에서 누구나 겪는 세월의 흔적 이고</div>
                 <div className={styles.whyOverlayLine}>82억 인구 중에 우리가 겪는 실패와 성공도 한 부분이야</div>
                 <div className={styles.whyOverlayLine}>새로운 피부 조직을 변혁 하는 유일한 유전자 단백질</div>
