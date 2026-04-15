@@ -243,13 +243,19 @@
   }
 
   .ourWorkTextOverlay {
+    position: static;
+    inset: auto;
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    width: 100%;
     padding-top: 24px;
     padding-bottom: 24px;
   }
 
   .ourWorkTextInner {
+    width: 100%;
+    max-width: none;
     padding: 20px 12px 24px;
   }
 
