@@ -341,9 +341,9 @@
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(95, 95, 95, 0.55) 0%,
-    rgba(95, 95, 95, 0.65) 40%,
-    rgba(95, 95, 95, 0.8) 100%
+    rgba(95, 95, 95, 0.8) 0%,
+    rgba(95, 95, 95, 0.83) 40%,
+    rgba(95, 95, 95, 0.86) 100%
   );
 }
 
