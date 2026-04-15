@@ -37,7 +37,7 @@ function isDocumentPathForVisitLog(pathname: string): boolean {
 		return false;
 	}
 	const lower = pathname.toLowerCase();
-	if (/\.(mp4|webp|jpe?g|png|gif|svg)$/.test(lower)) {
+	if (/\.(mp4|webp|jpe?g|png|gif|svg|ico|avif|woff2?|css|js|map)$/.test(lower)) {
 		return false;
 	}
 	return true;
