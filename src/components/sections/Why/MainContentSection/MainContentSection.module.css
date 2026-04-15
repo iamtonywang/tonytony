@@ -127,6 +127,34 @@
   font-size: 14px;
 }
 
+.textLarge {
+  font-size: 23px;
+}
+
+.textMedium {
+  font-size: 20px;
+}
+
+.textSmall {
+  font-size: 14px;
+}
+
+.brandOrangeText {
+  color: #ff6a00;
+}
+
+.whyOverlayLine.textLarge {
+  font-size: 23px;
+}
+
+.whyOverlayLine.textMedium {
+  font-size: 20px;
+}
+
+.whyOverlayLine.textSmall {
+  font-size: 14px;
+}
+
 .whyTextOverlayVisible .whyOverlayLine {
   animation-play-state: running;
 }
@@ -139,6 +167,10 @@
 .whyOverlayLine:nth-child(6) { animation-delay: 1.7s; }
 
 .statementSmallBlock .whyOverlayLine {
+  font-size: 14px;
+}
+
+.statementSmallBlock .whyOverlayLine.textSmall {
   font-size: 14px;
 }
 
@@ -208,8 +240,12 @@
   }
 
   .statementSmallBlock .whyOverlayLine {
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .statementSmallBlock .whyOverlayLine.textSmall {
+    font-size: 14px;
   }
 
   .mobileOnlyBreak {
