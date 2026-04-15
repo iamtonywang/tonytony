@@ -117,6 +117,18 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
+.ourWorkOverlayLine.textLarge {
+  font-size: 23px;
+}
+
+.ourWorkOverlayLine.textMedium {
+  font-size: 20px;
+}
+
+.ourWorkOverlayLine.textSmall {
+  font-size: 14px;
+}
+
 .tonyOffset {
   transform: translateY(12px);
 }
@@ -244,6 +256,18 @@
     line-height: 1.4;
     margin-top: 4px;
     margin-bottom: 4px;
+  }
+
+  .ourWorkOverlayLine.textLarge {
+    font-size: 23px;
+  }
+
+  .ourWorkOverlayLine.textMedium {
+    font-size: 20px;
+  }
+
+  .ourWorkOverlayLine.textSmall {
+    font-size: 14px;
   }
 
   .statementSmallBlock .ourWorkOverlayLine {
