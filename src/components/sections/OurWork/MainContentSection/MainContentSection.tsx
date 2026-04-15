@@ -60,8 +60,6 @@ export default function MainContentSection() {
               <div className={`${styles.ourWorkOverlayLine} ${styles.textMedium}`}>Our Work</div>
               <div className={styles.statementSmallBlock}>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>벤자민 버튼! 처럼 돌아갈수만 있다면 . . . .</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>짧아진 텔로미어를 늘릴수 있다면 . . . .</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그 시계를 되감을 수 있다면 . . . .</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>피부가 늙는 건 나이가 아니라, 세포가 소멸된 이유야</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그래</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textLarge}`}>TONYWANG</div>
@@ -71,8 +69,6 @@ export default function MainContentSection() {
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>셀 수 없는 한숨과 눈물 그리고 가슴 저미 는 고통을 받으며</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>미친 듯이 실패하고 실패한 것을 복구하며</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>도전하는 자 포기하는 자 로 나뉜다</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그래 거창함은 없다 운명이라 생각했다</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>세상에 태어난 이유이고 인류의 질병에 해결점을 찾고 싶었다</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그래 이게 인생이야</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>파노라마 같은 인생에서 누구나 겪는 세월의 흔적 이고</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>82억 인구 중에 우리가 겪는 실패와 성공도 한 부분이야</div>
