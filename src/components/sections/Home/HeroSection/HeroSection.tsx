@@ -25,7 +25,6 @@ const HERO_LINES = [
   "SINCE May 2026",
 ];
 
-const TYPE_SPEED_MS = 95;
 const LINE_HOLD_MS = 1050;
 const PRE_EXIT_HOLD_MS = 180;
 const EXIT_MS = 820;
@@ -173,20 +172,12 @@ export default function HeroSection() {
 
       while (!cancelled && current < HERO_LINES.length) {
         const line = HERO_LINES[current];
-        setTypedText("");
+        if (cancelled) return;
+        setLineIndex(current);
+        setTypedText(line);
         setIsTextEntering(true);
         setIsTextExiting(false);
-        setLineIndex(current);
 
-        let typed = "";
-        for (const ch of line) {
-          if (cancelled) return;
-          typed += ch;
-          setTypedText(typed);
-          await sleep(TYPE_SPEED_MS);
-        }
-
-        if (cancelled) return;
         const isPenultimate = current === HERO_LINES.length - 2;
         const isLast = current === HERO_LINES.length - 1;
 
