@@ -62,7 +62,9 @@ export default function MainContentSection() {
                 <div className={styles.whyOverlayLine}>벤자민 버튼! 처럼 돌아갈수만 있다면 . . . .</div>
                 <div className={styles.whyOverlayLine}>짧아진 텔로미어를 늘릴수 있다면 ?</div>
                 <div className={styles.whyOverlayLine}>그 시계를 되감을 수 있다면?</div>
-                <div className={styles.whyOverlayLine}>피부가 늙는 건 나이가 아니라, 세포가 지쳐버렸기 때문이야</div>
+                <div className={styles.whyOverlayLine}>
+                  피부가 늙는 건 나이가 아니라,<br className={styles.mobileOnlyBreak} />세포가 지쳐버렸기 때문이야
+                </div>
                 <div className={styles.whyOverlayLine}>그래</div>
                 <div className={styles.whyOverlayLine}>나는 세포를 연구하는 데 28년을 보냈다</div>
               <div className={styles.whyOverlayLine}>

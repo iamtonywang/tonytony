@@ -205,6 +205,6 @@
   }
 
   .mobileOnlyBreak {
-    display: inline;
+    display: block;
   }
 }
