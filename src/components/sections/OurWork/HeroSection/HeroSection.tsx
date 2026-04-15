@@ -201,12 +201,12 @@ export default function HeroSection() {
                 onEnded={handleVideoEnded}
               >
                 <source
-                  src="/landing-assets/ourwork-hero-pc.mp4"
+                  src="/landing-assets/nigajun-35-hero-pc.mp4.mp4"
                   type="video/mp4"
                   media="(min-width: 769px)"
                 />
                 <source
-                  src="/landing-assets/ourwork-hero-mobile.mp4"
+                  src="/landing-assets/nigajun-35-hero-pc.mp4.mp4"
                   type="video/mp4"
                   media="(max-width: 768px)"
                 />
