@@ -149,7 +149,7 @@
 .ourWorkOverlayLine:nth-child(5) { animation-delay: 1.4s; }
 .ourWorkOverlayLine:nth-child(6) { animation-delay: 1.7s; }
 
-.statementSmallBlock .ourWorkOverlayLine {
+.statementSmallBlock .ourWorkOverlayLine.textSmall {
   font-size: 14px;
 }
 
@@ -270,7 +270,7 @@
     font-size: 14px;
   }
 
-  .statementSmallBlock .ourWorkOverlayLine {
+  .statementSmallBlock .ourWorkOverlayLine.textSmall {
     font-size: 14px;
   }
 
