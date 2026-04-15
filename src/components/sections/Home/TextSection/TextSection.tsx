@@ -96,7 +96,7 @@ export default function TextSection() {
               <div className={styles.textLine}>세균이 지배하는 피부에 세균를 지휘하는 마에스트로</div>
               <div className={styles.textLine}>피부 조직을 변혁 시키는 유일한 유전자 단백질</div>
               <div className={styles.textLine}>바이오는 입증으로 가치를 증명하는 것이다</div>
-              <div className={styles.textLine}>SINCE May 2026</div>
+              <div className={`${styles.textLine} ${styles.textSmall}`}>SINCE May 2026</div>
             </div>
           </div>
         </div>

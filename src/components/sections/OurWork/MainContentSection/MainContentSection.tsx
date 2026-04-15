@@ -84,6 +84,7 @@ export default function MainContentSection() {
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>천연물 기반 식물세포 유전자 단백질 플랫폼</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>식물세포 DNA 클로닝 재조합</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>세포 간 유전자 융합을 통해 제3의 유일 단백질</div>
+                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>SINCE May 2026</div>
               </div>
             </div>
           </div>

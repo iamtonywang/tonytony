@@ -418,6 +418,10 @@
   font-weight: 300;
 }
 
+.textSmall {
+  font-size: 14px;
+}
+
 /* keep for compatibility if referenced elsewhere */
 .textHighlight {
   font-size: 35px;
@@ -578,6 +582,11 @@
   }
 
   .textSectionTitle {
+    font-size: 14px;
+    color: #ffffff;
+  }
+
+  .textSmall {
     font-size: 14px;
     color: #ffffff;
   }
