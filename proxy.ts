@@ -28,6 +28,12 @@ function getSupabaseAuthCookies(request: NextRequest): string[] {
 		.map((cookie) => cookie.name);
 }
 
+function shortRpcErrorBody(text: string, maxLen = 240): string {
+	const s = text.replace(/\s+/g, " ").trim();
+	if (s.length <= maxLen) return s;
+	return `${s.slice(0, maxLen)}…`;
+}
+
 async function recordSiteVisitSafe(params: {
 	supabaseUrl: string;
 	serviceRoleKey: string;
@@ -37,9 +43,22 @@ async function recordSiteVisitSafe(params: {
 	isAuthenticated: boolean;
 	path: string;
 	referrer: string | null;
+	/** 로그 전용(RPC body 미포함) */
+	hasAnonKeyForLog: boolean;
 }): Promise<void> {
 	const { supabaseUrl, serviceRoleKey } = params;
+	const visitorPrefix =
+		params.visitorToken && params.visitorToken.length > 0
+			? `${params.visitorToken.slice(0, 6)}…`
+			: "none";
+
+	console.log(
+		"[proxy][visit] start",
+		`pathname=${params.path} hasServiceRoleKey=${Boolean(serviceRoleKey.trim())} hasSupabaseUrl=${Boolean(supabaseUrl?.trim())} hasAnonKey=${params.hasAnonKeyForLog} isAuthenticated=${params.isAuthenticated} hasVisitorToken=${Boolean(params.visitorToken)} visitDate=${params.visitDate} visitorPrefix=${visitorPrefix}`,
+	);
+
 	if (!serviceRoleKey.trim()) {
+		console.warn("[proxy][visit] skipped: missing SUPABASE_SERVICE_ROLE_KEY");
 		return;
 	}
 
@@ -62,8 +81,18 @@ async function recordSiteVisitSafe(params: {
 		});
 
 		if (!res.ok) {
-			console.warn("[proxy][visit] record_site_daily_visit failed", res.status);
+			const errText = await res.text().catch(() => "");
+			console.warn(
+				"[proxy][visit] rpc failed",
+				`status=${res.status} body=${shortRpcErrorBody(errText)}`,
+			);
+			return;
 		}
+
+		console.log(
+			"[proxy][visit] recorded",
+			`path=${params.path} authenticated=${params.isAuthenticated}`,
+		);
 	} catch (e) {
 		console.warn("[proxy][visit] record_site_daily_visit error", e);
 	}
@@ -93,6 +122,9 @@ export async function proxy(request: NextRequest) {
 	}
 
 	if (!url || !anonKey) {
+		console.warn(
+			"[proxy][visit] skipped: missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY",
+		);
 		return supabaseResponse;
 	}
 
@@ -179,6 +211,7 @@ export async function proxy(request: NextRequest) {
 				isAuthenticated,
 				path: pathname,
 				referrer: request.headers.get("referer") ?? null,
+				hasAnonKeyForLog: Boolean(anonKey?.trim()),
 			});
 		}
 	}
