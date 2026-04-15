@@ -60,21 +60,36 @@ export default function MainContentSection() {
               <div className={`${styles.ourWorkOverlayLine} ${styles.textMedium}`}>Our Work</div>
               <div className={styles.statementSmallBlock}>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>벤자민 버튼! 처럼 돌아갈수만 있다면 . . . .</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>피부가 늙는 건 나이가 아니라, 세포가 소멸된 이유야</div>
+                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
+                  피부가 늙는 건 나이가 아니라, <span className={styles.mobileBreak} />
+                  세포가 지쳐버렸기 때문이야
+                </div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그래</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textLarge}`}>TONYWANG</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>나는 세포를 연구하는 데 28년을 보냈다</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>누구나 인생을 살면서 한번쯤 은 미친 듯이 도전을 해보았을 것이다</div>
+                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
+                  누구나 인생을 살면서 한번쯤 은 <span className={styles.mobileBreak} />
+                  미친 듯이 도전을 해보았을 것이다
+                </div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그리고 . . . . .</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>셀 수 없는 한숨과 눈물 그리고 가슴 저미 는 고통을 받으며</div>
+                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
+                  셀 수 없는 한숨과 눈물 <span className={styles.mobileBreak} />
+                  그리고 가슴 저미 는 고통을 받으며
+                </div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>미친 듯이 실패하고 실패한 것을 복구하며</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>도전하는 자 포기하는 자 로 나뉜다</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그래 이게 인생이야</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>파노라마 같은 인생에서 누구나 겪는 세월의 흔적 이고</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>82억 인구 중에 우리가 겪는 실패와 성공도 한 부분이야</div>
+                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
+                  파노라마 같은 인생에서 <span className={styles.mobileBreak} />
+                  누구나 겪는 세월의 흔적 이고
+                </div>
+                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
+                  82억 인구 중에 우리가 겪는 <span className={styles.mobileBreak} />
+                  실패와 성공도 한 부분이야
+                </div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>28년 생명공학 연구 개발을 하면서</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>단 한번도</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textLarge}`}>화장품 따위는 만들 생각이 없었다</div>
+                <div className={`${styles.ourWorkOverlayLine} ${styles.textLarge} ${styles.textLargeMobileMedium}`}>화장품 따위는 만들 생각이 없었다</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>나의 창작 연구는</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textMedium}`}>줄기세포 NO, 리포좀 NO,</div>
                 <div className={`${styles.ourWorkOverlayLine} ${styles.textMedium}`}>엑소좀 NO, 성장인자 NO,</div>

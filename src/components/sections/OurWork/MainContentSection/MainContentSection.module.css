@@ -129,6 +129,10 @@
   font-size: 14px;
 }
 
+.textLargeMobileMedium {
+  font-size: 23px;
+}
+
 .tonyOffset {
   transform: translateY(12px);
 }
@@ -285,6 +289,10 @@
 
   .ourWorkOverlayLine.textSmall {
     font-size: 14px;
+  }
+
+  .ourWorkOverlayLine.textLarge.textLargeMobileMedium {
+    font-size: 20px;
   }
 
   .statementSmallBlock .ourWorkOverlayLine.textSmall {
