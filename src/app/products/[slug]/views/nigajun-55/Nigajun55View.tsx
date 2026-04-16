@@ -395,55 +395,43 @@ export default function Nigajun55View({ product, boardItems }: Props) {
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
 
 
-      <section className={styles.detailVisualSection}>
-        <div className={styles.detailVisualMedia}>
-          <img
-            className={styles.detailVisualImage}
-            src="/landing-assets/hero-main-pc.webp"
-            alt="TONYWANG product visual"
-            draggable={false}
-          />
-          <div className={styles.detailGradientOverlay} aria-hidden="true" />
+      <section className={styles.detailLowerCopySection}>
+        <div className={styles.detailLowerCopyInner}>
+          <h1 className={styles.detailLowerTitle}>TONYWANG</h1>
 
-          <div className={styles.detailVisualOverlay} draggable={false}>
-            <div className={styles.detailOverlayInner}>
-              <h1 className={styles.detailTitle}>TONYWANG</h1>
+          <p className={styles.detailOverlayText}>TONYWANG</p>
+          <p className={styles.detailOverlayText}>
+            튼살(striae distensae)은 단순한 피부 표면의<br className={styles.mobileOnly} />물리적 손상이 아니다
+          </p>
+          <p className={styles.detailOverlayText}>피부 세포의 세포신호 전달(cellular signaling)과</p>
+          <p className={styles.detailOverlayText}>
+            단백질 발현 조절(protein expression modulation)<br className={styles.mobileOnly} />재활성화 중점
+          </p>
+          <p className={styles.detailOverlayText}>
+            Bio-Active Complex는 섬유아세포의<br className={styles.mobileOnly} />대사 활성도를 증가
+          </p>
+          <p className={styles.detailOverlayText}>
+            콜라겐 합성 경로와 ECM 리모델링 경로를<br className={styles.mobileOnly} />동시에 유도한다.
+          </p>
+          <p className={styles.detailOverlayText}>
+            특히 성장 인자 신호와 유사한<br className={styles.mobileOnly} />세포 활성 환경을 형성하여
+          </p>
+          <p className={styles.detailOverlayText}>진피 조직 내 콜라겐 재배열(collagen re-organization),</p>
+          <p className={styles.detailOverlayText}>
+            엘라스틴 네트워크 복원,<br className={styles.mobileOnly} />세포외기질 재구성을 촉진한다.
+          </p>
+          <p className={styles.detailOverlayText}>SINCE May 2026</p>
 
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>TONYWANG</p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                튼살(striae distensae)은 단순한 피부 표면의<br className={styles.mobileOnly} />물리적 손상이 아니다
-              </p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>피부 세포의 세포신호 전달(cellular signaling)과</p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                단백질 발현 조절(protein expression modulation)<br className={styles.mobileOnly} />재활성화 중점
-              </p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                Bio-Active Complex는 섬유아세포의<br className={styles.mobileOnly} />대사 활성도를 증가
-              </p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                콜라겐 합성 경로와 ECM 리모델링 경로를<br className={styles.mobileOnly} />동시에 유도한다.
-              </p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                특히 성장 인자 신호와 유사한<br className={styles.mobileOnly} />세포 활성 환경을 형성하여
-              </p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>진피 조직 내 콜라겐 재배열(collagen re-organization),</p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                엘라스틴 네트워크 복원,<br className={styles.mobileOnly} />세포외기질 재구성을 촉진한다.
-              </p>
-              <p className={styles.detailOverlayText} style={{ fontSize: '14px', lineHeight: '1.6' }}>SINCE May 2026</p>
+          <p className={styles.detailLowerPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
 
-              <p className={styles.heroPrice}>
-                {typeof product?.finalPriceAmount === "number"
-                  ? `₩${product.finalPriceAmount.toLocaleString()}`
-                  : null}
-              </p>
-
-              <div className={styles.detailCtaRow} style={{ marginTop: '24px' }}>
-                <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
-                  Buy Now
-                </Link>
-              </div>
-            </div>
+          <div className={styles.detailLowerCtaRow}>
+            <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailLowerBuyButton}>
+              Buy Now
+            </Link>
           </div>
         </div>
       </section>
