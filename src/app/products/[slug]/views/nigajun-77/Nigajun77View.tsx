@@ -391,79 +391,67 @@ export default function Nigajun77View({ product, boardItems }: Props) {
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
 
 
-      <section className={styles.detailVisualSection}>
-        <div className={styles.detailVisualMedia}>
-          <img
-            className={styles.detailVisualImage}
-            src="/landing-assets/hero-main-pc.webp"
-            alt="TONYWANG product visual"
-            draggable={false}
-          />
-          <div className={styles.detailGradientOverlay} aria-hidden="true" />
+      <section className={styles.detailLowerCopySection}>
+        <div className={styles.detailLowerCopyInner}>
+          <h1 className={styles.detailLowerTitle}>TONYWANG</h1>
+          <p className={`${styles.detailOverlayText} ${styles.detailSubTitle14}`}>NIGAJUN77</p>
+          <p className={`${styles.detailOverlayText} ${styles.detailSubTitle14}`}>Proteo Phyto Complex</p>
+          <p className={`${styles.detailOverlayText} ${styles.detailSubTitle14}`}>
+            Lower Body Fat Improvement Cream
+          </p>
 
-          <div className={styles.detailVisualOverlay} draggable={false}>
-            <div className={styles.detailOverlayInner}>
-              <h1 className={styles.detailTitle}>TONYWANG</h1>
-              <p className={`${styles.detailOverlayText} ${styles.detailSubTitle14}`}>NIGAJUN77</p>
-              <p className={`${styles.detailOverlayText} ${styles.detailSubTitle14}`}>Proteo Phyto Complex</p>
-              <p className={`${styles.detailOverlayText} ${styles.detailSubTitle14}`}>
-                Lower Body Fat Improvement Cream
-              </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            종아리는 특별한 지방 조직이다.
+          </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            움직임이 많지만 지방은 쉽게 사라지지 않는다.
+          </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            이유는 단순하다.
+          </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            종아리 지방은 부종이 아니라 대사 환경에 의해 유지된다.
+          </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            지방세포는 단순히 지방을 저장하는 저장소가 아니다.
+          </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            지방세포는 에너지 저장 모드와 에너지 소비 모드 사이를
+            <br className={styles.mobileOnly} />
+            오가는 대사 세포다.
+          </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            문제는 대부분의 종아리 지방이 저장 모드에
+            <br className={styles.mobileOnly} />
+            고정되어 있다는 것이다.
+          </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            지방 합성 효소 FAS · ACC 경로가 억제되면서
+          </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            지방세포는 더 이상 축적 환경을 유지하기 어렵다.
+          </p>
+          <p className={styles.detailOverlayText}>
+            지방 조직 주변에서 나타나는 저등급 염증
+            <span className={styles.mobileBreak}>(low-grade inflammation)</span>
+          </p>
+          <p className={`${styles.detailOverlayText} ${styles.korText}`}>
+            지방 축적을 유지시키는 중요한 조건이다
+          </p>
+          <p className={styles.detailOverlayText}>
+            SINCE May 2026
+          </p>
 
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                종아리는 특별한 지방 조직이다.
-              </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                움직임이 많지만 지방은 쉽게 사라지지 않는다.
-              </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                이유는 단순하다.
-              </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                종아리 지방은 부종이 아니라 대사 환경에 의해 유지된다.
-              </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                지방세포는 단순히 지방을 저장하는 저장소가 아니다.
-              </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                지방세포는 에너지 저장 모드와 에너지 소비 모드 사이를
-                <br className={styles.mobileOnly} />
-                오가는 대사 세포다.
-              </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                문제는 대부분의 종아리 지방이 저장 모드에
-                <br className={styles.mobileOnly} />
-                고정되어 있다는 것이다.
-              </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                지방 합성 효소 FAS · ACC 경로가 억제되면서
-              </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                지방세포는 더 이상 축적 환경을 유지하기 어렵다.
-              </p>
-              <p className={styles.detailOverlayText}>
-                지방 조직 주변에서 나타나는 저등급 염증
-                <span className={styles.mobileBreak}>(low-grade inflammation)</span>
-              </p>
-              <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-                지방 축적을 유지시키는 중요한 조건이다
-              </p>
-              <p className={styles.detailOverlayText}>
-                SINCE May 2026
-              </p>
+          <p className={styles.detailLowerPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
 
-              <p className={styles.heroPrice}>
-                {typeof product?.finalPriceAmount === "number"
-                  ? `₩${product.finalPriceAmount.toLocaleString()}`
-                  : null}
-              </p>
-
-              <div className={styles.detailCtaRow}>
-              <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
-                Buy Now
-              </Link>
-              </div>
-            </div>
+          <div className={styles.detailLowerCtaRow}>
+            <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailLowerBuyButton}>
+              Buy Now
+            </Link>
           </div>
         </div>
       </section>
