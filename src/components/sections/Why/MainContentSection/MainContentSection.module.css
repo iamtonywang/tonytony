@@ -290,6 +290,15 @@
   display: none;
 }
 
+/* Desktop keeps single-line copy; mobile shows alternate splits (MainContentSection.tsx) */
+.desktopOnly {
+  display: inline;
+}
+
+.mobileOnly {
+  display: none;
+}
+
 @keyframes textSlideIn {
   from {
     opacity: 0;
@@ -385,5 +394,17 @@
 
   .mobileOnlyBreak {
     display: block;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+
+  .whyOverlayLine.mobileHideLine {
+    display: none !important;
   }
 }

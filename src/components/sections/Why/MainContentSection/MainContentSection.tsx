@@ -72,36 +72,94 @@ export default function MainContentSection() {
                   스킨케어로도 세상을 뒤집어 놓을수있다는 것을
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  피부 근본을 바꾸는 P-Code™. 독소를 제거하는 Genesis Protein
+                  <span className={styles.desktopOnly}>
+                    피부 근본을 바꾸는 P-Code™. 독소를 제거하는 Genesis Protein
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    피부 근본을 바꾸는 P-Code™.
+                    <br className={styles.mobileOnlyBreak} />
+                    독소를 제거하는 Genesis Protein
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  피부를 가장 깨끗하고 건강했던 &apos;태초의 상태 되돌림
+                  <span className={styles.desktopOnly}>
+                    피부를 가장 깨끗하고 건강했던 &apos;태초의 상태 되돌림
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    피부를 가장 깨끗하고 건강했던
+                    <br className={styles.mobileOnlyBreak} />
+                    피부가 &apos;태초의 상태 되돌림
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  단순한 복구가 아닌, 피부 근본을 변환하는 P-Code™
+                  <span className={styles.desktopOnly}>
+                    단순한 복구가 아닌, 피부 근본을 변환하는 P-Code™
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    단순한 복구가 아닌,
+                    <br className={styles.mobileOnlyBreak} />
+                    피부 근본을 변환하는 P-Code™
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>식물세포 유전자 단백질 복합체</div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>Proteo Phyto Complex</div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>독소 정화 (Toxin Purge)</div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  Toxin Purge 외부 독소는 피부의 유전자 명령을 멈추게 한다.
+                  <span className={styles.desktopOnly}>
+                    Toxin Purge 외부 독소는 피부의 유전자 명령을 멈추게 한다.
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    Toxin Purge 외부 독소는
+                    <br className={styles.mobileOnlyBreak} />
+                    피부의 유전자 명령을 멈추게 한다.
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  독소와 염증 유발 인자를 정밀 정화 하여 무해한 형태로 Purge 한다
+                  <span className={styles.desktopOnly}>
+                    독소와 염증 유발 인자를 정밀 정화 하여 무해한 형태로 Purge 한다
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    독소와 염증 유발 인자를 정밀 정화 하여
+                    <br className={styles.mobileOnlyBreak} />
+                    무해한 형태로 Purge 한다
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  이 과정은 흑피증처럼 만성화된 독소 흔적을 지우는 선결 과제
+                  <span className={styles.desktopOnly}>
+                    이 과정은 흑피증처럼 만성화된 독소 흔적을 지우는 선결 과제
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    이 과정은 흑피증처럼 만성화된
+                    <br className={styles.mobileOnlyBreak} />
+                    독소 흔적을 지우는 선결 과제
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
                   유전자 복원 및 재생 (Skin Regeneration)
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  독소가 사라진 자리에 Proteo Phyto Complex 복합체 는
+                  <span className={styles.desktopOnly}>
+                    독소가 사라진 자리에 Proteo Phyto Complex 복합체 는
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    독소가 사라진 자리에
+                    <br className={styles.mobileOnlyBreak} />
+                    Proteo Phyto Complex 복합체 는
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  섬유아세포와 줄기세포에 직접 &apos;변혁 명령&apos;을 내린다
+                  <span className={styles.desktopOnly}>
+                    섬유아세포와 줄기세포에 직접 &apos;변혁 명령&apos;을 내린다
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    섬유아세포와 줄기세포에
+                    <br className={styles.mobileOnlyBreak} />
+                    직접 &apos;변혁 명령&apos;을 내린다
+                  </span>
                 </div>
-                <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
+                <div
+                  className={`${styles.whyOverlayLine} ${styles.textSmall} ${styles.mobileHideLine}`}
+                >
                   유전자가 활성화되어 콜라겐과 엘라스틴 생성을 재시작하고
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
@@ -118,10 +176,24 @@ export default function MainContentSection() {
 
               <div className={styles.statementSmallBlock}>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  28년 동안 오직 식물세포유전자 단백질 연구 생명 과학 연구소
+                  <span className={styles.desktopOnly}>
+                    28년 동안 오직 식물세포유전자 단백질 연구 생명 과학 연구소
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    28년 동안 오직 식물세포유전자 단백질 연구한
+                    <br className={styles.mobileOnlyBreak} />
+                    BIO 생명 과학 연구소
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  모든 연구는 단 하나 식물세포유전자단백질 개발
+                  <span className={styles.desktopOnly}>
+                    모든 연구는 단 하나 식물세포유전자단백질 개발
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    모든 연구는 단 하나
+                    <br className={styles.mobileOnlyBreak} />
+                    식물세포유전자단백질 개발
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
                   난치성 피부질환 치료 단백질 연구
@@ -133,10 +205,24 @@ export default function MainContentSection() {
                   피부 독소 정화 단백질 연구
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  긴 시간 동안 이 분야에 매진한 이유는 명확해.
+                  <span className={styles.desktopOnly}>
+                    긴 시간 동안 이 분야에 매진한 이유는 명확해.
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    긴 시간 동안 이 분야에 매진한
+                    <br className={styles.mobileOnlyBreak} />
+                    이유는 명확해.
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                  인류의 삶의 질을 위협하는 난치성 피부질환을 근본적으로 치료하고,
+                  <span className={styles.desktopOnly}>
+                    인류의 삶의 질을 위협하는 난치성 피부질환을 근본적으로 치료하고,
+                  </span>
+                  <span className={styles.mobileOnly}>
+                    인류의 삶의 질을 위협하는
+                    <br className={styles.mobileOnlyBreak} />
+                    난치성 피부질환을 근본적으로 치료하고,
+                  </span>
                 </div>
                 <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
                   손상된 피부를 건강하게 복원 및 재생할 수 있는
