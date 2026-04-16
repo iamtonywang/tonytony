@@ -314,7 +314,6 @@ export default function Nigajun99View({ product, boardItems }: Props) {
     // 각 라인의 enter:hold:exit = 20%:60%:20%
     const enterMs = sliceMs * 0.2;
     const holdMs = sliceMs * 0.6;
-    const exitMs = sliceMs * 0.2;
 
     // 라인별 스케줄
     for (let i = 0; i < totalLines; i++) {
@@ -467,74 +466,62 @@ export default function Nigajun99View({ product, boardItems }: Props) {
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
 
 
-      <section className={styles.detailVisualSection}>
-        <div className={styles.detailVisualMedia}>
-          <img
-            className={styles.detailVisualImage}
-            src="/landing-assets/hero-main-pc.webp"
-            alt="TONYWANG product visual"
-            draggable={false}
-          />
-          <div className={styles.detailGradientOverlay} aria-hidden="true" />
+      <section className={styles.detailLowerCopySection}>
+        <div className={styles.detailLowerCopyInner}>
+          <p className={`${styles.detailLowerTitle} ${styles.titleMain}`}>
+            TONYWANG
+          </p>
 
-          <div className={styles.detailVisualOverlay} draggable={false}>
-            <div className={styles.detailOverlayInner}>
-              <p className={`${styles.detailOverlayHeading} ${styles.titleMain}`}>
-                TONYWANG
-              </p>
+          <p className={`${styles.detailLowerText} ${styles.titleSub}`}>
+            NIGAJUN99
+          </p>
 
-              <p className={`${styles.detailOverlayText} ${styles.titleSub}`}>
-                NIGAJUN99
-              </p>
+          <p className={styles.detailLowerText}>
+            피부 가려움증 매우 괴롭고 힘든 고통스런 질환이다
+          </p>
+          <p className={styles.detailLowerText}>
+            많은 기업들이 개선 할수 있다고 한다
+          </p>
+          <p className={styles.detailLowerText}>
+            그러나 현실은 거짓에 불과하다
+          </p>
+          <p className={styles.detailLowerText}>
+            피부 가려움증의 생물학적 메커니즘 모르고
+            <br className={styles.mobileOnly} />
+            단순 항염 케미컬 물질과 천염물질
+          </p>
+          <p className={styles.detailLowerText}>
+            그리고
+            <br className={styles.mobileOnly} />
+            각종 헤게모니 원료를 앞세워 해결하기에는
+            <br className={styles.mobileOnly} />
+            부족한 부분이 많다
+          </p>
+          <p className={styles.detailLowerText}>
+            과대하게 부풀린 홍보는 가려움에 의한
+            <br className={styles.mobileOnly} />
+            고통스런 유저들에게 더 고통과 좌절감을 줄뿐이다
+          </p>
+          <p className={styles.detailLowerText}>
+            이제 그만 멈춰라
+          </p>
+          <p className={styles.detailLowerText}>
+            거짓에 의한 상처받는고통이 더욱 크다
+          </p>
+          <p className={styles.detailLowerText}>
+            SINCE May 2026
+          </p>
 
-              <p className={styles.detailDescription}>
-                피부 가려움증 매우 괴롭고 힘든 고통스런 질환이다
-              </p>
-              <p className={styles.detailDescription}>
-                많은 기업들이 개선 할수 있다고 한다
-              </p>
-              <p className={styles.detailDescription}>
-                그러나 현실은 거짓에 불과하다
-              </p>
-              <p className={styles.detailDescription}>
-                피부 가려움증의 생물학적 메커니즘 모르고
-                <br className={styles.mobileOnly} />
-                단순 항염 케미컬 물질과 천염물질
-              </p>
-              <p className={styles.detailDescription}>
-                그리고
-                <br className={styles.mobileOnly} />
-                각종 헤게모니 원료를 앞세워 해결하기에는
-                <br className={styles.mobileOnly} />
-                부족한 부분이 많다
-              </p>
-              <p className={styles.detailDescription}>
-                과대하게 부풀린 홍보는 가려움에 의한
-                <br className={styles.mobileOnly} />
-                고통스런 유저들에게 더 고통과 좌절감을 줄뿐이다
-              </p>
-              <p className={styles.detailDescription}>
-                이제 그만 멈춰라
-              </p>
-              <p className={styles.detailDescription}>
-                거짓에 의한 상처받는고통이 더욱 크다
-              </p>
-              <p className={styles.detailOverlayText}>
-                SINCE May 2026
-              </p>
+          <p className={styles.detailLowerPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
 
-              <p className={styles.heroPrice}>
-                {typeof product?.finalPriceAmount === "number"
-                  ? `₩${product.finalPriceAmount.toLocaleString()}`
-                  : null}
-              </p>
-
-              <div className={styles.detailCtaRow} style={{ marginTop: '24px' }}>
-                <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
-                  Buy Now
-                </Link>
-              </div>
-            </div>
+          <div className={styles.detailLowerCtaRow}>
+            <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailLowerBuyButton}>
+              Buy Now
+            </Link>
           </div>
         </div>
       </section>

@@ -544,6 +544,12 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
+.detailIntroSubTitle {
+  margin: 0 0 12px;
+  font-size: clamp(13px, 1.1vw, 17px);
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .detailIntroText {
   margin: 0 auto 10px;
   max-width: 760px;
@@ -552,7 +558,24 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
-.detailTitle {
+.detailCopySection {
+  text-align: center;
+}
+
+.detailLowerCopySection {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.detailLowerCopyInner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detailLowerTitle {
   margin: 0 0 14px;
   font-size: clamp(20px, 2.1vw, 30px);
   letter-spacing: 0.08em;
@@ -560,27 +583,30 @@
   color: rgba(255, 255, 255, 0.94);
 }
 
-.detailPriceRow {
-  margin: 0 0 16px;
-  font-size: clamp(14px, 1.15vw, 18px);
-  color: rgba(255, 255, 255, 0.82);
+.detailLowerText {
+  margin: 0 auto;
+  max-width: 760px;
+  font-size: clamp(13px, 1.08vw, 16px);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.76);
 }
 
-.heroPrice {
+.detailLowerPrice {
   margin-top: 16px;
+  margin-bottom: 10px;
   text-align: center;
   font-size: 18px;
   color: #ffffff;
-  margin-bottom: 10px;
 }
 
-.detailCtaRow {
+.detailLowerCtaRow {
   display: flex;
   justify-content: center;
+  margin-top: 24px;
   margin-bottom: 16px;
 }
 
-.detailBuyButton {
+.detailLowerBuyButton {
   display: inline-block;
   text-align: center;
   font-size: 14px;
@@ -592,72 +618,9 @@
   transition: all 0.2s ease;
 }
 
-.detailBuyButton:hover {
+.detailLowerBuyButton:hover {
   color: #ff7f00;
   border-color: #ff7f00;
-}
-
-.detailOverlayHeading {
-  margin: 0 0 14px;
-  font-size: clamp(20px, 2.1vw, 30px);
-  letter-spacing: 0.08em;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.94);
-}
-
-.detailOverlayText {
-  font-size: 14px;
-  line-height: 1.5;
-  font-weight: 300;
-}
-
-.detailDescription {
-  margin: 0 auto;
-  max-width: 760px;
-  font-size: clamp(13px, 1.08vw, 16px);
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.76);
-}
-
-.detailVisualMedia {
-  position: relative;
-  width: 100vw;
-  max-width: 100vw;
-  min-height: 130vh;
-  height: 130vh;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  overflow: hidden;
-}
-
-.detailVisualImage {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.detailGradientOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: auto;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(95, 95, 95, 0.55),
-      rgba(95, 95, 95, 0.65)
-    );
-}
-
-.detailCopySection {
-  text-align: center;
 }
 
 .detailCopyText {
@@ -690,7 +653,8 @@
   .detailBottomGlowLine,
   .detailEndGlowLine,
   .detailIntroSection,
-  .detailCopySection {
+  .detailCopySection,
+  .detailLowerCopySection {
     width: min(1120px, 94vw);
   }
 
@@ -710,37 +674,14 @@
     margin-bottom: 22px;
   }
 
-  .detailTitle {
+  .detailLowerTitle {
     font-size: 18px;
   }
 
-  .detailPriceRow {
-    font-size: 13px;
-  }
-
-  .detailDescription,
+  .detailLowerText,
   .detailCopyText {
     font-size: 12px;
     line-height: 1.8;
-  }
-
-  .detailVisualMedia {
-    position: relative;
-    width: 100vw;
-    max-width: 100vw;
-    min-height: 110vh;
-    height: 110vh;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    overflow: hidden;
-  }
-
-  .detailVisualImage {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
   }
 }
 
@@ -753,32 +694,7 @@
   }
 }
 
-.detailVisualOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 35%;
-}
-
-.detailOverlayInner {
-  width: 100%;
-  min-height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  text-align: center;
-  pointer-events: auto;
-}
-
 @media (max-width: 768px) {
-  .detailOverlayText {
-    font-size: 14px;
-    font-weight: 500;
-  }
-
   .titleMain {
     font-size: 17px;
     font-weight: 500;
