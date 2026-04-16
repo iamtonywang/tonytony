@@ -33,9 +33,9 @@ export default async function ProductsPage() {
 
   return (
     <>
-      <ProductHeroSection />
+      <ProductHeroSection items={filteredAndSorted} />
       <div className={listStyles.productGlowLine} aria-hidden="true" />
-      <ProductListSection items={filteredAndSorted} />
+      <ProductListSection />
     </>
   );
 }

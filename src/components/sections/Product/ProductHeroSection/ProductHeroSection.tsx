@@ -3,17 +3,6 @@ import styles from "./ProductHeroSection.module.css";
 import listStyles from "../ProductListSection/ProductListSection.module.css";
 import type { ProductMinimal } from "@/app/products/_server/types";
 
-const HERO_LINES = [
-  "TONYWANG",
-  "Research Development Plant Cell Gene Protein",
-  "Molecular Bio-Bioengineering",
-  "It only sells to those who truly love themselves",
-  "If you don't love yourself, get out of here",
-  "I want to tell you the true value, not the product",
-  "I'm here to solve all the skin problems",
-  "TONYWANG",
-];
-
 interface ProductHeroSectionProps {
   items?: ProductMinimal[] | null;
 }
@@ -35,9 +24,6 @@ export default function ProductHeroSection({ items }: ProductHeroSectionProps) {
           </div>
         </div>
         <div className={styles.heroOverlay}>
-          <div className={styles.heroSequence} aria-hidden="true">
-            <p className={styles.heroText}>{HERO_LINES[0]}</p>
-          </div>
           <div className={styles.heroStaticBlock}>
             <div className={styles.heroStaticTitle}>TONYWANG</div>
             <div className={styles.heroSubLine}>plant cell genetic protein</div>
@@ -63,7 +49,6 @@ export default function ProductHeroSection({ items }: ProductHeroSectionProps) {
             </div>
           </div>
         </div>
-        <button type="button" className={styles.playButton} aria-label="Hero" />
       </div>
     </section>
   );
