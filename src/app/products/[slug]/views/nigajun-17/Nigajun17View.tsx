@@ -430,80 +430,68 @@ export default function Nigajun17View({ product, boardItems }: Props) {
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
 
 
-      <section className={styles.detailVisualSection}>
-        <div className={styles.detailVisualMedia}>
-          <img
-            className={styles.detailVisualImage}
-            src="/landing-assets/hero-main-pc.webp"
-            alt="TONYWANG product visual"
-            draggable={false}
-          />
-          <div className={styles.detailGradientOverlay} aria-hidden="true" />
+      <section className={styles.detailLowerCopySection}>
+        <div className={styles.detailLowerCopyInner}>
+          <h1 className={styles.detailLowerTitle}>TONYWANG</h1>
 
-          <div className={styles.detailVisualOverlay} draggable={false}>
-            <div className={styles.detailOverlayInner}>
-              <h1 className={styles.detailTitle}>TONYWANG</h1>
+          <p className={styles.detailLowerText}>나는 모발이 새로 난다고 말할수 없어</p>
+          <p className={styles.detailLowerText}>그것은 매우 큰 거짓이기 때문이다</p>
+          <p className={styles.detailLowerText}>왜 두피 질환과 탈모는 반복되는가.</p>
+          <p className={styles.detailLowerText}>생물학적 관점에서 질환의 핵심은</p>
+          <p className={styles.detailLowerText}>경로(Process) 가 아니라 단백질(Protein)</p>
+          <p className={styles.detailLowerText}>
+            <span className={styles.pcOnly}>
+              세포는 특정 신호에 반응하여 단백질을 과다 또는 과소 발현하고,
+            </span>
+            <span className={styles.mobileOnly}>
+              세포는 특정 신호에 반응하여 단백질을<br />
+              과다 또는 과소 발현하고,
+            </span>
+          </p>
+          <p className={styles.detailLowerText}>
+            이런 불균형이 두피 환경과 모낭 기능의 변화를 유도
+          </p>
+          <p className={styles.detailLowerText}>가장 근본적인 개선 전략은</p>
+          <p className={styles.detailLowerText}>
+            단백질 조절 신호 경로 제어 세포 기능 정상화
+          </p>
+          <p className={styles.detailLowerText}>조직 환경 회복 생물학적 순서</p>
+          <p className={styles.detailLowerText}>
+            전사 조절 인자를 통해 모낭 구조 안정성을 지원하고,
+          </p>
+          <p className={styles.detailLowerText}>
+            <span className={styles.pcOnly}>
+              MMP 억제 단백질을 활용하여 모낭 구조 붕괴를 억제하며
+            </span>
+            <span className={styles.mobileOnly}>
+              MMP 억제 단백질을 활용하여 모낭 구조<br />
+              붕괴를 억제하며
+            </span>
+          </p>
+          <p className={styles.detailLowerText}>
+            <span className={styles.pcOnly}>
+              염증 반응의 악순환을 차단하고 MMP-9 억제 단백질을 통해
+            </span>
+            <span className={styles.mobileOnly}>
+              염증 반응의 악순환을 차단하고 MMP-9 억제<br />
+              단백질을 통해
+            </span>
+          </p>
+          <p className={styles.detailLowerText}>
+            염증 조직 손상을 완화하여 두피 환경의 균형 지원
+          </p>
+          <p className={styles.detailLowerText}>SINCE May 2026</p>
 
-              <p className={styles.detailOverlayText}>나는 모발이 새로 난다고 말할수 없어</p>
-              <p className={styles.detailOverlayText}>그것은 매우 큰 거짓이기 때문이다</p>
-              <p className={styles.detailOverlayText}>왜 두피 질환과 탈모는 반복되는가.</p>
-              <p className={styles.detailOverlayText}>생물학적 관점에서 질환의 핵심은</p>
-              <p className={styles.detailOverlayText}>경로(Process) 가 아니라 단백질(Protein)</p>
-              <p className={styles.detailOverlayText}>
-                <span className={styles.pcOnly}>
-                  세포는 특정 신호에 반응하여 단백질을 과다 또는 과소 발현하고,
-                </span>
-                <span className={styles.mobileOnly}>
-                  세포는 특정 신호에 반응하여 단백질을<br />
-                  과다 또는 과소 발현하고,
-                </span>
-              </p>
-              <p className={styles.detailOverlayText}>
-                이런 불균형이 두피 환경과 모낭 기능의 변화를 유도
-              </p>
-              <p className={styles.detailOverlayText}>가장 근본적인 개선 전략은</p>
-              <p className={styles.detailOverlayText}>
-                단백질 조절 신호 경로 제어 세포 기능 정상화
-              </p>
-              <p className={styles.detailOverlayText}>조직 환경 회복 생물학적 순서</p>
-              <p className={styles.detailOverlayText}>
-                전사 조절 인자를 통해 모낭 구조 안정성을 지원하고,
-              </p>
-              <p className={styles.detailOverlayText}>
-                <span className={styles.pcOnly}>
-                  MMP 억제 단백질을 활용하여 모낭 구조 붕괴를 억제하며
-                </span>
-                <span className={styles.mobileOnly}>
-                  MMP 억제 단백질을 활용하여 모낭 구조<br />
-                  붕괴를 억제하며
-                </span>
-              </p>
-              <p className={styles.detailOverlayText}>
-                <span className={styles.pcOnly}>
-                  염증 반응의 악순환을 차단하고 MMP-9 억제 단백질을 통해
-                </span>
-                <span className={styles.mobileOnly}>
-                  염증 반응의 악순환을 차단하고 MMP-9 억제<br />
-                  단백질을 통해
-                </span>
-              </p>
-              <p className={styles.detailOverlayText}>
-                염증 조직 손상을 완화하여 두피 환경의 균형 지원
-              </p>
-              <p className={styles.detailOverlayText}>SINCE May 2026</p>
+          <p className={styles.detailLowerPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
 
-              <p className={styles.heroPrice}>
-                {typeof product?.finalPriceAmount === "number"
-                  ? `₩${product.finalPriceAmount.toLocaleString()}`
-                  : null}
-              </p>
-
-              <div className={styles.detailCtaRow}>
-                <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
-                  Buy Now
-                </Link>
-              </div>
-            </div>
+          <div className={styles.detailLowerCtaRow}>
+            <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailLowerBuyButton}>
+              Buy Now
+            </Link>
           </div>
         </div>
       </section>
