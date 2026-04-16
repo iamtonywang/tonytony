@@ -617,13 +617,6 @@
   margin: 0 auto;
 }
 
-.detailVisualSection {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
 .detailIntroSection {
   text-align: center;
 }
@@ -657,131 +650,12 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
-.detailOverlayHeading {
-  margin: 0 0 10px;
-  font-size: clamp(20px, 2.1vw, 30px);
-  letter-spacing: 0.08em;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.94);
-}
-
-.titleTony {
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.titleNigajun {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.detailTitleSmall {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.detailOverlayText {
-  margin: 0 0 10px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.82);
-}
-
 .pcOnly {
   display: inline;
 }
 
 .mobileOnly {
   display: none;
-}
-
-.detailTitle {
-  margin: 0 0 14px;
-  font-size: clamp(20px, 2.1vw, 30px);
-  letter-spacing: 0.08em;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.94);
-}
-
-.detailPriceRow {
-  margin: 0 0 16px;
-  font-size: clamp(14px, 1.15vw, 18px);
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.heroPrice {
-  text-align: center;
-  font-size: 18px;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-.detailCtaRow {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.detailBuyButton {
-  display: inline-block;
-  text-align: center;
-  font-size: 14px;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 6px 18px;
-  border-radius: 0;
-  background: transparent;
-  transition: all 0.2s ease;
-}
-
-.detailBuyButton:hover {
-  color: #ff7f00;
-  border-color: #ff7f00;
-}
-
-.detailDescription {
-  margin: 0 auto;
-  max-width: 760px;
-  font-size: clamp(13px, 1.08vw, 16px);
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.76);
-}
-
-.detailVisualMedia {
-  position: relative;
-  width: 100vw;
-  max-width: 100vw;
-  min-height: 130vh;
-  height: 130vh;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  overflow: hidden;
-}
-
-.detailVisualImage {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.detailGradientOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: auto;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(95, 95, 95, 0.55),
-    rgba(95, 95, 95, 0.65)
-  );
 }
 
 .detailCopySection {
@@ -822,59 +696,9 @@
     margin-bottom: 22px;
   }
 
-  .detailTitle {
-    font-size: 18px;
-  }
-
-  .detailPriceRow {
-    font-size: 13px;
-  }
-
-  .detailDescription,
   .detailCopyText {
     font-size: 12px;
     line-height: 1.8;
-  }
-
-  .detailOverlayHeading {
-    font-size: 18px;
-  }
-
-  .detailTitleSmall {
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  .detailOverlayText {
-    font-size: 12.5px;
-    font-weight: 500;
-    line-height: 1.3;
-    margin-top: 2px;
-    margin-bottom: 2px;
-  }
-
-  .detailHighlightSmall {
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  .detailVisualMedia {
-    position: relative;
-    width: 100vw;
-    max-width: 100vw;
-    min-height: 110vh;
-    height: 110vh;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    overflow: hidden;
-  }
-
-  .detailVisualImage {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
   }
 }
 
@@ -885,31 +709,6 @@
   100% {
     transform: translateX(100%);
   }
-}
-
-.detailVisualOverlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: auto;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  padding-bottom: clamp(24px, 6vh, 64px);
-  pointer-events: none;
-  user-select: none;
-}
-
-.detailOverlayInner {
-  width: 100%;
-  min-height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  text-align: center;
-  pointer-events: auto;
 }
 
 @media (max-width: 768px) {
