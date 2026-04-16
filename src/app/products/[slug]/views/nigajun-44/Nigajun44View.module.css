@@ -662,6 +662,74 @@
   text-align: center;
 }
 
+.detailLowerCopySection {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+}
+
+.detailLowerCopyInner {
+  width: 100%;
+  text-align: center;
+}
+
+.detailLowerHeading {
+  margin: 0 0 10px;
+  font-size: clamp(20px, 2.1vw, 30px);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.detailLowerSubHeading {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.detailLowerText {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.detailLowerHighlight {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.detailLowerPrice {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.detailLowerCtaRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.detailLowerBuyButton {
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 6px 18px;
+  border-radius: 0;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.detailLowerBuyButton:hover {
+  color: #ff7f00;
+  border-color: #ff7f00;
+}
+
 .detailCopyText {
   margin: 0 auto;
   max-width: 800px;
@@ -675,6 +743,7 @@
   .detailMidGlowLine,
   .detailBottomGlowLine,
   .detailEndGlowLine,
+  .detailLowerCopySection,
   .detailIntroSection,
   .detailCopySection {
     width: min(1120px, 94vw);
@@ -699,6 +768,23 @@
   .detailCopyText {
     font-size: 12px;
     line-height: 1.8;
+  }
+
+  .detailLowerText {
+    font-size: 12.5px;
+    line-height: 1.3;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .detailLowerHeading {
+    font-size: 18px;
+  }
+
+  .detailLowerSubHeading,
+  .detailLowerHighlight {
+    font-size: 14px;
+    font-weight: 500;
   }
 }
 

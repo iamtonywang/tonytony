@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import styles from "./Nigajun44View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 import { formatBoardRowAuthor } from "@/app/products/boardMask";
@@ -718,6 +719,69 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
+
+      <section className={styles.detailLowerCopySection}>
+        <div className={styles.detailLowerCopyInner}>
+          <p className={styles.detailLowerHeading}>TONYWANG</p>
+          <p className={styles.detailLowerSubHeading}>NIGAJUN44</p>
+
+          <p className={styles.detailLowerText}>
+            <span className={styles.pcOnly}>
+              가치를 모르는자 자신을 사랑하지 않는자 의문을 가지는자
+            </span>
+            <span className={styles.mobileOnly}>
+              가치를 모르는자<br />
+              자신을 사랑하지 않는자<br />
+              의문을 가지는자
+            </span>
+          </p>
+
+          <p className={styles.detailLowerText}>
+            자격이 없다 여기서 나가라<br />
+            진정으로 변혁을 원하는 자 환영한다
+          </p>
+
+          <p className={styles.detailLowerText}>
+            독소가 제거된 피부는 오염이 안된 1급수 물과 같다.
+          </p>
+          <p className={styles.detailLowerText}>긴 설명이 뭐가 필요해 거짓은 필요치 않아</p>
+          <p className={styles.detailLowerText}>
+            성분이 뭐고 어떤 구조라고 떠들고 싶지 않아
+          </p>
+
+          <p className={styles.detailLowerText}>최고라고 말할 필요도 없어</p>
+          <p className={styles.detailLowerText}>우리 스스로 얘기하는건 모순이잔아</p>
+          <p className={styles.detailLowerText}>그래 그렇지만</p>
+          <p className={styles.detailLowerText}>다들 자기 것들이 최고라고 얘기해</p>
+
+          <p className={styles.detailLowerText}>나는 그들과 같은 존재가 되기 싫어</p>
+
+          <p className={`${styles.detailLowerText} ${styles.detailLowerHighlight}`}>
+            I don&apos;t like lying
+          </p>
+
+          <p className={styles.detailLowerText}>나는 거짓이 싫을 뿐이고</p>
+          <p className={styles.detailLowerText}>
+            누군가를 속이며 이익을 만들고 싶지 않아
+          </p>
+          <p className={styles.detailLowerText}>그것은 매우 역겨운 행동이야</p>
+          <p className={styles.detailLowerText}>그래</p>
+          <p className={styles.detailLowerText}>그런게 너무 싫었고 역겨웠어</p>
+          <p className={styles.detailLowerText}>SINCE May 2026</p>
+
+          <p className={styles.detailLowerPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
+
+          <div className={styles.detailLowerCtaRow}>
+            <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailLowerBuyButton}>
+              Buy Now
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <div className={styles.detailBottomGlowLine} aria-hidden="true" />
 
