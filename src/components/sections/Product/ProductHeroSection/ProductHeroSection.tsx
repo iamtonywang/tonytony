@@ -1,6 +1,7 @@
-"use client";
-
+import Link from "next/link";
 import styles from "./ProductHeroSection.module.css";
+import listStyles from "../ProductListSection/ProductListSection.module.css";
+import type { ProductMinimal } from "@/app/products/_server/types";
 
 const HERO_LINES = [
   "TONYWANG",
@@ -13,7 +14,13 @@ const HERO_LINES = [
   "TONYWANG",
 ];
 
-export default function ProductHeroSection() {
+interface ProductHeroSectionProps {
+  items?: ProductMinimal[] | null;
+}
+
+export default function ProductHeroSection({ items }: ProductHeroSectionProps) {
+  const safeItems = items ?? [];
+
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroVisual}>
@@ -38,6 +45,22 @@ export default function ProductHeroSection() {
             <div className={styles.heroSubLine}>식물세포유전자단백질</div>
             <div className={styles.heroSubLine}>바이오생명공학연구소</div>
             <div className={styles.heroSubLine}>My job is to develop a plant cell gene protein</div>
+            <div className={styles.heroProductLinks}>
+              <div className={listStyles.productTextOverlayVisible}>
+                <ul className={listStyles.productOverlayList}>
+                  {safeItems.map((item) => {
+                    if (!item.slug) return null;
+                    return (
+                      <li key={item.slug} className={listStyles.productOverlayItem}>
+                        <Link href={`/products/${item.slug}`} className={listStyles.productOverlayLink}>
+                          {item.productName ?? ""}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
         <button type="button" className={styles.playButton} aria-label="Hero" />
