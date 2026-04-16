@@ -416,69 +416,57 @@ export default function Nigajun82View({ product, boardItems }: Props) {
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
 
 
-      <section className={styles.detailVisualSection}>
-        <div className={styles.detailVisualMedia}>
-          <img
-            className={styles.detailVisualImage}
-            src="/landing-assets/hero-main-pc.webp"
-            alt="TONYWANG product visual"
-            draggable={false}
-          />
-          <div className={styles.detailGradientOverlay} aria-hidden="true" />
+      <section className={styles.detailLowerCopySection}>
+        <div className={styles.detailLowerCopyInner}>
+          <p className={styles.detailOverlayHeading}>TONYWANG</p>
+          <p className={styles.detailOverlayText}>NIGAJUN82</p>
+          <h1 className={styles.detailLowerTitle}>TONYWANG</h1>
 
-          <div className={styles.detailVisualOverlay} draggable={false}>
-            <div className={styles.detailOverlayInner}>
-              <p className={styles.detailOverlayHeading}>TONYWANG</p>
-              <p className={styles.detailOverlayText}>NIGAJUN82</p>
-              <h1 className={styles.detailTitle}>TONYWANG</h1>
+          <p className={styles.detailLowerText}>
+            질염은 단순한 오염 상태로 정의되지 않는다.
+          </p>
+          <p className={styles.detailLowerText}>
+            질 내부 환경에서 여러 생물학적 조건이 동시에 변화할 때
+          </p>
+          <p className={styles.detailLowerText}>
+            병원성 미생물 활동 조건이 형성.
+          </p>
+          <p className={styles.detailLowerText}>
+            미생물 군집 구조 변화 점막 단백질 구조 변화
+          </p>
+          <p className={styles.detailLowerText}>
+            효소 활성 변화 호르몬 환경 변화
+          </p>
+          <p className={styles.detailLowerText}>
+            이러한 변화가 누적되면
+          </p>
+          <p className={styles.detailLowerText}>
+            병원성 미생물 증식에 유리한 환경이 형성이 주원인이다
+          </p>
+          <p className={styles.detailLowerText}>
+            분비물에 의한 불쾌한 냄새. 가려움.
+          </p>
+          <p className={styles.detailLowerText}>
+            단순한 향기제로 이를 개선 할수 없다
+          </p>
+          <p className={styles.detailLowerText}>
+            항균 세척제로 원인을 개선한다는 것은 속임수에 불과하다
+          </p>
 
-              <p className={styles.detailDescription}>
-                질염은 단순한 오염 상태로 정의되지 않는다.
-              </p>
-              <p className={styles.detailDescription}>
-                질 내부 환경에서 여러 생물학적 조건이 동시에 변화할 때
-              </p>
-              <p className={styles.detailDescription}>
-                병원성 미생물 활동 조건이 형성.
-              </p>
-              <p className={styles.detailDescription}>
-                미생물 군집 구조 변화 점막 단백질 구조 변화
-              </p>
-              <p className={styles.detailDescription}>
-                효소 활성 변화 호르몬 환경 변화
-              </p>
-              <p className={styles.detailDescription}>
-                이러한 변화가 누적되면
-              </p>
-              <p className={styles.detailDescription}>
-                병원성 미생물 증식에 유리한 환경이 형성이 주원인이다
-              </p>
-              <p className={styles.detailDescription}>
-                분비물에 의한 불쾌한 냄새. 가려움.
-              </p>
-              <p className={styles.detailDescription}>
-                단순한 향기제로 이를 개선 할수 없다
-              </p>
-              <p className={styles.detailDescription}>
-                항균 세척제로 원인을 개선한다는 것은 속임수에 불과하다
-              </p>
+          <p className={styles.detailLowerText}>
+            SINCE May 2026
+          </p>
 
-              <p className={styles.detailDescription}>
-                SINCE May 2026
-              </p>
+          <p className={styles.detailLowerPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
 
-              <p className={styles.heroPrice}>
-                {typeof product?.finalPriceAmount === "number"
-                  ? `₩${product.finalPriceAmount.toLocaleString()}`
-                  : null}
-              </p>
-
-              <div className={styles.detailCtaRow}>
-                <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailBuyButton}>
-                  Buy Now
-                </Link>
-              </div>
-            </div>
+          <div className={styles.detailLowerCtaRow}>
+            <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailLowerBuyButton}>
+              Buy Now
+            </Link>
           </div>
         </div>
       </section>
