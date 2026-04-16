@@ -67,12 +67,11 @@
   pointer-events: none;
 }
 
-.videoElement {
+.overlayImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  pointer-events: none;
 }
 
 .playButton {
