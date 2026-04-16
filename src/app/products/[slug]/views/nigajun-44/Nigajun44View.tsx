@@ -137,7 +137,7 @@ function HeroSection({ product }: { product?: ProductMinimal }) {
       });
 
       // connect asset source (single pc asset as default)
-      videoEl.src = "/landing-assets/nigajun-44-hero-pc.mp4.mp4";
+      videoEl.src = "/landing-assets/products-hero-pc.mp4";
 
       videoOverlayRef.current.appendChild(videoEl);
       hasMountedVideo = true;
