@@ -234,7 +234,7 @@ export default function MainContentSection() {
 
               <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>세상 밖으로 나온 이유는</div>
               <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>
-                <span className={styles.textMedium}>NIGAJUN</span>
+                <span className={`${styles.textXLarge} ${styles.brandOrangeText}`}>NIGAJUN</span>
                 {' '}때문이야
               </div>
               <div className={`${styles.whyOverlayLine} ${styles.textSmall}`}>나의 결실이자 창조 물질</div>

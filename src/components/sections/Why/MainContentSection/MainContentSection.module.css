@@ -144,6 +144,10 @@
   font-size: 20px;
 }
 
+.textXLarge {
+  font-size: 27px;
+}
+
 .textSmall {
   font-size: 14px;
 }
@@ -158,6 +162,10 @@
 
 .whyOverlayLine.textMedium {
   font-size: 20px;
+}
+
+.whyOverlayLine .textXLarge {
+  font-size: 27px;
 }
 
 .whyOverlayLine.textSmall {
