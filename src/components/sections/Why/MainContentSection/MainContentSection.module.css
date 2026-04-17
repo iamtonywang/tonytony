@@ -287,6 +287,17 @@
   color: #f28c28;
 }
 
+.wordTonyStrong {
+  font-size: 28px;
+  font-weight: 300;
+  color: #f28c28;
+}
+
+.wordTonyMedium {
+  font-size: 20px;
+  font-weight: 300;
+}
+
 .whyHeadlineStep {
   position: absolute;
   top: 0;
@@ -534,6 +545,14 @@
 
   .wordSmall {
     font-size: 18px;
+  }
+
+  .wordTonyStrong {
+    font-size: 22px;
+  }
+
+  .wordTonyMedium {
+    font-size: 16px;
   }
 
   .whyPCode {
