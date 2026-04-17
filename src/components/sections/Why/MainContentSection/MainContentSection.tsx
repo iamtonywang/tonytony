@@ -23,7 +23,18 @@ export default function MainContentSection() {
             draggable={false}
           />
           <div className={styles.whyGradientOverlay} aria-hidden="true" />
-          <div className={styles.whyTextOverlay}></div>
+          <div className={styles.whyTextOverlay}>
+            <div className={styles.whyTypographyWrap}>
+              <div className={styles.whyBrand}>TONYWANG</div>
+
+              <div className={styles.whyHeadline} aria-label="WHY?">
+                <span className={`${styles.whyHeadlineStep} ${styles.step1}`}>W</span>
+                <span className={`${styles.whyHeadlineStep} ${styles.step2}`}>WH</span>
+                <span className={`${styles.whyHeadlineStep} ${styles.step3}`}>WHY</span>
+                <span className={`${styles.whyHeadlineStep} ${styles.step4}`}>WHY?</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

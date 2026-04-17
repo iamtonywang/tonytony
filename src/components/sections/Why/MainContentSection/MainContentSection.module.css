@@ -98,7 +98,128 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+}
+
+.whyTypographyWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.whyBrand {
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.whyHeadline {
+  position: relative;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+  min-height: 32px;
+  min-width: 72px;
+}
+
+.whyHeadlineStep {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  white-space: nowrap;
+  animation-duration: 0.8s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.step1 {
+  animation-name: whyType1;
+}
+.step2 {
+  animation-name: whyType2;
+}
+.step3 {
+  animation-name: whyType3;
+}
+.step4 {
+  animation-name: whyType4;
+}
+
+@keyframes whyType1 {
+  0% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes whyType2 {
+  0% {
+    opacity: 0;
+  }
+  24% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes whyType3 {
+  0% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  74% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes whyType4 {
+  0% {
+    opacity: 0;
+  }
+  74% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes whyGlowSweep {
@@ -148,5 +269,15 @@
     display: none !important;
     background: none !important;
     background-image: none !important;
+  }
+
+  .whyBrand {
+    font-size: 15px;
+  }
+
+  .whyHeadline {
+    font-size: 26px;
+    min-height: 26px;
+    min-width: 60px;
   }
 }
