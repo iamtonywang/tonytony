@@ -55,53 +55,7 @@ export default function MainContentSection() {
             className={`${styles.ourWorkTextOverlay} ${visible ? styles.ourWorkTextOverlayVisible : ""}`}
             aria-hidden="true"
           >
-            <div key={animKey} className={styles.ourWorkTextInner}>
-              <div className={`${styles.ourWorkOverlayLine} ${styles.tonyOffset} ${styles.textLarge}`}>TONYWANG</div>
-              <div className={`${styles.ourWorkOverlayLine} ${styles.textMedium}`}>Our Work</div>
-              <div className={styles.statementSmallBlock}>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>벤자민 버튼! 처럼 돌아갈수만 있다면 . . . .</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
-                  피부가 늙는 건 나이가 아니라, <span className={styles.mobileBreak} />
-                  세포가 지쳐버렸기 때문이야
-                </div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그래</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textLarge}`}>TONYWANG</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>나는 세포를 연구하는 데 28년을 보냈다</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
-                  누구나 인생을 살면서 한번쯤 은 <span className={styles.mobileBreak} />
-                  미친 듯이 도전을 해보았을 것이다
-                </div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그리고 . . . . .</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
-                  셀 수 없는 한숨과 눈물 <span className={styles.mobileBreak} />
-                  그리고 가슴 저미 는 고통을 받으며
-                </div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>미친 듯이 실패하고 실패한 것을 복구하며</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>도전하는 자 포기하는 자 로 나뉜다</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>그래 이게 인생이야</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
-                  파노라마 같은 인생에서 <span className={styles.mobileBreak} />
-                  누구나 겪는 세월의 흔적 이고
-                </div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>
-                  82억 인구 중에 우리가 겪는 <span className={styles.mobileBreak} />
-                  실패와 성공도 한 부분이야
-                </div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>28년 생명공학 연구 개발을 하면서</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>단 한번도</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textLarge} ${styles.textLargeMobileMedium}`}>화장품 따위는 만들 생각이 없었다</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>나의 창작 연구는</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textMedium}`}>줄기세포 NO, 리포좀 NO,</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textMedium}`}>엑소좀 NO, 성장인자 NO,</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textMedium}`}>나노입자 NO, 펩타이드 NO</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>Plant Cell Gene Protein</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>피부 조직을 변혁 하는 유일한 유전자 단백질</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>천연물 기반 식물세포 유전자 단백질 플랫폼</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>식물세포 DNA 클로닝 재조합</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>세포 간 유전자 융합을 통해 제3의 유일 단백질</div>
-                <div className={`${styles.ourWorkOverlayLine} ${styles.textSmall}`}>SINCE May 2026</div>
-              </div>
-            </div>
+            <div key={animKey} className={styles.ourWorkTextInner} />
           </div>
         </div>
       </div>
