@@ -4,10 +4,6 @@ export default function TextSection() {
   return (
     <section
       className={styles.textSection}
-      onCopy={(e) => e.preventDefault()}
-      onCut={(e) => e.preventDefault()}
-      onContextMenu={(e) => e.preventDefault()}
-      onDragStart={(e) => e.preventDefault()}
     >
       <div className={styles.sectionSeparator} aria-hidden="true" />
       <div className={styles.seoBlock} draggable={false}>
