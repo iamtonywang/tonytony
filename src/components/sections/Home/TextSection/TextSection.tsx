@@ -24,7 +24,7 @@ export default function TextSection() {
             <p className={styles.typoSecondary}>I DON&apos;T LIKE LYING</p>
             <p className={styles.typoSecondary}>원하는 것을 이루기 위해서는 <span className={styles.typoEmphasisOrange20}>미쳐야 한다</span></p>
             <p className={styles.typoSecondary}><span>창</span>조는 미쳐야 가질 수 있고<br className={styles.mobileBr} />세상에 <span className={styles.typoEmphasis20}>없는것</span>을 만드는것이야</p>
-            <p className={styles.typoSecondary}>피부에 관한 모든 <span className={styles.typoEmphasisOrange25}>퍼즐을 풀고자</span> 세상에 나왔다</p>
+            <p className={styles.typoSecondary}>피부에 관한 모든 <span className={styles.typoEmphasisOrange25}>퍼즐을 풀고자</span><br className={styles.mobileBr} /> 세상에 나왔다</p>
             <p className={styles.typoSecondary}>SINCE May 2026</p>
           </div>
         </div>
