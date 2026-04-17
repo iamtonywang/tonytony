@@ -78,11 +78,11 @@ export default function MainContentSection() {
 
                 <div className={styles.whyGeneDesc}>
                   <div className={styles.whyGeneLine}>
-                    <span className={styles.wordMedium}>독소가</span> 사라진 자리에 Proteo Phyto Complex 복합체는 <span className={styles.wordMedium}>유전자</span>가 활성화되어
+                    독소가 사라진 자리에 Proteo Phyto Complex 복합체는 유전자가 활성화되어
                   </div>
 
                   <div className={styles.whyGeneLine}>
-                    피부가 최고로 건강했던 <span className={styles.wordMedium}>태초 (Original)</span> 상태로 <span className={styles.wordMedium}>turning it back</span>
+                    피부가 최고로 건강했던 <span className={styles.wordMedium}>태초 (Original)</span> 상태로 turning it back
                   </div>
                 </div>
               </div>
