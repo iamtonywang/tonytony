@@ -219,6 +219,43 @@
   text-align: center;
 }
 
+.whyGeneBlock {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.whyGeneTitle {
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.whyGeneSub {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 12px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.whyGeneDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.whyGeneLine {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: center;
+}
+
 .wordToxin {
   font-size: 28px;
   font-weight: 300;
@@ -508,6 +545,15 @@
 
   .whyToxinTitle {
     font-size: 20px;
+  }
+
+  .whyGeneBlock {
+    margin-top: 32px;
+    padding: 0 20px;
+  }
+
+  .whyGeneTitle {
+    font-size: 24px;
   }
 
   .whyToxinDesc,

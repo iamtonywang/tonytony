@@ -67,6 +67,25 @@ export default function MainContentSection() {
                   </div>
                 </div>
               </div>
+              <div className={styles.whyGeneBlock}>
+                <div className={styles.whyGeneTitle}>
+                  유전자 복원 과 재생
+                </div>
+
+                <div className={styles.whyGeneSub}>
+                  Skin Regeneration
+                </div>
+
+                <div className={styles.whyGeneDesc}>
+                  <div className={styles.whyGeneLine}>
+                    독소가 사라진 자리에 Proteo Phyto Complex 복합체는 유전자가 활성화되어
+                  </div>
+
+                  <div className={styles.whyGeneLine}>
+                    피부가 최고로 건강했던 태초 (Original) 상태로 turning it back
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
