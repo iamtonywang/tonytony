@@ -113,6 +113,19 @@
   font-weight: 300;
 }
 
+.typoBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.typoPrimary {
+  font-size: 20px;
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
 @media (max-width: 768px) {
   .seoBlock {
     gap: 6px;
