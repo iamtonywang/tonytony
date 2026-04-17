@@ -86,6 +86,14 @@ export default function MainContentSection() {
                   </div>
                 </div>
               </div>
+              <div className={styles.whyTonyBlock}>
+                <div className={styles.whyTonyLine}>나 TONYWANG</div>
+                <div className={styles.whyTonyLine}>세상 밖으로 나온 이유는 NIGAJUN 때문이야</div>
+                <div className={styles.whyTonyLine}>나의 결실이자 창조적 물질을 세상에 알리고자 나왔어</div>
+                <div className={styles.whyTonyLine}>싸구려 화장품이나 파는 존재로 생각하지마</div>
+                <div className={styles.whyTonyLine}>나는 그들과 분명 다르다</div>
+                <div className={styles.whyTonyLine}>SINCE May 2026</div>
+              </div>
             </div>
           </div>
         </div>

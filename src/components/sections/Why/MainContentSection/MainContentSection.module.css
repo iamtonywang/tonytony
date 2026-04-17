@@ -256,6 +256,21 @@
   text-align: center;
 }
 
+.whyTonyBlock {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.whyTonyLine {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: center;
+}
+
 .wordToxin {
   font-size: 28px;
   font-weight: 300;
@@ -566,6 +581,11 @@
 
   .whyGeneTitle {
     font-size: 20px;
+  }
+
+  .whyTonyBlock {
+    margin-top: 32px;
+    padding: 0 20px;
   }
 
   .whyToxinDesc,
