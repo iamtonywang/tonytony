@@ -19,7 +19,7 @@ export default function TextSection() {
         <div className={styles.typoBlock}>
           <p className={styles.typoPrimary}>TONYWANG</p>
           <div className={styles.typoSecondaryBlock}>
-            <p className={styles.typoSecondary}>허접한 화장품이나 만드는 회사가 아니다</p>
+            <p className={styles.typoSecondary}>난잡한 화장품이나 만드는 회사가 아니다</p>
             <p className={styles.typoSecondary}>28년 동안 오직 식물세포유전자 단백질 한 분야만 연구한 생명 과학 연구소</p>
             <p className={styles.typoSecondary}>모든 연구는 단 하나 식물세포유전자단백질 개발이다</p>
           </div>
