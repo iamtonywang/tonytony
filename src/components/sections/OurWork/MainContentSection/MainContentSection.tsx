@@ -111,12 +111,19 @@ export default function MainContentSection() {
       <div className={styles.ourWorkBottomCopy}>
         <p className={styles.ourWorkBottomTitle}>TONYWANG</p>
         <p className={styles.ourWorkBottomSubTitle}>Our Work</p>
-        <p className={styles.ourWorkBottomLine}>
-          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
-        </p>
-        <p className={styles.ourWorkBottomLine}>
-          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
-        </p>
+        <p className={styles.ourWorkBottomLine}>벤자민 버튼! 처럼 돌아갈수만 있다면 . . . .</p>
+        <p className={styles.ourWorkBottomLine}>피부가 늙는 건 나이가 아니라, 세포가 소멸된 원인이야</p>
+        <p className={styles.ourWorkBottomLine}>YES TONYWANG</p>
+        <p className={styles.ourWorkBottomLine}>나는 세포를 연구하는 데 28년을 보냈다</p>
+        <p className={styles.ourWorkBottomLine}>누구나 인생을 살면서 한번쯤 은 미친 듯이 도전을 해보았을 것이다</p>
+        <p className={styles.ourWorkBottomLine}>파노라마 같은 인생에서 누구나 겪는 세월의 흔적 이고</p>
+        <p className={styles.ourWorkBottomLine}>82억 인구 중에 우리가 겪는 실패와 성공도 한 부분이야</p>
+        <p className={styles.ourWorkBottomLine}>28년 생명공학 연구 개발을 하면서</p>
+        <p className={styles.ourWorkBottomLine}>단 한번도 화장품 분야는 관심도 없었다</p>
+        <p className={styles.ourWorkBottomLine}>나의 연구 개발은 Plant Cell Gene Protein 이다</p>
+        <p className={styles.ourWorkBottomLine}>식물세포 DNA 클로닝 재조합 세포 간 유전자 융합을 통해 제3의 단백질 창출</p>
+        <p className={styles.ourWorkBottomLine}>새로운 피부 조직을 변혁 하는 유일한 유전자 단백질 Plant Cell Gene Protein</p>
+        <p className={styles.ourWorkBottomSince}>SINCE May 2026</p>
       </div>
 
       <div className={styles.ourWorkGlowLine} aria-hidden="true" />
