@@ -156,6 +156,24 @@
   animation-delay: 0.15s;
 }
 
+.whyPCodeDesc {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.whyPCodeLine {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.wordKey {
+  font-weight: 300;
+}
+
 .whyHeadlineStep {
   position: absolute;
   top: 0;
@@ -340,5 +358,10 @@
   .whyPCode {
     margin-top: 32px;
     font-size: 24px;
+  }
+
+  .whyPCodeDesc {
+    margin-top: 14px;
+    padding: 0 20px;
   }
 }
