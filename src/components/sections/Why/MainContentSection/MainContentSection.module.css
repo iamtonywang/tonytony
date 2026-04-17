@@ -266,6 +266,11 @@
   animation-delay: 0.2s;
 }
 
+.wordSmall {
+  font-size: 17px;
+  font-weight: 300;
+}
+
 .whyHeadlineStep {
   position: absolute;
   top: 0;
@@ -509,6 +514,10 @@
 
   .wordToxin {
     font-size: 20px;
+  }
+
+  .wordSmall {
+    font-size: 15px;
   }
 
   .whyPCode {

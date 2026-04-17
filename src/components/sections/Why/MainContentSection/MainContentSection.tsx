@@ -82,7 +82,7 @@ export default function MainContentSection() {
                   </div>
 
                   <div className={styles.whyGeneLine}>
-                    피부가 최고로 건강했던 <span className={styles.wordMedium}>태초 (Original)</span> 상태로 turning it back
+                    피부가 <span className={styles.wordSmall}>최고로</span> 건강했던 <span className={styles.wordMedium}>태초 (Original)</span> 상태로 turning it back
                   </div>
                 </div>
               </div>
