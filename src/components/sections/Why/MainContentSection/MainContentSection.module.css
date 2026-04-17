@@ -176,12 +176,12 @@
 
 .whyProteo {
   margin-top: 48px;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 1;
   color: #ffffff;
   text-align: center;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   opacity: 0;
   animation: whyProteoEnter 0.5s ease forwards;
   animation-delay: 0.2s;
@@ -391,6 +391,6 @@
 
   .whyProteo {
     margin-top: 32px;
-    font-size: 24px;
+    font-size: 16px;
   }
 }
