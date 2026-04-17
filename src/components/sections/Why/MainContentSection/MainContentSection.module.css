@@ -424,6 +424,18 @@
     font-size: 15px;
   }
 
+  .whyTextOverlay {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .whyTypographyWrap {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
   .whyHeadline {
     font-size: 26px;
     min-height: 26px;
@@ -431,8 +443,13 @@
   }
 
   .whySubText {
+    width: 100%;
+    max-width: 100%;
     white-space: normal;
-    padding: 0 20px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
   }
 
   .wordStrong {
@@ -453,21 +470,44 @@
   }
 
   .whyPCodeDesc {
+    width: 100%;
+    max-width: 100%;
     margin-top: 14px;
-    padding: 0 20px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
   }
 
   .whyProteo {
+    width: 100%;
+    max-width: 100%;
     margin-top: 32px;
     font-size: 16px;
+    box-sizing: border-box;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .whyToxinBlock {
+    width: 100%;
+    max-width: 100%;
     margin-top: 32px;
-    padding: 0 20px;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .whyToxinTitle {
     font-size: 20px;
+  }
+
+  .whyToxinDesc,
+  .whyToxinLine {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
   }
 }
