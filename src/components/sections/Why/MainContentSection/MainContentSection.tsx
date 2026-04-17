@@ -33,6 +33,10 @@ export default function MainContentSection() {
                 <span className={`${styles.whyHeadlineStep} ${styles.step3}`}>WHY</span>
                 <span className={`${styles.whyHeadlineStep} ${styles.step4}`}>WHY?</span>
               </div>
+
+              <div className={styles.whySubText}>
+                충격적인 계기가 있었어 그리고 그때 나는 생각했고 결심했어 스킨케어로도 세상을 뒤집어 놓을수있다는 것을
+              </div>
             </div>
           </div>
         </div>

@@ -124,6 +124,15 @@
   min-width: 72px;
 }
 
+.whySubText {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .whyHeadlineStep {
   position: absolute;
   top: 0;
@@ -279,5 +288,10 @@
     font-size: 26px;
     min-height: 26px;
     min-width: 60px;
+  }
+
+  .whySubText {
+    white-space: normal;
+    padding: 0 20px;
   }
 }
