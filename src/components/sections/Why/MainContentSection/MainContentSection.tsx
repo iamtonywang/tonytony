@@ -51,6 +51,7 @@ export default function MainContentSection() {
                   단순한 복구가 아닌, 피부 근본을 <span className={styles.wordMedium}>변환</span>하는 <span className={styles.wordKey}>P-Code™</span> 식물세포 유전자 단백질 복합체
                 </div>
               </div>
+              <div className={styles.whyProteo}>PROTEO PHYTO COMPLEX</div>
             </div>
           </div>
         </div>
