@@ -267,8 +267,9 @@
 }
 
 .wordSmall {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 300;
+  color: #f28c28;
 }
 
 .whyHeadlineStep {
@@ -517,7 +518,7 @@
   }
 
   .wordSmall {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .whyPCode {
