@@ -17,7 +17,6 @@ export default function TextSection() {
       <div className={styles.statementGlowLine} aria-hidden="true" />
       <div className={styles.statementVisualBlock}>
         <div className={styles.typoBlock}>
-          <p className={styles.typoPrimary}>TONYWANG</p>
           <div className={styles.typoSecondaryBlock}>
             <p className={styles.typoSecondary}><span className={styles.typoEmphasis25}>난잡한 화장품</span>이나 만드는 회사가 아니다</p>
             <p className={styles.typoSecondary}><span className={styles.typoEmphasis25}>28년 동안</span> 오직 식물세포유전자 단백질<br className={styles.mobileBr} /> 한 분야만 연구한 생명 과학 연구소</p>
