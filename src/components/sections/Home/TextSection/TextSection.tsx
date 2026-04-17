@@ -1,33 +1,6 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import styles from "./TextSection.module.css";
 
 export default function TextSection() {
-  const overlayRef = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
-  const [animKey, setAnimKey] = useState(0);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setVisible(true);
-          setAnimKey((prev) => prev + 1);
-        } else {
-          setVisible(false);
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
-    );
-
-    if (overlayRef.current) {
-      observer.observe(overlayRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       className={styles.textSection}
@@ -55,50 +28,6 @@ export default function TextSection() {
             draggable={false}
           />
           <div className={styles.statementGradientOverlay} aria-hidden="true" />
-          <div
-            ref={overlayRef}
-            className={`${styles.statementTextOverlay} ${visible ? styles.statementTextOverlayVisible : ""}`}
-            aria-hidden="true"
-            draggable={false}
-          >
-            <div
-              key={animKey}
-              className={styles.statementTextInner + " " + styles.statementPrimaryBlock}
-              draggable={false}
-            >
-              <div className={`${styles.textLine} ${styles.textHero} ${styles.textHeroStrong} ${styles.brandOrangeText}`}>
-                HEY
-              </div>
-              <div className={styles.textLine}>
-                <span>내가 스킨케어를 연구하고 개발한다는 것은 </span>
-                <span className={styles.mobileLineBreak}>상상도 하지 않았어</span>
-              </div>
-              <div className={styles.textLine}>바이오와 향장학은 분야가 너무 달라</div>
-              <div className={styles.textLine}>하찮다고 생각했어 지금도 같은 생각이야</div>
-              <div className={styles.textLine}>쓰레기 보다 못한 스킨케어 를 부숴버리고 싶어</div>
-              <div
-                className={`${styles.textLine} ${styles.textHighlight} ${styles.textHighlightStrong} ${styles.brandOrangeText}`}
-              >
-                I Don&apos;t Like Lying
-              </div>
-              <div className={`${styles.textLine} ${styles.brandOrangeText}`}>나는 거짓이 싫다</div>
-              <div className={styles.textLine}>원하는 것을 이루기 위해서는 미쳐야 한다</div>
-              <div className={styles.textLine + " " + styles.textOrangeSecondary}>창조란?</div>
-              <div className={styles.textLine}>미쳐야 가질 수 있고 세상에 없는것을 만드는것이야</div>
-              <div className={styles.textLine}>피부에 관한 모든 퍼즐을 풀고자 세상에 나왔다</div>
-              <div className={styles.textLine}>
-                <span>스킨케어로도 세상을 뒤집어 놓을수있다는 것을 </span>
-                <span className={styles.mobileLineBreak}>보여줄려고 해</span>
-              </div>
-              <div className={styles.textLine + " " + styles.textSectionTitle}>
-                Plant Cell Genetic Protein
-              </div>
-              <div className={styles.textLine}>세균이 지배하는 피부에 세균를 지휘하는 마에스트로</div>
-              <div className={styles.textLine}>피부 조직을 변혁 시키는 유일한 유전자 단백질</div>
-              <div className={styles.textLine}>바이오는 입증으로 가치를 증명하는 것이다</div>
-              <div className={`${styles.textLine} ${styles.textSmall}`}>SINCE May 2026</div>
-            </div>
-          </div>
         </div>
       </div>
       <div className={styles.statementBottomGlowLine} aria-hidden="true" />
