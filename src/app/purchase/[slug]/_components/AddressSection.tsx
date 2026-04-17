@@ -65,15 +65,16 @@ export default function AddressSection({ zipcode, address1, address2, onChange, 
     if (!isPostcodeOpen) return;
 
     let cancelled = false;
+    const mountEl = postcodeMountRef.current;
 
     const mount = async () => {
       await ensureDaumPostcodeScript();
       if (cancelled) return;
 
       const Postcode = window.daum?.Postcode;
-      if (!Postcode || !postcodeMountRef.current) return;
+      if (!Postcode || !mountEl) return;
 
-      postcodeMountRef.current.innerHTML = "";
+      mountEl.innerHTML = "";
       new Postcode({
         width: "100%",
         height: "100%",
@@ -83,15 +84,15 @@ export default function AddressSection({ zipcode, address1, address2, onChange, 
           onLookupResult(nextZipcode, nextAddress);
           setIsPostcodeOpen(false);
         },
-      }).embed(postcodeMountRef.current);
+      }).embed(mountEl);
     };
 
     mount();
 
     return () => {
       cancelled = true;
-      if (postcodeMountRef.current) {
-        postcodeMountRef.current.innerHTML = "";
+      if (mountEl) {
+        mountEl.innerHTML = "";
       }
     };
   }, [isPostcodeOpen, onLookupResult]);
