@@ -187,6 +187,38 @@
   animation-delay: 0.2s;
 }
 
+.whyToxinBlock {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.whyToxinTitle {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 14px;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: whyToxinFade 0.4s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.whyToxinDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.whyToxinLine {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: center;
+}
+
 .whyHeadlineStep {
   position: absolute;
   top: 0;
@@ -307,6 +339,17 @@
   }
 }
 
+@keyframes whyToxinFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes whyGlowSweep {
   0% {
     transform: translateX(-100%);
@@ -392,5 +435,14 @@
   .whyProteo {
     margin-top: 32px;
     font-size: 16px;
+  }
+
+  .whyToxinBlock {
+    margin-top: 32px;
+    padding: 0 20px;
+  }
+
+  .whyToxinTitle {
+    font-size: 20px;
   }
 }

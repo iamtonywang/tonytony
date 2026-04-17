@@ -52,6 +52,21 @@ export default function MainContentSection() {
                 </div>
               </div>
               <div className={styles.whyProteo}>PROTEO PHYTO COMPLEX</div>
+              <div className={styles.whyToxinBlock}>
+                <div className={styles.whyToxinTitle}>
+                  독소 정화 (Toxin Purge)
+                </div>
+
+                <div className={styles.whyToxinDesc}>
+                  <div className={styles.whyToxinLine}>
+                    Toxin Purge 외부 독소와 염증 유발 인자를 정밀 정화하여 무해한 형태로 Purge 한다
+                  </div>
+
+                  <div className={styles.whyToxinLine}>
+                    이 과정은 흑피증처럼 만성화된 독소 흔적을 지우는 선결 과제
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
