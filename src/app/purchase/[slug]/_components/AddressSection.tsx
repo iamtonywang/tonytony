@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./PurchasePageClient.module.css";
 import { useEffect, useRef, useState } from "react";
 
