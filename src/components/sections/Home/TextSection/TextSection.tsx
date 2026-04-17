@@ -17,13 +17,6 @@ export default function TextSection() {
       <div className={styles.statementGlowLine} aria-hidden="true" />
       <div className={styles.statementVisualBlock}>
         <div className={styles.statementVisualMedia}>
-          <img
-            className={styles.statementVisualImage}
-            src="/landing-assets/hero-main-pc.webp"
-            alt="TONYWANG plant cell genetic protein visual"
-            draggable={false}
-          />
-          <div className={styles.statementGradientOverlay} aria-hidden="true" />
         </div>
       </div>
       <div className={styles.statementBottomGlowLine} aria-hidden="true" />
