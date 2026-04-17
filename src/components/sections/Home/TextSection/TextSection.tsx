@@ -14,11 +14,11 @@ export default function TextSection() {
         <p className={styles.korSubLine}>바이오생명공학연구소</p>
         <p className={styles.enStatement}>My job is to develop a plant cell gene protein</p>
       </div>
-      <div className={styles.typoBlock}>
-        <p className={styles.typoPrimary}>TONYWANG</p>
-      </div>
       <div className={styles.statementGlowLine} aria-hidden="true" />
       <div className={styles.statementVisualBlock}>
+        <div className={styles.typoBlock}>
+          <p className={styles.typoPrimary}>TONYWANG</p>
+        </div>
         <div className={styles.statementVisualMedia}>
         </div>
       </div>
