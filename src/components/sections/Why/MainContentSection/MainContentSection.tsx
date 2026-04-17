@@ -59,11 +59,11 @@ export default function MainContentSection() {
 
                 <div className={styles.whyToxinDesc}>
                   <div className={styles.whyToxinLine}>
-                    Toxin Purge 외부 독소와 염증 유발 인자를 정밀 정화하여 무해한 형태로 Purge 한다
+                    Toxin Purge 외부 독소와 <span className={styles.wordMedium}>염증 유발 인자</span>를 정밀 정화하여 무해한 형태로 Purge 한다
                   </div>
 
                   <div className={styles.whyToxinLine}>
-                    이 과정은 흑피증처럼 만성화된 독소 흔적을 지우는 선결 과제
+                    이 과정은 <span className={styles.wordToxin}>흑피증</span>처럼 만성화된 <span className={styles.wordMedium}>독소를</span> 지우는 선결 과제
                   </div>
                 </div>
               </div>
