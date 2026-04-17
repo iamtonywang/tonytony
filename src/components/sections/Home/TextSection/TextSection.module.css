@@ -125,7 +125,10 @@
   font-weight: 300;
   color: #ffffff;
   line-height: 1.2;
-  margin-bottom: 20px;
+}
+
+.typoBlock .typoPrimary {
+  margin-bottom: 28px;
 }
 
 .typoSecondaryBlock {
