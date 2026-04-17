@@ -23,7 +23,6 @@ export default function TextSection() {
             <p className={`${styles.typoSecondary} ${styles.typoSecondaryResearchFirst}`}><span className={styles.typoEmphasis20}>난치성</span> 피부질환 치료 단백질</p>
             <p className={styles.typoSecondary}>염증 유발 인자 <span className={styles.typoEmphasis20}>악성 균</span> 치료 단백질</p>
             <p className={styles.typoSecondary}><span className={styles.typoEmphasis20}>피부 독소</span> 정화 치료 단백질</p>
-            <p className={styles.typoSecondary}>난치성 질환을 근본적으로 치료하고, <span className={styles.typoEmphasisOrange20}>손상된 피부</span>를 복원하는 단백질 연구 개발</p>
             <p className={`${styles.typoSecondary} ${styles.typoSecondaryNewBlockFirst}`}><span>거짓이 범람하는 SKINCARE</span></p>
             <p className={`${styles.typoSecondary} ${styles.typoSecondaryNewBlockSecond}`}><span className={styles.typoEmphasis25}>내</span>가 스킨케어를 연구하고 개발한다는 것은<br className={styles.mobileBr} /><span>상</span>상도 하지 않았어</p>
             <p className={styles.typoSecondary}>바이오와 향장학은 <span className={styles.typoEmphasis25}>차원</span>이 다른 분야다<br className={styles.mobileBr} /><span>하</span>찮다고 생각했어 지금도 같은 생각이야</p>
