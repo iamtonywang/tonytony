@@ -37,6 +37,7 @@ export default function MainContentSection() {
               <div className={styles.whySubText}>
                 <span className={styles.wordStrong}>충격적인</span> 계기가 있었어 그리고 그때 나는 생각했고 <span className={styles.wordStrong}>결심했어</span> 스킨케어로도 세상을 <span className={styles.wordMedium}>뒤집어</span> 놓을수있다는 것을
               </div>
+              <div className={styles.whyPCode}>P-Code™</div>
             </div>
           </div>
         </div>
