@@ -62,7 +62,16 @@ export default function MainContentSection() {
 
       <div className={styles.ourWorkGlowLine} aria-hidden="true" />
 
-      <div className={styles.ourWorkBottomCopy} />
+      <div className={styles.ourWorkBottomCopy}>
+        <p className={styles.ourWorkBottomTitle}>TONYWANG</p>
+        <p className={styles.ourWorkBottomSubTitle}>Our Work</p>
+        <p className={styles.ourWorkBottomLine}>
+          We research and develop plant cell gene protein solutions to precisely regulate skin signaling pathways.
+        </p>
+        <p className={styles.ourWorkBottomLine}>
+          Every result is designed to connect removal, recovery, and regeneration with measurable proof.
+        </p>
+      </div>
 
       <div className={styles.ourWorkGlowLine} aria-hidden="true" />
     </section>

@@ -192,32 +192,24 @@
   max-width: min(92vw, 820px);
   margin: 8px auto 0;
   text-align: center;
-  color: #ffffff;
 }
 
 .ourWorkBottomTitle {
   margin: 0 0 8px;
-  font-size: 25px;
+  font-size: 35px;
   line-height: 1.2;
   font-weight: 300;
 }
 
 .ourWorkBottomSubTitle {
   margin: 0 0 12px;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 1.3;
   font-weight: 300;
 }
 
 .ourWorkBottomLine {
   margin: 0 0 8px;
-  font-size: 14px;
-  line-height: 1.5;
-  font-weight: 300;
-}
-
-.ourWorkBottomSince {
-  margin: 8px 0 0;
   font-size: 14px;
   line-height: 1.5;
   font-weight: 300;
@@ -269,12 +261,7 @@
   }
 
   .ourWorkBottomSubTitle {
-    font-size: 20px;
-  }
-
-  .ourWorkBottomSince {
-    font-size: 13px;
-    line-height: 1.45;
+    font-size: 14px;
   }
 
   .ourWorkVisualMedia {
