@@ -145,6 +145,10 @@
   line-height: 1.4;
 }
 
+.typoAccent {
+  font-size: 28px;
+}
+
 @media (max-width: 768px) {
   .seoBlock {
     gap: 6px;
