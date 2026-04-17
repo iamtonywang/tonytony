@@ -158,6 +158,15 @@
   color: orange;
 }
 
+.typoEmphasis20 {
+  font-size: 20px;
+}
+
+.typoEmphasisOrange20 {
+  font-size: 20px;
+  color: orange;
+}
+
 .mobileBr {
   display: none;
 }
