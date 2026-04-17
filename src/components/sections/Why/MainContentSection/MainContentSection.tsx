@@ -40,7 +40,7 @@ export default function MainContentSection() {
               <div className={styles.whyPCode}>P-Code™</div>
               <div className={styles.whyPCodeDesc}>
                 <div className={styles.whyPCodeLine}>
-                  피부 근본을 바꾸는 <span className={styles.wordKey}>P-Code™</span>. 독소를 제거하는 <span className={styles.wordKey}>Genesis Protein</span>
+                  피부 근본을 바꾸는 <span className={styles.wordKey}>P-Code™</span>. <span className={styles.wordMedium}>독소를 제거하는</span> <span className={styles.wordKey}>Genesis Protein</span>
                 </div>
 
                 <div className={styles.whyPCodeLine}>
@@ -48,7 +48,7 @@ export default function MainContentSection() {
                 </div>
 
                 <div className={styles.whyPCodeLine}>
-                  단순한 복구가 아닌, 피부 근본을 <span className={styles.wordKey}>변환</span>하는 <span className={styles.wordKey}>P-Code™</span> 식물세포 유전자 단백질 복합체
+                  단순한 복구가 아닌, 피부 근본을 <span className={styles.wordMedium}>변환</span>하는 <span className={styles.wordKey}>P-Code™</span> 식물세포 유전자 단백질 복합체
                 </div>
               </div>
             </div>
