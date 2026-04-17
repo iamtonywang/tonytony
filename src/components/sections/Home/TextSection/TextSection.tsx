@@ -22,13 +22,12 @@ export default function TextSection() {
             <p className={styles.typoSecondary}><span className={styles.typoEmphasis25}>난잡한 화장품</span>이나 만드는 회사가 아니다</p>
             <p className={styles.typoSecondary}><span className={styles.typoEmphasis25}>28년 동안</span> 오직 식물세포유전자 단백질<br className={styles.mobileBr} /> 한 분야만 연구한 생명 과학 연구소</p>
             <p className={styles.typoSecondary}>모든 연구는 단 하나 <span className={styles.typoEmphasisOrange}>식물세포유전자단백질</span><br className={styles.mobileBr} /> 개발이다</p>
-            <p className={`${styles.typoSecondary} ${styles.typoSecondaryLead}`}>노화 방지와 지연 단백질</p>
+            <p className={`${styles.typoSecondary} ${styles.typoSecondaryLead}`}>노화 방지 단백질</p>
             <p className={styles.typoSecondary}>난치성 피부질환 치료 단백질</p>
             <p className={styles.typoSecondary}>염증 유발 인자 악성 균 치료 단백질</p>
             <p className={styles.typoSecondary}>피부 독소 정화 치료 단백질</p>
             <p className={styles.typoSecondary}>긴 시간 동안 이 분야에 매진한 이유는 명확하다</p>
-            <p className={styles.typoSecondary}>인류의 삶의 질을 위협하는 난치성 질환을 근본적으로 치료하고,</p>
-            <p className={styles.typoSecondary}>손상된 피부를 복원 과 재생할 수 있는 혁신적인 단백질를 연구 개발하는 것</p>
+            <p className={styles.typoSecondary}>인체를 위협하는 난치성 질환을 근본적으로 치료하고, 손상된 피부를 복원하는 단백질 연구 개발</p>
           </div>
         </div>
         <div className={styles.statementVisualMedia}>
