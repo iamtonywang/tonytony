@@ -149,6 +149,10 @@
   margin-top: 20px;
 }
 
+.textSection p.typoSecondaryNewBlockFirst {
+  margin-top: 32px;
+}
+
 .typoEmphasis25 {
   font-size: 25px;
 }

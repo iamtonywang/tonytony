@@ -28,10 +28,11 @@ export default function TextSection() {
             <p className={styles.typoSecondary}><span className={styles.typoEmphasisOrange20}>피부 독소</span> 정화 치료 단백질</p>
             <p className={styles.typoSecondary}>긴 시간 동안 이 분야에 매진한 이유는 명확하다</p>
             <p className={styles.typoSecondary}>인체를 위협하는 <span className={styles.typoEmphasis20}>난치성 질환</span>을 근본적으로 치료하고, <span className={styles.typoEmphasisOrange20}>손상된 피부</span>를 복원하는 단백질 연구 개발</p>
+            <p className={`${styles.typoSecondary} ${styles.typoSecondaryNewBlockFirst}`}>거짓들이 판을치는 스킨케어</p>
             <p className={styles.typoSecondary}>내가 스킨케어를 연구하고 개발한다는 것은 상상도 하지 않았어</p>
             <p className={styles.typoSecondary}>바이오와 향장학은 분야가 너무 달라 하찮다고 생각했어 지금도 같은 생각이야</p>
             <p className={styles.typoSecondary}>쓰레기 보다 못한 스킨케어 를 부숴버리고 싶어</p>
-            <p className={styles.typoSecondary}>I don&apos;t like lying</p>
+            <p className={styles.typoSecondary}>I DON&apos;T LIKE LYING</p>
             <p className={styles.typoSecondary}>원하는 것을 이루기 위해서는 미쳐야 한다</p>
             <p className={styles.typoSecondary}>창조란? 미쳐야 가질 수 있고 세상에 없는것을 만드는것이야</p>
             <p className={styles.typoSecondary}>피부에 관한 모든 퍼즐을 풀고자 세상에 나왔다</p>
