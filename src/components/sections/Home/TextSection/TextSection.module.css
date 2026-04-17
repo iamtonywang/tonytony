@@ -154,7 +154,15 @@
   color: orange;
 }
 
+.mobileBr {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .mobileBr {
+    display: block;
+  }
+
   .seoBlock {
     gap: 6px;
   }
