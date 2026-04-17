@@ -175,6 +175,11 @@
   color: orange;
 }
 
+.typoEmphasisOrange25 {
+  font-size: 25px;
+  color: orange;
+}
+
 .mobileBr {
   display: none;
 }
