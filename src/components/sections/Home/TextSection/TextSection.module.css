@@ -145,6 +145,15 @@
   line-height: 1.4;
 }
 
+.typoEmphasis25 {
+  font-size: 25px;
+}
+
+.typoEmphasisOrange {
+  font-size: 20px;
+  color: orange;
+}
+
 @media (max-width: 768px) {
   .seoBlock {
     gap: 6px;
