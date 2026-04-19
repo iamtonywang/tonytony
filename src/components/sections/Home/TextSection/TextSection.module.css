@@ -147,6 +147,10 @@
   margin-bottom: 20px;
 }
 
+.textSection p.typoSecondaryAfterStoryTitle {
+  margin-top: 28px;
+}
+
 .typoSecondary {
   font-size: 14px;
   font-weight: 300;
