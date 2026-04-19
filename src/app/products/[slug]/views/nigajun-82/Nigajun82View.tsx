@@ -415,6 +415,39 @@ export default function Nigajun82View({ product, boardItems }: Props) {
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
 
+      <section className={styles.noticeSection}>
+        <p className={styles.noticeTitle}>IMPORTANT NOTICE</p>
+
+        <p className={styles.noticeText}>
+          제품 구매 전 필히 본문을 필독하고
+          <br className={styles.mobileBreak} />
+          신중히 구매 결정을 하세요
+        </p>
+
+        <p className={styles.noticeText}>
+          매우 강한 질 근육 수축 반응이 발생 합니다
+        </p>
+
+        <p className={styles.noticeText}>
+          충분한 이해 없이 사용하면 수축 반응으로 인한
+          <br className={styles.mobileBreak} />
+          불편함을 초래할 수 있습니다.
+        </p>
+
+        <p className={styles.noticeText}>
+          구매 전에 신중하게 검토 바라며
+          <br className={styles.mobileBreak} />
+          원치 않는 분은 사용을 금합니다
+        </p>
+
+        <p className={styles.noticeText}>
+          다만 포괄적 적용은 아니며
+          <br className={styles.mobileBreak} />
+          개개인의 차이가 있음을 밝힙니다
+        </p>
+
+        <div className={styles.noticeDivider} />
+      </section>
 
       <section className={styles.detailLowerCopySection}>
         <div className={styles.detailLowerCopyInner}>

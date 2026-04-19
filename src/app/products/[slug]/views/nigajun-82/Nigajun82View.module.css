@@ -513,6 +513,51 @@
   margin-bottom: 30px;
 }
 
+.noticeSection {
+  width: 100%;
+  max-width: min(92vw, 720px);
+  margin: 28px auto;
+  text-align: center;
+}
+
+.noticeTitle {
+  font-size: 20px;
+  font-weight: 300;
+  color: #ff7a00;
+  margin-bottom: 14px;
+  letter-spacing: 0.06em;
+}
+
+.noticeText {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.noticeDivider {
+  width: 100%;
+  margin-top: 22px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.mobileBreak {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileBreak {
+    display: block;
+  }
+
+  .noticeText {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}
+
 .detailIntroSection,
 .detailCopySection {
   width: min(1120px, 92vw);
