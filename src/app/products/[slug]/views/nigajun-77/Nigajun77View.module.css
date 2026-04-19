@@ -604,17 +604,36 @@
 }
 
 .detailOverlayText {
-  font-size: 14px;
+  font-size: 14px !important;
+  font-weight: 300 !important;
   line-height: 1.5;
-  font-weight: 300;
 }
 
 .detailSubTitle14 {
   font-size: 14px;
 }
 
+.highlight25 {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.highlight20 {
+  font-size: 20px;
+  font-weight: 300;
+}
+
 .mobileBreak {
   display: inline;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+.korText {
+  font-size: 14px !important;
+  line-height: 1.6;
 }
 
 .detailDescription {
@@ -674,19 +693,23 @@
     line-height: 1.8;
   }
 
+  .mobileOnly {
+    display: block;
+  }
+
   .mobileBreak {
     display: block;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 300;
   }
 
   .detailOverlayText {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px !important;
+    font-weight: 300 !important;
   }
 
   .korText {
-    font-size: 12px;
+    font-size: 14px !important;
   }
 }
 
@@ -697,15 +720,6 @@
   100% {
     transform: translateX(100%);
   }
-}
-
-.mobileOnly {
-  display: none;
-}
-
-.korText {
-  font-size: 14px;
-  line-height: 1.6;
 }
 
 
