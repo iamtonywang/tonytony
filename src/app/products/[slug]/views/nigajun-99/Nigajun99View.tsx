@@ -468,6 +468,14 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <section className={styles.detailLowerCopySection}>
         <div className={styles.detailLowerCopyInner}>
+          <p className={`${styles.detailLowerTitle} ${styles.titleMain}`}>
+            TONYWANG
+          </p>
+
+          <p className={`${styles.detailLowerText} ${styles.titleSub}`}>
+            NIGAJUN99
+          </p>
+
           <p className={styles.detailLowerText}>
             피부 가려움증 매우 괴롭고 힘든 고통스런 질환이다
           </p>
