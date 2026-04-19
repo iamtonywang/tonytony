@@ -483,17 +483,20 @@ export default function Nigajun99View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailLowerText}>
-            많은 기업들이 <span className={styles.highlight25}>개선</span> 할수 있다고 한다 그러나 현실은{" "}
+            많은 기업들이 <span className={styles.highlight25}>개선</span> 할수 있다고 한다 그러나 현실은
+            <br className={styles.mobileOnly} />
             <span className={styles.highlight25}>거짓에 불과하다</span>
           </p>
 
           <p className={styles.detailLowerText}>
-            피부 가려움증의 생물학적 메커니즘 모르고, 단순히{" "}
+            피부 가려움증의 생물학적 메커니즘 모르고, 단순히
+            <br className={styles.mobileOnly} />
             <span className={styles.highlight20}>항염 케미컬 물질과 천연물질</span>
           </p>
 
           <p className={styles.detailLowerText}>
-            각종 <span className={styles.highlight25}>헤게모니</span> 원료를 앞세워 해결하기에는{" "}
+            각종 <span className={styles.highlight25}>헤게모니</span> 원료를 앞세워 해결하기에는
+            <br className={styles.mobileOnly} />
             <span className={styles.highlight25}>부족한</span> 부분이 많다
           </p>
 
