@@ -451,9 +451,12 @@ export default function Nigajun82View({ product, boardItems }: Props) {
 
       <section className={styles.detailLowerCopySection}>
         <div className={styles.detailLowerCopyInner}>
-          <p className={styles.detailOverlayHeading}>TONYWANG</p>
-          <p className={styles.detailOverlayText}>NIGAJUN82</p>
-          <h1 className={styles.detailLowerTitle}>TONYWANG</h1>
+          <p className={styles.detailOverlayHeading}>
+            <span className={styles.highlight25}>TONYWANG</span>
+          </p>
+          <p className={styles.detailOverlayText}>
+            <span className={styles.highlight20}>NIGAJUN82</span>
+          </p>
 
           <p className={styles.detailLowerText}>
             질염은 단순한 오염 상태로 정의되지 않는다.
