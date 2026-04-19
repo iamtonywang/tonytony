@@ -69,6 +69,17 @@
   margin-bottom: 0;
 }
 
+.highlight {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.highlightOrange {
+  font-size: 25px;
+  font-weight: 300;
+  color: #ff7a00;
+}
+
 .ourWorkVisualBlock {
   width: 100vw;
   position: relative;
