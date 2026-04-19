@@ -699,6 +699,28 @@
   line-height: 2.05;
 }
 
+.highlight25 {
+  font-size: 25px;
+  font-weight: inherit;
+}
+
+.highlight25Orange {
+  font-size: 25px;
+  font-weight: inherit;
+  color: #ff7a00;
+}
+
+.highlight20 {
+  font-size: 20px;
+  font-weight: inherit;
+}
+
+.highlight20Orange {
+  font-size: 20px;
+  font-weight: inherit;
+  color: #ff7a00;
+}
+
 .detailLowerHighlight {
   font-size: 14px;
   font-weight: 500;
