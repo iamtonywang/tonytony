@@ -709,6 +709,17 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       <HeroSection product={product} />
       <div className={styles.detailTopGlowLine} aria-hidden="true" />
 
+      <section className={styles.detailIntroSection}>
+        <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 44</h2>
+        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
+        <p className={styles.detailIntroText}>
+          I welcome you to those who truly want to transform
+        </p>
+      </section>
+
+      <div className={styles.detailMidGlowLine} aria-hidden="true" />
+
       <section className={styles.noticeSection}>
         <div className={styles.noticeInner}>
           <p className={styles.noticeTitle}>IMPORTANT NOTICE</p>
@@ -726,17 +737,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           </p>
         </div>
       </section>
-
-      <section className={styles.detailIntroSection}>
-        <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <h2 className={styles.detailIntroLead}>NIGAJUN 44</h2>
-        <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
-        <p className={styles.detailIntroText}>
-          I welcome you to those who truly want to transform
-        </p>
-      </section>
-
-      <div className={styles.detailMidGlowLine} aria-hidden="true" />
 
       <section className={styles.detailLowerCopySection}>
         <div className={styles.detailLowerCopyInner}>
