@@ -411,6 +411,7 @@ export default function Nigajun82View({ product, boardItems }: Props) {
         <h1 className={styles.detailIntroTitle}>TONY WANG</h1>
         <h2 className={styles.detailIntroLead}>NIGAJUN 99</h2>
         <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
+        <p className={styles.detailIntroText}>2026년 출시 예정</p>
       </section>
 
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
