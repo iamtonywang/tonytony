@@ -482,7 +482,7 @@ export default function Nigajun77View({ product, boardItems }: Props) {
           Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
         </p>
         <p className={styles.detailCopyText}>
-          Since August 2025 TONYWANG
+          SINCE May 2026 TONYWANG
         </p>
       </section>
 
