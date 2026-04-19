@@ -529,7 +529,7 @@
 }
 
 .noticeText {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.7;
   margin-bottom: 8px;
@@ -550,11 +550,6 @@
 @media (max-width: 768px) {
   .mobileBreak {
     display: block;
-  }
-
-  .noticeText {
-    font-size: 15px;
-    line-height: 1.65;
   }
 }
 

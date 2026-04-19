@@ -419,9 +419,9 @@ export default function Nigajun82View({ product, boardItems }: Props) {
         <p className={styles.noticeTitle}>IMPORTANT NOTICE</p>
 
         <p className={styles.noticeText}>
-          제품 구매 전 필히 본문을 필독하고
+          제품 구매 전 필히 본문을 필독하고, 신중히
           <br className={styles.mobileBreak} />
-          신중히 구매 결정을 하세요
+          구매 결정을 하세요
         </p>
 
         <p className={styles.noticeText}>
@@ -435,15 +435,15 @@ export default function Nigajun82View({ product, boardItems }: Props) {
         </p>
 
         <p className={styles.noticeText}>
-          구매 전에 신중하게 검토 바라며
+          구매 전에 신중하게 검토 바라며, 원치 않는 분은
           <br className={styles.mobileBreak} />
-          원치 않는 분은 사용을 금합니다
+          사용을 금합니다
         </p>
 
         <p className={styles.noticeText}>
-          다만 포괄적 적용은 아니며,
+          다만 포괄적 적용은 아니며, 개인마다 차이가 있음을
           <br className={styles.mobileBreak} />
-          개인마다 차이가 있음을 밝힙니다
+          밝힙니다
         </p>
 
         <div className={styles.noticeDivider} />
