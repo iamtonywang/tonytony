@@ -587,6 +587,12 @@
   font-weight: 300;
 }
 
+.highlight20Orange {
+  font-size: 20px;
+  font-weight: 300;
+  color: #ff7a00;
+}
+
 .detailLowerPrice {
   margin-top: 16px;
   text-align: center;
