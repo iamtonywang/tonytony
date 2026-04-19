@@ -408,12 +408,12 @@ export default function Nigajun55View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailOverlayText}>
-            <span className={styles.highlight25}>피부 세포</span>의 세포신호 전달(cellular signaling)과{" "}
+            <span className={styles.highlight25}>피부 세포</span> 세포신호 전달(cellular signaling)과{" "}
             <span className={styles.highlight25}>단백질 발현 조절</span>(protein expression modulation) 재활성화 중점
           </p>
 
           <p className={styles.detailOverlayText}>
-            Bio-Active Complex는 <span className={styles.highlight25Orange}>섬유아세포</span>의 대사 활성도를 증가{" "}
+            Bio-Active Complex <span className={styles.highlight25Orange}>섬유아세포</span>의 대사 활성도를 증가{" "}
             <span className={styles.highlight25}>콜라겐 합성</span> 경로와 ECM 리모델링 경로를 동시에 유도한다.
           </p>
 
