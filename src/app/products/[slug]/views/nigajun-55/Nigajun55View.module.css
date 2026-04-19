@@ -586,6 +586,17 @@
   font-weight: 300;
 }
 
+.highlight25 {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.highlight25Orange {
+  font-size: 25px;
+  font-weight: 300;
+  color: #ff7a00;
+}
+
 .detailLowerPrice {
   margin-top: 16px;
   text-align: center;

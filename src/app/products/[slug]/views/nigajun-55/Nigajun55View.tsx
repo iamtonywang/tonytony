@@ -404,23 +404,26 @@ export default function Nigajun55View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailOverlayText}>
-            튼살(striae distensae)은 단순한 피부 표면의 물리적 손상이 아니다
+            <span className={styles.highlight25Orange}>튼살(striae distensae)</span>은 단순한 피부 표면의 물리적 손상이 아니다
           </p>
 
           <p className={styles.detailOverlayText}>
-            피부 세포의 세포신호 전달(cellular signaling)과 단백질 발현 조절(protein expression modulation) 재활성화 중점
+            <span className={styles.highlight25}>피부 세포</span>의 세포신호 전달(cellular signaling)과{" "}
+            <span className={styles.highlight25}>단백질 발현 조절</span>(protein expression modulation) 재활성화 중점
           </p>
 
           <p className={styles.detailOverlayText}>
-            Bio-Active Complex는 섬유아세포의 대사 활성도를 증가 콜라겐 합성 경로와 ECM 리모델링 경로를 동시에 유도한다.
+            Bio-Active Complex는 <span className={styles.highlight25Orange}>섬유아세포</span>의 대사 활성도를 증가{" "}
+            <span className={styles.highlight25}>콜라겐 합성</span> 경로와 ECM 리모델링 경로를 동시에 유도한다.
           </p>
 
           <p className={styles.detailOverlayText}>
-            특히 성장 인자 신호와 유사한 세포 활성 환경을 형성하여 진피 조직 내 콜라겐 재배열
+            특히 <span className={styles.highlight25}>성장 인자 신호</span>와 유사한 세포 활성 환경을 형성하여 진피 조직 내 콜라겐 재배열
           </p>
 
           <p className={styles.detailOverlayText}>
-            (collagen re-organization), 엘라스틴 네트워크 복원, 세포외기질 재구성을 촉진한다.
+            (collagen re-organization), 엘라스틴 네트워크 복원, <span className={styles.highlight25Orange}>세포외기질</span>{" "}
+            재구성을 촉진한다.
           </p>
 
           <p className={styles.detailOverlayText}>
