@@ -575,6 +575,10 @@
   align-items: center;
 }
 
+.detailLowerCopySection .detailLowerText {
+  font-weight: 300;
+}
+
 .detailLowerTitle {
   margin: 0 0 14px;
   font-size: clamp(20px, 2.1vw, 30px);

@@ -468,46 +468,50 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <section className={styles.detailLowerCopySection}>
         <div className={styles.detailLowerCopyInner}>
-          <p className={`${styles.detailLowerTitle} ${styles.titleMain}`}>
-            TONYWANG
-          </p>
-
-          <p className={`${styles.detailLowerText} ${styles.titleSub}`}>
-            NIGAJUN99
-          </p>
-
           <p className={styles.detailLowerText}>
             피부 가려움증 매우 괴롭고 힘든 고통스런 질환이다
           </p>
+
           <p className={styles.detailLowerText}>
             많은 기업들이 개선 할수 있다고 한다
           </p>
+
           <p className={styles.detailLowerText}>
             그러나 현실은 거짓에 불과하다
           </p>
+
           <p className={styles.detailLowerText}>
-            피부 가려움증의 생물학적 메커니즘 모르고
-            <br className={styles.mobileOnly} />
-            단순 항염 케미컬 물질과 천염물질
+            피부 가려움증의 생물학적 메커니즘 모르고단순 항염 케미컬 물질과 천염물질
           </p>
+
           <p className={styles.detailLowerText}>
-            그리고
-            <br className={styles.mobileOnly} />
-            각종 헤게모니 원료를 앞세워 해결하기에는
-            <br className={styles.mobileOnly} />
-            부족한 부분이 많다
+            그리고각종 헤게모니 원료를 앞세워 해결하기에는부족한 부분이 많다
           </p>
+
           <p className={styles.detailLowerText}>
-            과대하게 부풀린 홍보는 가려움에 의한
-            <br className={styles.mobileOnly} />
-            고통스런 유저들에게 더 고통과 좌절감을 줄뿐이다
+            과대하게 부풀린 홍보는 가려움에 의한고통스런 유저들에게 더 고통과 좌절감을 줄뿐이다
           </p>
+
           <p className={styles.detailLowerText}>
             이제 그만 멈춰라
           </p>
+
           <p className={styles.detailLowerText}>
             거짓에 의한 상처받는고통이 더욱 크다
           </p>
+
+          <p className={styles.detailLowerText}>
+            SINCE May 2026
+          </p>
+
+          <p className={styles.detailLowerText}>
+            TONYWANG
+          </p>
+
+          <p className={styles.detailLowerText}>
+            Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
+          </p>
+
           <p className={styles.detailLowerText}>
             SINCE May 2026
           </p>
