@@ -469,11 +469,11 @@ export default function Nigajun99View({ product, boardItems }: Props) {
       <section className={styles.detailLowerCopySection}>
         <div className={styles.detailLowerCopyInner}>
           <p className={`${styles.detailLowerTitle} ${styles.titleMain}`}>
-            TONYWANG
+            <span className={styles.highlight25}>TONYWANG</span>
           </p>
 
           <p className={`${styles.detailLowerText} ${styles.titleSub}`}>
-            NIGAJUN99
+            <span className={styles.highlight20}>NIGAJUN99</span>
           </p>
 
           <p className={styles.detailLowerText}>
