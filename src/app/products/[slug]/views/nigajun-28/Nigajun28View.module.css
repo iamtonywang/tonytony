@@ -617,6 +617,12 @@
   font-weight: 300;
 }
 
+.highlight20Orange {
+  font-size: 20px;
+  font-weight: 300;
+  color: #ff7a00;
+}
+
 .pcOnly {
   display: inline;
 }

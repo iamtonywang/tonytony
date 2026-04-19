@@ -392,22 +392,25 @@ export default function Nigajun28View({ product, boardItems }: Props) {
               <span className={styles.highlight20}>NIGAJUN 28</span>
               <br />
               <br />
-              수십 년 동안 치약은 같은 방식으로 만들어졌어. 세균을 제거하고, 입안을 깨끗하게 만드는 것.
+              수십 년 동안 <span className={styles.highlight20Orange}>치약은 같은 방식</span>으로 만들어졌어.{" "}
+              <span className={styles.highlight20}>세균을</span> 제거하고, 입안을 깨끗하게 만드는 것.
               <br />
               <br />
-              구강 건강은 단순한 세정의 문제가 아냐 구강은 수많은 미생물과 세포가 공존하는 생물학적 생태계 잇몸 조직은 끊임없이 염증 반응과 회복 과정을 반복하는 생체 조직 Genetic Toothpaste
+              <span className={styles.highlight20}>구강 건강은</span> 단순한 세정의 문제가 아냐 구강은 수많은 미생물과 세포가 공존하는{" "}
+              <span className={styles.highlight20}>생물학적</span> 생태계 잇몸 조직은 끊임없이{" "}
+              <span className={styles.highlight20}>염증 반응과 회복 과정을</span> 반복하는 생체 조직 Genetic Toothpaste
               <br />
               <br />
-              이 지점에서 시작했어 치약을 단순한 세정 제품이 아니라 구강 조직의 생물학적 신호를 조절하는
+              이 지점에서 시작했어 치약을 단순한 세정 제품이 아니라 구강 조직의 <span className={styles.highlight20}>생물학적</span> 신호를 조절하는
               <br />
               <br />
               바이오 플랫폼으로 재정의했어.
               <br />
               <br />
-              Proteo Phyto Complex 재 설계된 활성 분자 시스템은 식물세포에서 유래한 단백질,
+              Proteo Phyto Complex 재 설계된 <span className={styles.highlight20}>활성 분자 시스템</span>은 식물세포에서 유래한 단백질,
               <br />
               <br />
-              펩타이드, 폴리페놀 및 항산화 생체 분자가 결합된 Bioactive Molecular 시스템이다
+              펩타이드, 폴리페놀 및 항산화 <span className={styles.highlight20}>생체 분자가</span> 결합된 Bioactive Molecular 시스템이다
               <br />
               <br />
               SINCE May 2026
@@ -417,31 +420,31 @@ export default function Nigajun28View({ product, boardItems }: Props) {
               <span className={styles.highlight20}>NIGAJUN 28</span>
               <br />
               <br />
-              수십 년 동안 치약은 같은 방식으로 만들어졌어.
+              수십 년 동안 <span className={styles.highlight20Orange}>치약은 같은 방식</span>으로 만들어졌어.
               <br />
-              세균을 제거하고, 입안을 깨끗하게 만드는 것.
+              <span className={styles.highlight20}>세균을</span> 제거하고, 입안을 깨끗하게 만드는 것.
               <br />
               <br />
-              구강 건강은 단순한 세정의 문제가 아냐
+              <span className={styles.highlight20}>구강 건강은</span> 단순한 세정의 문제가 아냐
               <br />
-              구강은 수많은 미생물과 세포가 공존하는 생물학적 생태계
+              구강은 수많은 미생물과 세포가 공존하는 <span className={styles.highlight20}>생물학적</span> 생태계
               <br />
-              잇몸 조직은 끊임없이 염증 반응과 회복 과정을 반복하는 생체 조직
+              잇몸 조직은 끊임없이 <span className={styles.highlight20}>염증 반응과 회복 과정을</span> 반복하는 생체 조직
               <br />
               Genetic Toothpaste
               <br />
               <br />
               이 지점에서 시작했어
               <br />
-              치약을 단순한 세정 제품이 아니라 구강 조직의 생물학적 신호를 조절하는
+              치약을 단순한 세정 제품이 아니라 구강 조직의 <span className={styles.highlight20}>생물학적</span> 신호를 조절하는
               <br />
               <br />
               바이오 플랫폼으로 재정의했어.
               <br />
               <br />
-              Proteo Phyto Complex 재 설계된 활성 분자 시스템은 식물세포에서 유래한 단백질,
+              Proteo Phyto Complex 재 설계된 <span className={styles.highlight20}>활성 분자 시스템</span>은 식물세포에서 유래한 단백질,
               <br />
-              펩타이드, 폴리페놀 및 항산화 생체 분자가 결합된 Bioactive Molecular 시스템이다
+              펩타이드, 폴리페놀 및 항산화 <span className={styles.highlight20}>생체 분자가</span> 결합된 Bioactive Molecular 시스템이다
               <br />
               <br />
               SINCE May 2026
