@@ -43,11 +43,11 @@ export default function MainContentSection() {
 
       <div className={styles.ourWorkMidCopy}>
         <p><span className={styles.highlightOrange}>벤자민 버튼!</span>{" "}처럼 돌아갈수만 있다면 . . . .</p>
-        <p>피부가 늙는 건 나이가 아니라, 세포가 <span className={styles.highlight}>소멸된</span> 원인이야</p>
+        <p>피부가 <span className={styles.highlight}>늙는 건</span> 나이가 아니라, 세포가 <span className={styles.highlight}>소멸된</span><br className={styles.mobileBreak} />원인이야</p>
         <p><span className={styles.highlight}>YES</span> TONYWANG</p>
         <p>나는 세포를 연구하는 데 <span className={styles.highlightOrange}>28</span>년을 보냈다</p>
-        <p>누구나 인생을 살면서 한번쯤 은 <span className={styles.highlight}>미친 듯이</span> 도전을 해보았을 것이다</p>
-        <p><span className={styles.highlight}>파노라마</span> 같은 인생에서 누구나 겪는 세월의 흔적 이고</p>
+        <p>누구나 인생을 살면서 한번쯤 은 <span className={styles.highlight}>미친 듯이</span><br className={styles.mobileBreak} />도전을 해보았을 것이다</p>
+        <p><span className={styles.highlight}>파노라마</span> 같은 인생에서 누구나 겪는<br className={styles.mobileBreak} />세월의 흔적 이고</p>
         <p>82억 인구 중에 우리가 겪는 <span className={styles.highlight}>실패와 성공</span>도 한 부분이야</p>
         <p>28년 생명공학 연구 개발을 하면서</p>
         <p>단 한번도 <span className={styles.highlightOrangeSmall}>화장품 따위는</span> 만들 생각이 없었다</p>
