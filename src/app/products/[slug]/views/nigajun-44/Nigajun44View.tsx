@@ -721,21 +721,23 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       <div className={styles.detailMidGlowLine} aria-hidden="true" />
 
       <section className={styles.noticeSection}>
-        <div className={styles.noticeInner}>
-          <p className={styles.noticeTitle}>IMPORTANT NOTICE</p>
-          <p className={styles.noticeText}>
-            제품 구매 전 필히 본문을 필독하고 신중히 구매 결정을 하세요
-          </p>
-          <p className={styles.noticeText}>
-            얼굴 축소 기능이 작용 하는 기능이 있어 얼굴 전체 윤곽이 작아지는 현상이 발생합니다
-          </p>
-          <p className={styles.noticeText}>
-            이를 원치 않는 분은 구매 및 사용을 금합니다
-          </p>
-          <p className={styles.noticeText}>
-            다만 포괄적 적용은 아니며 개개인의 차이가 있음을 밝힙니다
-          </p>
-        </div>
+        <p className={styles.noticeTitle}>IMPORTANT NOTICE</p>
+
+        <p className={styles.noticeText}>
+          제품 구매 전 필히 본문을 필독하고 신중히 구매 결정을 하세요
+        </p>
+
+        <p className={styles.noticeText}>
+          얼굴 축소 기능이 작용 하는 기능이 있어 얼굴 전체 윤곽이 작아지는 현상이 발생합니다
+        </p>
+
+        <p className={styles.noticeText}>
+          이를 원치 않는 분은 구매 및 사용을 금합니다
+        </p>
+
+        <p className={styles.noticeText}>
+          다만 포괄적 적용은 아니며 개개인의 차이가 있음을 밝힙니다
+        </p>
       </section>
 
       <section className={styles.detailLowerCopySection}>
