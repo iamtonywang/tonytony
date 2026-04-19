@@ -733,15 +733,22 @@ export default function Nigajun44View({ product, boardItems }: Props) {
                 <span className={styles.highlight25Orange}>의문을</span> 가지는자
               </span>
               <span className={styles.mobileOnly}>
-                <span className={styles.highlight25}>가치를</span> 모르는자<br />
-                <span className={styles.highlight25}>자신을</span> 사랑하지 않는자<br />
-                <span className={styles.highlight25Orange}>의문을</span> 가지는자
+                <span className={styles.highlight25}>가치를</span> 모르는자{" "}
+                <span className={styles.highlight25}>자신을</span> 사랑하지 않는자{" "}
+                <span className={styles.highlight25Orange}>의문을</span> 가지는자 ,{" "}
+                <span className={styles.highlight25Orange}>자격이 없다</span>
+                <br />
+                여기서 나가라
+                <br />
+                진정으로 <span className={styles.highlight25Orange}>변혁을 원하는 자</span> 환영한다
               </span>
             </p>
 
             <p className={styles.detailLowerText}>
-              <span className={styles.highlight25Orange}>자격이 없다</span> 여기서 나가라<br />
-              진정으로 <span className={styles.highlight25Orange}>변혁을 원하는 자</span> 환영한다
+              <span className={styles.pcOnly}>
+                <span className={styles.highlight25Orange}>자격이 없다</span> 여기서 나가라<br />
+                진정으로 <span className={styles.highlight25Orange}>변혁을 원하는 자</span> 환영한다
+              </span>
             </p>
 
             <p className={styles.detailLowerText}>
