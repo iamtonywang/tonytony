@@ -619,6 +619,14 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
+.noticeDivider {
+  width: 100%;
+  max-width: min(92vw, 720px);
+  margin: 24px auto 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
 .detailMidGlowLine {
   margin-top: 14px;
   margin-bottom: 36px;

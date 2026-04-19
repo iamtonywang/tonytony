@@ -738,6 +738,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <p className={styles.noticeText}>
           다만 포괄적 적용은 아니며 개개인의 차이가 있음을 밝힙니다
         </p>
+
+        <div className={styles.noticeDivider} aria-hidden="true" />
       </section>
 
       <section className={styles.detailLowerCopySection}>
