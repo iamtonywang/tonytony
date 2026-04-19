@@ -462,7 +462,9 @@ export default function Nigajun82View({ product, boardItems }: Props) {
             질염은 단순한 <span className={styles.highlight25Orange}>오염 상태로</span> 정의되지 않는다.
           </p>
           <p className={styles.detailLowerText}>
-            <span className={styles.highlight25}>질 내부 환경</span>에서 여러 생물학적 조건이 동시에 변화할 때
+            <span className={styles.highlight25}>질 내부 환경</span>에서 여러 생물학적 조건이
+            <br className={styles.mobileBreak} />
+            동시에 변화할 때
           </p>
           <p className={styles.detailLowerText}>
             병원성 <span className={styles.highlight25}>미생물 활동</span> 조건이 형성.
