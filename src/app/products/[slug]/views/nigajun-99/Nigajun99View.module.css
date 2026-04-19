@@ -559,6 +559,14 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
+.detailIntroTitle,
+.detailIntroSubtitle,
+.detailIntroSubTitle,
+.detailIntroText {
+  font-size: 25px !important;
+  font-weight: 300 !important;
+}
+
 .detailCopySection {
   text-align: center;
 }
