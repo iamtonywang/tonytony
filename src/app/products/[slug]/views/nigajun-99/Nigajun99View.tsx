@@ -477,7 +477,9 @@ export default function Nigajun99View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailLowerText}>
-            <span className={styles.highlight25}>피부 가려움증</span> 매우 괴롭고 힘든 고통스런 질환이다
+            <span className={styles.highlight25}>피부 가려움증</span> 매우 괴롭고 힘든
+            <br className={styles.mobileOnly} />
+            고통스런 질환이다
           </p>
 
           <p className={styles.detailLowerText}>
@@ -489,12 +491,15 @@ export default function Nigajun99View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailLowerText}>
-            피부 가려움증의 생물학적 메커니즘 모르고단순{" "}
-            <span className={styles.highlight20}>항염 케미컬 물질과 천연물질</span>
+            피부 가려움증의 생물학적 메커니즘 모르고
+            <br className={styles.mobileOnly} />
+            단순 <span className={styles.highlight20}>항염 케미컬 물질과 천연물질</span>
           </p>
 
           <p className={styles.detailLowerText}>
-            각종 <span className={styles.highlight25}>헤게모니</span> 원료를 앞세워 해결하기에는 부족한 부분이 많다
+            각종 <span className={styles.highlight25}>헤게모니</span> 원료를 앞세워 해결하기에는
+            <br className={styles.mobileOnly} />
+            부족한 부분이 많다
           </p>
 
           <p className={styles.detailLowerText}>
