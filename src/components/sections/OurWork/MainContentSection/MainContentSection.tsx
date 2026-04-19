@@ -43,7 +43,7 @@ export default function MainContentSection() {
 
       <div className={styles.ourWorkMidCopy}>
         <p><span className={styles.highlightOrange}>벤자민 버튼!</span>{" "}처럼 돌아갈수만 있다면 . . . .</p>
-        <p>피부가 <span className={styles.highlight}>늙는 건</span> 나이가 아니라, 세포가 <span className={styles.highlight}>소멸된</span><br className={styles.mobileBreak} />원인이야</p>
+        <p>피부가 <span className={styles.highlight}>늙는 건</span> 세포가 <span className={styles.highlight}>소멸된</span><br className={styles.mobileBreak} />원인이야</p>
         <p><span className={styles.highlight}>YES</span> TONYWANG</p>
         <p>나는 세포를 연구하는 데 <span className={styles.highlightOrange}>28</span>년을 보냈다</p>
         <p>누구나 인생을 살면서 한번쯤 은 <span className={styles.highlight}>미친 듯이</span><br className={styles.mobileBreak} />도전을 해보았을 것이다</p>
