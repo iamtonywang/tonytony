@@ -551,6 +551,14 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
+.detailIntroTitle,
+.detailIntroLead,
+.detailIntroSubTitle,
+.detailIntroText {
+  font-size: 17px !important;
+  font-weight: 300 !important;
+}
+
 .detailLowerCopySection {
   width: min(1120px, 92vw);
   margin: 0 auto;
