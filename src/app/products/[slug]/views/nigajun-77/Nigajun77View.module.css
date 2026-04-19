@@ -618,6 +618,12 @@
   font-weight: 300;
 }
 
+.highlight25Orange {
+  font-size: 25px;
+  font-weight: 300;
+  color: #ff7a00;
+}
+
 .highlight20 {
   font-size: 20px;
   font-weight: 300;

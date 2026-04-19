@@ -410,11 +410,11 @@ export default function Nigajun77View({ product, boardItems }: Props) {
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            종아리는 특별한 지방 조직이다.
+            종아리는 <span className={styles.highlight25Orange}>특별한 지방 조직</span>이다.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            움직임이 많지만 지방은 쉽게 사라지지 않는다.
+            <span className={styles.highlight25}>움직임이</span> 많지만 지방은 쉽게 사라지지 않는다.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
@@ -422,38 +422,39 @@ export default function Nigajun77View({ product, boardItems }: Props) {
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            종아리 지방은 부종이 아니라 대사 환경에 의해 유지된다.
+            종아리 지방은 <span className={styles.highlight25}>부종이 아니라</span> 대사 환경에 의해 유지된다.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            지방세포는 단순히 지방을 저장하는 저장소가 아니다.
+            <span className={styles.highlight25}>지방세포는</span> 단순히 지방을 저장하는 저장소가 아니다.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            지방세포는 에너지 저장 모드와 에너지 소비 모드 사이를
+            <span className={styles.highlight25}>지방세포는</span> <span className={styles.highlight25}>에너지 저장 모드</span>와 에너지{" "}
+            <span className={styles.highlight25}>소비 모드</span> 사이를
             <br className={styles.mobileOnly} />
-            오가는 대사 세포다.
+            오가는 <span className={styles.highlight25Orange}>대사 세포다</span>.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            문제는 대부분의 종아리 지방이 저장 모드에 고정되어 있다는 것이다.
+            문제는 대부분의 <span className={styles.highlight25}>종아리 지방이</span> 저장 모드에 고정되어 있다는 것이다.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            지방 합성 효소 FAS · ACC 경로가 억제되면서
+            <span className={styles.highlight25Orange}>지방 합성 효소</span> FAS · ACC 경로가 억제되면서
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            지방세포는 더 이상 축적 환경을 유지하기 어렵다.
+            <span className={styles.highlight25}>지방세포는</span> 더 이상 축적 환경을 유지하기 어렵다.
           </p>
 
           <p className={styles.detailOverlayText}>
-            지방 조직 주변에서 나타나는 저등급 염증
+            지방 조직 주변에서 나타나는 <span className={styles.highlight25}>저등급 염증</span>
             <span className={styles.mobileBreak}>(low-grade inflammation)</span>
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            지방 축적을 유지시키는 중요한 조건이다
+            <span className={styles.highlight25}>지방 축적</span>을 유지시키는 중요한 조건이다
           </p>
 
           <p className={styles.detailOverlayText}>
