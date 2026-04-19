@@ -443,7 +443,7 @@ export default function Nigajun82View({ product, boardItems }: Props) {
         <p className={styles.noticeText}>
           다만 포괄적 적용은 아니며,
           <br className={styles.mobileBreak} />
-          개개인의 차이가 있음을 밝힙니다
+          개인마다 차이가 있음을 밝힙니다
         </p>
 
         <div className={styles.noticeDivider} />
