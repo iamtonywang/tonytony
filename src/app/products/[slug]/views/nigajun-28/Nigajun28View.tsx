@@ -427,19 +427,13 @@ export default function Nigajun28View({ product, boardItems }: Props) {
               <br />
               <span className={styles.highlight20}>구강 건강은</span> 단순한 세정의 문제가 아니다
               <br />
-              구강은 수많은 미생물과 세포가 공존하는 <span className={styles.highlight20}>생물학적</span> 생태계
+              구강은 수많은 미생물과 세포가 공존하는 <span className={styles.highlight20}>생물학적</span> 생태
               <br />
-              잇몸 조직은 끊임없이 <span className={styles.highlight20}>염증 반응과 회복 과정을</span> 반복하는 생체 조직
+              잇몸 조직은 끊임없이 <span className={styles.highlight20}>염증 반응과 회복 과정을</span> 반복하는 생체 조직 Genetic Toothpaste 이 지점에서 시작했어
               <br />
-              Genetic Toothpaste
+              치약을 단순한 세정 제품이 아니라 구강 조직의
               <br />
-              <br />
-              이 지점에서 시작했어
-              <br />
-              치약을 단순한 세정 제품이 아니라 구강 조직의 <span className={styles.highlight20}>생물학적</span> 신호를 조절하는
-              <br />
-              <br />
-              바이오 플랫폼으로 재정의했어.
+              <span className={styles.highlight20}>생물학적</span> 신호를 조절하는 치약을 바이오 플랫폼 재 설계
               <br />
               <br />
               Proteo Phyto Complex 재 설계된 <span className={styles.highlight20}>활성 분자 시스템</span>은 식물세포에서 유래한 단백질,
