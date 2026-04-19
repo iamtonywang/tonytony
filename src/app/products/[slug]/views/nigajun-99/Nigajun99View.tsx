@@ -512,18 +512,6 @@ export default function Nigajun99View({ product, boardItems }: Props) {
             SINCE May 2026
           </p>
 
-          <p className={styles.detailLowerText}>
-            TONYWANG
-          </p>
-
-          <p className={styles.detailLowerText}>
-            Someone needs to shout the truth, correct the wrongs and clean up the dirt with lies and tricks
-          </p>
-
-          <p className={styles.detailLowerText}>
-            SINCE May 2026
-          </p>
-
           <p className={styles.detailLowerPrice}>
             {typeof product?.finalPriceAmount === "number"
               ? `₩${product.finalPriceAmount.toLocaleString()}`
