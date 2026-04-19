@@ -422,22 +422,28 @@ export default function Nigajun77View({ product, boardItems }: Props) {
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            종아리 지방은 <span className={styles.highlight25}>부종이 아니라</span> 대사 환경에 의해 유지된다.
+            종아리 지방은 <span className={styles.highlight25}>부종이 아니라</span>
+            <br className={styles.mobileOnly} />
+            대사 환경에 의해 유지된다.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            <span className={styles.highlight25}>지방세포는</span> 단순히 지방을 저장하는 저장소가 아니다.
+            <span className={styles.highlight25}>지방세포는</span> 단순히 지방을 저장하는
+            <br className={styles.mobileOnly} />
+            저장소가 아니다.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
             지방세포는 <span className={styles.highlight25}>에너지 저장 모드</span>와 에너지{" "}
-            <span className={styles.highlight25}>소비 모드</span> 사이를
             <br className={styles.mobileOnly} />
-            오가는 <span className={styles.highlight25Orange}>대사 세포다</span>.
+            <span className={styles.highlight25}>소비 모드</span> 사이를 오가는{" "}
+            <span className={styles.highlight25Orange}>대사 세포다</span>.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            문제는 대부분의 <span className={styles.highlight25}>종아리 지방이</span> 저장 모드에 고정되어 있다는 것이다.
+            문제는 대부분의 <span className={styles.highlight25}>종아리 지방이</span> 저장 모드에
+            <br className={styles.mobileOnly} />
+            고정되어 있다는 것이다.
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
