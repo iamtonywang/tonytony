@@ -397,58 +397,42 @@ export default function Nigajun35View({ product, boardItems }: Props) {
 
       <section className={styles.detailLowerCopySection}>
         <div className={styles.detailLowerCopyInner}>
-          <h1 className={styles.detailLowerTitle}>TONYWANG</h1>
+          <h1 className={styles.detailLowerTitle}></h1>
 
-          <p className={styles.detailLowerText}>
-            나는 흔한 성분으로 연구하지 않아
+          <p className={styles.detailOverlayText}>
+            <span className={styles.highlight20}>NIGAJUN 35</span>
           </p>
-          <p className={styles.detailLowerText}>
-            천연 성분, 나노 입자, 줄기세포, 성장 인자, 리포좀.
+
+          <p className={styles.detailOverlayText}>
+            Proteo Phyto Complex
           </p>
-          <p className={styles.detailLowerText}>
+
+          <p className={styles.detailOverlayText}>
+            천연 성분, 나노 입자, 줄기세포, 성장 인자, 리포좀, 비타민.
+          </p>
+
+          <p className={styles.detailOverlayText}>
             이러한 익숙한 성분들은 우리의 연구 방향과 달라
           </p>
-          <p className={styles.detailLowerText}>
-            식물 세포 단백질 재조합 유전자 변환 기술 기반
-          </p>
-          <p className={styles.detailLowerText}>
+
+          <p className={styles.detailOverlayText}>
             새로운 단백질(Gene-Derived Protein) 개발
           </p>
-          <p className={styles.detailLowerText}>
-            나는 Chemical 합성 원료 기반 연구를 진행하지 않아.
+
+          <p className={styles.detailOverlayText}>
+            ProteoPhytoComplex™ Skin Science 단백질 기반 성분이 피부의 핵심 구조 세포인
           </p>
-          <p className={styles.detailLowerText}>
-            ProteoPhytoComplex™ Skin Science
+
+          <p className={styles.detailOverlayText}>
+            섬유아세포(Fibroblast) 의 수용체 신호 전달 Crater-like Pore Improvement
           </p>
-          <p className={styles.detailLowerText}>
-            단백질 기반 성분이 피부의 핵심 구조 세포인
+
+          <p className={styles.detailOverlayText}>
+            단백질 활성화 분화구 형태 모공 개선. 피부 표면 밀도 강화 피부 탄력 개선
           </p>
-          <p className={styles.detailLowerText}>
-            섬유아세포(Fibroblast)의 수용체 신호 전달
-          </p>
-          <p className={styles.detailLowerText}>
-            다음과 같은 피부 구조 개선 메커니즘이 작동.
-          </p>
-          <p className={styles.detailLowerText}>
-            Crater-like Pore Improvement
-          </p>
-          <p className={styles.detailLowerText}>
-            단백질 활성화 분화구 형태 모공 개선.
-          </p>
-          <p className={styles.detailLowerText}>
-            피부 표면 밀도 강화 피부 탄력 개선
-          </p>
-          <p className={styles.detailLowerText}>
-            NMF (Natural Moisturizing Factor)
-          </p>
-          <p className={styles.detailLowerText}>
-            모공 케어 피부 건조 개선
-          </p>
-          <p className={styles.detailLowerText}>
-            피부 밀도 개선 피부 수분 활성 최적화
-          </p>
-          <p className={styles.detailLowerText}>
-            SINCE May 2026
+
+          <p className={styles.detailOverlayText}>
+            NMF (Natural Moisturizing Factor) 피부 밀도 개선 피부 수분 활성 최적화
           </p>
 
           <p className={styles.detailLowerPrice}>

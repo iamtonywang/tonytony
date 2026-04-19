@@ -572,6 +572,20 @@
   color: rgba(255, 255, 255, 0.94);
 }
 
+.detailOverlayText {
+  margin: 0 auto;
+  max-width: 760px;
+  font-size: 14px !important;
+  font-weight: 300 !important;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.highlight20 {
+  font-size: 20px;
+  font-weight: 300;
+}
+
 .detailLowerPrice {
   margin-top: 16px;
   text-align: center;
@@ -655,16 +669,14 @@
     font-size: 18px;
   }
 
-  .detailLowerText,
+  .detailOverlayText {
+    font-size: 14px !important;
+    font-weight: 300 !important;
+  }
+
   .detailCopyText {
     font-size: 12px;
     line-height: 1.8;
-  }
-
-  .detailLowerText {
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: 500;
   }
 }
 
