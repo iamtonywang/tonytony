@@ -401,7 +401,7 @@ export default function Nigajun28View({ product, boardItems }: Props) {
               <span className={styles.highlight20}>염증 반응과 회복 과정을</span> 반복하는 생체 조직 Genetic Toothpaste
               <br />
               <br />
-              이 지점에서 출발 치약을 단순한 세정 제품이 아니라 구강 조직의 <span className={styles.highlight20}>생물학적</span> 신호를 조절하는
+              이 지점에서 출발 치약을 단순한 세정 제품이 아니라 구강 조직의
               <br />
               <br />
               재정의했어.
@@ -433,7 +433,7 @@ export default function Nigajun28View({ product, boardItems }: Props) {
               <br />
               치약을 단순한 세정 제품이 아니라 구강 조직의
               <br />
-              <span className={styles.highlight20}>생물학적</span> 신호를 조절하는 치약을 바이오 플랫폼 재 설계
+              치약을 바이오 플랫폼 재 설계
               <br />
               <br />
               Proteo Phyto Complex 재 설계된 <span className={styles.highlight20}>활성 분자 시스템</span>은 식물세포에서 유래한 단백질,
