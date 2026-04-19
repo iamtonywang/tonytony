@@ -408,11 +408,12 @@ export default function Nigajun35View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailOverlayText}>
-            천연 성분, 나노 입자, 줄기세포, 성장 인자, 리포좀, 비타민. 이러한 익숙한 성분은 우리 연구 방향과 달라
+            천연 성분, 나노 입자, 줄기세포, 성장 인자, 리포좀, 비타민. 이러한 익숙한 성분은{" "}
+            <span className={styles.highlight20Orange}>우리 연구 방향과 달라</span>
           </p>
 
           <p className={styles.detailOverlayText}>
-            새로운 단백질(Gene-Derived Protein) 개발
+            <span className={styles.highlight20Orange}>새로운 단백질</span>(Gene-Derived Protein) 개발
           </p>
 
           <p className={styles.detailOverlayText}>
@@ -420,11 +421,11 @@ export default function Nigajun35View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailOverlayText}>
-            섬유아세포(Fibroblast) 수용체 신호 전달 Crater-like Pore Improvement 단백질 활성화 분화구 형태 모공 개선.
+            <span className={styles.highlight20}>섬유아세포</span>(Fibroblast) 수용체 신호 전달 Crater-like Pore Improvement 단백질 활성화 <span className={styles.highlight20}>분화구 형태 모공 개선</span>.
           </p>
 
           <p className={styles.detailOverlayText}>
-            피부 표면 밀도 강화 피부 탄력 개선 NMF (Natural Moisturizing Factor) 피부 밀도 개선 피부 수분 활성 최적화
+            <span className={styles.highlight20}>피부 표면 밀도</span> 강화 피부 탄력 개선 NMF (Natural Moisturizing Factor) 피부 밀도 개선 <span className={styles.highlight20}>피부 수분</span> 활성 최적화
           </p>
 
           <p className={styles.detailLowerPrice}>
