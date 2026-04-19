@@ -565,6 +565,11 @@
   font-weight: 300 !important;
 }
 
+.releaseHighlight {
+  font-size: 25px !important;
+  font-weight: 300;
+}
+
 .detailLowerCopySection {
   width: min(1120px, 92vw);
   margin: 0 auto;
