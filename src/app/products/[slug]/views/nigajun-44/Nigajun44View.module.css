@@ -704,6 +704,10 @@
   font-weight: 300;
 }
 
+.mobileNoWrap {
+  white-space: normal;
+}
+
 .highlight25 {
   font-size: 25px;
   font-weight: inherit;
@@ -815,6 +819,10 @@
 
   .detailLowerStoryBlock span {
     font-weight: 300;
+  }
+
+  .mobileNoWrap {
+    white-space: nowrap;
   }
 
   .detailLowerHeading {

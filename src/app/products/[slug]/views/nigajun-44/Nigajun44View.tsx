@@ -726,7 +726,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           <p className={styles.detailLowerSubHeading}>NIGAJUN44</p>
 
           <div className={styles.detailLowerStoryBlock}>
-            <p className={styles.detailLowerText}>
+            <p className={`${styles.detailLowerText} ${styles.mobileNoWrap}`}>
               <span className={styles.pcOnly}>
                 <span className={styles.highlight25}>가치를</span> 모르는자{" "}
                 <span className={styles.highlight25}>자신을</span> 사랑하지 않는자{" "}
