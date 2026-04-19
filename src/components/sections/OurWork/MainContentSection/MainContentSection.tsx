@@ -50,7 +50,7 @@ export default function MainContentSection() {
         <p><span className={styles.highlight}>파노라마</span> 같은 인생에서 누구나 겪는 세월의 흔적 이고</p>
         <p>82억 인구 중에 우리가 겪는 <span className={styles.highlight}>실패와 성공</span>도 한 부분이야</p>
         <p>28년 생명공학 연구 개발을 하면서</p>
-        <p>단 한번도 <span className={styles.highlightOrange}>화장품 따위는</span> 만들 생각이 없었다</p>
+        <p>단 한번도 <span className={styles.highlightOrangeSmall}>화장품 따위는</span> 만들 생각이 없었다</p>
         <p>나는 이런 하찮은 것들은 취급하지도 않는다</p>
         <p>줄기세포, 리포좀 엑소좀 성장인자 나노입자 펩타이드</p>
         <p><span className={styles.highlight}>나의 연구 개발은</span> Plant Cell Gene Protein 이다</p>
