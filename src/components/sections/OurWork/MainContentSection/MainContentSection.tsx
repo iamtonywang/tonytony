@@ -55,7 +55,7 @@ export default function MainContentSection() {
         <p>줄기세포, 리포좀 엑소좀 성장인자 나노입자 펩타이드</p>
         <p><span className={styles.highlight}>나의 연구 개발은</span> Plant Cell Gene Protein 이다</p>
         <p>식물세포 DNA 클로닝 재조합 세포 간 유전자 융합을 통해 제3의 단백질 창출</p>
-        <p>새로운 피부 조직을 <span className={styles.highlightOrange}>변혁</span> 하는 유일한 유전자 단백질 Plant Cell Gene Protein</p>
+        <p>새로운 피부 조직을 <span className={styles.highlightOrange}>변혁</span> 하는 유일한<br className={styles.mobileBreak} />유전자 단백질 Plant Cell Gene Protein</p>
         <p>SINCE May 2026</p>
       </div>
 
