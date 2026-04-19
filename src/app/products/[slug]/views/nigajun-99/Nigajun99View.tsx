@@ -477,35 +477,37 @@ export default function Nigajun99View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailLowerText}>
-            피부 가려움증 매우 괴롭고 힘든 고통스런 질환이다
+            <span className={styles.highlight25}>피부 가려움증</span> 매우 괴롭고 힘든 고통스런 질환이다
           </p>
 
           <p className={styles.detailLowerText}>
-            많은 기업들이 개선 할수 있다고 한다
+            많은 기업들이 <span className={styles.highlight25}>개선</span> 할수 있다고 한다
           </p>
 
           <p className={styles.detailLowerText}>
-            그러나 현실은 거짓에 불과하다
+            그러나 현실은 <span className={styles.highlight25}>거짓에 불과하다</span>
           </p>
 
           <p className={styles.detailLowerText}>
-            피부 가려움증의 생물학적 메커니즘 모르고단순 항염 케미컬 물질과 천염물질
+            피부 가려움증의 생물학적 메커니즘 모르고단순{" "}
+            <span className={styles.highlight20}>항염 케미컬 물질과 천연물질</span>
           </p>
 
           <p className={styles.detailLowerText}>
-            그리고각종 헤게모니 원료를 앞세워 해결하기에는부족한 부분이 많다
+            각종 <span className={styles.highlight25}>헤게모니</span> 원료를 앞세워 해결하기에는 부족한 부분이 많다
           </p>
 
           <p className={styles.detailLowerText}>
-            과대하게 부풀린 홍보는 가려움에 의한고통스런 유저들에게 더 고통과 좌절감을 줄뿐이다
+            과대하게 <span className={styles.highlight25}>부풀린 홍보는</span> 가려움에 의한고통스런 유저들에게 더{" "}
+            <span className={styles.highlight25}>고통과 좌절감을</span> 줄뿐이다
           </p>
 
           <p className={styles.detailLowerText}>
-            이제 그만 멈춰라
+            <span className={styles.highlight25Orange}>이제 그만 멈춰라</span>
           </p>
 
           <p className={styles.detailLowerText}>
-            거짓에 의한 상처받는고통이 더욱 크다
+            <span className={styles.highlight25}>거짓에 의한</span> 상처받는고통이 더욱 크다
           </p>
 
           <p className={styles.detailLowerText}>

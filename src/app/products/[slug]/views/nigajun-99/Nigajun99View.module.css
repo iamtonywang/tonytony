@@ -576,7 +576,24 @@
 }
 
 .detailLowerCopySection .detailLowerText {
+  font-size: 14px;
   font-weight: 300;
+}
+
+.highlight25 {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.highlight20 {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.highlight25Orange {
+  font-size: 25px;
+  font-weight: 300;
+  color: #ff7a00;
 }
 
 .detailLowerTitle {
