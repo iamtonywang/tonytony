@@ -610,7 +610,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 20px 16px;
   background: rgba(255, 255, 255, 0.03);
-  text-align: left;
+  text-align: center;
 }
 
 .noticeTitle {
@@ -627,6 +627,8 @@
   line-height: 1.6;
   margin-bottom: 6px;
   color: rgba(255, 255, 255, 0.85);
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .detailMidGlowLine {
