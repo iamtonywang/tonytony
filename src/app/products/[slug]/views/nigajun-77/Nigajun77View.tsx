@@ -430,7 +430,7 @@ export default function Nigajun77View({ product, boardItems }: Props) {
           </p>
 
           <p className={`${styles.detailOverlayText} ${styles.korText}`}>
-            <span className={styles.highlight25}>지방세포는</span> <span className={styles.highlight25}>에너지 저장 모드</span>와 에너지{" "}
+            지방세포는 <span className={styles.highlight25}>에너지 저장 모드</span>와 에너지{" "}
             <span className={styles.highlight25}>소비 모드</span> 사이를
             <br className={styles.mobileOnly} />
             오가는 <span className={styles.highlight25Orange}>대사 세포다</span>.
