@@ -396,7 +396,7 @@ export default function Nigajun28View({ product, boardItems }: Props) {
               <span className={styles.highlight20}>세균을</span> 제거하고, 입안을 깨끗하게 만드는 것.
               <br />
               <br />
-              <span className={styles.highlight20}>구강 건강은</span> 단순한 세정의 문제가 아냐 구강은 수많은 미생물과 세포가 공존하는{" "}
+              <span className={styles.highlight20}>구강 건강은</span> 단순한 세정의 문제가 아니다 구강은 수많은 미생물과 세포가 공존하는{" "}
               <span className={styles.highlight20}>생물학적</span> 생태계 잇몸 조직은 끊임없이{" "}
               <span className={styles.highlight20}>염증 반응과 회복 과정을</span> 반복하는 생체 조직 Genetic Toothpaste
               <br />
@@ -425,7 +425,7 @@ export default function Nigajun28View({ product, boardItems }: Props) {
               <span className={styles.highlight20}>세균을</span> 제거하고, 입안을 깨끗하게 만드는 것.
               <br />
               <br />
-              <span className={styles.highlight20}>구강 건강은</span> 단순한 세정의 문제가 아냐
+              <span className={styles.highlight20}>구강 건강은</span> 단순한 세정의 문제가 아니다
               <br />
               구강은 수많은 미생물과 세포가 공존하는 <span className={styles.highlight20}>생물학적</span> 생태계
               <br />
