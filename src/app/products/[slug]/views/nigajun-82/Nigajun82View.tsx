@@ -459,16 +459,16 @@ export default function Nigajun82View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailLowerText}>
-            질염은 단순한 오염 상태로 정의되지 않는다.
+            질염은 단순한 <span className={styles.highlight25Orange}>오염 상태로</span> 정의되지 않는다.
           </p>
           <p className={styles.detailLowerText}>
-            질 내부 환경에서 여러 생물학적 조건이 동시에 변화할 때
+            <span className={styles.highlight25}>질 내부 환경</span>에서 여러 생물학적 조건이 동시에 변화할 때
           </p>
           <p className={styles.detailLowerText}>
-            병원성 미생물 활동 조건이 형성.
+            병원성 <span className={styles.highlight25}>미생물 활동</span> 조건이 형성.
           </p>
           <p className={styles.detailLowerText}>
-            미생물 군집 구조 변화 점막 단백질 구조 변화
+            미생물 군집 구조 변화 점막 <span className={styles.highlight25Orange}>단백질 구조 변화</span>
           </p>
           <p className={styles.detailLowerText}>
             효소 활성 변화 호르몬 환경 변화
@@ -480,13 +480,14 @@ export default function Nigajun82View({ product, boardItems }: Props) {
             병원성 미생물 증식에 유리한 환경이 형성이 주원인이다
           </p>
           <p className={styles.detailLowerText}>
-            분비물에 의한 불쾌한 냄새. 가려움.
+            <span className={styles.highlight20Orange}>분비물에 의한 불쾌한 냄새. 가려움.</span>
           </p>
           <p className={styles.detailLowerText}>
-            단순한 향기제로 이를 개선 할수 없다
+            <span className={styles.highlight20}>단순한 향기제</span>로 이를 개선 할수 없다
           </p>
           <p className={styles.detailLowerText}>
-            항균 세척제로 원인을 개선한다는 것은 속임수에 불과하다
+            항균 세척제로 원인을 개선한다는 것은{" "}
+            <span className={styles.highlight25Orange}>속임수에 불과하다</span>
           </p>
 
           <p className={styles.detailLowerText}>
