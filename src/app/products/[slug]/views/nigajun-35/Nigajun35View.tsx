@@ -408,11 +408,7 @@ export default function Nigajun35View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailOverlayText}>
-            천연 성분, 나노 입자, 줄기세포, 성장 인자, 리포좀, 비타민.
-          </p>
-
-          <p className={styles.detailOverlayText}>
-            이러한 익숙한 성분들은 우리의 연구 방향과 달라
+            천연 성분, 나노 입자, 줄기세포, 성장 인자, 리포좀, 비타민. 이러한 익숙한 성분은 우리 연구 방향과 달라
           </p>
 
           <p className={styles.detailOverlayText}>
@@ -424,15 +420,11 @@ export default function Nigajun35View({ product, boardItems }: Props) {
           </p>
 
           <p className={styles.detailOverlayText}>
-            섬유아세포(Fibroblast) 의 수용체 신호 전달 Crater-like Pore Improvement
+            섬유아세포(Fibroblast) 수용체 신호 전달 Crater-like Pore Improvement 단백질 활성화 분화구 형태 모공 개선.
           </p>
 
           <p className={styles.detailOverlayText}>
-            단백질 활성화 분화구 형태 모공 개선. 피부 표면 밀도 강화 피부 탄력 개선
-          </p>
-
-          <p className={styles.detailOverlayText}>
-            NMF (Natural Moisturizing Factor) 피부 밀도 개선 피부 수분 활성 최적화
+            피부 표면 밀도 강화 피부 탄력 개선 NMF (Natural Moisturizing Factor) 피부 밀도 개선 피부 수분 활성 최적화
           </p>
 
           <p className={styles.detailLowerPrice}>
