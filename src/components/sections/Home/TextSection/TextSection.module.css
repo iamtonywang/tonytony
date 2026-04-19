@@ -155,7 +155,11 @@
   font-size: 14px;
   font-weight: 300;
   color: #ffffff;
-  line-height: 1.4;
+  line-height: 1.55;
+}
+
+.textSection .typoSecondaryBlock > p.typoSecondary:not(:last-child) {
+  margin-bottom: 8px;
 }
 
 .typoEmphasis14 {
