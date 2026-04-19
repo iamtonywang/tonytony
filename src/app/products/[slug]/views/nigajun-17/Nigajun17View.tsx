@@ -438,36 +438,25 @@ export default function Nigajun17View({ product, boardItems }: Props) {
             <span className={styles.pcOnly}>
               <span className={styles.highlight20}>NIGAJUN 17</span>
               <br />
-              <br />
               Proteo Phyto Complex
-              <br />
               <br />
               Hair Cream
               <br />
-              <br />
               나는 모발이 새로 난다고 말할수 없어 그것은 아주 큰 거짓이기 때문이다
-              <br />
               <br />
               왜 두피 질환과 탈모는 반복되는가?. 생물학적 관점에서 핵심은 경로(Process) 가 아니라
               <br />
-              <br />
               단백질(Protein) 세포는 특정 신호에 반응하여 단백질을 과다 또는 과소 발현하고,
-              <br />
               <br />
               이런 불균형이 두피 환경과 모낭 기능 변화 유도
               <br />
-              <br />
               가장 근본적인 개선 전략은 단백질 조절 신호 경로 제어 세포 기능 정상화
-              <br />
               <br />
               조직 환경 회복 생물학적 순서 전사 조절 인자의 모낭 구조 안정성을 지원,
               <br />
-              <br />
               MMP 억제 단백질 활용 모낭 구조 붕괴 억제 염증 반응 악순환 차단
               <br />
-              <br />
               MMP-9 억제 단백질로 염증 조직 손상을 완화하여 두피 환경 균형 지원
-              <br />
               <br />
               SINCE May 2026
             </span>
@@ -475,50 +464,39 @@ export default function Nigajun17View({ product, boardItems }: Props) {
             <span className={styles.mobileOnly}>
               <span className={styles.highlight20}>NIGAJUN 17</span>
               <br />
-              <br />
               Proteo Phyto Complex
               <br />
-              <br />
               Hair Cream
-              <br />
               <br />
               나는 모발이 새로 난다고 말할수 없어
               <br />
               그것은 아주 큰 거짓이기 때문이다
               <br />
-              <br />
               왜 두피 질환과 탈모는 반복되는가?
               <br />
               생물학적 관점에서 핵심은 경로(Process)가 아니라
-              <br />
               <br />
               단백질(Protein) 세포는 특정 신호에 반응하여
               <br />
               단백질을 과다 또는 과소 발현하고,
               <br />
-              <br />
               이런 불균형이 두피 환경과 모낭 기능 변화 유도
-              <br />
               <br />
               가장 근본적인 개선 전략은 단백질 조절
               <br />
               신호 경로 제어 세포 기능 정상화
               <br />
-              <br />
               조직 환경 회복 생물학적 순서
               <br />
               전사 조절 인자의 모낭 구조 안정성을 지원,
-              <br />
               <br />
               MMP 억제 단백질 활용 모낭 구조 붕괴 억제
               <br />
               염증 반응 악순환 차단
               <br />
-              <br />
               MMP-9 억제 단백질로 염증 조직 손상을 완화하여
               <br />
               두피 환경 균형 지원
-              <br />
               <br />
               SINCE May 2026
             </span>
