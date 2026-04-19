@@ -191,7 +191,11 @@ export default function Nigajun35View({ product, boardItems }: Props) {
       });
 
       // connect asset source (single pc asset as default)
-      videoEl.src = "/landing-assets/nigajun-35-hero-pc.mp4.mp4";
+      const isMobile = window.innerWidth <= 768;
+
+      videoEl.src = isMobile
+        ? "/landing-assets/home-hero-mobile.mp4"
+        : "/landing-assets/home-hero-pc.mp4";
 
       videoOverlayRef.current.appendChild(videoEl);
       hasMountedVideo = true;
@@ -292,6 +296,8 @@ export default function Nigajun35View({ product, boardItems }: Props) {
     };
   }, [hasPlaybackStarted, isPlaying, videoDuration]);
 
+  const isMobileBg = typeof window !== "undefined" && window.innerWidth <= 768;
+
   return (
     <article className={styles.detailPage}>
       <section className={styles.heroSection}>
@@ -299,7 +305,11 @@ export default function Nigajun35View({ product, boardItems }: Props) {
           <div className={styles.videoArea}>
             <div
               className={styles.backgroundLayer}
-              style={{ backgroundImage: "url('/landing-assets/nigajun-35-hero-pc.webp.webp')" }}
+              style={{
+                backgroundImage: isMobileBg
+                  ? "url('/landing-assets/home-hero-mobile.webp')"
+                  : "url('/landing-assets/home-hero-pc.webp')",
+              }}
             />
             <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
           </div>
