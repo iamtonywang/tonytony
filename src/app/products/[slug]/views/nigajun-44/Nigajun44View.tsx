@@ -734,7 +734,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
               </span>
               <span className={styles.mobileOnly}>
                 <span className={styles.highlight25}>가치를</span> 모르는자{" "}
-                <span className={styles.highlight25}>자신을</span> 사랑하지 않는자{" "}
+                <span className={styles.highlight25}>자신을</span> 사랑하지 않는자
+                <br />
                 <span className={styles.highlight25Orange}>의문을</span> 가지는자 ,{" "}
                 <span className={styles.highlight25Orange}>자격이 없다</span>
                 <br />
