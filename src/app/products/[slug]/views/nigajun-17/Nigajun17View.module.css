@@ -576,10 +576,15 @@
 }
 
 .detailLowerText {
-  font-size: 14px;
+  font-size: 14px !important;
+  font-weight: 300 !important;
   line-height: 1.5;
-  font-weight: 300;
   margin: 0 0 10px;
+}
+
+.highlight20 {
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .detailLowerPrice {
@@ -763,7 +768,8 @@
   }
 
   .detailLowerText {
-    font-size: 12px;
+    font-size: 14px !important;
+    font-weight: 300 !important;
     line-height: 1.8;
   }
 
