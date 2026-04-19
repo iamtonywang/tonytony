@@ -709,6 +709,18 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       <HeroSection product={product} />
       <div className={styles.detailTopGlowLine} aria-hidden="true" />
 
+      <section className={styles.noticeSection}>
+        <div className={styles.noticeInner}>
+          <p className={styles.noticeTitle}>IMPORTANT NOTICE</p>
+          <p className={styles.noticeText}>제품 구매 전 필히 본문을 필독하고</p>
+          <p className={styles.noticeText}>신중히 구매 결정을 하세요</p>
+          <p className={styles.noticeText}>얼굴 축소 기능이 강하여</p>
+          <p className={styles.noticeText}>얼굴 전체 윤곽이 작아지므로</p>
+          <p className={styles.noticeText}>원치 않는 분은 사용을 금한다</p>
+          <p className={styles.noticeText}>다만 포괄적 적용은 아님을 밝힙니다</p>
+        </div>
+      </section>
+
       <section className={styles.detailIntroSection}>
         <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
         <h2 className={styles.detailIntroLead}>NIGAJUN 44</h2>
