@@ -385,55 +385,68 @@ export default function Nigajun28View({ product, boardItems }: Props) {
 
       <section className={styles.detailLowerCopySection}>
         <div className={styles.detailLowerCopyInner}>
-          <h1 className={styles.detailLowerTitle}>TONYWANG</h1>
+          <h1 className={styles.detailLowerTitle}></h1>
 
-          <p className={styles.detailLowerText}>TONYWANG</p>
-          <p className={styles.detailLowerText}>수십 년 동안 치약은 같은 방식으로 만들어졌어.</p>
-          <p className={styles.detailLowerText}>세균을 제거하고, 입안을 깨끗하게 만드는 것.</p>
-          <p className={styles.detailLowerText}>하지만 구강 건강은 단순한 세정의 문제가 아냐</p>
           <p className={styles.detailLowerText}>
             <span className={styles.pcOnly}>
-              구강은 수많은 미생물과 세포가 공존하는 생물학적 생태계이며,
-            </span>
-            <span className={styles.mobileOnly}>
-              구강은 수많은 미생물과 세포가 공존하는
+              <span className={styles.highlight20}>NIGAJUN 28</span>
               <br />
-              생물학적 생태계이며,
+              <br />
+              수십 년 동안 치약은 같은 방식으로 만들어졌어. 세균을 제거하고, 입안을 깨끗하게 만드는 것.
+              <br />
+              <br />
+              구강 건강은 단순한 세정의 문제가 아냐 구강은 수많은 미생물과 세포가 공존하는 생물학적 생태계 잇몸 조직은 끊임없이 염증 반응과 회복 과정을 반복하는 생체 조직 Genetic Toothpaste
+              <br />
+              <br />
+              이 지점에서 시작했어 치약을 단순한 세정 제품이 아니라 구강 조직의 생물학적 신호를 조절하는
+              <br />
+              <br />
+              바이오 플랫폼으로 재정의했어.
+              <br />
+              <br />
+              Proteo Phyto Complex 재 설계된 활성 분자 시스템은 식물세포에서 유래한 단백질,
+              <br />
+              <br />
+              펩타이드, 폴리페놀 및 항산화 생체 분자가 결합된 Bioactive Molecular 시스템이다
+              <br />
+              <br />
+              SINCE May 2026
             </span>
-          </p>
-          <p className={styles.detailLowerText}>
-            <span className={styles.pcOnly}>
-              잇몸 조직은 끊임없이 염증 반응과 회복 과정을 반복하는 생체 조직 이야
-            </span>
+
             <span className={styles.mobileOnly}>
-              잇몸 조직은 끊임없이 염증 반응과 회복 과정을<br />
-              반복하는 생체 조직 이야
+              <span className={styles.highlight20}>NIGAJUN 28</span>
+              <br />
+              <br />
+              수십 년 동안 치약은 같은 방식으로 만들어졌어.
+              <br />
+              세균을 제거하고, 입안을 깨끗하게 만드는 것.
+              <br />
+              <br />
+              구강 건강은 단순한 세정의 문제가 아냐
+              <br />
+              구강은 수많은 미생물과 세포가 공존하는 생물학적 생태계
+              <br />
+              잇몸 조직은 끊임없이 염증 반응과 회복 과정을 반복하는 생체 조직
+              <br />
+              Genetic Toothpaste
+              <br />
+              <br />
+              이 지점에서 시작했어
+              <br />
+              치약을 단순한 세정 제품이 아니라 구강 조직의 생물학적 신호를 조절하는
+              <br />
+              <br />
+              바이오 플랫폼으로 재정의했어.
+              <br />
+              <br />
+              Proteo Phyto Complex 재 설계된 활성 분자 시스템은 식물세포에서 유래한 단백질,
+              <br />
+              펩타이드, 폴리페놀 및 항산화 생체 분자가 결합된 Bioactive Molecular 시스템이다
+              <br />
+              <br />
+              SINCE May 2026
             </span>
           </p>
-          <p className={styles.detailLowerText}>Genetic Toothpaste는 바로 이 지점에서 시작했어</p>
-          <p className={styles.detailLowerText}>
-            <span className={styles.pcOnly}>
-              치약을 단순한 세정 제품이 아니라 구강 조직의 생물학적
-            </span>
-            <span className={styles.mobileOnly}>
-              치약을 단순한 세정 제품이 아니라<br />
-              구강 조직의 생물학적
-            </span>
-          </p>
-          <p className={styles.detailLowerText}>신호를 조절하는 바이오 플랫폼으로 재정의했어.</p>
-          <p className={styles.detailLowerText}>Proteo Phyto Complex로</p>
-          <p className={styles.detailLowerText}>설계된 활성 분자 시스템은 식물세포에서</p>
-          <p className={styles.detailLowerText}>
-            <span className={styles.pcOnly}>
-              유래한 단백질, 펩타이드, 폴리페놀 및 항산화 생체 분자가 결합된
-            </span>
-            <span className={styles.mobileOnly}>
-              유래한 단백질, 펩타이드, 폴리페놀 및 항산화<br />
-              생체 분자가 결합된
-            </span>
-          </p>
-          <p className={styles.detailLowerText}>Bioactive Molecular 시스템이다</p>
-          <p className={styles.detailLowerText}>SINCE May 2026</p>
 
           <p className={styles.detailLowerPrice}>
             {typeof product?.finalPriceAmount === "number"

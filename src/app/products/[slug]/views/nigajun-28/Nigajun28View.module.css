@@ -604,12 +604,17 @@
 }
 
 .detailLowerText {
-  font-size: 14px;
+  font-size: 14px !important;
+  font-weight: 300 !important;
   line-height: 1.5;
-  font-weight: 300;
   margin: 0 auto;
   max-width: 760px;
   color: rgba(255, 255, 255, 0.76);
+}
+
+.highlight20 {
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .pcOnly {
@@ -663,14 +668,15 @@
     font-size: 18px;
   }
 
-  .detailLowerText,
   .detailCopyText {
     font-size: 12px;
     line-height: 1.8;
   }
 
   .detailLowerText {
-    font-weight: 500;
+    font-size: 14px !important;
+    font-weight: 300 !important;
+    line-height: 1.8;
   }
 }
 
