@@ -530,17 +530,18 @@
   text-align: center;
 }
 
-.detailIntroTitle {
+.detailIntroSection .detailIntroTitle {
   margin: 0 0 8px;
-  font-size: clamp(20px, 2.1vw, 30px);
+  font-size: 25px;
+  font-weight: 300;
   letter-spacing: 0.08em;
-  font-weight: 500;
   color: rgba(255, 255, 255, 0.94);
 }
 
-.detailIntroLead {
+.detailIntroSection .detailIntroLead {
   margin: 0 0 12px;
-  font-size: clamp(14px, 1.15vw, 18px);
+  font-size: 20px;
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.82);
 }
 
