@@ -771,7 +771,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             </p>
             <p className={styles.detailLowerText}>그래 그렇지만</p>
             <p className={styles.detailLowerText}>
-              다들 자기 것들이 <span className={styles.highlight20}>최고라고</span> 얘기해
+              다들 자기 것들이 <span className={styles.highlight25}>최고라고</span> 얘기해
             </p>
 
             <p className={styles.detailLowerText}>
@@ -779,7 +779,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             </p>
 
             <p className={`${styles.detailLowerText} ${styles.detailLowerHighlight}`}>
-              <span className={styles.highlight20}>I don&apos;t like lying</span>
+              <span className={styles.highlight20}>I DON&apos;T LIKE LYING</span>
             </p>
 
             <p className={styles.detailLowerText}>나는 거짓이 싫을 뿐이고</p>
@@ -787,7 +787,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
               <span className={styles.highlight25}>누군가를 속이며</span> 이익을 만들고 싶지 않아
             </p>
             <p className={styles.detailLowerText}>
-              그것은 매우 <span className={styles.highlight20}>역겨운 행동</span>이야
+              그것은 매우 <span className={styles.highlight25}>역겨운 행동</span>이야
             </p>
             <p className={styles.detailLowerText}>그래</p>
             <p className={styles.detailLowerText}>
