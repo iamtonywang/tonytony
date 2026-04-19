@@ -458,7 +458,7 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <section className={styles.detailIntroSection}>
         <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
-        <h2 className={styles.detailIntroLead}>NIGAJUN 99</h2>
+        <h2 className={styles.detailIntroSubtitle}>NIGAJUN 99</h2>
         <h3 className={styles.detailIntroSubTitle}>Proteo Phyto Complex</h3>
         <p className={styles.detailIntroText}>Skincare for alleviating itching on the skin</p>
       </section>
