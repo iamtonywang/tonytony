@@ -6,7 +6,15 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "TONYWANG | 식물세포 유전자 단백질 BIO 연구소",
-  description: "식물세포 유전자 단백질 바이오 연구소",
+  description: "식물세포 유전자 단백질 기반 BIO 연구소",
+  openGraph: {
+    title: "TONYWANG | 식물세포 유전자 단백질 BIO 연구소",
+    description: "식물세포 유전자 단백질 기반 BIO 연구소",
+    url: "https://www.iamtonywang.com",
+    siteName: "TONYWANG",
+    locale: "ko_KR",
+    type: "website",
+  },
 };
 
 export default async function RootLayout({
@@ -17,7 +25,7 @@ export default async function RootLayout({
   const headerSession = await getHeaderSession();
 
   return (
-    <html lang="en">
+    <html lang="ko">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
