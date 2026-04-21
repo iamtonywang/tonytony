@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     type: "website",
   },
+  alternates: {
+    canonical: "https://www.iamtonywang.com",
+  },
 };
 
 export default async function RootLayout({
