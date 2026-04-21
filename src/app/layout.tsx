@@ -39,6 +39,7 @@ export default async function RootLayout({
           href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css"
         />
         <meta name="google-site-verification" content="FKvLF5e5idYyu5isHgBO7ie1PUPm4uGklpLCCpV6z3Q" />
+        <meta name="naver-site-verification" content="3d65343f49b45e75cb45a504e891369ccf306bc3" />
       </head>
       <body>
         <Header
