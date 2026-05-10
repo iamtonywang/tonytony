@@ -1,0 +1,15 @@
+.heroSection {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("/landing-assets/home-hero-main-clean-pc-ee271f.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
