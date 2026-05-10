@@ -13,3 +13,54 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.94);
+  padding: 0 8vw;
+}
+
+.heroSubTitle,
+.heroKoreanTitle {
+  font-size: 25px;
+  font-weight: 300;
+  margin: 0 0 10px;
+}
+
+.heroTitle {
+  font-size: 80px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  margin: 24px 0;
+}
+
+.heroDescription {
+  max-width: 980px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 42px;
+  }
+
+  .heroSubTitle,
+  .heroKoreanTitle {
+    font-size: 18px;
+  }
+
+  .heroDescription {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+}
