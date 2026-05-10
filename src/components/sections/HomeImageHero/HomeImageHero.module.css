@@ -72,6 +72,14 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
+.pcOnly {
+  display: inline;
+}
+
+.mobileOnly {
+  display: none;
+}
+
 .heroDescription {
   max-width: 980px;
   font-size: 14px;
@@ -103,6 +111,14 @@
   .heroBottomDescription {
     font-size: 12px;
     line-height: 1.6;
+  }
+
+  .pcOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: inline;
   }
 
   .heroDescription {

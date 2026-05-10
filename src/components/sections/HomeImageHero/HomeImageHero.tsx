@@ -16,10 +16,21 @@ export default function HomeImageHero() {
         <h2 className={styles.heroNigajun}>NIGAJUN</h2>
 
         <p className={styles.heroBottomDescription}>
-          It is a plant cell gene protein complex that activates recovery and regeneration <br />
-          by precisely controlling the signaling of damaged skin. Interact <br />
-          with cell membrane receptors to stabilize signal flow, promote recovery <br />
-          and defense genes, and rebuild elastin-based ECM struct
+          <span className={styles.pcOnly}>
+            It is a plant cell gene protein complex that activates recovery and regeneration <br />
+            by precisely controlling the signaling of damaged skin. Interact <br />
+            with cell membrane receptors to stabilize signal flow, promote recovery <br />
+            and defense genes, and rebuild elastin-based ECM struct
+          </span>
+
+          <span className={styles.mobileOnly}>
+            It is a plant cell gene protein complex<br />
+            that activates recovery and regeneration<br />
+            by precisely controlling the signaling of damaged skin. Interact<br />
+            with cell membrane receptors to stabilize signal flow,<br />
+            promote recovery<br />
+            and defense genes, and rebuild elastin-based ECM struct
+          </span>
         </p>
       </div>
     </section>
