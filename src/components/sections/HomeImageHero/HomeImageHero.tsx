@@ -14,6 +14,13 @@ export default function HomeImageHero() {
         <p className={styles.heroProteoKo}>식물세포 유래 단백질 복합 성분</p>
 
         <h2 className={styles.heroNigajun}>NIGAJUN</h2>
+
+        <p className={styles.heroBottomDescription}>
+          It is a plant cell gene protein complex that activates recovery and regeneration <br />
+          by precisely controlling the signaling of damaged skin. Interact <br />
+          with cell membrane receptors to stabilize signal flow, promote recovery <br />
+          and defense genes, and rebuild elastin-based ECM struct
+        </p>
       </div>
     </section>
   );
