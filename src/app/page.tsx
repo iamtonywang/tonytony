@@ -1,5 +1,5 @@
-import Home from "@/components/sections/Home";
+import styles from "./page.module.css";
 
 export default function HomePage() {
-  return <Home />;
+  return <div className={styles.homePage} />;
 }

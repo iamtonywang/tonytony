@@ -1,8 +1,6 @@
-.page {
+.homePage {
   width: 100%;
-}
-
-.main {
-  width: 100%;
-  min-height: 1px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
 }

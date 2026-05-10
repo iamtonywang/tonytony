@@ -1,8 +1,0 @@
-/* Home styles were split into HeroSection/TextSection/VisualSection modules. */
-
-.homeDividerLine {
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 0;
-}
