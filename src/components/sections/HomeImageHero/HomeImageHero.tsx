@@ -9,6 +9,11 @@ export default function HomeImageHero() {
         <h2 className={styles.heroKoreanTitle}>식물 세포 유전자 단백질 연구소</h2>
 
         <h1 className={styles.heroTitle}>TONY WANG</h1>
+
+        <p className={styles.heroProteoEn}>Proteo Phyto Complex</p>
+        <p className={styles.heroProteoKo}>식물세포 유래 단백질 복합 성분</p>
+
+        <h2 className={styles.heroNigajun}>NIGAJUN</h2>
       </div>
     </section>
   );

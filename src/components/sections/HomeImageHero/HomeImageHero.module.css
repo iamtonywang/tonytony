@@ -41,6 +41,27 @@
   margin: 24px 0;
 }
 
+.heroProteoEn,
+.heroProteoKo {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.heroProteoEn {
+  margin-top: 40px;
+  margin-bottom: 8px;
+}
+
+.heroNigajun {
+  font-size: 44px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  margin: 28px 0 0;
+  line-height: 1.15;
+}
+
 .heroDescription {
   max-width: 980px;
   font-size: 14px;
@@ -57,6 +78,16 @@
   .heroSubTitle,
   .heroKoreanTitle {
     font-size: 18px;
+  }
+
+  .heroProteoEn,
+  .heroProteoKo {
+    font-size: 17px;
+  }
+
+  .heroNigajun {
+    font-size: 32px;
+    margin-top: 22px;
   }
 
   .heroDescription {
