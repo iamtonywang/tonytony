@@ -1,39 +1,7 @@
 .heroSection {
   width: 100%;
   min-height: 0;
+  padding: 0;
+  margin: 0;
   overflow: hidden;
-}
-
-.heroVisual {
-  width: 100%;
-  min-height: 0;
-}
-
-.videoArea {
-  position: relative;
-  width: 100%;
-  min-height: 0;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-}
-
-.backgroundLayer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  min-height: 0;
-  background-image:
-    linear-gradient(rgba(95, 95, 95, 0.66), rgba(95, 95, 95, 0.66)),
-    url("/landing-assets/home-hero-pc.webp");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-@media (max-width: 768px) {
-  .backgroundLayer {
-    background-image:
-      linear-gradient(rgba(95, 95, 95, 0.66), rgba(95, 95, 95, 0.66)),
-      url("/landing-assets/home-hero-mobile.webp");
-  }
 }
