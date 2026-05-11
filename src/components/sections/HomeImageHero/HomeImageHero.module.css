@@ -45,7 +45,7 @@
 .heroTitle,
 .heroSubTitle,
 .heroKoreanTitle {
-  transform: translateY(-72px);
+  transform: translateY(-108px);
 }
 
 .heroDescription {
@@ -73,7 +73,7 @@
   .heroTitle,
   .heroSubTitle,
   .heroKoreanTitle {
-    transform: translateY(-48px);
+    transform: translateY(-64px);
   }
 
   .heroDescription {
