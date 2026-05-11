@@ -37,7 +37,7 @@ export default function HomeMotionDivider() {
         <p>
           <span className={styles.yearText}>28 years</span>
         </p>
-        <p>28년 동안 신약 물질만 연구 개발하던 내가</p>
+        <p>28년 시간 신약 물질만 연구 개발 했다</p>
         <p>
           <span className={styles.whyText}>WHY?</span>
         </p>
