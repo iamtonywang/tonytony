@@ -1,6 +1,6 @@
 .dividerSection {
   width: 100%;
-  padding: 28px 0;
+  padding: 28px 0 72px;
 }
 
 .motionLine {
@@ -31,4 +31,37 @@
   100% {
     transform: translateX(100%);
   }
+}
+
+.dividerCopy {
+  width: min(920px, 92vw);
+  margin: 42px auto 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.dividerCopy p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.whyNow {
+  margin: 0 0 28px;
+  font-size: 44px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.tonyName,
+.yearText,
+.whyText {
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.benjaminText {
+  font-size: 17px;
+  font-weight: 300;
 }
