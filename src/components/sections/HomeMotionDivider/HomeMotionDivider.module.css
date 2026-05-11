@@ -21,6 +21,24 @@
   animation: homeLineSweep 3.8s ease-in-out infinite;
 }
 
+.bottomMotionLine {
+  width: min(1120px, 92vw);
+  height: 1px;
+  margin: 54px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.bottomMotionLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  animation: homeLineSweep 3.8s ease-in-out infinite;
+}
+
 @keyframes homeLineSweep {
   0% {
     transform: translateX(-100%);

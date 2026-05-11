@@ -36,6 +36,8 @@ export default function HomeMotionDivider() {
           <span className={styles.benjaminText}>The Curious Case of Benjamin Button</span>
         </p>
         <p>상상이 아닌 현실로 . . . . .</p>
+
+        <div className={styles.bottomMotionLine} aria-hidden="true" />
       </div>
     </section>
   );
