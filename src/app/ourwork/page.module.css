@@ -17,21 +17,44 @@
 .fadePortrait {
   position: absolute;
   top: 0;
-  left: -8vw;
-  width: 56vw;
+  left: -10vw;
+
+  width: 58vw;
   height: 100%;
-  background-image: url("/landing-assets/home-hero-main-clean-pc-ee271f.webp");
+  background-image: url("/landing-assets/ourwork-hero-pc.webp");
   background-size: cover;
-  background-position: center top;
+  background-position: left center;
   background-repeat: no-repeat;
-  opacity: 0.88;
+  opacity: 0.92;
 
   -webkit-mask-image:
-    linear-gradient(90deg, #000 0%, #000 42%, transparent 82%),
-    linear-gradient(180deg, #000 0%, #000 48%, transparent 92%);
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 42%,
+      rgba(0,0,0,0.72) 58%,
+      transparent 88%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 46%,
+      transparent 96%
+    );
   mask-image:
-    linear-gradient(90deg, #000 0%, #000 42%, transparent 82%),
-    linear-gradient(180deg, #000 0%, #000 48%, transparent 92%);
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 42%,
+      rgba(0,0,0,0.72) 58%,
+      transparent 88%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 46%,
+      transparent 96%
+    );
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
