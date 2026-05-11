@@ -1,13 +1,5 @@
-import HeroSection from "@/components/sections/OurWork/HeroSection";
-import MainContentSection from "@/components/sections/OurWork/MainContentSection";
+import styles from "./page.module.css";
 
 export default function OurWorkPage() {
-  return (
-    <>
-      <HeroSection />
-      <div className="container">
-        <MainContentSection />
-      </div>
-    </>
-  );
+  return <div className={styles.ourWorkPage} />;
 }
