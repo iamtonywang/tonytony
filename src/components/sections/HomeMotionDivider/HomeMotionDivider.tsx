@@ -43,12 +43,13 @@ export default function HomeMotionDivider() {
         </p>
         <p>
           <span className={styles.pcOnly}>
-            갑자기 SKIN CARE를 연구 개발한 이유는 아토피 신약 임상을 하는 과정에서
+            SKIN CARE를 연구 개발한 이유는{" "}
+            <span className={styles.highlight19Orange}>아토피 신약 임상</span>을 하는 과정에서
           </span>
 
           <span className={styles.mobileOnly}>
-            갑자기 SKIN CARE를 연구 개발한 이유는 <br />
-            아토피 신약 임상을 하는 과정에서
+            SKIN CARE를 연구 개발한 이유는 <br />
+            <span className={styles.highlight19Orange}>아토피 신약 임상</span>을 하는 과정에서
           </span>
         </p>
 

@@ -116,6 +116,12 @@
   font-weight: 300;
 }
 
+.highlight19Orange {
+  font-size: 19px;
+  font-weight: 300;
+  color: #ff7a00;
+}
+
 .pcOnly {
   display: inline;
 }
