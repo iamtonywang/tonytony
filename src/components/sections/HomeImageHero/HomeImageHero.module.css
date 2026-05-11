@@ -22,6 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transform: translateY(72px);
   text-align: center;
   color: rgba(255, 255, 255, 0.94);
   padding: 0 8vw;
@@ -89,6 +90,10 @@
 }
 
 @media (max-width: 768px) {
+  .heroOverlay {
+    transform: translateY(40px);
+  }
+
   .heroTitle {
     font-size: 42px;
   }
