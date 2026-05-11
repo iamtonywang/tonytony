@@ -83,3 +83,21 @@
   font-size: 17px;
   font-weight: 300;
 }
+
+.pcOnly {
+  display: inline;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .pcOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: inline;
+  }
+}

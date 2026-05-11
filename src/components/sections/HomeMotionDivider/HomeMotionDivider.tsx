@@ -26,8 +26,25 @@ export default function HomeMotionDivider() {
         <p>
           <span className={styles.whyText}>WHY?</span>
         </p>
-        <p>갑자기 SKIN CARE를 연구 개발한 이유는 아토피 신약 임상을 하는 과정에서</p>
-        <p>새로운 기전을 발견 하였고 임상 과정에서 놀라운 사실을 목격 했어</p>
+        <p>
+          <span className={styles.pcOnly}>
+            갑자기 SKIN CARE를 연구 개발한 이유는 아토피 신약 임상을 하는 과정에서
+          </span>
+
+          <span className={styles.mobileOnly}>
+            갑자기 SKIN CARE를 연구 개발한 이유는 <br />
+            아토피 신약 임상을 하는 과정에서
+          </span>
+        </p>
+
+        <p>
+          <span className={styles.pcOnly}>새로운 기전을 발견 하였고 임상 과정에서 놀라운 사실을 목격 했어</span>
+
+          <span className={styles.mobileOnly}>
+            새로운 기전을 발견 하였고 임상 과정에서 <br />
+            놀라운 사실을 목격 했어
+          </span>
+        </p>
 
         <p>그리고 . . . . . .</p>
         <p>나는 생각했고 결심했어</p>
