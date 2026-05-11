@@ -6,8 +6,8 @@
   background:
     radial-gradient(
       circle at 50% 28%,
-      rgba(255, 255, 255, 0.14),
-      rgba(255, 255, 255, 0.06) 18%,
+      rgba(255, 215, 140, 0.22),
+      rgba(214, 180, 96, 0.12) 18%,
       rgba(0, 0, 0, 0) 46%
     ),
     linear-gradient(
@@ -28,7 +28,7 @@
   background:
     radial-gradient(
       ellipse at center,
-      rgba(255, 255, 255, 0.08),
+      rgba(180, 140, 70, 0.1),
       transparent 58%
     );
 }
