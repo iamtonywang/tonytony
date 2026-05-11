@@ -96,7 +96,7 @@
 
 @media (max-width: 768px) {
   .heroTextOverlay {
-    transform: translateY(50%);
+    transform: translateY(40%);
   }
 
   .heroMainText {
