@@ -78,6 +78,22 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
+.copyDividerLine {
+  width: min(720px, 82vw);
+  height: 1px;
+  margin: 28px auto 26px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+}
+
+.heroKoreanDescription {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.9;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.84);
+}
+
 @media (max-width: 768px) {
   .heroMainText {
     font-size: 28px;
