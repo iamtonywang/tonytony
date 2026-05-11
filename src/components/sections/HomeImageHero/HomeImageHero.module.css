@@ -33,7 +33,6 @@
   font-size: 17px;
   font-weight: 300;
   margin: 0;
-  transform: translateY(-18px);
 }
 
 .heroTitle {
@@ -41,6 +40,12 @@
   font-weight: 300;
   letter-spacing: 0.08em;
   margin: 24px 0;
+}
+
+.heroTitle,
+.heroSubTitle,
+.heroKoreanTitle {
+  transform: translateY(-48px);
 }
 
 .heroDescription {
@@ -63,6 +68,12 @@
   .heroSubTitle,
   .heroKoreanTitle {
     font-size: 17px;
+  }
+
+  .heroTitle,
+  .heroSubTitle,
+  .heroKoreanTitle {
+    transform: translateY(-32px);
   }
 
   .heroDescription {
