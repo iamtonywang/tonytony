@@ -100,7 +100,7 @@
 
 @media (max-width: 768px) {
   .heroTextOverlay {
-    transform: translateY(40%);
+    transform: translateY(-10%);
   }
 
   .heroKoreanDescription {
