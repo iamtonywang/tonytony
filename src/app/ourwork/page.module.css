@@ -99,6 +99,12 @@
 }
 
 @media (max-width: 768px) {
+  .heroMainText,
+  .heroSubText,
+  .heroDescription {
+    transform: translateY(5%);
+  }
+
   .heroTextOverlay {
     transform: translateY(5%);
   }
