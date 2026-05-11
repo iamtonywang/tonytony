@@ -68,8 +68,24 @@
   font-weight: 300;
 }
 
+.heroDescription {
+  margin: 28px 0 0;
+  max-width: 720px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 2;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.82);
+}
+
 @media (max-width: 768px) {
   .heroMainText {
     font-size: 28px;
+  }
+
+  .heroDescription {
+    width: 100%;
+    max-width: 92vw;
+    line-height: 1.9;
   }
 }
