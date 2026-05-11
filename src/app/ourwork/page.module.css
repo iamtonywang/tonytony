@@ -34,11 +34,12 @@
     linear-gradient(
       to top,
       rgba(95, 95, 95, 1) 0%,
-      rgba(95, 95, 95, 0.96) 18%,
-      rgba(95, 95, 95, 0.82) 34%,
-      rgba(95, 95, 95, 0.52) 52%,
-      rgba(95, 95, 95, 0.18) 68%,
-      transparent 82%
+      rgba(95, 95, 95, 1) 24%,
+      rgba(95, 95, 95, 0.96) 38%,
+      rgba(95, 95, 95, 0.82) 52%,
+      rgba(95, 95, 95, 0.58) 64%,
+      rgba(95, 95, 95, 0.24) 74%,
+      transparent 84%
     );
   pointer-events: none;
 }
