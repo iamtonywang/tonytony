@@ -67,3 +67,9 @@
   font-size: 19px;
   font-weight: 300;
 }
+
+@media (max-width: 768px) {
+  .heroMainText {
+    font-size: 28px;
+  }
+}
