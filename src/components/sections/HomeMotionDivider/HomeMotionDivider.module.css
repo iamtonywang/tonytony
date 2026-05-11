@@ -1,6 +1,36 @@
 .dividerSection {
+  position: relative;
+  isolation: isolate;
   width: 100%;
   padding: 28px 0 72px;
+  background:
+    radial-gradient(
+      circle at 50% 28%,
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0.06) 18%,
+      rgba(0, 0, 0, 0) 46%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(80, 80, 80, 0.96) 0%,
+      rgba(64, 64, 64, 1) 48%,
+      rgba(48, 48, 48, 1) 100%
+    );
+  overflow: hidden;
+}
+
+.dividerSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.08),
+      transparent 58%
+    );
 }
 
 .motionLine {
