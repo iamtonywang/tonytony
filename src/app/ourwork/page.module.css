@@ -102,7 +102,7 @@
   .heroMainText,
   .heroSubText,
   .heroDescription {
-    transform: translateY(5%);
+    transform: translateY(10%);
   }
 
   .heroTextOverlay {
