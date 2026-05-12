@@ -91,7 +91,8 @@ export default function HomeMotionDivider() {
         <p className={styles.manifestoGold}>Proteo Phyto Complex</p>
 
         <p className={styles.manifestoKr}>
-          식물 세포 유전자 단백질 복합 성분 <span className={styles.editorialEnglishAccent}>NIGAJUN</span>
+          식물 세포 유전자 단백질 복합 성분{" "}
+          <span className={`${styles.editorialEnglishAccent} ${styles.manifestoKeyAccent}`}>NIGAJUN</span>
         </p>
 
         <p className={styles.manifestoKr}>
@@ -100,7 +101,7 @@ export default function HomeMotionDivider() {
             <span className={styles.editorialEnglishAccent}>BIO</span> 생명공학{" "}
             <span className={styles.editorialEnglishAccent}>SKIN CARE</span>
             <br />
-            <span className={styles.editorialEnglishAccent}>NIGAJUN</span>
+            <span className={`${styles.editorialEnglishAccent} ${styles.manifestoKeyAccent}`}>NIGAJUN</span>
             <br />
             믿기 힘든 피부 변혁이 이루어지는 기적을 보여주고 싶을 뿐 입니다
           </span>
@@ -110,7 +111,7 @@ export default function HomeMotionDivider() {
             <span className={styles.editorialEnglishAccent}>BIO</span> 생명공학{" "}
             <span className={styles.editorialEnglishAccent}>SKIN CARE</span>
             <br />
-            <span className={styles.editorialEnglishAccent}>NIGAJUN</span>
+            <span className={`${styles.editorialEnglishAccent} ${styles.manifestoKeyAccent}`}>NIGAJUN</span>
             <br />
             믿기 힘든 피부 변혁이 이루어지는
             <br />

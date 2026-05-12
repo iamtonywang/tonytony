@@ -85,6 +85,8 @@
 }
 
 .dividerCopy {
+  --manifesto-accent-orange: #ff7f00;
+
   box-sizing: border-box;
   width: min(1400px, 92vw);
   max-width: 100%;
@@ -134,7 +136,7 @@
   line-height: 1;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.98);
+  color: var(--manifesto-accent-orange);
 }
 
 .manifestoKr {
@@ -187,7 +189,7 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.06em;
-  color: rgba(213, 176, 118, 0.92);
+  color: var(--manifesto-accent-orange);
 }
 
 .manifestoBenjamin {
@@ -205,7 +207,11 @@
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.08em;
-  color: rgba(196, 165, 116, 0.92);
+  color: var(--manifesto-accent-orange);
+}
+
+.manifestoKeyAccent {
+  color: var(--manifesto-accent-orange);
 }
 
 .manifestoEnLine {
