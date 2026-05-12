@@ -2,7 +2,7 @@
   position: relative;
   isolation: isolate;
   width: 100%;
-  padding: 56px 0 96px;
+  padding: 56px 0 88px;
   background:
     radial-gradient(
       circle at 50% 28%,
@@ -17,7 +17,8 @@
       rgba(64, 64, 64, 1) 48%,
       rgba(48, 48, 48, 1) 100%
     );
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .dividerSection::before {
@@ -56,7 +57,7 @@
 .bottomMotionLine {
   width: min(1120px, 92vw);
   height: 1px;
-  margin: 56px auto 0;
+  margin: 48px auto 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
   position: relative;
   overflow: hidden;
@@ -83,303 +84,191 @@
   }
 }
 
-.editorialWrap {
+.dividerCopy {
   box-sizing: border-box;
-  width: min(1440px, 92vw);
+  width: min(1400px, 92vw);
   max-width: 100%;
-  margin: 48px auto 0;
-  padding: 0 clamp(12px, 2vw, 24px);
-  color: rgba(255, 255, 255, 0.94);
-  overflow-wrap: break-word;
-}
-
-.editorialTopGrid {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr 0.8fr;
-  gap: 72px;
+  margin: 64px auto 0;
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
-.topColHeadline,
-.topColBody,
-.topColYears,
-.bottomColWhy,
-.bottomColCopy,
-.bottomColQuote {
-  min-width: 0;
-}
-
-.editorialHeadline {
+.dividerCopy > p,
+.dividerCopy > .manifestoHairline {
   margin: 0;
+}
+
+.dividerCopy > p + p {
+  margin-top: clamp(10px, 1.4vw, 20px);
+}
+
+.dividerCopy > p + .manifestoHairline {
+  margin-top: clamp(22px, 2.6vw, 34px);
+}
+
+.dividerCopy > .manifestoHairline + p {
+  margin-top: clamp(22px, 2.6vw, 34px);
+}
+
+.manifestoHairline {
+  flex-shrink: 0;
+  width: min(520px, 72vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.dividerCopy > p.manifestoKicker {
+  margin-bottom: clamp(12px, 1.8vw, 22px);
+}
+
+.manifestoKicker {
   font-family: "El Messiri", serif;
   font-size: 80px;
-  font-weight: 300;
-  line-height: 0.88;
-  letter-spacing: -0.03em;
-  text-align: left;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.98);
 }
 
-.editorialLead {
-  margin: 0 0 20px;
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.75;
-  text-align: left;
-}
-
-.editorialIntro {
-  margin: 0;
-  text-align: left;
-}
-
-.editorialIntro p:not(.tonyName) {
-  margin: 0 0 12px;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.9;
-}
-
-.editorialIntro .tonyName {
-  margin: 0 0 16px;
-  font-family: "El Messiri", serif;
-  font-size: 22px;
-  font-weight: 300;
-  letter-spacing: 0.28em;
-  line-height: 1.4;
-}
-
-.editorialRule {
-  width: 100%;
-  height: 1px;
-  margin: 56px 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(196, 165, 116, 0.35),
-    rgba(196, 165, 116, 0.55),
-    rgba(196, 165, 116, 0.35),
-    transparent
-  );
-}
-
-.yearsBlock {
-  border-left: 1px solid rgba(255, 255, 255, 0.28);
-  padding-left: 56px;
-  text-align: left;
-}
-
-.yearText {
-  margin: 0 0 16px;
-  font-family: "El Messiri", serif;
-  font-size: 44px;
-  font-weight: 300;
-  line-height: 0.85;
-  letter-spacing: -0.03em;
-  color: rgba(213, 176, 118, 0.9);
-}
-
-.yearCopy p {
-  margin: 0 0 10px;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.editorialBottomGrid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr 0.9fr;
-  gap: 72px;
-  align-items: center;
-}
-
-.whyText {
-  margin: 0;
-  font-family: "El Messiri", serif;
-  font-size: 80px;
-  font-weight: 300;
-  line-height: 0.88;
-  letter-spacing: -0.02em;
-  text-align: left;
-  color: rgba(255, 255, 255, 0.96);
-}
-
-.whyCopy {
-  text-align: left;
-}
-
-.whyCopy p {
-  margin: 0 0 12px;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.highlight19Orange {
-  font-family: inherit;
-  font-size: 19px;
-  font-weight: 300;
-  color: #ff7a00;
-}
-
-.quoteBlock {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0;
-  padding: 0 0 8px 0;
-  text-align: left;
-  border-left: 1px solid rgba(255, 255, 255, 0.28);
-  padding-left: 48px;
-}
-
-.quoteMark {
-  margin: 0 0 -4px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 56px;
-  font-weight: 300;
-  line-height: 1;
-  color: rgba(213, 176, 118, 0.88);
-}
-
-.benjaminText {
-  margin: 0 0 16px;
-  font-family: "El Messiri", serif;
-  font-size: clamp(22px, 2.2vw, 30px);
-  font-weight: 300;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.96);
-}
-
-.quoteLine {
-  width: 100%;
+.manifestoKr {
   max-width: 100%;
-  height: 1px;
-  margin: 0 0 14px;
-  background: linear-gradient(90deg, rgba(196, 165, 116, 0.45), transparent);
-}
-
-.quoteBlock > p:not(.benjaminText) {
-  margin: 0 0 12px;
   font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 1.42;
   color: rgba(255, 255, 255, 0.88);
 }
 
-.quoteMarkEnd {
-  align-self: flex-end;
-  margin: 4px 0 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 56px;
-  font-weight: 300;
+.manifestoTightPc {
+  max-width: 100%;
+}
+
+.manifestoEnInline {
+  font-family: "El Messiri", serif;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.manifestoWhyInline {
+  font-family: "El Messiri", serif;
+  font-size: 1.15em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.manifestoYear {
+  font-family: "El Messiri", serif;
+  font-size: 44px;
+  font-weight: 400;
   line-height: 1;
-  color: rgba(213, 176, 118, 0.88);
+  letter-spacing: 0.06em;
+  color: rgba(213, 176, 118, 0.92);
+}
+
+.manifestoBenjamin {
+  font-family: "El Messiri", serif;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.manifestoGold {
+  font-family: "El Messiri", serif;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
+  color: rgba(196, 165, 116, 0.92);
+}
+
+.manifestoEnLine {
+  max-width: 100%;
+  font-family: "El Messiri", serif;
+  font-size: clamp(15px, 1.35vw, 18px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.manifestoEnMeta {
+  max-width: 100%;
+  font-family: "El Messiri", serif;
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.manifestoSignature {
+  font-family: "El Messiri", serif;
+  font-size: clamp(17px, 1.5vw, 22px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (min-width: 769px) {
+  .manifestoTightPc {
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 768px) {
-  .editorialWrap {
-    width: min(100%, 88vw);
-    margin-top: 40px;
-    padding: 0 12px;
-    overflow-wrap: break-word;
+  .dividerCopy {
+    width: 90vw;
+    margin-top: 48px;
+    padding: 0 8px;
     word-break: break-word;
   }
 
-  .editorialTopGrid,
-  .editorialBottomGrid {
-    display: flex;
-    flex-direction: column;
-    gap: 46px;
-    align-items: stretch;
+  .manifestoKicker {
+    font-size: clamp(44px, 11vw, 56px);
+    letter-spacing: 0.16em;
   }
 
-  .editorialHeadline {
-    font-size: clamp(52px, 12vw, 58px);
-    line-height: 0.92;
-    text-align: center;
-    max-width: 100%;
+  .manifestoYear {
+    font-size: clamp(32px, 9vw, 40px);
   }
 
-  .editorialLead {
-    text-align: center;
+  .manifestoGold {
+    font-size: clamp(24px, 6.5vw, 30px);
   }
 
-  .editorialIntro,
-  .yearsBlock,
-  .whyCopy,
-  .quoteBlock {
-    text-align: center;
-    border-left: none;
-    padding-left: 0;
+  .manifestoBenjamin {
+    font-size: clamp(17px, 4.2vw, 22px);
+    line-height: 1.3;
   }
 
-  .editorialIntro p:not(.tonyName),
-  .yearCopy p,
-  .whyCopy p,
-  .quoteBlock > p:not(.benjaminText) {
+  .manifestoKr {
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.65;
   }
 
-  .editorialIntro .tonyName {
-    font-size: 18px;
-    letter-spacing: 0.22em;
+  .manifestoEnLine {
+    font-size: clamp(13px, 3.4vw, 16px);
+    line-height: 1.45;
   }
 
-  .yearText {
-    font-size: 40px;
-    text-align: center;
+  .manifestoEnMeta {
+    font-size: clamp(11px, 2.9vw, 14px);
   }
 
-  .yearCopy {
-    text-align: center;
-  }
-
-  .whyText {
-    font-size: clamp(52px, 11vw, 58px);
-    text-align: center;
-  }
-
-  .whyCopy {
-    text-align: center;
-  }
-
-  .highlight19Orange {
-    font-size: 17px;
-  }
-
-  .quoteBlock {
-    align-items: center;
-    padding-bottom: 24px;
-  }
-
-  .quoteMark,
-  .quoteMarkEnd {
-    font-size: 42px;
-  }
-
-  .benjaminText {
-    font-size: 20px;
-    line-height: 1.35;
-    text-align: center;
-  }
-
-  .quoteLine {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 200px;
-  }
-
-  .editorialRule {
-    margin: 40px 0;
+  .manifestoSignature {
+    font-size: clamp(14px, 3.6vw, 18px);
   }
 
   .dividerSection {
