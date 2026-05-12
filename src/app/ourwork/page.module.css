@@ -99,14 +99,10 @@
 }
 
 @media (max-width: 768px) {
-  .heroMainText,
-  .heroSubText,
-  .heroDescription {
-    transform: translateY(3%);
-  }
-
   .heroTextOverlay {
-    transform: translateY(0%);
+    justify-content: flex-start;
+    padding-top: 120px;
+    box-sizing: border-box;
   }
 
   .mobileOverlayKoreanBlock {
