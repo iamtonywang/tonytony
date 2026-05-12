@@ -62,9 +62,15 @@ export default function HomeVideoSection() {
             /* ignore */
           }
         }
+        video.muted = false;
         await video.play();
       } else {
         video.pause();
+        try {
+          video.currentTime = 0;
+        } catch {
+          /* ignore */
+        }
       }
     } catch (error) {
       if (!(error instanceof DOMException && error.name === "AbortError")) {
