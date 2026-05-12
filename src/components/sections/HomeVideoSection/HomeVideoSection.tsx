@@ -106,11 +106,22 @@ export default function HomeVideoSection() {
     goEnterThenActive();
   }, [src, goEnterThenActive]);
 
+  useEffect(() => {
+    if (!src) {
+      return;
+    }
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+    }
+  }, [src]);
+
   const handleLoadedMetadata = useCallback(() => {
     const video = videoRef.current;
     if (!video) {
       return;
     }
+    video.muted = true;
     const dur = getEffectiveDurationSeconds(video);
     const idx = computeTimelineIndex(video.currentTime, dur);
     lastComputedIndexRef.current = idx;
@@ -251,7 +262,6 @@ export default function HomeVideoSection() {
             className={styles.video}
             src={src}
             preload="none"
-            muted
             playsInline
             loop={false}
             onLoadedMetadata={handleLoadedMetadata}
