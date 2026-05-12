@@ -12,16 +12,15 @@ export default function HomeMotionDivider() {
           </div>
 
           <div className={styles.topColBody}>
-            <p className={styles.editorialLead}>최초라는 것을 증명 하고자 나왔어</p>
-
             <div className={styles.editorialIntro}>
               <p className={styles.tonyName}>TONY WANG</p>
-              <p>내가 연구한거 그리고 만든것이</p>
-              <p>과거와 현재사이에서 절대적 존재 임을 증명하고 싶어</p>
-              <p>생명공학 과 향장학 세계관은 너무 달라</p>
-              <p>생명공학 연구 개발 은 향장학 배합 기술과 시스템 자체가 달라</p>
-              <p>바이오 생명공학은 신약 연구 분야고 향장학은 배합의 기술이야</p>
-              <p>바이오 생명공학 은 창조의 세계관 이야</p>
+              <p>I wanted to prove</p>
+              <p>that what I created exists beyond time.</p>
+              <p>Biotechnology and cosmetic science belong to completely different worlds.</p>
+              <p>Biotechnology is the science of creation.</p>
+              <p>Cosmetic science is the technology of formulation.</p>
+              <p>Plant cell genetic protein is not a trend.</p>
+              <p>It is a new biological structure.</p>
             </div>
           </div>
 
@@ -34,7 +33,9 @@ export default function HomeMotionDivider() {
               <div className={styles.yearCopy}>
                 <p>28년 시간 신의 물질만 연구 개발 했다</p>
                 <p>For 28 years,</p>
-                <p>we have only researched and developed the substance of the divine.</p>
+                <p>we have researched only one thing.</p>
+                <p>The reconstruction</p>
+                <p>of damaged skin biology.</p>
               </div>
             </div>
           </div>
@@ -50,13 +51,12 @@ export default function HomeMotionDivider() {
           <div className={styles.bottomColCopy}>
             <div className={styles.whyCopy}>
               <p>
-                SKIN CARE를 연구 개발한 이유는
-                <span className={styles.highlight19Orange}> 아토피 신약 임상</span>을 하는 과정에서
+                The reason we developed SKIN CARE was during the process of{" "}
+                <span className={styles.highlight19Orange}>atopic drug clinical trials</span>.
               </p>
-              <p>새로운 기전을 발견 하였고 임상 과정에서 놀라운 사실을 목격 했어</p>
-              <p>그리고 . . . . . .</p>
-              <p>나는 생각했고 결심했어</p>
-              <p>스킨케어로도 세상을 뒤집어 놓을수있다는 것을 깨달게 되었어</p>
+              <p>We discovered an entirely different biological mechanism.</p>
+              <p>And then I realized something.</p>
+              <p>Skin care can also change the world.</p>
             </div>
           </div>
 
@@ -65,7 +65,8 @@ export default function HomeMotionDivider() {
               <span className={styles.quoteMark}>&ldquo;</span>
               <p className={styles.benjaminText}>The Curious Case of Benjamin Button</p>
               <div className={styles.quoteLine} aria-hidden="true" />
-              <p>상상이 아닌 현실로 . . . . .</p>
+              <p>Not imagination.</p>
+              <p>Reality.</p>
               <span className={styles.quoteMarkEnd}>&rdquo;</span>
             </div>
           </div>
