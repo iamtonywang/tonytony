@@ -9,22 +9,25 @@ const VIDEO_SRC = "/landing-assets/products-hero-pc.mp4";
 const FALLBACK_DURATION_SEC = 64;
 
 const timelineTexts = [
-  { text: "TONY WANG", large: true },
-  { text: "NIGAJUN", large: true },
-  { text: "Global", large: false },
-  { text: "first attempt", large: false },
-  { text: "식물 세포 유전자 단백질", large: false },
-  { text: "SKIN CARE 개발", large: false },
-  { text: "글로벌 최초", large: false },
-  { text: "식물 세포 유전자 단백질로 개발한", large: false },
-  { text: "NIGAJUN", large: true },
-  { text: "피부를 갈아 엎으러 나왔어", large: false },
-  { text: "피부가 새로 태어난다는 것은", large: false },
-  { text: "마켓팅으로", large: false },
-  { text: "돈으로 하는게 아냐", large: false },
-  { text: "창조적 물질만이 할 수 있어", large: false },
-  { text: "NIGAJUN", large: true },
-  { text: "May 2026 TONY WANG", large: false },
+  "TONY WANG",
+  "NIGAJUN",
+  "Global",
+  "first attempt",
+  "plant cell genetic protein",
+  "Development of SKIN CARE",
+  "For the first time in the world",
+  "Developed with plant cell gene protein",
+  "NIGAJUN",
+  "I came out to change my skin",
+  "The fact that your skin is newly born",
+  "through advertising",
+  "through marketing",
+  "with money",
+  "I'm not doing it",
+  "creative",
+  "Only matter can do it",
+  "NIGAJUN",
+  "May 2026 TONY WANG",
 ] as const;
 
 type VisualPhase = "enter" | "active" | "exit";
@@ -237,7 +240,7 @@ export default function HomeVideoSection() {
         ? styles.motionTextEnter
         : styles.motionTextActive;
 
-  const item = timelineTexts[shownIndex];
+  const line = timelineTexts[shownIndex];
 
   return (
     <section ref={sectionRef} className={styles.section} aria-label="홈 소개 영상">
@@ -263,13 +266,7 @@ export default function HomeVideoSection() {
 
         {src ? (
           <div className={styles.motionOverlay} aria-hidden="true">
-            <div
-              className={`${styles.motionText} ${phaseClass} ${
-                item.large ? styles.motionTextLarge : styles.motionTextNormal
-              }`}
-            >
-              {item.text}
-            </div>
+            <div className={`${styles.motionText} ${phaseClass}`}>{line}</div>
           </div>
         ) : null}
 
