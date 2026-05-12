@@ -101,7 +101,7 @@
 @media (max-width: 768px) {
   .heroTextOverlay {
     justify-content: flex-start;
-    padding-top: 120px;
+    padding-top: 180px;
     box-sizing: border-box;
   }
 
