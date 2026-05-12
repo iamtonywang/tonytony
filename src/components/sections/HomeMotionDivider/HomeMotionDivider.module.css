@@ -243,6 +243,14 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
+.manifestoEnLine.manifestoEnglish14,
+.manifestoEnMeta.manifestoEnglish14,
+.manifestoSignature.manifestoEnglish14 {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
 @media (min-width: 769px) {
   .manifestoTightPc {
     white-space: nowrap;
