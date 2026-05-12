@@ -95,12 +95,26 @@ export default function HomeMotionDivider() {
         </p>
 
         <p className={styles.manifestoKr}>
-          Global 최초 식물 세포 유전자 단백질 생명공학{" "}
-          <span className={styles.editorialEnglishAccent}>SKIN CARE</span>
-          <br />
-          <span className={styles.editorialEnglishAccent}>NIGAJUN</span>
-          <br />
-          피부 변혁이 이루어지는 기적을 보여주고 싶을 뿐 입니다
+          <span className={styles.pcOnly}>
+            Global 최초 식물 세포 유전자 단백질 생명공학{" "}
+            <span className={styles.editorialEnglishAccent}>SKIN CARE</span>
+            <br />
+            <span className={styles.editorialEnglishAccent}>NIGAJUN</span>
+            <br />
+            피부 변혁이 이루어지는 기적을 보여주고 싶을 뿐 입니다
+          </span>
+          <span className={styles.mobileOnly}>
+            Global 최초 식물 세포 유전자 단백질
+            <br />
+            BIO 생명공학{" "}
+            <span className={styles.editorialEnglishAccent}>SKIN CARE</span>
+            <br />
+            <span className={styles.editorialEnglishAccent}>NIGAJUN</span>
+            <br />
+            믿기 힘든 피부 변혁이 이루어지는
+            <br />
+            기적을 보여주고 싶을 뿐 입니다
+          </span>
         </p>
 
         <p className={`${styles.manifestoSignature} ${styles.manifestoTightPc} ${styles.manifestoEnglish14}`}>
