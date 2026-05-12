@@ -50,6 +50,7 @@ export default function HomeVideoSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoMountRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const hasMountedVideoRef = useRef(false);
   const [src, setSrc] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const toggleLockRef = useRef(false);
