@@ -27,6 +27,16 @@ export default function HomeMotionLine() {
         </div>
 
         <div className={styles.bottomLandingLine} aria-hidden="true" />
+
+        <div className={styles.endingCopy}>
+          <h2 className={styles.endingTitle}>NIGAJUN</h2>
+
+          <p className={styles.endingText}>
+            I thought about it and made up my mind
+            <br />
+            I realized that skincare can turn the world upside down
+          </p>
+        </div>
       </div>
     </section>
   );
