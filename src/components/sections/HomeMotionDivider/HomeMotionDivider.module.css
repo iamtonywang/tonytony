@@ -228,6 +228,12 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+.manifestoEnglish14 {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
 .manifestoSignature {
   font-family: "El Messiri", serif;
   font-size: clamp(17px, 1.5vw, 22px);

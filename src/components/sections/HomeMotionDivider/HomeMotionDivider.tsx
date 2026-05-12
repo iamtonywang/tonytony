@@ -104,7 +104,7 @@ export default function HomeMotionDivider() {
           <span className={styles.editorialEnglishAccent}>NIGAJUN</span> 피부를 모조리 갈아 엎으러 나왔다
         </p>
 
-        <p className={styles.manifestoEnLine}>
+        <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
           <span className={styles.pcOnly}>I came to the world to solve all the puzzles about skin</span>
           <span className={styles.mobileOnly}>
             I came to the world to solve
@@ -113,7 +113,7 @@ export default function HomeMotionDivider() {
           </span>
         </p>
 
-        <p className={styles.manifestoEnMeta}>
+        <p className={`${styles.manifestoEnMeta} ${styles.manifestoEnglish14}`}>
           <span className={styles.pcOnly}>
             stem cells, liposome, Exosome, growth factor, nanoparticles, peptide
           </span>
@@ -124,9 +124,11 @@ export default function HomeMotionDivider() {
           </span>
         </p>
 
-        <p className={styles.manifestoEnLine}>We don&apos;t use these false ingredients</p>
+        <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
+          We don&apos;t use these false ingredients
+        </p>
 
-        <p className={styles.manifestoEnLine}>
+        <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
           <span className={styles.pcOnly}>
             Biotechnology skincare developed with the world&apos;s first plant cell gene protein
           </span>
@@ -137,9 +139,11 @@ export default function HomeMotionDivider() {
           </span>
         </p>
 
-        <p className={styles.manifestoEnLine}>I came out to change my skin</p>
+        <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
+          I came out to change my skin
+        </p>
 
-        <p className={`${styles.manifestoSignature} ${styles.manifestoTightPc}`}>
+        <p className={`${styles.manifestoSignature} ${styles.manifestoTightPc} ${styles.manifestoEnglish14}`}>
           May 2026 TONY WANG
         </p>
       </div>
