@@ -54,10 +54,7 @@ export default function HomeMotionDivider() {
 
         <p className={styles.manifestoGold}>Proteo Phyto Complex</p>
 
-        <p className={styles.manifestoKr}>
-          식물 세포 유전자 단백질 복합 성분{" "}
-          <span className={styles.manifestoEnInline}>NIGAJUN</span>
-        </p>
+        <p className={styles.manifestoKr}>식물 세포 유전자 단백질 복합 성분 NIGAJUN</p>
 
         <p className={styles.manifestoKr}>
           글로벌 최초 식물 세포 유전자 단백질로 개발한 NIGAJUN 피부를 모조리 갈아 엎으러 나왔다
