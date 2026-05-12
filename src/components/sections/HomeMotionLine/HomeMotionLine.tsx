@@ -19,10 +19,24 @@ export default function HomeMotionLine() {
             <br />
             I came to the world to change my skin
           </p>
-          <p>The only genetic protein that improves new skin tissue</p>
+          <p>
+            <span className={styles.pcOnly}>The only genetic protein that improves new skin tissue</span>
+            <span className={styles.mobileOnly}>
+              The only genetic protein that improves
+              <br />
+              new skin tissue
+            </span>
+          </p>
           <p>Precisely regulate skin cell signal transmission and activate ECM reconstruction</p>
           <p>
-            and regenerative genes to remove toxins from the skin, restore skin, and heal problems
+            <span className={styles.pcOnly}>
+              and regenerative genes to remove toxins from the skin, restore skin, and heal problems
+            </span>
+            <span className={styles.mobileOnly}>
+              and regenerative genes to remove toxins
+              <br />
+              from the skin, restore skin, and heal problems
+            </span>
           </p>
         </div>
 
@@ -34,7 +48,12 @@ export default function HomeMotionLine() {
           <p className={styles.endingText}>
             I thought about it and made up my mind
             <br />
-            I realized that skincare can turn the world upside down
+            <span className={styles.pcOnly}>I realized that skincare can turn the world upside down</span>
+            <span className={styles.mobileOnly}>
+              I realized that skincare can turn
+              <br />
+              the world upside down
+            </span>
           </p>
 
           <div className={styles.endingBottomLine} aria-hidden="true" />

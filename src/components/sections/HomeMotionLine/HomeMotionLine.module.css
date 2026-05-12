@@ -134,6 +134,14 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
+.pcOnly {
+  display: inline;
+}
+
+.mobileOnly {
+  display: none;
+}
+
 .endingBottomLine {
   width: min(620px, 82vw);
   height: 1px;
@@ -186,5 +194,13 @@
 
   .endingBottomLine {
     margin-top: 8px;
+  }
+
+  .pcOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: inline;
   }
 }
