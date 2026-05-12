@@ -240,7 +240,7 @@ export default function HomeVideoSection() {
         ? styles.motionTextEnter
         : styles.motionTextActive;
 
-  const line = timelineTexts[shownIndex];
+  const activeText = timelineTexts[shownIndex] ?? "";
 
   return (
     <section ref={sectionRef} className={styles.section} aria-label="홈 소개 영상">
@@ -266,7 +266,7 @@ export default function HomeVideoSection() {
 
         {src ? (
           <div className={styles.motionOverlay} aria-hidden="true">
-            <div className={`${styles.motionText} ${phaseClass}`}>{line}</div>
+            <div className={`${styles.motionText} ${phaseClass}`}>{activeText}</div>
           </div>
         ) : null}
 
