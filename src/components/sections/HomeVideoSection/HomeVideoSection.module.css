@@ -4,12 +4,12 @@
 }
 
 .mediaWrap {
-  position: relative;
   width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   aspect-ratio: 16 / 9;
-  max-height: min(70vh, 720px);
+  max-height: none;
+  position: relative;
   overflow: hidden;
 }
 
