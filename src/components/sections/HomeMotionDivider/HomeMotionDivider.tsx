@@ -95,8 +95,12 @@ export default function HomeMotionDivider() {
         </p>
 
         <p className={styles.manifestoKr}>
-          글로벌 최초 식물 세포 유전자 단백질로 개발한{" "}
-          <span className={styles.editorialEnglishAccent}>NIGAJUN</span> 피부를 모조리 갈아 엎으러 나왔다
+          Global 최초 식물 세포 유전자 단백질 생명공학{" "}
+          <span className={styles.editorialEnglishAccent}>SKIN CARE</span>
+          <br />
+          <span className={styles.editorialEnglishAccent}>NIGAJUN</span>
+          <br />
+          피부 변혁이 이루어지는 기적을 보여주고 싶을 뿐 입니다
         </p>
 
         <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
