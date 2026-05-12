@@ -5,7 +5,8 @@ import styles from "./HomeVideoSection.module.css";
 
 const VIDEO_SRC = "/landing-assets/products-hero-pc.mp4";
 
-const TIMELINE_STEP_SEC = 4;
+/** metadata 전까지 타임라인 계산용 폴백(초) */
+const FALLBACK_DURATION_SEC = 64;
 
 const timelineTexts = [
   { text: "TONY WANG", large: true },
@@ -26,8 +27,19 @@ const timelineTexts = [
   { text: "May 2026 TONY WANG", large: false },
 ] as const;
 
-function computeTimelineIndex(currentTime: number): number {
-  const raw = Math.floor(currentTime / TIMELINE_STEP_SEC);
+type VisualPhase = "enter" | "active" | "exit";
+
+function getEffectiveDurationSeconds(video: HTMLVideoElement): number {
+  const d = video.duration;
+  if (Number.isFinite(d) && d > 0) {
+    return d;
+  }
+  return FALLBACK_DURATION_SEC;
+}
+
+function computeTimelineIndex(currentTime: number, durationSeconds: number): number {
+  const seg = durationSeconds / timelineTexts.length;
+  const raw = Math.floor(currentTime / seg);
   return Math.min(Math.max(raw, 0), timelineTexts.length - 1);
 }
 
@@ -37,9 +49,31 @@ export default function HomeVideoSection() {
   const [src, setSrc] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const toggleLockRef = useRef(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [motionEnter, setMotionEnter] = useState(false);
-  const lastIndexRef = useRef(0);
+
+  const [shownIndex, setShownIndex] = useState(0);
+  const [visualPhase, setVisualPhase] = useState<VisualPhase>("active");
+  const lastComputedIndexRef = useRef(0);
+  const shownIndexRef = useRef(0);
+  const visualPhaseRef = useRef<VisualPhase>("active");
+
+  useEffect(() => {
+    shownIndexRef.current = shownIndex;
+  }, [shownIndex]);
+
+  useEffect(() => {
+    visualPhaseRef.current = visualPhase;
+  }, [visualPhase]);
+
+  const goEnterThenActive = useCallback(() => {
+    setVisualPhase("enter");
+    visualPhaseRef.current = "enter";
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setVisualPhase("active");
+        visualPhaseRef.current = "active";
+      });
+    });
+  }, []);
 
   useEffect(() => {
     const root = sectionRef.current;
@@ -62,13 +96,25 @@ export default function HomeVideoSection() {
     return () => observer.disconnect();
   }, []);
 
-  const triggerEnterMotion = useCallback(() => {
-    setMotionEnter(true);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setMotionEnter(false);
-      });
-    });
+  useEffect(() => {
+    if (!src) {
+      return;
+    }
+    goEnterThenActive();
+  }, [src, goEnterThenActive]);
+
+  const handleLoadedMetadata = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+    const dur = getEffectiveDurationSeconds(video);
+    const idx = computeTimelineIndex(video.currentTime, dur);
+    lastComputedIndexRef.current = idx;
+    setShownIndex(idx);
+    shownIndexRef.current = idx;
+    setVisualPhase("active");
+    visualPhaseRef.current = "active";
   }, []);
 
   const handleTimeUpdate = useCallback(() => {
@@ -76,13 +122,43 @@ export default function HomeVideoSection() {
     if (!video) {
       return;
     }
-    const next = computeTimelineIndex(video.currentTime);
-    if (next !== lastIndexRef.current) {
-      lastIndexRef.current = next;
-      setActiveIndex(next);
-      triggerEnterMotion();
+    const dur = getEffectiveDurationSeconds(video);
+    const next = computeTimelineIndex(video.currentTime, dur);
+
+    if (next === lastComputedIndexRef.current) {
+      return;
     }
-  }, [triggerEnterMotion]);
+    lastComputedIndexRef.current = next;
+
+    const phase = visualPhaseRef.current;
+    const shown = shownIndexRef.current;
+
+    if (phase === "active" && next !== shown) {
+      setVisualPhase("exit");
+      visualPhaseRef.current = "exit";
+      return;
+    }
+
+    if (phase === "enter" && next !== shown) {
+      setShownIndex(next);
+      shownIndexRef.current = next;
+      setVisualPhase("active");
+      visualPhaseRef.current = "active";
+    }
+  }, []);
+
+  useEffect(() => {
+    if (visualPhase !== "exit") {
+      return;
+    }
+    const tid = window.setTimeout(() => {
+      const target = lastComputedIndexRef.current;
+      setShownIndex(target);
+      shownIndexRef.current = target;
+      goEnterThenActive();
+    }, 1800);
+    return () => window.clearTimeout(tid);
+  }, [visualPhase, goEnterThenActive]);
 
   const handleEnded = useCallback(() => {
     const video = videoRef.current;
@@ -95,10 +171,11 @@ export default function HomeVideoSection() {
       /* ignore */
     }
     setIsPlaying(false);
-    lastIndexRef.current = 0;
-    setActiveIndex(0);
-    triggerEnterMotion();
-  }, [triggerEnterMotion]);
+    lastComputedIndexRef.current = 0;
+    setShownIndex(0);
+    shownIndexRef.current = 0;
+    goEnterThenActive();
+  }, [goEnterThenActive]);
 
   const handleToggle = useCallback(async () => {
     const video = videoRef.current;
@@ -144,15 +221,23 @@ export default function HomeVideoSection() {
     if (!video) {
       return;
     }
-    const next = computeTimelineIndex(video.currentTime);
-    if (next !== lastIndexRef.current) {
-      lastIndexRef.current = next;
-      setActiveIndex(next);
-      triggerEnterMotion();
-    }
-  }, [isPlaying, src, triggerEnterMotion]);
+    const dur = getEffectiveDurationSeconds(video);
+    const next = computeTimelineIndex(video.currentTime, dur);
+    lastComputedIndexRef.current = next;
+    setShownIndex(next);
+    shownIndexRef.current = next;
+    setVisualPhase("active");
+    visualPhaseRef.current = "active";
+  }, [isPlaying, src]);
 
-  const item = timelineTexts[activeIndex];
+  const phaseClass =
+    visualPhase === "exit"
+      ? styles.motionTextExit
+      : visualPhase === "enter"
+        ? styles.motionTextEnter
+        : styles.motionTextActive;
+
+  const item = timelineTexts[shownIndex];
 
   return (
     <section ref={sectionRef} className={styles.section} aria-label="홈 소개 영상">
@@ -166,6 +251,7 @@ export default function HomeVideoSection() {
             muted
             playsInline
             loop={false}
+            onLoadedMetadata={handleLoadedMetadata}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onEnded={handleEnded}
@@ -178,9 +264,9 @@ export default function HomeVideoSection() {
         {src ? (
           <div className={styles.motionOverlay} aria-hidden="true">
             <div
-              className={`${styles.motionText} ${
-                motionEnter ? styles.motionTextEnter : ""
-              } ${item.large ? styles.motionTextLarge : styles.motionTextNormal}`}
+              className={`${styles.motionText} ${phaseClass} ${
+                item.large ? styles.motionTextLarge : styles.motionTextNormal
+              }`}
             >
               {item.text}
             </div>

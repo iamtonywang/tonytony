@@ -38,48 +38,80 @@
   align-items: center;
   justify-content: center;
 
+  padding-bottom: 120px;
+
   pointer-events: none;
 }
 
 .motionText {
   text-align: center;
 
-  opacity: 1;
-
-  transform: translateY(0);
+  color: rgba(255, 255, 255, 0.94);
 
   transition:
-    opacity 0.8s ease,
-    transform 0.8s ease,
-    filter 0.8s ease;
-
-  filter: blur(0);
-  color: rgba(255, 255, 255, 0.94);
+    opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    letter-spacing 1.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .motionTextEnter {
   opacity: 0;
-  transform: translateY(20px);
-  filter: blur(8px);
+  transform: translateY(40px) scale(0.94);
+  filter: blur(12px);
+}
+
+.motionTextActive {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.motionTextExit {
+  opacity: 0;
+  transform: translateY(-24px) scale(1.03);
+  filter: blur(6px);
+}
+
+.motionTextLarge.motionTextEnter {
+  letter-spacing: 0.2em;
+}
+
+.motionTextLarge.motionTextActive {
+  letter-spacing: 0.08em;
+}
+
+.motionTextLarge.motionTextExit {
+  letter-spacing: 0.12em;
+}
+
+.motionTextNormal.motionTextEnter {
+  letter-spacing: 0.12em;
+}
+
+.motionTextNormal.motionTextActive {
+  letter-spacing: 0.04em;
+}
+
+.motionTextNormal.motionTextExit {
+  letter-spacing: 0.06em;
 }
 
 .motionTextLarge {
   font-size: 28px;
   font-weight: 300;
-  letter-spacing: 0.08em;
 }
 
 .motionTextNormal {
   font-size: 17px;
   font-weight: 300;
-  letter-spacing: 0.04em;
 }
 
 .playButton {
   position: absolute;
-  top: 50%;
+  bottom: 48px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -140,6 +172,10 @@
     aspect-ratio: auto;
     height: 100svh;
     min-height: 640px;
+  }
+
+  .motionOverlay {
+    padding-bottom: 160px;
   }
 
   .motionTextLarge {
