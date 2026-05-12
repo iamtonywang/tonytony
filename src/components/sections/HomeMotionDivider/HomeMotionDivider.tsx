@@ -33,7 +33,8 @@ export default function HomeMotionDivider() {
 
         <p className={styles.manifestoKr}>
           28년 시간 신약 물질만 연구 개발하던 내가{" "}
-          <span className={styles.manifestoWhyInline}>WHY?</span> SKIN CARE를 연구 개발한 이유는
+          <span className={styles.manifestoWhyInline}>WHY?</span>{" "}
+          <span className={styles.editorialEnglishAccent}>SKIN CARE</span>를 연구 개발한 이유는
         </p>
 
         <p className={styles.manifestoKr}>
@@ -54,10 +55,13 @@ export default function HomeMotionDivider() {
 
         <p className={styles.manifestoGold}>Proteo Phyto Complex</p>
 
-        <p className={styles.manifestoKr}>식물 세포 유전자 단백질 복합 성분 NIGAJUN</p>
+        <p className={styles.manifestoKr}>
+          식물 세포 유전자 단백질 복합 성분 <span className={styles.editorialEnglishAccent}>NIGAJUN</span>
+        </p>
 
         <p className={styles.manifestoKr}>
-          글로벌 최초 식물 세포 유전자 단백질로 개발한 NIGAJUN 피부를 모조리 갈아 엎으러 나왔다
+          글로벌 최초 식물 세포 유전자 단백질로 개발한{" "}
+          <span className={styles.editorialEnglishAccent}>NIGAJUN</span> 피부를 모조리 갈아 엎으러 나왔다
         </p>
 
         <p className={styles.manifestoEnLine}>

@@ -146,6 +146,14 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
+.editorialEnglishAccent {
+  font-family: "El Messiri", serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: inherit;
+  font-size: inherit;
+}
+
 .manifestoTightPc {
   max-width: 100%;
 }
