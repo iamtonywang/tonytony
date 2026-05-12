@@ -96,12 +96,12 @@ export default function HomeMotionDivider() {
 
         <p className={styles.manifestoKr}>
           <span className={styles.pcOnly}>
-            Global 최초 식물 세포 유전자 단백질 생명공학{" "}
+            Global 최초 식물 세포 유전자 단백질 BIO 생명공학{" "}
             <span className={styles.editorialEnglishAccent}>SKIN CARE</span>
             <br />
             <span className={styles.editorialEnglishAccent}>NIGAJUN</span>
             <br />
-            피부 변혁이 이루어지는 기적을 보여주고 싶을 뿐 입니다
+            믿기 힘든 피부 변혁이 이루어지는 기적을 보여주고 싶을 뿐 입니다
           </span>
           <span className={styles.mobileOnly}>
             Global 최초 식물 세포 유전자 단백질
