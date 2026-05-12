@@ -1,6 +1,6 @@
-.section {
+.lineSection {
   width: 100%;
-  padding: 20px 0;
+  padding: 20px 0 0;
   background: rgba(95, 95, 95, 1);
 }
 
@@ -31,5 +31,60 @@
   }
   100% {
     transform: translateX(100%);
+  }
+}
+
+.landingCopy {
+  width: 100%;
+  padding: 84px 6vw 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: 80px;
+  font-weight: 300;
+}
+
+.heroSubTitle {
+  margin: 24px 0 0;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.heroKoreanTitle {
+  margin: 10px 0 0;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.heroDescription {
+  margin-top: 42px;
+  max-width: 860px;
+}
+
+.heroDescription p {
+  margin: 0 0 18px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 42px;
+  }
+
+  .heroSubTitle,
+  .heroKoreanTitle {
+    font-size: 18px;
+  }
+
+  .heroDescription {
+    max-width: 92vw;
   }
 }
