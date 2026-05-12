@@ -25,6 +25,8 @@ export default function HomeMotionLine() {
             and regenerative genes to remove toxins from the skin, restore skin, and heal problems
           </p>
         </div>
+
+        <div className={styles.bottomLandingLine} aria-hidden="true" />
       </div>
     </section>
   );
