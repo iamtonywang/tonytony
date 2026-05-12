@@ -65,13 +65,13 @@
 
 .heroSubTitle {
   margin: 14px 0 0;
-  font-size: 28px;
+  font-size: 17px;
   font-weight: 300;
 }
 
 .heroKoreanTitle {
   margin: 6px 0 0;
-  font-size: 28px;
+  font-size: 17px;
   font-weight: 300;
 }
 
@@ -141,7 +141,7 @@
 
   .heroSubTitle,
   .heroKoreanTitle {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .heroDescription {
