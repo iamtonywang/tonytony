@@ -231,7 +231,7 @@
 .manifestoEnglish14 {
   font-size: 14px;
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.48;
 }
 
 .manifestoSignature {
@@ -244,7 +244,7 @@
 }
 
 .dividerCopy > p.manifestoEnglish14 + p.manifestoEnglish14 {
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 .manifestoEnLine.manifestoEnglish14,
