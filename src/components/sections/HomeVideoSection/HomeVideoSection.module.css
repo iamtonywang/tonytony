@@ -28,6 +28,53 @@
   display: block;
 }
 
+.motionOverlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.motionText {
+  text-align: center;
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    filter 0.8s ease;
+
+  filter: blur(0);
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.motionTextEnter {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(8px);
+}
+
+.motionTextLarge {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+}
+
+.motionTextNormal {
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
 .playButton {
   position: absolute;
   top: 50%;
@@ -38,7 +85,7 @@
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: rgba(0, 0, 0, 0.25);
-  z-index: 2;
+  z-index: 10;
   cursor: pointer;
   padding: 0;
 }
@@ -93,5 +140,15 @@
     aspect-ratio: auto;
     height: 100svh;
     min-height: 640px;
+  }
+
+  .motionTextLarge {
+    font-size: 28px;
+  }
+
+  .motionTextNormal {
+    font-size: 17px;
+    line-height: 1.7;
+    padding-inline: 24px;
   }
 }
