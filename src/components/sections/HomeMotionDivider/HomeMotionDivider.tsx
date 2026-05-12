@@ -125,6 +125,15 @@ export default function HomeMotionDivider() {
         </p>
 
         <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
+          <span className={styles.pcOnly}>I realized that skincare can turn the world upside down</span>
+          <span className={styles.mobileOnly}>
+            I realized that skincare can turn
+            <br />
+            the world upside down
+          </span>
+        </p>
+
+        <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
           <span className={styles.pcOnly}>I came to the world to solve all the puzzles about skin</span>
           <span className={styles.mobileOnly}>
             I came to the world to solve
