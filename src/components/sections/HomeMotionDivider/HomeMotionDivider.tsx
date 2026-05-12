@@ -103,7 +103,7 @@ export default function HomeMotionDivider() {
             <br />
             <span className={`${styles.editorialEnglishAccent} ${styles.manifestoKeyAccent}`}>NIGAJUN</span>
             <br />
-            믿기 힘든 피부 변혁이 이루어지는 기적을 보여주고 싶을 뿐 입니다
+            피부 변혁이 이루어지는 믿기 힘든 기적을 곧 보게 될 것 입니다
           </span>
           <span className={styles.mobileOnly}>
             <span className={styles.editorialEnglishAccent}>Global</span> 최초 식물 세포 유전자 단백질{" "}
@@ -112,9 +112,9 @@ export default function HomeMotionDivider() {
             <span className={styles.editorialEnglishAccent}>SKIN CARE</span>{" "}
             <span className={`${styles.editorialEnglishAccent} ${styles.manifestoKeyAccent}`}>NIGAJUN</span>
             <br />
-            믿기 힘든 피부 변혁이 이루어지는
+            피부 변혁이 이루어지는 믿기 힘든 기적을
             <br />
-            기적을 보여주고 싶을 뿐 입니다
+            곧 보게 될 것 입니다
           </span>
         </p>
 
