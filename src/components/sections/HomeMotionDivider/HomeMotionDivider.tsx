@@ -14,15 +14,10 @@ export default function HomeMotionDivider() {
 
         <p className={styles.manifestoKr}>
           <span className={styles.pcOnly}>
-            <span className={styles.manifestoEnInline}>TONY WANG</span>{" "}
-            내가 연구하고 그리고 개발한 것이 과거와 현재시간에서 절대적 존재 인것을 증명하고 싶어
+            <span className={styles.manifestoEnInline}>TONY WANG</span>
           </span>
           <span className={styles.mobileOnly}>
-            <span className={styles.manifestoEnInline}>TONY WANG</span> 내가 연구하고 그리고
-            <br />
-            개발한 것이 과거와 현재시간에서
-            <br />
-            절대적 존재 인것을 증명하고 싶어
+            <span className={styles.manifestoEnInline}>TONY WANG</span>
           </span>
         </p>
 
@@ -51,14 +46,14 @@ export default function HomeMotionDivider() {
 
         <p className={styles.manifestoKr}>
           <span className={styles.pcOnly}>
-            28년 시간 신약 물질만 연구 개발하던 내가{" "}
+            28년 시간 신약 물질만 연구 개발{" "}
             <span className={styles.manifestoWhyInline}>WHY?</span>{" "}
             <span className={styles.editorialEnglishAccent}>SKIN CARE</span>를 연구 개발한 이유는
           </span>
           <span className={styles.mobileOnly}>
-            28년 시간 신약 물질만 연구 개발하던
+            28년 시간 신약 물질만 연구 개발
             <br />
-            내가 <span className={styles.manifestoWhyInline}>WHY?</span>{" "}
+            <span className={styles.manifestoWhyInline}>WHY?</span>{" "}
             <span className={styles.editorialEnglishAccent}>SKIN CARE</span>를 연구 개발한 이유는
           </span>
         </p>
