@@ -2,7 +2,7 @@
   position: relative;
   isolation: isolate;
   width: 100%;
-  padding: 28px 0 72px;
+  padding: 56px 0 96px;
   background:
     radial-gradient(
       circle at 50% 28%,
@@ -56,7 +56,7 @@
 .bottomMotionLine {
   width: min(1120px, 92vw);
   height: 1px;
-  margin: 54px auto 0;
+  margin: 56px auto 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
   position: relative;
   overflow: hidden;
@@ -83,37 +83,130 @@
   }
 }
 
-.dividerCopy {
-  width: min(920px, 92vw);
-  margin: 42px auto 0;
+.editorialWrap {
+  box-sizing: border-box;
+  width: min(1120px, 92vw);
+  max-width: 100%;
+  margin: 48px auto 0;
+  padding: 0 16px;
+  color: rgba(255, 255, 255, 0.94);
   text-align: center;
-  color: rgba(255, 255, 255, 0.92);
 }
 
-.dividerCopy p {
-  margin: 0 0 10px;
-  font-size: 14px;
+.editorialKicker {
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.editorialHeadline {
+  margin: 0 0 28px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 112px;
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.98);
+}
+
+.editorialLead {
+  margin: 0 auto 36px;
+  max-width: 42rem;
+  font-size: 17px;
   font-weight: 300;
   line-height: 1.75;
 }
 
-.whyNow {
-  margin: 0 0 28px;
-  font-size: 44px;
-  font-weight: 300;
-  letter-spacing: 0.04em;
+.editorialIntro {
+  margin: 0 auto 8px;
+  max-width: 40rem;
 }
 
-.tonyName,
-.yearText,
+.editorialIntro p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+.editorialIntro .tonyName {
+  margin-bottom: 16px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  line-height: 1.4;
+}
+
+.editorialRule {
+  width: min(480px, 70%);
+  height: 1px;
+  margin: 40px auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(196, 165, 116, 0.45),
+    rgba(196, 165, 116, 0.65),
+    rgba(196, 165, 116, 0.45),
+    transparent
+  );
+}
+
+.yearsBlock {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.4fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: left;
+}
+
+.yearText {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 96px;
+  font-weight: 300;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: #c4a574;
+}
+
+.yearCopy p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.45fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: left;
+}
+
 .whyText {
-  font-size: 28px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 88px;
   font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.96);
 }
 
-.benjaminText {
-  font-size: 17px;
+.whyCopy p {
+  margin: 0 0 12px;
+  font-size: 14px;
   font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .highlight19Orange {
@@ -122,20 +215,148 @@
   color: #ff7a00;
 }
 
-.pcOnly {
-  display: inline;
+.quoteBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 72px auto 0;
+  max-width: 36rem;
+  padding: 0 8px 32px;
 }
 
-.mobileOnly {
-  display: none;
+.quoteMark {
+  align-self: flex-start;
+  margin: 0 0 -8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+  color: #bfa76a;
+  opacity: 0.85;
+}
+
+.benjaminText {
+  margin: 0 0 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.quoteLine {
+  width: 100%;
+  max-width: 200px;
+  height: 1px;
+  margin: 0 0 20px;
+  background: linear-gradient(90deg, transparent, rgba(196, 165, 116, 0.55), transparent);
+}
+
+.quoteBlock > p:not(.benjaminText) {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.quoteMarkEnd {
+  align-self: flex-end;
+  margin: 8px 0 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+  color: #bfa76a;
+  opacity: 0.85;
 }
 
 @media (max-width: 768px) {
-  .pcOnly {
-    display: none;
+  .editorialWrap {
+    width: 88vw;
+    margin-top: 40px;
+    padding: 0 12px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
-  .mobileOnly {
-    display: inline;
+  .editorialHeadline {
+    font-size: 54px;
+    line-height: 1;
+  }
+
+  .editorialIntro p,
+  .yearCopy p,
+  .whyCopy p,
+  .quoteBlock > p:not(.benjaminText) {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .editorialIntro .tonyName {
+    font-size: 18px;
+    letter-spacing: 0.22em;
+  }
+
+  .yearsBlock {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .yearText {
+    font-size: 64px;
+    text-align: center;
+    justify-self: center;
+  }
+
+  .yearCopy {
+    text-align: center;
+  }
+
+  .whyGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .whyText {
+    font-size: 52px;
+    text-align: center;
+    justify-self: center;
+  }
+
+  .whyCopy {
+    text-align: center;
+  }
+
+  .highlight19Orange {
+    font-size: 17px;
+  }
+
+  .quoteBlock {
+    margin-top: 48px;
+    padding: 0 4px 24px;
+  }
+
+  .quoteMark,
+  .quoteMarkEnd {
+    font-size: 48px;
+  }
+
+  .benjaminText {
+    font-size: 22px;
+    line-height: 1.35;
+  }
+
+  .quoteLine {
+    max-width: 160px;
+    margin-bottom: 16px;
+  }
+
+  .dividerSection {
+    padding: 40px 0 72px;
   }
 }
