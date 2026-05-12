@@ -19,6 +19,11 @@
   background: linear-gradient(180deg, rgba(88, 88, 88, 0.95) 0%, rgba(56, 56, 56, 1) 100%);
 }
 
+.videoSlot {
+  position: absolute;
+  inset: 0;
+}
+
 .video {
   position: absolute;
   inset: 0;

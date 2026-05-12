@@ -48,6 +48,7 @@ function computeTimelineIndex(currentTime: number, durationSeconds: number): num
 
 export default function HomeVideoSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const videoMountRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [src, setSrc] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -105,16 +106,6 @@ export default function HomeVideoSection() {
     }
     goEnterThenActive();
   }, [src, goEnterThenActive]);
-
-  useEffect(() => {
-    if (!src) {
-      return;
-    }
-    const video = videoRef.current;
-    if (video) {
-      video.muted = true;
-    }
-  }, [src]);
 
   const handleLoadedMetadata = useCallback(() => {
     const video = videoRef.current;
@@ -180,6 +171,7 @@ export default function HomeVideoSection() {
       return;
     }
     try {
+      video.pause();
       video.currentTime = 0;
     } catch {
       /* ignore */
@@ -244,6 +236,66 @@ export default function HomeVideoSection() {
     visualPhaseRef.current = "active";
   }, [isPlaying, src]);
 
+  useEffect(() => {
+    if (!src) {
+      return;
+    }
+    const mount = videoMountRef.current;
+    if (!mount || mount.querySelector("video")) {
+      return;
+    }
+
+    const videoEl = document.createElement("video");
+    videoEl.className = styles.video;
+    videoEl.muted = true;
+    videoEl.playsInline = true;
+    videoEl.loop = false;
+    videoEl.preload = "metadata";
+    videoEl.src = VIDEO_SRC;
+
+    const onLoadedMetadata = () => {
+      handleLoadedMetadata();
+    };
+    const onPlay = () => {
+      setIsPlaying(true);
+    };
+    const onPause = () => {
+      setIsPlaying(false);
+    };
+    const onEnded = () => {
+      handleEnded();
+    };
+    const onTimeUpdate = () => {
+      handleTimeUpdate();
+    };
+
+    videoEl.addEventListener("loadedmetadata", onLoadedMetadata);
+    videoEl.addEventListener("play", onPlay);
+    videoEl.addEventListener("pause", onPause);
+    videoEl.addEventListener("ended", onEnded);
+    videoEl.addEventListener("timeupdate", onTimeUpdate);
+
+    mount.appendChild(videoEl);
+    videoRef.current = videoEl;
+
+    return () => {
+      videoEl.removeEventListener("loadedmetadata", onLoadedMetadata);
+      videoEl.removeEventListener("play", onPlay);
+      videoEl.removeEventListener("pause", onPause);
+      videoEl.removeEventListener("ended", onEnded);
+      videoEl.removeEventListener("timeupdate", onTimeUpdate);
+      try {
+        videoEl.pause();
+      } catch {
+        /* ignore */
+      }
+      if (videoEl.parentNode === mount) {
+        mount.removeChild(videoEl);
+      }
+      videoRef.current = null;
+    };
+  }, [src, handleLoadedMetadata, handleTimeUpdate, handleEnded]);
+
   const phaseClass =
     visualPhase === "exit"
       ? styles.motionTextExit
@@ -257,19 +309,7 @@ export default function HomeVideoSection() {
     <section ref={sectionRef} className={styles.section} aria-label="홈 소개 영상">
       <div className={styles.mediaWrap}>
         {src ? (
-          <video
-            ref={videoRef}
-            className={styles.video}
-            src={src}
-            preload="none"
-            playsInline
-            loop={false}
-            onLoadedMetadata={handleLoadedMetadata}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            onEnded={handleEnded}
-            onTimeUpdate={handleTimeUpdate}
-          />
+          <div ref={videoMountRef} className={styles.videoSlot} aria-hidden="true" />
         ) : (
           <div className={styles.placeholder} aria-hidden />
         )}
