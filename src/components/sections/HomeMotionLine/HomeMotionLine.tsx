@@ -36,6 +36,8 @@ export default function HomeMotionLine() {
             <br />
             I realized that skincare can turn the world upside down
           </p>
+
+          <div className={styles.endingBottomLine} aria-hidden="true" />
         </div>
       </div>
     </section>
