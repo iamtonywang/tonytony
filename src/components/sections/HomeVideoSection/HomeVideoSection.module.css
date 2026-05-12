@@ -82,3 +82,12 @@
   border-radius: 1px;
   box-shadow: 10px 0 0 #ff6a00;
 }
+
+@media (max-width: 768px) {
+  .mediaWrap {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+}
