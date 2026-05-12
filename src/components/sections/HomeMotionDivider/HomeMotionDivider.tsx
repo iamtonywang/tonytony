@@ -105,6 +105,26 @@ export default function HomeMotionDivider() {
         </p>
 
         <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
+          <span className={styles.pcOnly}>The only genetic protein that improves new skin tissue</span>
+          <span className={styles.mobileOnly}>
+            The only genetic protein that improves
+            <br />
+            new skin tissue
+          </span>
+        </p>
+
+        <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
+          <span className={styles.pcOnly}>
+            and regenerative genes to remove toxins from the skin, restore skin, and heal problems
+          </span>
+          <span className={styles.mobileOnly}>
+            and regenerative genes to remove toxins from
+            <br />
+            the skin, restore skin, and heal problems
+          </span>
+        </p>
+
+        <p className={`${styles.manifestoEnLine} ${styles.manifestoEnglish14}`}>
           <span className={styles.pcOnly}>I came to the world to solve all the puzzles about skin</span>
           <span className={styles.mobileOnly}>
             I came to the world to solve
