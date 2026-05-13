@@ -206,14 +206,17 @@
 /* — Interview archive (INTERVIEW 01) — */
 
 .archiveSection {
-  width: 100%;
-  padding: clamp(8px, 2vw, 20px) clamp(24px, 6vw, 48px) clamp(40px, 8vw, 72px);
+  width: min(760px, 88vw);
+  margin: 0 auto;
+  padding: clamp(8px, 2vw, 20px) clamp(16px, 4vw, 32px) clamp(40px, 8vw, 72px);
   box-sizing: border-box;
   background-color: #5f5f5f;
+  text-align: center;
 }
 
 .ivItem {
-  max-width: min(880px, 100%);
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -227,7 +230,7 @@
   border: none;
   background: transparent;
   color: inherit;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   font: inherit;
 }
@@ -243,14 +246,16 @@
   letter-spacing: 0.34em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
   font-weight: 300;
+  text-align: center;
 }
 
 .ivTriggerRow {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+  justify-content: center;
   gap: 14px 24px;
 }
 
@@ -273,6 +278,9 @@
 
 .ivLineTrack {
   margin-top: clamp(16px, 2.5vw, 22px);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: min(680px, 100%);
   height: 1px;
   background: rgba(255, 255, 255, 0.1);
   position: relative;
@@ -284,7 +292,7 @@
   inset: 0;
   background: rgba(255, 255, 255, 0.34);
   transform: scaleX(0);
-  transform-origin: 0 50%;
+  transform-origin: 50% 50%;
   transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -296,6 +304,8 @@
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  width: min(680px, 100%);
+  margin: 0 auto;
 }
 
 .ivPanelOpen {
@@ -314,6 +324,10 @@
     opacity 0.5s ease 0.08s,
     transform 0.55s ease 0.08s;
   transform: translateY(6px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ivPanelOpen .ivPanelPad {
@@ -323,6 +337,11 @@
 
 .ivTurn {
   margin-top: clamp(26px, 4vw, 36px);
+  width: 100%;
+  max-width: min(52ch, 92vw);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .ivTurn:first-child {
@@ -330,28 +349,31 @@
 }
 
 .ivSpeaker {
-  margin: 0 0 8px;
+  margin: 0 auto 8px;
   font-size: 10px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.42);
   font-weight: 300;
+  text-align: center;
+  max-width: min(52ch, 92vw);
 }
 
 .ivText {
-  margin: 0;
+  margin: 0 auto;
   font-size: clamp(14px, 1.85vw, 17px);
   font-weight: 300;
   line-height: 1.78;
   letter-spacing: 0.01em;
   color: rgba(255, 255, 255, 0.92);
-  max-width: 62ch;
+  max-width: min(52ch, 92vw);
+  text-align: center;
 }
 
 @media (max-width: 560px) {
   .ivTriggerRow {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 6px;
   }
 }
