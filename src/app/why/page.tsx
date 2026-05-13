@@ -59,12 +59,37 @@ const INTERVIEW_04_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
 ];
 
+/** 피부 적용과 피부독소 정화 — 사용자 제공 원문 (수정·축약 없음) */
+const INTERVIEW_05_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
+  {
+    speaker: "TONYWANG",
+    text: "피부 적용분야 에서는 피부 독소를 개선하고 염증 반응 감소·재생력 촉진 등 문제성 피부 개선에 특화적인 작용을 합니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "가장 중요한 것은 피부독소 제거입니다 피부 층에 기생하는 악성 세균과 화학성분에 의한 독소 성분을 제거하여 피부를 정화 시키는 것이 주된 요인입니다",
+  },
+  {
+    speaker: "기자",
+    text: "tony wang 논리면 매우 흥미로운 연구 이네요 그렇다면 다른 연구소나 회사들도 식물 세포 유전자 단백질를 연구 개발하나요?",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "한국은 이제 조금씩 활성화 되는 추세인 것 같습니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "유전자와 단백질 연구가 가장 발달한 나라는 미국, 영국, 독일, 중국 등이 대표적입니다. 이들 국가는 유전자 변형(GMO), 품종 개량, 유전체 분석 등 첨단 생명공학 분야에서 선도적 역할을 하고 있습니다. 특히 식뭏세포유전자 분야는 분자 생물학쪽입니다",
+  },
+];
+
 export default function WhyPage() {
   const baseId = useId();
   const [iv01Open, setIv01Open] = useState(false);
   const [iv02Open, setIv02Open] = useState(false);
   const [iv03Open, setIv03Open] = useState(false);
   const [iv04Open, setIv04Open] = useState(false);
+  const [iv05Open, setIv05Open] = useState(false);
   const panelId = `${baseId}-iv01-panel`;
   const headerId = `${baseId}-iv01-header`;
   const panelId02 = `${baseId}-iv02-panel`;
@@ -73,6 +98,8 @@ export default function WhyPage() {
   const headerId03 = `${baseId}-iv03-header`;
   const panelId04 = `${baseId}-iv04-panel`;
   const headerId04 = `${baseId}-iv04-header`;
+  const panelId05 = `${baseId}-iv05-panel`;
+  const headerId05 = `${baseId}-iv05-header`;
 
   const toggleIv01 = useCallback(() => {
     setIv01Open((v) => !v);
@@ -88,6 +115,10 @@ export default function WhyPage() {
 
   const toggleIv04 = useCallback(() => {
     setIv04Open((v) => !v);
+  }, []);
+
+  const toggleIv05 = useCallback(() => {
+    setIv05Open((v) => !v);
   }, []);
 
   return (
@@ -262,6 +293,42 @@ export default function WhyPage() {
               <div className={styles.ivPanelPad} aria-hidden={!iv04Open}>
                 {INTERVIEW_04_TURNS.map((turn, index) => (
                   <div key={`iv04-${index}`} className={styles.ivTurn}>
+                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <p className={styles.ivText}>{turn.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article className={styles.ivItem}>
+          <button
+            type="button"
+            id={headerId05}
+            className={`${styles.ivTrigger} ${iv05Open ? styles.ivTriggerOpen : ""}`}
+            aria-expanded={iv05Open}
+            aria-controls={panelId05}
+            onClick={toggleIv05}
+          >
+            <span className={styles.ivTriggerRow}>
+              <span className={styles.ivChapterTitle}>피부 적용과 피부독소 정화</span>
+            </span>
+            <span className={styles.ivLineTrack} aria-hidden>
+              <span className={styles.ivLineFill} />
+            </span>
+          </button>
+
+          <div
+            id={panelId05}
+            role="region"
+            aria-labelledby={headerId05}
+            className={`${styles.ivPanel} ${iv05Open ? styles.ivPanelOpen : ""}`}
+          >
+            <div className={styles.ivPanelInner}>
+              <div className={styles.ivPanelPad} aria-hidden={!iv05Open}>
+                {INTERVIEW_05_TURNS.map((turn, index) => (
+                  <div key={`iv05-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
