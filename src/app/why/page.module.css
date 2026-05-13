@@ -1,6 +1,340 @@
-.whyPage {
+/* WHY — Interview Archive (editorial, non-FAQ) */
+
+.whyRoot {
+  position: relative;
   width: 100%;
-  min-height: 0;
+  min-height: 100%;
+  color: #f2f2f2;
+  background-color: #5f5f5f;
+  overflow-x: clip;
+}
+
+/* Subtle noise + radial glow */
+.whyRoot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+}
+
+.whyRoot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 85% 55% at 50% -8%,
+    rgba(255, 255, 255, 0.09) 0%,
+    transparent 58%
+  );
+}
+
+.whyInner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 88px) clamp(20px, 4vw, 40px) clamp(56px, 10vw, 120px);
+}
+
+.hairline {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 18%,
+    rgba(255, 255, 255, 0.22) 82%,
+    transparent 100%
+  );
+}
+
+/* — Landing — */
+.landing {
+  margin-bottom: clamp(48px, 8vw, 96px);
+}
+
+.landingFrame {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.landingMedia {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.landingImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.landingOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(20px, 4vw, 36px);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(20, 20, 20, 0.35) 45%,
+    rgba(20, 20, 20, 0.78) 100%
+  );
+}
+
+.landingKicker {
+  font-size: 11px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.52);
+  margin-bottom: 10px;
+}
+
+.landingBrand {
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(36px, 8vw, 56px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+}
+
+.landingTag {
+  margin-top: 14px;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 300;
+}
+
+/* — Archive intro — */
+.intro {
+  margin-bottom: clamp(40px, 7vw, 72px);
+}
+
+.introLabel {
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
+  margin-bottom: 16px;
+}
+
+.introTitle {
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(22px, 3.2vw, 30px);
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  margin: 0 0 20px;
+}
+
+.introBody {
+  font-size: 14px;
+  line-height: 1.75;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.62);
+  max-width: 52ch;
+}
+
+.introBody p {
+  margin: 0 0 14px;
+}
+
+.introBody p:last-child {
+  margin-bottom: 0;
+}
+
+/* — Accordion — */
+.archive {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.accItem {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.accItem:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.accTrigger {
+  width: 100%;
+  display: block;
+  padding: clamp(22px, 4vw, 32px) 0 clamp(18px, 3vw, 26px);
   margin: 0;
-  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.accTrigger:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 4px;
+}
+
+.accTriggerMeta {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.accTriggerRow {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(16px, 3vw, 28px);
+}
+
+.accBigNum {
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(40px, 9vw, 64px);
+  font-weight: 200;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.92);
+  flex-shrink: 0;
+}
+
+.accChapterTitle {
+  font-size: clamp(15px, 2.1vw, 18px);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.accLineTrack {
+  margin-top: clamp(16px, 2.5vw, 22px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.accLineFill {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.38);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.accTriggerOpen .accLineFill {
+  transform: scaleX(1);
+}
+
+/* Height + reveal */
+.accPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.accPanelOpen {
+  grid-template-rows: 1fr;
+}
+
+.accPanelInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.accPanelPad {
+  padding-bottom: clamp(24px, 4vw, 40px);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.55s ease 0.1s,
+    transform 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.accPanelOpen .accPanelPad {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.exchange {
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+.exchange:first-child {
+  margin-top: 0;
+}
+
+.labelReporter {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  margin: 0 0 8px;
+  font-weight: 400;
+}
+
+.reporter {
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 300;
+  color: rgba(200, 200, 200, 0.72);
+  margin: 0 0 22px;
+  max-width: 62ch;
+}
+
+.labelTony {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.52);
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+
+.tony {
+  font-size: clamp(15px, 2.1vw, 19px);
+  line-height: 1.72;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.94);
+  margin: 0;
+  white-space: pre-wrap;
+  max-width: 58ch;
+}
+
+.tonyManifesto {
+  font-size: clamp(16px, 2.25vw, 21px);
+  line-height: 1.68;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 560px) {
+  .accTriggerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
 }
