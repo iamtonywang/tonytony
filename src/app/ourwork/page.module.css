@@ -167,7 +167,7 @@
   text-align: center;
   padding: 24px;
   backdrop-filter: blur(12px);
-  animation: biotechFloat 7s ease-in-out infinite;
+  animation: bioCapsuleFloatMobile 7s ease-in-out infinite;
 }
 
 .bioCapsule:nth-child(2) {
@@ -236,7 +236,7 @@
   color: #8ec0ff;
 }
 
-@keyframes biotechFloat {
+@keyframes bioCapsuleFloatMobile {
   0% {
     transform: translateY(0px);
   }
@@ -250,11 +250,53 @@
   }
 }
 
+@keyframes biotechFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
 @media (min-width: 769px) {
   .bioProcessNodes {
     flex-wrap: nowrap;
     gap: 38px;
     margin-top: 52px;
+  }
+
+  .bioCapsule {
+    animation-name: biotechFloat;
+  }
+
+  .bioCapsule span {
+    font-size: 19px;
+  }
+
+  .greenCapsule {
+    border: 2px solid rgba(72, 255, 121, 0.45);
+  }
+
+  .yellowCapsule {
+    border: 2px solid rgba(255, 214, 64, 0.42);
+  }
+
+  .whiteCapsule {
+    border: 2px solid rgba(255, 255, 255, 0.42);
+  }
+
+  .orangeCapsule {
+    border: 2px solid rgba(255, 122, 0, 0.45);
+  }
+
+  .blueCapsule {
+    border: 2px solid rgba(76, 148, 255, 0.45);
   }
 }
 
