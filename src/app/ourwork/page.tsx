@@ -37,8 +37,6 @@ export default function OurWorkPage() {
         </div>
       </section>
 
-      <div className={styles.ourWorkLandingSolidDivider} role="presentation" aria-hidden="true" />
-
       <section className={styles.fadeHeroSection} aria-hidden="true">
         <div className={styles.fadePortrait} />
         <div className={styles.heroTextOverlay}>
