@@ -81,6 +81,44 @@ export default function OurWorkPage() {
           피부 트러블. 피부 조직 복원 목적 단백질 연구 개발
         </p>
       </section>
+
+      <section className={styles.bioProcessSection} aria-label="생명공학 DNA 공정">
+        <div className={styles.bioProcessCaption}>
+          <p>식물세포 유전자 재 조합 단백질 합성 연구</p>
+          <p>세포 DNA 클로닝 유전자 단백질 생성</p>
+        </div>
+
+        <div className={styles.bioProcessTrack}>
+          <div className={styles.bioProcessLine} aria-hidden="true" />
+
+          <div className={styles.bioProcessNodes}>
+            <div className={styles.bioNode}>
+              <span className={styles.bioDot} />
+              <p>식물 세포 정제</p>
+            </div>
+
+            <div className={styles.bioNode}>
+              <span className={styles.bioDot} />
+              <p>Protein 추출</p>
+            </div>
+
+            <div className={styles.bioNode}>
+              <span className={`${styles.bioDot} ${styles.bioAccentDot}`} />
+              <p>cloning 분리</p>
+            </div>
+
+            <div className={styles.bioNode}>
+              <span className={`${styles.bioDot} ${styles.bioAccentDot}`} />
+              <p>제3세포 주입</p>
+            </div>
+
+            <div className={styles.bioNode}>
+              <span className={styles.bioDot} />
+              <p>단백질 재조합</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

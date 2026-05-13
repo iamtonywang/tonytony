@@ -106,6 +106,126 @@
   display: none;
 }
 
+.bioProcessSection {
+  width: 100%;
+  padding: 72px 6vw 92px;
+  background: #5f5f5f;
+  overflow: hidden;
+}
+
+.bioProcessCaption {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.bioProcessCaption p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.bioProcessCaption p + p {
+  margin-top: 6px;
+}
+
+.bioProcessTrack {
+  position: relative;
+  width: 100%;
+}
+
+.bioProcessLine {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(980px, 84vw);
+  height: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0.65),
+      rgba(255, 255, 255, 0.35),
+      transparent
+    );
+}
+
+.bioProcessNodes {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 72px;
+}
+
+.bioNode {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bioFloat 6s ease-in-out infinite;
+}
+
+.bioNode:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.bioNode:nth-child(3) {
+  animation-delay: 1.6s;
+}
+
+.bioNode:nth-child(4) {
+  animation-delay: 2.4s;
+}
+
+.bioNode:nth-child(5) {
+  animation-delay: 3.2s;
+}
+
+.bioDot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.35),
+    0 0 22px rgba(255, 255, 255, 0.18);
+}
+
+.bioAccentDot {
+  background: #ff7a00;
+  box-shadow:
+    0 0 12px rgba(255, 122, 0, 0.45),
+    0 0 28px rgba(255, 122, 0, 0.24);
+}
+
+.bioNode p {
+  margin: 18px 0 0;
+  font-size: 13px;
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+@keyframes bioFloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 @media (max-width: 768px) {
   .heroTextOverlay {
     justify-content: flex-start;
@@ -164,5 +284,28 @@
     max-width: 92vw;
     margin: 28px 0 0;
     line-height: 1.18;
+  }
+
+  .bioProcessSection {
+    padding: 54px 6vw 72px;
+  }
+
+  .bioProcessLine {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: auto;
+  }
+
+  .bioProcessNodes {
+    flex-direction: column;
+    align-items: center;
+    gap: 42px;
+  }
+
+  .bioNode p {
+    margin-top: 14px;
   }
 }
