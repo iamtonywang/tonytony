@@ -252,15 +252,23 @@
 
 @keyframes biotechFloat {
   0% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px) rotate(0deg) translateX(0px);
+  }
+
+  25% {
+    transform: translateY(-18px) rotate(4deg) translateX(8px);
   }
 
   50% {
-    transform: translateY(-12px) rotate(3deg);
+    transform: translateY(-26px) rotate(-5deg) translateX(-8px);
+  }
+
+  75% {
+    transform: translateY(-12px) rotate(3deg) translateX(6px);
   }
 
   100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px) rotate(0deg) translateX(0px);
   }
 }
 
@@ -273,30 +281,82 @@
 
   .bioCapsule {
     animation-name: biotechFloat;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  .bioCapsule:nth-child(1) {
+    animation-duration: 6.2s;
+    animation-delay: 0s;
+  }
+
+  .bioCapsule:nth-child(2) {
+    animation-duration: 7.1s;
+    animation-delay: 0.45s;
+  }
+
+  .bioCapsule:nth-child(3) {
+    animation-duration: 5.8s;
+    animation-delay: 0.2s;
+  }
+
+  .bioCapsule:nth-child(4) {
+    animation-duration: 8.3s;
+    animation-delay: 0.65s;
+  }
+
+  .bioCapsule:nth-child(5) {
+    animation-duration: 6.8s;
+    animation-delay: 0.1s;
+  }
+
+  .bioCapsule:nth-child(6) {
+    animation-duration: 7.5s;
+    animation-delay: 0.55s;
   }
 
   .bioCapsule span {
-    font-size: 19px;
+    font-size: 17px;
   }
 
   .greenCapsule {
-    border: 2px solid rgba(72, 255, 121, 0.45);
+    border: 3px solid rgba(72, 255, 121, 0.82);
+    box-shadow:
+      0 0 42px rgba(72, 255, 121, 0.38),
+      0 0 72px rgba(72, 255, 121, 0.16),
+      inset 0 0 34px rgba(72, 255, 121, 0.14);
   }
 
   .yellowCapsule {
-    border: 2px solid rgba(255, 214, 64, 0.42);
+    border: 3px solid rgba(255, 214, 64, 0.82);
+    box-shadow:
+      0 0 42px rgba(255, 214, 64, 0.34),
+      0 0 72px rgba(255, 214, 64, 0.14),
+      inset 0 0 34px rgba(255, 214, 64, 0.14);
   }
 
   .whiteCapsule {
-    border: 2px solid rgba(255, 255, 255, 0.42);
+    border: 3px solid rgba(255, 255, 255, 0.82);
+    box-shadow:
+      0 0 42px rgba(255, 255, 255, 0.22),
+      0 0 72px rgba(255, 255, 255, 0.1),
+      inset 0 0 34px rgba(255, 255, 255, 0.1);
   }
 
   .orangeCapsule {
-    border: 2px solid rgba(255, 122, 0, 0.45);
+    border: 3px solid rgba(255, 122, 0, 0.82);
+    box-shadow:
+      0 0 42px rgba(255, 122, 0, 0.4),
+      0 0 72px rgba(255, 122, 0, 0.18),
+      inset 0 0 36px rgba(255, 122, 0, 0.14);
   }
 
   .blueCapsule {
-    border: 2px solid rgba(76, 148, 255, 0.45);
+    border: 3px solid rgba(76, 148, 255, 0.82);
+    box-shadow:
+      0 0 42px rgba(76, 148, 255, 0.36),
+      0 0 72px rgba(76, 148, 255, 0.14),
+      inset 0 0 36px rgba(76, 148, 255, 0.14);
   }
 }
 
