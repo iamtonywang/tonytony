@@ -336,7 +336,7 @@
 }
 
 .ivTurn {
-  margin-top: clamp(26px, 4vw, 36px);
+  margin-top: clamp(30px, 4.6vw, 42px);
   width: 100%;
   max-width: min(52ch, 92vw);
   margin-left: auto;
@@ -348,15 +348,24 @@
   margin-top: 0;
 }
 
+/* INTERVIEW 01: odd turns = TONYWANG, even = 기자 (교대 고정 순서) */
 .ivSpeaker {
-  margin: 0 auto 8px;
+  margin: 0 auto clamp(9px, 1.4vw, 12px);
   font-size: 10px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.42);
-  font-weight: 300;
   text-align: center;
   max-width: min(52ch, 92vw);
+}
+
+.ivTurn:nth-child(odd) .ivSpeaker {
+  color: rgba(255, 255, 255, 0.74);
+  font-weight: 400;
+}
+
+.ivTurn:nth-child(even) .ivSpeaker {
+  color: rgba(255, 255, 255, 0.56);
+  font-weight: 300;
 }
 
 .ivText {
