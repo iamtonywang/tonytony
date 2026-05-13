@@ -370,7 +370,7 @@
 
 .ivText {
   margin: 0 auto;
-  font-size: clamp(14px, 1.85vw, 17px);
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.78;
   letter-spacing: 0.01em;
