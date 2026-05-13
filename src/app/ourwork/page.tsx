@@ -3,6 +3,42 @@ import styles from "./page.module.css";
 export default function OurWorkPage() {
   return (
     <div className={styles.ourWorkPage}>
+      <section className={styles.ourWorkLandingSection} aria-label="OurWork 랜딩">
+        <div className={styles.ourWorkLandingMotionLine} aria-hidden="true" />
+
+        <div className={styles.ourWorkLandingCopy}>
+          <h1 className={styles.ourWorkLandingHeroTitle}>OUR WORK</h1>
+
+          <h3 className={styles.ourWorkLandingSubTitle}>plant cell genetic protein</h3>
+
+          <h2 className={styles.ourWorkLandingKoreanTitle}>식물 세포 유전자 단백질 연구</h2>
+
+          <div className={styles.ourWorkLandingDescription}>
+            <p>What we prove in the lab becomes the structure your skin can trust.</p>
+            <p>
+              Cloning and recombination across different cell DNA, the third structure where new cells
+              <br />
+              assemble new efficacy — documented step by step.
+            </p>
+            <p>세포 신호를 정밀하게 조율하고 ECM 재구성을 향한 연구의 기록입니다.</p>
+          </div>
+
+          <div className={styles.ourWorkLandingMidLine} aria-hidden="true" />
+
+          <div className={styles.ourWorkLandingEnding}>
+            <h2 className={styles.ourWorkLandingEndingTitle}>TONY WANG</h2>
+
+            <p className={styles.ourWorkLandingEndingText}>
+              연구로 쌓은 공정을, 피부에 닿기 전까지 끝까지 검증합니다.
+            </p>
+
+            <div className={styles.ourWorkLandingEndingLine} aria-hidden="true" />
+          </div>
+        </div>
+      </section>
+
+      <div className={styles.ourWorkLandingSolidDivider} role="presentation" aria-hidden="true" />
+
       <section className={styles.fadeHeroSection} aria-hidden="true">
         <div className={styles.fadePortrait} />
         <div className={styles.heroTextOverlay}>

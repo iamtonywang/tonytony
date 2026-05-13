@@ -7,6 +7,165 @@
   overflow: hidden;
 }
 
+/* OurWork 전용 랜딩: Home 상단과 유사한 구성·감성 (HomeMotionLine은 Home 문구/클래스 전용이라 미사용) */
+.ourWorkLandingSection {
+  width: 100%;
+  padding: 18px 0 0;
+  background: rgba(95, 95, 95, 1);
+}
+
+.ourWorkLandingMotionLine {
+  width: min(1120px, 92vw);
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.ourWorkLandingMotionLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  animation: ourWorkLandingTopSweep 3.8s ease-in-out infinite;
+}
+
+@keyframes ourWorkLandingTopSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  55% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes ourWorkLandingLineSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  55% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.ourWorkLandingCopy {
+  width: 100%;
+  padding: 42px 6vw 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.ourWorkLandingHeroTitle {
+  margin: 0;
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.ourWorkLandingSubTitle {
+  margin: 14px 0 0;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.ourWorkLandingKoreanTitle {
+  margin: 6px 0 0;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.ourWorkLandingDescription {
+  margin-top: 24px;
+  max-width: 860px;
+}
+
+.ourWorkLandingDescription p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+.ourWorkLandingMidLine {
+  width: min(760px, 88vw);
+  height: 1px;
+  margin: 26px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.ourWorkLandingMidLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.92), transparent);
+  animation: ourWorkLandingLineSweep 3.8s ease-in-out infinite;
+}
+
+.ourWorkLandingEnding {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ourWorkLandingEndingTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.ourWorkLandingEndingText {
+  margin: 10px 0 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.ourWorkLandingEndingLine {
+  width: min(620px, 82vw);
+  height: 1px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.58), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.ourWorkLandingEndingLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.92), transparent);
+  animation: ourWorkLandingLineSweep 3.8s ease-in-out infinite;
+}
+
+.ourWorkLandingSolidDivider {
+  width: min(1120px, 92vw);
+  height: 1px;
+  margin: 0 auto 20px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+}
+
 .fadeHeroSection {
   position: relative;
   width: 100%;
@@ -364,6 +523,39 @@
 }
 
 @media (max-width: 768px) {
+  .ourWorkLandingHeroTitle {
+    font-size: 42px;
+  }
+
+  .ourWorkLandingSubTitle,
+  .ourWorkLandingKoreanTitle {
+    font-size: 17px;
+  }
+
+  .ourWorkLandingDescription {
+    max-width: 92vw;
+  }
+
+  .ourWorkLandingMidLine {
+    margin-top: 18px;
+  }
+
+  .ourWorkLandingEnding {
+    margin-top: 18px;
+  }
+
+  .ourWorkLandingEndingText {
+    line-height: 1.6;
+  }
+
+  .ourWorkLandingEndingLine {
+    margin-top: 8px;
+  }
+
+  .ourWorkLandingSolidDivider {
+    margin-bottom: 16px;
+  }
+
   .heroTextOverlay {
     justify-content: flex-start;
     padding-top: 260px;
