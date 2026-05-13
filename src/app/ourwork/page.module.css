@@ -665,10 +665,15 @@
   }
 
   .bioProcessSection {
-    padding: 54px 6vw 72px;
+    padding: 18px 6vw 72px;
+  }
+
+  .bioProcessCaption {
+    margin-bottom: 20px;
   }
 
   .bioProcessNodes {
+    margin-top: 0;
     flex-direction: column;
     align-items: center;
     gap: 42px;
