@@ -66,17 +66,16 @@
   text-align: center;
 }
 
-.hairline {
+.hairlineShort {
   width: 100%;
-  max-width: min(720px, 88vw);
+  max-width: min(420px, 62vw);
   height: 1px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: clamp(8px, 2vw, 16px) auto clamp(28px, 6vw, 52px);
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.22) 20%,
-    rgba(255, 255, 255, 0.22) 80%,
+    rgba(255, 255, 255, 0.22) 18%,
+    rgba(255, 255, 255, 0.22) 82%,
     transparent 100%
   );
 }

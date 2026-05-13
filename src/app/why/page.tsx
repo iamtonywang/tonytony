@@ -14,8 +14,6 @@ export default function WhyPage() {
         <div className={styles.transitionGlow} aria-hidden />
 
         <div className={styles.transitionInner}>
-          <div className={styles.hairline} aria-hidden />
-
           <div className={styles.statementWrap}>
             <p className={styles.statementLine}>WHY IS NOT A STORY.</p>
             <p className={`${styles.statementLine} ${styles.statementLineMuted}`}>
@@ -23,14 +21,14 @@ export default function WhyPage() {
             </p>
           </div>
 
+          <div className={styles.hairlineShort} aria-hidden />
+
           <div className={styles.subCopy}>
             <p className={styles.subLine}>THIS IS NOT MARKETING.</p>
             <p className={`${styles.subLine} ${styles.subLineMuted}`}>
               THIS IS AN INTERVIEW ARCHIVE.
             </p>
           </div>
-
-          <div className={styles.hairline} aria-hidden />
         </div>
       </section>
 
