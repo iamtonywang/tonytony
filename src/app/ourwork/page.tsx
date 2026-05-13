@@ -91,32 +91,29 @@ export default function OurWorkPage() {
         </div>
 
         <div className={styles.bioProcessTrack}>
-          <div className={styles.bioProcessLine} aria-hidden="true" />
-
           <div className={styles.bioProcessNodes}>
-            <div className={styles.bioNode}>
-              <span className={styles.bioDot} />
-              <p>식물 세포 정제</p>
+            <div className={`${styles.bioCapsule} ${styles.greenCapsule}`}>
+              <span>식물 세포 정제</span>
             </div>
 
-            <div className={styles.bioNode}>
-              <span className={styles.bioDot} />
-              <p>Protein 추출</p>
+            <div className={`${styles.bioCapsule} ${styles.yellowCapsule}`}>
+              <span>Protein 추출</span>
             </div>
 
-            <div className={styles.bioNode}>
-              <span className={`${styles.bioDot} ${styles.bioAccentDot}`} />
-              <p>cloning 분리</p>
+            <div className={`${styles.bioCapsule} ${styles.whiteCapsule}`}>
+              <span>cloning 분리</span>
             </div>
 
-            <div className={styles.bioNode}>
-              <span className={`${styles.bioDot} ${styles.bioAccentDot}`} />
-              <p>제3세포 주입</p>
+            <div className={`${styles.bioCapsule} ${styles.orangeCapsule}`}>
+              <span>제3세포 주입</span>
             </div>
 
-            <div className={styles.bioNode}>
-              <span className={styles.bioDot} />
-              <p>단백질 재조합</p>
+            <div className={`${styles.bioCapsule} ${styles.blueCapsule}`}>
+              <span>단백질 재조합</span>
+            </div>
+
+            <div className={`${styles.bioCapsule} ${styles.greenCapsule}`}>
+              <span>NEW 단백질</span>
             </div>
           </div>
         </div>
