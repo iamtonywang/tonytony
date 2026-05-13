@@ -669,8 +669,8 @@
   }
 
   .bioProcessCaption {
-    margin-top: -10px;
-    margin-bottom: 12px;
+    transform: translateY(-44px);
+    margin-bottom: -32px;
   }
 
   .bioProcessNodes {
