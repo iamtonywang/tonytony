@@ -107,6 +107,10 @@
     );
 }
 
+.pcOverlayProcessNodes {
+  display: none;
+}
+
 .mobileKoreanSection {
   display: none;
 }
@@ -170,23 +174,23 @@
   animation: bioCapsuleFloatMobile 7s ease-in-out infinite;
 }
 
-.bioCapsule:nth-child(2) {
+.bioProcessNodes > .bioCapsule:nth-child(2) {
   animation-delay: 0.9s;
 }
 
-.bioCapsule:nth-child(3) {
+.bioProcessNodes > .bioCapsule:nth-child(3) {
   animation-delay: 1.8s;
 }
 
-.bioCapsule:nth-child(4) {
+.bioProcessNodes > .bioCapsule:nth-child(4) {
   animation-delay: 2.7s;
 }
 
-.bioCapsule:nth-child(5) {
+.bioProcessNodes > .bioCapsule:nth-child(5) {
   animation-delay: 3.6s;
 }
 
-.bioCapsule:nth-child(6) {
+.bioProcessNodes > .bioCapsule:nth-child(6) {
   animation-delay: 4.5s;
 }
 
@@ -273,56 +277,63 @@
 }
 
 @media (min-width: 769px) {
-  .bioProcessNodes {
-    flex-wrap: nowrap;
-    gap: 38px;
-    margin-top: 52px;
+  .bioProcessSection {
+    display: none;
   }
 
-  .bioCapsule {
-    min-width: 136px;
-    min-height: 136px;
-    padding: 17px;
+  .pcOverlayProcessNodes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 34px;
+    margin-top: 28px;
+    pointer-events: none;
+  }
+
+  .pcOverlayProcessNodes .bioCapsule {
+    min-width: 128px;
+    min-height: 128px;
+    padding: 16px;
     animation-name: biotechFloat;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
   }
 
-  .bioCapsule:nth-child(1) {
+  .pcOverlayProcessNodes .bioCapsule:nth-child(1) {
     animation-duration: 6.2s;
     animation-delay: 0s;
   }
 
-  .bioCapsule:nth-child(2) {
+  .pcOverlayProcessNodes .bioCapsule:nth-child(2) {
     animation-duration: 7.1s;
     animation-delay: 0.45s;
   }
 
-  .bioCapsule:nth-child(3) {
+  .pcOverlayProcessNodes .bioCapsule:nth-child(3) {
     animation-duration: 5.8s;
     animation-delay: 0.2s;
   }
 
-  .bioCapsule:nth-child(4) {
+  .pcOverlayProcessNodes .bioCapsule:nth-child(4) {
     animation-duration: 8.3s;
     animation-delay: 0.65s;
   }
 
-  .bioCapsule:nth-child(5) {
+  .pcOverlayProcessNodes .bioCapsule:nth-child(5) {
     animation-duration: 6.8s;
     animation-delay: 0.1s;
   }
 
-  .bioCapsule:nth-child(6) {
+  .pcOverlayProcessNodes .bioCapsule:nth-child(6) {
     animation-duration: 7.5s;
     animation-delay: 0.55s;
   }
 
-  .bioCapsule span {
+  .pcOverlayProcessNodes .bioCapsule span {
     font-size: 17px;
   }
 
-  .greenCapsule {
+  .pcOverlayProcessNodes .greenCapsule {
     border: 3px solid rgba(72, 255, 121, 0.82);
     box-shadow:
       0 0 42px rgba(72, 255, 121, 0.38),
@@ -330,7 +341,7 @@
       inset 0 0 34px rgba(72, 255, 121, 0.14);
   }
 
-  .yellowCapsule {
+  .pcOverlayProcessNodes .yellowCapsule {
     border: 3px solid rgba(255, 214, 64, 0.82);
     box-shadow:
       0 0 42px rgba(255, 214, 64, 0.34),
@@ -338,7 +349,7 @@
       inset 0 0 34px rgba(255, 214, 64, 0.14);
   }
 
-  .whiteCapsule {
+  .pcOverlayProcessNodes .whiteCapsule {
     border: 3px solid rgba(255, 255, 255, 0.82);
     box-shadow:
       0 0 42px rgba(255, 255, 255, 0.22),
@@ -346,7 +357,7 @@
       inset 0 0 34px rgba(255, 255, 255, 0.1);
   }
 
-  .orangeCapsule {
+  .pcOverlayProcessNodes .orangeCapsule {
     border: 3px solid rgba(255, 122, 0, 0.82);
     box-shadow:
       0 0 42px rgba(255, 122, 0, 0.4),
@@ -354,7 +365,7 @@
       inset 0 0 36px rgba(255, 122, 0, 0.14);
   }
 
-  .blueCapsule {
+  .pcOverlayProcessNodes .blueCapsule {
     border: 3px solid rgba(76, 148, 255, 0.82);
     box-shadow:
       0 0 42px rgba(76, 148, 255, 0.36),
@@ -379,6 +390,10 @@
   }
 
   .pcOverlayProcessLine {
+    display: none;
+  }
+
+  .pcOverlayProcessNodes {
     display: none;
   }
 

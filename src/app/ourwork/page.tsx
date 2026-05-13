@@ -47,6 +47,32 @@ export default function OurWorkPage() {
           </p>
 
           <div className={styles.pcOverlayProcessLine} aria-hidden="true" />
+
+          <div className={styles.pcOverlayProcessNodes}>
+            <div className={`${styles.bioCapsule} ${styles.greenCapsule}`}>
+              <span>식물 세포 정제</span>
+            </div>
+
+            <div className={`${styles.bioCapsule} ${styles.yellowCapsule}`}>
+              <span>Protein 추출</span>
+            </div>
+
+            <div className={`${styles.bioCapsule} ${styles.whiteCapsule}`}>
+              <span>cloning 분리</span>
+            </div>
+
+            <div className={`${styles.bioCapsule} ${styles.orangeCapsule}`}>
+              <span>제3세포 주입</span>
+            </div>
+
+            <div className={`${styles.bioCapsule} ${styles.blueCapsule}`}>
+              <span>단백질 재조합</span>
+            </div>
+
+            <div className={`${styles.bioCapsule} ${styles.greenCapsule}`}>
+              <span>NEW 단백질</span>
+            </div>
+          </div>
         </div>
       </section>
 
