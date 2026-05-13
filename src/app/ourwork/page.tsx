@@ -116,6 +116,7 @@ export default function OurWorkPage() {
           <br />
           피부 트러블. 피부 조직 복원 목적 단백질 연구 개발
         </p>
+        <div className={styles.mobileKoreanBottomLine} aria-hidden="true" />
       </section>
 
       <section className={styles.bioProcessSection} aria-label="생명공학 DNA 공정">

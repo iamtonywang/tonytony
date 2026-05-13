@@ -414,6 +414,28 @@
   }
 }
 
+@keyframes mobileBiotechFloat {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: translateY(-18px) translateX(8px) rotate(4deg) scale(1.04);
+  }
+
+  50% {
+    transform: translateY(-30px) translateX(-8px) rotate(-5deg) scale(1.06);
+  }
+
+  75% {
+    transform: translateY(-12px) translateX(6px) rotate(3deg) scale(1.03);
+  }
+
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+  }
+}
+
 @keyframes biotechFloat {
   0% {
     transform: translateY(0px) rotate(0deg) translateX(0px) scale(1);
@@ -610,6 +632,19 @@
     color: rgba(255, 255, 255, 0.84);
   }
 
+  .mobileKoreanBottomLine {
+    width: min(320px, 84vw);
+    height: 1px;
+    margin: 28px auto 34px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.72),
+      transparent
+    );
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.28);
+  }
+
   .mobileKoreanSection .pcOnly {
     display: none;
   }
@@ -637,5 +672,63 @@
     flex-direction: column;
     align-items: center;
     gap: 42px;
+  }
+
+  .bioCapsule {
+    min-width: 136px;
+    min-height: 136px;
+    padding: 16px;
+    animation-name: mobileBiotechFloat;
+    animation-duration: 5.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  .bioCapsule span {
+    font-size: 17px;
+    font-weight: 300;
+  }
+
+  .greenCapsule,
+  .yellowCapsule,
+  .whiteCapsule,
+  .orangeCapsule,
+  .blueCapsule {
+    border-width: 3px;
+  }
+
+  .greenCapsule {
+    box-shadow:
+      0 0 34px rgba(72, 255, 121, 0.48),
+      0 0 70px rgba(72, 255, 121, 0.22),
+      inset 0 0 34px rgba(72, 255, 121, 0.14);
+  }
+
+  .yellowCapsule {
+    box-shadow:
+      0 0 34px rgba(255, 214, 64, 0.48),
+      0 0 70px rgba(255, 214, 64, 0.22),
+      inset 0 0 34px rgba(255, 214, 64, 0.14);
+  }
+
+  .whiteCapsule {
+    box-shadow:
+      0 0 34px rgba(255, 255, 255, 0.42),
+      0 0 70px rgba(255, 255, 255, 0.18),
+      inset 0 0 34px rgba(255, 255, 255, 0.12);
+  }
+
+  .orangeCapsule {
+    box-shadow:
+      0 0 34px rgba(255, 122, 0, 0.54),
+      0 0 76px rgba(255, 122, 0, 0.25),
+      inset 0 0 36px rgba(255, 122, 0, 0.15);
+  }
+
+  .blueCapsule {
+    box-shadow:
+      0 0 34px rgba(76, 148, 255, 0.52),
+      0 0 74px rgba(76, 148, 255, 0.24),
+      inset 0 0 36px rgba(76, 148, 255, 0.14);
   }
 }
