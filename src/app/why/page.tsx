@@ -1,7 +1,35 @@
+"use client";
+
+import { useCallback, useId, useState } from "react";
 import HomeMotionLine from "@/components/sections/HomeMotionLine/HomeMotionLine";
 import styles from "./page.module.css";
 
+/** INTERVIEW 01 — 원문 그대로 (수정·축약 없음) */
+const INTERVIEW_01_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
+  { speaker: "TONYWANG", text: "안녕하세요 TONYWANG입니다" },
+  { speaker: "기자", text: "안녕하세요 채수현 기자입니다" },
+  { speaker: "TONYWANG", text: "네 반가워요" },
+  {
+    speaker: "기자",
+    text: "인터뷰에 응해 주셔서 감사합니다 언론 기사와 홈페이지를 살펴보니 기존회사들과 환경이 다른점이 많은 것 같아요 TONYWANG 에 대해서 설명좀 해주시겠어요",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "그런가요? 사실 TONYWANG 은 전부 날것 같은 다시 말하면 익히지 않은 생선가 같아요 의도 하지 않은 건데 사실 기존 패턴들을 굉장히 싫어합니다",
+  },
+  { speaker: "기자", text: "그렇군요" },
+];
+
 export default function WhyPage() {
+  const baseId = useId();
+  const [iv01Open, setIv01Open] = useState(false);
+  const panelId = `${baseId}-iv01-panel`;
+  const headerId = `${baseId}-iv01-header`;
+
+  const toggleIv01 = useCallback(() => {
+    setIv01Open((v) => !v);
+  }, []);
+
   return (
     <div className={styles.whyPage}>
       <HomeMotionLine />
@@ -30,6 +58,48 @@ export default function WhyPage() {
             </p>
           </div>
         </div>
+      </section>
+
+      <section className={styles.archiveSection} aria-label="Interview archive">
+        <article className={styles.ivItem}>
+          <button
+            type="button"
+            id={headerId}
+            className={`${styles.ivTrigger} ${iv01Open ? styles.ivTriggerOpen : ""}`}
+            aria-expanded={iv01Open}
+            aria-controls={panelId}
+            onClick={toggleIv01}
+          >
+            <span className={styles.ivMeta}>INTERVIEW 01</span>
+            <span className={styles.ivTriggerRow}>
+              <span className={styles.ivNum} aria-hidden>
+                01
+              </span>
+              <span className={styles.ivChapterTitle}>첫 인사와 TONYWANG 소개</span>
+            </span>
+            <span className={styles.ivLineTrack} aria-hidden>
+              <span className={styles.ivLineFill} />
+            </span>
+          </button>
+
+          <div
+            id={panelId}
+            role="region"
+            aria-labelledby={headerId}
+            className={`${styles.ivPanel} ${iv01Open ? styles.ivPanelOpen : ""}`}
+          >
+            <div className={styles.ivPanelInner}>
+              <div className={styles.ivPanelPad} aria-hidden={!iv01Open}>
+                {INTERVIEW_01_TURNS.map((turn, index) => (
+                  <div key={`iv01-${index}`} className={styles.ivTurn}>
+                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <p className={styles.ivText}>{turn.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
       </section>
 
       <div className={styles.bodySpacer} aria-hidden />
