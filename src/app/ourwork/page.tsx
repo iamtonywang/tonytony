@@ -7,7 +7,7 @@ export default function OurWorkPage() {
         <div className={styles.ourWorkLandingMotionLine} aria-hidden="true" />
 
         <div className={styles.ourWorkLandingCopy}>
-          <h1 className={styles.ourWorkLandingHeroTitle}>OUR WORK</h1>
+          <h1 className={styles.ourWorkLandingHeroTitle}>TONY WANG</h1>
 
           <h3 className={styles.ourWorkLandingSubTitle}>plant cell genetic protein</h3>
 
