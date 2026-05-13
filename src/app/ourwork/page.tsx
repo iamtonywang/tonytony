@@ -158,7 +158,17 @@ export default function OurWorkPage() {
         </div>
       </section>
 
-      <div className={styles.processFooterLine} aria-hidden="true" />
+      <div className={styles.processQuoteBlock}>
+        <div className={styles.processQuoteLine} aria-hidden="true" />
+
+        <p className={styles.processQuoteText}>
+          {"I'll show you the reality, not a dream the greatness of Tony Wang"}
+        </p>
+
+        <p className={styles.processQuoteText}>It starts in May, 2026</p>
+
+        <div className={styles.processQuoteLine} aria-hidden="true" />
+      </div>
     </div>
   );
 }

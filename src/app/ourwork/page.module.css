@@ -278,16 +278,40 @@
   overflow: hidden;
 }
 
-.processFooterLine {
-  width: min(720px, 82vw);
+.processQuoteBlock {
+  width: 100%;
+  margin: 52px auto 0;
+  text-align: center;
+}
+
+.processQuoteLine {
+  width: min(760px, 84vw);
   height: 1px;
-  margin: 42px auto 0;
+  margin: 0 auto;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.58),
     transparent
   );
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+}
+
+.processQuoteText {
+  margin: 18px 0 0;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.processQuoteText + .processQuoteText {
+  margin-top: 4px;
+}
+
+.processQuoteText + .processQuoteLine,
+.processQuoteBlock .processQuoteLine:last-child {
+  margin-top: 22px;
 }
 
 .bioProcessCaption {
@@ -750,5 +774,18 @@
       0 0 48px rgba(76, 148, 255, 0.56),
       0 0 92px rgba(120, 180, 255, 0.28),
       inset 0 0 42px rgba(76, 148, 255, 0.18);
+  }
+
+  .processQuoteBlock {
+    margin-top: 42px;
+  }
+
+  .processQuoteLine {
+    width: min(320px, 84vw);
+  }
+
+  .processQuoteText {
+    font-size: 14px;
+    line-height: 1.65;
   }
 }
