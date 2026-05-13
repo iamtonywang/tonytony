@@ -47,17 +47,32 @@ const INTERVIEW_03_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
 ];
 
+/** 식물세포 유전자 단백질의 원리 — 사용자 제공 원문 (수정·축약 없음) */
+const INTERVIEW_04_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
+  {
+    speaker: "기자",
+    text: "흠 그렇군요 그럼 주로 연구한 단백질은 어디에 적용되나요?",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "광범위한 파이프라인을 구축 할수 있어요 형질전환(transformation) 하는 과정에서 제3의 유전자 로 변환 후 특정 질환에 포커스를 맞춰 식물세포에 원하는 유전자를 적용하여 타겟 질환에 적용되는 단백질을 개발 하는 것입니다",
+  },
+];
+
 export default function WhyPage() {
   const baseId = useId();
   const [iv01Open, setIv01Open] = useState(false);
   const [iv02Open, setIv02Open] = useState(false);
   const [iv03Open, setIv03Open] = useState(false);
+  const [iv04Open, setIv04Open] = useState(false);
   const panelId = `${baseId}-iv01-panel`;
   const headerId = `${baseId}-iv01-header`;
   const panelId02 = `${baseId}-iv02-panel`;
   const headerId02 = `${baseId}-iv02-header`;
   const panelId03 = `${baseId}-iv03-panel`;
   const headerId03 = `${baseId}-iv03-header`;
+  const panelId04 = `${baseId}-iv04-panel`;
+  const headerId04 = `${baseId}-iv04-header`;
 
   const toggleIv01 = useCallback(() => {
     setIv01Open((v) => !v);
@@ -69,6 +84,10 @@ export default function WhyPage() {
 
   const toggleIv03 = useCallback(() => {
     setIv03Open((v) => !v);
+  }, []);
+
+  const toggleIv04 = useCallback(() => {
+    setIv04Open((v) => !v);
   }, []);
 
   return (
@@ -207,6 +226,42 @@ export default function WhyPage() {
               <div className={styles.ivPanelPad} aria-hidden={!iv03Open}>
                 {INTERVIEW_03_TURNS.map((turn, index) => (
                   <div key={`iv03-${index}`} className={styles.ivTurn}>
+                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <p className={styles.ivText}>{turn.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article className={styles.ivItem}>
+          <button
+            type="button"
+            id={headerId04}
+            className={`${styles.ivTrigger} ${iv04Open ? styles.ivTriggerOpen : ""}`}
+            aria-expanded={iv04Open}
+            aria-controls={panelId04}
+            onClick={toggleIv04}
+          >
+            <span className={styles.ivTriggerRow}>
+              <span className={styles.ivChapterTitle}>식물세포 유전자 단백질의 원리</span>
+            </span>
+            <span className={styles.ivLineTrack} aria-hidden>
+              <span className={styles.ivLineFill} />
+            </span>
+          </button>
+
+          <div
+            id={panelId04}
+            role="region"
+            aria-labelledby={headerId04}
+            className={`${styles.ivPanel} ${iv04Open ? styles.ivPanelOpen : ""}`}
+          >
+            <div className={styles.ivPanelInner}>
+              <div className={styles.ivPanelPad} aria-hidden={!iv04Open}>
+                {INTERVIEW_04_TURNS.map((turn, index) => (
+                  <div key={`iv04-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
