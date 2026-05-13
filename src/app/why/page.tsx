@@ -33,14 +33,31 @@ const INTERVIEW_02_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
 ];
 
+/** 28년 식물세포 유전자 단백질 연구 — 사용자 제공 원문 (수정·축약 없음) */
+const INTERVIEW_03_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
+  { speaker: "기자", text: "식물세포유전자 단백질이요?" },
+  { speaker: "TONYWANG", text: "네" },
+  {
+    speaker: "기자",
+    text: "식물 세포 유전자 단백질 분야는 생소한데요 바이오 분야에서 생물학제.줄기세포 등 및 바이오 시밀러 연구에 관한 것은 익숙한데 식물세포유전자 단백질 연구는 생소 합니다 설명좀 좀 부탁드립니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "식물세포유전자단백질은 식물세포의 유전자를 조작해 특정 단백질을 연구합니다 유전자 재조합 기술을 통해 식물세포의 DNA를 변형하거나, 외부 제3의 유전자를 투과해 새로운 유형의 단백질을 개발 하는 것입니다",
+  },
+];
+
 export default function WhyPage() {
   const baseId = useId();
   const [iv01Open, setIv01Open] = useState(false);
   const [iv02Open, setIv02Open] = useState(false);
+  const [iv03Open, setIv03Open] = useState(false);
   const panelId = `${baseId}-iv01-panel`;
   const headerId = `${baseId}-iv01-header`;
   const panelId02 = `${baseId}-iv02-panel`;
   const headerId02 = `${baseId}-iv02-header`;
+  const panelId03 = `${baseId}-iv03-panel`;
+  const headerId03 = `${baseId}-iv03-header`;
 
   const toggleIv01 = useCallback(() => {
     setIv01Open((v) => !v);
@@ -48,6 +65,10 @@ export default function WhyPage() {
 
   const toggleIv02 = useCallback(() => {
     setIv02Open((v) => !v);
+  }, []);
+
+  const toggleIv03 = useCallback(() => {
+    setIv03Open((v) => !v);
   }, []);
 
   return (
@@ -150,6 +171,42 @@ export default function WhyPage() {
               <div className={styles.ivPanelPad} aria-hidden={!iv02Open}>
                 {INTERVIEW_02_TURNS.map((turn, index) => (
                   <div key={`iv02-${index}`} className={styles.ivTurn}>
+                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <p className={styles.ivText}>{turn.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article className={styles.ivItem}>
+          <button
+            type="button"
+            id={headerId03}
+            className={`${styles.ivTrigger} ${iv03Open ? styles.ivTriggerOpen : ""}`}
+            aria-expanded={iv03Open}
+            aria-controls={panelId03}
+            onClick={toggleIv03}
+          >
+            <span className={styles.ivTriggerRow}>
+              <span className={styles.ivChapterTitle}>28년 식물세포 유전자 단백질 연구</span>
+            </span>
+            <span className={styles.ivLineTrack} aria-hidden>
+              <span className={styles.ivLineFill} />
+            </span>
+          </button>
+
+          <div
+            id={panelId03}
+            role="region"
+            aria-labelledby={headerId03}
+            className={`${styles.ivPanel} ${iv03Open ? styles.ivPanelOpen : ""}`}
+          >
+            <div className={styles.ivPanelInner}>
+              <div className={styles.ivPanelPad} aria-hidden={!iv03Open}>
+                {INTERVIEW_03_TURNS.map((turn, index) => (
+                  <div key={`iv03-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
