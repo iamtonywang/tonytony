@@ -20,7 +20,7 @@ export default function OurWorkPage() {
               <br />
               assemble new efficacy — documented step by step.
             </p>
-            <p>세포 신호를 정밀하게 조율하고 ECM 재구성을 향한 연구의 기록입니다.</p>
+            <p>Precisely regulate skin cell signal transmission and activate ECM reconstruction</p>
           </div>
 
           <div className={styles.ourWorkLandingMidLine} aria-hidden="true" />
@@ -29,7 +29,7 @@ export default function OurWorkPage() {
             <h2 className={styles.ourWorkLandingEndingTitle}>TONY WANG</h2>
 
             <p className={styles.ourWorkLandingEndingText}>
-              연구로 쌓은 공정을, 피부에 닿기 전까지 끝까지 검증합니다.
+              I thought about it and made up my mind
             </p>
 
             <div className={styles.ourWorkLandingEndingLine} aria-hidden="true" />
