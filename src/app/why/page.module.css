@@ -203,7 +203,7 @@
   color: rgba(255, 255, 255, 0.42);
 }
 
-/* — Interview archive (INTERVIEW 01) — */
+/* — Interview archive (제목만 표시 · 번호/INTERVIEW 메타 없음) — */
 
 .archiveSection {
   width: min(760px, 88vw);
@@ -240,32 +240,12 @@
   outline-offset: 3px;
 }
 
-.ivMeta {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
-  margin: 0 auto 10px;
-  font-weight: 300;
-  text-align: center;
-}
-
 .ivTriggerRow {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
   gap: 14px 24px;
-}
-
-.ivNum {
-  font-family: "El Messiri", "NanumSquare", sans-serif;
-  font-size: 19px;
-  font-weight: 300;
-  line-height: 1.45;
-  letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.92);
 }
 
 .ivChapterTitle {
@@ -348,7 +328,7 @@
   margin-top: 0;
 }
 
-/* INTERVIEW 01: odd turns = TONYWANG, even = 기자 (교대 고정 순서) */
+/* Speaker 라벨 색: 턴 순서(홀·짝) 기준 — 챕터별 첫 발화가 TONYWANG일 때 기준 맞춤 */
 .ivSpeaker {
   margin: 0 auto clamp(10px, 1.5vw, 14px);
   font-size: clamp(11px, 1.35vw, 13px);
