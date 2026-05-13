@@ -359,12 +359,12 @@
 }
 
 .ivTurn:nth-child(odd) .ivSpeaker {
-  color: rgba(255, 255, 255, 0.74);
+  color: #d98a52;
   font-weight: 400;
 }
 
 .ivTurn:nth-child(even) .ivSpeaker {
-  color: rgba(255, 255, 255, 0.56);
+  color: #c6b27a;
   font-weight: 300;
 }
 
