@@ -94,6 +94,19 @@
   color: rgba(255, 255, 255, 0.84);
 }
 
+.pcOverlayProcessLine {
+  width: min(620px, 70vw);
+  height: 1px;
+  margin: 22px auto 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    );
+}
+
 .mobileKoreanSection {
   display: none;
 }
@@ -238,6 +251,10 @@
   }
 
   .heroKoreanDescription {
+    display: none;
+  }
+
+  .pcOverlayProcessLine {
     display: none;
   }
 

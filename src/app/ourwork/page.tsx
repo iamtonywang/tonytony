@@ -45,6 +45,8 @@ export default function OurWorkPage() {
             피부 독소, 노화피부, 화장 독. 경피 독 감염에 의한 피부 손상. <br />
             피부 트러블. 피부 조직 복원 목적 단백질 연구 개발
           </p>
+
+          <div className={styles.pcOverlayProcessLine} aria-hidden="true" />
         </div>
       </section>
 
