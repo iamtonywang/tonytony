@@ -307,6 +307,10 @@
   margin-top: 6px;
 }
 
+.mobileProcessCaptionNearLine {
+  display: none;
+}
+
 .bioProcessTrack {
   position: relative;
   width: 100%;
@@ -669,8 +673,21 @@
   }
 
   .bioProcessCaption {
-    transform: translateY(-44px);
-    margin-bottom: -32px;
+    display: none;
+  }
+
+  .mobileProcessCaptionNearLine {
+    display: block;
+    margin: 12px auto 0;
+    text-align: center;
+  }
+
+  .mobileProcessCaptionNearLine p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.84);
   }
 
   .bioProcessNodes {
