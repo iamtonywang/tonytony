@@ -1,4 +1,4 @@
-/* WHY page — landing + transition editorial + empty slate */
+/* WHY page — WHY landing + transition editorial + archive */
 
 .whyPage {
   width: 100%;
@@ -6,6 +6,57 @@
   margin: 0;
   padding: 0;
   background-color: #5f5f5f;
+}
+
+/* — WHY exclusive landing (not HomeMotionLine) — */
+
+.whyLanding {
+  width: 100%;
+  padding: 18px 0 0;
+  box-sizing: border-box;
+  background-color: #5f5f5f;
+}
+
+.whyLandingTopLine {
+  width: min(1120px, 92vw);
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.52) 50%,
+    transparent 100%
+  );
+}
+
+.whyLandingInner {
+  width: 100%;
+  padding: 42px 6vw 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.whyLandingTitle {
+  margin: 0;
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(42px, 11vw, 80px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.whyLandingSub {
+  margin: 16px 0 0;
+  font-size: clamp(11px, 1.35vw, 13px);
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .bodySpacer {

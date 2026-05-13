@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useId, useState } from "react";
-import HomeMotionLine from "@/components/sections/HomeMotionLine/HomeMotionLine";
 import styles from "./page.module.css";
 
 /** INTERVIEW 01 — 원문 그대로 (수정·축약 없음) */
@@ -32,7 +31,13 @@ export default function WhyPage() {
 
   return (
     <div className={styles.whyPage}>
-      <HomeMotionLine />
+      <section className={styles.whyLanding} aria-label="WHY landing">
+        <div className={styles.whyLandingTopLine} aria-hidden />
+        <div className={styles.whyLandingInner}>
+          <h1 className={styles.whyLandingTitle}>TONY WANG</h1>
+          <p className={styles.whyLandingSub}>WHY INTERVIEW ARCHIVE</p>
+        </div>
+      </section>
 
       <section
         className={styles.transitionSection}
