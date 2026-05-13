@@ -314,6 +314,14 @@
   margin-top: 22px;
 }
 
+.processQuoteBlock .pcOnly {
+  display: inline;
+}
+
+.processQuoteBlock .mobileOnly {
+  display: none;
+}
+
 .bioProcessCaption {
   text-align: center;
   margin-bottom: 48px;
@@ -787,5 +795,13 @@
   .processQuoteText {
     font-size: 14px;
     line-height: 1.65;
+  }
+
+  .processQuoteBlock .pcOnly {
+    display: none;
+  }
+
+  .processQuoteBlock .mobileOnly {
+    display: inline;
   }
 }

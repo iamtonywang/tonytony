@@ -162,7 +162,14 @@ export default function OurWorkPage() {
         <div className={styles.processQuoteLine} aria-hidden="true" />
 
         <p className={styles.processQuoteText}>
-          {"I'll show you the reality, not a dream the greatness of Tony Wang"}
+          <span className={styles.pcOnly}>
+            {"I'll show you the reality, not a dream the greatness of Tony Wang"}
+          </span>
+          <span className={styles.mobileOnly}>
+            {"I'll show you the reality,"}
+            <br />
+            not a dream the greatness of Tony Wang
+          </span>
         </p>
 
         <p className={styles.processQuoteText}>It starts in May, 2026</p>
