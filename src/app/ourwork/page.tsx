@@ -152,6 +152,8 @@ export default function OurWorkPage() {
           </div>
         </div>
       </section>
+
+      <div className={styles.processFooterLine} aria-hidden="true" />
     </div>
   );
 }

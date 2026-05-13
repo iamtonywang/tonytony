@@ -278,6 +278,18 @@
   overflow: hidden;
 }
 
+.processFooterLine {
+  width: min(720px, 82vw);
+  height: 1px;
+  margin: 42px auto 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+}
+
 .bioProcessCaption {
   text-align: center;
   margin-bottom: 48px;
