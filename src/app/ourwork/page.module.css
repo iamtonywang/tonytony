@@ -98,6 +98,14 @@
   display: none;
 }
 
+.mobileKoreanSection .pcOnly {
+  display: inline;
+}
+
+.mobileKoreanSection .mobileOnly {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .heroTextOverlay {
     justify-content: flex-start;
@@ -137,6 +145,14 @@
     line-height: 1.65;
     text-align: center;
     color: rgba(255, 255, 255, 0.84);
+  }
+
+  .mobileKoreanSection .pcOnly {
+    display: none;
+  }
+
+  .mobileKoreanSection .mobileOnly {
+    display: inline;
   }
 
   .heroMainText {
