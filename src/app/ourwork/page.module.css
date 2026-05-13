@@ -472,6 +472,26 @@
   }
 }
 
+@keyframes mobileWheelRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mobileCounterRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
 @keyframes biotechFloat {
   0% {
     transform: translateY(0px) rotate(0deg) translateX(0px) scale(1);
@@ -702,6 +722,7 @@
 
   .bioProcessSection {
     padding: 18px 6vw 72px;
+    overflow: visible;
   }
 
   .bioProcessCaption {
@@ -723,25 +744,67 @@
   }
 
   .bioProcessNodes {
-    margin-top: 56px;
-    flex-direction: column;
-    align-items: center;
-    gap: 42px;
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: 64px auto 0;
+    display: block;
+    animation: mobileWheelRotate 30s linear infinite;
   }
 
   .bioCapsule {
-    min-width: 112px;
-    min-height: 112px;
-    padding: 12px;
-    animation-name: mobileBiotechFloat;
-    animation-duration: 5.8s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+    position: absolute;
+    width: 92px;
+    height: 92px;
+    min-width: 92px;
+    min-height: 92px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    animation: none;
   }
 
   .bioCapsule span {
-    font-size: 15px;
+    display: block;
+    font-size: 13px;
     font-weight: 300;
+    line-height: 1.25;
+    animation: mobileCounterRotate 30s linear infinite;
+  }
+
+  .bioCapsule:nth-child(1) {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .bioCapsule:nth-child(2) {
+    top: 72px;
+    right: 0;
+  }
+
+  .bioCapsule:nth-child(3) {
+    bottom: 72px;
+    right: 0;
+  }
+
+  .bioCapsule:nth-child(4) {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .bioCapsule:nth-child(5) {
+    bottom: 72px;
+    left: 0;
+  }
+
+  .bioCapsule:nth-child(6) {
+    top: 72px;
+    left: 0;
   }
 
   .greenCapsule {
