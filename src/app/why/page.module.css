@@ -19,7 +19,7 @@
   position: relative;
   width: 100%;
   overflow: clip;
-  padding-top: clamp(32px, 7vw, 60px);
+  padding-top: clamp(8px, 2vw, 24px);
   padding-right: clamp(24px, 6vw, 48px);
   padding-bottom: clamp(72px, 14vw, 140px);
   padding-left: clamp(24px, 6vw, 48px);
@@ -67,6 +67,7 @@
   max-width: min(960px, 100%);
   margin: 0 auto;
   text-align: center;
+  transform: translateY(calc(-1 * clamp(20px, 5vw, 48px)));
 }
 
 .hairlineShort {
@@ -84,7 +85,7 @@
 }
 
 .statementWrap {
-  padding: clamp(14px, 3.2vw, 36px) 0 clamp(40px, 8vw, 72px);
+  padding: clamp(0px, 0.6vw, 10px) 0 clamp(40px, 8vw, 72px);
   animation: transitionFadeUp 1.35s ease forwards;
   opacity: 0;
 }
