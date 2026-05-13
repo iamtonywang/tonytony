@@ -1,4 +1,4 @@
-/* WHY page — landing only + empty slate below */
+/* WHY page — landing + transition editorial + empty slate */
 
 .whyPage {
   width: 100%;
@@ -10,5 +10,141 @@
 
 .bodySpacer {
   width: 100%;
-  min-height: min(52vh, 560px);
+  min-height: min(40vh, 420px);
+}
+
+/* — Transition Editorial Section — */
+
+.transitionSection {
+  position: relative;
+  width: 100%;
+  overflow: clip;
+  padding: clamp(72px, 14vw, 140px) clamp(24px, 6vw, 48px);
+  box-sizing: border-box;
+  background-color: #5f5f5f;
+}
+
+.transitionNoise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.14;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  mix-blend-mode: overlay;
+}
+
+.transitionGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 72% 48% at 50% 42%,
+    rgba(255, 255, 255, 0.07) 0%,
+    transparent 62%
+  );
+  animation: transitionGlowPulse 10s ease-in-out infinite;
+}
+
+@keyframes transitionGlowPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.transitionInner {
+  position: relative;
+  z-index: 1;
+  max-width: min(960px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hairline {
+  width: 100%;
+  max-width: min(720px, 88vw);
+  height: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 20%,
+    rgba(255, 255, 255, 0.22) 80%,
+    transparent 100%
+  );
+}
+
+.statementWrap {
+  padding: clamp(48px, 10vw, 100px) 0 clamp(40px, 8vw, 72px);
+  animation: transitionFadeUp 1.35s ease forwards;
+  opacity: 0;
+}
+
+@keyframes transitionFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.statementLine {
+  margin: 0;
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(22px, 4.2vw, 44px);
+  font-weight: 300;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.statementLine + .statementLine {
+  margin-top: clamp(10px, 2vw, 18px);
+}
+
+.statementLineMuted {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.subCopy {
+  padding-bottom: clamp(40px, 8vw, 72px);
+  animation: transitionFadeSlow 1.8s ease 0.35s forwards;
+  opacity: 0;
+}
+
+@keyframes transitionFadeSlow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.subLine {
+  margin: 0;
+  font-size: clamp(10px, 1.15vw, 12px);
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.subLine + .subLine {
+  margin-top: 0.35em;
+}
+
+.subLineMuted {
+  color: rgba(255, 255, 255, 0.42);
 }
