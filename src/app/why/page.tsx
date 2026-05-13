@@ -83,6 +83,69 @@ const INTERVIEW_05_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
 ];
 
+/** 왜 늦게 스킨케어로 나왔는가 — 사용자 제공 원문 (수정·축약 없음) */
+const INTERVIEW_06_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
+  { speaker: "기자", text: "그럼 28년을 식물세포유전자 연구만 하신건가요?" },
+  { speaker: "TONYWANG", text: "네 멍청하게도 오로지 단백질 분야만 연구했습니다" },
+  {
+    speaker: "기자",
+    text: "28년 동안 연구 하신 결과나 회사의 업무 실적에 대해 얘기해주세요",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "간단히 말씀드리면 저희가 개발한 유전자 단백질로 피부질환, 노화,",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "피부 재생 복원, 문제성 피부, 피부 독소 정화 에 특화된 단백질을 개발했고",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "특히 아토피 피부질환은 4년동안 미국 FDA에 임상가이드라인에 따라 국내 GLP기관하고 임상을 했어요 더 이상은 민감한 부분이라 양해 바랍니다",
+  },
+  {
+    speaker: "기자",
+    text: "TONYWANG 자료는 인터넷에서 많지 않아여 이유가 있나요?",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "각자의 운영스타일 이겠죠 더 중요한 것은 연구소는 연구 개발한 물질로 상업화 하기보단 물질을 기술 수출하여 수익을 발생시키는 구조입니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "그러다 보니 보안 문제나 민감한 문제가 따라 노출을 꺼리는 부분도 있습니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "물론 다른 회사는 언론에 자주 노출하여 회사 브랜드를 강화하는 곳도 있습니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "하지만 저희는 그런 성향이 아닙니다 조용한게 좋아요",
+  },
+  {
+    speaker: "기자",
+    text: "흠 그런데 왜 이렇게 늦게 스킨케어로 대중들 앞에 나오게 되었나요? 매우 궁금합니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "아토피 신약물질로 4년간 임상시험을 하는 과정에서 새롭게 발견된 현상을 보게 되었어요 죽은 시험 동물들 피부가 괴사 되지 않고 오히려 피부가 복원되는 현상을 보게 되었어요",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "시체는 썩어야 되는데 썩지를 않고 죽은 피부조직에 세포가 생성되는 것을 보게 되었어요",
+  },
+  { speaker: "기자", text: "그런 현상이 정말 일어 난건가요?" },
+  {
+    speaker: "TONYWANG",
+    text: "네 그래서 조직을 검사하고 세포를 측정하고 검사한 결과 몇가지 단백질로 인해 발생하는 것을 알게 되었습니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "그 일이 있고 자꾸 생각나고 머리에서 떠나지 않더군요 그리고 스킨케어 시장을 들여다 보게 됐어요",
+  },
+];
+
 export default function WhyPage() {
   const baseId = useId();
   const [iv01Open, setIv01Open] = useState(false);
@@ -90,6 +153,7 @@ export default function WhyPage() {
   const [iv03Open, setIv03Open] = useState(false);
   const [iv04Open, setIv04Open] = useState(false);
   const [iv05Open, setIv05Open] = useState(false);
+  const [iv06Open, setIv06Open] = useState(false);
   const panelId = `${baseId}-iv01-panel`;
   const headerId = `${baseId}-iv01-header`;
   const panelId02 = `${baseId}-iv02-panel`;
@@ -100,6 +164,8 @@ export default function WhyPage() {
   const headerId04 = `${baseId}-iv04-header`;
   const panelId05 = `${baseId}-iv05-panel`;
   const headerId05 = `${baseId}-iv05-header`;
+  const panelId06 = `${baseId}-iv06-panel`;
+  const headerId06 = `${baseId}-iv06-header`;
 
   const toggleIv01 = useCallback(() => {
     setIv01Open((v) => !v);
@@ -119,6 +185,10 @@ export default function WhyPage() {
 
   const toggleIv05 = useCallback(() => {
     setIv05Open((v) => !v);
+  }, []);
+
+  const toggleIv06 = useCallback(() => {
+    setIv06Open((v) => !v);
   }, []);
 
   return (
@@ -329,6 +399,42 @@ export default function WhyPage() {
               <div className={styles.ivPanelPad} aria-hidden={!iv05Open}>
                 {INTERVIEW_05_TURNS.map((turn, index) => (
                   <div key={`iv05-${index}`} className={styles.ivTurn}>
+                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <p className={styles.ivText}>{turn.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article className={styles.ivItem}>
+          <button
+            type="button"
+            id={headerId06}
+            className={`${styles.ivTrigger} ${iv06Open ? styles.ivTriggerOpen : ""}`}
+            aria-expanded={iv06Open}
+            aria-controls={panelId06}
+            onClick={toggleIv06}
+          >
+            <span className={styles.ivTriggerRow}>
+              <span className={styles.ivChapterTitle}>왜 늦게 스킨케어로 나왔는가</span>
+            </span>
+            <span className={styles.ivLineTrack} aria-hidden>
+              <span className={styles.ivLineFill} />
+            </span>
+          </button>
+
+          <div
+            id={panelId06}
+            role="region"
+            aria-labelledby={headerId06}
+            className={`${styles.ivPanel} ${iv06Open ? styles.ivPanelOpen : ""}`}
+          >
+            <div className={styles.ivPanelInner}>
+              <div className={styles.ivPanelPad} aria-hidden={!iv06Open}>
+                {INTERVIEW_06_TURNS.map((turn, index) => (
+                  <div key={`iv06-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
