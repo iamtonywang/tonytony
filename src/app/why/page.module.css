@@ -261,9 +261,9 @@
 
 .ivNum {
   font-family: "El Messiri", "NanumSquare", sans-serif;
-  font-size: clamp(44px, 10vw, 72px);
-  font-weight: 200;
-  line-height: 0.95;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.45;
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.92);
 }
