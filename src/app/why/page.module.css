@@ -203,7 +203,7 @@
   color: rgba(255, 255, 255, 0.42);
 }
 
-/* — Interview archive (제목만 표시 · 번호/INTERVIEW 메타 없음) — */
+/* — Interview archive (큰 숫자 01/02 제거 · 헤더는 챕터 제목만) — */
 
 .archiveSection {
   width: min(760px, 88vw);
