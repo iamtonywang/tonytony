@@ -280,6 +280,9 @@
   }
 
   .bioCapsule {
+    min-width: 136px;
+    min-height: 136px;
+    padding: 17px;
     animation-name: biotechFloat;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
