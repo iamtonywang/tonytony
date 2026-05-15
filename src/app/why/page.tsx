@@ -343,8 +343,13 @@ export default function WhyPage() {
         </div>
       </section>
 
-      <section className={styles.archiveSection} aria-label="Interview archive">
-        <article className={styles.ivItem}>
+      <section
+        className={`${styles.archiveSection} ${styles.archivePanel}`}
+        aria-label="Interview archive"
+      >
+        <article
+          className={`${styles.ivItem} ${iv01Open ? styles.ivItemOpen : ""}`}
+        >
           <button
             type="button"
             id={headerId}
@@ -354,7 +359,11 @@ export default function WhyPage() {
             onClick={toggleIv01}
           >
             <span className={styles.ivTriggerRow}>
+              <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterTitle}>첫 인사와 TONYWANG 소개</span>
+              <span className={styles.ivAccordionIcon} aria-hidden>
+                {iv01Open ? "\u2212" : "+"}
+              </span>
             </span>
             <span className={styles.ivLineTrack} aria-hidden>
               <span className={styles.ivLineFill} />
@@ -368,7 +377,10 @@ export default function WhyPage() {
             className={`${styles.ivPanel} ${iv01Open ? styles.ivPanelOpen : ""}`}
           >
             <div className={styles.ivPanelInner}>
-              <div className={styles.ivPanelPad} aria-hidden={!iv01Open}>
+              <div
+                className={`${styles.ivPanelPad} ${styles.dialogueBody}`}
+                aria-hidden={!iv01Open}
+              >
                 {INTERVIEW_01_TURNS.map((turn, index) => (
                   <div key={`iv01-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
@@ -380,7 +392,9 @@ export default function WhyPage() {
           </div>
         </article>
 
-        <article className={styles.ivItem}>
+        <article
+          className={`${styles.ivItem} ${iv02Open ? styles.ivItemOpen : ""}`}
+        >
           <button
             type="button"
             id={headerId02}
@@ -390,7 +404,11 @@ export default function WhyPage() {
             onClick={toggleIv02}
           >
             <span className={styles.ivTriggerRow}>
+              <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterTitle}>처음 시작한 스킨케어 사업</span>
+              <span className={styles.ivAccordionIcon} aria-hidden>
+                {iv02Open ? "\u2212" : "+"}
+              </span>
             </span>
             <span className={styles.ivLineTrack} aria-hidden>
               <span className={styles.ivLineFill} />
@@ -404,7 +422,10 @@ export default function WhyPage() {
             className={`${styles.ivPanel} ${iv02Open ? styles.ivPanelOpen : ""}`}
           >
             <div className={styles.ivPanelInner}>
-              <div className={styles.ivPanelPad} aria-hidden={!iv02Open}>
+              <div
+                className={`${styles.ivPanelPad} ${styles.dialogueBody}`}
+                aria-hidden={!iv02Open}
+              >
                 {INTERVIEW_02_TURNS.map((turn, index) => (
                   <div key={`iv02-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
@@ -416,7 +437,9 @@ export default function WhyPage() {
           </div>
         </article>
 
-        <article className={styles.ivItem}>
+        <article
+          className={`${styles.ivItem} ${iv03Open ? styles.ivItemOpen : ""}`}
+        >
           <button
             type="button"
             id={headerId03}
@@ -426,7 +449,11 @@ export default function WhyPage() {
             onClick={toggleIv03}
           >
             <span className={styles.ivTriggerRow}>
+              <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterTitle}>28년 식물세포 유전자 단백질 연구</span>
+              <span className={styles.ivAccordionIcon} aria-hidden>
+                {iv03Open ? "\u2212" : "+"}
+              </span>
             </span>
             <span className={styles.ivLineTrack} aria-hidden>
               <span className={styles.ivLineFill} />
@@ -440,7 +467,10 @@ export default function WhyPage() {
             className={`${styles.ivPanel} ${iv03Open ? styles.ivPanelOpen : ""}`}
           >
             <div className={styles.ivPanelInner}>
-              <div className={styles.ivPanelPad} aria-hidden={!iv03Open}>
+              <div
+                className={`${styles.ivPanelPad} ${styles.dialogueBody}`}
+                aria-hidden={!iv03Open}
+              >
                 {INTERVIEW_03_TURNS.map((turn, index) => (
                   <div key={`iv03-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
@@ -452,7 +482,9 @@ export default function WhyPage() {
           </div>
         </article>
 
-        <article className={styles.ivItem}>
+        <article
+          className={`${styles.ivItem} ${iv04Open ? styles.ivItemOpen : ""}`}
+        >
           <button
             type="button"
             id={headerId04}
@@ -462,7 +494,11 @@ export default function WhyPage() {
             onClick={toggleIv04}
           >
             <span className={styles.ivTriggerRow}>
+              <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterTitle}>식물세포 유전자 단백질의 원리</span>
+              <span className={styles.ivAccordionIcon} aria-hidden>
+                {iv04Open ? "\u2212" : "+"}
+              </span>
             </span>
             <span className={styles.ivLineTrack} aria-hidden>
               <span className={styles.ivLineFill} />
@@ -476,7 +512,10 @@ export default function WhyPage() {
             className={`${styles.ivPanel} ${iv04Open ? styles.ivPanelOpen : ""}`}
           >
             <div className={styles.ivPanelInner}>
-              <div className={styles.ivPanelPad} aria-hidden={!iv04Open}>
+              <div
+                className={`${styles.ivPanelPad} ${styles.dialogueBody}`}
+                aria-hidden={!iv04Open}
+              >
                 {INTERVIEW_04_TURNS.map((turn, index) => (
                   <div key={`iv04-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
@@ -488,7 +527,9 @@ export default function WhyPage() {
           </div>
         </article>
 
-        <article className={styles.ivItem}>
+        <article
+          className={`${styles.ivItem} ${iv05Open ? styles.ivItemOpen : ""}`}
+        >
           <button
             type="button"
             id={headerId05}
@@ -498,7 +539,11 @@ export default function WhyPage() {
             onClick={toggleIv05}
           >
             <span className={styles.ivTriggerRow}>
+              <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterTitle}>피부 적용과 피부독소 정화</span>
+              <span className={styles.ivAccordionIcon} aria-hidden>
+                {iv05Open ? "\u2212" : "+"}
+              </span>
             </span>
             <span className={styles.ivLineTrack} aria-hidden>
               <span className={styles.ivLineFill} />
@@ -512,7 +557,10 @@ export default function WhyPage() {
             className={`${styles.ivPanel} ${iv05Open ? styles.ivPanelOpen : ""}`}
           >
             <div className={styles.ivPanelInner}>
-              <div className={styles.ivPanelPad} aria-hidden={!iv05Open}>
+              <div
+                className={`${styles.ivPanelPad} ${styles.dialogueBody}`}
+                aria-hidden={!iv05Open}
+              >
                 {INTERVIEW_05_TURNS.map((turn, index) => (
                   <div key={`iv05-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
@@ -524,7 +572,9 @@ export default function WhyPage() {
           </div>
         </article>
 
-        <article className={styles.ivItem}>
+        <article
+          className={`${styles.ivItem} ${iv06Open ? styles.ivItemOpen : ""}`}
+        >
           <button
             type="button"
             id={headerId06}
@@ -534,7 +584,11 @@ export default function WhyPage() {
             onClick={toggleIv06}
           >
             <span className={styles.ivTriggerRow}>
+              <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterTitle}>스킨케어 시장에 진출한 이유는?</span>
+              <span className={styles.ivAccordionIcon} aria-hidden>
+                {iv06Open ? "\u2212" : "+"}
+              </span>
             </span>
             <span className={styles.ivLineTrack} aria-hidden>
               <span className={styles.ivLineFill} />
@@ -548,7 +602,10 @@ export default function WhyPage() {
             className={`${styles.ivPanel} ${iv06Open ? styles.ivPanelOpen : ""}`}
           >
             <div className={styles.ivPanelInner}>
-              <div className={styles.ivPanelPad} aria-hidden={!iv06Open}>
+              <div
+                className={`${styles.ivPanelPad} ${styles.dialogueBody}`}
+                aria-hidden={!iv06Open}
+              >
                 {INTERVIEW_06_TURNS.map((turn, index) => (
                   <div key={`iv06-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
@@ -560,7 +617,9 @@ export default function WhyPage() {
           </div>
         </article>
 
-        <article className={styles.ivItem}>
+        <article
+          className={`${styles.ivItem} ${iv07Open ? styles.ivItemOpen : ""}`}
+        >
           <button
             type="button"
             id={headerId07}
@@ -570,7 +629,11 @@ export default function WhyPage() {
             onClick={toggleIv07}
           >
             <span className={styles.ivTriggerRow}>
+              <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterTitle}>향장학과 바이오의 차이</span>
+              <span className={styles.ivAccordionIcon} aria-hidden>
+                {iv07Open ? "\u2212" : "+"}
+              </span>
             </span>
             <span className={styles.ivLineTrack} aria-hidden>
               <span className={styles.ivLineFill} />
@@ -584,7 +647,10 @@ export default function WhyPage() {
             className={`${styles.ivPanel} ${iv07Open ? styles.ivPanelOpen : ""}`}
           >
             <div className={styles.ivPanelInner}>
-              <div className={styles.ivPanelPad} aria-hidden={!iv07Open}>
+              <div
+                className={`${styles.ivPanelPad} ${styles.dialogueBody}`}
+                aria-hidden={!iv07Open}
+              >
                 {INTERVIEW_07_TURNS.map((turn, index) => (
                   <div key={`iv07-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
@@ -596,7 +662,9 @@ export default function WhyPage() {
           </div>
         </article>
 
-        <article className={styles.ivItem}>
+        <article
+          className={`${styles.ivItem} ${iv08Open ? styles.ivItemOpen : ""}`}
+        >
           <button
             type="button"
             id={headerId08}
@@ -606,7 +674,11 @@ export default function WhyPage() {
             onClick={toggleIv08}
           >
             <span className={styles.ivTriggerRow}>
+              <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterTitle}>TONYWANG의 철학과 앞으로의 계획</span>
+              <span className={styles.ivAccordionIcon} aria-hidden>
+                {iv08Open ? "\u2212" : "+"}
+              </span>
             </span>
             <span className={styles.ivLineTrack} aria-hidden>
               <span className={styles.ivLineFill} />
@@ -620,7 +692,10 @@ export default function WhyPage() {
             className={`${styles.ivPanel} ${iv08Open ? styles.ivPanelOpen : ""}`}
           >
             <div className={styles.ivPanelInner}>
-              <div className={styles.ivPanelPad} aria-hidden={!iv08Open}>
+              <div
+                className={`${styles.ivPanelPad} ${styles.dialogueBody}`}
+                aria-hidden={!iv08Open}
+              >
                 {INTERVIEW_08_TURNS.map((turn, index) => (
                   <div key={`iv08-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
