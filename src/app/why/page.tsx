@@ -67,7 +67,7 @@ const INTERVIEW_05_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "TONYWANG",
-    text: "가장 중요한 것은 피부독소 제거입니다 피부 층에 기생하는 악성 세균과 화학성분에 의한 독소 성분을 제거하여 피부를 정화 시키는 것이 주된 요인입니다",
+    text: "피부 조직에 기생하는 독소 세균과 화학 성분에 의한 독소 성분을 제거하여 피부를 정화 시키는 목적입니다",
   },
   {
     speaker: "기자",
