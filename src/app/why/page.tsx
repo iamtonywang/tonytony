@@ -39,7 +39,7 @@ const INTERVIEW_03_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   { speaker: "TONYWANG", text: "네" },
   {
     speaker: "기자",
-    text: "식물 세포 유전자 단백질 분야는 생소한데요 바이오 분야에서 생물학제.줄기세포 등 및 바이오 시밀러 연구에 관한 것은 익숙한데 식물세포유전자 단백질 연구는 생소 합니다 설명좀 좀 부탁드립니다",
+    text: "식물 세포 유전자 단백질 분야는 생소한데요\n\n바이오 분야에서 생물학제제,생균치료제.줄기세포 등 바이오 시밀러 연구에 관한 것은 익숙한데 식물세포유전자 단백질 분야는 생소 합니다",
   },
   {
     speaker: "TONYWANG",
