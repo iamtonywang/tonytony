@@ -51,7 +51,7 @@ const INTERVIEW_03_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
 const INTERVIEW_04_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
   {
     speaker: "기자",
-    text: "흠 그렇군요 그럼 주로 연구한 단백질은 어디에 적용되나요?",
+    text: "그렇군요 그럼 주로 연구한 단백질은 어디에 적용되나요?",
   },
   {
     speaker: "TONYWANG",
