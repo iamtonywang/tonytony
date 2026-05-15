@@ -14,7 +14,7 @@ const INTERVIEW_01_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "TONYWANG",
-    text: "그런가요? TONYWANG 은 익히지 않은 생선 같아요 기존 패턴들을 굉장히 거부합니다",
+    text: "그런가요? TONYWANG 은 익히지 않은 생선 같아요 기존 패턴을 거부합니다",
   },
   { speaker: "기자", text: "그렇군요" },
 ];
