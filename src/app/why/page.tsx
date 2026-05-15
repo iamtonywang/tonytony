@@ -10,7 +10,7 @@ const INTERVIEW_01_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   { speaker: "TONYWANG", text: "네 반가워요" },
   {
     speaker: "기자",
-    text: "인터뷰에 응해 주셔서 감사합니다 언론 기사와 홈페이지를 살펴보니 기존회사들과 환경이 다른점이 많은 것 같아요 TONYWANG 에 대해서 설명좀 해주시겠어요",
+    text: "인터뷰 감사합니다 오기 전에 언론 기사와 홈페이지를 살펴보니 기존 회사들과 느낌과 색깔이 다른점이 많은 것 같아요 먼저 TONYWANG 에 대해서 간단한 소개 부탁드려요",
   },
   {
     speaker: "TONYWANG",
