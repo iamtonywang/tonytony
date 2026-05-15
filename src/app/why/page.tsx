@@ -344,19 +344,6 @@ export default function WhyPage() {
       </section>
 
       <section
-        className={styles.archiveSculptureSection}
-        aria-label="Archive sculpture"
-      >
-        <div className={styles.sculptureStage} aria-hidden="true">
-          <span className={`${styles.sculpturePanel} ${styles.panelOne}`} />
-          <span className={`${styles.sculpturePanel} ${styles.panelTwo}`} />
-          <span className={`${styles.sculpturePanel} ${styles.panelThree}`} />
-          <span className={`${styles.sculpturePanel} ${styles.panelFour}`} />
-          <span className={styles.sculptureGlow} />
-        </div>
-      </section>
-
-      <section
         className={styles.archiveIntroSection}
         aria-label="Archive introduction"
       >

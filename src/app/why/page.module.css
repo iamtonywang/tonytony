@@ -83,115 +83,6 @@
   padding-bottom: clamp(72px, 14vh, 140px);
 }
 
-/* — Black glass sculpture (between manifesto and archive intro) — */
-
-.archiveSculptureSection {
-  position: relative;
-  width: 100%;
-  padding: clamp(72px, 14vw, 120px) 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background-color: #5f5f5f;
-}
-
-.sculptureStage {
-  position: relative;
-  width: min(380px, 86vw);
-  height: min(360px, 52vh);
-  max-height: 420px;
-  perspective: 1200px;
-  transform-style: preserve-3d;
-  animation: sculptureBreathe 14s ease-in-out infinite alternate;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sculptureStage {
-    animation: none;
-  }
-}
-
-@keyframes sculptureBreathe {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(0, -2px, 0) scale(1.008);
-  }
-}
-
-.sculpturePanel {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: clamp(10px, 2.4vw, 14px);
-  border-radius: 2px;
-  transform-origin: center bottom;
-  pointer-events: none;
-  box-shadow:
-    0 0 0 1px rgba(255, 118, 48, 0.14),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
-    inset 0 -24px 36px rgba(0, 0, 0, 0.55);
-  background:
-    linear-gradient(
-      118deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.28) 42%,
-      rgba(255, 255, 255, 0.08) 50%,
-      rgba(255, 255, 255, 0) 58%
-    ),
-    linear-gradient(180deg, #121212 0%, #050505 48%, #0a0a0a 100%);
-}
-
-.panelOne {
-  z-index: 2;
-  height: 78%;
-  margin-left: -18%;
-  transform: translate3d(-50%, -50%, 0) rotateY(-22deg) rotateZ(-4deg) skewX(-2deg);
-}
-
-.panelTwo {
-  z-index: 3;
-  width: clamp(9px, 2.1vw, 12px);
-  height: 64%;
-  margin-left: -4%;
-  transform: translate3d(-50%, -50%, 0) rotateY(8deg) rotateZ(1.5deg) skewX(1deg);
-  opacity: 0.96;
-}
-
-.panelThree {
-  z-index: 4;
-  height: 88%;
-  margin-left: 10%;
-  transform: translate3d(-50%, -50%, 0) rotateY(18deg) rotateZ(3deg) skewX(3deg);
-}
-
-.panelFour {
-  z-index: 5;
-  width: clamp(8px, 1.9vw, 11px);
-  height: 52%;
-  margin-left: 22%;
-  transform: translate3d(-50%, -50%, 0) rotateY(-10deg) rotateZ(-2deg) skewX(-1deg);
-  opacity: 0.94;
-}
-
-.sculptureGlow {
-  position: absolute;
-  inset: -12% -35% -8% -35%;
-  z-index: 6;
-  pointer-events: none;
-  border-radius: 50%;
-  background:
-    radial-gradient(ellipse 130% 75% at 50% 100%, rgba(255, 255, 255, 0.12) 0%, transparent 52%),
-    radial-gradient(ellipse 95% 55% at 50% 108%, rgba(255, 132, 64, 0.09) 0%, transparent 48%);
-  filter: blur(32px);
-  opacity: 0.75;
-  mix-blend-mode: soft-light;
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.35) 28%, #000 55%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.35) 28%, #000 55%);
-}
-
 /* — Archive editorial intro (between manifesto and chapters) — */
 
 .archiveIntroSection {
@@ -666,15 +557,6 @@
 
   .archiveIntroBody {
     font-size: clamp(12px, 3.2vw, 14px);
-  }
-
-  .archiveSculptureSection {
-    padding: clamp(56px, 16vw, 96px) 0;
-  }
-
-  .sculptureStage {
-    width: min(300px, 88vw);
-    height: min(280px, 48vh);
   }
 
   .ivTriggerRow {
