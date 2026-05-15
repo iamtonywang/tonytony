@@ -21,7 +21,7 @@ const INTERVIEW_01_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
 
 /** INTERVIEW 02 — 사용자 제공 원문 (수정·축약 없음) */
 const INTERVIEW_02_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
-  { speaker: "기자", text: "화장품 사업은 이번이 처음 진출하시는 건가요?" },
+  { speaker: "기자", text: "Skincare 분야는 처음 진출하시는 건가요?" },
   { speaker: "TONYWANG", text: "네 그렇습니다 처음 해보는겁니다" },
   {
     speaker: "기자",
