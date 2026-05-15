@@ -301,15 +301,13 @@
 
 .ivTrigger {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  display: block;
   padding: clamp(14px, 2.8vw, 24px) 0 clamp(12px, 2.4vw, 20px);
   margin: 0;
   border: none;
   background: transparent;
   color: inherit;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   font: inherit;
 }
@@ -329,49 +327,59 @@
     filter 0.32s ease;
 }
 
-.ivTrigger:hover .chapterKeyword,
-.ivTrigger:focus-visible .chapterKeyword,
-.ivTrigger:hover .chapterTitle,
-.ivTrigger:focus-visible .chapterTitle {
-  color: #ff8a3d;
+.ivTrigger:hover .ivChapterTitle,
+.ivTrigger:focus-visible .ivChapterTitle {
+  color: rgba(255, 138, 61, 0.96);
   opacity: 1;
 }
 
-.ivTrigger:active .chapterKeyword,
-.ivTrigger:active .chapterTitle {
+.ivTrigger:active .ivChapterTitle {
   color: #ff7a28;
   opacity: 1;
 }
 
-.archiveTrigger {
+.ivTriggerRow {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 2.25rem) minmax(0, 1fr) minmax(0, 2.25rem);
   align-items: center;
   width: 100%;
-  max-width: min(860px, 100%);
-  margin: 0 auto;
-  column-gap: clamp(12px, 3vw, 28px);
+  column-gap: clamp(8px, 2vw, 16px);
 }
 
-.chapterMeta {
-  text-align: left;
+.ivChapterStack {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(5px, 0.85vw, 9px);
   min-width: 0;
+  text-align: center;
 }
 
-.chapterKeyword {
-  display: block;
-  font-size: 10px;
+.ivChapterKicker {
+  font-size: clamp(9px, 1vw, 10px);
   font-weight: 300;
   letter-spacing: 0.34em;
   text-transform: uppercase;
   line-height: 1.25;
-  color: rgba(255, 255, 255, 0.52);
-  transition: color 0.3s ease, opacity 0.3s ease;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
 }
 
-.chapterTitle {
+.ivTrigger:hover .ivChapterKicker,
+.ivTrigger:focus-visible .ivChapterKicker {
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.ivTriggerPad {
   display: block;
-  margin-top: 10px;
+  width: 100%;
+  min-height: 1px;
+}
+
+.ivChapterTitle {
+  max-width: 100%;
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.06em;
@@ -381,33 +389,32 @@
   transition:
     color 0.35s ease,
     opacity 0.35s ease;
+  transform-origin: 50% 50%;
 }
 
-.chapterToggle {
+.ivAccordionIcon {
+  grid-column: 3;
+  justify-self: end;
+  align-self: center;
   font-size: 22px;
   font-weight: 300;
   line-height: 1;
   letter-spacing: 0;
   color: rgba(255, 255, 255, 0.62);
   user-select: none;
-  flex-shrink: 0;
-  transition: color 0.25s ease;
+  transition: color 0.25s ease, opacity 0.25s ease;
 }
 
-.ivTrigger:hover .chapterToggle,
-.ivTrigger:focus-visible .chapterToggle {
+.ivTrigger:hover .ivAccordionIcon,
+.ivTrigger:focus-visible .ivAccordionIcon {
   color: rgba(255, 255, 255, 0.88);
 }
 
-.ivTriggerOpen .chapterToggle {
+.ivTriggerOpen .ivAccordionIcon {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.ivItemOpen .chapterKeyword {
-  color: rgba(255, 255, 255, 0.58);
-}
-
-.ivItemOpen .chapterTitle {
+.ivItemOpen .ivChapterTitle {
   color: rgba(255, 255, 255, 0.9);
   opacity: 0.94;
 }
@@ -552,16 +559,12 @@
     font-size: clamp(12px, 3.2vw, 14px);
   }
 
-  .archiveTrigger {
-    column-gap: 10px;
-    max-width: 100%;
+  .ivTriggerRow {
+    grid-template-columns: minmax(0, 1rem) minmax(0, 1fr) minmax(0, 1.75rem);
+    column-gap: 6px;
   }
 
-  .chapterTitle {
-    margin-top: 8px;
-  }
-
-  .chapterToggle {
+  .ivAccordionIcon {
     font-size: 20px;
   }
 }
