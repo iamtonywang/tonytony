@@ -85,11 +85,11 @@ const INTERVIEW_05_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
 
 /** 스킨케어 시장에 진출한 이유는? — 사용자 제공 원문 (수정·축약 없음) */
 const INTERVIEW_06_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
-  { speaker: "기자", text: "그럼 28년을 식물세포유전자 연구만 하신건가요?" },
-  { speaker: "TONYWANG", text: "네 멍청하게도 오로지 단백질 분야만 연구했습니다" },
+  { speaker: "기자", text: "식물세포유전자단백질 연구만 하신건가요?" },
+  { speaker: "TONYWANG", text: "네 단백질 분야만 연구했습니다" },
   {
     speaker: "기자",
-    text: "28년 동안 연구 하신 결과나 회사의 업무 실적에 대해 얘기해주세요",
+    text: "회사의 업무 실적에 대해 간략하게 얘기해주세요",
   },
   {
     speaker: "TONYWANG",
@@ -101,7 +101,7 @@ const INTERVIEW_06_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "TONYWANG",
-    text: "특히 아토피 피부질환은 4년동안 미국 FDA에 임상가이드라인에 따라 국내 GLP기관하고 임상을 했어요 더 이상은 민감한 부분이라 양해 바랍니다",
+    text: "아토피 질환은 4년동안 미국 FDA에 임상가이드라인에 따라 국내 GLP기관하고 임상을 했고 전 임상을 통과했어요 더 이상은 민감한 부분이라 양해 바랍니다",
   },
   {
     speaker: "기자",
@@ -113,7 +113,7 @@ const INTERVIEW_06_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "TONYWANG",
-    text: "그러다 보니 보안 문제나 민감한 문제가 따라 노출을 꺼리는 부분도 있습니다",
+    text: "그러다 보니 보안 문제나 민감한 문제가 있어 노출을 꺼리는 부분도 있습니다",
   },
   {
     speaker: "TONYWANG",
@@ -129,11 +129,11 @@ const INTERVIEW_06_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "TONYWANG",
-    text: "아토피 신약물질로 4년간 임상시험을 하는 과정에서 새롭게 발견된 현상을 보게 되었어요 죽은 시험 동물들 피부가 괴사 되지 않고 오히려 피부가 복원되는 현상을 보게 되었어요",
+    text: "아토피 신약물질로 4년간 임상시험을 하는 과정에서 새롭게 발견된 기전현상을 보게 되었어요\n\n죽은 시험 동물들 피부가 부패 되지 않고 피부가 유지되는 현상을 보게 되었어요",
   },
   {
     speaker: "TONYWANG",
-    text: "시체는 썩어야 되는데 썩지를 않고 죽은 피부조직에 세포가 생성되는 것을 보게 되었어요",
+    text: "시체는 썩어야 되는데 부패되지 않고 피부조직 세포가 소멸 되는 않는 것을 보게 되었어요",
   },
   { speaker: "기자", text: "그런 현상이 정말 일어 난건가요?" },
   {
@@ -142,7 +142,11 @@ const INTERVIEW_06_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "TONYWANG",
-    text: "그 일이 있고 자꾸 생각나고 머리에서 떠나지 않더군요 그리고 스킨케어 시장을 들여다 보게 됐어요",
+    text: "그 일이 있고 자꾸 생각나고 머리에서 떠나지 않더군요\n\n기전을 발견하고 머리에서 떠나지 않더군요 아토피가 아닌 얼굴 피부에 적용하면 어떨까?\n\n고민하다 스킨케어 시장을 들여다 보게 됐어요",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "무분별하고 무 책임한 표현이 많다는 것을 알게 되었어여",
   },
 ];
 
