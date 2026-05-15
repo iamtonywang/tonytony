@@ -195,6 +195,43 @@ const INTERVIEW_07_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
 ];
 
+/** TONYWANG의 철학과 앞으로의 계획 — 사용자 제공 원문 (수정·축약 없음) */
+const INTERVIEW_08_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
+  {
+    speaker: "기자",
+    text: "좋은 말씀 감사합니다 끝으로 하실말씀과 앞으로 계획을 얘기해주세요",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "계획은 스킨케어 시장에 진출한거 후회하지말기",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "천천히 가기 바이오는 입증이다 이 철칙을 버리지 말기",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "제품이 입증되면 이런건 모두 불필요한 행위이며 사용자 입에서 입으로 전파 될것으로 생각합니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "TONYWANG은 연구실에서만 있던 회사입니다 홍보도 모르고 마켓팅 또한 전혀 모릅니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "결국 모든건 제품의 입증과 우수성이 시장에서 판단을 받고 신뢰를 얻는것이라 생각 합니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "사용자 고객분들은 거짓말을 하지 않습니다 그들은 뛰어나고 특화된 제품을 애따게 기다리고있습니다 TONYWANG은 그런분들에게 가장 진정성 있는 제품이 되고 싶을 뿐입니다",
+  },
+  {
+    speaker: "기자",
+    text: "오랜시간 시간을 내주어 감사합니다 TONYWANG의 발전을 기원하겠습니다",
+  },
+  { speaker: "TONYWANG", text: "감사합니다" },
+];
+
 export default function WhyPage() {
   const baseId = useId();
   const [iv01Open, setIv01Open] = useState(false);
@@ -204,6 +241,7 @@ export default function WhyPage() {
   const [iv05Open, setIv05Open] = useState(false);
   const [iv06Open, setIv06Open] = useState(false);
   const [iv07Open, setIv07Open] = useState(false);
+  const [iv08Open, setIv08Open] = useState(false);
   const panelId = `${baseId}-iv01-panel`;
   const headerId = `${baseId}-iv01-header`;
   const panelId02 = `${baseId}-iv02-panel`;
@@ -218,6 +256,8 @@ export default function WhyPage() {
   const headerId06 = `${baseId}-iv06-header`;
   const panelId07 = `${baseId}-iv07-panel`;
   const headerId07 = `${baseId}-iv07-header`;
+  const panelId08 = `${baseId}-iv08-panel`;
+  const headerId08 = `${baseId}-iv08-header`;
 
   const toggleIv01 = useCallback(() => {
     setIv01Open((v) => !v);
@@ -245,6 +285,10 @@ export default function WhyPage() {
 
   const toggleIv07 = useCallback(() => {
     setIv07Open((v) => !v);
+  }, []);
+
+  const toggleIv08 = useCallback(() => {
+    setIv08Open((v) => !v);
   }, []);
 
   return (
@@ -527,6 +571,42 @@ export default function WhyPage() {
               <div className={styles.ivPanelPad} aria-hidden={!iv07Open}>
                 {INTERVIEW_07_TURNS.map((turn, index) => (
                   <div key={`iv07-${index}`} className={styles.ivTurn}>
+                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <p className={styles.ivText}>{turn.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article className={styles.ivItem}>
+          <button
+            type="button"
+            id={headerId08}
+            className={`${styles.ivTrigger} ${iv08Open ? styles.ivTriggerOpen : ""}`}
+            aria-expanded={iv08Open}
+            aria-controls={panelId08}
+            onClick={toggleIv08}
+          >
+            <span className={styles.ivTriggerRow}>
+              <span className={styles.ivChapterTitle}>TONYWANG의 철학과 앞으로의 계획</span>
+            </span>
+            <span className={styles.ivLineTrack} aria-hidden>
+              <span className={styles.ivLineFill} />
+            </span>
+          </button>
+
+          <div
+            id={panelId08}
+            role="region"
+            aria-labelledby={headerId08}
+            className={`${styles.ivPanel} ${iv08Open ? styles.ivPanelOpen : ""}`}
+          >
+            <div className={styles.ivPanelInner}>
+              <div className={styles.ivPanelPad} aria-hidden={!iv08Open}>
+                {INTERVIEW_08_TURNS.map((turn, index) => (
+                  <div key={`iv08-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
