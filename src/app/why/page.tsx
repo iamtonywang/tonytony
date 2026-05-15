@@ -71,7 +71,7 @@ const INTERVIEW_05_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "기자",
-    text: "tony wang 논리면 매우 흥미로운 연구 이네요 그렇다면 다른 연구소나 회사들도 식물 세포 유전자 단백질를 연구 개발하나요?",
+    text: "tony wang 논리라면 매우 흥미로운 기전 이네요\n\n다른 연구소나 관련 회사들도 식물 세포 유전자 단백질를 연구 개발하나요?",
   },
   {
     speaker: "TONYWANG",
