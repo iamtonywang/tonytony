@@ -344,6 +344,17 @@ export default function WhyPage() {
       </section>
 
       <section
+        className={styles.archiveObjectSection}
+        aria-label="Research archive object"
+      >
+        <div className={styles.archiveObjectWrap}>
+          <div className={styles.archiveObjectCore} aria-hidden />
+          <div className={styles.archiveObjectGlow} aria-hidden />
+          <div className={styles.archiveObjectNoise} aria-hidden />
+        </div>
+      </section>
+
+      <section
         className={styles.archiveIntroSection}
         aria-label="Archive introduction"
       >
