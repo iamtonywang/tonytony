@@ -227,11 +227,11 @@ const INTERVIEW_08_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "TONYWANG",
-    text: "제품이 입증되면 이런건 모두 불필요한 행위이며 사용자 입에서 입으로 전파 될것으로 생각합니다",
+    text: "제품이 입증되면 사용자들로 인해 전파 될것으로 생각합니다",
   },
   {
     speaker: "TONYWANG",
-    text: "TONYWANG은 연구실에서만 있던 회사입니다 홍보도 모르고 마켓팅 또한 전혀 모릅니다",
+    text: "TONYWANG은 연구실만 운영한 회사입니다 홍보도 모르고 마켓팅 또한 전혀 모릅니다",
   },
   {
     speaker: "TONYWANG",
