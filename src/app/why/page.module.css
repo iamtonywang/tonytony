@@ -1,4 +1,4 @@
-/* WHY page — WHY landing + transition editorial + archive */
+/* WHY page — editorial landing → manifesto → archive intro → interview chapters */
 
 .whyPage {
   width: 100%;
@@ -78,6 +78,56 @@
   background-color: #5f5f5f;
 }
 
+/* Large rhythm: manifesto → archive intro */
+.transitionSection.manifestoSection {
+  padding-bottom: clamp(72px, 14vh, 140px);
+}
+
+/* — Archive editorial intro (between manifesto and chapters) — */
+
+.archiveIntroSection {
+  width: 100%;
+  padding: 0 clamp(20px, 5vw, 44px) clamp(48px, 8vw, 88px);
+  box-sizing: border-box;
+  background-color: #5f5f5f;
+  text-align: center;
+}
+
+.archiveIntroInner {
+  max-width: min(1020px, 94vw);
+  margin: 0 auto;
+}
+
+.archiveIntroKicker {
+  margin: 0;
+  font-size: clamp(10px, 1.1vw, 11px);
+  font-weight: 300;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.46);
+}
+
+.archiveIntroLead {
+  margin: clamp(18px, 3.2vw, 30px) 0 0;
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.archiveIntroBody {
+  margin: clamp(14px, 2.2vw, 22px) auto 0;
+  max-width: min(38em, 100%);
+  font-size: clamp(13px, 1.65vw, 15px);
+  font-weight: 300;
+  line-height: 1.72;
+  letter-spacing: 0.028em;
+  color: rgba(255, 255, 255, 0.62);
+}
+
 .transitionNoise {
   position: absolute;
   inset: 0;
@@ -99,17 +149,7 @@
     rgba(255, 255, 255, 0.07) 0%,
     transparent 62%
   );
-  animation: transitionGlowPulse 10s ease-in-out infinite;
-}
-
-@keyframes transitionGlowPulse {
-  0%,
-  100% {
-    opacity: 0.55;
-  }
-  50% {
-    opacity: 1;
-  }
+  opacity: 0.72;
 }
 
 .transitionInner {
@@ -118,7 +158,6 @@
   max-width: min(960px, 100%);
   margin: 0 auto;
   text-align: center;
-  transform: translateY(calc(-1 * clamp(10px, 3vw, 32px)));
 }
 
 .hairlineShort {
@@ -144,11 +183,9 @@
 @keyframes transitionFadeUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -203,14 +240,19 @@
   color: rgba(255, 255, 255, 0.42);
 }
 
-/* — Interview archive (큰 숫자 01/02 제거 · 헤더는 챕터 제목만) — */
+/* — Interview chapters (editorial list, not FAQ) — */
 
 .archiveSection {
   margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 32px) clamp(40px, 8vw, 72px);
+  padding: 0 clamp(16px, 4vw, 32px) clamp(36px, 7vw, 64px);
   box-sizing: border-box;
   background-color: #5f5f5f;
   text-align: center;
+}
+
+.archiveChapters {
+  padding-top: clamp(6px, 1.2vw, 14px);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .archivePanel {
@@ -230,8 +272,12 @@
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
+  border-top: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.archiveChapters .ivItem:first-of-type {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .ivItem > * {
@@ -256,7 +302,7 @@
 .ivTrigger {
   width: 100%;
   display: block;
-  padding: clamp(22px, 4vw, 36px) 0 clamp(18px, 3vw, 28px);
+  padding: clamp(14px, 2.8vw, 24px) 0 clamp(12px, 2.4vw, 20px);
   margin: 0;
   border: none;
   background: transparent;
@@ -273,12 +319,17 @@
 
 .ivTrigger:hover .ivLineTrack,
 .ivTrigger:focus-visible .ivLineTrack {
-  background: rgba(255, 255, 255, 0.17);
+  background: rgba(255, 255, 255, 0.22);
+  filter: drop-shadow(0 0 8px rgba(255, 138, 61, 0.32))
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.1));
+  transition:
+    background 0.32s ease,
+    filter 0.32s ease;
 }
 
 .ivTrigger:hover .ivChapterTitle,
 .ivTrigger:focus-visible .ivChapterTitle {
-  color: #ff8a3d;
+  color: rgba(255, 138, 61, 0.96);
   opacity: 1;
 }
 
@@ -295,6 +346,32 @@
   column-gap: clamp(8px, 2vw, 16px);
 }
 
+.ivChapterStack {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(5px, 0.85vw, 9px);
+  min-width: 0;
+  text-align: center;
+}
+
+.ivChapterKicker {
+  font-size: clamp(9px, 1vw, 10px);
+  font-weight: 300;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
+}
+
+.ivTrigger:hover .ivChapterKicker,
+.ivTrigger:focus-visible .ivChapterKicker {
+  color: rgba(255, 255, 255, 0.52);
+}
+
 .ivTriggerPad {
   display: block;
   width: 100%;
@@ -302,8 +379,6 @@
 }
 
 .ivChapterTitle {
-  grid-column: 2;
-  justify-self: center;
   max-width: 100%;
   font-size: 14px;
   font-weight: 300;
@@ -345,7 +420,7 @@
 }
 
 .ivLineTrack {
-  margin-top: clamp(16px, 2.5vw, 22px);
+  margin-top: clamp(12px, 2vw, 18px);
   margin-left: auto;
   margin-right: auto;
   max-width: min(860px, 100%);
@@ -353,11 +428,15 @@
   background: rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
-  transition: background 0.28s ease;
+  filter: none;
+  transition:
+    background 0.32s ease,
+    filter 0.32s ease;
 }
 
 .ivItemOpen .ivLineTrack {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.24);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.08));
 }
 
 .ivLineFill {
@@ -416,7 +495,7 @@
 }
 
 .ivTurn {
-  margin-top: clamp(30px, 4.6vw, 42px);
+  margin-top: clamp(22px, 3.4vw, 34px);
   width: 100%;
   max-width: 100%;
   margin-left: auto;
@@ -466,6 +545,18 @@
 
   .dialogueBody {
     max-width: 92vw;
+  }
+
+  .archiveIntroInner {
+    max-width: min(96vw, 100%);
+  }
+
+  .archiveIntroLead {
+    font-size: clamp(14px, 3.8vw, 17px);
+  }
+
+  .archiveIntroBody {
+    font-size: clamp(12px, 3.2vw, 14px);
   }
 
   .ivTriggerRow {
