@@ -29,7 +29,7 @@ const INTERVIEW_02_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "TONYWANG",
-    text: "지난 28년 동안 단백질만 연구 했어요 식물세포 중심으로 세포 유전자를 변형시켜 새로운 제3의 단백질을 연구 개발했어요",
+    text: "오로지 단백질만 연구를 했어요 식물세포 중심으로 세포 유전자를 변형시켜 변종 단백질을 연구 개발했어요 28년 시간을....",
   },
 ];
 
