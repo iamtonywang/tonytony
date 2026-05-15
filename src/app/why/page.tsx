@@ -360,7 +360,7 @@ export default function WhyPage() {
           >
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterTitle}>첫 인사와 TONYWANG 소개</span>
+              <span className={styles.ivChapterTitle}>만남 TONYWANG 그리고...</span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv01Open ? "\u2212" : "+"}
               </span>
@@ -450,7 +450,7 @@ export default function WhyPage() {
           >
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterTitle}>28년 식물세포 유전자 단백질 연구</span>
+              <span className={styles.ivChapterTitle}>TONYWANG 유전자 단백질</span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv03Open ? "\u2212" : "+"}
               </span>
@@ -540,7 +540,7 @@ export default function WhyPage() {
           >
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterTitle}>피부 적용과 피부독소 정화</span>
+              <span className={styles.ivChapterTitle}>피부 독소 균 AND 변혁의 시간</span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv05Open ? "\u2212" : "+"}
               </span>
@@ -630,7 +630,7 @@ export default function WhyPage() {
           >
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterTitle}>향장학과 바이오의 차이</span>
+              <span className={styles.ivChapterTitle}>향장학 AND SELLS</span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv07Open ? "\u2212" : "+"}
               </span>
@@ -675,7 +675,7 @@ export default function WhyPage() {
           >
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterTitle}>TONYWANG의 철학과 앞으로의 계획</span>
+              <span className={styles.ivChapterTitle}>여정의 시간</span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv08Open ? "\u2212" : "+"}
               </span>
