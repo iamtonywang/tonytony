@@ -83,7 +83,7 @@ const INTERVIEW_05_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
 ];
 
-/** 왜 늦게 스킨케어로 나왔는가 — 사용자 제공 원문 (수정·축약 없음) */
+/** 스킨케어 시장에 진출한 이유는? — 사용자 제공 원문 (수정·축약 없음) */
 const INTERVIEW_06_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
   { speaker: "기자", text: "그럼 28년을 식물세포유전자 연구만 하신건가요?" },
   { speaker: "TONYWANG", text: "네 멍청하게도 오로지 단백질 분야만 연구했습니다" },
@@ -518,7 +518,7 @@ export default function WhyPage() {
             onClick={toggleIv06}
           >
             <span className={styles.ivTriggerRow}>
-              <span className={styles.ivChapterTitle}>왜 늦게 스킨케어로 나왔는가</span>
+              <span className={styles.ivChapterTitle}>스킨케어 시장에 진출한 이유는?</span>
             </span>
             <span className={styles.ivLineTrack} aria-hidden>
               <span className={styles.ivLineFill} />
