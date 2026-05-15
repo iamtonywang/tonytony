@@ -55,7 +55,7 @@ const INTERVIEW_04_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
   {
     speaker: "TONYWANG",
-    text: "광범위한 파이프라인을 구축 할수 있어요 형질전환(transformation) 하는 과정에서 제3의 유전자 로 변환 후 특정 질환에 포커스를 맞춰 식물세포에 원하는 유전자를 적용하여 타겟 질환에 적용되는 단백질을 개발 하는 것입니다",
+    text: "광범위한 파이프라인을 구축 할수 있어요 형질전환(transformation) 하는 과정에서 변이유전자 로 변환 후 목표 질환에 적용되는 단백질을 개발 하는 것입니다",
   },
 ];
 
