@@ -344,13 +344,15 @@ export default function WhyPage() {
       </section>
 
       <section
-        className={styles.archiveObjectSection}
-        aria-label="Research archive object"
+        className={styles.archiveSculptureSection}
+        aria-label="Archive sculpture"
       >
-        <div className={styles.archiveObjectWrap}>
-          <div className={styles.archiveObjectCore} aria-hidden />
-          <div className={styles.archiveObjectGlow} aria-hidden />
-          <div className={styles.archiveObjectNoise} aria-hidden />
+        <div className={styles.sculptureStage} aria-hidden="true">
+          <span className={`${styles.sculpturePanel} ${styles.panelOne}`} />
+          <span className={`${styles.sculpturePanel} ${styles.panelTwo}`} />
+          <span className={`${styles.sculpturePanel} ${styles.panelThree}`} />
+          <span className={`${styles.sculpturePanel} ${styles.panelFour}`} />
+          <span className={styles.sculptureGlow} />
         </div>
       </section>
 
