@@ -376,13 +376,12 @@ export default function WhyPage() {
             aria-controls={panelId}
             onClick={toggleIv01}
           >
-            <span className={styles.ivTriggerRow}>
-              <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>만남 TONYWANG 그리고...</span>
+            <span className={styles.archiveTrigger}>
+              <span className={styles.chapterMeta}>
+                <span className={styles.chapterKeyword}>MEETING</span>
+                <span className={styles.chapterTitle}>만남 TONYWANG 그리고...</span>
               </span>
-              <span className={styles.ivAccordionIcon} aria-hidden>
+              <span className={styles.chapterToggle} aria-hidden>
                 {iv01Open ? "\u2212" : "+"}
               </span>
             </span>
@@ -424,13 +423,12 @@ export default function WhyPage() {
             aria-controls={panelId02}
             onClick={toggleIv02}
           >
-            <span className={styles.ivTriggerRow}>
-              <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>처음 시작한 스킨케어 사업</span>
+            <span className={styles.archiveTrigger}>
+              <span className={styles.chapterMeta}>
+                <span className={styles.chapterKeyword}>SKINCARE</span>
+                <span className={styles.chapterTitle}>처음 시작한 스킨케어 사업</span>
               </span>
-              <span className={styles.ivAccordionIcon} aria-hidden>
+              <span className={styles.chapterToggle} aria-hidden>
                 {iv02Open ? "\u2212" : "+"}
               </span>
             </span>
@@ -472,13 +470,12 @@ export default function WhyPage() {
             aria-controls={panelId03}
             onClick={toggleIv03}
           >
-            <span className={styles.ivTriggerRow}>
-              <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>TONYWANG 유전자 단백질</span>
+            <span className={styles.archiveTrigger}>
+              <span className={styles.chapterMeta}>
+                <span className={styles.chapterKeyword}>GENE PROTEIN</span>
+                <span className={styles.chapterTitle}>TONYWANG 유전자 단백질</span>
               </span>
-              <span className={styles.ivAccordionIcon} aria-hidden>
+              <span className={styles.chapterToggle} aria-hidden>
                 {iv03Open ? "\u2212" : "+"}
               </span>
             </span>
@@ -520,13 +517,12 @@ export default function WhyPage() {
             aria-controls={panelId04}
             onClick={toggleIv04}
           >
-            <span className={styles.ivTriggerRow}>
-              <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>식물세포 유전자 단백질의 원리</span>
+            <span className={styles.archiveTrigger}>
+              <span className={styles.chapterMeta}>
+                <span className={styles.chapterKeyword}>PRINCIPLE</span>
+                <span className={styles.chapterTitle}>식물세포 유전자 단백질의 원리</span>
               </span>
-              <span className={styles.ivAccordionIcon} aria-hidden>
+              <span className={styles.chapterToggle} aria-hidden>
                 {iv04Open ? "\u2212" : "+"}
               </span>
             </span>
@@ -568,13 +564,12 @@ export default function WhyPage() {
             aria-controls={panelId05}
             onClick={toggleIv05}
           >
-            <span className={styles.ivTriggerRow}>
-              <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>피부 독소 균 AND 변혁의 시간</span>
+            <span className={styles.archiveTrigger}>
+              <span className={styles.chapterMeta}>
+                <span className={styles.chapterKeyword}>TOXIN PURGE</span>
+                <span className={styles.chapterTitle}>피부 독소 균 AND 변혁의 시간</span>
               </span>
-              <span className={styles.ivAccordionIcon} aria-hidden>
+              <span className={styles.chapterToggle} aria-hidden>
                 {iv05Open ? "\u2212" : "+"}
               </span>
             </span>
@@ -616,13 +611,12 @@ export default function WhyPage() {
             aria-controls={panelId06}
             onClick={toggleIv06}
           >
-            <span className={styles.ivTriggerRow}>
-              <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>스킨케어 시장에 진출한 이유는?</span>
+            <span className={styles.archiveTrigger}>
+              <span className={styles.chapterMeta}>
+                <span className={styles.chapterKeyword}>WHY NOW</span>
+                <span className={styles.chapterTitle}>스킨케어 시장에 진출한 이유는?</span>
               </span>
-              <span className={styles.ivAccordionIcon} aria-hidden>
+              <span className={styles.chapterToggle} aria-hidden>
                 {iv06Open ? "\u2212" : "+"}
               </span>
             </span>
@@ -664,13 +658,12 @@ export default function WhyPage() {
             aria-controls={panelId07}
             onClick={toggleIv07}
           >
-            <span className={styles.ivTriggerRow}>
-              <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>향장학 AND SELLS</span>
+            <span className={styles.archiveTrigger}>
+              <span className={styles.chapterMeta}>
+                <span className={styles.chapterKeyword}>COSMETIC SALES</span>
+                <span className={styles.chapterTitle}>향장학 AND SELLS</span>
               </span>
-              <span className={styles.ivAccordionIcon} aria-hidden>
+              <span className={styles.chapterToggle} aria-hidden>
                 {iv07Open ? "\u2212" : "+"}
               </span>
             </span>
@@ -712,13 +705,12 @@ export default function WhyPage() {
             aria-controls={panelId08}
             onClick={toggleIv08}
           >
-            <span className={styles.ivTriggerRow}>
-              <span className={styles.ivTriggerPad} aria-hidden />
-              <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>여정의 시간</span>
+            <span className={styles.archiveTrigger}>
+              <span className={styles.chapterMeta}>
+                <span className={styles.chapterKeyword}>JOURNEY</span>
+                <span className={styles.chapterTitle}>여정의 시간</span>
               </span>
-              <span className={styles.ivAccordionIcon} aria-hidden>
+              <span className={styles.chapterToggle} aria-hidden>
                 {iv08Open ? "\u2212" : "+"}
               </span>
             </span>
