@@ -146,6 +146,55 @@ const INTERVIEW_06_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   },
 ];
 
+/** 향장학과 바이오의 차이 — 사용자 제공 원문 (수정·축약 없음) */
+const INTERVIEW_07_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
+  {
+    speaker: "기자",
+    text: "그렇군요 하지만 각자의 회사들도 자기 제품이 좋다고 하는건 당연한거 아닌가요?",
+  },
+  {
+    speaker: "기자",
+    text: "나쁘다고 하면서 팔순 없잔아요 그 분들도 열정을 가지고 하는거라 생각합니다",
+  },
+  { speaker: "기자", text: "그걸 나쁘,다고 할순 없죠" },
+  {
+    speaker: "TONYWANG",
+    text: "맞습니다 하지만 입증이나 증명을 하지 않고 일단 팔고보자는 식이란 느낌이 강했어요 기성 향장학 원료를 무시하는건 절대 아닙니다 하지만 기성원료에서 피부를 고치는 것은 사실 어렵습니다 가능하다면 이렇게 오랜 시간 연구를 할 필요가 없어요",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "향장학은 배합의 기술이고 바이오는 새로운 생성의 기술입니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "우리가 최고다 향장학은 아니다 라는 말은 절대 아닙니다 다만 차이점을 극명하게 얘기하는 것 뿐입니다",
+  },
+  {
+    speaker: "기자",
+    text: "그렇군요 지금까지 얘기를 들어보면 바이오 특히 식물세포유전자를 다루는 기술에 자부심이 크신 것 같은데 다른 회사들 또한 각자의 자부심으로 기술 개발하여 발전하고자 합니다 TONYWANG 바이오 기술에 대해 자부심을 느끼나요?",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "생각의 차이라 생각해요 향장학은 어려운 분야가 아닙니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "아까도 말했지만 배합의 기술입니다 하지만 유전자 단백질은 차원이 다릅니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "창조의 기술입니다 향장학을 가볍게 보지 않습니다 존중합니다",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "그렇지만 분야가 다른건 다르다고 해야하지 않을까요?",
+  },
+  {
+    speaker: "TONYWANG",
+    text: "정말 피부를 변화 시킬수 있는 물질은 유전자 단백질이 유일하다고 생각합니다",
+  },
+];
+
 export default function WhyPage() {
   const baseId = useId();
   const [iv01Open, setIv01Open] = useState(false);
@@ -154,6 +203,7 @@ export default function WhyPage() {
   const [iv04Open, setIv04Open] = useState(false);
   const [iv05Open, setIv05Open] = useState(false);
   const [iv06Open, setIv06Open] = useState(false);
+  const [iv07Open, setIv07Open] = useState(false);
   const panelId = `${baseId}-iv01-panel`;
   const headerId = `${baseId}-iv01-header`;
   const panelId02 = `${baseId}-iv02-panel`;
@@ -166,6 +216,8 @@ export default function WhyPage() {
   const headerId05 = `${baseId}-iv05-header`;
   const panelId06 = `${baseId}-iv06-panel`;
   const headerId06 = `${baseId}-iv06-header`;
+  const panelId07 = `${baseId}-iv07-panel`;
+  const headerId07 = `${baseId}-iv07-header`;
 
   const toggleIv01 = useCallback(() => {
     setIv01Open((v) => !v);
@@ -189,6 +241,10 @@ export default function WhyPage() {
 
   const toggleIv06 = useCallback(() => {
     setIv06Open((v) => !v);
+  }, []);
+
+  const toggleIv07 = useCallback(() => {
+    setIv07Open((v) => !v);
   }, []);
 
   return (
@@ -435,6 +491,42 @@ export default function WhyPage() {
               <div className={styles.ivPanelPad} aria-hidden={!iv06Open}>
                 {INTERVIEW_06_TURNS.map((turn, index) => (
                   <div key={`iv06-${index}`} className={styles.ivTurn}>
+                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <p className={styles.ivText}>{turn.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article className={styles.ivItem}>
+          <button
+            type="button"
+            id={headerId07}
+            className={`${styles.ivTrigger} ${iv07Open ? styles.ivTriggerOpen : ""}`}
+            aria-expanded={iv07Open}
+            aria-controls={panelId07}
+            onClick={toggleIv07}
+          >
+            <span className={styles.ivTriggerRow}>
+              <span className={styles.ivChapterTitle}>향장학과 바이오의 차이</span>
+            </span>
+            <span className={styles.ivLineTrack} aria-hidden>
+              <span className={styles.ivLineFill} />
+            </span>
+          </button>
+
+          <div
+            id={panelId07}
+            role="region"
+            aria-labelledby={headerId07}
+            className={`${styles.ivPanel} ${iv07Open ? styles.ivPanelOpen : ""}`}
+          >
+            <div className={styles.ivPanelInner}>
+              <div className={styles.ivPanelPad} aria-hidden={!iv07Open}>
+                {INTERVIEW_07_TURNS.map((turn, index) => (
+                  <div key={`iv07-${index}`} className={styles.ivTurn}>
                     <p className={styles.ivSpeaker}>{turn.speaker}</p>
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
