@@ -350,12 +350,13 @@ export default function WhyPage() {
         <div className={styles.archiveIntroInner}>
           <p className={styles.archiveIntroKicker}>WHY ARCHIVE INTRO</p>
           <p className={styles.archiveIntroLead}>
-            TONYWANG interview archive is not written like a product page.
+            TONYWANG It tells the story of the past and the remaining time of the journey
           </p>
           <p className={styles.archiveIntroBody}>
-            This archive preserves the original flow,
+            The excellence of material in the values of the study
             <br />
-            tone, and philosophy exactly as spoken.
+            <br />
+            And trust and truth
           </p>
         </div>
       </section>
