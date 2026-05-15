@@ -25,7 +25,7 @@ const INTERVIEW_02_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   { speaker: "TONYWANG", text: "네 그렇습니다 처음 해보는겁니다" },
   {
     speaker: "기자",
-    text: "그럼 지난 시간은 어떤 업무를 하시다 화장품 사업을 하게 되신거죠?",
+    text: "그동안 어떤 분야를 하시다 skin care 분야을 하게 되신거죠?",
   },
   {
     speaker: "TONYWANG",
