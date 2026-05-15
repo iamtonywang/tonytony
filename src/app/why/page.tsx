@@ -63,7 +63,7 @@ const INTERVIEW_04_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
 const INTERVIEW_05_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
   {
     speaker: "TONYWANG",
-    text: "피부 적용분야 에서는 피부 독소를 개선하고 염증 반응 감소·재생력 촉진 등 문제성 피부 개선에 특화적인 작용을 합니다",
+    text: "피부 적용 분야는 피부 독소균을 제거하여 문제 성 피부 치료에 변혁 작용을 합니다\n\n흑피증 ,노화 피부 . 트러블, 아토피, 모공,이며 가장 큰 목적은 소멸돤 세포를 생성하여 피부를 복원 시키는 목적입니다\n\n피부 문제를 일으키는 주된 요인은 피부 독소 균 입니다",
   },
   {
     speaker: "TONYWANG",
