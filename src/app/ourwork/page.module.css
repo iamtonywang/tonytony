@@ -300,9 +300,7 @@
 }
 
 .editorialKoreanArchiveVisualWrap {
-  width: min(520px, 88%);
-  max-width: 100%;
-  margin: 0 auto;
+  width: 100%;
   line-height: 0;
 }
 
@@ -311,7 +309,6 @@
   width: 100%;
   max-width: 100%;
   height: auto;
-  margin: 0 auto;
   object-fit: cover;
   object-position: center;
 }
@@ -799,11 +796,6 @@
     max-width: 100%;
   }
 
-  .editorialKoreanArchiveVisualWrap {
-    width: min(720px, 62vw);
-    max-width: 720px;
-  }
-
   .bioProcessNodes {
     flex-wrap: nowrap;
     gap: 38px;
@@ -961,10 +953,6 @@
   .editorialKoreanArchiveDivider {
     width: min(64px, 16vw);
     margin-bottom: 16px;
-  }
-
-  .editorialKoreanArchiveVisualWrap {
-    width: min(92vw, 100%);
   }
 
   .editorialKoreanArchiveCopy {
