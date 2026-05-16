@@ -1079,6 +1079,7 @@ export default function WhyPage() {
       </section>
 
       <div className={styles.bodySpacer} aria-hidden />
+      <div className={styles.footerBoundaryLine} aria-hidden />
     </div>
   );
 }
