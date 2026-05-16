@@ -51,10 +51,6 @@ export default function OurWorkPage() {
           </div>
 
           <div className={styles.editorialIntroCopy}>
-            <p className={`${styles.editorialIntroKicker} ${styles.elMessiriText}`}>
-              Global first No1
-            </p>
-
             <h2 className={styles.editorialIntroHeadline}>
               <span className={styles.editorialIntroHeadlineLine}>plant cell genetic</span>
               <span className={styles.editorialIntroHeadlineLine}>protein</span>
@@ -71,6 +67,23 @@ export default function OurWorkPage() {
                 Newly formed cells create new components in a third structure
               </p>
             </div>
+
+            <div className={styles.editorialIntroLeadDivider} aria-hidden="true" />
+
+            <div className={styles.editorialIntroSecondaryVisualWrap}>
+              <img
+                src="/landing-assets/ourwork-editorial-droplet-02.webp"
+                alt=""
+                className={styles.editorialIntroSecondaryVisual}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+              />
+            </div>
+
+            <p className={`${styles.editorialIntroKicker} ${styles.elMessiriText}`}>
+              Global first No1
+            </p>
 
             <div className={styles.editorialIntroDivider} aria-hidden="true" />
 
