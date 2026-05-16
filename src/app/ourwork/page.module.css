@@ -346,11 +346,11 @@
 }
 
 .editorialKoreanArchiveLine {
-  margin: 0 0 clamp(10px, 1.4vw, 14px);
+  margin: 0 0 0.38em;
   font-family: "NanumSquare", sans-serif;
   font-size: 14px;
   font-weight: 300;
-  line-height: 1.62;
+  line-height: 1.48;
   color: rgba(255, 255, 255, 0.86);
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -992,8 +992,8 @@
 
   .editorialKoreanArchiveLine {
     font-size: 14px;
-    line-height: 1.58;
-    margin-bottom: 10px;
+    line-height: 1.5;
+    margin-bottom: 0.36em;
   }
 
   .editorialIntroArchiveBlock {

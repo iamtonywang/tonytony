@@ -142,15 +142,11 @@ export default function OurWorkPage() {
                   <p className={styles.editorialKoreanArchiveHeadline}>
                     세포 DNA를 클로닝 하여 재결합하는 원리
                   </p>
-                  <p className={styles.editorialKoreanArchiveLine}>식물 세포 유전자 단백질</p>
                   <p className={styles.editorialKoreanArchiveLine}>
-                    세포 DNA를 결합했을 때 변이 세포 형성
+                    식물 세포 유전자 단백질 세포 DNA를 결합했을 때 변이 세포 형성
                   </p>
                   <p className={styles.editorialKoreanArchiveLine}>
-                    변이 세포는 복합 구성체 구조 생성
-                  </p>
-                  <p className={styles.editorialKoreanArchiveLine}>
-                    피부 독소, 노화피부, 화장 독. 경피 독 , 피부 손상.
+                    변이 세포 복합 구성 체 구조적 생성 피부 독소, 노화피부, 화장 독. 경피 독 , 피부 손상.
                   </p>
                   <p className={styles.editorialKoreanArchiveLine}>
                     피부 트러블. 피부 조직 복원 목적 단백질 연구 개발
