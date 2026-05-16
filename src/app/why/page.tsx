@@ -344,6 +344,24 @@ export default function WhyPage() {
         </div>
       </section>
 
+      <section
+        className={`${styles.archiveIntroSection} ${styles.archiveIntroAboveVisual}`}
+        aria-label="Archive introduction"
+      >
+        <div className={styles.archiveIntroInner}>
+          <p className={styles.archiveIntroKicker}>WHY ARCHIVE INTRO</p>
+          <p className={styles.archiveIntroLead}>
+            TONYWANG It tells the story of the past and the remaining time of the journey
+          </p>
+          <p className={styles.archiveIntroBody}>
+            The excellence of material in the values of the study
+            <br />
+            <br />
+            And trust and truth
+          </p>
+        </div>
+      </section>
+
       <section className={styles.interviewVisualSection}>
         <div className={styles.interviewVisualWrap}>
           <img
@@ -362,19 +380,30 @@ export default function WhyPage() {
       </section>
 
       <section
-        className={styles.archiveIntroSection}
-        aria-label="Archive introduction"
+        className={styles.interviewArchiveNoteSection}
+        aria-label="Interview archive note"
       >
-        <div className={styles.archiveIntroInner}>
-          <p className={styles.archiveIntroKicker}>WHY ARCHIVE INTRO</p>
-          <p className={styles.archiveIntroLead}>
-            TONYWANG It tells the story of the past and the remaining time of the journey
+        <div className={styles.interviewArchiveNoteInner}>
+          <p className={styles.interviewArchiveNotePara}>
+            본문 인터뷰 내용은 제품을 판매 하기 위한 홍보성 목적이 아닙니다
           </p>
-          <p className={styles.archiveIntroBody}>
-            The excellence of material in the values of the study
-            <br />
-            <br />
-            And trust and truth
+          <p className={styles.interviewArchiveNotePara}>
+            TONYWANG연구소의 연구 개발 및 STORY 이며 제품과는 관계가 없습니다
+          </p>
+          <p className={styles.interviewArchiveNotePara}>
+            TONYWANG연구소 는 과대 홍보를 하면서 까지 제품을 판매 할 생각이 없습니다
+          </p>
+          <p className={styles.interviewArchiveNotePara}>
+            제품의 파괴력은 스스로 과대 포장한다고 고객에게 인정를 받을수 없습니다
+          </p>
+          <p className={styles.interviewArchiveNotePara}>
+            고객은 매우 현명하고 중립적인 위치에 있습니다
+          </p>
+          <p className={styles.interviewArchiveNotePara}>
+            TONYWANG은 유저을 믿고 신뢰 합니다
+          </p>
+          <p className={styles.interviewArchiveNotePara}>
+            그들만이 TONYWANG 가치를 세상에 알릴 존재 라는걸 .....
           </p>
         </div>
       </section>
