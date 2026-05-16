@@ -48,6 +48,32 @@ function computeTimelineIndex(currentTime: number, durationSeconds: number): num
   return Math.min(Math.max(raw, 0), timelineTexts.length - 1);
 }
 
+function waitUntilVideoCanPlay(video: HTMLVideoElement): Promise<void> {
+  if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve, reject) => {
+    const onReady = () => {
+      cleanup();
+      resolve();
+    };
+    const onError = () => {
+      cleanup();
+      reject(new Error("Video failed to load"));
+    };
+    const cleanup = () => {
+      video.removeEventListener("loadedmetadata", onReady);
+      video.removeEventListener("canplay", onReady);
+      video.removeEventListener("error", onError);
+    };
+
+    video.addEventListener("loadedmetadata", onReady);
+    video.addEventListener("canplay", onReady);
+    video.addEventListener("error", onError);
+  });
+}
+
 export default function HomeVideoSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoMountRef = useRef<HTMLDivElement | null>(null);
@@ -56,6 +82,7 @@ export default function HomeVideoSection() {
   const [src, setSrc] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const toggleLockRef = useRef(false);
+  const userPlaybackRef = useRef(false);
 
   const [shownIndex, setShownIndex] = useState(0);
   const [visualPhase, setVisualPhase] = useState<VisualPhase>("active");
@@ -126,7 +153,9 @@ export default function HomeVideoSection() {
     if (!video) {
       return;
     }
-    video.muted = true;
+    if (!userPlaybackRef.current) {
+      video.muted = true;
+    }
     const dur = getEffectiveDurationSeconds(video);
     const idx = computeTimelineIndex(video.currentTime, dur);
     lastComputedIndexRef.current = idx;
@@ -191,6 +220,7 @@ export default function HomeVideoSection() {
       /* ignore */
     }
     setIsPlaying(false);
+    userPlaybackRef.current = false;
     lastComputedIndexRef.current = 0;
     setShownIndex(0);
     shownIndexRef.current = 0;
@@ -213,9 +243,23 @@ export default function HomeVideoSection() {
             /* ignore */
           }
         }
+        userPlaybackRef.current = true;
         video.muted = false;
+        video.volume = 1;
+
+        if (!video.currentSrc) {
+          video.src = src ?? deviceVideoSrc ?? VIDEO_SRC_PC;
+        }
+
+        if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+          await waitUntilVideoCanPlay(video);
+        }
+
+        video.muted = false;
+        video.volume = 1;
         await video.play();
       } else {
+        userPlaybackRef.current = false;
         video.pause();
         try {
           video.currentTime = 0;
@@ -231,7 +275,7 @@ export default function HomeVideoSection() {
     } finally {
       toggleLockRef.current = false;
     }
-  }, []);
+  }, [deviceVideoSrc, src]);
 
   useEffect(() => {
     if (isPlaying || !src) {
