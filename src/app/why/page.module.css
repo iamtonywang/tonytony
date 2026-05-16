@@ -278,6 +278,11 @@
 .interviewArchiveNoteBody {
   max-width: min(42em, 100%);
   margin: 0 auto;
+  text-align: left;
+}
+
+.mobileOnlyBreak {
+  display: none;
 }
 
 .interviewArchiveNoteBodyPara {
@@ -349,7 +354,11 @@
   }
 
   .interviewArchiveNoteBody {
-    text-align: left;
+    text-align: center;
+  }
+
+  .mobileOnlyBreak {
+    display: block;
   }
 
   .interviewArchiveNoteBodyPara {

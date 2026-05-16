@@ -561,8 +561,13 @@ export default function WhyPage() {
         <div className={styles.interviewArchiveNoteInner}>
           <p className={styles.interviewArchiveNoteLead}>
             {renderEnglishMessiriLine(
-              "TONYWANG연구소 연구 개발 및 STORY 상품과는 관계가 없습니다",
-              "archive-note-lead",
+              "TONYWANG연구소 연구 개발 및 STORY",
+              "archive-note-lead-a",
+            )}
+            <br className={styles.mobileOnlyBreak} />{" "}
+            {renderEnglishMessiriLine(
+              "상품과는 관계가 없습니다",
+              "archive-note-lead-b",
             )}
           </p>
           <div className={styles.interviewArchiveNoteHairline} aria-hidden />
