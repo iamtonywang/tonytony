@@ -590,6 +590,16 @@ export default function WhyPage() {
             <p className={styles.interviewArchiveNoteBodyPara}>
               상품 가치는 고객이 결정 합니다
             </p>
+            <div className={styles.interviewArchiveNoteBreakVisual}>
+              <img
+                src="/landing-assets/why-note-break-visual-01.webp"
+                alt=""
+                className={styles.interviewArchiveNoteBreakVisualImage}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+              />
+            </div>
             <p className={styles.interviewArchiveNoteBodyPara}>
               {renderEnglishMessiriLine(
                 "고객은 Smart하고 중립적인 위치에 있습니다",

@@ -385,6 +385,22 @@
   margin-bottom: 0;
 }
 
+.interviewArchiveNoteBreakVisual {
+  width: 100%;
+  max-width: min(42em, 100%);
+  margin: clamp(12px, 2vw, 18px) 0;
+  line-height: 0;
+}
+
+.interviewArchiveNoteBreakVisualImage {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
 .elMessiriText {
   font-family: "EL Messiri", serif;
 }
@@ -468,6 +484,19 @@
     font-size: 12px;
     line-height: 1.6;
     margin: 0 0 0.68em;
+  }
+
+  .interviewArchiveNoteBreakVisual {
+    width: min(94vw, 100%);
+    max-width: 94vw;
+    margin: clamp(10px, 2.8vw, 16px) auto;
+    overflow: hidden;
+  }
+
+  .interviewArchiveNoteBreakVisualImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
   }
 
   .footerClosingNote {
