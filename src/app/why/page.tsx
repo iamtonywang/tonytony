@@ -385,7 +385,7 @@ export default function WhyPage() {
       >
         <div className={styles.interviewArchiveNoteInner}>
           <p className={styles.interviewArchiveNoteLead}>
-            TONYWANG연구소 연구 개발 및 STORY 이며 제품 홍보성 과는 관계가 없습니다
+            TONYWANG연구소 연구 개발 및 STORY 상품과는 관계가 없습니다
           </p>
           <div className={styles.interviewArchiveNoteHairline} aria-hidden />
           <div className={styles.interviewArchiveNoteBody}>
