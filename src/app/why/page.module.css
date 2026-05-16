@@ -1,4 +1,4 @@
-/* WHY page — editorial landing → interview visual → archive intro → chapters */
+/* WHY page — unified landing (WHY-only) → interview visual → archive intro → chapters */
 
 .whyPage {
   width: 100%;
@@ -8,34 +8,42 @@
   background-color: #5f5f5f;
 }
 
-/* — WHY exclusive landing (not HomeMotionLine) — */
+/* — WHY unified landing (OurWork-type rhythm, independent implementation) — */
 
-.whyLanding {
+.whyUnifiedLanding {
   width: 100%;
-  padding: clamp(20px, 4vw, 36px) 0 0;
+  padding: clamp(16px, 3vw, 22px) 0 0;
   box-sizing: border-box;
   background-color: #5f5f5f;
 }
 
-.whyLandingTopLine {
-  width: min(1120px, 92vw);
+.whyUnifiedLandingInner {
+  width: 100%;
+  max-width: min(920px, 94vw);
+  margin: 0 auto;
+  padding: clamp(24px, 5vh, 48px) clamp(20px, 6vw, 48px)
+    clamp(36px, 7vh, 72px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(22px, 4vw, 36px);
+}
+
+.whyUnifiedHairline {
+  width: min(760px, 88vw);
   height: 1px;
   margin: 0 auto;
+  flex-shrink: 0;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.52) 50%,
+    rgba(255, 255, 255, 0.58) 50%,
     transparent 100%
   );
 }
 
-.whyLandingInner {
-  width: 100%;
-  max-width: min(920px, 94vw);
-  margin: 0 auto;
-  padding: clamp(40px, 8vh, 96px) clamp(20px, 5vw, 48px)
-    clamp(48px, 9vh, 112px);
-  box-sizing: border-box;
+.whyUnifiedCopy {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,82 +51,82 @@
   color: rgba(255, 255, 255, 0.94);
 }
 
-.whyLandingHeroTitle {
+.whyUnifiedHeroTitle {
   margin: 0;
   font-family: "El Messiri", "NanumSquare", sans-serif;
-  font-size: clamp(46px, 12vw, 96px);
+  font-size: clamp(42px, 10vw, 80px);
   font-weight: 300;
-  line-height: 1.02;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.96);
+  line-height: 1.05;
+  letter-spacing: 0.04em;
 }
 
-.whyLandingEnTrack {
-  margin: clamp(18px, 3.2vw, 32px) 0 0;
+.whyUnifiedSubTitle {
+  margin: 14px 0 0;
   font-family: "El Messiri", "NanumSquare", sans-serif;
-  font-size: clamp(13px, 1.65vw, 16px);
+  font-size: clamp(14px, 1.7vw, 17px);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.whyUnifiedKoreanTitle {
+  margin: 6px 0 0;
+  font-family: "NanumSquare", "El Messiri", sans-serif;
+  font-size: clamp(14px, 1.7vw, 17px);
   font-weight: 300;
   line-height: 1.45;
-  letter-spacing: 0.14em;
-  text-transform: lowercase;
-  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.88);
 }
 
-.whyLandingKo {
-  margin: clamp(10px, 1.8vw, 18px) 0 0;
-  font-family: "NanumSquare", "El Messiri", sans-serif;
-  font-size: clamp(14px, 1.9vw, 17px);
+.whyUnifiedDescription {
+  margin-top: clamp(18px, 3vw, 24px);
+  max-width: min(860px, 100%);
+  width: 100%;
+}
+
+.whyUnifiedDescription p {
+  margin: 0 0 clamp(6px, 1.2vw, 8px);
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(13px, 1.45vw, 14px);
   font-weight: 300;
   line-height: 1.55;
   letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.82);
 }
 
-.whyLandingEnBody {
-  margin: clamp(28px, 5vw, 52px) 0 0;
-  max-width: min(36em, 100%);
+.whyUnifiedDescription p:last-child {
+  margin-bottom: 0;
+}
+
+.whyUnifiedEnding {
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, 1.6vw, 16px);
+  align-items: center;
+  text-align: center;
 }
 
-.whyLandingEnLine {
+.whyUnifiedEndingTitle {
   margin: 0;
   font-family: "El Messiri", "NanumSquare", sans-serif;
-  font-size: clamp(13px, 1.55vw, 15px);
+  font-size: clamp(15px, 1.8vw, 17px);
   font-weight: 300;
-  line-height: 1.65;
-  letter-spacing: 0.03em;
-  color: rgba(255, 255, 255, 0.62);
-}
-
-.whyLandingHairline {
-  margin-top: clamp(36px, 7vw, 80px);
-  margin-bottom: clamp(28px, 5vw, 56px);
-}
-
-.whyLandingClosingMark {
-  margin: 0;
-  font-family: "El Messiri", "NanumSquare", sans-serif;
-  font-size: clamp(10px, 1.2vw, 12px);
-  font-weight: 300;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.whyLandingClosingThought {
-  margin: clamp(10px, 1.8vw, 16px) 0 0;
+.whyUnifiedEndingText {
+  margin: 10px 0 0;
   max-width: min(32em, 100%);
   font-family: "El Messiri", "NanumSquare", sans-serif;
-  font-size: clamp(13px, 1.5vw, 15px);
+  font-size: clamp(13px, 1.45vw, 14px);
   font-weight: 300;
-  line-height: 1.62;
-  letter-spacing: 0.04em;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .bodySpacer {
@@ -166,14 +174,14 @@
 }
 
 @media (max-width: 768px) {
-  .whyLandingInner {
-    padding-left: clamp(16px, 5vw, 28px);
-    padding-right: clamp(16px, 5vw, 28px);
+  .whyUnifiedLandingInner {
+    padding-left: clamp(14px, 5vw, 24px);
+    padding-right: clamp(14px, 5vw, 24px);
+    gap: clamp(18px, 5vw, 28px);
   }
 
-  .whyLandingHairline {
-    margin-top: clamp(28px, 8vw, 56px);
-    margin-bottom: clamp(22px, 6vw, 44px);
+  .whyUnifiedHairline {
+    width: min(88vw, 100%);
   }
 
   .interviewVisualSection {
@@ -186,7 +194,7 @@
   }
 }
 
-/* — Archive editorial intro (between manifesto and chapters) — */
+/* — Archive editorial intro (after interview visual) — */
 
 .archiveIntroSection {
   width: 100%;

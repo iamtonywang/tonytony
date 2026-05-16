@@ -309,35 +309,38 @@ export default function WhyPage() {
 
   return (
     <div className={styles.whyPage}>
-      <section className={styles.whyLanding} aria-label="WHY landing">
-        <div className={styles.whyLandingTopLine} aria-hidden />
-        <div className={styles.whyLandingInner}>
-          <h1 className={styles.whyLandingHeroTitle}>TONY WANG</h1>
-          <p className={styles.whyLandingEnTrack}>plant cell genetic protein</p>
-          <p className={styles.whyLandingKo}>식물 세포 유전자 단백질 연구</p>
-          <div className={styles.whyLandingEnBody}>
-            <p className={styles.whyLandingEnLine}>
-              Plant cells archive genetic sequence as living structure.
-            </p>
-            <p className={styles.whyLandingEnLine}>
-              Each protein marks a decision in the research record.
-            </p>
-            <p className={styles.whyLandingEnLine}>
-              Study moves from nucleus to surface without noise.
+      <section className={styles.whyUnifiedLanding} aria-label="WHY landing">
+        <div className={styles.whyUnifiedLandingInner}>
+          <div className={styles.whyUnifiedHairline} aria-hidden />
+          <div className={styles.whyUnifiedCopy}>
+            <h1 className={styles.whyUnifiedHeroTitle}>TONY WANG</h1>
+            <h3 className={styles.whyUnifiedSubTitle}>plant cell genetic protein</h3>
+            <h2 className={styles.whyUnifiedKoreanTitle}>
+              식물 세포 유전자 단백질 연구
+            </h2>
+            <div className={styles.whyUnifiedDescription}>
+              <p>
+                What we prove in the lab becomes the structure your skin can trust.
+              </p>
+              <p>
+                Cloning and recombination across different cell DNA, the third structure
+                where new cells
+                <br />
+                assemble new efficacy — documented step by step.
+              </p>
+              <p>
+                Precisely regulate skin cell signal transmission and activate ECM reconstruction
+              </p>
+            </div>
+          </div>
+          <div className={styles.whyUnifiedHairline} aria-hidden />
+          <div className={styles.whyUnifiedEnding}>
+            <h2 className={styles.whyUnifiedEndingTitle}>TONY WANG</h2>
+            <p className={styles.whyUnifiedEndingText}>
+              I thought about it and made up my mind
             </p>
           </div>
-          <div
-            className={`${styles.hairlineShort} ${styles.whyLandingHairline}`}
-            aria-hidden
-          />
-          <p className={styles.whyLandingClosingMark}>TONY WANG</p>
-          <p className={styles.whyLandingClosingThought}>
-            I thought about it and made up my mind
-          </p>
-          <div
-            className={`${styles.hairlineShort} ${styles.whyLandingHairline}`}
-            aria-hidden
-          />
+          <div className={styles.whyUnifiedHairline} aria-hidden />
         </div>
       </section>
 
