@@ -54,10 +54,12 @@ export default function OurWorkPage() {
             <p className={`${styles.editorialIntroKicker} ${styles.elMessiriText}`}>
               Global first No1
             </p>
-            <h2 className={styles.editorialIntroHeadline}>plant cell genetic protein</h2>
+            <h2 className={styles.editorialIntroHeadline}>
+              <span className={styles.editorialIntroHeadlineLine}>plant cell</span>
+              <span className={styles.editorialIntroHeadlineLine}>genetic protein</span>
+            </h2>
           <p className={styles.editorialIntroKorean}>식물 세포 유전자 단백질</p>
-          <div className={styles.editorialIntroHairline} aria-hidden />
-          <div className={styles.editorialIntroDescription}>
+          <div className={styles.editorialIntroLead}>
             <p className={styles.elMessiriText}>
               Plant Cell Gene Protein principle of cloning and recombination of different cell DNA
             </p>
@@ -66,6 +68,30 @@ export default function OurWorkPage() {
               Newly formed cells create new components in a third structure
             </p>
           </div>
+
+            <div className={styles.editorialIntroDivider} aria-hidden="true" />
+
+            <p className={`${styles.editorialIntroArchiveLabel} ${styles.elMessiriText}`}>TONY WANG</p>
+
+            <div className={styles.editorialIntroArchiveNote}>
+              <p className={styles.elMessiriText}>
+                Research and development to create new DNA for cells
+              </p>
+              <p className={styles.elMessiriText}>
+                Newly formed cells create new efficacy structures as complex members
+              </p>
+              <p className={styles.elMessiriText}>Plant cell gene protein recombination technology</p>
+              <p className={styles.elMessiriText}>
+                Skin toxin, aging skin, cosmetic poison.
+                <br />
+                Skin damage caused by percutaneous poison infection.
+              </p>
+              <p className={styles.elMessiriText}>
+                Skin trouble.
+                <br />
+                Protein research and development for skin tissue restoration
+              </p>
+            </div>
           </div>
         </div>
       </section>
