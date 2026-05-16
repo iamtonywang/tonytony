@@ -201,44 +201,114 @@ export default function OurWorkPage() {
                           >
                             PROCESS SEQUENCE
                           </p>
-                          <ol className={styles.editorialKoreanArchiveVialSequenceList}>
-                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
-                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>01</span>
+                          <div
+                            className={styles.editorialKoreanArchiveVialSequenceTrack}
+                            role="list"
+                            aria-label="Process sequence"
+                          >
+                            <div
+                              className={styles.editorialKoreanArchiveVialSequenceStep}
+                              role="listitem"
+                            >
+                              <span
+                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                aria-hidden="true"
+                              />
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
-                                식물 세포 정제 / Plant Cell Refinement
+                                Plant Cell Refinement
                               </span>
-                            </li>
-                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
-                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>02</span>
+                            </div>
+                            <span
+                              className={styles.editorialKoreanArchiveVialSequenceArrow}
+                              aria-hidden="true"
+                            >
+                              →
+                            </span>
+                            <div
+                              className={styles.editorialKoreanArchiveVialSequenceStep}
+                              role="listitem"
+                            >
+                              <span
+                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                aria-hidden="true"
+                              />
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
-                                단백질 추출 / Protein Extraction
+                                Protein Extraction
                               </span>
-                            </li>
-                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
-                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>03</span>
+                            </div>
+                            <span
+                              className={styles.editorialKoreanArchiveVialSequenceArrow}
+                              aria-hidden="true"
+                            >
+                              →
+                            </span>
+                            <div
+                              className={styles.editorialKoreanArchiveVialSequenceStep}
+                              role="listitem"
+                            >
+                              <span
+                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                aria-hidden="true"
+                              />
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
-                                DNA 클로닝 / DNA Cloning
+                                DNA Cloning
                               </span>
-                            </li>
-                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
-                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>04</span>
+                            </div>
+                            <span
+                              className={styles.editorialKoreanArchiveVialSequenceArrow}
+                              aria-hidden="true"
+                            >
+                              →
+                            </span>
+                            <div
+                              className={styles.editorialKoreanArchiveVialSequenceStep}
+                              role="listitem"
+                            >
+                              <span
+                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                aria-hidden="true"
+                              />
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
-                                세포 결합 / Cell Binding
+                                Cell Binding
                               </span>
-                            </li>
-                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
-                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>05</span>
+                            </div>
+                            <span
+                              className={styles.editorialKoreanArchiveVialSequenceArrow}
+                              aria-hidden="true"
+                            >
+                              →
+                            </span>
+                            <div
+                              className={styles.editorialKoreanArchiveVialSequenceStep}
+                              role="listitem"
+                            >
+                              <span
+                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                aria-hidden="true"
+                              />
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
-                                재조합 / Recombination
+                                Recombination
                               </span>
-                            </li>
-                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
-                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>06</span>
+                            </div>
+                            <span
+                              className={styles.editorialKoreanArchiveVialSequenceArrow}
+                              aria-hidden="true"
+                            >
+                              →
+                            </span>
+                            <div
+                              className={styles.editorialKoreanArchiveVialSequenceStep}
+                              role="listitem"
+                            >
+                              <span
+                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                aria-hidden="true"
+                              />
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
-                                새로운 단백질 구조 / New Protein Structure
+                                New Protein Structure
                               </span>
-                            </li>
-                          </ol>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
