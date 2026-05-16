@@ -87,7 +87,7 @@
 
 .interviewVisualSection {
   width: 100%;
-  padding: 72px 0 92px;
+  padding: 28px 0 96px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,7 +109,7 @@
 
 @media (max-width: 768px) {
   .interviewVisualSection {
-    padding: 44px 0 56px;
+    padding: 22px 0 60px;
   }
 
   .interviewVisualWrap {
