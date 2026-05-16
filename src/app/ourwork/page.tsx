@@ -40,34 +40,37 @@ export default function OurWorkPage() {
       <section className={styles.editorialIntroSection} aria-label="OurWork editorial body">
         <div className={styles.editorialIntroInner}>
           <div className={styles.editorialIntroVisualWrap}>
-          <img
-            src="/landing-assets/ourwork-editorial-droplet-03.webp"
-            alt=""
-            className={styles.editorialIntroVisual}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-          />
+            <img
+              src="/landing-assets/ourwork-editorial-droplet-03.webp"
+              alt=""
+              className={styles.editorialIntroVisual}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
           </div>
 
           <div className={styles.editorialIntroCopy}>
             <p className={`${styles.editorialIntroKicker} ${styles.elMessiriText}`}>
               Global first No1
             </p>
+
             <h2 className={styles.editorialIntroHeadline}>
               <span className={styles.editorialIntroHeadlineLine}>plant cell</span>
               <span className={styles.editorialIntroHeadlineLine}>genetic protein</span>
             </h2>
-          <p className={styles.editorialIntroKorean}>식물 세포 유전자 단백질</p>
-          <div className={styles.editorialIntroLead}>
-            <p className={styles.elMessiriText}>
-              Plant Cell Gene Protein principle of cloning and recombination of different cell DNA
-            </p>
-            <p className={styles.elMessiriText}>New cell structure when cell DNA is combined</p>
-            <p className={styles.elMessiriText}>
-              Newly formed cells create new components in a third structure
-            </p>
-          </div>
+
+            <p className={styles.editorialIntroKorean}>식물 세포 유전자 단백질</p>
+
+            <div className={styles.editorialIntroLead}>
+              <p className={styles.elMessiriText}>
+                Plant Cell Gene Protein principle of cloning and recombination of different cell DNA
+              </p>
+              <p className={styles.elMessiriText}>New cell structure when cell DNA is combined</p>
+              <p className={styles.elMessiriText}>
+                Newly formed cells create new components in a third structure
+              </p>
+            </div>
 
             <div className={styles.editorialIntroDivider} aria-hidden="true" />
 
