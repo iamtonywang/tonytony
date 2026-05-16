@@ -72,7 +72,7 @@ export default function OurWorkPage() {
 
             <div className={styles.editorialIntroSecondaryVisualWrap}>
               <img
-                src="/landing-assets/ourwork-editorial-droplet-02.webp"
+                src="/landing-assets/home-theme-clean-01.webp"
                 alt=""
                 className={styles.editorialIntroSecondaryVisual}
                 loading="lazy"
