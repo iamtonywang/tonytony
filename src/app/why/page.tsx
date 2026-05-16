@@ -390,22 +390,22 @@ export default function WhyPage() {
           <div className={styles.interviewArchiveNoteHairline} aria-hidden />
           <div className={styles.interviewArchiveNoteBody}>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              본문 인터뷰 내용은 제품을 판매 하기 위한 홍보성 목적이 아님을 밝힙니다
+              본문 인터뷰 내용은 제품 홍보 목적이 아님을 밝힙니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              TONYWANG연구소 는 과대 홍보를 하면서 까지 제품을 판매 할 생각이 없습니다
+              TONYWANG연구소 는 과대 홍보로 제품 판매 를 하지 않습니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              제품의 파괴력은 스스로 과대 포장한다고 고객에게 인정를 받을수 없습니다
+              상품 가치는 고객이 결정 합니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              고객은 매우 현명하고 중립적인 위치에 있습니다
+              고객은 Smart하고 중립적인 위치에 있습니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
               TONYWANG은 유저을 믿고 신뢰 합니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              그들만이 TONYWANG 가치를 세상에 알릴 존재 라는걸 .....
+              제품 사용한 유저 만이 TONYWANG 가치를 세상에 알릴 존재 라는걸 .....
             </p>
           </div>
         </div>
