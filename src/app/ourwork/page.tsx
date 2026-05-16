@@ -51,6 +51,10 @@ export default function OurWorkPage() {
           </div>
 
           <div className={styles.editorialIntroCopy}>
+            <p className={`${styles.editorialIntroHeadlineKicker} ${styles.elMessiriText}`}>
+              Global first No1
+            </p>
+
             <h2 className={styles.editorialIntroHeadline}>
               <span className={styles.editorialIntroHeadlineLine}>plant cell genetic</span>
               <span className={styles.editorialIntroHeadlineLine}>protein</span>

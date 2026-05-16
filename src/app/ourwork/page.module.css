@@ -218,6 +218,17 @@
   color: rgba(201, 169, 98, 0.78);
 }
 
+.editorialIntroHeadlineKicker {
+  margin: 0 0 clamp(16px, 2.4vw, 24px);
+  font-family: "EL Messiri", serif;
+  font-size: clamp(12px, 1.35vw, 14px);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(201, 169, 98, 0.78);
+}
+
 .editorialIntroHeadline {
   margin: 0;
   font-family: "EL Messiri", serif;
@@ -285,11 +296,15 @@
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
+  display: block;
 }
 
 .editorialIntroArchiveBlock {
   width: 100%;
   min-width: 0;
+  max-width: min(21em, 100%);
+  margin-left: auto;
+  margin-right: 0;
   box-sizing: border-box;
 }
 
@@ -700,31 +715,15 @@
 }
 
 @media (min-width: 769px) {
-  .editorialIntroAsymmetricRow {
-    display: grid;
-    grid-template-columns: minmax(0, 50%) minmax(0, 1fr);
-    column-gap: clamp(32px, 5.5vw, 64px);
-    align-items: start;
-  }
-
-  .editorialIntroSecondaryVisualWrap {
-    grid-column: 1;
-    max-width: 100%;
-  }
-
   .editorialIntroArchiveBlock {
-    grid-column: 2;
-    max-width: min(21em, 100%);
-    justify-self: end;
-    padding-top: clamp(6px, 1vw, 14px);
+    max-width: min(21em, 88%);
+    margin-left: auto;
+    margin-right: 0;
+    padding-left: clamp(12px, 2.5vw, 28px);
   }
 
   .editorialIntroArchiveBlock .editorialIntroKicker {
-    margin: 0 0 clamp(14px, 2vw, 18px);
-  }
-
-  .editorialIntroArchiveBlock .editorialIntroDivider {
-    margin-top: 0;
+    margin: clamp(14px, 2vw, 18px) 0 clamp(14px, 2vw, 18px);
   }
 
   .editorialIntroArchiveBlock .editorialIntroArchiveNote {
@@ -846,6 +845,12 @@
     letter-spacing: 0.12em;
   }
 
+  .editorialIntroHeadlineKicker {
+    margin-bottom: clamp(12px, 2.4vw, 16px);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+  }
+
   .editorialIntroHeadline {
     font-size: 53px;
     letter-spacing: 0.1em;
@@ -875,13 +880,11 @@
     width: min(64px, 16vw);
   }
 
-  .editorialIntroAsymmetricRow {
-    display: block;
-  }
-
   .editorialIntroArchiveBlock {
     max-width: 100%;
-    padding-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
   }
 
   .editorialIntroArchiveBlock .editorialIntroKicker {
