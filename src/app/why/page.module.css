@@ -295,7 +295,7 @@
 }
 
 .elMessiriText {
-  font-family: var(--font-el-messiri), "EL Messiri", serif;
+  font-family: "EL Messiri", serif;
 }
 
 @media (max-width: 768px) {
