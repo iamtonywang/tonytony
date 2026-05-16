@@ -151,6 +151,27 @@ export default function OurWorkPage() {
                   <p className={styles.editorialKoreanArchiveLine}>
                     피부 트러블. 피부 조직 복원 목적 단백질 연구 개발
                   </p>
+
+                  <div className={styles.editorialKoreanArchiveVialBlock}>
+                    <div className={styles.editorialKoreanArchiveVialDivider} aria-hidden="true" />
+
+                    <div className={styles.editorialKoreanArchiveVialVisualWrap}>
+                      <img
+                        src="/landing-assets/ourwork-editorial-vial-01.webp"
+                        alt=""
+                        className={styles.editorialKoreanArchiveVialVisual}
+                        loading="lazy"
+                        decoding="async"
+                        draggable={false}
+                      />
+                    </div>
+
+                    <p
+                      className={`${styles.editorialKoreanArchiveVialKicker} ${styles.elMessiriText}`}
+                    >
+                      GLOBAL FIRST NO1
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
