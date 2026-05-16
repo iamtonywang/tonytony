@@ -565,12 +565,7 @@ export default function WhyPage() {
           <p className={styles.interviewArchiveHeadlineTitle}>
             {renderEnglishMessiriLine(
               "TONYWANG연구소 연구 개발 및 STORY",
-              "archive-headline-a",
-            )}
-            <br className={styles.mobileOnlyBreak} />{" "}
-            {renderEnglishMessiriLine(
-              "상품과는 관계가 없습니다",
-              "archive-headline-b",
+              "archive-headline",
             )}
           </p>
         </div>
