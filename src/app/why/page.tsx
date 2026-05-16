@@ -1079,6 +1079,25 @@ export default function WhyPage() {
       </section>
 
       <div className={styles.bodySpacer} aria-hidden />
+      <div className={styles.footerClosingNote}>
+        <p className={styles.footerClosingNotePara}>
+          The value of the product is determined by the customer
+        </p>
+        <p className={styles.footerClosingNotePara}>
+          The customer is in a smart and neutral position
+        </p>
+        <p className={styles.footerClosingNotePara}>
+          TONYWANG trusts and trusts users
+        </p>
+        <p className={styles.footerClosingNotePara}>
+          Only the users who used the product will know the value of TONYWANG to the world...
+        </p>
+        <p
+          className={`${styles.footerClosingNotePara} ${styles.footerClosingSignature}`}
+        >
+          May 2026 TONY WANG
+        </p>
+      </div>
       <div className={styles.footerBoundaryLine} aria-hidden />
     </div>
   );
