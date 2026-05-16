@@ -74,6 +74,44 @@ export default function OurWorkPage() {
 
             <div className={styles.editorialIntroLeadDivider} aria-hidden="true" />
 
+            <div className={styles.editorialKoreanArchiveSection}>
+              <div className={styles.editorialKoreanArchiveDivider} aria-hidden="true" />
+
+              <div className={styles.editorialKoreanArchiveVisualWrap}>
+                <img
+                  src="/landing-assets/ourwork-editorial-droplet-02.webp"
+                  alt=""
+                  className={styles.editorialKoreanArchiveVisual}
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                />
+              </div>
+
+              <div className={styles.editorialKoreanArchiveCopy}>
+                <p className={`${styles.editorialKoreanArchiveKicker} ${styles.elMessiriText}`}>
+                  Global first No1
+                </p>
+
+                <p className={styles.editorialKoreanArchiveLine}>
+                  각기 다른 세포 DNA를 클로닝 하여 재결합하는 원리
+                </p>
+                <p className={styles.editorialKoreanArchiveLine}>식물 세포 유전자 단백질</p>
+                <p className={styles.editorialKoreanArchiveLine}>
+                  세포 DNA를 결합했을 때 변이 세포 형성
+                </p>
+                <p className={styles.editorialKoreanArchiveLine}>
+                  변이 세포는 복합 구성체 구조 생성
+                </p>
+                <p className={styles.editorialKoreanArchiveLine}>
+                  피부 독소, 노화피부, 화장 독. 경피 독 , 피부 손상.
+                </p>
+                <p className={styles.editorialKoreanArchiveLine}>
+                  피부 트러블. 피부 조직 복원 목적 단백질 연구 개발
+                </p>
+              </div>
+            </div>
+
             <div className={styles.editorialIntroAsymmetricRow}>
               <div className={styles.editorialIntroSecondaryVisualWrap}>
                 <img
