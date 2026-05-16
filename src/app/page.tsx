@@ -149,6 +149,7 @@ export default function HomePage() {
           </article>
         ))}
       </section>
+      <div className={styles.footerBoundaryLine} aria-hidden />
     </div>
   );
 }
