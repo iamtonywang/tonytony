@@ -172,26 +172,74 @@ export default function OurWorkPage() {
                         decoding="async"
                         draggable={false}
                       />
-                      <div className={styles.editorialKoreanArchiveVialProcessCaption}>
-                        <div
-                          className={styles.editorialKoreanArchiveVialProcessDivider}
-                          aria-hidden="true"
-                        />
-                        <p
-                          className={`${styles.editorialKoreanArchiveVialProcessLabel} ${styles.elMessiriText}`}
-                        >
-                          BIO PROCESS 01
-                        </p>
-                        <p className={styles.editorialKoreanArchiveVialProcessLine}>
-                          식물 세포 유전자 단백질 생성
-                        </p>
-                        <p className={styles.editorialKoreanArchiveVialProcessLine}>
-                          세포 DNA 유전자 단백질 합성
-                        </p>
-                        <div
-                          className={`${styles.editorialKoreanArchiveVialProcessDivider} ${styles.editorialKoreanArchiveVialProcessDividerBottom}`}
-                          aria-hidden="true"
-                        />
+                      <div className={styles.editorialKoreanArchiveVialOverlay}>
+                        <div className={styles.editorialKoreanArchiveVialOverlayTop}>
+                          <div
+                            className={styles.editorialKoreanArchiveVialProcessDivider}
+                            aria-hidden="true"
+                          />
+                          <p
+                            className={`${styles.editorialKoreanArchiveVialProcessLabel} ${styles.elMessiriText}`}
+                          >
+                            BIO PROCESS 01
+                          </p>
+                          <p className={styles.editorialKoreanArchiveVialProcessLine}>
+                            식물 세포 유전자 단백질 생성
+                          </p>
+                          <p className={styles.editorialKoreanArchiveVialProcessLine}>
+                            세포 DNA 유전자 단백질 합성
+                          </p>
+                        </div>
+
+                        <div className={styles.editorialKoreanArchiveVialOverlayBottom}>
+                          <div
+                            className={styles.editorialKoreanArchiveVialProcessDivider}
+                            aria-hidden="true"
+                          />
+                          <p
+                            className={`${styles.editorialKoreanArchiveVialSequenceLabel} ${styles.elMessiriText}`}
+                          >
+                            PROCESS SEQUENCE
+                          </p>
+                          <ol className={styles.editorialKoreanArchiveVialSequenceList}>
+                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
+                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>01</span>
+                              <span className={styles.editorialKoreanArchiveVialSequenceText}>
+                                식물 세포 정제 / Plant Cell Refinement
+                              </span>
+                            </li>
+                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
+                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>02</span>
+                              <span className={styles.editorialKoreanArchiveVialSequenceText}>
+                                단백질 추출 / Protein Extraction
+                              </span>
+                            </li>
+                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
+                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>03</span>
+                              <span className={styles.editorialKoreanArchiveVialSequenceText}>
+                                DNA 클로닝 / DNA Cloning
+                              </span>
+                            </li>
+                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
+                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>04</span>
+                              <span className={styles.editorialKoreanArchiveVialSequenceText}>
+                                세포 결합 / Cell Binding
+                              </span>
+                            </li>
+                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
+                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>05</span>
+                              <span className={styles.editorialKoreanArchiveVialSequenceText}>
+                                재조합 / Recombination
+                              </span>
+                            </li>
+                            <li className={styles.editorialKoreanArchiveVialSequenceItem}>
+                              <span className={styles.editorialKoreanArchiveVialSequenceNum}>06</span>
+                              <span className={styles.editorialKoreanArchiveVialSequenceText}>
+                                새로운 단백질 구조 / New Protein Structure
+                              </span>
+                            </li>
+                          </ol>
+                        </div>
                       </div>
                     </div>
                   </div>

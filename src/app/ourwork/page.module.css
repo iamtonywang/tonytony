@@ -397,22 +397,40 @@
   object-position: center;
 }
 
-.editorialKoreanArchiveVialProcessCaption {
+.editorialKoreanArchiveVialOverlay {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.editorialKoreanArchiveVialOverlayTop,
+.editorialKoreanArchiveVialOverlayBottom {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   min-width: 0;
-  padding: clamp(18px, 3.2vw, 28px) clamp(14px, 3.5vw, 24px)
-    clamp(20px, 4.5vw, 36px);
+  padding-left: clamp(12px, 3vw, 24px);
+  padding-right: clamp(12px, 3vw, 24px);
   text-align: center;
   box-sizing: border-box;
-  pointer-events: none;
+}
+
+.editorialKoreanArchiveVialOverlayTop {
+  padding-top: clamp(16px, 3vw, 28px);
+  padding-bottom: clamp(8px, 1.5vw, 12px);
+}
+
+.editorialKoreanArchiveVialOverlayBottom {
+  padding-top: clamp(8px, 1.5vw, 12px);
+  padding-bottom: clamp(18px, 3.5vw, 32px);
 }
 
 .editorialKoreanArchiveVialProcessDivider {
@@ -421,10 +439,6 @@
   margin: 0 auto clamp(10px, 1.4vw, 14px);
   background: rgba(201, 169, 98, 0.42);
   flex-shrink: 0;
-}
-
-.editorialKoreanArchiveVialProcessDividerBottom {
-  margin: clamp(10px, 1.4vw, 14px) auto 0;
 }
 
 .editorialKoreanArchiveVialProcessLabel {
@@ -453,6 +467,59 @@
 
 .editorialKoreanArchiveVialProcessLine + .editorialKoreanArchiveVialProcessLine {
   margin-top: 4px;
+}
+
+.editorialKoreanArchiveVialSequenceLabel {
+  margin: 0 0 clamp(8px, 1.2vw, 12px);
+  font-family: "EL Messiri", serif;
+  font-size: clamp(12px, 1.2vw, 13px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(218, 198, 158, 0.88);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+
+.editorialKoreanArchiveVialSequenceList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: min(100%, 520px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.6vw, 6px);
+}
+
+.editorialKoreanArchiveVialSequenceItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45em;
+  width: 100%;
+  min-width: 0;
+  text-align: left;
+}
+
+.editorialKoreanArchiveVialSequenceNum {
+  flex-shrink: 0;
+  font-family: "EL Messiri", serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  color: rgba(218, 198, 158, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+
+.editorialKoreanArchiveVialSequenceText {
+  font-family: "NanumSquare", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.3;
+  color: rgba(255, 252, 245, 0.9);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.32);
 }
 
 .editorialIntroSecondaryVisualWrap {
@@ -707,7 +774,16 @@
     max-width: 100%;
   }
 
+  .editorialKoreanArchiveVialSequenceText {
+    font-size: 13px;
+    line-height: 1.32;
+  }
+
+  .editorialKoreanArchiveVialSequenceNum {
+    font-size: 13px;
+  }
 }
+
 
 @media (max-width: 768px) {
   .editorialIntroSection {
@@ -814,17 +890,23 @@
     margin-bottom: 16px;
   }
 
-  .editorialKoreanArchiveVialProcessCaption {
-    padding: 16px 12px 22px;
+  .editorialKoreanArchiveVialOverlayTop {
+    padding-top: 14px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .editorialKoreanArchiveVialOverlayBottom {
+    padding-top: 6px;
+    padding-bottom: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .editorialKoreanArchiveVialProcessDivider {
     width: min(44px, 11vw);
-    margin-bottom: 10px;
-  }
-
-  .editorialKoreanArchiveVialProcessDividerBottom {
-    margin-top: 10px;
+    margin-bottom: 8px;
   }
 
   .editorialKoreanArchiveVialProcessLabel {
@@ -840,6 +922,34 @@
 
   .editorialKoreanArchiveVialProcessLine + .editorialKoreanArchiveVialProcessLine {
     margin-top: 3px;
+  }
+
+  .editorialKoreanArchiveVialSequenceLabel {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+
+  .editorialKoreanArchiveVialSequenceList {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px 8px;
+    width: 100%;
+  }
+
+  .editorialKoreanArchiveVialSequenceItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .editorialKoreanArchiveVialSequenceNum {
+    font-size: 11px;
+  }
+
+  .editorialKoreanArchiveVialSequenceText {
+    font-size: 11px;
+    line-height: 1.28;
   }
 
   .editorialIntroArchiveBlock {
@@ -989,5 +1099,12 @@
 
   .processQuoteBlock .mobileOnly {
     display: inline;
+  }
+}
+
+@media (max-width: 420px) {
+  .editorialKoreanArchiveVialSequenceList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 10px;
   }
 }
