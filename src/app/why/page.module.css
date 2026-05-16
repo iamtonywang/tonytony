@@ -257,7 +257,7 @@
   font-family: "NanumSquare", sans-serif;
   font-size: clamp(21px, 2vw, 26px);
   font-weight: 300;
-  line-height: 1.58;
+  line-height: 1.65;
   letter-spacing: 0.015em;
   color: rgba(255, 255, 255, 0.9);
 }
