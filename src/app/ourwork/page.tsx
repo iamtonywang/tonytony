@@ -54,11 +54,13 @@ export default function OurWorkPage() {
           <p className={styles.editorialIntroKorean}>식물 세포 유전자 단백질</p>
           <div className={styles.editorialIntroHairline} aria-hidden />
           <div className={styles.editorialIntroDescription}>
-            <p>
+            <p className={styles.elMessiriText}>
               Plant Cell Gene Protein principle of cloning and recombination of different cell DNA
             </p>
-            <p>New cell structure when cell DNA is combined</p>
-            <p>Newly formed cells create new components in a third structure</p>
+            <p className={styles.elMessiriText}>New cell structure when cell DNA is combined</p>
+            <p className={styles.elMessiriText}>
+              Newly formed cells create new components in a third structure
+            </p>
           </div>
         </div>
       </section>

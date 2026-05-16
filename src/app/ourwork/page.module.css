@@ -239,7 +239,6 @@
 
 .editorialIntroDescription p {
   margin: 0;
-  font-family: "NanumSquare", sans-serif;
   font-size: clamp(12px, 1.35vw, 13px);
   font-weight: 300;
   line-height: 1.32;
@@ -248,6 +247,10 @@
 
 .editorialIntroDescription p + p {
   margin-top: 0.22em;
+}
+
+.elMessiriText {
+  font-family: "EL Messiri", serif;
 }
 
 .fadeHeroSection {
