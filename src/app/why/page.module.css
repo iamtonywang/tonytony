@@ -194,8 +194,15 @@
 
   .interviewVisualWrap {
     width: min(96vw, 100%);
-    max-width: none;
+    max-width: 96vw;
     min-width: 0;
+  }
+
+  .interviewVisualImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: unset;
   }
 }
 
