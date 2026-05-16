@@ -38,7 +38,8 @@ export default function OurWorkPage() {
       </section>
 
       <section className={styles.editorialIntroSection} aria-label="OurWork editorial body">
-        <div className={styles.editorialIntroVisualWrap}>
+        <div className={styles.editorialIntroInner}>
+          <div className={styles.editorialIntroVisualWrap}>
           <img
             src="/landing-assets/ourwork-editorial-droplet-03.webp"
             alt=""
@@ -47,10 +48,13 @@ export default function OurWorkPage() {
             decoding="async"
             draggable={false}
           />
-        </div>
+          </div>
 
-        <div className={styles.editorialIntroCopy}>
-          <h2 className={styles.editorialIntroHeadline}>plant cell genetic protein</h2>
+          <div className={styles.editorialIntroCopy}>
+            <p className={`${styles.editorialIntroKicker} ${styles.elMessiriText}`}>
+              Global first No1
+            </p>
+            <h2 className={styles.editorialIntroHeadline}>plant cell genetic protein</h2>
           <p className={styles.editorialIntroKorean}>식물 세포 유전자 단백질</p>
           <div className={styles.editorialIntroHairline} aria-hidden />
           <div className={styles.editorialIntroDescription}>
@@ -61,6 +65,7 @@ export default function OurWorkPage() {
             <p className={styles.elMessiriText}>
               Newly formed cells create new components in a third structure
             </p>
+          </div>
           </div>
         </div>
       </section>
