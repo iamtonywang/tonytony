@@ -343,6 +343,16 @@ export default function WhyPage() {
         </div>
       </section>
 
+      <section className={styles.interviewVisualSection}>
+        <div className={styles.interviewVisualWrap}>
+          <img
+            src="/why/tonywang-interview-archive.webp"
+            alt="TONYWANG interview archive"
+            className={styles.interviewVisualImage}
+          />
+        </div>
+      </section>
+
       <section
         className={styles.archiveIntroSection}
         aria-label="Archive introduction"
