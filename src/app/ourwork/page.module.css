@@ -799,6 +799,11 @@
     max-width: 100%;
   }
 
+  .editorialKoreanArchiveVisualWrap {
+    width: min(720px, 62vw);
+    max-width: 720px;
+  }
+
   .bioProcessNodes {
     flex-wrap: nowrap;
     gap: 38px;
