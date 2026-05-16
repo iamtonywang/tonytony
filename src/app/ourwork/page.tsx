@@ -157,7 +157,7 @@ export default function OurWorkPage() {
 
                     <div className={styles.editorialKoreanArchiveVialVisualWrap}>
                       <img
-                        src="/landing-assets/ourwork-editorial-vial-01.webp"
+                        src="/landing-assets/ourwork-editorial-vial-01.jpg"
                         alt=""
                         className={styles.editorialKoreanArchiveVialVisual}
                         loading="lazy"
