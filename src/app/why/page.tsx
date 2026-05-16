@@ -346,7 +346,7 @@ export default function WhyPage() {
       <section className={styles.interviewVisualSection}>
         <div className={styles.interviewVisualWrap}>
           <img
-            src="/why/tonywang-interview-archive.webp"
+            src="/landing-assets/tonywang-interview-archive.jpg"
             alt="TONYWANG interview archive"
             className={styles.interviewVisualImage}
           />
