@@ -351,6 +351,8 @@ export default function WhyPage() {
             width={1600}
             height={900}
             sizes="(max-width: 768px) 92vw, min(980px, 82vw)"
+            loading="eager"
+            fetchPriority="high"
             decoding="async"
             draggable={false}
             alt="TONYWANG interview archive"
