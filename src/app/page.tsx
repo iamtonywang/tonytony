@@ -20,7 +20,7 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     title: "WHY NOW?",
     banner: {
       kind: "image",
-      src: "/landing-assets/home-hero-main-clean-pc.webp",
+      src: "/landing-assets/home-theme-clean-01.webp",
       alt: "WHY NOW editorial banner",
     },
     body: (
@@ -42,7 +42,7 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     title: "28 years",
     banner: {
       kind: "image",
-      src: "/landing-assets/tonywang-interview-archive.jpg",
+      src: "/landing-assets/home-theme-clean-02.webp",
       alt: "28 years editorial banner",
     },
     body: (
@@ -71,7 +71,7 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     title: "Proteo Phyto Complex",
     banner: {
       kind: "image",
-      src: "/landing-assets/home-hero-main-clean-pc-ee271f.webp",
+      src: "/landing-assets/home-theme-clean-03.webp",
       alt: "Proteo Phyto Complex editorial banner",
     },
     body: (
@@ -99,7 +99,7 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     title: "May 2026 TONY WANG",
     banner: {
       kind: "image",
-      src: "/landing-assets/login-bg-main.webp",
+      src: "/landing-assets/home-theme-clean-04.webp",
       alt: "May 2026 TONY WANG editorial banner",
     },
     body: null,
