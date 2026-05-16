@@ -3,7 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./HomeVideoSection.module.css";
 
-const VIDEO_SRC = "/landing-assets/products-hero-pc.mp4";
+const VIDEO_SRC_PC = "/landing-assets/products-hero-pc.mp4";
+const VIDEO_SRC_MOBILE = "/landing-assets/products-hero-mobile.mp4";
+const MOBILE_MEDIA_QUERY = "(max-width: 768px)";
 
 /** metadata 전까지 타임라인 계산용 폴백(초) */
 const FALLBACK_DURATION_SEC = 64;
@@ -50,7 +52,7 @@ export default function HomeVideoSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoMountRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const hasMountedVideoRef = useRef(false);
+  const [deviceVideoSrc, setDeviceVideoSrc] = useState<string | null>(null);
   const [src, setSrc] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const toggleLockRef = useRef(false);
@@ -81,8 +83,19 @@ export default function HomeVideoSection() {
   }, []);
 
   useEffect(() => {
+    const media = window.matchMedia(MOBILE_MEDIA_QUERY);
+    const applyDeviceSrc = () => {
+      setDeviceVideoSrc(media.matches ? VIDEO_SRC_MOBILE : VIDEO_SRC_PC);
+    };
+
+    applyDeviceSrc();
+    media.addEventListener("change", applyDeviceSrc);
+    return () => media.removeEventListener("change", applyDeviceSrc);
+  }, []);
+
+  useEffect(() => {
     const root = sectionRef.current;
-    if (!root) {
+    if (!root || !deviceVideoSrc) {
       return;
     }
 
@@ -90,7 +103,7 @@ export default function HomeVideoSection() {
       (entries) => {
         const [entry] = entries;
         if (entry?.isIntersecting) {
-          setSrc((prev) => prev ?? VIDEO_SRC);
+          setSrc((prev) => prev ?? deviceVideoSrc);
           observer.disconnect();
         }
       },
@@ -99,7 +112,7 @@ export default function HomeVideoSection() {
 
     observer.observe(root);
     return () => observer.disconnect();
-  }, []);
+  }, [deviceVideoSrc]);
 
   useEffect(() => {
     if (!src) {
@@ -251,8 +264,8 @@ export default function HomeVideoSection() {
     videoEl.muted = true;
     videoEl.playsInline = true;
     videoEl.loop = false;
-    videoEl.preload = "metadata";
-    videoEl.src = VIDEO_SRC;
+    videoEl.preload = "none";
+    videoEl.src = src;
 
     const onLoadedMetadata = () => {
       handleLoadedMetadata();

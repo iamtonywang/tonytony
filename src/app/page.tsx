@@ -3,9 +3,10 @@ import styles from "./page.module.css";
 import HomeMotionLine from "@/components/sections/HomeMotionLine/HomeMotionLine";
 import HomeVideoSection from "@/components/sections/HomeVideoSection/HomeVideoSection";
 
-type ThemeBanner =
-  | { kind: "image"; src: string; alt: string }
-  | { kind: "placeholder" };
+type ThemeBanner = {
+  src: string;
+  alt: string;
+};
 
 type ThemeSection = {
   number: string;
@@ -19,7 +20,6 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     number: "01",
     title: "WHY NOW?",
     banner: {
-      kind: "image",
       src: "/landing-assets/home-theme-clean-01.webp",
       alt: "WHY NOW editorial banner",
     },
@@ -41,7 +41,6 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     number: "02",
     title: "28 years",
     banner: {
-      kind: "image",
       src: "/landing-assets/home-theme-clean-02.webp",
       alt: "28 years editorial banner",
     },
@@ -70,7 +69,6 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     number: "03",
     title: "Proteo Phyto Complex",
     banner: {
-      kind: "image",
       src: "/landing-assets/home-theme-clean-03.webp",
       alt: "Proteo Phyto Complex editorial banner",
     },
@@ -98,7 +96,6 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     number: "04",
     title: "May 2026 TONY WANG",
     banner: {
-      kind: "image",
       src: "/landing-assets/home-theme-clean-04.webp",
       alt: "May 2026 TONY WANG editorial banner",
     },
@@ -124,18 +121,15 @@ export default function HomePage() {
           <article key={theme.number} className={styles.themeSection}>
             {index > 0 ? <div className={styles.themeHairline} aria-hidden /> : null}
             <div className={styles.themeBannerWrap}>
-              {theme.banner.kind === "image" ? (
-                <img
-                  src={theme.banner.src}
-                  alt={theme.banner.alt}
-                  className={styles.themeBannerImage}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  draggable={false}
-                />
-              ) : (
-                <div className={styles.themeBannerPlaceholder} aria-hidden />
-              )}
+              <img
+                src={theme.banner.src}
+                alt={theme.banner.alt}
+                className={styles.themeBannerImage}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "low"}
+                decoding="async"
+                draggable={false}
+              />
             </div>
             <p className={styles.themeNumber}>{theme.number}</p>
             <h2
