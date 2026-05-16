@@ -384,27 +384,30 @@ export default function WhyPage() {
         aria-label="Interview archive note"
       >
         <div className={styles.interviewArchiveNoteInner}>
-          <p className={styles.interviewArchiveNotePara}>
-            본문 인터뷰 내용은 제품을 판매 하기 위한 홍보성 목적이 아닙니다
+          <p className={styles.interviewArchiveNoteLead}>
+            TONYWANG연구소 연구 개발 및 STORY 이며 제품 홍보성 과는 관계가 없습니다
           </p>
-          <p className={styles.interviewArchiveNotePara}>
-            TONYWANG연구소의 연구 개발 및 STORY 이며 제품과는 관계가 없습니다
-          </p>
-          <p className={styles.interviewArchiveNotePara}>
-            TONYWANG연구소 는 과대 홍보를 하면서 까지 제품을 판매 할 생각이 없습니다
-          </p>
-          <p className={styles.interviewArchiveNotePara}>
-            제품의 파괴력은 스스로 과대 포장한다고 고객에게 인정를 받을수 없습니다
-          </p>
-          <p className={styles.interviewArchiveNotePara}>
-            고객은 매우 현명하고 중립적인 위치에 있습니다
-          </p>
-          <p className={styles.interviewArchiveNotePara}>
-            TONYWANG은 유저을 믿고 신뢰 합니다
-          </p>
-          <p className={styles.interviewArchiveNotePara}>
-            그들만이 TONYWANG 가치를 세상에 알릴 존재 라는걸 .....
-          </p>
+          <div className={styles.interviewArchiveNoteHairline} aria-hidden />
+          <div className={styles.interviewArchiveNoteBody}>
+            <p className={styles.interviewArchiveNoteBodyPara}>
+              본문 인터뷰 내용은 제품을 판매 하기 위한 홍보성 목적이 아님을 밝힙니다
+            </p>
+            <p className={styles.interviewArchiveNoteBodyPara}>
+              TONYWANG연구소 는 과대 홍보를 하면서 까지 제품을 판매 할 생각이 없습니다
+            </p>
+            <p className={styles.interviewArchiveNoteBodyPara}>
+              제품의 파괴력은 스스로 과대 포장한다고 고객에게 인정를 받을수 없습니다
+            </p>
+            <p className={styles.interviewArchiveNoteBodyPara}>
+              고객은 매우 현명하고 중립적인 위치에 있습니다
+            </p>
+            <p className={styles.interviewArchiveNoteBodyPara}>
+              TONYWANG은 유저을 믿고 신뢰 합니다
+            </p>
+            <p className={styles.interviewArchiveNoteBodyPara}>
+              그들만이 TONYWANG 가치를 세상에 알릴 존재 라는걸 .....
+            </p>
+          </div>
         </div>
       </section>
 

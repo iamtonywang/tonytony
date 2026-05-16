@@ -153,7 +153,7 @@
 .interviewVisualSection {
   width: 100%;
   margin-top: 0;
-  padding: clamp(20px, 4vh, 48px) 0 clamp(6px, 1.2vh, 16px);
+  padding: clamp(12px, 2.5vh, 32px) 0 clamp(6px, 1.2vh, 14px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,7 +222,21 @@
 }
 
 .archiveIntroSection.archiveIntroAboveVisual {
-  padding-bottom: clamp(16px, 3vw, 32px);
+  padding-bottom: clamp(10px, 2vw, 22px);
+}
+
+.archiveIntroSection.archiveIntroAboveVisual .archiveIntroKicker {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.32em;
+}
+
+.archiveIntroSection.archiveIntroAboveVisual .archiveIntroLead {
+  margin-top: clamp(14px, 2.4vw, 22px);
+}
+
+.archiveIntroSection.archiveIntroAboveVisual .archiveIntroBody {
+  margin-top: clamp(12px, 2vw, 18px);
 }
 
 /* — Interview archive note (below hero image) — */
@@ -239,22 +253,50 @@
 .interviewArchiveNoteInner {
   width: min(980px, 82vw);
   max-width: 100%;
-  margin: 34px auto 0;
-  text-align: left;
+  margin: clamp(14px, 2.5vh, 26px) auto 0;
+  text-align: center;
   box-sizing: border-box;
 }
 
-.interviewArchiveNotePara {
-  margin: 0 0 1.15em;
+.interviewArchiveNoteLead {
+  margin: 0;
   font-family: "NanumSquare", "El Messiri", sans-serif;
-  font-size: 18px;
+  font-size: clamp(21px, 2vw, 26px);
   font-weight: 300;
-  line-height: 2;
-  letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.interviewArchiveNotePara:last-child {
+.interviewArchiveNoteHairline {
+  width: min(640px, 88%);
+  height: 1px;
+  margin: clamp(20px, 3.5vw, 28px) auto clamp(22px, 3.8vw, 32px);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 20%,
+    rgba(255, 255, 255, 0.35) 80%,
+    transparent 100%
+  );
+}
+
+.interviewArchiveNoteBody {
+  max-width: min(42em, 100%);
+  margin: 0 auto;
+}
+
+.interviewArchiveNoteBodyPara {
+  margin: 0 0 1.15em;
+  font-family: "NanumSquare", "El Messiri", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.95;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.interviewArchiveNoteBodyPara:last-child {
   margin-bottom: 0;
 }
 
@@ -271,7 +313,7 @@
 
   .interviewVisualSection {
     margin-top: 0;
-    padding: clamp(16px, 3vh, 32px) 0 clamp(8px, 1.5vh, 18px);
+    padding: clamp(10px, 2.2vh, 24px) 0 clamp(6px, 1.2vh, 14px);
   }
 
   .interviewVisualWrap {
@@ -295,12 +337,22 @@
   .interviewArchiveNoteInner {
     width: min(96vw, 100%);
     max-width: 96vw;
-    margin-top: 24px;
+    margin-top: clamp(14px, 3vw, 20px);
   }
 
-  .interviewArchiveNotePara {
-    font-size: 15px;
-    line-height: 1.9;
+  .interviewArchiveNoteLead {
+    font-size: clamp(17px, 4.6vw, 20px);
+    line-height: 1.6;
+  }
+
+  .interviewArchiveNoteHairline {
+    margin-top: clamp(16px, 4vw, 22px);
+    margin-bottom: clamp(18px, 4.2vw, 26px);
+  }
+
+  .interviewArchiveNoteBodyPara {
+    font-size: 14px;
+    line-height: 1.92;
   }
 }
 
