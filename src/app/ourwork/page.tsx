@@ -210,100 +210,118 @@ export default function OurWorkPage() {
                               className={styles.editorialKoreanArchiveVialSequenceStep}
                               role="listitem"
                             >
-                              <span
-                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
-                                aria-hidden="true"
-                              />
+                              <div className={styles.editorialKoreanArchiveVialSequenceMarkers}>
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                  aria-hidden="true"
+                                />
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceArrow}
+                                  aria-hidden="true"
+                                >
+                                  →
+                                </span>
+                              </div>
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
                                 Plant Cell Refinement
                               </span>
                             </div>
-                            <span
-                              className={styles.editorialKoreanArchiveVialSequenceArrow}
-                              aria-hidden="true"
-                            >
-                              →
-                            </span>
                             <div
                               className={styles.editorialKoreanArchiveVialSequenceStep}
                               role="listitem"
                             >
-                              <span
-                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
-                                aria-hidden="true"
-                              />
+                              <div className={styles.editorialKoreanArchiveVialSequenceMarkers}>
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                  aria-hidden="true"
+                                />
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceArrow}
+                                  aria-hidden="true"
+                                >
+                                  →
+                                </span>
+                              </div>
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
                                 Protein Extraction
                               </span>
                             </div>
-                            <span
-                              className={styles.editorialKoreanArchiveVialSequenceArrow}
-                              aria-hidden="true"
-                            >
-                              →
-                            </span>
                             <div
                               className={styles.editorialKoreanArchiveVialSequenceStep}
                               role="listitem"
                             >
-                              <span
-                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
-                                aria-hidden="true"
-                              />
+                              <div className={styles.editorialKoreanArchiveVialSequenceMarkers}>
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                  aria-hidden="true"
+                                />
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceArrow}
+                                  aria-hidden="true"
+                                >
+                                  →
+                                </span>
+                              </div>
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
                                 DNA Cloning
                               </span>
                             </div>
-                            <span
-                              className={styles.editorialKoreanArchiveVialSequenceArrow}
-                              aria-hidden="true"
-                            >
-                              →
-                            </span>
                             <div
                               className={styles.editorialKoreanArchiveVialSequenceStep}
                               role="listitem"
                             >
-                              <span
-                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
-                                aria-hidden="true"
-                              />
+                              <div className={styles.editorialKoreanArchiveVialSequenceMarkers}>
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                  aria-hidden="true"
+                                />
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceArrow}
+                                  aria-hidden="true"
+                                >
+                                  →
+                                </span>
+                              </div>
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
                                 Cell Binding
                               </span>
                             </div>
-                            <span
-                              className={styles.editorialKoreanArchiveVialSequenceArrow}
-                              aria-hidden="true"
-                            >
-                              →
-                            </span>
                             <div
                               className={styles.editorialKoreanArchiveVialSequenceStep}
                               role="listitem"
                             >
-                              <span
-                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
-                                aria-hidden="true"
-                              />
+                              <div className={styles.editorialKoreanArchiveVialSequenceMarkers}>
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                  aria-hidden="true"
+                                />
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceArrow}
+                                  aria-hidden="true"
+                                >
+                                  →
+                                </span>
+                              </div>
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
                                 Recombination
                               </span>
                             </div>
-                            <span
-                              className={styles.editorialKoreanArchiveVialSequenceArrow}
-                              aria-hidden="true"
-                            >
-                              →
-                            </span>
                             <div
                               className={styles.editorialKoreanArchiveVialSequenceStep}
                               role="listitem"
                             >
-                              <span
-                                className={styles.editorialKoreanArchiveVialSequenceDiamond}
-                                aria-hidden="true"
-                              />
+                              <div className={styles.editorialKoreanArchiveVialSequenceMarkers}>
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceDiamond}
+                                  aria-hidden="true"
+                                />
+                                <span
+                                  className={styles.editorialKoreanArchiveVialSequenceArrow}
+                                  aria-hidden="true"
+                                >
+                                  →
+                                </span>
+                              </div>
                               <span className={styles.editorialKoreanArchiveVialSequenceText}>
                                 New Protein Structure
                               </span>

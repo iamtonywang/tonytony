@@ -485,8 +485,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: clamp(4px, 0.75vw, 8px) clamp(3px, 0.6vw, 6px);
+  align-items: flex-start;
+  gap: clamp(6px, 1vw, 10px) clamp(4px, 0.75vw, 8px);
   width: 100%;
   max-width: 100%;
   margin: 0;
@@ -495,11 +495,21 @@
 }
 
 .editorialKoreanArchiveVialSequenceStep {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: clamp(4px, 0.5vw, 6px);
+  gap: clamp(4px, 0.55vw, 6px);
   min-width: 0;
   max-width: 100%;
+}
+
+.editorialKoreanArchiveVialSequenceMarkers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(3px, 0.45vw, 5px);
+  flex-shrink: 0;
 }
 
 .editorialKoreanArchiveVialSequenceDiamond {
@@ -514,7 +524,7 @@
     0 0 16px rgba(218, 198, 158, 0.18);
   transform: rotate(45deg) scale(1);
   transform-origin: center center;
-  animation: editorialKoreanArchiveVialDiamondSpin 8s linear infinite;
+  animation: editorialKoreanArchiveVialDiamondSpin 10s linear infinite;
 }
 
 .editorialKoreanArchiveVialSequenceArrow {
@@ -528,12 +538,14 @@
 }
 
 .editorialKoreanArchiveVialSequenceText {
+  display: block;
   font-family: "EL Messiri", serif;
   font-size: clamp(15px, 1vw, 16px);
   font-weight: 400;
   line-height: 1.32;
   letter-spacing: 0.02em;
   color: rgba(255, 252, 245, 0.92);
+  text-align: center;
   white-space: nowrap;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.36);
 }
@@ -826,7 +838,7 @@
   .editorialKoreanArchiveVialSequenceDiamond {
     width: 15px;
     height: 15px;
-    animation-duration: 8s;
+    animation-duration: 10s;
   }
 
   .editorialKoreanArchiveVialSequenceArrow {
@@ -989,10 +1001,14 @@
     gap: 4px;
   }
 
+  .editorialKoreanArchiveVialSequenceMarkers {
+    gap: 3px;
+  }
+
   .editorialKoreanArchiveVialSequenceDiamond {
     width: 11px;
     height: 11px;
-    animation-duration: 9s;
+    animation-duration: 10s;
   }
 
   .editorialKoreanArchiveVialSequenceArrow {
@@ -1004,7 +1020,7 @@
     line-height: 1.28;
     white-space: normal;
     max-width: 6.4rem;
-    text-align: left;
+    text-align: center;
   }
 
   .editorialIntroArchiveBlock {
