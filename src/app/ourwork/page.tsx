@@ -1,5 +1,12 @@
 import styles from "./page.module.css";
 
+/*
+ * OurWork vial / PROCESS SEQUENCE markup guard
+ * - VialSequenceTrack + VIAL_SEQUENCE_STEP_LABELS = single source for all 6 steps
+ * - Do not re-add inline editorialKoreanArchiveVialSequenceStep blocks beside <VialSequenceTrack />
+ * - div only in this region (no motion.div / framer-motion)
+ * - Preserve close order: VialSequenceTrack -> overlayBottom -> overlay -> visualWrap -> vialBlock
+ */
 const VIAL_SEQUENCE_STEP_LABELS = [
   "Plant Cell Refinement",
   "Protein Extraction",
@@ -187,6 +194,7 @@ export default function OurWorkPage() {
                     피부 트러블. 피부 조직 복원 목적 단백질 연구 개발
                   </p>
 
+                  {/* Vial overlay: sequence steps only via VialSequenceTrack; see file-top guard comment. */}
                   <div className={styles.editorialKoreanArchiveVialBlock}>
                     <div className={styles.editorialKoreanArchiveVialDivider} aria-hidden="true" />
 
@@ -230,6 +238,7 @@ export default function OurWorkPage() {
                           >
                             PROCESS SEQUENCE
                           </p>
+                          {/* Close order: VialSequenceTrack -> overlayBottom -> overlay -> visualWrap -> vialBlock */}
                           <VialSequenceTrack
                             trackClassName={styles.editorialKoreanArchiveVialSequenceTrack}
                           />
