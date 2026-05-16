@@ -348,9 +348,14 @@
     margin-bottom: clamp(18px, 4.2vw, 26px);
   }
 
+  .interviewArchiveNoteBody {
+    text-align: left;
+  }
+
   .interviewArchiveNoteBodyPara {
-    font-size: 14px;
-    line-height: 1.92;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0 0 0.68em;
   }
 }
 
