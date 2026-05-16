@@ -70,43 +70,51 @@ export default function OurWorkPage() {
 
             <div className={styles.editorialIntroLeadDivider} aria-hidden="true" />
 
-            <div className={styles.editorialIntroSecondaryVisualWrap}>
-              <img
-                src="/landing-assets/home-theme-clean-01.webp"
-                alt=""
-                className={styles.editorialIntroSecondaryVisual}
-                loading="lazy"
-                decoding="async"
-                draggable={false}
-              />
-            </div>
+            <div className={styles.editorialIntroAsymmetricRow}>
+              <div className={styles.editorialIntroSecondaryVisualWrap}>
+                <img
+                  src="/landing-assets/home-theme-clean-01.webp"
+                  alt=""
+                  className={styles.editorialIntroSecondaryVisual}
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                />
+              </div>
 
-            <p className={`${styles.editorialIntroKicker} ${styles.elMessiriText}`}>
-              Global first No1
-            </p>
+              <div className={styles.editorialIntroArchiveBlock}>
+                <p className={`${styles.editorialIntroKicker} ${styles.elMessiriText}`}>
+                  Global first No1
+                </p>
 
-            <div className={styles.editorialIntroDivider} aria-hidden="true" />
+                <div className={styles.editorialIntroDivider} aria-hidden="true" />
 
-            <p className={`${styles.editorialIntroArchiveLabel} ${styles.elMessiriText}`}>TONY WANG</p>
+                <p className={`${styles.editorialIntroArchiveLabel} ${styles.elMessiriText}`}>
+                  TONY WANG
+                </p>
 
-            <div className={styles.editorialIntroArchiveNote}>
-              <p className={styles.elMessiriText}>
-                Research and development to create new DNA for cells
-              </p>
-              <p className={styles.elMessiriText}>
-                Newly formed cells create new efficacy structures as complex members
-              </p>
-              <p className={styles.elMessiriText}>Plant cell gene protein recombination technology</p>
-              <p className={styles.elMessiriText}>
-                Skin toxin, aging skin, cosmetic poison.
-                <br />
-                Skin damage caused by percutaneous poison infection.
-              </p>
-              <p className={styles.elMessiriText}>
-                Skin trouble.
-                <br />
-                Protein research and development for skin tissue restoration
-              </p>
+                <div className={styles.editorialIntroArchiveNote}>
+                  <p className={styles.elMessiriText}>
+                    Research and development to create new DNA for cells
+                  </p>
+                  <p className={styles.elMessiriText}>
+                    Newly formed cells create new efficacy structures as complex members
+                  </p>
+                  <p className={styles.elMessiriText}>
+                    Plant cell gene protein recombination technology
+                  </p>
+                  <p className={styles.elMessiriText}>
+                    Skin toxin, aging skin, cosmetic poison.
+                    <br />
+                    Skin damage caused by percutaneous poison infection.
+                  </p>
+                  <p className={styles.elMessiriText}>
+                    Skin trouble.
+                    <br />
+                    Protein research and development for skin tissue restoration
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

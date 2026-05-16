@@ -281,7 +281,19 @@
   object-position: center;
 }
 
-.editorialIntroCopy > .editorialIntroKicker {
+.editorialIntroAsymmetricRow {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.editorialIntroArchiveBlock {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.editorialIntroArchiveBlock .editorialIntroKicker {
   margin: clamp(14px, 2vw, 18px) 0 0;
 }
 
@@ -688,6 +700,37 @@
 }
 
 @media (min-width: 769px) {
+  .editorialIntroAsymmetricRow {
+    display: grid;
+    grid-template-columns: minmax(0, 50%) minmax(0, 1fr);
+    column-gap: clamp(32px, 5.5vw, 64px);
+    align-items: start;
+  }
+
+  .editorialIntroSecondaryVisualWrap {
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  .editorialIntroArchiveBlock {
+    grid-column: 2;
+    max-width: min(21em, 100%);
+    justify-self: end;
+    padding-top: clamp(6px, 1vw, 14px);
+  }
+
+  .editorialIntroArchiveBlock .editorialIntroKicker {
+    margin: 0 0 clamp(14px, 2vw, 18px);
+  }
+
+  .editorialIntroArchiveBlock .editorialIntroDivider {
+    margin-top: 0;
+  }
+
+  .editorialIntroArchiveBlock .editorialIntroArchiveNote {
+    max-width: 100%;
+  }
+
   .bioProcessNodes {
     flex-wrap: nowrap;
     gap: 38px;
@@ -832,7 +875,16 @@
     width: min(64px, 16vw);
   }
 
-  .editorialIntroCopy > .editorialIntroKicker {
+  .editorialIntroAsymmetricRow {
+    display: block;
+  }
+
+  .editorialIntroArchiveBlock {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .editorialIntroArchiveBlock .editorialIntroKicker {
     margin-top: 12px;
   }
 
