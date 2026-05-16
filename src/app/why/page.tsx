@@ -1,7 +1,137 @@
 "use client";
 
-import { useCallback, useId, useState } from "react";
+import { Fragment, useCallback, useId, useState, type ReactNode } from "react";
 import styles from "./page.module.css";
+
+function isLatinWordChar(ch: string): boolean {
+  return /[A-Za-z0-9._\-™®%‰+’'’]/.test(ch);
+}
+
+function isLatinParenInner(inner: string): boolean {
+  if (!inner.trim()) return false;
+  if (/[가-힣ㄱ-ㅎㅏ-ㅣ]/.test(inner)) return false;
+  return /^[A-Za-z0-9.,\s/_\-™®%+:]+$/u.test(inner.trim());
+}
+
+function consumeLatinPhrase(text: string, start: number): [string, number] | null {
+  if (start >= text.length || !/[A-Za-z]/.test(text[start])) return null;
+
+  let j = start + 1;
+  while (j < text.length && isLatinWordChar(text[j])) {
+    j++;
+  }
+  let end = j;
+
+  for (;;) {
+    let k = end;
+    while (k < text.length && (text[k] === " " || text[k] === "\t")) {
+      k++;
+    }
+    if (k >= text.length) break;
+    if (/[A-Za-z]/.test(text[k])) {
+      let m = k + 1;
+      while (m < text.length && isLatinWordChar(text[m])) {
+        m++;
+      }
+      end = m;
+      continue;
+    }
+
+    let d = k;
+    if (
+      d < text.length &&
+      (text[d] === "\u2014" || text[d] === "\u2013" || text[d] === "-" || text[d] === "/")
+    ) {
+      d++;
+      while (d < text.length && (text[d] === " " || text[d] === "\t")) {
+        d++;
+      }
+      if (d < text.length && /[A-Za-z]/.test(text[d])) {
+        let m = d + 1;
+        while (m < text.length && isLatinWordChar(text[m])) {
+          m++;
+        }
+        end = m;
+        continue;
+      }
+    }
+
+    break;
+  }
+
+  return [text.slice(start, end), end];
+}
+
+/** Wrap exposed Latin / English fragments in WHY copy with El Messiri (한글 원문 문자열 불변). */
+function renderEnglishMessiriLine(text: string, keySeed: string): ReactNode {
+  const out: ReactNode[] = [];
+  let part = 0;
+  let i = 0;
+
+  const pushPlain = (s: string): void => {
+    if (!s) return;
+    out.push(<Fragment key={`${keySeed}-p-${part++}`}>{s}</Fragment>);
+  };
+
+  while (i < text.length) {
+    if (
+      text[i] === "(" &&
+      i + 1 < text.length &&
+      /[A-Za-z]/.test(text[i + 1])
+    ) {
+      const close = text.indexOf(")", i + 1);
+      if (close !== -1) {
+        const inner = text.slice(i + 1, close);
+        if (isLatinParenInner(inner)) {
+          pushPlain("(");
+          out.push(
+            <span key={`${keySeed}-e-${part++}`} className={styles.elMessiriText}>
+              {inner}
+            </span>,
+          );
+          pushPlain(")");
+          i = close + 1;
+          continue;
+        }
+      }
+    }
+
+    const run = consumeLatinPhrase(text, i);
+    if (run) {
+      const [segment, next] = run;
+      out.push(
+        <span key={`${keySeed}-e-${part++}`} className={styles.elMessiriText}>
+          {segment}
+        </span>,
+      );
+      i = next;
+      continue;
+    }
+
+    let j = i + 1;
+    while (
+      j < text.length &&
+      !/[A-Za-z]/.test(text[j]) &&
+      !(text[j] === "(" && j + 1 < text.length && /[A-Za-z]/.test(text[j + 1]))
+    ) {
+      j++;
+    }
+    pushPlain(text.slice(i, j));
+    i = j;
+  }
+
+  return <>{out}</>;
+}
+
+function renderIvTextMessiri(text: string, ivKey: string, turnIdx: number): ReactNode {
+  const lines = text.split("\n");
+  return lines.map((line, li) => (
+    <Fragment key={`${ivKey}-nl-${turnIdx}-${li}`}>
+      {li > 0 ? <br /> : null}
+      {renderEnglishMessiriLine(line, `${ivKey}-t-${turnIdx}-L-${li}`)}
+    </Fragment>
+  ));
+}
 
 /** INTERVIEW 01 — 사용자 제공 원문 (수정·축약 없음) */
 const INTERVIEW_01_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: string }[] = [
@@ -333,31 +463,48 @@ export default function WhyPage() {
         <div className={styles.whyUnifiedLandingInner}>
           <div className={styles.whyUnifiedHairline} aria-hidden />
           <div className={styles.whyUnifiedCopy}>
-            <h1 className={styles.whyUnifiedHeroTitle}>TONY WANG</h1>
-            <h3 className={styles.whyUnifiedSubTitle}>plant cell genetic protein</h3>
+            <h1 className={styles.whyUnifiedHeroTitle}>
+              <span className={styles.elMessiriText}>TONY WANG</span>
+            </h1>
+            <h3 className={styles.whyUnifiedSubTitle}>
+              <span className={styles.elMessiriText}>plant cell genetic protein</span>
+            </h3>
             <h2 className={styles.whyUnifiedKoreanTitle}>
               식물 세포 유전자 단백질 연구
             </h2>
             <div className={styles.whyUnifiedDescription}>
               <p>
-                What we prove in the lab becomes the structure your skin can trust.
+                {renderEnglishMessiriLine(
+                  "What we prove in the lab becomes the structure your skin can trust.",
+                  "landing-d0",
+                )}
               </p>
               <p>
-                Cloning and recombination across different cell DNA, the third structure
-                where new cells
+                {renderEnglishMessiriLine(
+                  "Cloning and recombination across different cell DNA, the third structure where new cells",
+                  "landing-d1a",
+                )}
                 <br />
-                assemble new efficacy — documented step by step.
+                {renderEnglishMessiriLine(
+                  "assemble new efficacy — documented step by step.",
+                  "landing-d1b",
+                )}
               </p>
               <p>
-                Precisely regulate skin cell signal transmission and activate ECM reconstruction
+                {renderEnglishMessiriLine(
+                  "Precisely regulate skin cell signal transmission and activate ECM reconstruction",
+                  "landing-d2",
+                )}
               </p>
             </div>
           </div>
           <div className={styles.whyUnifiedHairline} aria-hidden />
           <div className={styles.whyUnifiedEnding}>
-            <h2 className={styles.whyUnifiedEndingTitle}>TONY WANG</h2>
+            <h2 className={styles.whyUnifiedEndingTitle}>
+              <span className={styles.elMessiriText}>TONY WANG</span>
+            </h2>
             <p className={styles.whyUnifiedEndingText}>
-              I thought about it and made up my mind
+              {renderEnglishMessiriLine("I thought about it and made up my mind", "landing-end")}
             </p>
           </div>
           <div className={styles.whyUnifiedHairline} aria-hidden />
@@ -369,15 +516,23 @@ export default function WhyPage() {
         aria-label="Archive introduction"
       >
         <div className={styles.archiveIntroInner}>
-          <p className={styles.archiveIntroKicker}>WHY ARCHIVE INTRO</p>
+          <p className={styles.archiveIntroKicker}>
+            <span className={styles.elMessiriText}>WHY ARCHIVE INTRO</span>
+          </p>
           <p className={styles.archiveIntroLead}>
-            TONYWANG It tells the story of the past and the remaining time of the journey
+            {renderEnglishMessiriLine(
+              "TONYWANG It tells the story of the past and the remaining time of the journey",
+              "archive-lead",
+            )}
           </p>
           <p className={styles.archiveIntroBody}>
-            The excellence of material in the values of the study
+            {renderEnglishMessiriLine(
+              "The excellence of material in the values of the study",
+              "archive-body-a",
+            )}
             <br />
             <br />
-            And trust and truth
+            {renderEnglishMessiriLine("And trust and truth", "archive-body-b")}
           </p>
         </div>
       </section>
@@ -405,8 +560,10 @@ export default function WhyPage() {
       >
         <div className={styles.interviewArchiveNoteInner}>
           <p className={styles.interviewArchiveNoteLead}>
-            <span className={styles.elMessiriText}>TONYWANG</span>연구소 연구 개발 및{" "}
-            <span className={styles.elMessiriText}>STORY</span> 상품과는 관계가 없습니다
+            {renderEnglishMessiriLine(
+              "TONYWANG연구소 연구 개발 및 STORY 상품과는 관계가 없습니다",
+              "archive-note-lead",
+            )}
           </p>
           <div className={styles.interviewArchiveNoteHairline} aria-hidden />
           <div className={styles.interviewArchiveNoteBody}>
@@ -414,22 +571,28 @@ export default function WhyPage() {
               본문 인터뷰 내용은 제품 홍보 목적이 아님을 밝힙니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              <span className={styles.elMessiriText}>TONYWANG</span>연구소 는 과대 홍보로 제품
-              판매 를 하지 않습니다
+              {renderEnglishMessiriLine(
+                "TONYWANG연구소 는 과대 홍보로 제품 판매 를 하지 않습니다",
+                "archive-note-p1",
+              )}
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
               상품 가치는 고객이 결정 합니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              고객은 <span className={styles.elMessiriText}>Smart</span>하고 중립적인 위치에
-              있습니다
+              {renderEnglishMessiriLine(
+                "고객은 Smart하고 중립적인 위치에 있습니다",
+                "archive-note-p4",
+              )}
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              <span className={styles.elMessiriText}>TONYWANG</span>은 유저을 믿고 신뢰 합니다
+              {renderEnglishMessiriLine("TONYWANG은 유저을 믿고 신뢰 합니다", "archive-note-p5")}
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              제품 사용한 유저 만이 <span className={styles.elMessiriText}>TONYWANG</span> 가치를
-              세상에 알릴 존재 라는걸 .....
+              {renderEnglishMessiriLine(
+                "제품 사용한 유저 만이 TONYWANG 가치를 세상에 알릴 존재 라는걸 .....",
+                "archive-note-p6",
+              )}
             </p>
           </div>
         </div>
@@ -453,9 +616,11 @@ export default function WhyPage() {
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
+                <span className={styles.ivChapterKicker}>
+                  <span className={styles.elMessiriText}>INTERVIEW CHAPTER</span>
+                </span>
                 <span className={styles.ivChapterTitle}>
-                  만남 <span className={styles.elMessiriText}>TONYWANG</span> 그리고...
+                  {renderEnglishMessiriLine("만남 TONYWANG 그리고...", "iv-ch01-title")}
                 </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
@@ -485,7 +650,9 @@ export default function WhyPage() {
                       speakerClass={styles.ivSpeaker}
                       elClass={styles.elMessiriText}
                     />
-                    <p className={styles.ivText}>{turn.text}</p>
+                    <p className={styles.ivText}>
+                      {renderIvTextMessiri(turn.text, "iv01", index)}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -507,8 +674,12 @@ export default function WhyPage() {
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>처음 시작한 스킨케어 사업</span>
+                <span className={styles.ivChapterKicker}>
+                  <span className={styles.elMessiriText}>INTERVIEW CHAPTER</span>
+                </span>
+                <span className={styles.ivChapterTitle}>
+                  {renderEnglishMessiriLine("처음 시작한 스킨케어 사업", "iv-ch02-title")}
+                </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv02Open ? "\u2212" : "+"}
@@ -537,7 +708,9 @@ export default function WhyPage() {
                       speakerClass={styles.ivSpeaker}
                       elClass={styles.elMessiriText}
                     />
-                    <p className={styles.ivText}>{turn.text}</p>
+                    <p className={styles.ivText}>
+                      {renderIvTextMessiri(turn.text, "iv02", index)}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -559,9 +732,11 @@ export default function WhyPage() {
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
+                <span className={styles.ivChapterKicker}>
+                  <span className={styles.elMessiriText}>INTERVIEW CHAPTER</span>
+                </span>
                 <span className={styles.ivChapterTitle}>
-                  <span className={styles.elMessiriText}>TONYWANG</span> 유전자 단백질
+                  {renderEnglishMessiriLine("TONYWANG 유전자 단백질", "iv-ch03-title")}
                 </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
@@ -591,7 +766,9 @@ export default function WhyPage() {
                       speakerClass={styles.ivSpeaker}
                       elClass={styles.elMessiriText}
                     />
-                    <p className={styles.ivText}>{turn.text}</p>
+                    <p className={styles.ivText}>
+                      {renderIvTextMessiri(turn.text, "iv03", index)}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -613,8 +790,12 @@ export default function WhyPage() {
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>식물세포 유전자 단백질의 원리</span>
+                <span className={styles.ivChapterKicker}>
+                  <span className={styles.elMessiriText}>INTERVIEW CHAPTER</span>
+                </span>
+                <span className={styles.ivChapterTitle}>
+                  {renderEnglishMessiriLine("식물세포 유전자 단백질의 원리", "iv-ch04-title")}
+                </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv04Open ? "\u2212" : "+"}
@@ -643,7 +824,9 @@ export default function WhyPage() {
                       speakerClass={styles.ivSpeaker}
                       elClass={styles.elMessiriText}
                     />
-                    <p className={styles.ivText}>{turn.text}</p>
+                    <p className={styles.ivText}>
+                      {renderIvTextMessiri(turn.text, "iv04", index)}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -665,9 +848,11 @@ export default function WhyPage() {
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
+                <span className={styles.ivChapterKicker}>
+                  <span className={styles.elMessiriText}>INTERVIEW CHAPTER</span>
+                </span>
                 <span className={styles.ivChapterTitle}>
-                  피부 독소 균 <span className={styles.elMessiriText}>AND</span> 변혁의 시간
+                  {renderEnglishMessiriLine("피부 독소 균 AND 변혁의 시간", "iv-ch05-title")}
                 </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
@@ -697,7 +882,9 @@ export default function WhyPage() {
                       speakerClass={styles.ivSpeaker}
                       elClass={styles.elMessiriText}
                     />
-                    <p className={styles.ivText}>{turn.text}</p>
+                    <p className={styles.ivText}>
+                      {renderIvTextMessiri(turn.text, "iv05", index)}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -719,8 +906,12 @@ export default function WhyPage() {
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>스킨케어 시장에 진출한 이유는?</span>
+                <span className={styles.ivChapterKicker}>
+                  <span className={styles.elMessiriText}>INTERVIEW CHAPTER</span>
+                </span>
+                <span className={styles.ivChapterTitle}>
+                  {renderEnglishMessiriLine("스킨케어 시장에 진출한 이유는?", "iv-ch06-title")}
+                </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv06Open ? "\u2212" : "+"}
@@ -749,7 +940,9 @@ export default function WhyPage() {
                       speakerClass={styles.ivSpeaker}
                       elClass={styles.elMessiriText}
                     />
-                    <p className={styles.ivText}>{turn.text}</p>
+                    <p className={styles.ivText}>
+                      {renderIvTextMessiri(turn.text, "iv06", index)}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -771,10 +964,11 @@ export default function WhyPage() {
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
+                <span className={styles.ivChapterKicker}>
+                  <span className={styles.elMessiriText}>INTERVIEW CHAPTER</span>
+                </span>
                 <span className={styles.ivChapterTitle}>
-                  향장학 <span className={styles.elMessiriText}>AND</span>{" "}
-                  <span className={styles.elMessiriText}>SELLS</span>
+                  {renderEnglishMessiriLine("향장학 AND SELLS", "iv-ch07-title")}
                 </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
@@ -804,7 +998,9 @@ export default function WhyPage() {
                       speakerClass={styles.ivSpeaker}
                       elClass={styles.elMessiriText}
                     />
-                    <p className={styles.ivText}>{turn.text}</p>
+                    <p className={styles.ivText}>
+                      {renderIvTextMessiri(turn.text, "iv07", index)}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -826,8 +1022,12 @@ export default function WhyPage() {
             <span className={styles.ivTriggerRow}>
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
-                <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>여정의 시간</span>
+                <span className={styles.ivChapterKicker}>
+                  <span className={styles.elMessiriText}>INTERVIEW CHAPTER</span>
+                </span>
+                <span className={styles.ivChapterTitle}>
+                  {renderEnglishMessiriLine("여정의 시간", "iv-ch08-title")}
+                </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv08Open ? "\u2212" : "+"}
@@ -856,7 +1056,9 @@ export default function WhyPage() {
                       speakerClass={styles.ivSpeaker}
                       elClass={styles.elMessiriText}
                     />
-                    <p className={styles.ivText}>{turn.text}</p>
+                    <p className={styles.ivText}>
+                      {renderIvTextMessiri(turn.text, "iv08", index)}
+                    </p>
                   </div>
                 ))}
               </div>
