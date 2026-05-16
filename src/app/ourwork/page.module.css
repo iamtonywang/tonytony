@@ -12,7 +12,159 @@
   -webkit-touch-callout: default;
 }
 
-/* Editorial intro (droplet visual + compact typography) */
+/* OurWork 전용 랜딩: Home 상단과 유사한 구성·감성 (HomeMotionLine은 Home 문구/클래스 전용이라 미사용) */
+.ourWorkLandingSection {
+  width: 100%;
+  padding: 18px 0 0;
+  background: rgba(95, 95, 95, 1);
+}
+
+.ourWorkLandingMotionLine {
+  width: min(1120px, 92vw);
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.ourWorkLandingMotionLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  animation: ourWorkLandingTopSweep 3.8s ease-in-out infinite;
+}
+
+@keyframes ourWorkLandingTopSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  55% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes ourWorkLandingLineSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  55% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.ourWorkLandingCopy {
+  width: 100%;
+  padding: 42px 6vw 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.ourWorkLandingHeroTitle {
+  margin: 0;
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.ourWorkLandingSubTitle {
+  margin: 14px 0 0;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.ourWorkLandingKoreanTitle {
+  margin: 6px 0 0;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.ourWorkLandingDescription {
+  margin-top: 24px;
+  max-width: 860px;
+}
+
+.ourWorkLandingDescription p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+.ourWorkLandingMidLine {
+  width: min(760px, 88vw);
+  height: 1px;
+  margin: 26px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.ourWorkLandingMidLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.92), transparent);
+  animation: ourWorkLandingLineSweep 3.8s ease-in-out infinite;
+}
+
+.ourWorkLandingEnding {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ourWorkLandingEndingTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.ourWorkLandingEndingText {
+  margin: 10px 0 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.ourWorkLandingEndingLine {
+  width: min(620px, 82vw);
+  height: 1px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.58), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.ourWorkLandingEndingLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.92), transparent);
+  animation: ourWorkLandingLineSweep 3.8s ease-in-out infinite;
+}
+
+/* Editorial body (replaces former fade-hero long copy block) */
 
 .editorialIntroSection {
   width: 100%;
@@ -98,11 +250,118 @@
   margin-top: 0.22em;
 }
 
-.pcOnly {
+.fadeHeroSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.fadePortrait {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/landing-assets/ourwork-hero-pc.webp");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.fadePortrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(95, 95, 95, 1) 0%,
+      rgba(95, 95, 95, 1) 24%,
+      rgba(95, 95, 95, 0.96) 38%,
+      rgba(95, 95, 95, 0.82) 52%,
+      rgba(95, 95, 95, 0.58) 64%,
+      rgba(95, 95, 95, 0.24) 74%,
+      transparent 84%
+    );
+  pointer-events: none;
+}
+
+.heroTextOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  -webkit-touch-callout: default;
+}
+
+.heroMainText {
+  margin: 0;
+  font-size: 55px;
+  font-weight: 300;
+}
+
+.heroSubText {
+  margin: 14px 0 0;
+  font-size: 19px;
+  font-weight: 300;
+}
+
+.heroDescription {
+  margin: 28px 0 0;
+  max-width: 720px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 2;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.copyDividerLine {
+  width: min(720px, 82vw);
+  height: 1px;
+  margin: 28px auto 26px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+}
+
+.heroKoreanDescription {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.9;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.pcOverlayProcessLine {
+  width: min(620px, 70vw);
+  height: 1px;
+  margin: 22px auto 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    );
+}
+
+.mobileKoreanSection {
+  display: none;
+}
+
+.mobileKoreanSection .pcOnly {
   display: inline;
 }
 
-.mobileOnly {
+.mobileKoreanSection .mobileOnly {
   display: none;
 }
 
@@ -172,6 +431,10 @@
 
 .bioProcessCaption p + p {
   margin-top: 6px;
+}
+
+.mobileProcessCaptionNearLine {
+  display: none;
 }
 
 .bioProcessTrack {
@@ -478,12 +741,109 @@
     line-height: 1.3;
   }
 
-  .pcOnly {
+  .ourWorkLandingHeroTitle {
+    font-size: 42px;
+  }
+
+  .ourWorkLandingSubTitle,
+  .ourWorkLandingKoreanTitle {
+    font-size: 17px;
+  }
+
+  .ourWorkLandingDescription {
+    max-width: 92vw;
+  }
+
+  .ourWorkLandingMidLine {
+    margin-top: 18px;
+  }
+
+  .ourWorkLandingEnding {
+    margin-top: 18px;
+  }
+
+  .ourWorkLandingEndingText {
+    line-height: 1.6;
+  }
+
+  .ourWorkLandingEndingLine {
+    margin-top: 8px;
+  }
+
+  .heroTextOverlay {
+    justify-content: flex-start;
+    padding-top: 260px;
+    box-sizing: border-box;
+  }
+
+  .copyDividerLine {
     display: none;
   }
 
-  .mobileOnly {
+  .heroKoreanDescription {
+    display: none;
+  }
+
+  .pcOverlayProcessLine {
+    display: none;
+  }
+
+  .mobileKoreanSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 6vw 12px;
+    background: #5f5f5f;
+  }
+
+  .mobileDividerLine {
+    width: min(320px, 82vw);
+    height: 1px;
+    margin: 0 auto 22px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  }
+
+  .mobileKoreanDescription {
+    margin: 0;
+    max-width: 92vw;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  .mobileKoreanBottomLine {
+    width: min(320px, 84vw);
+    height: 1px;
+    margin: 28px auto 34px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.72),
+      transparent
+    );
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.28);
+  }
+
+  .mobileKoreanSection .pcOnly {
+    display: none;
+  }
+
+  .mobileKoreanSection .mobileOnly {
     display: inline;
+  }
+
+  .heroMainText {
+    font-size: 28px;
+  }
+
+  .heroDescription {
+    width: 100%;
+    max-width: 92vw;
+    margin: 28px 0 0;
+    line-height: 1.18;
   }
 
   .bioProcessSection {
@@ -492,8 +852,21 @@
   }
 
   .bioProcessCaption {
+    display: none;
+  }
+
+  .mobileProcessCaptionNearLine {
     display: block;
-    margin-bottom: 32px;
+    margin: 12px auto 0;
+    text-align: center;
+  }
+
+  .mobileProcessCaptionNearLine p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.84);
   }
 
   .bioProcessNodes {

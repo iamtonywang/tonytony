@@ -3,21 +3,54 @@ import styles from "./page.module.css";
 export default function OurWorkPage() {
   return (
     <div className={styles.ourWorkPage}>
-      <section className={styles.editorialIntroSection} aria-label="OurWork editorial intro">
+      <section className={styles.ourWorkLandingSection} aria-label="OurWork 랜딩">
+        <div className={styles.ourWorkLandingMotionLine} aria-hidden="true" />
+
+        <div className={styles.ourWorkLandingCopy}>
+          <h1 className={styles.ourWorkLandingHeroTitle}>TONY WANG</h1>
+
+          <h3 className={styles.ourWorkLandingSubTitle}>plant cell genetic protein</h3>
+
+          <h2 className={styles.ourWorkLandingKoreanTitle}>식물 세포 유전자 단백질 연구</h2>
+
+          <div className={styles.ourWorkLandingDescription}>
+            <p>What we prove in the lab becomes the structure your skin can trust.</p>
+            <p>
+              Cloning and recombination across different cell DNA, the third structure where new cells
+              <br />
+              assemble new efficacy — documented step by step.
+            </p>
+            <p>Precisely regulate skin cell signal transmission and activate ECM reconstruction</p>
+          </div>
+
+          <div className={styles.ourWorkLandingMidLine} aria-hidden="true" />
+
+          <div className={styles.ourWorkLandingEnding}>
+            <h2 className={styles.ourWorkLandingEndingTitle}>TONY WANG</h2>
+
+            <p className={styles.ourWorkLandingEndingText}>
+              I thought about it and made up my mind
+            </p>
+
+            <div className={styles.ourWorkLandingEndingLine} aria-hidden="true" />
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.editorialIntroSection} aria-label="OurWork editorial body">
         <div className={styles.editorialIntroVisualWrap}>
           <img
             src="/landing-assets/ourwork-editorial-droplet-03.webp"
             alt=""
             className={styles.editorialIntroVisual}
-            loading="eager"
-            fetchPriority="high"
+            loading="lazy"
             decoding="async"
             draggable={false}
           />
         </div>
 
         <div className={styles.editorialIntroCopy}>
-          <h1 className={styles.editorialIntroHeadline}>plant cell genetic protein</h1>
+          <h2 className={styles.editorialIntroHeadline}>plant cell genetic protein</h2>
           <p className={styles.editorialIntroKorean}>식물 세포 유전자 단백질</p>
           <div className={styles.editorialIntroHairline} aria-hidden />
           <div className={styles.editorialIntroDescription}>
@@ -62,6 +95,13 @@ export default function OurWorkPage() {
               <span>NEW 단백질</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.mobileKoreanSection} aria-hidden="true">
+        <div className={styles.mobileProcessCaptionNearLine}>
+          <p>식물세포 유전자 재 조합 단백질 합성 연구</p>
+          <p>세포 DNA 클로닝 유전자 단백질 생성</p>
         </div>
       </section>
 
