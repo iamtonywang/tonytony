@@ -140,9 +140,15 @@ export default function OurWorkPage() {
                   </p>
 
                   <p className={styles.editorialKoreanArchiveHeadline}>
-                    세포 DNA 클로닝 후 세포 결합
-                    <br />
-                    재 조합 연구 개발
+                    세포 DNA 클로닝 후 세포{" "}
+                    <span className={styles.editorialKoreanArchiveHeadlinePcTail}>
+                      결합 재 조합 연구 개발
+                    </span>
+                    <span className={styles.editorialKoreanArchiveHeadlineMobileTail}>
+                      결합
+                      <br />
+                      재 조합 연구 개발
+                    </span>
                   </p>
                   <p className={styles.editorialKoreanArchiveLine}>
                     식물 세포 유전자 단백질 세포 DNA를 결합했을 때 변이 세포 형성

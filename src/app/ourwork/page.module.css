@@ -345,6 +345,14 @@
   overflow-wrap: break-word;
 }
 
+.editorialKoreanArchiveHeadlinePcTail {
+  display: inline;
+}
+
+.editorialKoreanArchiveHeadlineMobileTail {
+  display: none;
+}
+
 .editorialKoreanArchiveLine {
   margin: 0 0 0.38em;
   font-family: "NanumSquare", sans-serif;
@@ -1028,6 +1036,14 @@
     font-size: 53px;
     line-height: 1.12;
     margin-bottom: 12px;
+  }
+
+  .editorialKoreanArchiveHeadlinePcTail {
+    display: none;
+  }
+
+  .editorialKoreanArchiveHeadlineMobileTail {
+    display: inline;
   }
 
   .editorialKoreanArchiveLine {
