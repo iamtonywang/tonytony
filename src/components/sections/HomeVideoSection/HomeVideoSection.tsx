@@ -48,32 +48,6 @@ function computeTimelineIndex(currentTime: number, durationSeconds: number): num
   return Math.min(Math.max(raw, 0), timelineTexts.length - 1);
 }
 
-function waitUntilVideoCanPlay(video: HTMLVideoElement): Promise<void> {
-  if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-    return Promise.resolve();
-  }
-
-  return new Promise((resolve, reject) => {
-    const onReady = () => {
-      cleanup();
-      resolve();
-    };
-    const onError = () => {
-      cleanup();
-      reject(new Error("Video failed to load"));
-    };
-    const cleanup = () => {
-      video.removeEventListener("loadedmetadata", onReady);
-      video.removeEventListener("canplay", onReady);
-      video.removeEventListener("error", onError);
-    };
-
-    video.addEventListener("loadedmetadata", onReady);
-    video.addEventListener("canplay", onReady);
-    video.addEventListener("error", onError);
-  });
-}
-
 export default function HomeVideoSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoMountRef = useRef<HTMLDivElement | null>(null);
@@ -252,7 +226,7 @@ export default function HomeVideoSection() {
         }
 
         if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
-          await waitUntilVideoCanPlay(video);
+          video.load();
         }
 
         video.muted = false;
