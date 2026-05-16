@@ -300,6 +300,10 @@
   margin-bottom: 0;
 }
 
+.elMessiriText {
+  font-family: var(--font-el-messiri), "EL Messiri", serif;
+}
+
 @media (max-width: 768px) {
   .whyUnifiedLandingInner {
     padding-left: clamp(14px, 5vw, 24px);

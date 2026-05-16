@@ -385,7 +385,8 @@ export default function WhyPage() {
       >
         <div className={styles.interviewArchiveNoteInner}>
           <p className={styles.interviewArchiveNoteLead}>
-            TONYWANG연구소 연구 개발 및 STORY 상품과는 관계가 없습니다
+            <span className={styles.elMessiriText}>TONYWANG</span>연구소 연구 개발 및{" "}
+            <span className={styles.elMessiriText}>STORY</span> 상품과는 관계가 없습니다
           </p>
           <div className={styles.interviewArchiveNoteHairline} aria-hidden />
           <div className={styles.interviewArchiveNoteBody}>
@@ -393,19 +394,22 @@ export default function WhyPage() {
               본문 인터뷰 내용은 제품 홍보 목적이 아님을 밝힙니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              TONYWANG연구소 는 과대 홍보로 제품 판매 를 하지 않습니다
+              <span className={styles.elMessiriText}>TONYWANG</span>연구소 는 과대 홍보로 제품
+              판매 를 하지 않습니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
               상품 가치는 고객이 결정 합니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              고객은 Smart하고 중립적인 위치에 있습니다
+              고객은 <span className={styles.elMessiriText}>Smart</span>하고 중립적인 위치에
+              있습니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              TONYWANG은 유저을 믿고 신뢰 합니다
+              <span className={styles.elMessiriText}>TONYWANG</span>은 유저을 믿고 신뢰 합니다
             </p>
             <p className={styles.interviewArchiveNoteBodyPara}>
-              제품 사용한 유저 만이 TONYWANG 가치를 세상에 알릴 존재 라는걸 .....
+              제품 사용한 유저 만이 <span className={styles.elMessiriText}>TONYWANG</span> 가치를
+              세상에 알릴 존재 라는걸 .....
             </p>
           </div>
         </div>
