@@ -383,6 +383,7 @@
 }
 
 .editorialKoreanArchiveVialVisualWrap {
+  position: relative;
   width: 100%;
   line-height: 0;
 }
@@ -397,29 +398,45 @@
 }
 
 .editorialKoreanArchiveVialProcessCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   min-width: 0;
-  margin-top: clamp(14px, 2vw, 18px);
+  padding: clamp(18px, 3.2vw, 28px) clamp(14px, 3.5vw, 24px)
+    clamp(20px, 4.5vw, 36px);
   text-align: center;
   box-sizing: border-box;
+  pointer-events: none;
 }
 
 .editorialKoreanArchiveVialProcessDivider {
-  width: min(56px, 14vw);
+  width: min(48px, 12vw);
   height: 1px;
-  margin: 0 auto clamp(12px, 1.6vw, 16px);
-  background: rgba(255, 255, 255, 0.28);
+  margin: 0 auto clamp(10px, 1.4vw, 14px);
+  background: rgba(201, 169, 98, 0.42);
+  flex-shrink: 0;
+}
+
+.editorialKoreanArchiveVialProcessDividerBottom {
+  margin: clamp(10px, 1.4vw, 14px) auto 0;
 }
 
 .editorialKoreanArchiveVialProcessLabel {
-  margin: 0 0 clamp(8px, 1.2vw, 10px);
+  margin: 0 0 clamp(6px, 1vw, 8px);
   font-family: "EL Messiri", serif;
   font-size: clamp(12px, 1.2vw, 13px);
   font-weight: 400;
   line-height: 1.35;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(218, 198, 158, 0.82);
+  color: rgba(218, 198, 158, 0.88);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
 }
 
 .editorialKoreanArchiveVialProcessLine {
@@ -428,9 +445,10 @@
   font-size: 14px;
   font-weight: 300;
   line-height: 1.32;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255, 252, 245, 0.9);
   word-break: keep-all;
   overflow-wrap: break-word;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.32);
 }
 
 .editorialKoreanArchiveVialProcessLine + .editorialKoreanArchiveVialProcessLine {
@@ -797,20 +815,22 @@
   }
 
   .editorialKoreanArchiveVialProcessCaption {
-    margin-top: 12px;
-    max-width: 100%;
-    padding: 0 2px;
+    padding: 16px 12px 22px;
   }
 
   .editorialKoreanArchiveVialProcessDivider {
-    width: min(48px, 12vw);
+    width: min(44px, 11vw);
     margin-bottom: 10px;
+  }
+
+  .editorialKoreanArchiveVialProcessDividerBottom {
+    margin-top: 10px;
   }
 
   .editorialKoreanArchiveVialProcessLabel {
     font-size: 12px;
     letter-spacing: 0.22em;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .editorialKoreanArchiveVialProcessLine {

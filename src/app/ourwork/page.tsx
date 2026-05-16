@@ -172,24 +172,27 @@ export default function OurWorkPage() {
                         decoding="async"
                         draggable={false}
                       />
-                    </div>
-
-                    <div className={styles.editorialKoreanArchiveVialProcessCaption}>
-                      <div
-                        className={styles.editorialKoreanArchiveVialProcessDivider}
-                        aria-hidden="true"
-                      />
-                      <p
-                        className={`${styles.editorialKoreanArchiveVialProcessLabel} ${styles.elMessiriText}`}
-                      >
-                        BIO PROCESS 01
-                      </p>
-                      <p className={styles.editorialKoreanArchiveVialProcessLine}>
-                        식물 세포 유전자 단백질 생성
-                      </p>
-                      <p className={styles.editorialKoreanArchiveVialProcessLine}>
-                        세포 DNA 유전자 단백질 합성
-                      </p>
+                      <div className={styles.editorialKoreanArchiveVialProcessCaption}>
+                        <div
+                          className={styles.editorialKoreanArchiveVialProcessDivider}
+                          aria-hidden="true"
+                        />
+                        <p
+                          className={`${styles.editorialKoreanArchiveVialProcessLabel} ${styles.elMessiriText}`}
+                        >
+                          BIO PROCESS 01
+                        </p>
+                        <p className={styles.editorialKoreanArchiveVialProcessLine}>
+                          식물 세포 유전자 단백질 생성
+                        </p>
+                        <p className={styles.editorialKoreanArchiveVialProcessLine}>
+                          세포 DNA 유전자 단백질 합성
+                        </p>
+                        <div
+                          className={`${styles.editorialKoreanArchiveVialProcessDivider} ${styles.editorialKoreanArchiveVialProcessDividerBottom}`}
+                          aria-hidden="true"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
