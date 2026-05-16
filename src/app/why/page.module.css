@@ -171,6 +171,46 @@
   opacity: 0.94;
 }
 
+/* — Editorial headline (directly below interview visual, above note) — */
+
+.interviewArchiveHeadlineSection {
+  width: 100%;
+  padding: clamp(4px, 0.9vh, 10px) 0 clamp(6px, 1.2vh, 14px);
+  box-sizing: border-box;
+  background-color: #5f5f5f;
+  display: flex;
+  justify-content: center;
+}
+
+.interviewArchiveHeadlineInner {
+  width: min(980px, 82vw);
+  max-width: 100%;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.interviewArchiveHeadlineKicker {
+  margin: 0;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.interviewArchiveHeadlineTitle {
+  margin: clamp(8px, 1.4vw, 14px) 0 0;
+  font-family: "NanumSquare", sans-serif;
+  font-size: 88px;
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
 /* — Archive editorial intro (before interview visual) — */
 
 .archiveIntroSection {
@@ -247,19 +287,9 @@
 .interviewArchiveNoteInner {
   width: min(980px, 82vw);
   max-width: 100%;
-  margin: clamp(14px, 2.5vh, 26px) auto 0;
+  margin: clamp(8px, 1.2vh, 14px) auto 0;
   text-align: left;
   box-sizing: border-box;
-}
-
-.interviewArchiveNoteLead {
-  margin: 0;
-  font-family: "NanumSquare", sans-serif;
-  font-size: clamp(21px, 2vw, 26px);
-  font-weight: 300;
-  line-height: 1.65;
-  letter-spacing: 0.015em;
-  color: rgba(255, 255, 255, 0.9);
 }
 
 .interviewArchiveNoteHairline {
@@ -276,6 +306,10 @@
     rgba(255, 255, 255, 0.35) 80%,
     transparent 100%
   );
+}
+
+.interviewArchiveNoteInner > .interviewArchiveNoteHairline:first-child {
+  margin-top: clamp(14px, 2.5vw, 22px);
 }
 
 .interviewArchiveNoteBody {
@@ -336,6 +370,25 @@
     object-fit: unset;
   }
 
+  .interviewArchiveHeadlineSection {
+    padding: clamp(4px, 1vh, 8px) 0 clamp(6px, 1.2vh, 12px);
+  }
+
+  .interviewArchiveHeadlineInner {
+    width: min(96vw, 100%);
+    max-width: 96vw;
+    text-align: center;
+  }
+
+  .interviewArchiveHeadlineKicker {
+    font-size: 12px;
+  }
+
+  .interviewArchiveHeadlineTitle {
+    font-size: clamp(17px, 4.6vw, 20px);
+    line-height: 1.6;
+  }
+
   .interviewArchiveNoteSection {
     padding-left: 0;
     padding-right: 0;
@@ -344,13 +397,8 @@
   .interviewArchiveNoteInner {
     width: min(96vw, 100%);
     max-width: 96vw;
-    margin-top: clamp(14px, 3vw, 20px);
+    margin-top: clamp(10px, 2.5vw, 16px);
     text-align: center;
-  }
-
-  .interviewArchiveNoteLead {
-    font-size: clamp(17px, 4.6vw, 20px);
-    line-height: 1.6;
   }
 
   .interviewArchiveNoteHairline {

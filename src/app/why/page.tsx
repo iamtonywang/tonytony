@@ -555,21 +555,32 @@ export default function WhyPage() {
       </section>
 
       <section
-        className={styles.interviewArchiveNoteSection}
-        aria-label="Interview archive note"
+        className={styles.interviewArchiveHeadlineSection}
+        aria-label="Archive editorial headline"
       >
-        <div className={styles.interviewArchiveNoteInner}>
-          <p className={styles.interviewArchiveNoteLead}>
+        <div className={styles.interviewArchiveHeadlineInner}>
+          <p className={styles.interviewArchiveHeadlineKicker}>
+            <span className={styles.elMessiriText}>WHY ARCHIVE INTRO</span>
+          </p>
+          <p className={styles.interviewArchiveHeadlineTitle}>
             {renderEnglishMessiriLine(
               "TONYWANG연구소 연구 개발 및 STORY",
-              "archive-note-lead-a",
+              "archive-headline-a",
             )}
             <br className={styles.mobileOnlyBreak} />{" "}
             {renderEnglishMessiriLine(
               "상품과는 관계가 없습니다",
-              "archive-note-lead-b",
+              "archive-headline-b",
             )}
           </p>
+        </div>
+      </section>
+
+      <section
+        className={styles.interviewArchiveNoteSection}
+        aria-label="Interview archive note"
+      >
+        <div className={styles.interviewArchiveNoteInner}>
           <div className={styles.interviewArchiveNoteHairline} aria-hidden />
           <div className={styles.interviewArchiveNoteBody}>
             <p className={styles.interviewArchiveNoteBodyPara}>
