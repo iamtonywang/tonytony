@@ -56,8 +56,8 @@ export default function OurWorkPage() {
             </p>
 
             <h2 className={styles.editorialIntroHeadline}>
-              <span className={styles.editorialIntroHeadlineLine}>plant cell</span>
-              <span className={styles.editorialIntroHeadlineLine}>genetic protein</span>
+              <span className={styles.editorialIntroHeadlineLine}>plant cell genetic</span>
+              <span className={styles.editorialIntroHeadlineLine}>protein</span>
             </h2>
 
             <p className={styles.editorialIntroKorean}>식물 세포 유전자 단백질</p>
