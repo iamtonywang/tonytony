@@ -126,27 +126,31 @@
 
 .bodySpacer {
   width: 100%;
-  min-height: min(14vh, 150px);
+  min-height: min(9vh, 96px);
 }
 
 .footerClosingNote {
   width: min(980px, 82vw);
   max-width: 100%;
   margin: 0 auto;
-  margin-bottom: clamp(20px, 3.2vw, 30px);
+  margin-bottom: clamp(16px, 2.6vw, 24px);
   padding: 0 clamp(20px, 5vw, 48px);
   box-sizing: border-box;
-  text-align: left;
+  text-align: center;
   font-family: "EL Messiri", serif;
   font-size: 14px;
   font-weight: 300;
-  line-height: 1.55;
+  line-height: 1.38;
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footerClosingNotePara {
-  margin: 0 0 0.52em;
+  margin: 0 0 0.28em;
+  max-width: min(38em, 100%);
 }
 
 .footerClosingNotePara:last-child {
@@ -154,7 +158,7 @@
 }
 
 .footerClosingSignature {
-  margin-top: clamp(20px, 3.2vw, 30px);
+  margin-top: clamp(12px, 2vw, 18px);
 }
 
 .footerBoundaryLine {
@@ -470,18 +474,18 @@
     width: min(96vw, 100%);
     max-width: 96vw;
     font-size: 12px;
-    line-height: 1.52;
-    margin-bottom: clamp(16px, 3.5vw, 22px);
+    line-height: 1.36;
+    margin-bottom: clamp(14px, 3vw, 20px);
     padding-left: clamp(14px, 5vw, 24px);
     padding-right: clamp(14px, 5vw, 24px);
   }
 
   .footerClosingNotePara {
-    margin: 0 0 0.48em;
+    margin: 0 0 0.24em;
   }
 
   .footerClosingSignature {
-    margin-top: clamp(16px, 3vw, 24px);
+    margin-top: clamp(10px, 2.4vw, 16px);
   }
 
   .footerBoundaryLine {
