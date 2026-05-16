@@ -6,6 +6,60 @@
   background-color: #5f5f5f;
 }
 
+.legendStatement {
+  width: 100%;
+  padding: clamp(28px, 4.5vh, 44px) clamp(20px, 5vw, 48px);
+  box-sizing: border-box;
+  background-color: #5f5f5f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.legendStatementHairline {
+  width: min(520px, 72vw);
+  height: 1px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 100%
+  );
+}
+
+.legendStatementHairline:first-of-type {
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+
+.legendStatementHairline:last-of-type {
+  margin-top: clamp(20px, 3vw, 28px);
+}
+
+.legendStatementKicker {
+  margin: 0;
+  max-width: min(42em, 100%);
+  font-family: "El Messiri", serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.legendStatementHeadline {
+  margin: clamp(14px, 2.2vw, 20px) 0 0;
+  max-width: min(16em, 94vw);
+  font-family: "El Messiri", serif;
+  font-size: 55px;
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.92);
+  overflow-wrap: break-word;
+}
+
 .themeSections {
   width: 100%;
   padding: clamp(28px, 4.5vh, 48px) 0 clamp(56px, 8vh, 88px);
@@ -152,6 +206,14 @@
 }
 
 @media (max-width: 768px) {
+  .legendStatement {
+    padding: clamp(22px, 4vh, 32px) clamp(14px, 5vw, 24px);
+  }
+
+  .legendStatementHeadline {
+    max-width: 94vw;
+  }
+
   .themeSections {
     padding: clamp(20px, 4vh, 32px) 0 clamp(40px, 7vh, 64px);
   }

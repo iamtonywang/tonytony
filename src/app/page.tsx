@@ -111,6 +111,14 @@ export default function HomePage() {
     <div className={styles.homePage}>
       <HomeMotionLine />
       <HomeVideoSection />
+      <section className={styles.legendStatement} aria-label="Legend statement">
+        <div className={styles.legendStatementHairline} aria-hidden />
+        <p className={styles.legendStatementKicker}>beginning of a legend</p>
+        <p className={styles.legendStatementHeadline}>
+          The legend of King Tony Wang is just beginning
+        </p>
+        <div className={styles.legendStatementHairline} aria-hidden />
+      </section>
       <section className={styles.themeSections} aria-label="Editorial themes">
         {HOME_THEME_SECTIONS.map((theme, index) => (
           <article key={theme.number} className={styles.themeSection}>
