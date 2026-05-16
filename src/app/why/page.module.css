@@ -163,13 +163,16 @@
 
 .interviewVisualWrap {
   width: min(980px, 82vw);
+  max-width: 100%;
+  min-width: 0;
+  line-height: 0;
 }
 
 .interviewVisualImage {
   width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
   opacity: 0.94;
 }
 
@@ -190,7 +193,8 @@
   }
 
   .interviewVisualWrap {
-    width: 92vw;
+    width: min(92vw, 100%);
+    min-width: 0;
   }
 }
 

@@ -348,6 +348,11 @@ export default function WhyPage() {
         <div className={styles.interviewVisualWrap}>
           <img
             src="/landing-assets/tonywang-interview-archive.jpg"
+            width={1600}
+            height={900}
+            sizes="(max-width: 768px) 92vw, min(980px, 82vw)"
+            decoding="async"
+            draggable={false}
             alt="TONYWANG interview archive"
             className={styles.interviewVisualImage}
           />
