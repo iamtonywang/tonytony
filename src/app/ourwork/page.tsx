@@ -140,7 +140,7 @@ export default function OurWorkPage() {
                   </p>
 
                   <p className={styles.editorialKoreanArchiveHeadline}>
-                    각기 다른 세포 DNA를 클로닝 하여 재결합하는 원리
+                    세포 DNA를 클로닝 하여 재결합하는 원리
                   </p>
                   <p className={styles.editorialKoreanArchiveLine}>식물 세포 유전자 단백질</p>
                   <p className={styles.editorialKoreanArchiveLine}>
