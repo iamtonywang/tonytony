@@ -248,6 +248,26 @@ const INTERVIEW_08_TURNS: readonly { speaker: "기자" | "TONYWANG"; text: strin
   { speaker: "TONYWANG", text: "감사합니다" },
 ];
 
+function IvSpeakerLabel({
+  speaker,
+  speakerClass,
+  elClass,
+}: {
+  speaker: "기자" | "TONYWANG";
+  speakerClass: string;
+  elClass: string;
+}) {
+  return (
+    <p className={speakerClass}>
+      {speaker === "TONYWANG" ? (
+        <span className={elClass}>TONYWANG</span>
+      ) : (
+        speaker
+      )}
+    </p>
+  );
+}
+
 export default function WhyPage() {
   const baseId = useId();
   const [iv01Open, setIv01Open] = useState(false);
@@ -434,7 +454,9 @@ export default function WhyPage() {
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
                 <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>만남 TONYWANG 그리고...</span>
+                <span className={styles.ivChapterTitle}>
+                  만남 <span className={styles.elMessiriText}>TONYWANG</span> 그리고...
+                </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv01Open ? "\u2212" : "+"}
@@ -458,7 +480,11 @@ export default function WhyPage() {
               >
                 {INTERVIEW_01_TURNS.map((turn, index) => (
                   <div key={`iv01-${index}`} className={styles.ivTurn}>
-                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <IvSpeakerLabel
+                      speaker={turn.speaker}
+                      speakerClass={styles.ivSpeaker}
+                      elClass={styles.elMessiriText}
+                    />
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
                 ))}
@@ -506,7 +532,11 @@ export default function WhyPage() {
               >
                 {INTERVIEW_02_TURNS.map((turn, index) => (
                   <div key={`iv02-${index}`} className={styles.ivTurn}>
-                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <IvSpeakerLabel
+                      speaker={turn.speaker}
+                      speakerClass={styles.ivSpeaker}
+                      elClass={styles.elMessiriText}
+                    />
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
                 ))}
@@ -530,7 +560,9 @@ export default function WhyPage() {
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
                 <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>TONYWANG 유전자 단백질</span>
+                <span className={styles.ivChapterTitle}>
+                  <span className={styles.elMessiriText}>TONYWANG</span> 유전자 단백질
+                </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv03Open ? "\u2212" : "+"}
@@ -554,7 +586,11 @@ export default function WhyPage() {
               >
                 {INTERVIEW_03_TURNS.map((turn, index) => (
                   <div key={`iv03-${index}`} className={styles.ivTurn}>
-                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <IvSpeakerLabel
+                      speaker={turn.speaker}
+                      speakerClass={styles.ivSpeaker}
+                      elClass={styles.elMessiriText}
+                    />
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
                 ))}
@@ -602,7 +638,11 @@ export default function WhyPage() {
               >
                 {INTERVIEW_04_TURNS.map((turn, index) => (
                   <div key={`iv04-${index}`} className={styles.ivTurn}>
-                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <IvSpeakerLabel
+                      speaker={turn.speaker}
+                      speakerClass={styles.ivSpeaker}
+                      elClass={styles.elMessiriText}
+                    />
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
                 ))}
@@ -626,7 +666,9 @@ export default function WhyPage() {
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
                 <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>피부 독소 균 AND 변혁의 시간</span>
+                <span className={styles.ivChapterTitle}>
+                  피부 독소 균 <span className={styles.elMessiriText}>AND</span> 변혁의 시간
+                </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv05Open ? "\u2212" : "+"}
@@ -650,7 +692,11 @@ export default function WhyPage() {
               >
                 {INTERVIEW_05_TURNS.map((turn, index) => (
                   <div key={`iv05-${index}`} className={styles.ivTurn}>
-                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <IvSpeakerLabel
+                      speaker={turn.speaker}
+                      speakerClass={styles.ivSpeaker}
+                      elClass={styles.elMessiriText}
+                    />
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
                 ))}
@@ -698,7 +744,11 @@ export default function WhyPage() {
               >
                 {INTERVIEW_06_TURNS.map((turn, index) => (
                   <div key={`iv06-${index}`} className={styles.ivTurn}>
-                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <IvSpeakerLabel
+                      speaker={turn.speaker}
+                      speakerClass={styles.ivSpeaker}
+                      elClass={styles.elMessiriText}
+                    />
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
                 ))}
@@ -722,7 +772,10 @@ export default function WhyPage() {
               <span className={styles.ivTriggerPad} aria-hidden />
               <span className={styles.ivChapterStack}>
                 <span className={styles.ivChapterKicker}>INTERVIEW CHAPTER</span>
-                <span className={styles.ivChapterTitle}>향장학 AND SELLS</span>
+                <span className={styles.ivChapterTitle}>
+                  향장학 <span className={styles.elMessiriText}>AND</span>{" "}
+                  <span className={styles.elMessiriText}>SELLS</span>
+                </span>
               </span>
               <span className={styles.ivAccordionIcon} aria-hidden>
                 {iv07Open ? "\u2212" : "+"}
@@ -746,7 +799,11 @@ export default function WhyPage() {
               >
                 {INTERVIEW_07_TURNS.map((turn, index) => (
                   <div key={`iv07-${index}`} className={styles.ivTurn}>
-                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <IvSpeakerLabel
+                      speaker={turn.speaker}
+                      speakerClass={styles.ivSpeaker}
+                      elClass={styles.elMessiriText}
+                    />
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
                 ))}
@@ -794,7 +851,11 @@ export default function WhyPage() {
               >
                 {INTERVIEW_08_TURNS.map((turn, index) => (
                   <div key={`iv08-${index}`} className={styles.ivTurn}>
-                    <p className={styles.ivSpeaker}>{turn.speaker}</p>
+                    <IvSpeakerLabel
+                      speaker={turn.speaker}
+                      speakerClass={styles.ivSpeaker}
+                      elClass={styles.elMessiriText}
+                    />
                     <p className={styles.ivText}>{turn.text}</p>
                   </div>
                 ))}
