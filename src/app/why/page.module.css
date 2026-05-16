@@ -1,4 +1,4 @@
-/* WHY page — editorial landing → manifesto → archive intro → interview chapters */
+/* WHY page — editorial landing → interview visual → archive intro → chapters */
 
 .whyPage {
   width: 100%;
@@ -12,7 +12,7 @@
 
 .whyLanding {
   width: 100%;
-  padding: 18px 0 0;
+  padding: clamp(20px, 4vw, 36px) 0 0;
   box-sizing: border-box;
   background-color: #5f5f5f;
 }
@@ -31,7 +31,10 @@
 
 .whyLandingInner {
   width: 100%;
-  padding: 42px 6vw 48px;
+  max-width: min(920px, 94vw);
+  margin: 0 auto;
+  padding: clamp(40px, 8vh, 96px) clamp(20px, 5vw, 48px)
+    clamp(48px, 9vh, 112px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -40,23 +43,82 @@
   color: rgba(255, 255, 255, 0.94);
 }
 
-.whyLandingTitle {
+.whyLandingHeroTitle {
   margin: 0;
   font-family: "El Messiri", "NanumSquare", sans-serif;
-  font-size: clamp(42px, 11vw, 80px);
+  font-size: clamp(46px, 12vw, 96px);
   font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.94);
+  line-height: 1.02;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.96);
 }
 
-.whyLandingSub {
-  margin: 16px 0 0;
-  font-size: clamp(11px, 1.35vw, 13px);
+.whyLandingEnTrack {
+  margin: clamp(18px, 3.2vw, 32px) 0 0;
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(13px, 1.65vw, 16px);
   font-weight: 300;
-  letter-spacing: 0.28em;
+  line-height: 1.45;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.whyLandingKo {
+  margin: clamp(10px, 1.8vw, 18px) 0 0;
+  font-family: "NanumSquare", "El Messiri", sans-serif;
+  font-size: clamp(14px, 1.9vw, 17px);
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.whyLandingEnBody {
+  margin: clamp(28px, 5vw, 52px) 0 0;
+  max-width: min(36em, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vw, 16px);
+}
+
+.whyLandingEnLine {
+  margin: 0;
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(13px, 1.55vw, 15px);
+  font-weight: 300;
+  line-height: 1.65;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.whyLandingHairline {
+  margin-top: clamp(36px, 7vw, 80px);
+  margin-bottom: clamp(28px, 5vw, 56px);
+}
+
+.whyLandingClosingMark {
+  margin: 0;
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(10px, 1.2vw, 12px);
+  font-weight: 300;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.whyLandingClosingThought {
+  margin: clamp(10px, 1.8vw, 16px) 0 0;
+  max-width: min(32em, 100%);
+  font-family: "El Messiri", "NanumSquare", sans-serif;
+  font-size: clamp(13px, 1.5vw, 15px);
+  font-weight: 300;
+  line-height: 1.62;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .bodySpacer {
@@ -78,17 +140,12 @@
   background-color: #5f5f5f;
 }
 
-/* Large rhythm: manifesto → interview visual */
-.transitionSection.manifestoSection {
-  padding-bottom: clamp(28px, 4vh, 56px);
-}
-
-/* — Editorial interview hero (manifesto subcopy → archive intro) — */
+/* — Editorial interview hero (landing → archive intro) — */
 
 .interviewVisualSection {
   width: 100%;
-  margin-top: -48px;
-  padding: 0 0 96px;
+  margin-top: 0;
+  padding: clamp(20px, 4vh, 48px) 0 96px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,9 +166,19 @@
 }
 
 @media (max-width: 768px) {
+  .whyLandingInner {
+    padding-left: clamp(16px, 5vw, 28px);
+    padding-right: clamp(16px, 5vw, 28px);
+  }
+
+  .whyLandingHairline {
+    margin-top: clamp(28px, 8vw, 56px);
+    margin-bottom: clamp(22px, 6vw, 44px);
+  }
+
   .interviewVisualSection {
-    margin-top: -32px;
-    padding: 0 0 60px;
+    margin-top: 0;
+    padding: clamp(16px, 3vh, 32px) 0 60px;
   }
 
   .interviewVisualWrap {

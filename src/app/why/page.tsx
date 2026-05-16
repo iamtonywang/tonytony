@@ -312,34 +312,32 @@ export default function WhyPage() {
       <section className={styles.whyLanding} aria-label="WHY landing">
         <div className={styles.whyLandingTopLine} aria-hidden />
         <div className={styles.whyLandingInner}>
-          <h1 className={styles.whyLandingTitle}>TONYWANG</h1>
-          <p className={styles.whyLandingSub}>WHY INTERVIEW ARCHIVE</p>
-        </div>
-      </section>
-
-      <section
-        className={`${styles.transitionSection} ${styles.manifestoSection}`}
-        aria-label="Editorial manifesto"
-      >
-        <div className={styles.transitionNoise} aria-hidden />
-        <div className={styles.transitionGlow} aria-hidden />
-
-        <div className={styles.transitionInner}>
-          <div className={styles.statementWrap}>
-            <p className={styles.statementLine}>WHY IS NOT A STORY.</p>
-            <p className={`${styles.statementLine} ${styles.statementLineMuted}`}>
-              IT IS A RECORD OF 28 YEARS.
+          <h1 className={styles.whyLandingHeroTitle}>TONY WANG</h1>
+          <p className={styles.whyLandingEnTrack}>plant cell genetic protein</p>
+          <p className={styles.whyLandingKo}>식물 세포 유전자 단백질 연구</p>
+          <div className={styles.whyLandingEnBody}>
+            <p className={styles.whyLandingEnLine}>
+              Plant cells archive genetic sequence as living structure.
+            </p>
+            <p className={styles.whyLandingEnLine}>
+              Each protein marks a decision in the research record.
+            </p>
+            <p className={styles.whyLandingEnLine}>
+              Study moves from nucleus to surface without noise.
             </p>
           </div>
-
-          <div className={styles.hairlineShort} aria-hidden />
-
-          <div className={styles.subCopy}>
-            <p className={styles.subLine}>THIS IS NOT MARKETING.</p>
-            <p className={`${styles.subLine} ${styles.subLineMuted}`}>
-              THIS IS AN INTERVIEW ARCHIVE.
-            </p>
-          </div>
+          <div
+            className={`${styles.hairlineShort} ${styles.whyLandingHairline}`}
+            aria-hidden
+          />
+          <p className={styles.whyLandingClosingMark}>TONY WANG</p>
+          <p className={styles.whyLandingClosingThought}>
+            I thought about it and made up my mind
+          </p>
+          <div
+            className={`${styles.hairlineShort} ${styles.whyLandingHairline}`}
+            aria-hidden
+          />
         </div>
       </section>
 
