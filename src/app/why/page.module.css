@@ -193,7 +193,8 @@
   }
 
   .interviewVisualWrap {
-    width: min(92vw, 100%);
+    width: min(96vw, 100%);
+    max-width: none;
     min-width: 0;
   }
 }
