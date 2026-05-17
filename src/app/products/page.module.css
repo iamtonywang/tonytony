@@ -77,7 +77,7 @@
   }
 
   .heroOverlay {
-    justify-content: flex-start;
-    padding-top: 80px;
+    justify-content: center;
+    padding-top: 6vh;
   }
 }
