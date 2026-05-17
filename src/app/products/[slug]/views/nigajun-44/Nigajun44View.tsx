@@ -407,8 +407,12 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             aria-hidden="true"
           />
 
-          <p className={styles.headerIntroText}>
-            TONY WANG AND NIGAJUN 44 AND Start
+          <h1 className={styles.headerIntroTitle}>TONY WANG</h1>
+
+          <h2 className={styles.headerIntroSubtitle}>NIGAJUN 44</h2>
+
+          <p className={styles.headerIntroCaption}>
+            skincare for the first time
           </p>
 
           <div
