@@ -472,7 +472,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <section className={styles.archiveStatementSection}>
         <p className={styles.archiveStatementHeadline}>
-          혁신과 신화를 이루기 위해 이제 출발합니다 NIGAJUN 44
+          혁신과 신화를 이루기 위해 이제 출발합니다{" "}
+          <span className={styles.archiveStatementBrand}>NIGAJUN 44</span>
         </p>
 
         <p className={styles.archiveStatementText}>

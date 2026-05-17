@@ -175,8 +175,15 @@
   font-weight: 300;
   line-height: 0.96;
   letter-spacing: 0.02em;
-  color: #ffffff;
+  color: rgba(176, 176, 176, 0.92);
   text-align: left;
+}
+
+.archiveStatementBrand {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: rgba(210, 210, 210, 0.9);
 }
 
 .archiveStatementText {
