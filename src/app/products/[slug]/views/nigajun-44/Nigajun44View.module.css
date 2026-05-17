@@ -89,6 +89,7 @@
   margin-top: 28px;
   margin-bottom: 0;
   padding: 0;
+  padding-bottom: 0;
   overflow: hidden;
 }
 
@@ -96,6 +97,10 @@
   position: relative;
   width: 100vw;
   min-height: 72vh;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  display: block;
+  line-height: 0;
   overflow: hidden;
 }
 
@@ -157,12 +162,16 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  margin-top: calc(-28px - 16px);
+  padding-top: 0;
   overflow: hidden;
 }
 
 .rustTextureImage {
   width: 100%;
   min-height: 42vh;
+  margin-top: 0;
+  display: block;
   background-image: url("/landing-assets/nigajun44-rust-texture-background-01.webp");
   background-size: cover;
   background-position: center center;
