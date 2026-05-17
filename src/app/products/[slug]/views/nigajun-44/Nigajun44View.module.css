@@ -218,8 +218,11 @@
 
   .archiveStatementText {
     text-align: center;
-    font-size: 25px;
-    line-height: 1.35;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    color: rgba(168, 168, 168, 0.88);
     width: 100%;
     max-width: 100%;
   }
