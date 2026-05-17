@@ -225,6 +225,14 @@
   margin-top: clamp(18px, 3vw, 28px);
 }
 
+.ourWorkDnaEditorialBodyDesktop {
+  display: block;
+}
+
+.ourWorkDnaEditorialBodyMobile {
+  display: none;
+}
+
 .ourWorkDnaEditorialBodyPara {
   margin: 0 0 0.72em;
   font-family: "NanumSquare", sans-serif;
@@ -335,6 +343,14 @@
 
   .ourWorkDnaEditorialBody {
     margin-top: clamp(14px, 4vw, 22px);
+  }
+
+  .ourWorkDnaEditorialBodyDesktop {
+    display: none;
+  }
+
+  .ourWorkDnaEditorialBodyMobile {
+    display: block;
   }
 
   .ourWorkDnaEditorialBodyPara {
