@@ -85,7 +85,7 @@ export default function Header({ authenticated, loginId, isPartner, isAdmin }: H
             WHY?
           </Link>
           <Link href="/products" className={styles.link} onClick={handleMenuClose}>
-            Product
+            NIGAJUN
           </Link>
           {!authenticated ? (
             <Link href="/login" className={styles.link} onClick={handleMenuClose}>
