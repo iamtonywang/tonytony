@@ -470,6 +470,18 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </section>
       </section>
 
+      <section className={styles.archiveStatementSection}>
+        <p className={styles.archiveStatementIntro}>
+          혁신과 창조를 이루기 위해 이제 출발합니다
+        </p>
+
+        <h2 className={styles.archiveStatementTitle}>NIGAJUN 44</h2>
+
+        <p className={styles.archiveStatementText}>
+          하나의 메커니즘으로 변혁을 만드는 것 창조자 만이 할수 있는 절대 영역
+        </p>
+      </section>
+
       <section className={styles.detailCtaSection}>
         <p className={styles.detailLowerPrice}>
           {typeof product?.finalPriceAmount === "number"
