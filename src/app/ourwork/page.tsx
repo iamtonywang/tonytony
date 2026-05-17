@@ -8,6 +8,9 @@ const DROPLET_PROCESS_STEPS = [
   "New Material",
 ] as const;
 
+const DROPLET_STEP_DURATION_S = 4.5;
+const DROPLET_CYCLE_DURATION_S = DROPLET_STEP_DURATION_S * DROPLET_PROCESS_STEPS.length;
+
 export default function OurWorkPage() {
   return (
     <div className={styles.ourWorkPage}>
@@ -152,7 +155,10 @@ export default function OurWorkPage() {
                   <span
                     key={step}
                     className={styles.ourWorkDropletSignalStep}
-                    style={{ animationDelay: `${index * 5}s` }}
+                    style={{
+                      animationDelay: `${index * DROPLET_STEP_DURATION_S}s`,
+                      animationDuration: `${DROPLET_CYCLE_DURATION_S}s`,
+                    }}
                   >
                     {step}
                   </span>

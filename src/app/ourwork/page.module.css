@@ -354,6 +354,8 @@
 }
 
 .ourWorkDropletSignalVisual {
+  --droplet-step-duration: 4.5s;
+  --droplet-cycle-duration: 22.5s;
   position: relative;
   width: 100%;
   line-height: 0;
@@ -374,9 +376,10 @@
 .ourWorkDropletSignalOverlay {
   position: absolute;
   left: 50%;
-  bottom: clamp(12%, 16%, 20%);
-  transform: translateX(-50%);
-  width: min(82%, 560px);
+  top: clamp(54%, 58%, 62%);
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  width: min(72%, 480px);
   padding: 0 clamp(10px, 2.5vw, 18px);
   text-align: center;
   pointer-events: none;
@@ -384,19 +387,19 @@
 }
 
 .ourWorkDropletSignalKicker {
-  margin: 0 0 clamp(8px, 1.6vw, 12px);
+  margin: 0 0 clamp(10px, 1.8vw, 14px);
   font-family: "EL Messiri", serif;
-  font-size: clamp(9px, 1vw, 11px);
+  font-size: clamp(10px, 1.1vw, 12px);
   font-weight: 300;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   line-height: 1.2;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.48);
 }
 
 .ourWorkDropletSignalStepStage {
   position: relative;
-  min-height: 1.5em;
+  min-height: 1.75em;
   width: 100%;
 }
 
@@ -407,42 +410,82 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0 4px;
+  padding: 0 6px;
   font-family: "EL Messiri", serif;
-  font-size: clamp(14px, 1.6vw, 16px);
+  font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.06em;
   line-height: 1.35;
-  color: rgba(255, 248, 235, 0.92);
+  color: rgba(255, 248, 235, 0.94);
   opacity: 0;
   white-space: nowrap;
-  animation: ourWorkDropletStepCycle 25s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+  animation: ourWorkDropletStepCycle var(--droplet-cycle-duration, 22.5s) ease-in-out infinite;
 }
 
 @keyframes ourWorkDropletStepCycle {
-  0%,
-  2% {
+  0% {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(22px) scale(0.92);
+    filter: blur(10px);
+    text-shadow: none;
+  }
+
+  5% {
+    opacity: 0.55;
+    transform: translateY(10px) scale(0.96);
     filter: blur(5px);
     text-shadow: none;
   }
 
-  6%,
-  14% {
+  9% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     filter: blur(0);
     text-shadow:
-      0 0 14px rgba(212, 168, 88, 0.38),
-      0 0 28px rgba(180, 130, 60, 0.18);
+      0 0 16px rgba(212, 168, 88, 0.42),
+      0 0 32px rgba(180, 130, 60, 0.22);
   }
 
-  18%,
+  12% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.03);
+    filter: blur(0);
+    text-shadow:
+      0 0 22px rgba(220, 178, 96, 0.52),
+      0 0 40px rgba(190, 140, 68, 0.28);
+  }
+
+  15% {
+    opacity: 1;
+    transform: translateY(3px) scale(1.01);
+    filter: blur(0);
+    text-shadow:
+      0 0 18px rgba(212, 168, 88, 0.46),
+      0 0 34px rgba(180, 130, 60, 0.24);
+  }
+
+  18% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+    filter: blur(0);
+    text-shadow:
+      0 0 20px rgba(216, 172, 92, 0.5),
+      0 0 36px rgba(184, 134, 64, 0.26);
+  }
+
+  22% {
+    opacity: 0.35;
+    transform: translateY(-12px) scale(0.97);
+    filter: blur(4px);
+    text-shadow: none;
+  }
+
+  26%,
   100% {
     opacity: 0;
-    transform: translateY(-10px);
-    filter: blur(4px);
+    transform: translateY(-20px) scale(0.94);
+    filter: blur(8px);
     text-shadow: none;
   }
 }
@@ -610,15 +653,15 @@
   }
 
   .ourWorkDropletSignalOverlay {
-    bottom: clamp(10%, 14%, 18%);
-    width: min(90%, 100%);
+    top: clamp(52%, 56%, 60%);
+    width: min(84%, 100%);
     padding: 0 8px;
   }
 
   .ourWorkDropletSignalStep {
     white-space: normal;
-    font-size: 14px;
-    padding: 0 6px;
+    font-size: 16px;
+    padding: 0 8px;
   }
 
   .processQuoteBlock {
