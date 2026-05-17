@@ -492,22 +492,28 @@
 
 .ourWorkDropletClosingCopy {
   margin-top: clamp(36px, 5.5vw, 56px);
-  max-width: min(42em, 100%);
+  width: 100%;
+  max-width: 100%;
   text-align: left;
   box-sizing: border-box;
 }
 
 .ourWorkDropletClosingTitle {
   margin: 0;
+  max-width: 100%;
   font-family: "NanumSquare", sans-serif;
-  font-size: 80px;
+  font-size: 70px;
   font-weight: 300;
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: rgba(255, 255, 255, 0.92);
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .ourWorkDropletClosingBody {
+  max-width: min(42em, 100%);
   margin: clamp(18px, 3vw, 28px) 0 0;
   font-family: "NanumSquare", sans-serif;
   font-size: 14px;
@@ -515,6 +521,12 @@
   line-height: 1.78;
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.62);
+}
+
+@media (min-width: 1200px) {
+  .ourWorkDropletClosingTitle {
+    letter-spacing: -0.04em;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -701,6 +713,9 @@
   .ourWorkDropletClosingTitle {
     font-size: 40px;
     line-height: 1.12;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
   }
 
   .ourWorkDropletClosingBody {
