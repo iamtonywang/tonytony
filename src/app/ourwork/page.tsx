@@ -50,6 +50,34 @@ export default function OurWorkPage() {
         </div>
       </section>
 
+      <section
+        className={styles.ourWorkDnaEditorialSection}
+        aria-label="세포 DNA 재조합 연구 개발"
+      >
+        <div className={styles.ourWorkDnaEditorialInner}>
+          <h2 className={styles.ourWorkDnaEditorialTitle}>
+            세포 DNA 클로닝 후 세포 재 조합 연구 개발
+          </h2>
+          <div className={styles.ourWorkDnaEditorialBody}>
+            <p className={styles.ourWorkDnaEditorialBodyPara}>
+              식물 세포 유전자 재 조합 단백질
+            </p>
+            <p className={styles.ourWorkDnaEditorialBodyPara}>
+              세포 간 DNA 결합 변이 세포 연구
+            </p>
+            <p className={styles.ourWorkDnaEditorialBodyPara}>
+              변이 세포 물질 변환 과정 후 신규 성분 연구
+            </p>
+            <p className={styles.ourWorkDnaEditorialBodyPara}>
+              세포 DNA 형질 전환 변이 세포 생성 후 효능 구조 연구
+            </p>
+            <p className={styles.ourWorkDnaEditorialBodyPara}>
+              신규 변이 세포 복합 구성 체 효능 연구 개발
+            </p>
+          </div>
+        </div>
+      </section>
+
       <div className={styles.processQuoteBlock}>
         <div className={styles.processQuoteLine} aria-hidden="true" />
 
