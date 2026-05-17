@@ -11,12 +11,11 @@
   height: 1px;
   margin-top: 0;
   margin-bottom: 4px;
-  opacity: 0.92;
   background: linear-gradient(
     90deg,
-    rgba(176, 132, 64, 0) 0%,
-    rgba(176, 132, 64, 0.85) 50%,
-    rgba(176, 132, 64, 0) 100%
+    rgba(176, 132, 64, 0),
+    rgba(176, 132, 64, 0.95),
+    rgba(176, 132, 64, 0)
   );
 }
 
@@ -32,24 +31,14 @@
 .archiveHeroImageWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  min-height: 58vh;
-  max-height: 78vh;
+  min-height: 62vh;
   overflow: hidden;
   background: #080808;
 }
 
 .archiveHeroImage {
   object-fit: cover;
-  object-position: center;
-}
-
-@media (min-width: 769px) {
-  .archiveHeroImageWrap {
-    aspect-ratio: 21 / 9;
-    min-height: 0;
-    max-height: min(48vh, 520px);
-  }
+  object-position: center center;
 }
 
 .boardSection,
