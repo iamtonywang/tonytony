@@ -107,7 +107,7 @@
   width: min(82%, 420px);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   z-index: 2;
   pointer-events: none;
 }
@@ -116,7 +116,7 @@
   margin: 0;
   font-size: 14px;
   font-weight: 300;
-  line-height: 1.55;
+  line-height: 1.22;
   letter-spacing: -0.01em;
   color: rgba(172, 146, 112, 0.86);
   text-shadow:
@@ -127,7 +127,7 @@
 .archiveOverlayTitle,
 .archiveOverlaySignature {
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.02;
   color: rgba(190, 145, 82, 0.92);
 }
 
@@ -139,11 +139,11 @@
 }
 
 .archiveOverlaySignature {
-  margin-top: 14px;
+  margin-top: 4px;
 }
 
 .archiveOverlayTitle {
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 @media (max-width: 768px) {
@@ -168,12 +168,12 @@
     left: 6%;
     bottom: auto;
     width: 78%;
-    gap: 8px;
+    gap: 4px;
   }
 
   .archiveOverlayText p {
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.22;
   }
 
   .archiveOverlayTitle,
