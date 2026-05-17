@@ -477,7 +477,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </p>
 
         <p className={styles.archiveStatementText}>
-          하나의 메커니즘으로 변혁을 만드는 것 창조자 만이 할수 있는 절대 영역
+          하나의 Process 로 변혁을 만드는 것 창조자 만이 할수 있는 절대 영역
         </p>
       </section>
 
