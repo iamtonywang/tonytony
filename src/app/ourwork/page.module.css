@@ -490,6 +490,33 @@
   }
 }
 
+.ourWorkDropletClosingCopy {
+  margin-top: clamp(36px, 5.5vw, 56px);
+  max-width: min(42em, 100%);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.ourWorkDropletClosingTitle {
+  margin: 0;
+  font-family: "NanumSquare", sans-serif;
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.ourWorkDropletClosingBody {
+  margin: clamp(18px, 3vw, 28px) 0 0;
+  font-family: "NanumSquare", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.78;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.62);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ourWorkDropletSignalStep {
     animation: none;
@@ -664,6 +691,22 @@
     white-space: normal;
     font-size: 16px;
     padding: 0 8px;
+  }
+
+  .ourWorkDropletClosingCopy {
+    margin-top: clamp(28px, 6vw, 44px);
+    max-width: 100%;
+  }
+
+  .ourWorkDropletClosingTitle {
+    font-size: 40px;
+    line-height: 1.12;
+  }
+
+  .ourWorkDropletClosingBody {
+    margin-top: clamp(14px, 4vw, 22px);
+    font-size: 14px;
+    line-height: 1.78;
   }
 
   .processQuoteBlock {
