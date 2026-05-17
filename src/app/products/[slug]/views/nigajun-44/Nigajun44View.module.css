@@ -102,6 +102,36 @@
   object-position: center center;
 }
 
+.archiveOverlayText {
+  position: absolute;
+  left: 7%;
+  bottom: 7%;
+  width: min(82%, 420px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  z-index: 2;
+}
+
+.archiveOverlayText p {
+  margin: 0;
+}
+
+.archiveOverlayText p:first-child {
+  margin-bottom: 10px;
+  opacity: 0.72;
+}
+
+.archiveOverlayText p:last-child {
+  margin-top: 14px;
+  opacity: 0.72;
+}
+
 @media (max-width: 768px) {
   .archiveCleanSection {
     margin-top: 22px;
@@ -109,6 +139,15 @@
 
   .archiveCleanImageWrap {
     min-height: 68vh;
+  }
+
+  .archiveOverlayText {
+    left: 8%;
+    bottom: 8%;
+    width: 78%;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.5;
   }
 }
 
