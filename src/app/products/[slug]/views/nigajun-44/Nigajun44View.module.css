@@ -186,6 +186,10 @@
   color: rgba(210, 210, 210, 0.9);
 }
 
+.archiveStatementMobileBreak {
+  display: none;
+}
+
 .archiveStatementText {
   margin: 0;
   width: 100%;
@@ -195,6 +199,34 @@
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.76);
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .archiveStatementSection {
+    align-items: center;
+    text-align: center;
+  }
+
+  .archiveStatementHeadline {
+    text-align: center;
+    font-size: 25px;
+    line-height: 1.08;
+    white-space: normal;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .archiveStatementText {
+    text-align: center;
+    font-size: 25px;
+    line-height: 1.35;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .archiveStatementMobileBreak {
+    display: block;
+  }
 }
 
 @media (min-width: 769px) {
