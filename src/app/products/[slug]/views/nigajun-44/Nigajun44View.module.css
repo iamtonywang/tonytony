@@ -11,6 +11,14 @@
   width: 100%;
   padding-top: 32px;
   padding-bottom: 0;
+  background-image: linear-gradient(
+      rgba(18, 12, 9, 0.45),
+      rgba(18, 12, 9, 0.62)
+    ),
+    url("/landing-assets/nigajun44-rust-texture-background-01.webp");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .headerIntroInner {
