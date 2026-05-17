@@ -88,6 +88,39 @@ export default function OurWorkPage() {
         </div>
       </section>
 
+      <section
+        className={styles.ourWorkVialArchiveSection}
+        aria-label="식물세포 유전자 단백질 재조합 연구"
+      >
+        <div className={styles.ourWorkVialArchiveInner}>
+          <div className={styles.ourWorkVialArchiveHairline} aria-hidden />
+
+          <div className={styles.ourWorkVialArchiveVisual}>
+            <img
+              src="/landing-assets/ourwork-editorial-vial-01.jpg"
+              alt=""
+              className={styles.ourWorkVialArchiveVisualImage}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
+          </div>
+
+          <h2 className={styles.ourWorkVialArchiveTitle}>
+            식물세포 유전자 단백질 재 조합 연구 개발
+          </h2>
+
+          <div className={styles.ourWorkVialArchiveBody}>
+            <p className={styles.ourWorkVialArchiveBodyPara}>
+              피부 독소 ,노화피부, 화장 독. 경피 독, 피부 손상. 피부 트러블
+            </p>
+            <p className={styles.ourWorkVialArchiveBodyPara}>
+              피부 조직 복원 목적 단백질 연구 개발
+            </p>
+          </div>
+        </div>
+      </section>
+
       <div className={styles.processQuoteBlock}>
         <div className={styles.processQuoteLine} aria-hidden="true" />
 
