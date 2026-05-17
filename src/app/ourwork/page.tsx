@@ -1,5 +1,13 @@
 import styles from "./page.module.css";
 
+const DROPLET_PROCESS_STEPS = [
+  "DNA Cloning",
+  "Cell Binding",
+  "Protein Structuring",
+  "Recombination",
+  "New Material",
+] as const;
+
 export default function OurWorkPage() {
   return (
     <div className={styles.ourWorkPage}>
@@ -117,6 +125,40 @@ export default function OurWorkPage() {
             <p className={styles.ourWorkVialArchiveBodyPara}>
               피부 조직 복원 목적 단백질 연구 개발
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className={styles.ourWorkDropletSignalSection}
+        aria-label="Droplet process signal flow"
+      >
+        <div className={styles.ourWorkDropletSignalInner}>
+          <div className={styles.ourWorkDropletSignalHairline} aria-hidden />
+
+          <div className={styles.ourWorkDropletSignalVisual}>
+            <img
+              src="/landing-assets/ourwork-editorial-droplet-02.webp"
+              alt=""
+              className={styles.ourWorkDropletSignalImage}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
+            <div className={styles.ourWorkDropletSignalOverlay} aria-live="polite">
+              <p className={styles.ourWorkDropletSignalKicker}>PROCESS SIGNAL FLOW</p>
+              <div className={styles.ourWorkDropletSignalStepStage}>
+                {DROPLET_PROCESS_STEPS.map((step, index) => (
+                  <span
+                    key={step}
+                    className={styles.ourWorkDropletSignalStep}
+                    style={{ animationDelay: `${index * 5}s` }}
+                  >
+                    {step}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
