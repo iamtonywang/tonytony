@@ -183,8 +183,7 @@
   position: relative;
   width: 100%;
   max-width: none;
-  height: clamp(340px, 56vw, 720px);
-  max-height: min(76vh, 820px);
+  height: min(760px, 82vh);
   margin: 0;
   padding: 0;
   line-height: 0;
@@ -199,7 +198,7 @@
   max-width: none;
   margin: 0;
   object-fit: cover;
-  object-position: center 32%;
+  object-position: center center;
 }
 
 .processQuoteBlock {
@@ -279,12 +278,7 @@
   }
 
   .ourWorkBioFounderVisualWrap {
-    height: clamp(280px, 72vw, 520px);
-    max-height: min(62vh, 560px);
-  }
-
-  .ourWorkBioFounderVisualImage {
-    object-position: center 30%;
+    height: min(680px, 78vh);
   }
 
   .processQuoteBlock {
