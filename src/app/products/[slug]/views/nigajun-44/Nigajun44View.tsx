@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Nigajun44View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
@@ -401,6 +402,19 @@ export default function Nigajun44View({ product, boardItems }: Props) {
   return (
     <article className={styles.detailPage}>
       <div className={styles.headerDividerLine} aria-hidden="true" />
+
+      <section className={styles.archiveHeroSection}>
+        <div className={styles.archiveHeroImageWrap}>
+          <Image
+            src="/landing-assets/nigajun44-editorial-archive-scene-01.webp"
+            alt="NIGAJUN 44 archive scene"
+            fill
+            priority
+            sizes="100vw"
+            className={styles.archiveHeroImage}
+          />
+        </div>
+      </section>
 
       <section className={styles.detailCtaSection}>
         <p className={styles.detailLowerPrice}>

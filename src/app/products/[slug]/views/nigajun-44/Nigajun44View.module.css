@@ -20,6 +20,38 @@
   );
 }
 
+.archiveHeroSection {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+  overflow: hidden;
+}
+
+.archiveHeroImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  min-height: 58vh;
+  max-height: 78vh;
+  overflow: hidden;
+  background: #080808;
+}
+
+.archiveHeroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 769px) {
+  .archiveHeroImageWrap {
+    aspect-ratio: 21 / 9;
+    min-height: 0;
+    max-height: min(48vh, 520px);
+  }
+}
+
 .boardSection,
 .informationSection {
   width: 92%;
