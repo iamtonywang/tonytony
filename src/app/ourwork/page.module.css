@@ -513,13 +513,15 @@
 }
 
 .ourWorkDropletClosingBody {
-  max-width: min(42em, 100%);
+  width: 100%;
+  max-width: 100%;
   margin: clamp(18px, 3vw, 28px) 0 0;
   font-family: "NanumSquare", sans-serif;
   font-size: 14px;
   font-weight: 300;
   line-height: 1.78;
   letter-spacing: 0.02em;
+  text-align: center;
   color: rgba(255, 255, 255, 0.62);
 }
 
