@@ -1,13 +1,6 @@
 import styles from "./page.module.css";
 
-/*
- * OurWork vial / PROCESS SEQUENCE markup guard
- * - VialSequenceTrack + VIAL_SEQUENCE_STEP_LABELS = single source for all 6 steps
- * - Do not re-add inline editorialKoreanArchiveVialSequenceStep blocks beside <VialSequenceTrack />
- * - div only in this region (no motion.div / framer-motion)
- * - Preserve close order: VialSequenceTrack -> overlayBottom -> overlay -> visualWrap -> vialBlock
- */
-const VIAL_SEQUENCE_STEP_LABELS = [
+const VIAL_PROCESS_CYCLE_LABELS = [
   "Plant Cell Refinement",
   "Protein Extraction",
   "DNA Cloning",
@@ -15,24 +8,6 @@ const VIAL_SEQUENCE_STEP_LABELS = [
   "Recombination",
   "New Protein Structure",
 ] as const;
-
-function VialSequenceTrack({ trackClassName }: { trackClassName: string }) {
-  return (
-    <div className={trackClassName} role="list" aria-label="Process sequence">
-      {VIAL_SEQUENCE_STEP_LABELS.map((label) => (
-        <div key={label} className={styles.editorialKoreanArchiveVialSequenceStep} role="listitem">
-          <div className={styles.editorialKoreanArchiveVialSequenceMarkers}>
-            <span className={styles.editorialKoreanArchiveVialSequenceDiamond} aria-hidden="true" />
-            <span className={styles.editorialKoreanArchiveVialSequenceArrow} aria-hidden="true">
-              →
-            </span>
-          </div>
-          <span className={styles.editorialKoreanArchiveVialSequenceText}>{label}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function OurWorkPage() {
   return (
@@ -194,7 +169,6 @@ export default function OurWorkPage() {
                     피부 트러블. 피부 조직 복원 목적 단백질 연구 개발
                   </p>
 
-                  {/* Vial overlay: sequence steps only via VialSequenceTrack; see file-top guard comment. */}
                   <div className={styles.editorialKoreanArchiveVialBlock}>
                     <div className={styles.editorialKoreanArchiveVialDivider} aria-hidden="true" />
 
@@ -208,7 +182,7 @@ export default function OurWorkPage() {
                         draggable={false}
                       />
                       <div className={styles.editorialKoreanArchiveVialOverlay}>
-                        <div className={styles.editorialKoreanArchiveVialOverlayTop}>
+                        <div className={styles.editorialKoreanArchiveVialOverlayBottom}>
                           <div
                             className={styles.editorialKoreanArchiveVialProcessDivider}
                             aria-hidden="true"
@@ -225,25 +199,30 @@ export default function OurWorkPage() {
                             세포 DNA 유전자 단백질 합성
                           </p>
                         </div>
+                      </div>
+                    </div>
 
+                    <div
+                      className={styles.editorialKoreanArchiveVialProcessCycle}
+                      role="region"
+                      aria-label="Process sequence"
+                      aria-live="polite"
+                    >
+                      {VIAL_PROCESS_CYCLE_LABELS.map((label, index) => (
                         <div
-                          className={`${styles.editorialKoreanArchiveVialOverlayBottom} ${styles.editorialKoreanArchiveVialPcOnly}`}
+                          key={label}
+                          className={styles.editorialKoreanArchiveVialProcessCycleStep}
+                          aria-hidden={index !== 0}
                         >
-                          <div
-                            className={styles.editorialKoreanArchiveVialProcessDivider}
+                          <span
+                            className={styles.editorialKoreanArchiveVialProcessCycleDiamond}
                             aria-hidden="true"
                           />
-                          <p
-                            className={`${styles.editorialKoreanArchiveVialSequenceLabel} ${styles.elMessiriText}`}
-                          >
-                            PROCESS SEQUENCE
-                          </p>
-                          {/* Close order: VialSequenceTrack -> overlayBottom -> overlay -> visualWrap -> vialBlock */}
-                          <VialSequenceTrack
-                            trackClassName={styles.editorialKoreanArchiveVialSequenceTrack}
-                          />
+                          <span className={styles.editorialKoreanArchiveVialProcessCycleText}>
+                            {label}
+                          </span>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>

@@ -403,7 +403,7 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
@@ -571,6 +571,120 @@
     box-shadow:
       0 0 8px rgba(201, 169, 98, 0.3),
       0 0 14px rgba(218, 198, 158, 0.16);
+  }
+}
+
+.editorialKoreanArchiveVialProcessCycle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: clamp(76px, 12vw, 92px);
+  margin-top: clamp(16px, 2.5vw, 24px);
+  padding: clamp(10px, 2vw, 14px) clamp(12px, 3vw, 20px);
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: center;
+}
+
+.editorialKoreanArchiveVialProcessCycleStep {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.2vw, 12px);
+  width: 100%;
+  min-width: 0;
+  padding: 0 clamp(8px, 2vw, 12px);
+  box-sizing: border-box;
+  opacity: 0;
+  animation: editorialKoreanArchiveVialProcessStepFade 18s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.editorialKoreanArchiveVialProcessCycleStep:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.editorialKoreanArchiveVialProcessCycleStep:nth-child(2) {
+  animation-delay: -3s;
+}
+
+.editorialKoreanArchiveVialProcessCycleStep:nth-child(3) {
+  animation-delay: -6s;
+}
+
+.editorialKoreanArchiveVialProcessCycleStep:nth-child(4) {
+  animation-delay: -9s;
+}
+
+.editorialKoreanArchiveVialProcessCycleStep:nth-child(5) {
+  animation-delay: -12s;
+}
+
+.editorialKoreanArchiveVialProcessCycleStep:nth-child(6) {
+  animation-delay: -15s;
+}
+
+.editorialKoreanArchiveVialProcessCycleDiamond {
+  display: block;
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(218, 198, 158, 0.78);
+  background: transparent;
+  box-shadow:
+    0 0 8px rgba(201, 169, 98, 0.32),
+    0 0 16px rgba(218, 198, 158, 0.18);
+  transform: rotate(45deg) scale(1);
+  transform-origin: center center;
+  animation: editorialKoreanArchiveVialDiamondSpin 10s linear infinite;
+}
+
+.editorialKoreanArchiveVialProcessCycleText {
+  display: block;
+  max-width: 100%;
+  font-family: "EL Messiri", serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: 0.11em;
+  color: rgba(255, 252, 245, 0.92);
+  text-align: center;
+  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.36);
+}
+
+@keyframes editorialKoreanArchiveVialProcessStepFade {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  4% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  16.666% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  20% {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-3px);
   }
 }
 
@@ -845,6 +959,10 @@
   .editorialKoreanArchiveVialSequenceArrow {
     font-size: 14px;
   }
+
+  .editorialKoreanArchiveVialProcessCycleText {
+    letter-spacing: 0.12em;
+  }
 }
 
 
@@ -1023,6 +1141,33 @@
     white-space: normal;
     max-width: 6.4rem;
     text-align: center;
+  }
+
+  .editorialKoreanArchiveVialProcessCycle {
+    min-height: 80px;
+    margin-top: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .editorialKoreanArchiveVialProcessCycleStep {
+    gap: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .editorialKoreanArchiveVialProcessCycleDiamond {
+    width: 15px;
+    height: 15px;
+    animation-duration: 10s;
+  }
+
+  .editorialKoreanArchiveVialProcessCycleText {
+    font-size: 16px;
+    line-height: 1.32;
+    letter-spacing: 0.11em;
+    white-space: normal;
+    max-width: min(100%, 18rem);
   }
 
   .editorialIntroArchiveBlock {
