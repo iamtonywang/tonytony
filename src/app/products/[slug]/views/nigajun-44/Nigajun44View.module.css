@@ -82,6 +82,7 @@
 }
 
 .archiveUnifiedSection {
+  position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -97,9 +98,62 @@
   object-fit: cover;
 }
 
+.archiveOverlayText {
+  position: absolute;
+  left: 7%;
+  bottom: 7%;
+  width: min(82%, 420px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.archiveOverlayText p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: rgba(172, 146, 112, 0.86);
+}
+
+.archiveOverlayTitle,
+.archiveOverlaySignature {
+  font-size: 17px;
+  line-height: 1.45;
+  color: rgba(190, 145, 82, 0.92);
+}
+
+.archiveOverlaySignature {
+  margin-top: 14px;
+}
+
+.archiveOverlayTitle {
+  margin-bottom: 10px;
+}
+
 @media (max-width: 768px) {
   .archiveUnifiedSection {
     margin-top: 22px;
+  }
+
+  .archiveOverlayText {
+    left: 8%;
+    bottom: 8%;
+    width: 78%;
+    gap: 8px;
+  }
+
+  .archiveOverlayText p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .archiveOverlayTitle,
+  .archiveOverlaySignature {
+    font-size: 17px;
   }
 }
 

@@ -429,6 +429,40 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           alt=""
           className={styles.archiveUnifiedImage}
         />
+
+        <div className={styles.archiveOverlayText}>
+          <p className={styles.archiveOverlayTitle}>The intro of the beginning</p>
+
+          <p>우리는 낡고 허술한 시대에 살고 있습니다</p>
+
+          <p>
+            무엇이 진실이고 무엇이 거짓인지
+            <br />
+            때론 모르고 살아 갑니다
+          </p>
+
+          <p>
+            진실이 거짓이고
+            <br />
+            거짓이 진실이 되는 시대입니다
+          </p>
+
+          <p>
+            자본의 힘이 진실이고
+            <br />
+            무 자본은 거짓이 되기도 합니다
+          </p>
+
+          <p>매우 안따깝고 괴로운 것입니다</p>
+
+          <p>하지만 행복 합니다 그리고 꿈을 향해 나아 갑니다</p>
+
+          <p>가지고 있는 슬픔과 고민을 잊고 하하 웃어요</p>
+
+          <p>그것이 인생 입니다</p>
+
+          <p className={styles.archiveOverlaySignature}>May 2026 TONY WANG</p>
+        </div>
       </section>
 
       <section className={styles.detailCtaSection}>
