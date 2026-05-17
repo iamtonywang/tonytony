@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "./Nigajun44View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
@@ -422,56 +421,14 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           />
         </div>
 
-        <section className={styles.archiveCleanSection}>
-          <div className={styles.archiveCleanImageWrap}>
-            <Image
-              src="/landing-assets/nigajun44-editorial-archive-clean-01.webp"
-              alt="NIGAJUN 44 archive clean scene"
-              fill
-              sizes="100vw"
-              priority
-              className={styles.archiveCleanImage}
-            />
-
-            <div className={styles.archiveOverlayText}>
-              <p>The intro of the beginning</p>
-
-              <p>우리는 낡고 허술한 시대에 살고 있습니다</p>
-
-              <p>
-                무엇이 진실이고 무엇이 거짓인지
-                <br />
-                때론 모르고 살아 갑니다
-              </p>
-
-              <p>
-                진실이 거짓이고
-                <br />
-                거짓이 진실이 되는 시대입니다
-              </p>
-
-              <p>
-                자본의 힘이 진실이고
-                <br />
-                무 자본은 거짓이 되기도 합니다
-              </p>
-
-              <p>매우 안따깝고 괴로운 것입니다</p>
-
-              <p>하지만 행복 합니다 그리고 꿈을 향해 나아 갑니다</p>
-
-              <p>가지고 있는 슬픔과 고민을 잊고 하하 웃어요</p>
-
-              <p>그것이 인생 입니다</p>
-
-              <p>May 2026 TONY WANG</p>
-            </div>
-          </div>
-        </section>
       </section>
 
-      <section className={styles.rustTextureSection} aria-hidden="true">
-        <div className={styles.rustTextureImage} />
+      <section className={styles.archiveUnifiedSection}>
+        <img
+          src="/landing-assets/nigajun44-vintage-archive-unified-scene-01.webp"
+          alt=""
+          className={styles.archiveUnifiedImage}
+        />
       </section>
 
       <section className={styles.detailCtaSection}>
