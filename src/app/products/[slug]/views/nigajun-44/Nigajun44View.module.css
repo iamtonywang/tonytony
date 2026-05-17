@@ -279,66 +279,6 @@
   line-height: 1.15;
 }
 
-.detailTopGlowLine,
-.detailMidGlowLine,
-.detailBottomGlowLine,
-.detailEndGlowLine {
-  position: relative;
-  width: min(1120px, 92vw);
-  height: 1px;
-  margin: 0 auto;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 168, 255, 0.05) 0%,
-    rgba(0, 168, 255, 0.35) 40%,
-    rgba(255, 255, 255, 0.65) 50%,
-    rgba(0, 168, 255, 0.35) 60%,
-    rgba(0, 168, 255, 0.05) 100%
-  );
-  overflow: hidden;
-}
-
-.detailTopGlowLine::after,
-.detailMidGlowLine::after,
-.detailBottomGlowLine::after,
-.detailEndGlowLine::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.78) 50%,
-    transparent 100%
-  );
-  transform: translateX(-100%);
-  animation: detailGlowSweep 3.6s ease-in-out infinite;
-}
-
-.detailTopGlowLine {
-  margin-top: 0;
-  margin-bottom: 38px;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  max-width: none;
-}
-
-.detailMidGlowLine {
-  margin-top: 14px;
-  margin-bottom: 36px;
-}
-
-.detailBottomGlowLine {
-  margin-top: 12px;
-  margin-bottom: 30px;
-}
-
-.detailEndGlowLine {
-  margin-top: 22px;
-  margin-bottom: 30px;
-}
-
 .detailCtaSection {
   width: min(1120px, 92vw);
   margin: 0 auto;
@@ -376,38 +316,8 @@
 }
 
 @media (max-width: 768px) {
-  .detailTopGlowLine,
-  .detailMidGlowLine,
-  .detailBottomGlowLine,
-  .detailEndGlowLine,
   .detailCtaSection {
     width: min(1120px, 94vw);
   }
-
-  .detailTopGlowLine {
-    margin-bottom: 28px;
-  }
-
-  .detailMidGlowLine {
-    margin-bottom: 26px;
-  }
-
-  .detailBottomGlowLine {
-    margin-bottom: 24px;
-  }
-
-  .detailEndGlowLine {
-    margin-bottom: 22px;
-  }
 }
-
-@keyframes detailGlowSweep {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
 
