@@ -153,6 +153,28 @@
   }
 }
 
+.rustTextureSection {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.rustTextureImage {
+  width: 100%;
+  min-height: 42vh;
+  background-image: url("/landing-assets/nigajun44-rust-texture-background-01.webp");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .rustTextureImage {
+    min-height: 38vh;
+  }
+}
+
 .boardSection,
 .informationSection {
   width: 92%;

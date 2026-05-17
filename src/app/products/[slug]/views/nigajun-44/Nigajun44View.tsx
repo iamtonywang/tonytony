@@ -470,6 +470,10 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </section>
       </section>
 
+      <section className={styles.rustTextureSection} aria-hidden="true">
+        <div className={styles.rustTextureImage} />
+      </section>
+
       <section className={styles.detailCtaSection}>
         <p className={styles.detailLowerPrice}>
           {typeof product?.finalPriceAmount === "number"
