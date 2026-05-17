@@ -5,10 +5,19 @@
   flex-direction: column;
   gap: 16px;
   background: #5f5f5f;
+  overflow-x: hidden;
+}
+
+.headerIntroSection,
+.archiveUnifiedSection {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
 }
 
 .headerIntroSection {
-  width: 100%;
   padding-top: 32px;
   padding-bottom: 0;
   background-image: linear-gradient(
@@ -76,6 +85,11 @@
   .headerIntroSubtitle {
     font-size: 44px;
   }
+
+  .archiveUnifiedImage {
+    min-height: 78vh;
+    object-fit: cover;
+  }
 }
 
 .headerIntroDivider {
@@ -91,18 +105,15 @@
 
 .archiveUnifiedSection {
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
   margin-top: 28px;
   margin-bottom: calc(-16px);
   padding-bottom: 0;
-  overflow: hidden;
 }
 
 .archiveUnifiedImage {
   width: 100%;
   display: block;
+  height: auto;
   object-fit: cover;
   object-position: center center;
 }
@@ -155,17 +166,19 @@
 }
 
 @media (max-width: 768px) {
+  .headerIntroSection,
   .archiveUnifiedSection {
     width: 100vw;
-    max-width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
+  }
+
+  .archiveUnifiedSection {
     margin-top: 22px;
   }
 
   .archiveUnifiedImage {
     width: 100vw;
-    height: 100vh;
     min-height: 100svh;
     object-fit: cover;
     object-position: center center;
