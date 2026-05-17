@@ -37,10 +37,10 @@ export default function OurWorkPage() {
         </div>
       </section>
 
-      <section className={styles.ourWorkBioFounderVisual} aria-label="OurWork bio founder visual">
+      <section className={styles.ourWorkBioFounderVisual} aria-label="OurWork stone hero visual">
         <div className={styles.ourWorkBioFounderVisualWrap}>
           <img
-            src="/landing-assets/ourwork-editorial-biofounder-01.webp"
+            src="/landing-assets/why-note-break-visual-01.jpg"
             alt=""
             className={styles.ourWorkBioFounderVisualImage}
             loading="lazy"
