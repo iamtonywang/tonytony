@@ -37,6 +37,19 @@ export default function OurWorkPage() {
         </div>
       </section>
 
+      <section className={styles.ourWorkBioFounderVisual} aria-label="OurWork bio founder visual">
+        <div className={styles.ourWorkBioFounderVisualWrap}>
+          <img
+            src="/landing-assets/ourwork-editorial-biofounder-01.webp"
+            alt=""
+            className={styles.ourWorkBioFounderVisualImage}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+          />
+        </div>
+      </section>
+
       <div className={styles.processQuoteBlock}>
         <div className={styles.processQuoteLine} aria-hidden="true" />
 
