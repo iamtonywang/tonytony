@@ -400,6 +400,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
   return (
     <article className={styles.detailPage}>
+      <div className={styles.headerDividerLine} aria-hidden="true" />
+
       <section className={styles.detailCtaSection}>
         <p className={styles.detailLowerPrice}>
           {typeof product?.finalPriceAmount === "number"
