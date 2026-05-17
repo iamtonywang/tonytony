@@ -154,29 +154,19 @@
 .archiveStatementSection {
   width: 100%;
   max-width: 100%;
-  padding: 40px 16px 36px;
+  padding: 40px 0 36px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
-  text-align: center;
+  text-align: left;
   overflow: hidden;
 }
 
-.archiveStatementIntro {
+.archiveStatementHeadline {
   margin: 0;
-  max-width: min(100%, 520px);
-  padding: 0 12px;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.archiveStatementTitle {
-  margin: 4px 0;
+  width: 100%;
   max-width: 100%;
-  padding: 0 12px;
   font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
     "Malgun Gothic", Arial, sans-serif;
   font-size: 53px;
@@ -184,22 +174,26 @@
   line-height: 0.96;
   letter-spacing: 0.02em;
   color: #ffffff;
-  text-align: center;
+  text-align: left;
 }
 
 .archiveStatementText {
   margin: 0;
+  width: 100%;
   max-width: min(100%, 520px);
-  padding: 0 12px;
   font-size: 14px;
   font-weight: 300;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.76);
+  text-align: left;
 }
 
 @media (min-width: 769px) {
-  .archiveStatementTitle {
+  .archiveStatementHeadline {
     font-size: 80px;
+    width: max-content;
+    max-width: 100%;
+    white-space: nowrap;
   }
 }
 
