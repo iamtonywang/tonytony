@@ -400,8 +400,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
   return (
     <article className={styles.detailPage}>
-      <div className={styles.detailTopGlowLine} aria-hidden="true" />
-
       <section className={styles.detailCtaSection}>
         <p className={styles.detailLowerPrice}>
           {typeof product?.finalPriceAmount === "number"
@@ -415,8 +413,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           </Link>
         </div>
       </section>
-
-      <div className={styles.detailEndGlowLine} aria-hidden="true" />
 
       <BoardSection boardItems={boardItems} productSlug={product?.slug ?? null} />
 
