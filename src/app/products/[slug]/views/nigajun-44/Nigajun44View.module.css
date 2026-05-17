@@ -129,6 +129,10 @@
   font-size: 17px;
   line-height: 1.45;
   color: rgba(190, 145, 82, 0.92);
+}
+
+.archiveOverlayText .archiveOverlayTitle,
+.archiveOverlayText .archiveOverlaySignature {
   text-shadow:
     0 0 6px rgba(186, 140, 78, 0.26),
     0 0 14px rgba(120, 82, 42, 0.14);
