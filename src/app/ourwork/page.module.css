@@ -375,10 +375,10 @@
 
 .ourWorkDropletSignalOverlay {
   position: absolute;
-  left: 50%;
-  top: clamp(54%, 58%, 62%);
+  left: 52.5%;
+  top: clamp(50%, 54%, 58%);
   bottom: auto;
-  transform: translate(-50%, -50%);
+  transform: translate(-46%, -54%);
   width: min(72%, 480px);
   padding: 0 clamp(10px, 2.5vw, 18px);
   text-align: center;
@@ -653,7 +653,9 @@
   }
 
   .ourWorkDropletSignalOverlay {
-    top: clamp(52%, 56%, 60%);
+    left: 52%;
+    top: clamp(48%, 52%, 56%);
+    transform: translate(-45%, -54%);
     width: min(84%, 100%);
     padding: 0 8px;
   }
