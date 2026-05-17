@@ -6,15 +6,39 @@
   gap: 16px;
 }
 
-.headerDividerLine {
+.headerIntroSection {
   width: 100%;
+  padding-top: 32px;
+  padding-bottom: 28px;
+}
+
+.headerIntroInner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.headerIntroText {
+  margin: 0;
+  max-width: 100%;
+  padding: 0 12px;
+  color: rgba(191, 149, 91, 0.92);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.headerIntroDivider {
+  width: min(88%, 920px);
   height: 1px;
-  margin-top: 0;
-  margin-bottom: 4px;
   background: linear-gradient(
     90deg,
     rgba(176, 132, 64, 0),
-    rgba(176, 132, 64, 0.95),
+    rgba(176, 132, 64, 0.92),
     rgba(176, 132, 64, 0)
   );
 }

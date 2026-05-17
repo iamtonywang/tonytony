@@ -400,7 +400,18 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
   return (
     <article className={styles.detailPage}>
-      <div className={styles.headerDividerLine} aria-hidden="true" />
+      <section className={styles.headerIntroSection}>
+        <div className={styles.headerIntroInner}>
+          <p className={styles.headerIntroText}>
+            TONY WANG AND NIGAJUN 44 AND Start
+          </p>
+
+          <div
+            className={styles.headerIntroDivider}
+            aria-hidden="true"
+          />
+        </div>
+      </section>
 
       <section className={styles.detailCtaSection}>
         <p className={styles.detailLowerPrice}>
