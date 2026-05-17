@@ -96,6 +96,7 @@
   width: 100%;
   display: block;
   object-fit: cover;
+  object-position: center center;
 }
 
 .archiveOverlayText {
@@ -137,7 +138,19 @@
 
 @media (max-width: 768px) {
   .archiveUnifiedSection {
+    width: calc(100% + 32px);
+    max-width: 100vw;
+    margin-left: -16px;
+    margin-right: -16px;
     margin-top: 22px;
+  }
+
+  .archiveUnifiedImage {
+    width: 100%;
+    height: 100vh;
+    min-height: 100svh;
+    object-fit: cover;
+    object-position: center center;
   }
 
   .archiveOverlayText {
