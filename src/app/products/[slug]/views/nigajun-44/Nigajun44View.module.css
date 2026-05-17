@@ -119,6 +119,9 @@
   line-height: 1.55;
   letter-spacing: -0.01em;
   color: rgba(172, 146, 112, 0.86);
+  text-shadow:
+    0 0 5px rgba(186, 140, 78, 0.16),
+    0 0 12px rgba(120, 82, 42, 0.08);
 }
 
 .archiveOverlayTitle,
@@ -126,6 +129,9 @@
   font-size: 17px;
   line-height: 1.45;
   color: rgba(190, 145, 82, 0.92);
+  text-shadow:
+    0 0 6px rgba(186, 140, 78, 0.26),
+    0 0 14px rgba(120, 82, 42, 0.14);
 }
 
 .archiveOverlaySignature {
