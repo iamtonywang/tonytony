@@ -14,12 +14,14 @@
   max-width: none;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  margin-bottom: 0;
+  padding-bottom: 0;
   overflow: hidden;
 }
 
 .headerIntroSection {
   padding-top: 32px;
-  padding-bottom: 0;
+  margin-bottom: -16px;
   background-image: linear-gradient(
       rgba(18, 12, 9, 0.45),
       rgba(18, 12, 9, 0.62)
@@ -36,6 +38,7 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  padding-bottom: 28px;
 }
 
 .headerIntroTitle {
@@ -105,9 +108,8 @@
 
 .archiveUnifiedSection {
   position: relative;
-  margin-top: 28px;
-  margin-bottom: calc(-16px);
-  padding-bottom: 0;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .archiveUnifiedImage {
@@ -171,10 +173,6 @@
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-  }
-
-  .archiveUnifiedSection {
-    margin-top: 22px;
   }
 
   .archiveUnifiedImage {
