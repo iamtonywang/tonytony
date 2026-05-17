@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Nigajun44View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
@@ -420,6 +421,19 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             aria-hidden="true"
           />
         </div>
+
+        <section className={styles.archiveCleanSection}>
+          <div className={styles.archiveCleanImageWrap}>
+            <Image
+              src="/landing-assets/nigajun44-editorial-archive-clean-01.webp"
+              alt="NIGAJUN 44 archive clean scene"
+              fill
+              sizes="100vw"
+              priority
+              className={styles.archiveCleanImage}
+            />
+          </div>
+        </section>
       </section>
 
       <section className={styles.detailCtaSection}>

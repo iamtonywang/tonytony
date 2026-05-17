@@ -80,6 +80,33 @@
   );
 }
 
+.archiveCleanSection {
+  width: 100%;
+  margin-top: 28px;
+}
+
+.archiveCleanImageWrap {
+  position: relative;
+  width: 100%;
+  min-height: 58vh;
+  overflow: hidden;
+}
+
+.archiveCleanImage {
+  object-fit: cover;
+  object-position: center center;
+}
+
+@media (max-width: 768px) {
+  .archiveCleanSection {
+    margin-top: 22px;
+  }
+
+  .archiveCleanImageWrap {
+    min-height: 46vh;
+  }
+}
+
 .boardSection,
 .informationSection {
   width: 92%;
