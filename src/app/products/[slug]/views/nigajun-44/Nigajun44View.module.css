@@ -1,4 +1,4 @@
-.detailPage {
+﻿.detailPage {
   width: 100%;
   padding: 24px 16px 40px;
   display: flex;
@@ -6,204 +6,6 @@
   gap: 16px;
   background: #5f5f5f;
   overflow-x: hidden;
-}
-
-.headerIntroSection,
-.archiveUnifiedSection {
-  width: 100vw;
-  max-width: none;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  margin-bottom: 0;
-  padding-bottom: 0;
-  overflow: hidden;
-}
-
-.headerIntroSection {
-  padding-top: 32px;
-  margin-bottom: -16px;
-  background-image: linear-gradient(
-      rgba(18, 12, 9, 0.45),
-      rgba(18, 12, 9, 0.62)
-    ),
-    url("/landing-assets/nigajun44-rust-texture-background-01.webp");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.headerIntroInner {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  padding-bottom: 28px;
-}
-
-.headerIntroTitle {
-  margin: 0;
-  max-width: 100%;
-  padding: 0 12px;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 53px;
-  font-weight: 300;
-  line-height: 0.96;
-  letter-spacing: 0.02em;
-  color: rgba(214, 186, 142, 0.96);
-  text-align: center;
-  text-shadow:
-    0 0 8px rgba(186, 140, 78, 0.22),
-    0 0 18px rgba(120, 82, 42, 0.14);
-}
-
-.headerIntroSubtitle {
-  margin: 0;
-  max-width: 100%;
-  padding: 0 12px;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 35px;
-  font-weight: 300;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  color: rgba(186, 154, 112, 0.88);
-  text-align: center;
-  text-shadow: 0 0 6px rgba(156, 118, 72, 0.16);
-}
-
-.headerIntroCaption {
-  margin: 0;
-  max-width: 100%;
-  padding: 0 12px;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.2;
-  color: rgba(148, 132, 112, 0.72);
-  text-align: center;
-  text-shadow: 0 0 4px rgba(100, 76, 52, 0.08);
-}
-
-@media (min-width: 769px) {
-  .headerIntroTitle {
-    font-size: 80px;
-  }
-
-  .headerIntroSubtitle {
-    font-size: 44px;
-  }
-
-  .archiveUnifiedImage {
-    min-height: 78vh;
-    object-fit: cover;
-  }
-}
-
-.headerIntroDivider {
-  width: min(88%, 920px);
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(176, 132, 64, 0),
-    rgba(176, 132, 64, 0.92),
-    rgba(176, 132, 64, 0)
-  );
-}
-
-.archiveUnifiedSection {
-  position: relative;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-.archiveUnifiedImage {
-  width: 100%;
-  display: block;
-  height: auto;
-  object-fit: cover;
-  object-position: center center;
-}
-
-.archiveOverlayText {
-  position: absolute;
-  top: 8%;
-  left: 7%;
-  bottom: auto;
-  width: min(82%, 420px);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.archiveOverlayText p {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.22;
-  letter-spacing: -0.01em;
-  color: rgba(172, 146, 112, 0.86);
-  text-shadow:
-    0 0 5px rgba(186, 140, 78, 0.16),
-    0 0 12px rgba(120, 82, 42, 0.08);
-}
-
-.archiveOverlayTitle,
-.archiveOverlaySignature {
-  font-size: 17px;
-  line-height: 1.02;
-  color: rgba(190, 145, 82, 0.92);
-}
-
-.archiveOverlayText .archiveOverlayTitle,
-.archiveOverlayText .archiveOverlaySignature {
-  text-shadow:
-    0 0 6px rgba(186, 140, 78, 0.26),
-    0 0 14px rgba(120, 82, 42, 0.14);
-}
-
-.archiveOverlaySignature {
-  margin-top: 4px;
-}
-
-.archiveOverlayTitle {
-  margin-bottom: 4px;
-}
-
-@media (max-width: 768px) {
-  .headerIntroSection,
-  .archiveUnifiedSection {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-  }
-
-  .archiveUnifiedImage {
-    width: 100vw;
-    min-height: 100svh;
-    object-fit: cover;
-    object-position: center center;
-  }
-
-  .archiveOverlayText {
-    top: 6%;
-    left: 6%;
-    bottom: auto;
-    width: 78%;
-    gap: 4px;
-  }
-
-  .archiveOverlayText p {
-    font-size: 14px;
-    line-height: 1.22;
-  }
-
-  .archiveOverlayTitle,
-  .archiveOverlaySignature {
-    font-size: 17px;
-  }
 }
 
 .boardSection,
@@ -226,7 +28,7 @@
 }
 
 .informationTitle {
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+  font-family: "EL Messiri", "NanumSquare", "?섎닎?ㅽ섏뼱", "Apple SD Gothic Neo",
     "Malgun Gothic", Arial, sans-serif;
   font-size: 17px;
   color: #ffffff;
@@ -235,7 +37,7 @@
 
 .informationToggle:hover .informationTitle {
   color: #ff7f00;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+  font-family: "EL Messiri", "NanumSquare", "?섎닎?ㅽ섏뼱", "Apple SD Gothic Neo",
     "Malgun Gothic", Arial, sans-serif;
 }
 
@@ -361,7 +163,7 @@
 }
 
 .boardActionBtn {
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+  font-family: "EL Messiri", "NanumSquare", "?섎닎?ㅽ섏뼱", "Apple SD Gothic Neo",
     "Malgun Gothic", Arial, sans-serif;
   font-size: 14px;
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -382,7 +184,7 @@
 }
 
 .boardType {
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+  font-family: "EL Messiri", "NanumSquare", "?섎닎?ㅽ섏뼱", "Apple SD Gothic Neo",
     "Malgun Gothic", Arial, sans-serif;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.85);
@@ -396,7 +198,7 @@
 .boardActionBtn:hover,
 .boardType,
 .informationTitle {
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+  font-family: "EL Messiri", "NanumSquare", "?섎닎?ㅽ섏뼱", "Apple SD Gothic Neo",
     "Malgun Gothic", Arial, sans-serif;
 }
 
