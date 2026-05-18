@@ -326,7 +326,7 @@
 .fourthProductCta {
   position: absolute;
   left: 50%;
-  bottom: 8%;
+  bottom: 3%;
   transform: translateX(-50%);
   z-index: 4;
 
@@ -358,11 +358,11 @@
   justify-content: center;
   flex-shrink: 0;
 
-  min-width: 132px;
-  min-height: 42px;
-  padding: 0 24px;
+  min-width: unset;
+  min-height: unset;
+  padding: 0;
 
-  border: 1px solid rgba(255, 255, 255, 0.42);
+  border: none;
 
   font-family: "El Messiri", serif;
   font-size: 15px;
@@ -373,12 +373,11 @@
   text-decoration: none;
   background: transparent;
   box-sizing: border-box;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .fourthProductBuyButton:hover {
   color: #ff7f00;
-  border-color: #ff7f00;
 }
 
 .elMessiriText {
@@ -582,7 +581,7 @@
   }
 
   .fourthProductCta {
-    bottom: 7%;
+    bottom: 3%;
     gap: 16px;
     max-width: min(520px, calc(100vw - 20px));
   }
@@ -592,8 +591,6 @@
   }
 
   .fourthProductBuyButton {
-    min-width: 116px;
-    min-height: 38px;
     font-size: 13px;
   }
 
