@@ -106,18 +106,19 @@
 
 .bioFounderOverlay {
   position: absolute;
-  top: 9%;
-  left: 5%;
-  z-index: 1;
-  max-width: min(42%, 320px);
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(86%, 620px);
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
   padding: 0;
   box-sizing: border-box;
   pointer-events: none;
-  text-align: left;
+  text-align: center;
 }
 
 .bioFounderIntro,
@@ -140,12 +141,20 @@
 .bioFounderBody {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0;
   margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.bioFounderOverlay p,
+.bioFounderBody p {
+  margin: 0;
+  text-align: center;
 }
 
 .bioFounderBody p {
-  margin: 0;
   font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
     Arial, sans-serif;
   font-size: 14px;
@@ -158,9 +167,6 @@
 
 @media (min-width: 769px) {
   .bioFounderOverlay {
-    top: 12%;
-    left: 5%;
-    max-width: min(38%, 360px);
     gap: 7px;
   }
 
@@ -177,9 +183,10 @@
   }
 
   .bioFounderOverlay {
-    top: 8%;
-    left: 5%;
-    max-width: 46%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
     gap: 5px;
   }
 
