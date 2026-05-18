@@ -507,13 +507,32 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
 
         <div className={styles.thirdEditorialCopy}>
-          <p>Global 최초 연구 개발 입니다 이것은 사실입니다</p>
-          <p>식물 세포 유전자 분리 적용 식물성 원료 결합</p>
-          <p>순수 97% 세포 단백질 구성 3% 부 원료 적용</p>
-          <p>
-            <span className={styles.elMessiriText}>BIO</span>
-            {" "}생명공학 공법{" "}
-            <span className={styles.elMessiriText}>skin care</span>
+          <p className={styles.thirdEditorialPcLine}>
+            <span className={styles.pcOnly}>
+              <span className={styles.elMessiriText}>Global</span> 최초 연구 개발 입니다 이것은 사실입니다 식물 세포 유전자 분리 적용 식물성 원료 결합
+            </span>
+            <span className={styles.mobileOnly}>Global 최초 연구 개발 입니다 이것은 사실입니다</span>
+          </p>
+
+          <p className={`${styles.thirdEditorialPcLine} ${styles.thirdEditorialMobileOnlyLine}`}>
+            <span className={styles.mobileOnly}>식물 세포 유전자 분리 적용 식물성 원료 결합</span>
+          </p>
+
+          <p className={styles.thirdEditorialPcLine}>
+            <span className={styles.pcOnly}>
+              순수 97% 세포 단백질 구성 3% 부 원료 적용{" "}
+              <span className={styles.elMessiriText}>BIO</span> 생명공학 공법{" "}
+              <span className={styles.elMessiriText}>skin care</span>
+            </span>
+            <span className={styles.mobileOnly}>순수 97% 세포 단백질 구성 3% 부 원료 적용</span>
+          </p>
+
+          <p className={`${styles.thirdEditorialPcLine} ${styles.thirdEditorialMobileOnlyLine}`}>
+            <span className={styles.mobileOnly}>
+              <span className={styles.elMessiriText}>BIO</span>
+              {" "}생명공학 공법{" "}
+              <span className={styles.elMessiriText}>skin care</span>
+            </span>
           </p>
         </div>
       </section>
