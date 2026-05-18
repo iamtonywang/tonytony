@@ -508,6 +508,20 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           alt=""
           className={styles.fourthProductHeroImage}
         />
+
+        <div className={styles.fourthProductOverlay}>
+          <h2 className={styles.fourthProductTitle}>NIGAJUN 44</h2>
+
+          <div className={styles.fourthProductCopy}>
+            <p>피부를 “좋아 보이게” 만드는 제품이 아닌 죽어버린 피부를</p>
+            <p>변혁 하는 분자 생물학 시스템</p>
+            <p>식물세포 생장과 방어를 담당하고 인간의 피부</p>
+            <p>아미노산 서열과 Homology 이 높은 성분</p>
+            <p>특정 단백질(펩타이드 포함) 정제하여 혼합한</p>
+            <p>신호 전달 유사 피부 특성 단백질</p>
+            <p>Proteo Phyto Complex 복합 물질</p>
+          </div>
+        </div>
       </section>
 
       <section className={styles.detailCtaSection}>
