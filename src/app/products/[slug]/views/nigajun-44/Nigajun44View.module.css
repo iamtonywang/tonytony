@@ -221,6 +221,12 @@
   pointer-events: none;
 }
 
+@media (min-width: 769px) {
+  .thirdNoticeOverlay {
+    top: 28%;
+  }
+}
+
 .thirdNoticeTitle {
   margin: 0 0 22px;
   font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
