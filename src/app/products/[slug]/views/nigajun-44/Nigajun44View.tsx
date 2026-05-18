@@ -451,11 +451,16 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         />
 
         <div className={styles.cleanThemeOverlay}>
-          <p className={styles.cleanThemeTitle}>Innovation and Creation</p>
+          <p className={styles.cleanThemeTitle}>
+            <span className={styles.elMessiriText}>Innovation and Creation</span>
+          </p>
 
           <div className={styles.cleanThemeCopy}>
             <p>이루기 위해 이제 출발합니다</p>
-            <p>Single Structure 변혁 NIGAJUN 44</p>
+            <p>
+              <span className={styles.elMessiriText}>Single Structure</span> 변혁{" "}
+              <span className={styles.elMessiriText}>NIGAJUN 44</span>
+            </p>
             <p>창조의 절대 영역</p>
             <p>창조란?</p>
             <p>미쳐야 가질 수 있고 세상에 없는것을 만드는 것</p>
