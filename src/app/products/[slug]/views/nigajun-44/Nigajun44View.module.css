@@ -192,6 +192,7 @@
 }
 
 .editorialPortraitSection {
+  position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -201,10 +202,72 @@
 }
 
 .editorialPortraitImage {
+  position: relative;
+  z-index: 0;
   width: 100%;
   display: block;
   height: auto;
   object-fit: cover;
+}
+
+.productHeroOverlay {
+  position: absolute;
+  left: 6%;
+  top: 16%;
+  z-index: 2;
+  width: min(42%, 620px);
+  color: rgba(255, 255, 255, 0.92);
+  text-align: left;
+  pointer-events: none;
+}
+
+.productHeroTitle {
+  margin: 0 0 28px;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.42);
+}
+
+.productHeroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.86);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.36);
+}
+
+.productHeroCopy p {
+  margin: 0;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: normal;
+}
+
+.productHeroStatement {
+  margin: 22px 0 0;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.productHeroComplex {
+  margin: 18px 0 0;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .bioFounderOverlay {
@@ -340,6 +403,34 @@
     min-height: 92svh;
     object-fit: cover;
     object-position: 72% center;
+  }
+
+  .productHeroOverlay {
+    left: 7%;
+    top: 12%;
+    width: 86%;
+    max-width: 360px;
+  }
+
+  .productHeroTitle {
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+
+  .productHeroCopy {
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.54;
+  }
+
+  .productHeroStatement {
+    margin-top: 18px;
+    font-size: 14px;
+  }
+
+  .productHeroComplex {
+    margin-top: 14px;
+    font-size: 14px;
   }
 
   .bioFounderOverlay {
