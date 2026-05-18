@@ -106,7 +106,7 @@
 
 .bioFounderOverlay {
   position: absolute;
-  top: 25%;
+  top: 37%;
   left: 50%;
   transform: translateX(-50%);
   width: min(86%, 620px);
@@ -130,16 +130,16 @@
   font-weight: 300;
   line-height: 1.12;
   letter-spacing: 0.02em;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
 }
 
 .bioFounderIntro {
-  color: rgba(92, 92, 92, 0.92);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .bioFounderSignature {
   margin-top: 4px;
-  color: rgba(88, 88, 88, 0.9);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .bioFounderBody {
@@ -165,8 +165,8 @@
   font-weight: 300;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  color: rgba(72, 72, 72, 0.9);
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+  color: rgba(255, 255, 255, 0.84);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
 }
 
 @media (min-width: 769px) {
@@ -187,7 +187,7 @@
   }
 
   .bioFounderOverlay {
-    top: 20%;
+    top: 31%;
     left: 50%;
     transform: translateX(-50%);
     width: 86%;
