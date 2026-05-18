@@ -248,6 +248,14 @@
   margin: 0;
 }
 
+.pcOnly {
+  display: inline;
+}
+
+.mobileOnly {
+  display: none;
+}
+
 .fourthProductHeroSection {
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -416,6 +424,14 @@
     gap: 7px;
     font-size: 14px;
     line-height: 1.5;
+  }
+
+  .pcOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: inline;
   }
 
   .fourthProductHeroImage {
