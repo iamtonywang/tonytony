@@ -143,6 +143,46 @@
   object-fit: cover;
 }
 
+.cleanThemeOverlay {
+  position: absolute;
+  left: 6%;
+  top: 12%;
+  z-index: 2;
+  width: min(42%, 560px);
+  color: rgba(255, 255, 255, 0.88);
+  text-align: left;
+  pointer-events: none;
+}
+
+.cleanThemeTitle {
+  margin: 0 0 20px;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.38);
+}
+
+.cleanThemeCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.84);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.34);
+}
+
+.cleanThemeCopy p {
+  margin: 0;
+}
+
 .bioFounderOverlay {
   position: absolute;
   top: 37%;
@@ -252,6 +292,23 @@
     min-height: 62vh;
     object-fit: cover;
     object-position: center center;
+  }
+
+  .cleanThemeOverlay {
+    left: 7%;
+    top: 10%;
+    width: 86%;
+  }
+
+  .cleanThemeTitle {
+    margin-bottom: 16px;
+    font-size: 19px;
+  }
+
+  .cleanThemeCopy {
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.4;
   }
 
   .bioFounderOverlay {
