@@ -584,6 +584,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </section>
 
+      <div className={styles.mobileVisualBreathingSection} />
+
       <section className={styles.interviewEditorialSection}>
         <img
           src="/landing-assets/tonywang-editorial-interview-square-01.webp"
