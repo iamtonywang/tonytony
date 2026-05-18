@@ -674,6 +674,8 @@
     min-height: 100svh;
     object-fit: cover;
     object-position: center center;
+    transform: scale(0.92);
+    transform-origin: center center;
   }
 
   .bioFounderOverlay {
