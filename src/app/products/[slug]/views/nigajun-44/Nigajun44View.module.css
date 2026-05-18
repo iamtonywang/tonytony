@@ -438,7 +438,7 @@
   padding-top: 0;
   padding-bottom: 0;
 
-  overflow: hidden;
+  overflow: visible;
   background: #050505;
 
   line-height: 0;
@@ -450,7 +450,7 @@
   position: absolute;
 
   left: 50%;
-  bottom: 0;
+  bottom: -26px;
 
   width: 62%;
   height: 1px;
@@ -776,6 +776,7 @@
   }
 
   .interviewEditorialSection::after {
+    bottom: -22px;
     width: 74%;
     opacity: 0.34;
   }
