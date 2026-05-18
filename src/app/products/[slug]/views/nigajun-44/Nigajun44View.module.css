@@ -339,7 +339,7 @@
     width: 100vw;
     min-height: 92svh;
     object-fit: cover;
-    object-position: left center;
+    object-position: 72% center;
   }
 
   .bioFounderOverlay {
