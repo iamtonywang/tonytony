@@ -466,7 +466,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <section className={styles.editorialPortraitSection}>
         <img
-          src="/landing-assets/tonywang-interview-archive.webp"
+          src="/landing-assets/nigajun-44-editorial-product-hero.webp"
           alt=""
           className={styles.editorialPortraitImage}
         />
