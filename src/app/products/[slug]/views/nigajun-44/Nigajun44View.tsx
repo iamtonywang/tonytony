@@ -533,17 +533,18 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             </p>
           </div>
         </div>
-      </section>
 
-      <section className={styles.detailCtaSection}>
-        <p className={styles.detailLowerPrice}>
-          {typeof product?.finalPriceAmount === "number"
-            ? `₩${product.finalPriceAmount.toLocaleString()}`
-            : null}
-        </p>
+        <div className={styles.fourthProductCta}>
+          <p className={styles.fourthProductPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString("ko-KR")}`
+              : ""}
+          </p>
 
-        <div className={styles.detailLowerCtaRow}>
-          <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.detailLowerBuyButton}>
+          <Link
+            href={`/purchase/${product?.slug ?? ""}`}
+            className={styles.fourthProductBuyButton}
+          >
             Buy Now
           </Link>
         </div>

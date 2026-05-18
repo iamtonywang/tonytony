@@ -323,6 +323,51 @@
   margin: 0;
 }
 
+.fourthProductCta {
+  position: absolute;
+  left: 6%;
+  bottom: 8%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  pointer-events: auto;
+}
+
+.fourthProductPrice {
+  margin: 0;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.fourthProductBuyButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 132px;
+  min-height: 42px;
+  padding: 0 22px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  background: transparent;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.fourthProductBuyButton:hover {
+  color: #ff7f00;
+  border-color: #ff7f00;
+}
+
 .elMessiriText {
   font-family: "El Messiri", serif;
 }
@@ -521,6 +566,23 @@
     white-space: nowrap;
     width: max-content;
     margin: 0 auto;
+  }
+
+  .fourthProductCta {
+    left: 50%;
+    bottom: 7%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+
+  .fourthProductPrice {
+    font-size: 16px;
+  }
+
+  .fourthProductBuyButton {
+    min-width: 118px;
+    min-height: 38px;
+    font-size: 13px;
   }
 
   .bioFounderOverlay {
@@ -814,47 +876,4 @@
   color: rgba(255, 255, 255, 0.88);
   margin: 2px 0;
   line-height: 1.15;
-}
-
-.detailCtaSection {
-  width: min(1120px, 92vw);
-  margin: 0 auto;
-  padding: 8px 0 4px;
-  text-align: center;
-}
-
-.detailLowerPrice {
-  margin: 0 0 10px;
-  text-align: center;
-  font-size: 18px;
-  color: #ffffff;
-}
-
-.detailLowerCtaRow {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.detailLowerBuyButton {
-  display: inline-block;
-  text-align: center;
-  font-size: 14px;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 6px 18px;
-  border-radius: 0;
-  background: transparent;
-  transition: all 0.2s ease;
-}
-
-.detailLowerBuyButton:hover {
-  color: #ff7f00;
-  border-color: #ff7f00;
-}
-
-@media (max-width: 768px) {
-  .detailCtaSection {
-    width: min(1120px, 94vw);
-  }
 }
