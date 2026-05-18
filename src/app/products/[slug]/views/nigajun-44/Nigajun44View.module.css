@@ -210,6 +210,21 @@
   object-fit: cover;
 }
 
+.fourthProductHeroSection {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  background: #050505;
+}
+
+.fourthProductHeroImage {
+  width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+}
+
 .productHeroOverlay {
   position: absolute;
   left: 6%;
@@ -410,6 +425,13 @@
   }
 
   .editorialPortraitImage {
+    width: 100vw;
+    min-height: 92svh;
+    object-fit: cover;
+    object-position: 72% center;
+  }
+
+  .fourthProductHeroImage {
     width: 100vw;
     min-height: 92svh;
     object-fit: cover;
