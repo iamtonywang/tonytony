@@ -439,6 +439,29 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             </div>
 
             <p className={styles.bioFounderSignature}>May 2026 TONY WANG</p>
+
+            <div className={styles.bioFounderManifesto}>
+              <div
+                className={styles.bioFounderManifestoDivider}
+                aria-hidden="true"
+              />
+
+              <div className={styles.bioFounderManifestoText}>
+                <p className={styles.bioFounderManifestoInnovation}>
+                  Innovation and Creation
+                </p>
+                <p className={styles.bioFounderManifestoDepart}>
+                  이루기 위해 이제 출발합니다
+                </p>
+                <p className={styles.bioFounderManifestoMechanism}>
+                  하나의 메커니즘으로 변혁을 만드는 것
+                </p>
+                <p className={styles.bioFounderManifestoProduct}>NIGAJUN 44</p>
+                <p className={styles.bioFounderManifestoRealm}>
+                  창조자 만이 할수 있는 절대 영역
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </section>
