@@ -174,8 +174,20 @@
     gap: 7px;
   }
 
+  .bioFounderIntro,
+  .bioFounderBody,
+  .bioFounderBody p,
+  .bioFounderSignature {
+    font-size: 28px;
+  }
+
+  .bioFounderIntro,
+  .bioFounderSignature {
+    line-height: 1.2;
+  }
+
   .bioFounderBody p {
-    line-height: 1.18;
+    line-height: 1.22;
   }
 }
 
