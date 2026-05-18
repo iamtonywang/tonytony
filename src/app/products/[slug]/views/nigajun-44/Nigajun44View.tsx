@@ -477,6 +477,30 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           alt=""
           className={styles.cleanThemeImage}
         />
+
+        <div className={styles.cleanThemeOverlay}>
+          <p className={styles.cleanThemeTitle}>NIGAJUN44</p>
+
+          <div className={styles.cleanThemeCopy}>
+            <p>진정 변혁을 원하는 분 환영 합니다</p>
+            <p>가치를 모르는분 의문을 가지는분</p>
+            <p>이해 시키고 싶지 않습니다</p>
+
+            <p>독소가 제거된 피부는 오염이 안된 1급수 물</p>
+
+            <p>긴 설명은 필요하지 않아요</p>
+            <p>거짓은 수치이고 창피한 행위</p>
+            <p>성분이 뭐고 어떤 구조라고 떠들고 싶지 않아요</p>
+
+            <p>화려한 설명이 소용이 없다는 것을 알기에 ,,</p>
+
+            <p>최고라고 말할 필요도 없어요</p>
+            <p>스스로 얘기하는건 모순이고 창피한 행동</p>
+            <p>하지만</p>
+            <p>다들 본인 제품이 최고라고 얘기합니다</p>
+            <p>최고 자리는 거짓 홍보로 되는게 아님을,,</p>
+          </div>
+        </div>
       </section>
 
       <section className={styles.detailCtaSection}>

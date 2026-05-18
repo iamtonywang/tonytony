@@ -143,6 +143,43 @@
   object-fit: cover;
 }
 
+.cleanThemeOverlay {
+  position: absolute;
+  left: 6%;
+  top: 12%;
+  z-index: 2;
+  width: min(42%, 560px);
+  color: rgba(76, 76, 76, 0.92);
+  text-align: left;
+  pointer-events: none;
+}
+
+.cleanThemeTitle {
+  margin: 0 0 24px;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: rgba(62, 62, 62, 0.94);
+}
+
+.cleanThemeCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.45;
+  color: rgba(72, 72, 72, 0.9);
+}
+
+.cleanThemeCopy p {
+  margin: 0;
+}
+
 .bioFounderOverlay {
   position: absolute;
   top: 37%;
@@ -400,6 +437,18 @@
     min-height: 62vh;
     object-fit: cover;
     object-position: center center;
+  }
+
+  .cleanThemeOverlay {
+    left: 7%;
+    top: 10%;
+    width: 86%;
+  }
+
+  .cleanThemeCopy {
+    gap: 7px;
+    font-size: 14px;
+    line-height: 1.35;
   }
 
   .bioFounderOverlay {
