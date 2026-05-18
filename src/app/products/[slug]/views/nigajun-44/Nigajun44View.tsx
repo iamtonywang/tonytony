@@ -439,18 +439,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
             <p className={styles.bioFounderSignature}>May 2026 TONY WANG</p>
 
-            <div className={styles.bioFounderManifesto}>
-              <div
-                className={styles.bioFounderManifestoDivider}
-                aria-hidden="true"
-              />
-
-              <div className={styles.bioFounderManifestoExtra}>
-                <p className={styles.bioFounderManifestoExtraQuestion}>창조란?</p>
-                <p>미쳐야 가질 수 있고 세상에 없는것을 만드는 것</p>
-                <p>피부에 관한 퍼즐을 풀고자 세상에 나왔습니다</p>
-              </div>
-            </div>
           </div>
         </section>
       </section>
@@ -461,38 +449,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           alt=""
           className={styles.cleanThemeImage}
         />
-
-        <div className={styles.cleanThemeOverlay}>
-          <p className={styles.cleanThemeTitle}>NIGAJUN44</p>
-
-          <div className={styles.cleanThemeCopy}>
-            <p>진정 변혁을 원하는 분 환영 합니다</p>
-            <p>가치를 모르는분 의문을 가지는분</p>
-            <p>이해 시키고 싶지 않습니다</p>
-
-            <p>독소가 제거된 피부는 오염이 안된 1급수 물입니다</p>
-
-            <p>긴 설명은 필요하지 않아요</p>
-            <p>거짓은 지옥 같아요 필요치 않아요</p>
-            <p>성분이 뭐고 어떤 구조라고 떠들고 싶지 않아요</p>
-
-            <p>화려한 설명이 소용이 없다는 것을 알기 때문이에요</p>
-
-            <p>최고라고 말할 필요도 없어요</p>
-            <p>스스로 얘기하는건 모순이고 창피한 행동입니다</p>
-            <p>하지만</p>
-            <p>다들 자기 것들이 최고라고 얘기합니다</p>
-            <p>최고의 자리는 소리쳐서 되는게 아닙니다</p>
-          </div>
-
-          <div className={styles.cleanThemeMovedManifesto}>
-            <p>Innovation and Creation</p>
-            <p>이루기 위해 이제 출발합니다</p>
-            <p>하나의 메커니즘으로 변혁을 만드는 것</p>
-            <p>NIGAJUN 44</p>
-            <p>창조자 만이 할수 있는 절대 영역</p>
-          </div>
-        </div>
       </section>
 
       <section className={styles.detailCtaSection}>

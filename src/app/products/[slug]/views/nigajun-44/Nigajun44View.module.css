@@ -143,72 +143,6 @@
   object-fit: cover;
 }
 
-.cleanThemeOverlay {
-  position: absolute;
-  left: 6%;
-  top: 12%;
-  z-index: 2;
-  width: min(42%, 560px);
-  color: rgba(255, 255, 255, 0.88);
-  text-align: left;
-  pointer-events: none;
-}
-
-.cleanThemeTitle {
-  margin: 0 0 24px;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 17px;
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.94);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.38);
-}
-
-.cleanThemeCopy {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.84);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.34);
-}
-
-.cleanThemeCopy p {
-  margin: 0;
-}
-
-.cleanThemeMovedManifesto {
-  margin-top: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  text-align: left;
-}
-
-.cleanThemeMovedManifesto p {
-  margin: 0;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.82);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.34);
-}
-
-.cleanThemeMovedManifesto p:first-child {
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.9);
-}
-
 .bioFounderOverlay {
   position: absolute;
   top: 37%;
@@ -274,104 +208,6 @@
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
 }
 
-.bioFounderManifesto {
-  width: 100%;
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.bioFounderManifestoDivider {
-  width: min(72%, 280px);
-  height: 1px;
-  background: rgba(255, 255, 255, 0.18);
-  margin: 4px 0 2px;
-  flex-shrink: 0;
-}
-
-.bioFounderManifestoText {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  width: 100%;
-  text-align: center;
-}
-
-.bioFounderManifestoText p {
-  margin: 0;
-  font-weight: 300;
-  line-height: 1.12;
-  letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.86);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
-  text-align: center;
-}
-
-.bioFounderManifestoInnovation {
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 17px;
-}
-
-.bioFounderManifestoDepart {
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-size: 19px;
-}
-
-.bioFounderManifestoMechanism {
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-size: 14px;
-}
-
-.bioFounderManifestoProduct {
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.04em;
-}
-
-.bioFounderManifestoRealm {
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.bioFounderManifestoExtra {
-  width: 100%;
-  margin-top: 34px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  text-align: center;
-}
-
-.bioFounderManifestoExtra p {
-  margin: 0;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.55;
-  letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.84);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
-  text-align: center;
-}
-
-.bioFounderManifestoExtraQuestion {
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.92);
-}
-
 @media (min-width: 769px) {
   .headerIntroImage {
     width: 100%;
@@ -400,56 +236,6 @@
   .bioFounderBody p {
     line-height: 1.22;
   }
-
-  .bioFounderManifesto {
-    margin-top: 10px;
-  }
-
-  .bioFounderManifestoInnovation {
-    font-size: 24px;
-  }
-
-  .bioFounderManifestoDepart {
-    font-size: 28px;
-  }
-
-  .bioFounderManifestoMechanism {
-    font-size: 17px;
-  }
-
-  .bioFounderManifestoProduct {
-    font-size: 20px;
-  }
-
-  .bioFounderManifestoRealm {
-    font-size: 16px;
-  }
-
-  .bioFounderManifestoDivider {
-    margin-bottom: 34px;
-  }
-
-  .bioFounderManifestoText {
-    gap: 14px;
-  }
-
-  .bioFounderManifestoText p {
-    line-height: 1.55;
-  }
-
-  .bioFounderManifestoExtra {
-    margin-top: 34px;
-    gap: 8px;
-  }
-
-  .bioFounderManifestoExtraQuestion {
-    font-size: 24px;
-  }
-
-  .bioFounderManifestoExtra p {
-    font-size: 18px;
-    line-height: 1.6;
-  }
 }
 
 @media (max-width: 768px) {
@@ -468,32 +254,6 @@
     object-position: center center;
   }
 
-  .cleanThemeOverlay {
-    left: 7%;
-    top: 10%;
-    width: 86%;
-  }
-
-  .cleanThemeCopy {
-    gap: 7px;
-    font-size: 14px;
-    line-height: 1.35;
-  }
-
-  .cleanThemeMovedManifesto {
-    margin-top: 22px;
-    gap: 5px;
-  }
-
-  .cleanThemeMovedManifesto p {
-    font-size: 11px;
-    line-height: 1.32;
-  }
-
-  .cleanThemeMovedManifesto p:first-child {
-    font-size: 12px;
-  }
-
   .bioFounderOverlay {
     top: 38%;
     left: 50%;
@@ -510,10 +270,6 @@
   .bioFounderBody p {
     font-size: 14px;
     line-height: 1.18;
-  }
-
-  .bioFounderManifestoExtra {
-    margin-top: 10px;
   }
 }
 
