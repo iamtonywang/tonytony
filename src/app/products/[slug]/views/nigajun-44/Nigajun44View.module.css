@@ -408,13 +408,13 @@
   }
 
   .thirdNoticeTitle {
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: 16px;
   }
 
   .thirdNoticeBody {
     gap: 7px;
-    font-size: 13px;
+    font-size: 13.5px;
     line-height: 1.42;
   }
 
