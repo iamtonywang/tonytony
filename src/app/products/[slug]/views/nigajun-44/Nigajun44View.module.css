@@ -89,6 +89,28 @@
   }
 }
 
+.headerIntroImageSection {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 14px;
+  overflow: hidden;
+}
+
+.headerIntroImage {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .headerIntroImage {
+    min-height: 72vh;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
 .boardSection,
 .informationSection {
   width: 92%;

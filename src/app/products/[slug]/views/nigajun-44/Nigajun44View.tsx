@@ -412,6 +412,14 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
 
         <div className={styles.headerIntroDivider} aria-hidden="true" />
+
+        <section className={styles.headerIntroImageSection}>
+          <img
+            src="/landing-assets/ourwork-editorial-biofounder-01.webp"
+            alt=""
+            className={styles.headerIntroImage}
+          />
+        </section>
       </section>
 
       <section className={styles.detailCtaSection}>
