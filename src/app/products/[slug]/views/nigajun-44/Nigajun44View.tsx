@@ -473,7 +473,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <section className={styles.cleanThemeSection}>
         <img
-          src="/landing-assets/home-theme-clean-01.webp"
+          src="/landing-assets/home-theme-clean-04.webp"
           alt=""
           className={styles.cleanThemeImage}
         />
