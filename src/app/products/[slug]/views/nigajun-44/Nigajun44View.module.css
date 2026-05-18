@@ -182,6 +182,33 @@
   margin: 0;
 }
 
+.cleanThemeMovedManifesto {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.cleanThemeMovedManifesto p {
+  margin: 0;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.82);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.34);
+}
+
+.cleanThemeMovedManifesto p:first-child {
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .bioFounderOverlay {
   position: absolute;
   top: 37%;
@@ -451,6 +478,20 @@
     gap: 7px;
     font-size: 14px;
     line-height: 1.35;
+  }
+
+  .cleanThemeMovedManifesto {
+    margin-top: 22px;
+    gap: 5px;
+  }
+
+  .cleanThemeMovedManifesto p {
+    font-size: 11px;
+    line-height: 1.32;
+  }
+
+  .cleanThemeMovedManifesto p:first-child {
+    font-size: 12px;
   }
 
   .bioFounderOverlay {
