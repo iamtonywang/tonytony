@@ -225,77 +225,6 @@
   object-fit: cover;
 }
 
-.productHeroOverlay {
-  position: absolute;
-  left: 6%;
-  top: 16%;
-  z-index: 2;
-  width: min(42%, 620px);
-  color: rgba(255, 255, 255, 0.92);
-  text-align: left;
-  pointer-events: none;
-}
-
-.productHeroTitle {
-  margin: 0 0 28px;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 26px;
-  font-weight: 300;
-  letter-spacing: 0.12em;
-  line-height: 1.2;
-  color: rgba(255, 255, 255, 0.94);
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.42);
-}
-
-.productHeroCopy {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.62;
-  color: rgba(255, 255, 255, 0.86);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.36);
-}
-
-.productHeroCopy p {
-  margin: 0;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-weight: 300;
-  letter-spacing: normal;
-}
-
-.productHeroStatement {
-  margin: 22px 0 0;
-  font-size: 16px;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.productHeroComplex {
-  margin: 18px 0 0;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.productHeroCopyPc,
-.productHeroCopyMobile {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.productHeroCopyMobile {
-  display: none;
-}
-
 .bioFounderOverlay {
   position: absolute;
   top: 37%;
@@ -359,6 +288,62 @@
   letter-spacing: -0.01em;
   color: rgba(255, 255, 255, 0.84);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+}
+
+.bioFounderScientificManifesto {
+  width: 100%;
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.bioFounderScientificManifestoTitle {
+  margin: 0 0 18px;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+}
+
+.bioFounderScientificManifestoBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+}
+
+.bioFounderScientificManifestoBody p {
+  margin: 0;
+}
+
+.bioFounderScientificManifestoStatement {
+  margin: 12px 0 0;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.bioFounderScientificManifestoComplex {
+  margin: 8px 0 0;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 @media (min-width: 769px) {
@@ -438,67 +423,6 @@
     object-position: 72% center;
   }
 
-  .productHeroOverlay {
-    top: 3%;
-    left: 50%;
-    width: 92%;
-    max-width: none;
-    transform: translateX(-50%);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
-  }
-
-  .productHeroTitle {
-    font-size: 22px;
-    margin-bottom: 22px;
-  }
-
-  .productHeroCopy {
-    gap: 4px;
-    font-size: 13px;
-    line-height: 1.22;
-    width: 100%;
-    align-items: center;
-  }
-
-  .productHeroCopy p {
-    margin: 0;
-  }
-
-  .productHeroCopyPc {
-    display: none;
-  }
-
-  .productHeroCopyMobile {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 4px;
-  }
-
-  .productHeroStatement {
-    margin-top: 18px;
-    font-size: 14px;
-  }
-
-  .productHeroComplex {
-    margin-top: 14px;
-    font-size: 14px;
-  }
-
-  .mobileSingleLine {
-    white-space: nowrap;
-    width: max-content;
-    max-width: none;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .bioFounderOverlay {
     top: 38%;
     left: 50%;
@@ -515,6 +439,32 @@
   .bioFounderBody p {
     font-size: 14px;
     line-height: 1.5;
+  }
+
+  .bioFounderScientificManifesto {
+    margin-top: 24px;
+    gap: 8px;
+  }
+
+  .bioFounderScientificManifestoTitle {
+    margin-bottom: 14px;
+    font-size: 17px;
+  }
+
+  .bioFounderScientificManifestoBody {
+    gap: 8px;
+    font-size: 13px;
+    line-height: 1.48;
+  }
+
+  .bioFounderScientificManifestoStatement {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .bioFounderScientificManifestoComplex {
+    margin-top: 6px;
+    font-size: 13px;
   }
 }
 

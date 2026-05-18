@@ -439,6 +439,28 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
             <p className={styles.bioFounderSignature}>May 2026 TONY WANG</p>
 
+            <div className={styles.bioFounderScientificManifesto}>
+              <h2 className={styles.bioFounderScientificManifestoTitle}>NIGAJUN 44</h2>
+
+              <div className={styles.bioFounderScientificManifestoBody}>
+                <p>피부를 “좋아 보이게” 만드는 제품이 아닌</p>
+                <p>죽어버린 피부를 다시 변혁 하는 분자 생물학 시스템</p>
+                <p>피부 표면 개선이 아닌 피부 구조 자체를 정화</p>
+
+                <p className={styles.bioFounderScientificManifestoStatement}>
+                  Final Positioning Statement
+                </p>
+
+                <p>식물세포 생장과 방어를 담당하고 인간의 피부 아미노산 서열과</p>
+                <p>상동성(Homology)이 높은 성분 특정 단백질(펩타이드 포함)만을</p>
+                <p>정제하여 혼합한 신호 전달 유사 피부 특성 단백질.</p>
+
+                <p className={styles.bioFounderScientificManifestoComplex}>
+                  Proteo Phyto Complex 복합 물질
+                </p>
+              </div>
+            </div>
+
           </div>
         </section>
       </section>
@@ -471,50 +493,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           className={styles.editorialPortraitImage}
         />
 
-        <div className={styles.productHeroOverlay}>
-          <h2 className={styles.productHeroTitle}>NIGAJUN 44</h2>
-
-          <div className={styles.productHeroCopy}>
-            <div className={styles.productHeroCopyPc}>
-              <p>피부를 “좋아 보이게” 만드는 제품이 아닌</p>
-              <p>죽어버린 피부를 다시 변혁 하는 분자 생물학 시스템</p>
-              <p>피부 표면 개선이 아닌 피부 구조 자체를 정화</p>
-
-              <p className={styles.productHeroStatement}>Final Positioning Statement</p>
-
-              <p>식물세포 생장과 방어를 담당하고 인간의 피부 아미노산 서열과</p>
-              <p>상동성(Homology)이 높은 성분 특정 단백질(펩타이드 포함)만을</p>
-              <p>정제하여 혼합한 신호 전달 유사 피부 특성 단백질.</p>
-
-              <p className={styles.productHeroComplex}>Proteo Phyto Complex 복합 물질</p>
-            </div>
-
-            <div className={styles.productHeroCopyMobile}>
-              <p className={styles.mobileSingleLine}>
-                피부를 “좋아 보이게” 만드는 제품이 아닌 죽어버린 피부를
-              </p>
-              <p className={styles.mobileSingleLine}>변혁 하는 분자 생물학 시스템</p>
-              <p>피부 표면 개선이 아닌 피부 구조 자체를 정화</p>
-
-              <p className={styles.productHeroStatement}>Final Positioning Statement</p>
-
-              <p className={styles.mobileSingleLine}>
-                식물세포 생장과 방어를 담당하고 인간의 피부
-              </p>
-              <p className={styles.mobileSingleLine}>아미노산 서열과 Homology 이 높은 성분</p>
-              <p className={styles.mobileSingleLine}>
-                특정 단백질(펩타이드 포함) 정제하여 혼합한
-              </p>
-              <p className={styles.mobileSingleLine}>신호 전달 유사 피부 특성 단백질</p>
-
-              <p
-                className={`${styles.productHeroComplex} ${styles.mobileSingleLine}`}
-              >
-                Proteo Phyto Complex 복합 물질
-              </p>
-            </div>
-          </div>
-        </div>
       </section>
 
       <section className={styles.fourthProductHeroSection}>
