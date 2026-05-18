@@ -175,12 +175,20 @@
   font-size: 14px;
   font-weight: 300;
   line-height: 1.45;
+  letter-spacing: normal;
+  font-synthesis: none;
   color: rgba(255, 255, 255, 0.84);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.34);
 }
 
 .cleanThemeCopy p {
   margin: 0;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: normal;
+  text-transform: none;
+  font-synthesis: none;
 }
 
 .bioFounderOverlay {
