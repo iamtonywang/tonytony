@@ -325,42 +325,55 @@
 
 .fourthProductCta {
   position: absolute;
-  left: 6%;
+  left: 50%;
   bottom: 8%;
+  transform: translateX(-50%);
   z-index: 4;
+
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  max-width: min(560px, calc(100vw - 24px));
+  box-sizing: border-box;
+
   pointer-events: auto;
 }
 
 .fourthProductPrice {
   margin: 0;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
+  flex-shrink: 0;
+
+  font-family: "El Messiri", serif;
   font-size: 18px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.92);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.94);
 }
 
 .fourthProductBuyButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+
   min-width: 132px;
   min-height: 42px;
-  padding: 0 22px;
+  padding: 0 24px;
+
   border: 1px solid rgba(255, 255, 255, 0.42);
-  color: rgba(255, 255, 255, 0.92);
+
+  font-family: "El Messiri", serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+
+  color: rgba(255, 255, 255, 0.94);
   text-decoration: none;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 300;
   background: transparent;
   box-sizing: border-box;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .fourthProductBuyButton:hover {
@@ -569,10 +582,9 @@
   }
 
   .fourthProductCta {
-    left: 50%;
     bottom: 7%;
-    transform: translateX(-50%);
-    align-items: center;
+    gap: 16px;
+    max-width: min(520px, calc(100vw - 20px));
   }
 
   .fourthProductPrice {
@@ -580,7 +592,7 @@
   }
 
   .fourthProductBuyButton {
-    min-width: 118px;
+    min-width: 116px;
     min-height: 38px;
     font-size: 13px;
   }
