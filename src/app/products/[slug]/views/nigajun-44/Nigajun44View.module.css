@@ -316,6 +316,10 @@
   margin: 0;
 }
 
+.elMessiriText {
+  font-family: "El Messiri", serif;
+}
+
 .bioFounderOverlay {
   position: absolute;
   top: 37%;
