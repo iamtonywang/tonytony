@@ -10,69 +10,82 @@
 
 .headerIntroSection {
   width: 100%;
-  padding-top: 32px;
-  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 12px 24px;
+  box-sizing: border-box;
+}
+
+.headerIntroDivider {
+  width: min(88%, 920px);
+  height: 1px;
+  background: rgba(120, 120, 120, 0.42);
+  flex-shrink: 0;
 }
 
 .headerIntroInner {
   width: 100%;
+  max-width: 920px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  margin: 14px 0;
+  padding: 0 12px;
+  box-sizing: border-box;
 }
 
 .headerIntroTitle {
   margin: 0;
-  max-width: 100%;
-  padding: 0 12px;
   font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
     "Malgun Gothic", Arial, sans-serif;
-  font-size: 53px;
+  font-size: 32px;
   font-weight: 300;
-  line-height: 0.96;
+  line-height: 1;
   letter-spacing: 0.02em;
-  color: rgba(214, 186, 142, 0.96);
+  color: rgba(170, 170, 170, 0.9);
   text-align: center;
-  text-shadow:
-    0 0 8px rgba(186, 140, 78, 0.22),
-    0 0 18px rgba(120, 82, 42, 0.14);
 }
 
 .headerIntroSubtitle {
   margin: 0;
-  max-width: 100%;
-  padding: 0 12px;
   font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
     "Malgun Gothic", Arial, sans-serif;
-  font-size: 35px;
+  font-size: 28px;
   font-weight: 300;
-  line-height: 0.95;
+  line-height: 1;
   letter-spacing: 0.02em;
-  color: rgba(186, 154, 112, 0.88);
+  color: rgba(160, 160, 160, 0.86);
   text-align: center;
-  text-shadow: 0 0 6px rgba(156, 118, 72, 0.16);
 }
 
 .headerIntroCaption {
   margin: 0;
-  max-width: 100%;
-  padding: 0 12px;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
   font-size: 14px;
   font-weight: 300;
-  line-height: 1.2;
-  color: rgba(148, 132, 112, 0.72);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: rgba(145, 145, 145, 0.82);
   text-align: center;
-  text-shadow: 0 0 4px rgba(100, 76, 52, 0.08);
 }
 
 @media (min-width: 769px) {
   .headerIntroTitle {
     font-size: 80px;
+    color: rgba(170, 170, 170, 0.9);
   }
 
   .headerIntroSubtitle {
     font-size: 44px;
+    color: rgba(160, 160, 160, 0.86);
+  }
+
+  .headerIntroCaption {
+    font-size: 17px;
+    color: rgba(145, 145, 145, 0.82);
   }
 }
 

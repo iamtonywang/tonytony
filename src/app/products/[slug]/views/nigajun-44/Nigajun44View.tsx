@@ -401,13 +401,17 @@ export default function Nigajun44View({ product, boardItems }: Props) {
   return (
     <article className={styles.detailPage}>
       <section className={styles.headerIntroSection}>
+        <div className={styles.headerIntroDivider} aria-hidden="true" />
+
         <div className={styles.headerIntroInner}>
           <h1 className={styles.headerIntroTitle}>TONY WANG</h1>
 
-          <h2 className={styles.headerIntroSubtitle}>NIGAJUN 44</h2>
+          <h2 className={styles.headerIntroSubtitle}>NIGAJUN44</h2>
 
           <p className={styles.headerIntroCaption}>skincare for the first time</p>
         </div>
+
+        <div className={styles.headerIntroDivider} aria-hidden="true" />
       </section>
 
       <section className={styles.detailCtaSection}>
