@@ -469,6 +469,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </section>
 
+      <div className={styles.mobileVisualBreathingSection} />
+
       <section className={styles.editorialPortraitSection}>
         <img
           src="/landing-assets/nigajun-44-editorial-product-hero.webp"
