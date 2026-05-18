@@ -436,12 +436,13 @@
   margin-top: -16px;
   margin-bottom: 0;
   padding-top: 0;
-  padding-bottom: 0;
+  padding-bottom: 48px;
 
-  overflow: visible;
+  overflow: hidden;
   background: #050505;
 
   line-height: 0;
+  box-sizing: border-box;
 }
 
 .interviewEditorialSection::after {
@@ -450,7 +451,7 @@
   position: absolute;
 
   left: 50%;
-  bottom: -26px;
+  bottom: 24px;
 
   width: 62%;
   height: 1px;
@@ -775,8 +776,12 @@
     transform: none;
   }
 
+  .interviewEditorialSection {
+    padding-bottom: 42px;
+  }
+
   .interviewEditorialSection::after {
-    bottom: -22px;
+    bottom: 20px;
     width: 74%;
     opacity: 0.34;
   }
@@ -879,6 +884,7 @@
   align-items: center;
   margin-bottom: 12px;
   padding-right: 0;
+  border-top: none;
 }
 
 .boardTopTitle {
