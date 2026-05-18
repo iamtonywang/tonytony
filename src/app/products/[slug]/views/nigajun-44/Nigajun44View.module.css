@@ -290,62 +290,6 @@
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
 }
 
-.bioFounderScientificManifesto {
-  width: 100%;
-  margin-top: 34px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.bioFounderScientificManifestoTitle {
-  margin: 0 0 18px;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-  color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
-}
-
-.bioFounderScientificManifestoBody {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
-    Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.86);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
-}
-
-.bioFounderScientificManifestoBody p {
-  margin: 0;
-}
-
-.bioFounderScientificManifestoStatement {
-  margin: 12px 0 0;
-  font-size: 15px;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.bioFounderScientificManifestoComplex {
-  margin: 8px 0 0;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Malgun Gothic", Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.9);
-}
-
 @media (min-width: 769px) {
   .headerIntroImage {
     width: 100%;
@@ -441,31 +385,6 @@
     line-height: 1.5;
   }
 
-  .bioFounderScientificManifesto {
-    margin-top: 24px;
-    gap: 8px;
-  }
-
-  .bioFounderScientificManifestoTitle {
-    margin-bottom: 14px;
-    font-size: 17px;
-  }
-
-  .bioFounderScientificManifestoBody {
-    gap: 8px;
-    font-size: 13px;
-    line-height: 1.48;
-  }
-
-  .bioFounderScientificManifestoStatement {
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  .bioFounderScientificManifestoComplex {
-    margin-top: 6px;
-    font-size: 13px;
-  }
 }
 
 .boardSection,
