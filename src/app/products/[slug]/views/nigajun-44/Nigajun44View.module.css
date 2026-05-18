@@ -237,6 +237,36 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
+.bioFounderManifestoExtra {
+  width: 100%;
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.bioFounderManifestoExtra p {
+  margin: 0;
+  font-family: "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo", "Malgun Gothic",
+    Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.84);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.bioFounderManifestoExtraQuestion {
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
 @media (min-width: 769px) {
   .bioFounderOverlay {
     gap: 7px;
@@ -292,6 +322,20 @@
 
   .bioFounderManifestoText p {
     line-height: 1.55;
+  }
+
+  .bioFounderManifestoExtra {
+    margin-top: 34px;
+    gap: 8px;
+  }
+
+  .bioFounderManifestoExtraQuestion {
+    font-size: 24px;
+  }
+
+  .bioFounderManifestoExtra p {
+    font-size: 18px;
+    line-height: 1.6;
   }
 }
 

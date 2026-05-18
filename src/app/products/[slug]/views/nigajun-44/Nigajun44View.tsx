@@ -461,6 +461,13 @@ export default function Nigajun44View({ product, boardItems }: Props) {
                   창조자 만이 할수 있는 절대 영역
                 </p>
               </div>
+
+              <div className={styles.bioFounderManifestoExtra}>
+                <p className={styles.bioFounderManifestoExtraQuestion}>창조란?</p>
+                <p>미쳐야 가질 수 있고 세상에 없는것을 만드는 것 입니다</p>
+                <p>피부에 관한 모든 퍼즐을 풀고자 세상에 나왔습니다</p>
+                <p>피부를 갈아 엎고 새로운 가치를 증명하겠습니다</p>
+              </div>
             </div>
           </div>
         </section>
