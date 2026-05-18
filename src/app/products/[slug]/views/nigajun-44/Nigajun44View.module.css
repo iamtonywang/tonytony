@@ -380,6 +380,29 @@
   color: #ff7f00;
 }
 
+.interviewEditorialSection {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  margin-top: -16px;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  overflow: hidden;
+  background: #050505;
+
+  line-height: 0;
+}
+
+.interviewEditorialImage {
+  width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+}
+
 .elMessiriText {
   font-family: "El Messiri", serif;
 }
@@ -592,6 +615,13 @@
 
   .fourthProductBuyButton {
     font-size: 16px;
+  }
+
+  .interviewEditorialImage {
+    width: 100vw;
+    min-height: 72svh;
+    object-fit: cover;
+    object-position: center center;
   }
 
   .bioFounderOverlay {

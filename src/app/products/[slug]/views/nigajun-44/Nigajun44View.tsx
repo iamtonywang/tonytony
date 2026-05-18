@@ -550,6 +550,14 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </section>
 
+      <section className={styles.interviewEditorialSection}>
+        <img
+          src="/landing-assets/tonywang-interview-editorial-softlight-01.jpg"
+          alt=""
+          className={styles.interviewEditorialImage}
+        />
+      </section>
+
       <BoardSection boardItems={boardItems} productSlug={product?.slug ?? null} />
 
       <section className={styles.informationSection}>
