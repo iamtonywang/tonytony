@@ -191,6 +191,22 @@
   font-synthesis: none;
 }
 
+.editorialPortraitSection {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: calc(-16px - 2px);
+  overflow: hidden;
+  background: #050505;
+}
+
+.editorialPortraitImage {
+  width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+}
+
 .bioFounderOverlay {
   position: absolute;
   top: 37%;
@@ -317,6 +333,13 @@
     gap: 8px;
     font-size: 14px;
     line-height: 1.4;
+  }
+
+  .editorialPortraitImage {
+    width: 100vw;
+    min-height: 92svh;
+    object-fit: cover;
+    object-position: left center;
   }
 
   .bioFounderOverlay {

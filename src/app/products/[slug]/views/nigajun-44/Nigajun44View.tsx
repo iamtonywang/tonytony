@@ -464,6 +464,14 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </section>
 
+      <section className={styles.editorialPortraitSection}>
+        <img
+          src="/landing-assets/tonywang-editorial-portrait-left-01.webp"
+          alt=""
+          className={styles.editorialPortraitImage}
+        />
+      </section>
+
       <section className={styles.detailCtaSection}>
         <p className={styles.detailLowerPrice}>
           {typeof product?.finalPriceAmount === "number"
