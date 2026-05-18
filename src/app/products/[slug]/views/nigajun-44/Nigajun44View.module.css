@@ -436,40 +436,16 @@
   margin-top: -16px;
   margin-bottom: 0;
   padding-top: 0;
-  padding-bottom: 48px;
+  padding-bottom: 0;
 
   overflow: hidden;
   background: #050505;
 
   line-height: 0;
-  box-sizing: border-box;
 }
 
 .interviewEditorialSection::after {
-  content: "";
-
-  position: absolute;
-
-  left: 50%;
-  bottom: 24px;
-
-  width: 62%;
-  height: 1px;
-
-  transform: translateX(-50%);
-
-  background:
-    linear-gradient(
-      to right,
-      transparent,
-      rgba(255, 224, 180, 0.24),
-      transparent
-    );
-
-  opacity: 0.42;
-
-  pointer-events: none;
-  z-index: 6;
+  content: none;
 }
 
 .interviewEditorialImage {
@@ -776,16 +752,6 @@
     transform: none;
   }
 
-  .interviewEditorialSection {
-    padding-bottom: 42px;
-  }
-
-  .interviewEditorialSection::after {
-    bottom: 20px;
-    width: 74%;
-    opacity: 0.34;
-  }
-
   .fifthEditorialOverlay {
     padding: 10vw 7vw;
     font-size: 14px;
@@ -808,6 +774,10 @@
   .bioFounderBody p {
     font-size: 14px;
     line-height: 1.5;
+  }
+
+  .boardTopHeader {
+    padding-top: 16px;
   }
 
 }
@@ -882,9 +852,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 0;
   margin-bottom: 12px;
+  padding-top: 18px;
   padding-right: 0;
-  border-top: none;
+  border-top: 1px solid rgba(255, 224, 180, 0.24);
 }
 
 .boardTopTitle {
