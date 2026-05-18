@@ -671,11 +671,9 @@
 
   .interviewEditorialImage {
     width: 100vw;
-    height: 78svh;
-    min-height: 78svh;
-    object-fit: contain;
-    object-position: center top;
-    background: #050505;
+    min-height: 100svh;
+    object-fit: cover;
+    object-position: center center;
   }
 
   .bioFounderOverlay {
