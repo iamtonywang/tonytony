@@ -471,6 +471,14 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </section>
       </section>
 
+      <section className={styles.cleanThemeSection}>
+        <img
+          src="/landing-assets/home-theme-clean-04.webp"
+          alt=""
+          className={styles.cleanThemeImage}
+        />
+      </section>
+
       <section className={styles.detailCtaSection}>
         <p className={styles.detailLowerPrice}>
           {typeof product?.finalPriceAmount === "number"

@@ -104,6 +104,22 @@
   object-fit: cover;
 }
 
+.cleanThemeSection {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.cleanThemeImage {
+  width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+}
+
 .bioFounderOverlay {
   position: absolute;
   top: 37%;
@@ -352,6 +368,13 @@
     width: 100vw;
     height: 110svh;
     min-height: 110svh;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .cleanThemeImage {
+    width: 100vw;
+    min-height: 62vh;
     object-fit: cover;
     object-position: center center;
   }
