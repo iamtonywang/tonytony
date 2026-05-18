@@ -270,6 +270,17 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
+.productHeroCopyPc,
+.productHeroCopyMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.productHeroCopyMobile {
+  display: none;
+}
+
 .bioFounderOverlay {
   position: absolute;
   top: 37%;
@@ -406,10 +417,16 @@
   }
 
   .productHeroOverlay {
-    left: 7%;
-    top: 12%;
-    width: 86%;
-    max-width: 360px;
+    top: 18%;
+    left: 50%;
+    width: 92%;
+    max-width: none;
+    transform: translateX(-50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
   }
 
   .productHeroTitle {
@@ -421,6 +438,18 @@
     gap: 10px;
     font-size: 13px;
     line-height: 1.54;
+    width: 100%;
+    align-items: center;
+  }
+
+  .productHeroCopyPc {
+    display: none;
+  }
+
+  .productHeroCopyMobile {
+    display: flex;
+    align-items: center;
+    width: 100%;
   }
 
   .productHeroStatement {
@@ -431,6 +460,14 @@
   .productHeroComplex {
     margin-top: 14px;
     font-size: 14px;
+  }
+
+  .mobileSingleLine {
+    white-space: nowrap;
+    width: max-content;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .bioFounderOverlay {
