@@ -505,6 +505,17 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             </p>
           </div>
         </div>
+
+        <div className={styles.thirdEditorialCopy}>
+          <p>Global 최초 연구 개발 입니다 이것은 사실입니다</p>
+          <p>식물 세포 유전자 분리 적용 식물성 원료 결합</p>
+          <p>순수 97% 세포 단백질 구성 3% 부 원료 적용</p>
+          <p>
+            <span className={styles.elMessiriText}>BIO</span>
+            {" "}생명공학 공법{" "}
+            <span className={styles.elMessiriText}>skin care</span>
+          </p>
+        </div>
       </section>
 
       <section className={styles.fourthProductHeroSection}>
