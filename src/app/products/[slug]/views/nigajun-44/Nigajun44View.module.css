@@ -444,6 +444,33 @@
   line-height: 0;
 }
 
+.interviewEditorialSection::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 62%;
+  height: 1px;
+
+  transform: translateX(-50%);
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 224, 180, 0.24),
+      transparent
+    );
+
+  opacity: 0.42;
+
+  pointer-events: none;
+  z-index: 6;
+}
+
 .interviewEditorialImage {
   width: 100%;
   display: block;
@@ -746,6 +773,11 @@
     object-fit: cover;
     object-position: center center;
     transform: none;
+  }
+
+  .interviewEditorialSection::after {
+    width: 74%;
+    opacity: 0.34;
   }
 
   .fifthEditorialOverlay {
