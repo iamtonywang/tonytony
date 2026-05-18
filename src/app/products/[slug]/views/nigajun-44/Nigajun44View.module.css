@@ -365,6 +365,10 @@
     font-size: 14px;
     line-height: 1.18;
   }
+
+  .bioFounderManifestoExtra {
+    margin-top: 10px;
+  }
 }
 
 .boardSection,
