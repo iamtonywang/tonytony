@@ -149,7 +149,7 @@
   top: 12%;
   z-index: 2;
   width: min(42%, 560px);
-  color: rgba(76, 76, 76, 0.92);
+  color: rgba(255, 255, 255, 0.88);
   text-align: left;
   pointer-events: none;
 }
@@ -161,7 +161,8 @@
   font-size: 17px;
   font-weight: 300;
   letter-spacing: 0.08em;
-  color: rgba(62, 62, 62, 0.94);
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.38);
 }
 
 .cleanThemeCopy {
@@ -173,7 +174,8 @@
   font-size: 14px;
   font-weight: 300;
   line-height: 1.45;
-  color: rgba(72, 72, 72, 0.9);
+  color: rgba(255, 255, 255, 0.84);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.34);
 }
 
 .cleanThemeCopy p {
