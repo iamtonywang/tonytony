@@ -197,6 +197,9 @@
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   margin-top: calc(-16px - 2px);
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   overflow: hidden;
   background: #050505;
 }
@@ -268,6 +271,10 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  margin-top: -16px;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   overflow: hidden;
   background: #050505;
 }
