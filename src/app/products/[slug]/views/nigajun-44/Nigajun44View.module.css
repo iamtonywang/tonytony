@@ -297,10 +297,10 @@
 
 @media (max-width: 768px) {
   .headerIntroImage {
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    object-fit: contain;
+    width: 100vw;
+    height: 110svh;
+    min-height: 110svh;
+    object-fit: cover;
     object-position: center center;
   }
 
