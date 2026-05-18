@@ -586,6 +586,38 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           alt=""
           className={styles.interviewEditorialImage}
         />
+
+        <div className={styles.fifthEditorialOverlay}>
+          <p className={styles.fifthEditorialOverlayTitle}>
+            <span className={styles.fifthEditorialOverlayEnglish}>TONY WANG</span>
+          </p>
+          <p>변혁을 원하는 분 환영 합니다</p>
+          <p>가치를 모르는분 의문을 가지는분</p>
+          <p>이해 시키고 싶지 않습니다</p>
+          <p>독소가 제거된 피부는 오염이 안된 1급수 물</p>
+          <p>긴 설명은 필요하지 않아요 거짓은 수치이고 창피한 행위</p>
+          <p>성분이 뭐고 어떤 구조라고 떠들고 싶지 않아요</p>
+          <p>화려한 설명이 소용이 없다는 것을 알기에 ,,</p>
+          <p>최고라고 말할 필요도 없어요</p>
+          <p>스스로 얘기하는건 모순이고 창피한 행동</p>
+          <p>하지만 다들 본인 제품이 최고라고 얘기합니다</p>
+          <p>최고 자리는 거짓 홍보로 되는게 아닙니다</p>
+          <p>나는 그들과 같은 존재가 되기 싫어요</p>
+          <p>
+            <span className={styles.fifthEditorialOverlayEnglish}>I DON&apos;T LIKE LYING</span>
+          </p>
+          <p>나는 거짓이 싫을 뿐입니다</p>
+          <p>나를 믿는 사람을 속이며 이익을 만들고 싶지 않아요</p>
+          <p>그것은 매우 역겨운 행동입니다</p>
+          <p>
+            <span className={styles.fifthEditorialOverlayEnglish}>TONY WANG</span>입니다
+          </p>
+          <p>항상 초심을 잃지 않고 같은 마음으로</p>
+          <p>
+            <span className={styles.fifthEditorialOverlayEnglish}>Global NO1</span> 이 자리에
+            오를것입니다
+          </p>
+        </div>
       </section>
 
       <BoardSection boardItems={boardItems} productSlug={product?.slug ?? null} />
