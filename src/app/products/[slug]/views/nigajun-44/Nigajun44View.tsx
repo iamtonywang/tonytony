@@ -434,7 +434,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
               <p>매우 안따깝고 괴로운 것입니다</p>
               <p>행복해야 합니다 꿈을 향해 뛰어야 합니다</p>
               <p>땀의 기쁨을 누려야 합니다</p>
-              <p>가지고 있는 슬픔과 고민을 잊고 하하 웃어요</p>
               <p>그래요 그것이 인생 입니다</p>
             </div>
 
@@ -464,9 +463,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
               <div className={styles.bioFounderManifestoExtra}>
                 <p className={styles.bioFounderManifestoExtraQuestion}>창조란?</p>
-                <p>미쳐야 가질 수 있고 세상에 없는것을 만드는 것 입니다</p>
-                <p>피부에 관한 모든 퍼즐을 풀고자 세상에 나왔습니다</p>
-                <p>피부를 갈아 엎고 새로운 가치를 증명하겠습니다</p>
+                <p>미쳐야 가질 수 있고 세상에 없는것을 만드는 것</p>
+                <p>피부에 관한 퍼즐을 풀고자 세상에 나왔습니다</p>
               </div>
             </div>
           </div>
