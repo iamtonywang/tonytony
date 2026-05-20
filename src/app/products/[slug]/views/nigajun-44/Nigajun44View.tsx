@@ -469,7 +469,14 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </section>
 
-      <div className={styles.mobileVisualBreathingSection} />
+      <div className={styles.mobileVisualBreathingSection}>
+        <div className={styles.mobileTransitionNotice}>
+          <p className={styles.mobileTransitionNoticeTitle}>중요공지사항</p>
+          <p>제품 구매 전 필히 본문을 필독하고</p>
+          <p>신중히 구매 결정을 하세요</p>
+          <p>제품 사용시 얼굴 지방이 소멸 되어 의도치 않게</p>
+        </div>
+      </div>
 
       <section className={styles.editorialPortraitSection}>
         <img
@@ -479,20 +486,17 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         />
 
         <div className={styles.thirdNoticeOverlay}>
-          <h2 className={styles.thirdNoticeTitle}>중요 공지사항</h2>
+          <h2 className={`${styles.thirdNoticeTitle} ${styles.pcOnly}`}>
+            중요 공지사항
+          </h2>
 
           <div className={styles.thirdNoticeBody}>
-            <p>
-              <span className={styles.pcOnly}>
-                제품 구매 전 필히 본문을 필독하고 신중히 구매 결정을 하세요
-              </span>
-              <span className={styles.mobileOnly}>
-                제품 구매 전 필히 본문을 필독하고
-                <br />
-                신중히 구매 결정을 하세요
-              </span>
+            <p className={styles.pcOnly}>
+              제품 구매 전 필히 본문을 필독하고 신중히 구매 결정을 하세요
             </p>
-            <p>제품 사용 시 일부 얼굴 지방이 제거 되어 의도치 않게</p>
+            <p className={styles.pcOnly}>
+              제품 사용 시 일부 얼굴 지방이 제거 되어 의도치 않게
+            </p>
             <p>얼굴 윤곽이 작아지는 현상이 발생합니다</p>
             <p>구매 전 신중히 판단 후 구매 결정을 하시길 바랍니다</p>
             <p>

@@ -634,7 +634,9 @@
   }
 
   .mobileVisualBreathingSection {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 
     width: 100vw;
@@ -647,8 +649,29 @@
 
     overflow: hidden;
 
-    line-height: 0;
+    line-height: normal;
     background: #000;
+  }
+
+  .mobileTransitionNotice {
+    width: 92%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.42;
+    pointer-events: none;
+  }
+
+  .mobileTransitionNotice p {
+    margin: 0;
+  }
+
+  .mobileTransitionNoticeTitle {
+    margin-bottom: 6px;
+    color: #ff8a1c;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   .cleanThemeSection,
