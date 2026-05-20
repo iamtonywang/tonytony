@@ -743,7 +743,7 @@
     font-weight: 300;
     line-height: 1.42;
     pointer-events: none;
-    transform: translateY(12px);
+    transform: translateY(28px);
   }
 
   .mobileBenjaminStatement p {
@@ -758,6 +758,15 @@
 }
 
 @media (min-width: 769px) {
+  .mobileVisualBreathingSection:has(.mobileBenjaminStatement) {
+    display: none;
+    height: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
   .mobileFirstToSecondBreathingSection {
     display: none;
     height: 0;
