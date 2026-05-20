@@ -641,6 +641,20 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </section>
 
+      <div className={styles.desktopVisualBreathingSection}>
+        <div className={styles.desktopBiologicalStatement}>
+          <p className={styles.desktopBiologicalStatementLine}>
+            내 얼굴은 왜 이러지? 왜 남들보다 늙어 보이고 죽어 버린 피부 같지?
+          </p>
+          <p className={styles.desktopBiologicalStatementLine}>
+            피부가 늙는 건 나이가 아니라, 세포가 사멸된 이유입니다 세포를 사멸시키는 가장 주 원인 독소입니다 독소는 세포를 사멸 시킵니다
+          </p>
+          <p className={styles.desktopBiologicalStatementLine}>
+            사멸 된 세포를 부활 하는 것만이 유일한 근본 해결 책입니다
+          </p>
+        </div>
+      </div>
+
       <div className={styles.mobileVisualBreathingSection} />
 
       <section className={styles.interviewEditorialSection}>
