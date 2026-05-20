@@ -984,6 +984,7 @@
     font-size: 12px;
     font-weight: 300;
     line-height: 1.42;
+    transform: translateY(18px);
     pointer-events: none;
   }
 
@@ -998,12 +999,20 @@
     font-family: "El Messiri", serif;
   }
 
-  .mobileBiologicalBreathingSection {
+  .mobileBiologicalBreathingSection,
+  .mobileCosmeticsBreathingSection {
     margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: #000;
+    line-height: 0;
   }
 
-  .mobileCosmeticsBreathingSection {
-    margin-top: 18px;
+  .mobileBiologicalTransition,
+  .mobileCosmeticsTransition {
+    line-height: 1.42;
   }
 
   .cleanThemeSection,
