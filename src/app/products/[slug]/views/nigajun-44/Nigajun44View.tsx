@@ -702,6 +702,20 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       <div
         className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
       >
+        <div className={styles.mobileBiologicalTransition}>
+          <p>내 얼굴은 왜 이러지?</p>
+          <p>왜 남들보다 늙어 보이고 죽어 버린 피부 같지?</p>
+
+          <p>피부가 늙는 건 나이가 아니라, 세포가 사멸된 이유입니다</p>
+          <p>세포를 사멸시키는 가장 주 원인 독소입니다</p>
+          <p>독소는 세포를 사멸 시킵니다 사멸 된 세포를 부활 하는 것만이</p>
+          <p>유일한 근본 해결 책입니다</p>
+        </div>
+      </div>
+
+      <div
+        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
+      >
         <div className={styles.mobileCosmeticsTransition}>
           <p className={styles.mobileCosmeticsTransitionTitle}>Cosmetics</p>
 
@@ -717,20 +731,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           <p>TONYWANG이 소리쳐서 되는 것이 아닙니다</p>
 
           <p>특별한 존재의 가치 성역을 TONY WANG 은 이룰것입니다</p>
-        </div>
-      </div>
-
-      <div
-        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
-      >
-        <div className={styles.mobileBiologicalTransition}>
-          <p>내 얼굴은 왜 이러지?</p>
-          <p>왜 남들보다 늙어 보이고 죽어 버린 피부 같지?</p>
-
-          <p>피부가 늙는 건 나이가 아니라, 세포가 사멸된 이유입니다</p>
-          <p>세포를 사멸시키는 가장 주 원인 독소입니다</p>
-          <p>독소는 세포를 사멸 시킵니다 사멸 된 세포를 부활 하는 것만이</p>
-          <p>유일한 근본 해결 책입니다</p>
         </div>
       </div>
 
