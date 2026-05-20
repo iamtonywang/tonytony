@@ -192,7 +192,43 @@
 }
 
 .mobileVisualBreathingSection {
+  display: block;
+  position: relative;
+
+  width: 100vw;
+  height: 18vh;
+
+  margin: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+
+  background: #000;
+
+  line-height: 0;
+  overflow: hidden;
+}
+
+.mobileTransitionNotice,
+.mobileScientificTransition {
   display: none;
+}
+
+@media (min-width: 769px) {
+  .detailPage {
+    gap: 0;
+  }
+
+  .cleanThemeSection,
+  .editorialPortraitSection,
+  .fourthProductHeroSection,
+  .interviewEditorialSection {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background: #000;
+  }
 }
 
 .editorialPortraitSection {
@@ -654,6 +690,7 @@
   }
 
   .mobileTransitionNotice {
+    display: block;
     width: 92%;
     text-align: center;
     color: rgba(255, 255, 255, 0.9);
@@ -676,8 +713,8 @@
   }
 
   .mobileScientificTransition {
-    width: 92%;
     display: flex;
+    width: 92%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
