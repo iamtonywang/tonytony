@@ -703,6 +703,22 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </section>
 
+      <section className={styles.editorialClosingStatementSection}>
+        <div className={styles.editorialClosingStatementInner}>
+          <p className={styles.editorialClosingStatementLine}>
+            &quot;Anti-aging bio-life science that turns back time&quot;
+          </p>
+
+          <p className={styles.editorialClosingStatementLine}>
+            &quot;The only biotechnology that turns back skin time&quot;
+          </p>
+
+          <p className={styles.editorialClosingStatementSignature}>
+            May 2026 TONY WANG
+          </p>
+        </div>
+      </section>
+
       <BoardSection boardItems={boardItems} productSlug={product?.slug ?? null} />
 
       <section className={styles.informationSection}>

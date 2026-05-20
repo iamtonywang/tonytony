@@ -1384,3 +1384,36 @@
     white-space: nowrap;
   }
 }
+
+.editorialClosingStatementSection {
+  width: 100%;
+  padding: 48px 0 72px;
+}
+
+.editorialClosingStatementInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.editorialClosingStatementLine,
+.editorialClosingStatementSignature {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+  font-family: "El Messiri", serif;
+}
+
+.editorialClosingStatementSignature {
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .editorialClosingStatementSection {
+    padding: 34px 0 56px;
+  }
+}
