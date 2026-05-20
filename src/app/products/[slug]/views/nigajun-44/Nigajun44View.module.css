@@ -221,7 +221,6 @@
 @media (min-width: 769px) {
   .detailPage {
     gap: 0;
-    background: #000;
   }
 
   .headerIntroImageSection,
@@ -233,7 +232,7 @@
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
-    background: #000;
+    background: transparent;
   }
 
   .headerIntroImageSection {
@@ -249,7 +248,7 @@
   }
 
   .editorialPortraitSection {
-    width: min(84vw, 1440px);
+    width: min(78vw, 1320px);
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
@@ -257,7 +256,7 @@
   }
 
   .fourthProductHeroSection {
-    width: min(92vw, 1600px);
+    width: min(84vw, 1440px);
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
@@ -265,7 +264,7 @@
   }
 
   .interviewEditorialSection {
-    width: min(82vw, 1400px);
+    width: min(72vw, 1220px);
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
@@ -277,13 +276,10 @@
   .editorialPortraitImage,
   .fourthProductHeroImage,
   .interviewEditorialImage {
+    width: 100%;
+    max-width: 100%;
     display: block;
     height: auto;
-  }
-
-  .desktopVisualBreathingSection,
-  .mobileVisualBreathingSection {
-    background: #000;
   }
 
   .desktopVisualBreathingSection {
@@ -294,6 +290,7 @@
     padding: 0;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
+    background: #000;
     line-height: 0;
     overflow: hidden;
   }
