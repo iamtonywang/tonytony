@@ -977,19 +977,20 @@
     align-items: center;
     justify-content: center;
     width: 92%;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     text-align: center;
     color: rgba(255, 255, 255, 0.9);
     font-size: 12px;
     font-weight: 300;
-    line-height: 1.42;
-    transform: translateY(18px);
+    line-height: 1.58;
+    transform: translateY(26px);
+    padding-bottom: 28px;
     pointer-events: none;
   }
 
   .mobileCosmeticsTransition p {
-    margin: 0 0 5px;
+    margin: 0 0 8px;
   }
 
   .mobileCosmeticsTransitionTitle {
@@ -1010,9 +1011,18 @@
     line-height: 0;
   }
 
-  .mobileBiologicalTransition,
-  .mobileCosmeticsTransition {
+  .mobileBiologicalTransition {
     line-height: 1.42;
+  }
+
+  .mobileCosmeticsBreathingSection {
+    min-height: 44svh;
+    height: auto;
+    overflow: visible;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: #000;
   }
 
   .cleanThemeSection,
