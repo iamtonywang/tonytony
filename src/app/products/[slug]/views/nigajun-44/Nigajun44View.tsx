@@ -536,7 +536,13 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </div>
 
-      <div className={styles.mobileVisualBreathingSection} />
+      <div className={styles.mobileVisualBreathingSection}>
+        <div className={styles.mobileNoticeContinuation}>
+          <p>얼굴 윤곽이 작아지는 현상이 발생합니다</p>
+          <p>구매 전 신중히 판단 후 구매 결정을 하시길 바랍니다</p>
+          <p>다만 고객의 포괄적 적용은 아니며 개개인의 차이가 있음을 밝힙니다</p>
+        </div>
+      </div>
 
       <section className={styles.editorialPortraitSection}>
         <img
@@ -556,18 +562,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             </p>
             <p className={styles.pcOnly}>
               제품 사용 시 일부 얼굴 지방이 제거 되어 의도치 않게
-            </p>
-            <p>얼굴 윤곽이 작아지는 현상이 발생합니다</p>
-            <p>구매 전 신중히 판단 후 구매 결정을 하시길 바랍니다</p>
-            <p>
-              <span className={styles.pcOnly}>
-                다만 고객의 포괄적 적용은 아니며 개개인의 차이가 있음을 밝힙니다
-              </span>
-              <span className={styles.mobileOnly}>
-                다만 고객의 포괄적 적용은 아니며
-                <br />
-                개개인의 차이가 있음을 밝힙니다
-              </span>
             </p>
           </div>
         </div>
