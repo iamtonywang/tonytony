@@ -279,7 +279,7 @@
     margin-bottom: 0;
     padding-left: 0;
     padding-right: 0;
-    background: #000;
+    background: transparent;
     line-height: 0;
     overflow: hidden;
   }
@@ -1240,5 +1240,10 @@
     max-width: 100%;
     display: block;
     height: auto;
+  }
+
+  .desktopVisualBreathingSection,
+  .mobileVisualBreathingSection {
+    background: transparent;
   }
 }
