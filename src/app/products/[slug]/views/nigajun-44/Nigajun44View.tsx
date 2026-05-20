@@ -513,7 +513,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </section>
 
-      <div className={styles.mobileVisualBreathingSection}>
+      <div className={styles.desktopVisualBreathingSection}>
         <div className={styles.desktopScientificStatement}>
           <p className={styles.desktopScientificStatementTitle}>
             Benjamin Burton! The clock is ticking
@@ -527,7 +527,11 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             식물이지만, 당신의 피부를 가장 잘 아는 단백질. 바르는 것만이 아닌 , 손상된 부위를 추적해서 찾아가는 가장 Smart 한 단백질
           </p>
         </div>
+      </div>
 
+      <div
+        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
+      >
         <div className={styles.mobileTransitionNotice}>
           <p className={styles.mobileTransitionNoticeTitle}>중요공지사항</p>
           <p>제품 구매 전 필히 본문을 필독하고</p>
@@ -536,7 +540,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </div>
 
-      <div className={styles.mobileVisualBreathingSection}>
+      <div
+        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
+      >
         <div className={styles.mobileNoticeContinuation}>
           <p>얼굴 윤곽이 작아지는 현상이 발생합니다</p>
           <p>구매 전 신중히 판단 후 구매 결정을 하시길 바랍니다</p>
