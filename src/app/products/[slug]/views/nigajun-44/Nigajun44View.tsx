@@ -568,16 +568,13 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <div className={styles.desktopCosmeticsStatement}>
           <p className={styles.desktopCosmeticsStatementTitle}>Cosmetics</p>
           <p className={styles.desktopCosmeticsStatementLine}>
-            분야는 표현의 엄격한 제한이 있습니다 TONYWANG은 그 규칙을 지켜야 합니다
+            분야는 표현의 엄격한 제한이 있습니다, TONYWANG은 그 규칙을 지켜야 합니다 특별한 부분이 있다고 해도 표현을 할수가 없습니다
           </p>
           <p className={styles.desktopCosmeticsStatementLine}>
-            특별한 부분이 있다고 해도 표현을 할수가 없습니다 표현을 한다고 해도 고객은 화장품을 믿지 않습니다
+            표현을 한다고 해도 고객은 화장품을 믿지 않습니다, 비참하고 창피한 현실입니다
           </p>
           <p className={styles.desktopCosmeticsStatementLine}>
-            비참하고 창피한 현실입니다 화장품으로 취급받기 싫지만 현실이며 넘어야 할 hurdle입니다
-          </p>
-          <p className={styles.desktopCosmeticsStatementLine}>
-            특별한 존재는 사용자 고객이 만드는 것입니다 TONYWANG이 소리쳐서 되는 것이 아닙니다
+            화장품으로 취급받기 싫지만 현실이며 넘어야 할 hurdle입니다, 특별한 존재는 사용자 고객이 만드는 것입니다, TONYWANG이 소리쳐서 되는 것이 아닙니다
           </p>
           <p className={styles.desktopCosmeticsStatementLine}>
             특별한 존재의 가치 성역을 TONYWANG 은 이룰수 있습니다
