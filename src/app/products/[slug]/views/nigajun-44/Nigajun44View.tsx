@@ -617,8 +617,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             <span className={styles.pcOnly}>
               긴 설명은 필요하지 않아요 거짓은 수치이고 창피한 행위
             </span>
-            <span className={styles.mobileOnly}>
-              긴 설명은 필요하지 않아요
+            <span className={styles.mobileOnly}>긴 설명은 필요하지 않아요</span>
+            <span className={`${styles.mobileOnly} ${styles.mobileHidden}`}>
               <br />
               거짓은 수치이고 창피한 행위
             </span>
@@ -636,11 +636,11 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           <p>나는 거짓이 싫을 뿐입니다</p>
           <p>나를 믿는 사람을 속이며 이익을 만들고 싶지 않아요</p>
           <p>그것은 매우 역겨운 행동입니다</p>
-          <p>
+          <p className={styles.mobileHidden}>
             <span className={styles.fifthEditorialOverlayEnglish}>TONY WANG</span>입니다
           </p>
-          <p>항상 초심을 잃지 않고 같은 마음으로</p>
-          <p>
+          <p className={styles.mobileHidden}>항상 초심을 잃지 않고 같은 마음으로</p>
+          <p className={styles.mobileHidden}>
             <span className={styles.fifthEditorialOverlayEnglish}>Global NO1</span> 이 자리에
             오를것입니다
           </p>
