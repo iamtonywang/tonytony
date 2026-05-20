@@ -446,14 +446,12 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       <div className={styles.desktopVisualBreathingSection}>
         <div className={styles.desktopEditorialStatement}>
           <p className={styles.desktopEditorialStatementTitle}>NIGAJUN44</p>
-
-          <p>Global First Molecular Method Biotechnology Skincare</p>
-
-          <p>Application of plant gene protein separation method</p>
-
-          <p>Ultra pure plant protein molecular biological</p>
-
-          <p>skin application skincare</p>
+          <p className={styles.desktopEditorialStatementLine}>
+            Global First Molecular Method Biotechnology Skincare Application of plant gene protein separation method
+          </p>
+          <p className={styles.desktopEditorialStatementLine}>
+            Ultra pure plant protein molecular biological skin application skincare
+          </p>
         </div>
       </div>
 
