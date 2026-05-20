@@ -743,6 +743,7 @@
     font-weight: 300;
     line-height: 1.42;
     pointer-events: none;
+    transform: translateY(12px);
   }
 
   .mobileBenjaminStatement p {
