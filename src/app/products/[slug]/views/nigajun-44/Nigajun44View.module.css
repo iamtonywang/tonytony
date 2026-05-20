@@ -229,42 +229,17 @@
   .fourthProductHeroSection,
   .interviewEditorialSection {
     position: relative;
+    width: min(86vw, 1480px);
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
     background: transparent;
   }
 
-  .headerIntroImageSection {
-    width: min(95vw, 1680px);
-  }
-
-  .cleanThemeSection {
-    width: min(86vw, 1480px);
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  .editorialPortraitSection {
-    width: min(78vw, 1320px);
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  .fourthProductHeroSection {
-    width: min(84vw, 1440px);
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
+  .cleanThemeSection,
+  .editorialPortraitSection,
+  .fourthProductHeroSection,
   .interviewEditorialSection {
-    width: min(72vw, 1220px);
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
@@ -282,17 +257,23 @@
     height: auto;
   }
 
-  .desktopVisualBreathingSection {
-    display: block;
-    width: 100vw;
-    height: 18vh;
-    margin: 0;
-    padding: 0;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+  .desktopVisualBreathingSection,
+  .mobileVisualBreathingSection {
+    width: min(86vw, 1480px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
     background: #000;
     line-height: 0;
     overflow: hidden;
+  }
+
+  .desktopVisualBreathingSection {
+    display: block;
+    height: 18vh;
   }
 }
 
