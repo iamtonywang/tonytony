@@ -224,13 +224,13 @@
     background:
       radial-gradient(
         circle at top center,
-        rgba(120, 88, 42, 0.1),
-        transparent 38%
+        rgba(186, 132, 58, 0.2),
+        transparent 52%
       ),
       linear-gradient(
         180deg,
-        #090909 0%,
-        #11100d 45%,
+        #0b0b0b 0%,
+        #17130d 45%,
         #0a0a0a 100%
       );
   }
