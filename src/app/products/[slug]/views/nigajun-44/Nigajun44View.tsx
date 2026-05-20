@@ -517,11 +517,6 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             <span className={styles.pcOnly}>
               <span className={styles.elMessiriText}>Global</span> 최초 연구 개발 입니다 이것은 사실입니다 식물 세포 유전자 분리 적용 식물성 원료 결합
             </span>
-            <span className={styles.mobileOnly}>Global 최초 연구 개발 입니다 이것은 사실입니다</span>
-          </p>
-
-          <p className={`${styles.thirdEditorialPcLine} ${styles.thirdEditorialMobileOnlyLine}`}>
-            <span className={styles.mobileOnly}>식물 세포 유전자 분리 적용 식물성 원료 결합</span>
           </p>
 
           <p className={styles.thirdEditorialPcLine}>
@@ -543,7 +538,20 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </section>
 
-      <div className={styles.mobileVisualBreathingSection} />
+      <div className={styles.mobileVisualBreathingSection}>
+        <div className={styles.mobileScientificTransition}>
+          <p>
+            <span className={styles.elMessiriText}>Global</span>
+            {" "}최초 연구 개발입니다
+          </p>
+
+          <p>이것은 사실입니다</p>
+
+          <p>식물세포유전자 분리정제적용</p>
+
+          <p>식물성 원료 결합 적용</p>
+        </div>
+      </div>
 
       <section className={styles.fourthProductHeroSection}>
         <img
