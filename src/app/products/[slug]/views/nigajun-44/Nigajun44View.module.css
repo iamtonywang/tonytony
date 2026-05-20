@@ -997,6 +997,14 @@
     font-family: "El Messiri", serif;
   }
 
+  .mobileBiologicalBreathingSection {
+    margin-top: 22px;
+  }
+
+  .mobileCosmeticsBreathingSection {
+    margin-top: 18px;
+  }
+
   .cleanThemeSection,
   .editorialPortraitSection,
   .fourthProductHeroSection,

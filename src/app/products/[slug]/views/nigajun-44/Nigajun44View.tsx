@@ -700,7 +700,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <div
-        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
+        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection} ${styles.mobileBiologicalBreathingSection}`}
       >
         <div className={styles.mobileBiologicalTransition}>
           <p>내 얼굴은 왜 이러지?</p>
@@ -714,7 +714,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </div>
 
       <div
-        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
+        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection} ${styles.mobileCosmeticsBreathingSection}`}
       >
         <div className={styles.mobileCosmeticsTransition}>
           <p className={styles.mobileCosmeticsTransitionTitle}>Cosmetics</p>
