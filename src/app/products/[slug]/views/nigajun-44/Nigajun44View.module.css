@@ -677,6 +677,10 @@
   display: none;
 }
 
+.mobileBenjaminOverlay {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .mobileScientificBreathingStatement {
     display: flex;
@@ -753,6 +757,34 @@
   .mobileBenjaminStatementTitle {
     font-size: 14px;
     font-weight: 300;
+    font-family: "El Messiri", serif;
+  }
+
+  .mobileBenjaminOverlay {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.42;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .mobileBenjaminOverlay p {
+    margin: 0 0 5px;
+  }
+
+  .mobileBenjaminOverlayTitle {
+    margin-bottom: 10px;
+    font-size: 14px;
     font-family: "El Messiri", serif;
   }
 }
