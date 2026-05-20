@@ -580,7 +580,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
             특별한 존재는 사용자 고객이 만드는 것입니다 TONYWANG이 소리쳐서 되는 것이 아닙니다
           </p>
           <p className={styles.desktopCosmeticsStatementLine}>
-            특별한 존재의 가치 성역은 TONYWANG 은 이룰수 있습니다
+            특별한 존재의 가치 성역을 TONYWANG 은 이룰수 있습니다
           </p>
         </div>
 
