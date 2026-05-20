@@ -956,19 +956,20 @@
     align-items: center;
     justify-content: center;
     width: 92%;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     text-align: center;
     color: rgba(255, 255, 255, 0.9);
     font-size: 12px;
     font-weight: 300;
-    line-height: 1.42;
+    line-height: 1.52;
     transform: translateY(18px);
+    padding-bottom: 24px;
     pointer-events: none;
   }
 
   .mobileBiologicalTransition p {
-    margin: 0 0 5px;
+    margin: 0 0 7px;
   }
 
   .mobileCosmeticsTransition {
@@ -1011,8 +1012,11 @@
     line-height: 0;
   }
 
-  .mobileBiologicalTransition {
-    line-height: 1.42;
+  .mobileBiologicalBreathingSection {
+    min-height: 34svh;
+    height: auto;
+    overflow: visible;
+    background: #000;
   }
 
   .mobileCosmeticsBreathingSection {
