@@ -963,6 +963,7 @@
     font-size: 12px;
     font-weight: 300;
     line-height: 1.42;
+    transform: translateY(18px);
     pointer-events: none;
   }
 
@@ -998,7 +999,7 @@
   }
 
   .mobileBiologicalBreathingSection {
-    margin-top: 22px;
+    margin-top: 0;
   }
 
   .mobileCosmeticsBreathingSection {
