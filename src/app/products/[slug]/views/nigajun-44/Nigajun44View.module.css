@@ -214,9 +214,26 @@
   display: none;
 }
 
+.desktopVisualBreathingSection {
+  display: none;
+}
+
 @media (min-width: 769px) {
   .detailPage {
     gap: 0;
+  }
+
+  .desktopVisualBreathingSection {
+    display: block;
+    width: 100vw;
+    height: 18vh;
+    margin: 0;
+    padding: 0;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: #000;
+    line-height: 0;
+    overflow: hidden;
   }
 
   .cleanThemeSection,

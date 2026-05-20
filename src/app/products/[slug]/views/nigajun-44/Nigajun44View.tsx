@@ -443,6 +443,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </section>
       </section>
 
+      <div className={styles.desktopVisualBreathingSection} />
+
       <section className={styles.cleanThemeSection}>
         <img
           src="/landing-assets/why-note-break-visual-01.webp"
