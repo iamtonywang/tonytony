@@ -210,7 +210,8 @@
 }
 
 .mobileTransitionNotice,
-.mobileScientificTransition {
+.mobileScientificTransition,
+.mobileBiologicalTransition {
   display: none;
 }
 
@@ -946,6 +947,26 @@
     white-space: nowrap;
     display: block;
     text-align: center;
+  }
+
+  .mobileBiologicalTransition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 92%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.42;
+    pointer-events: none;
+  }
+
+  .mobileBiologicalTransition p {
+    margin: 0 0 5px;
   }
 
   .cleanThemeSection,
