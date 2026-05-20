@@ -443,6 +443,8 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </section>
       </section>
 
+      <div className={styles.mobileVisualBreathingSection} />
+
       <div className={styles.desktopVisualBreathingSection}>
         <div className={styles.desktopEditorialStatement}>
           <p className={styles.desktopEditorialStatementTitle}>NIGAJUN44</p>
