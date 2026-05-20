@@ -221,12 +221,6 @@
 @media (min-width: 769px) {
   .detailPage {
     gap: 0;
-    background: linear-gradient(
-      180deg,
-      #f6f1ea 0%,
-      #f3efe7 52%,
-      #efe7db 100%
-    );
   }
 
   .headerIntroImageSection,
