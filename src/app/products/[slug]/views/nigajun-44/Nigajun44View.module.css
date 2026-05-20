@@ -1222,12 +1222,14 @@
 @media (min-width: 769px) {
   .editorialPortraitSection,
   .fourthProductHeroSection,
-  .interviewEditorialSection {
+  .interviewEditorialSection,
+  .desktopVisualBreathingSection,
+  .mobileVisualBreathingSection {
     width: min(86vw, 1480px);
     margin-left: auto;
     margin-right: auto;
-    padding-left: 4vw;
-    padding-right: 4vw;
+    padding-left: 0;
+    padding-right: 0;
     box-sizing: border-box;
   }
 
@@ -1235,7 +1237,8 @@
   .fourthProductHeroImage,
   .interviewEditorialImage {
     width: 100%;
-    height: auto;
+    max-width: 100%;
     display: block;
+    height: auto;
   }
 }
