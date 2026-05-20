@@ -702,6 +702,27 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       <div
         className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
       >
+        <div className={styles.mobileCosmeticsTransition}>
+          <p className={styles.mobileCosmeticsTransitionTitle}>Cosmetics</p>
+
+          <p>분야는 표현의 엄격한 제한이 있습니다,</p>
+          <p>TONYWANG은 그 규칙을 지켜야 합니다,</p>
+          <p>특별한 부분이 있다고 해도 표현을 할수가 없습니다,</p>
+
+          <p>표현을 한다고 해도 고객은 화장품을 믿지 않습니다,</p>
+          <p>비참하고 창피한 현실입니다</p>
+          <p>화장품으로 취급받기 싫지만 현실이며</p>
+          <p>반드시 넘어야 할 hurdle입니다,</p>
+          <p>특별한 존재는 사용자 고객이 만드는 것입니다,</p>
+          <p>TONYWANG이 소리쳐서 되는 것이 아닙니다</p>
+
+          <p>특별한 존재의 가치 성역을 TONY WANG 은 이룰것입니다</p>
+        </div>
+      </div>
+
+      <div
+        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
+      >
         <div className={styles.mobileBiologicalTransition}>
           <p>내 얼굴은 왜 이러지?</p>
           <p>왜 남들보다 늙어 보이고 죽어 버린 피부 같지?</p>
