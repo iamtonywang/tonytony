@@ -221,6 +221,69 @@
 @media (min-width: 769px) {
   .detailPage {
     gap: 0;
+    background: #000;
+  }
+
+  .headerIntroImageSection,
+  .cleanThemeSection,
+  .editorialPortraitSection,
+  .fourthProductHeroSection,
+  .interviewEditorialSection {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .headerIntroImageSection {
+    width: min(95vw, 1680px);
+  }
+
+  .cleanThemeSection {
+    width: min(86vw, 1480px);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .editorialPortraitSection {
+    width: min(84vw, 1440px);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .fourthProductHeroSection {
+    width: min(92vw, 1600px);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .interviewEditorialSection {
+    width: min(82vw, 1400px);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .headerIntroImage,
+  .cleanThemeImage,
+  .editorialPortraitImage,
+  .fourthProductHeroImage,
+  .interviewEditorialImage {
+    display: block;
+    height: auto;
+  }
+
+  .desktopVisualBreathingSection,
+  .mobileVisualBreathingSection {
+    background: #000;
   }
 
   .desktopVisualBreathingSection {
@@ -231,20 +294,8 @@
     padding: 0;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    background: #000;
     line-height: 0;
     overflow: hidden;
-  }
-
-  .cleanThemeSection,
-  .editorialPortraitSection,
-  .fourthProductHeroSection,
-  .interviewEditorialSection {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    background: #000;
   }
 }
 
