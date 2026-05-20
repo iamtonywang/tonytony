@@ -665,6 +665,10 @@
   display: none;
 }
 
+.mobileScientificBreathingHighlight {
+  font-size: inherit;
+}
+
 @media (max-width: 768px) {
   .mobileScientificBreathingStatement {
     display: flex;
@@ -691,6 +695,10 @@
     font-weight: 300;
     line-height: 1.42;
     white-space: nowrap;
+  }
+
+  .mobileScientificBreathingHighlight {
+    font-size: 14px;
   }
 }
 
