@@ -564,15 +564,18 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
           <p>인간 피부 세포막과 가장 유사한 구조(Mimetic) 재 설계</p>
 
-          <p>무너진 피부 공간을 식물성 단백질이</p>
-
-          <p>시멘트처럼 메워주는 작용. 식물이지만,</p>
-
-          <p>당신의 피부를 가장 잘 아는 단백질.</p>
-
-          <p>바르는 것만이 아닌 , 손상된 부위를 추적해서</p>
-
-          <p>찾아가는 가장 Smart 한 단백질</p>
+          <p className={styles.mobileBenjaminSingleLine}>
+            무너진 피부 공간을 식물성 단백질이 시멘트처럼 메워주는 작용
+          </p>
+          <p className={styles.mobileBenjaminSingleLine}>
+            식물이지만, 당신의 피부를 가장 잘 아는 단백질
+          </p>
+          <p className={styles.mobileBenjaminSingleLine}>
+            바르는 것만이 아닌 , 손상된 부위를 추적해서 찾아가는
+          </p>
+          <p className={styles.mobileBenjaminSingleLine}>
+            가장 Smart 한 단백질
+          </p>
         </div>
 
         <div className={styles.thirdNoticeOverlay}>

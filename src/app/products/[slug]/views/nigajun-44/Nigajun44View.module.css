@@ -791,6 +791,11 @@
     font-size: 14px;
     font-family: "El Messiri", serif;
   }
+
+  .mobileBenjaminSingleLine {
+    white-space: nowrap;
+    margin: 0 0 5px;
+  }
 }
 
 @media (min-width: 769px) {
