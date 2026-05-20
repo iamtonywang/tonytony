@@ -214,6 +214,10 @@
   display: none;
 }
 
+.desktopVisualBreathingSection {
+  display: none;
+}
+
 @media (min-width: 769px) {
   .detailPage {
     gap: 0;
@@ -266,6 +270,7 @@
     object-position: center top;
   }
 
+  .desktopVisualBreathingSection,
   .mobileVisualBreathingSection {
     width: min(86vw, 1480px);
     margin-left: auto;
@@ -279,13 +284,9 @@
     overflow: hidden;
   }
 
-  .mobileVisualBreathingSection {
-    display: none;
-    height: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  .desktopVisualBreathingSection {
+    display: block;
+    height: 18vh;
   }
 }
 
@@ -1379,6 +1380,7 @@
   .editorialPortraitSection,
   .fourthProductHeroSection,
   .interviewEditorialSection,
+  .desktopVisualBreathingSection,
   .mobileVisualBreathingSection {
     width: min(86vw, 1480px);
     margin-left: auto;
@@ -1397,8 +1399,146 @@
     height: auto;
   }
 
+  .desktopVisualBreathingSection,
   .mobileVisualBreathingSection {
     background: transparent;
+  }
+}
+
+.desktopEditorialStatement {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .desktopEditorialStatement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-left: 0;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .desktopEditorialStatementTitle {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.2;
+    font-family: "El Messiri", serif;
+  }
+
+  .desktopEditorialStatementLine {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.45;
+    white-space: nowrap;
+    font-family: "El Messiri", serif;
+  }
+}
+
+.desktopScientificStatement {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .desktopScientificStatement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.88);
+    pointer-events: none;
+  }
+
+  .desktopScientificStatementTitle {
+    margin: 0 0 12px;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.2;
+    font-family: "El Messiri", serif;
+  }
+
+  .desktopScientificStatementLine {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.42;
+    white-space: nowrap;
+  }
+}
+
+.desktopCosmeticsStatement {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .desktopCosmeticsStatement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .desktopCosmeticsStatementTitle {
+    margin: 0 0 12px;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.2;
+    font-family: "El Messiri", serif;
+  }
+
+  .desktopCosmeticsStatementLine {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.42;
+    white-space: nowrap;
+  }
+}
+
+.desktopBiologicalStatement {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .mobileVisualBreathingSection:empty {
+    display: none;
+    height: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .desktopBiologicalStatement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.88);
+    pointer-events: none;
+  }
+
+  .desktopBiologicalStatementLine {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.45;
+    white-space: nowrap;
   }
 }
 

@@ -475,6 +475,18 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
       </div>
 
+      <div className={styles.desktopVisualBreathingSection}>
+        <div className={styles.desktopEditorialStatement}>
+          <p className={styles.desktopEditorialStatementTitle}>NIGAJUN44</p>
+          <p className={styles.desktopEditorialStatementLine}>
+            Global First Molecular Method Biotechnology Skincare Application of plant gene protein separation method
+          </p>
+          <p className={styles.desktopEditorialStatementLine}>
+            Ultra pure plant protein molecular biological skin application skincare
+          </p>
+        </div>
+      </div>
+
       <section className={styles.cleanThemeSection}>
         <img
           src="/landing-assets/why-note-break-visual-01.webp"
@@ -502,6 +514,20 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <div className={styles.mobileVisualBreathingSection}>
+        <div className={styles.desktopScientificStatement}>
+          <p className={styles.desktopScientificStatementTitle}>
+            Benjamin Burton! The clock is ticking
+          </p>
+
+          <p className={styles.desktopScientificStatementLine}>
+            인간의 피부 세포막과 가장 유사한 구조(Mimetic)로 재 설계, 무너진 피부 공간을 식물성 단백질이 시멘트처럼 메워주는 작용.
+          </p>
+
+          <p className={styles.desktopScientificStatementLine}>
+            식물이지만, 당신의 피부를 가장 잘 아는 단백질. 바르는 것만이 아닌 , 손상된 부위를 추적해서 찾아가는 가장 Smart 한 단백질
+          </p>
+        </div>
+
         <div className={styles.mobileTransitionNotice}>
           <p className={styles.mobileTransitionNoticeTitle}>중요공지사항</p>
           <p>제품 구매 전 필히 본문을 필독하고</p>
@@ -585,6 +611,22 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <div className={styles.mobileVisualBreathingSection}>
+        <div className={styles.desktopCosmeticsStatement}>
+          <p className={styles.desktopCosmeticsStatementTitle}>Cosmetics</p>
+          <p className={styles.desktopCosmeticsStatementLine}>
+            분야는 표현의 엄격한 제한이 있습니다, TONYWANG은 그 규칙을 지켜야 합니다 특별한 부분이 있다고 해도 표현을 할수가 없습니다
+          </p>
+          <p className={styles.desktopCosmeticsStatementLine}>
+            표현을 한다고 해도 고객은 화장품을 믿지 않습니다, 비참하고 창피한 현실입니다
+          </p>
+          <p className={styles.desktopCosmeticsStatementLine}>
+            화장품으로 취급받기 싫지만 현실이며 넘어야 할 hurdle입니다, 특별한 존재는 사용자 고객이 만드는 것입니다, TONYWANG이 소리쳐서 되는 것이 아닙니다
+          </p>
+          <p className={styles.desktopCosmeticsStatementLine}>
+            특별한 존재의 가치 성역을 TONYWANG 은 이룰수 있습니다
+          </p>
+        </div>
+
         <div className={styles.mobileScientificTransition}>
           <p className={styles.mobileScientificSingleLine}>
             Global 최초 연구 개발입니다 이것은 사실입니다
@@ -638,6 +680,20 @@ export default function Nigajun44View({ product, boardItems }: Props) {
           </Link>
         </div>
       </section>
+
+      <div className={styles.desktopVisualBreathingSection}>
+        <div className={styles.desktopBiologicalStatement}>
+          <p className={styles.desktopBiologicalStatementLine}>
+            내 얼굴은 왜 이러지? 왜 남들보다 늙어 보이고 죽어 버린 피부 같지?
+          </p>
+          <p className={styles.desktopBiologicalStatementLine}>
+            피부가 늙는 건 나이가 아니라, 세포가 사멸된 이유입니다 세포를 사멸시키는 가장 주 원인 독소입니다 독소는 세포를 사멸 시킵니다
+          </p>
+          <p className={styles.desktopBiologicalStatementLine}>
+            사멸 된 세포를 부활 하는 것만이 유일한 근본 해결 책입니다
+          </p>
+        </div>
+      </div>
 
       <section className={styles.interviewEditorialSection}>
         <img
