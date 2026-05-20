@@ -236,6 +236,11 @@
     background: transparent;
   }
 
+  .headerIntroImageSection {
+    min-height: 78vh;
+    height: 78vh;
+  }
+
   .cleanThemeSection,
   .editorialPortraitSection,
   .fourthProductHeroSection,
@@ -246,7 +251,6 @@
     padding-bottom: 0;
   }
 
-  .headerIntroImage,
   .cleanThemeImage,
   .editorialPortraitImage,
   .fourthProductHeroImage,
@@ -255,6 +259,15 @@
     max-width: 100%;
     display: block;
     height: auto;
+  }
+
+  .headerIntroImage {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
   }
 
   .desktopVisualBreathingSection,
@@ -649,13 +662,6 @@
 }
 
 @media (min-width: 769px) {
-  .headerIntroImage {
-    width: 100%;
-    max-height: 120vh;
-    object-fit: cover;
-    object-position: center top;
-  }
-
   .bioFounderOverlay {
     top: 48%;
     gap: 8px;
