@@ -221,6 +221,18 @@
 @media (min-width: 769px) {
   .detailPage {
     gap: 0;
+    background:
+      radial-gradient(
+        circle at top center,
+        rgba(120, 88, 42, 0.1),
+        transparent 38%
+      ),
+      linear-gradient(
+        180deg,
+        #090909 0%,
+        #11100d 45%,
+        #0a0a0a 100%
+      );
   }
 
   .headerIntroImageSection,
