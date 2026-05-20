@@ -930,6 +930,7 @@
 
   .mobileScientificTransition p {
     margin: 0;
+    white-space: nowrap;
   }
 
   .cleanThemeSection,
