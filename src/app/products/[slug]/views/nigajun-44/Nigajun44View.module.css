@@ -8,6 +8,14 @@
   overflow-x: hidden;
 }
 
+.editorialOrangeHeadline {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255, 145, 52, 0.96);
+  letter-spacing: 0.04em;
+  line-height: 1.24;
+}
+
 .headerIntroSection {
   width: 100%;
   display: flex;

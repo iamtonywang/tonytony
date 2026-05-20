@@ -447,7 +447,11 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
       >
         <div className={styles.mobileScientificBreathingStatement}>
-          <p className={styles.mobileScientificBreathingTitle}>NIGAJUN44</p>
+          <p
+            className={`${styles.mobileScientificBreathingTitle} ${styles.editorialOrangeHeadline}`}
+          >
+            NIGAJUN44
+          </p>
 
           <p
             className={`${styles.mobileScientificBreathingLine} ${styles.mobileScientificBreathingHighlight}`}
@@ -477,7 +481,11 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <div className={styles.desktopVisualBreathingSection}>
         <div className={styles.desktopEditorialStatement}>
-          <p className={styles.desktopEditorialStatementTitle}>NIGAJUN44</p>
+          <p
+            className={`${styles.desktopEditorialStatementTitle} ${styles.editorialOrangeHeadline}`}
+          >
+            NIGAJUN44
+          </p>
           <p className={styles.desktopEditorialStatementLine}>
             Global First Molecular Method Biotechnology Skincare Application of plant gene protein separation method
           </p>
@@ -515,7 +523,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <div className={styles.desktopVisualBreathingSection}>
         <div className={styles.desktopScientificStatement}>
-          <p className={styles.desktopScientificStatementTitle}>
+          <p
+            className={`${styles.desktopScientificStatementTitle} ${styles.editorialOrangeHeadline}`}
+          >
             Benjamin Burton! The clock is ticking
           </p>
 
@@ -558,7 +568,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         />
 
         <div className={styles.mobileBenjaminOverlay}>
-          <p className={styles.mobileBenjaminOverlayTitle}>
+          <p
+            className={`${styles.mobileBenjaminOverlayTitle} ${styles.editorialOrangeHeadline}`}
+          >
             Benjamin Burton! The clock is ticking
           </p>
 
@@ -630,7 +642,11 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <div className={styles.mobileVisualBreathingSection}>
         <div className={styles.desktopCosmeticsStatement}>
-          <p className={styles.desktopCosmeticsStatementTitle}>Cosmetics</p>
+          <p
+            className={`${styles.desktopCosmeticsStatementTitle} ${styles.editorialOrangeHeadline}`}
+          >
+            Cosmetics
+          </p>
           <p className={styles.desktopCosmeticsStatementLine}>
             분야는 표현의 엄격한 제한이 있습니다, TONYWANG은 그 규칙을 지켜야 합니다 특별한 부분이 있다고 해도 표현을 할수가 없습니다
           </p>
@@ -703,7 +719,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection} ${styles.mobileBiologicalBreathingSection}`}
       >
         <div className={styles.mobileBiologicalTransition}>
-          <p>내 얼굴은 왜 이러지?</p>
+          <p className={styles.editorialOrangeHeadline}>내 얼굴은 왜 이러지?</p>
           <p>왜 남들보다 늙어 보이고 죽어 버린 피부 같지?</p>
 
           <p>피부가 늙는 건 나이가 아니라, 세포가 사멸된 이유입니다</p>
@@ -717,7 +733,11 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection} ${styles.mobileCosmeticsBreathingSection}`}
       >
         <div className={styles.mobileCosmeticsTransition}>
-          <p className={styles.mobileCosmeticsTransitionTitle}>Cosmetics</p>
+          <p
+            className={`${styles.mobileCosmeticsTransitionTitle} ${styles.editorialOrangeHeadline}`}
+          >
+            Cosmetics
+          </p>
 
           <p>분야는 표현의 엄격한 제한이 있습니다,</p>
           <p>TONYWANG은 그 규칙을 지켜야 합니다,</p>
@@ -737,7 +757,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       <div className={styles.desktopVisualBreathingSection}>
         <div className={styles.desktopBiologicalStatement}>
           <p className={styles.desktopBiologicalStatementLine}>
-            내 얼굴은 왜 이러지? 왜 남들보다 늙어 보이고 죽어 버린 피부 같지?
+            <span className={styles.editorialOrangeHeadline}>내 얼굴은 왜 이러지?</span> 왜 남들보다 늙어 보이고 죽어 버린 피부 같지?
           </p>
           <p className={styles.desktopBiologicalStatementLine}>
             피부가 늙는 건 나이가 아니라, 세포가 사멸된 이유입니다 세포를 사멸시키는 가장 주 원인 독소입니다 독소는 세포를 사멸 시킵니다
