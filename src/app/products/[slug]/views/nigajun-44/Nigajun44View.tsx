@@ -537,10 +537,16 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </div>
 
       <div className={styles.mobileVisualBreathingSection}>
-        <div className={styles.mobileNoticeContinuation}>
-          <p>얼굴 윤곽이 작아지는 현상이 발생합니다</p>
-          <p>구매 전 신중히 판단 후 구매 결정을 하시길 바랍니다</p>
-          <p>다만 고객의 포괄적 적용은 아니며 개개인의 차이가 있음을 밝힙니다</p>
+        <div className={styles.mobileBenjaminStatement}>
+          <p className={styles.mobileBenjaminStatementTitle}>
+            Benjamin Burton! The clock is ticking
+          </p>
+          <p>인간 피부 세포막과 가장 유사한 구조(Mimetic) 재 설계</p>
+          <p>무너진 피부 공간을 식물성 단백질이</p>
+          <p>시멘트처럼 메워주는 작용. 식물이지만,</p>
+          <p>당신의 피부를 가장 잘 아는 단백질.</p>
+          <p>바르는 것만이 아닌 , 손상된 부위를 추적해서</p>
+          <p>찾아가는 가장 Smart 한 단백질</p>
         </div>
       </div>
 
