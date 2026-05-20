@@ -628,12 +628,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </div>
 
         <div className={styles.mobileScientificTransition}>
-          <p>
-            <span className={styles.elMessiriText}>Global</span>
-            {" "}최초 연구 개발입니다
+          <p className={styles.mobileScientificSingleLine}>
+            Global 최초 연구 개발입니다 이것은 사실입니다
           </p>
-
-          <p>이것은 사실입니다</p>
 
           <p>식물세포유전자 분리정제적용</p>
 

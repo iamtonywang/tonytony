@@ -669,6 +669,10 @@
   font-size: inherit;
 }
 
+.mobileScientificSingleLine {
+  margin: 0;
+}
+
 .mobileNoticeContinuation {
   display: none;
 }
@@ -931,6 +935,12 @@
   .mobileScientificTransition p {
     margin: 0;
     white-space: nowrap;
+  }
+
+  .mobileScientificSingleLine {
+    white-space: nowrap;
+    display: block;
+    text-align: center;
   }
 
   .cleanThemeSection,
