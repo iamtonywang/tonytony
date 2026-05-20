@@ -443,7 +443,19 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         </section>
       </section>
 
-      <div className={styles.desktopVisualBreathingSection} />
+      <div className={styles.desktopVisualBreathingSection}>
+        <div className={styles.desktopEditorialStatement}>
+          <p className={styles.desktopEditorialStatementTitle}>NIGAJUN44</p>
+
+          <p>Global First Molecular Method Biotechnology Skincare</p>
+
+          <p>Application of plant gene protein separation method</p>
+
+          <p>Ultra pure plant protein molecular biological</p>
+
+          <p>skin application skincare</p>
+        </div>
+      </div>
 
       <section className={styles.cleanThemeSection}>
         <img
