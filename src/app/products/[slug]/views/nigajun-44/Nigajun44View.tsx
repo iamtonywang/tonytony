@@ -439,23 +439,25 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
             <p className={styles.bioFounderSignature}>May 2026 TONY WANG</p>
 
-            <div className={styles.mobileScientificIntro}>
-              <p className={styles.mobileScientificIntroTitle}>NIGAJUN44</p>
-
-              <p className={styles.mobileScientificIntroLine}>
-                Global First Molecular Method Biotechnology Skincare Application of plant gene protein separation method
-              </p>
-
-              <p className={styles.mobileScientificIntroLine}>
-                Ultra pure plant protein molecular biological skin application skincare
-              </p>
-            </div>
-
           </div>
         </section>
       </section>
 
-      <div className={styles.mobileVisualBreathingSection} />
+      <div
+        className={`${styles.mobileVisualBreathingSection} ${styles.mobileFirstToSecondBreathingSection}`}
+      >
+        <div className={styles.mobileScientificBreathingStatement}>
+          <p className={styles.mobileScientificBreathingTitle}>NIGAJUN44</p>
+
+          <p className={styles.mobileScientificBreathingLine}>
+            Global First Molecular Method Biotechnology Skincare Application of plant gene protein separation method
+          </p>
+
+          <p className={styles.mobileScientificBreathingLine}>
+            Ultra pure plant protein molecular biological skin application skincare
+          </p>
+        </div>
+      </div>
 
       <div className={styles.desktopVisualBreathingSection}>
         <div className={styles.desktopEditorialStatement}>
