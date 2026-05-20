@@ -632,11 +632,14 @@
     gap: 8px;
   }
 
-  .bioFounderIntro,
+  .bioFounderIntro {
+    font-size: 17px;
+  }
+
   .bioFounderBody,
   .bioFounderBody p,
   .bioFounderSignature {
-    font-size: 19px;
+    font-size: 14px;
   }
 
   .bioFounderIntro,
