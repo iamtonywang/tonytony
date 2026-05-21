@@ -1,0 +1,600 @@
+﻿      videoEl.preload = "metadata";
+      videoEl.setAttribute("aria-hidden", "true");
+      videoEl.addEventListener("loadedmetadata", () => {
+        const duration = videoEl.duration;
+        if (Number.isFinite(duration) && duration > 0) {
+          setVideoDuration(duration);
+        }
+      });
+      videoEl.addEventListener("play", () => {
+        setIsPlaying(true);
+      });
+      videoEl.addEventListener("pause", () => {
+        setIsPlaying(false);
+      });
+      videoEl.addEventListener("ended", () => {
+        try {
+          videoEl.pause();
+          videoEl.currentTime = 0;
+        } catch {}
+        setHideText(true);
+        setActiveLineIndex(0);
+        setLinePhase("enter");
+        setShowFinalBlock(false);
+        setIsPlaying(false);
+      });
+
+      // connect asset source (single pc asset as default)
+      videoEl.src = "/landing-assets/products-hero-pc.mp4";
+
+      videoOverlayRef.current.appendChild(videoEl);
+      hasMountedVideo = true;
+    };
+
+    const rafId = requestAnimationFrame(() => {
+      if (!heroVisualRef.current) {
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const [entry] = entries;
+          if (entry && entry.isIntersecting && !hasScheduled) {
+            hasScheduled = true;
+            timeoutId = window.setTimeout(() => {
+              mountVideoOverlay();
+              observer.disconnect();
+            }, 1000);
+          }
+        },
+        { threshold: 0.2 }
+      );
+
+      observer.observe(heroVisualRef.current);
+    });
+
+    return () => {
+      isMounted = false;
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hideText || !isPlaying) {
+      setActiveLineIndex(0);
+      setLinePhase("enter");
+      setShowFinalBlock(false);
+      return;
+    }
+
+    if (videoDuration === null) {
+      return;
+    }
+
+    if (!Number.isFinite(videoDuration) || videoDuration <= 0) {
+      return;
+    }
+
+    if (showFinalBlock) {
+      return;
+    }
+
+    const isLast = activeLineIndex >= HERO_SEQUENCE.length - 1;
+    const availableDuration = Math.max(8, videoDuration - 5);
+    const stepDuration = availableDuration / HERO_SEQUENCE.length;
+    const exitAt = stepDuration * 0.72;
+    const nextAt = stepDuration;
+
+    const lineVisibleMs = Math.max(300, Math.round(exitAt * 1000));
+    const nextStepMs = Math.max(lineVisibleMs + 100, Math.round(nextAt * 1000));
+
+    setLinePhase("enter");
+
+    const exitTimer = window.setTimeout(() => {
+      setLinePhase("exit");
+    }, lineVisibleMs);
+
+    const nextTimer = window.setTimeout(() => {
+      if (isLast) {
+        setShowFinalBlock(true);
+        return;
+      }
+
+      setActiveLineIndex((prev) => Math.min(prev + 1, HERO_SEQUENCE.length - 1));
+    }, nextStepMs);
+
+    return () => {
+      clearTimeout(exitTimer);
+      clearTimeout(nextTimer);
+    };
+  }, [hideText, isPlaying, activeLineIndex, showFinalBlock, videoDuration]);
+
+  return (
+    <section className={styles.heroSection}>
+      <div ref={heroVisualRef} className={styles.heroVisual}>
+        <div className={styles.videoArea}>
+          <div
+            className={styles.backgroundLayer}
+            style={{ backgroundImage: "url('/landing-assets/nigajun-44-hero-pc.webp.webp')" }}
+          />
+          <div ref={videoOverlayRef} className={styles.videoOverlay} aria-hidden="true" />
+        </div>
+        <div className={styles.heroOverlay}>
+          <h1 className={styles.productTitle}>
+            {product?.productName ?? "NIGAJUN 44"}
+          </h1>
+          {!hideText && (
+            <div className={styles.heroFallbackText}>
+              <p>TONYWANG</p>
+              <p>NIGAJUN 44</p>
+              <p>Plant Cell Gene Recombination</p>
+              <p>Protein Laboratory</p>
+            </div>
+          )}
+          {hideText && (
+            <div className={styles.heroMotionOverlay}>
+              {isPlaying && !showFinalBlock ? (
+                <p
+                  className={`${styles.heroSequenceLine} ${
+                    linePhase === "enter" ? styles.heroSequenceEnter : styles.heroSequenceExit
+                  } ${
+                    HERO_EMPHASIS.includes(HERO_SEQUENCE[activeLineIndex])
+                      ? styles.heroSequenceEmphasis
+                      : ""
+                  }`}
+                >
+                  {HERO_SEQUENCE[activeLineIndex]}
+                </p>
+              ) : isPlaying && showFinalBlock ? (
+                <div className={styles.heroFinalBlock}>
+                  {HERO_FINAL_BLOCK.split("\n").map((line, idx) => (
+                    <p
+                      key={`${line}-${idx}`}
+                      className={`${styles.heroFinalLine} ${
+                        HERO_EMPHASIS.includes(line) ? styles.heroFinalLineEmphasis : ""
+                      }`}
+                    >
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          )}
+          <button
+            type="button"
+            className={styles.playButton}
+            onClick={async () => {
+              if (isTogglePendingRef.current) {
+                return;
+              }
+
+              const video = videoOverlayRef.current?.querySelector("video") as HTMLVideoElement | null;
+              if (!video) {
+                return;
+              }
+
+              isTogglePendingRef.current = true;
+              try {
+                if (video.paused || video.ended) {
+                  if (video.ended) {
+                    try {
+                      video.currentTime = 0;
+                    } catch {}
+                  }
+                  video.muted = false;
+                  await video.play();
+                  setHideText(true);
+                  setIsPlaying(true);
+                  setActiveLineIndex(0);
+                  setLinePhase("enter");
+                  setShowFinalBlock(false);
+                } else {
+                  video.pause();
+                  try {
+                    video.currentTime = 0;
+                  } catch {}
+                  setIsPlaying(false);
+                  setActiveLineIndex(0);
+                  setLinePhase("enter");
+                  setShowFinalBlock(false);
+                }
+              } catch (error) {
+                if (!(error instanceof DOMException && error.name === "AbortError")) {
+                  console.error(error);
+                }
+                setIsPlaying(false);
+              } finally {
+                isTogglePendingRef.current = false;
+              }
+            }}
+            aria-label="Toggle video playback"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BoardSection({
+  boardItems,
+  productSlug,
+}: {
+  boardItems: ProductBoardItem[];
+  productSlug: string | null;
+}) {
+  const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
+  const [boardTab, setBoardTab] = useState<"inquiry" | "review">("inquiry");
+  const [showInquiryForm, setShowInquiryForm] = useState(false);
+  const [inquiryContent, setInquiryContent] = useState("");
+  const inquirySendingRef = useRef(false);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [reviewContent, setReviewContent] = useState("");
+  const reviewSendingRef = useRef(false);
+  const [inquiryIsPrivate, setInquiryIsPrivate] = useState(false);
+  const [reviewIsPrivate, setReviewIsPrivate] = useState(false);
+
+  const filteredBoardItems = useMemo(() => {
+    if (boardTab === "inquiry") {
+      return boardItems.filter((i) => i.type === "Inquiry");
+    }
+    return boardItems.filter((i) => i.type === "Review");
+  }, [boardItems, boardTab]);
+
+  useEffect(() => {
+    setOpenBoardIndex(null);
+  }, [boardTab]);
+
+  const handleInquirySubmit = async () => {
+    const slug = productSlug?.trim() ?? "";
+    if (!slug) {
+      window.alert("?곹뭹 ?뺣낫媛 ?놁뒿?덈떎.");
+      return;
+    }
+    const content = inquiryContent.trim();
+    if (!content) return;
+    if (inquirySendingRef.current) return;
+    inquirySendingRef.current = true;
+    try {
+      const res = await fetch("/api/products/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, content, isPrivate: inquiryIsPrivate }),
+      });
+      const data = (await res.json()) as { ok?: boolean; message?: string };
+      if (data.ok) {
+        setInquiryIsPrivate(false);
+        window.location.reload();
+        return;
+      }
+      window.alert(data.message ?? "??μ뿉 ?ㅽ뙣?덉뒿?덈떎.");
+    } catch {
+      window.alert("?ㅽ듃?뚰겕 ?ㅻ쪟媛 諛쒖깮?덉뒿?덈떎.");
+    } finally {
+      inquirySendingRef.current = false;
+    }
+  };
+
+  const handleReviewSubmit = async () => {
+    const slug = productSlug?.trim() ?? "";
+    if (!slug) {
+      window.alert("?곹뭹 ?뺣낫媛 ?놁뒿?덈떎.");
+      return;
+    }
+    const content = reviewContent.trim();
+    if (!content) return;
+    if (reviewSendingRef.current) return;
+    reviewSendingRef.current = true;
+    try {
+      const res = await fetch("/api/products/review", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, content, isPrivate: reviewIsPrivate }),
+      });
+      const data = (await res.json()) as { ok?: boolean; message?: string };
+      if (data.ok) {
+        setReviewIsPrivate(false);
+        window.location.reload();
+        return;
+      }
+      window.alert(data.message ?? "由щ럭 ?깅줉???ㅽ뙣?덉뒿?덈떎.");
+    } catch {
+      window.alert("?ㅽ듃?뚰겕 ?ㅻ쪟媛 諛쒖깮?덉뒿?덈떎.");
+    } finally {
+      reviewSendingRef.current = false;
+    }
+  };
+
+  return (
+    <>
+      <div className={styles.boardTopHeader}>
+        <h2 className={styles.boardTopTitle}>
+          <span className={styles.boardTitleBrand}>TONYWANG</span>
+          <span className={styles.boardTitleSub}>Ask me Questions</span>
+        </h2>
+        <div className={styles.boardNotice}>
+          <div className={styles.policyTitle}>Policy</div>
+
+          <p>
+            <span className={styles.policyHighlight}>Inquiry</span>
+            &nbsp;Login ?ъ슜???ъ슜 ?⑸땲??          </p>
+
+          <p>
+            <span className={styles.policyHighlight}>Review</span>
+            &nbsp;?쒗뭹 援ъ엯 ?좎?留?媛???⑸땲??          </p>
+        </div>
+        <div className={styles.boardActions}>
+          <button
+            type="button"
+            className={`${styles.boardActionBtn} ${boardTab === "inquiry" ? styles.boardActionBtnActive : ""}`}
+            onClick={() => {
+              setBoardTab("inquiry");
+              setShowInquiryForm(true);
+            }}
+          >
+            Inquiry
+          </button>
+          <button
+            type="button"
+            className={`${styles.boardActionBtn} ${boardTab === "review" ? styles.boardActionBtnActive : ""}`}
+            onClick={() => {
+              setBoardTab("review");
+              setShowReviewForm(true);
+            }}
+          >
+            Review
+          </button>
+        </div>
+      </div>
+
+      {boardTab === "inquiry" && showInquiryForm ? (
+        <div
+          style={{
+            maxWidth: 720,
+            margin: "0 auto 16px",
+            padding: "0 16px",
+            color: "#fff",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          <label style={{ display: "block", marginBottom: 8, fontSize: 13 }}>臾몄쓽 ?묒꽦</label>
+          <textarea
+            value={inquiryContent}
+            onChange={(e) => setInquiryContent(e.target.value)}
+            rows={5}
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              minHeight: 200,
+              padding: 16,
+              fontSize: 16,
+              lineHeight: 1.7,
+              borderRadius: 4,
+              background: "transparent",
+              color: "#ffffff",
+              border: "1px solid rgba(255,255,255,0.2)",
+              resize: "none",
+            }}
+            placeholder="?댁슜???낅젰?섏꽭??
+          />
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              marginTop: 8,
+              fontSize: 13,
+              cursor: "pointer",
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={inquiryIsPrivate}
+              onChange={(e) => setInquiryIsPrivate(e.target.checked)}
+            />
+            鍮꾨?湲
+          </label>
+          <div style={{ marginTop: 8, display: "flex", gap: 8 }}>
+            <button type="button" onClick={handleInquirySubmit} style={{ padding: "6px 14px", fontSize: 14, cursor: "pointer" }}>
+              ?묒꽦
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {boardTab === "review" && showReviewForm ? (
+        <div
+          style={{
+            maxWidth: 720,
+            margin: "0 auto 16px",
+            padding: "0 16px",
+            color: "#fff",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          <label style={{ display: "block", marginBottom: 8, fontSize: 13 }}>由щ럭 ?묒꽦</label>
+          <textarea
+            value={reviewContent}
+            onChange={(e) => setReviewContent(e.target.value)}
+            rows={5}
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              minHeight: 200,
+              padding: 16,
+              fontSize: 16,
+              lineHeight: 1.7,
+              borderRadius: 4,
+              background: "transparent",
+              color: "#ffffff",
+              border: "1px solid rgba(255,255,255,0.2)",
+              resize: "none",
+            }}
+            placeholder="由щ럭 ?댁슜???낅젰?섏꽭??
+          />
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              marginTop: 8,
+              fontSize: 13,
+              cursor: "pointer",
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={reviewIsPrivate}
+              onChange={(e) => setReviewIsPrivate(e.target.checked)}
+            />
+            鍮꾨?湲
+          </label>
+          <div style={{ marginTop: 8, display: "flex", gap: 8 }}>
+            <button type="button" onClick={handleReviewSubmit} style={{ padding: "6px 14px", fontSize: 14, cursor: "pointer" }}>
+              由щ럭 ?깅줉
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      <section className={styles.boardSection}>
+        <div className={styles.boardList}>
+          <div className={styles.boardItem}>
+            <button
+              type="button"
+              className={styles.boardRow}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                width: "100%",
+              }}
+              onClick={() => setOpenBoardIndex((prev) => (prev === 0 ? null : 0))}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  flexShrink: 0,
+                  minWidth: 110,
+                }}
+              >
+                <span className={styles.boardType}>[{PINNED_NOTICE.type}]</span>
+                <span className={styles.boardPreviewAuthor}>
+                  {formatBoardRowAuthor(PINNED_NOTICE.author)}
+                </span>
+              </div>
+              <div
+                className={styles.boardPreviewText}
+                style={{
+                  flex: 1,
+                  minWidth: 0,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {PINNED_NOTICE.preview}
+              </div>
+            </button>
+            {openBoardIndex === 0 ? (
+              <div className={styles.boardExpanded}>
+                <div className={styles.boardMeta}>{PINNED_NOTICE.type}</div>
+                <div className={styles.boardDate}>{PINNED_NOTICE.date}</div>
+                <div className={styles.boardContent}>{PINNED_NOTICE.content}</div>
+              </div>
+            ) : null}
+          </div>
+
+          {filteredBoardItems.map((item, i) => {
+            const rowIndex = i + 1;
+            const preview =
+              item.isPrivate
+                ? "鍮꾨?湲?낅땲??
+                : item.content.length > 8
+                  ? item.content.slice(0, 8) + "..."
+                  : item.content;
+            return (
+              <div key={item.id} className={styles.boardItem}>
+                <button
+                  type="button"
+                  className={styles.boardRow}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                    width: "100%",
+                  }}
+                  onClick={() => setOpenBoardIndex((prev) => (prev === rowIndex ? null : rowIndex))}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      flexShrink: 0,
+                      minWidth: 110,
+                    }}
+                  >
+                    <span className={styles.boardType}>[{item.type}]</span>
+                    <span className={styles.boardPreviewAuthor}>
+                      {item.isPrivate ? maskBoardAuthor(item.author) : item.author}
+                    </span>
+                  </div>
+                  <div
+                    className={styles.boardPreviewText}
+                    style={{
+                      flex: 1,
+                      minWidth: 0,
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {preview}
+                  </div>
+                </button>
+                {openBoardIndex === rowIndex ? (
+                  <div className={styles.boardExpanded}>
+                    <div className={styles.boardMeta}>{item.type}</div>
+                    <div className={styles.boardDate}>{item.date}</div>
+                    <div className={styles.boardContent}>
+                      {item.isPrivate && !item.canViewFullContent ? (
+                        "鍮꾨?湲?낅땲??
+                      ) : (
+                        <>
+                          <div>{item.content}</div>
+                          {item.answerContent && (
+                            <div style={{ marginTop: 8 }}>
+                              <strong>?듬?</strong>: {item.answerContent}
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    </>
+  );
+}
+
+export default function Nigajun44View({ product, boardItems }: Props) {
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
+
+  return (
+    <article className={styles.detailPage}>
+      <HeroSection product={product} />
+      <div className={styles.detailTopGlowLine} aria-hidden="true" />
+
+      <section className={styles.detailIntroSection}>
+        <h1 className={styles.detailIntroTitle}>TONYWANG</h1>
+        <h2 className={styles.detailIntroLead}>NIGAJUN 44</h2>

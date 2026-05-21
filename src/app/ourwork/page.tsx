@@ -169,7 +169,7 @@ export default function OurWorkPage() {
 
           <div className={styles.ourWorkDropletClosingCopy}>
             <h2 className={styles.ourWorkDropletClosingTitle}>
-              하나의 메커니즘으로, 변혁을 완성하는 것은
+              하나의 메커니즘으로 변혁을 완성하는 것은
             </h2>
             <p className={styles.ourWorkDropletClosingBody}>
               창조적 물질만이 할수 있는것이다
