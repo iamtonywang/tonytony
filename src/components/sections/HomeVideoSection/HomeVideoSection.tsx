@@ -108,7 +108,7 @@ export default function HomeVideoSection() {
           observer.disconnect();
         }
       },
-      { root: null, rootMargin: "120px 0px", threshold: 0.01 }
+      { root: null, rootMargin: "0px 0px", threshold: 0.01 }
     );
 
     observer.observe(root);

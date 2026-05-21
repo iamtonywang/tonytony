@@ -6,6 +6,8 @@ import HomeVideoSection from "@/components/sections/HomeVideoSection/HomeVideoSe
 type ThemeBanner = {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 };
 
 type ThemeSection = {
@@ -15,6 +17,8 @@ type ThemeSection = {
   body: ReactNode | null;
 };
 
+const THEME_BANNER_SIZES = "(max-width: 768px) 96vw, min(980px, 88vw)";
+
 const HOME_THEME_SECTIONS: ThemeSection[] = [
   {
     number: "01",
@@ -22,6 +26,8 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     banner: {
       src: "/landing-assets/home-theme-clean-01.webp",
       alt: "WHY NOW editorial banner",
+      width: 1942,
+      height: 809,
     },
     body: (
       <>
@@ -43,6 +49,8 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     banner: {
       src: "/landing-assets/home-theme-clean-02.webp",
       alt: "28 years editorial banner",
+      width: 1942,
+      height: 809,
     },
     body: (
       <>
@@ -71,6 +79,8 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     banner: {
       src: "/landing-assets/home-theme-clean-03.webp",
       alt: "Proteo Phyto Complex editorial banner",
+      width: 1938,
+      height: 811,
     },
     body: (
       <>
@@ -98,6 +108,8 @@ const HOME_THEME_SECTIONS: ThemeSection[] = [
     banner: {
       src: "/landing-assets/home-theme-clean-04.webp",
       alt: "May 2026 TONY WANG editorial banner",
+      width: 1938,
+      height: 812,
     },
     body: null,
   },
@@ -125,6 +137,9 @@ export default function HomePage() {
                 src={theme.banner.src}
                 alt={theme.banner.alt}
                 className={styles.themeBannerImage}
+                width={theme.banner.width}
+                height={theme.banner.height}
+                sizes={THEME_BANNER_SIZES}
                 loading={index === 0 ? "eager" : "lazy"}
                 fetchPriority={index === 0 ? "high" : "low"}
                 decoding="async"
