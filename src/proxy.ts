@@ -28,16 +28,29 @@ function getSupabaseAuthCookies(request: NextRequest): string[] {
 		.map((cookie) => cookie.name);
 }
 
-/** 문서·페이지 요청만 방문 기록. 정적 에셋·미디어 경로는 제외. */
+/** 정적·미디어 요청: auth(getClaims/getUser)·방문 로그·visitor 쿠키 설정 없이 통과 */
+const STATIC_ASSET_EXTENSION =
+	/\.(mp4|webm|mov|m4v|jpe?g|png|webp|gif|svg|ico|avif|css|js|map|woff2?|ttf|otf)$/i;
+
+function shouldBypassProxyProcessing(pathname: string): boolean {
+	if (pathname.startsWith("/_next/static") || pathname.startsWith("/_next/image")) {
+		return true;
+	}
+	if (pathname === "/favicon.ico") {
+		return true;
+	}
+	if (pathname.startsWith("/landing-assets/")) {
+		return true;
+	}
+	return STATIC_ASSET_EXTENSION.test(pathname);
+}
+
+/** 문서·페이지 요청만 방문 기록. 정적 에셋·미디어·API 경로는 제외. */
 function isDocumentPathForVisitLog(pathname: string): boolean {
+	if (shouldBypassProxyProcessing(pathname)) {
+		return false;
+	}
 	if (pathname.startsWith("/api") || pathname.startsWith("/_next")) {
-		return false;
-	}
-	if (pathname.startsWith("/landing-assets")) {
-		return false;
-	}
-	const lower = pathname.toLowerCase();
-	if (/\.(mp4|webp|jpe?g|png|gif|svg|ico|avif|woff2?|css|js|map)$/.test(lower)) {
 		return false;
 	}
 	return true;
@@ -98,6 +111,12 @@ async function recordSiteVisitSafe(params: {
 }
 
 export async function proxy(request: NextRequest) {
+	const pathname = request.nextUrl.pathname;
+
+	if (shouldBypassProxyProcessing(pathname)) {
+		return NextResponse.next({ request });
+	}
+
 	let supabaseResponse = NextResponse.next({
 		request,
 	});
@@ -177,7 +196,6 @@ export async function proxy(request: NextRequest) {
 		}
 	}
 
-	const pathname = request.nextUrl.pathname;
 	const shouldRecordVisit = isDocumentPathForVisitLog(pathname);
 
 	if (shouldRecordVisit) {
@@ -218,6 +236,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
 	matcher: [
-		"/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+		"/((?!_next/static|_next/image|favicon.ico|landing-assets/|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|avif|mp4|webm|mov|m4v|css|js|map|woff2?|ttf|otf)$).*)",
 	],
 };
