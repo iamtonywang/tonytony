@@ -1,0 +1,25 @@
+.hairline {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.heroSection {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  line-height: 0;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: center center;
+}
