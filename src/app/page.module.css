@@ -48,3 +48,41 @@
   object-fit: contain;
   object-position: center center;
 }
+
+.brandSection {
+  width: 100%;
+  margin: 0;
+  padding: clamp(24px, 4vw, 32px) clamp(20px, 6vw, 48px) clamp(28px, 5vw, 40px);
+  box-sizing: border-box;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.brandName {
+  margin: 0;
+  font-family: "El Messiri", serif;
+  font-size: 28px;
+  color: #111111;
+}
+
+.brandCopy {
+  margin: 0;
+  font-family: "El Messiri", serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  text-align: center;
+  color: #111111;
+}
+
+.brandName + .brandCopy {
+  margin-top: 14px;
+}
+
+.brandCopy + .brandCopy {
+  margin-top: 8px;
+}
+
+.brandCopyLead.brandCopy {
+  margin-top: 22px;
+}
