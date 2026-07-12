@@ -15,6 +15,31 @@
   line-height: 0;
 }
 
+.heroMediaWrap {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+}
+
+.heroBrandOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.heroBrandTitle {
+  margin: 0;
+  font-family: "El Messiri", serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+}
+
 .heroImage {
   width: 100%;
   height: auto;
