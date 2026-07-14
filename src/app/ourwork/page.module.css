@@ -1,4 +1,64 @@
 .ourWorkPage {
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
   background-color: #ffffff;
+}
+
+.hairline {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #ff7f00;
+  flex-shrink: 0;
+}
+
+.statementSection {
+  width: 100%;
+  margin: 0;
+  padding: clamp(48px, 8vw, 72px) clamp(20px, 6vw, 48px) clamp(64px, 10vw, 96px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.statementMark {
+  margin: 0;
+  font-family: "El Messiri", serif;
+  font-size: 37px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  color: #111111;
+}
+
+.statementLine {
+  margin: 0;
+  font-family: "El Messiri", serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  text-align: center;
+  color: #111111;
+}
+
+.statementMark + .statementLine {
+  margin-top: 20px;
+}
+
+.statementLine + .statementLine {
+  margin-top: 14px;
+}
+
+.statementFinale {
+  margin-top: 48px;
+  margin-bottom: 0;
+}
+
+.statementLine + .statementFinale {
+  margin-top: 48px;
 }
