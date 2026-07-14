@@ -6,7 +6,8 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #111111;
 }
 
 .text {

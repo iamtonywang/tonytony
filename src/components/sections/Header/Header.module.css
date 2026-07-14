@@ -1,6 +1,8 @@
 .header {
   width: 100%;
   padding: 16px 12px;
+  background-color: #ffffff;
+  color: #111111;
 }
 
 .nav {
