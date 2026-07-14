@@ -22,7 +22,6 @@
 .statementSection {
   width: 100%;
   margin: 0;
-  flex: 1;
   padding: clamp(40px, 6vh, 80px) clamp(20px, 6vw, 48px) 0;
   box-sizing: border-box;
   display: flex;
