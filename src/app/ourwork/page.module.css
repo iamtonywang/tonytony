@@ -1,5 +1,4 @@
 .ourWorkPage {
-  min-height: 100vh;
   margin: 0;
   padding: 0;
   background-color: #ffffff;
@@ -11,14 +10,14 @@
   margin: 0;
   padding: 0;
   border: 0;
-  background-color: #ff7f00;
+  background-color: #111111;
   flex-shrink: 0;
 }
 
 .statementSection {
   width: 100%;
   margin: 0;
-  padding: clamp(48px, 8vw, 72px) clamp(20px, 6vw, 48px) clamp(64px, 10vw, 96px);
+  padding: clamp(40px, 6vw, 56px) clamp(20px, 6vw, 48px) clamp(28px, 4.5vw, 40px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -47,18 +46,17 @@
 }
 
 .statementMark + .statementLine {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 
 .statementLine + .statementLine {
-  margin-top: 14px;
+  margin-top: 8px;
 }
 
 .statementFinale {
-  margin-top: 48px;
   margin-bottom: 0;
 }
 
 .statementLine + .statementFinale {
-  margin-top: 48px;
+  margin-top: 20px;
 }
