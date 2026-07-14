@@ -8,4 +8,25 @@
   height: 1px;
   background: #D8D5CF;
   flex-shrink: 0;
+  opacity: 0.75;
+  transform: scaleY(0.5);
+  transform-origin: left center;
+  animation: topHairlineDraw 1.2s ease-out 1 both;
+}
+
+@keyframes topHairlineDraw {
+  0% {
+    transform: scaleX(0) scaleY(0.5);
+  }
+
+  100% {
+    transform: scaleX(1) scaleY(0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topHairline {
+    animation: none;
+    transform: scaleY(0.5);
+  }
 }
