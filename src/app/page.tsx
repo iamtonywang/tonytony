@@ -10,8 +10,7 @@ export default function HomePage() {
           className={styles.heroImage}
           src="/landing-assets/hero-founder.webp"
           alt=""
-          width={1254}
-          height={1254}
+          fill
           priority
           sizes="100vw"
         />

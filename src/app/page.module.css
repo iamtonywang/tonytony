@@ -1,5 +1,7 @@
 .homePage {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   background-color: #5f5f5f;
 }
 
@@ -68,32 +70,39 @@
 
 .hero {
   position: relative;
-  width: calc(100% - 24px);
-  margin-inline: auto;
-  margin-block: 0;
+  flex: 1;
+  width: 100%;
+  margin: 0;
   padding: 0;
+  max-width: none;
   overflow: hidden;
   line-height: 0;
+  /* Header ≈ padding 32 + menu 36 + gap 8 + brand ~21 + topRow mb 12 ≈ 109px */
+  min-height: calc(100svh - 109px);
 }
 
 .heroImage {
   display: block;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
 }
 
 @media (min-width: 769px) {
+  .homePage {
+    min-height: 0;
+  }
+
   .hero {
+    flex: none;
     width: 100%;
-    margin-inline: 0;
-    overflow: hidden;
+    margin: 0;
+    min-height: 0;
+    aspect-ratio: 1 / 1;
   }
 
   .heroImage {
-    width: 100%;
-    height: auto;
+    object-fit: cover;
   }
 }
 
@@ -110,6 +119,7 @@
   color: #ffffff;
   line-height: normal;
   pointer-events: none;
+  z-index: 1;
 }
 
 .heroTitle,
