@@ -8,7 +8,7 @@ export default function HomePage() {
       <div className={styles.hero}>
         <Image
           className={styles.heroImage}
-          src="/landing-assets/hero-founder.webp"
+          src="/landing-assets/hero-founder-portrait.webp"
           alt=""
           fill
           priority
