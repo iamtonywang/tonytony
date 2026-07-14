@@ -3,3 +3,46 @@
   min-height: 100vh;
   background-color: #5F5F5F;
 }
+
+.topHairline {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+  position: relative;
+  overflow: hidden;
+  transform: scaleY(0.5);
+  transform-origin: center;
+}
+
+.topHairline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120px;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+  animation: whyHairlineGlow 2.4s ease-in-out 1;
+  pointer-events: none;
+}
+
+@keyframes whyHairlineGlow {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(100vw + 240px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topHairline::after {
+    animation: none;
+  }
+}

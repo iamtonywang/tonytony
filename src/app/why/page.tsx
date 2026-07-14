@@ -1,5 +1,9 @@
 import styles from "./page.module.css";
 
 export default function WhyPage() {
-  return <div className={styles.whyPage} />;
+  return (
+    <div className={styles.whyPage}>
+      <div className={styles.topHairline} aria-hidden />
+    </div>
+  );
 }
