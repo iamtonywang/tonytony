@@ -4,6 +4,8 @@
 }
 
 .topHairline {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   height: 1px;
   background: #D8D5CF;
@@ -12,6 +14,24 @@
   transform: scaleY(0.5);
   transform-origin: left center;
   animation: topHairlineDraw 1.2s ease-out 1 both;
+}
+
+.topHairline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0)
+  );
+  transform: translateX(-100%);
+  animation: topHairlineGlow 2.5s ease-in-out 1 both;
 }
 
 @keyframes topHairlineDraw {
@@ -24,9 +44,24 @@
   }
 }
 
+@keyframes topHairlineGlow {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .topHairline {
     animation: none;
     transform: scaleY(0.5);
+  }
+
+  .topHairline::after {
+    animation: none;
+    content: none;
   }
 }
