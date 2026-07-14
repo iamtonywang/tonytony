@@ -65,8 +65,10 @@ export default async function ProductsPage() {
           </div>
         </div>
       </section>
-      <div className={listStyles.productGlowLine} aria-hidden="true" />
-      <ProductListSection />
+      <div className={styles.afterHero}>
+        <div className={listStyles.productGlowLine} aria-hidden="true" />
+        <ProductListSection />
+      </div>
     </>
   );
 }
