@@ -51,11 +51,9 @@
 
 .brandSection {
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+  margin: 0;
   padding: 72px 32px 84px;
   box-sizing: border-box;
-  background-color: #f7f6f3;
   text-align: center;
 }
 
