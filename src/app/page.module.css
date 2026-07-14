@@ -122,6 +122,12 @@
   z-index: 1;
 }
 
+@media (max-width: 768px) {
+  .heroOverlay {
+    padding: 14vh 20px 0;
+  }
+}
+
 .heroTitle,
 .heroSubtitle,
 .heroQuestion,
