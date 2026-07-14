@@ -23,7 +23,7 @@
   width: 100%;
   margin: 0;
   flex: 1;
-  padding: 0 clamp(20px, 6vw, 48px);
+  padding: clamp(120px, 18vh, 220px) clamp(20px, 6vw, 48px) 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
