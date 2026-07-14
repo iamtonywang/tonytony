@@ -31,7 +31,7 @@ export default function OurWorkPage() {
           You have to build something the world has never seen before.
         </p>
       </section>
-      <div className={styles.hairline} aria-hidden />
+      <div className={`${styles.hairline} ${styles.hairlineBottom}`} aria-hidden />
     </div>
   );
 }

@@ -19,6 +19,10 @@
   flex-shrink: 0;
 }
 
+.hairlineBottom {
+  margin-top: auto;
+}
+
 .statementSection {
   width: 100%;
   margin: 0;
