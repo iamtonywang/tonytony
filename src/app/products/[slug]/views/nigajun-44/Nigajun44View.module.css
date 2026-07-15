@@ -8,6 +8,11 @@
   overflow-x: hidden;
 }
 
+:global(body):has(.detailPage) {
+  background-color: #5f5f5f;
+}
+
+
 .purchaseCtaSection {
   width: 100%;
   display: flex;
