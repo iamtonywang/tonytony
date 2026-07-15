@@ -403,6 +403,49 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       <div className={styles.nigajun44GlowLine} aria-hidden="true">
         <span className={styles.nigajun44GlowBeam} />
       </div>
+
+      <section className={styles.nigajun44IntroSection}>
+        <div className={styles.nigajun44IntroInner}>
+          <h1 className={styles.nigajun44IntroTitle}>NIGAJUN44</h1>
+
+          <p className={styles.nigajun44IntroText}>I made this for you.</p>
+
+          <p className={styles.nigajun44IntroText}>
+            What explanation do you need?
+          </p>
+
+          <p className={styles.nigajun44IntroText}>
+            It&apos;s turned into a world where it sounds like a lie even when you talk about ingredients
+          </p>
+
+          <p className={styles.nigajun44IntroText}>
+            I don&apos;t want to be included in a false world then
+          </p>
+
+          <p className={styles.nigajun44IntroText}>
+            It&apos;s a pity that we have to use it in the end to know
+          </p>
+
+          <p className={styles.nigajun44IntroText}>
+            What&apos;s the point of explaining thousands of times?
+          </p>
+
+          <p className={styles.nigajun44IntroText}>
+            The truth is overshadowed by the power of capital
+          </p>
+
+          <p className={styles.nigajun44IntroText}>
+            But it will be precious to you for sure
+          </p>
+
+          <p className={styles.nigajun44IntroSignature}>
+            August 2026 TONY WANG
+          </p>
+
+          <h2 className={styles.nigajun44IntroEnding}>NIGAJUN44</h2>
+        </div>
+      </section>
+
       <section className={styles.purchaseCtaSection} aria-label="Purchase">
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
