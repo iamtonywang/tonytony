@@ -400,6 +400,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
   return (
     <article className={styles.detailPage}>
+      <div className={styles.nigajun44GlowLine} aria-hidden="true">
+        <span className={styles.nigajun44GlowBeam} />
+      </div>
       <section className={styles.purchaseCtaSection} aria-label="Purchase">
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
