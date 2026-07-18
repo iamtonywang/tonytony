@@ -61,7 +61,8 @@
   margin-top: 9px;
 }
 
-.bodyCopy + .launchDate {
+.bodyCopy + .launchDate,
+.manifestoBridge + .launchDate {
   margin-top: 9px;
 }
 
