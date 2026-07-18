@@ -1,0 +1,92 @@
+.signatureLine {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  padding: 20px 16px;
+  gap: 12px;
+}
+
+.line {
+  flex: 1;
+  min-width: 16px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 좁은 하이라이트가 선을 따라 흐르는 이동체 */
+.line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 30%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0)
+  );
+  transform: translateX(-100%);
+}
+
+/* 4초 주기: 좌측 선 0~0.9초 이동, 우측 선 1.1~2초 이동, 나머지는 기본 상태 */
+.lineLeft::after {
+  animation: signatureSweepLeft 4s ease-in-out infinite;
+}
+
+.lineRight::after {
+  animation: signatureSweepRight 4s ease-in-out infinite;
+}
+
+@keyframes signatureSweepLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  22.5% {
+    transform: translateX(334%);
+  }
+
+  100% {
+    transform: translateX(334%);
+  }
+}
+
+@keyframes signatureSweepRight {
+  0%,
+  27.5% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(334%);
+  }
+
+  100% {
+    transform: translateX(334%);
+  }
+}
+
+.brand {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+  letter-spacing: 0.3em;
+  /* 마지막 글자 뒤 자간으로 인한 중심 쏠림 보정 */
+  margin-right: -0.3em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lineLeft::after,
+  .lineRight::after {
+    animation: none;
+    content: none;
+  }
+}
