@@ -5,6 +5,8 @@ export default function WhyPage() {
   return (
     <>
       <div className={styles.manifesto}>
+        <div className={styles.manifestoImage} aria-hidden="true" />
+
         <SignatureLine />
 
         <section className={styles.section}>
