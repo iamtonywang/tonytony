@@ -1,0 +1,70 @@
+.manifesto {
+  width: 100%;
+}
+
+/* Home의 .introduction/.launch/.manifesto와 동일한 섹션 밀도 */
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 620px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 18px 28px 20px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.brandTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.bodyCopy {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Home과 동일한 내부 간격: 타이틀-서브타이틀 4px, 타이틀-본문 9px, 본문-본문 5px */
+.brandTitle + .sectionTitle {
+  margin-top: 4px;
+}
+
+.brandTitle + .bodyCopy,
+.sectionTitle + .bodyCopy {
+  margin-top: 9px;
+}
+
+.bodyCopy + .bodyCopy {
+  margin-top: 5px;
+}
+
+/* Home의 .footerDivider와 동일한 Footer 위 fade hairline */
+.footerDivider {
+  width: min(760px, calc(100% - 56px));
+  height: 1px;
+  margin: 10px auto 18px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+}
