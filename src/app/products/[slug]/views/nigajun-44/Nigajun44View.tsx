@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun44View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
-import { formatBoardRowAuthor } from "@/app/products/boardMask";
 
 function maskBoardAuthor(author: string) {
   if (!author) return "User";
@@ -16,14 +16,6 @@ interface Props {
   product?: ProductMinimal;
   boardItems: ProductBoardItem[];
 }
-
-const PINNED_NOTICE = {
-  author: "TONYWANG",
-  preview: "공지 내용",
-  type: "Notice",
-  date: "2026.04.10",
-  content: "공지 내용",
-} as const;
 
 function BoardSection({
   boardItems,
@@ -121,6 +113,7 @@ function BoardSection({
           <span className={styles.boardTitleBrand}>TONYWANG</span>
           <span className={styles.boardTitleSub}>Ask me Questions</span>
         </h2>
+        <SignatureLine />
         <div className={styles.boardNotice}>
           <div className={styles.policyTitle}>Policy</div>
 
@@ -270,56 +263,8 @@ function BoardSection({
 
       <section className={styles.boardSection}>
         <div className={styles.boardList}>
-          <div className={styles.boardItem}>
-            <button
-              type="button"
-              className={styles.boardRow}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                width: "100%",
-              }}
-              onClick={() => setOpenBoardIndex((prev) => (prev === 0 ? null : 0))}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  flexShrink: 0,
-                  minWidth: 110,
-                }}
-              >
-                <span className={styles.boardType}>[{PINNED_NOTICE.type}]</span>
-                <span className={styles.boardPreviewAuthor}>
-                  {formatBoardRowAuthor(PINNED_NOTICE.author)}
-                </span>
-              </div>
-              <div
-                className={styles.boardPreviewText}
-                style={{
-                  flex: 1,
-                  minWidth: 0,
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                {PINNED_NOTICE.preview}
-              </div>
-            </button>
-            {openBoardIndex === 0 ? (
-              <div className={styles.boardExpanded}>
-                <div className={styles.boardMeta}>{PINNED_NOTICE.type}</div>
-                <div className={styles.boardDate}>{PINNED_NOTICE.date}</div>
-                <div className={styles.boardContent}>{PINNED_NOTICE.content}</div>
-              </div>
-            ) : null}
-          </div>
-
           {filteredBoardItems.map((item, i) => {
-            const rowIndex = i + 1;
+            const rowIndex = i;
             const preview =
               item.isPrivate
                 ? "비밀글입니다"
@@ -400,68 +345,121 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
   return (
     <article className={styles.detailPage}>
-      <div className={styles.nigajun44GlowLine} aria-hidden="true">
-        <span className={styles.nigajun44GlowBeam} />
-      </div>
+      <SignatureLine />
 
-      <section className={styles.nigajun44IntroSection}>
-        <div className={styles.nigajun44IntroInner}>
-          <h1 className={styles.nigajun44IntroTitle}>NIGAJUN44</h1>
+      {/* Section 1: Product Identity + 가격 + Buy Now (텍스트 왼쪽 / 이미지 오른쪽) */}
+      <section className={styles.landingSection} aria-label="Product Identity">
+        <div className={styles.sectionSplit}>
+          <div className={styles.sectionSplitCopy}>
+            <h1 className={styles.brandTitle}>TONY WANG</h1>
+            <p className={styles.sectionTitle}>NIGAJUN 44</p>
+            <p className={styles.bodyCopy}>Proteo Phyto Complex</p>
+            <p className={styles.bodyCopy}>Hybrid End Skincare</p>
 
-          <p className={styles.nigajun44IntroText}>I made this for you.</p>
+            <div className={styles.fourthProductCta}>
+              <p className={styles.fourthProductPrice}>
+                {typeof product?.finalPriceAmount === "number"
+                  ? `₩${product.finalPriceAmount.toLocaleString("ko-KR")}`
+                  : ""}
+              </p>
 
-          <p className={styles.nigajun44IntroText}>
-            What explanation do you need?
-          </p>
+              <Link
+                href={`/purchase/${product?.slug ?? ""}`}
+                className={styles.fourthProductBuyButton}
+              >
+                Buy Now
+              </Link>
+            </div>
+          </div>
 
-          <p className={styles.nigajun44IntroText}>
-            It&apos;s turned into a world where it sounds like a lie even when you talk about ingredients
-          </p>
-
-          <p className={styles.nigajun44IntroText}>
-            I don&apos;t want to be included in a false world then
-          </p>
-
-          <p className={styles.nigajun44IntroText}>
-            It&apos;s a pity that we have to use it in the end to know
-          </p>
-
-          <p className={styles.nigajun44IntroText}>
-            What&apos;s the point of explaining thousands of times?
-          </p>
-
-          <p className={styles.nigajun44IntroText}>
-            The truth is overshadowed by the power of capital
-          </p>
-
-          <p className={styles.nigajun44IntroText}>
-            But it will be precious to you for sure
-          </p>
-
-          <p className={styles.nigajun44IntroSignature}>
-            August 2026 TONY WANG
-          </p>
-
-          <h2 className={styles.nigajun44IntroEnding}>NIGAJUN44</h2>
+          <img
+            src="/landing-assets/nigajun-44-main-transparent.webp"
+            alt=""
+            className={styles.sectionSplitImage}
+          />
         </div>
       </section>
 
-      <section className={styles.purchaseCtaSection} aria-label="Purchase">
-        <div className={styles.fourthProductCta}>
-          <p className={styles.fourthProductPrice}>
-            {typeof product?.finalPriceAmount === "number"
-              ? `₩${product.finalPriceAmount.toLocaleString("ko-KR")}`
-              : ""}
-          </p>
+      <SignatureLine />
 
-          <Link
-            href={`/purchase/${product?.slug ?? ""}`}
-            className={styles.fourthProductBuyButton}
-          >
-            Buy Now
-          </Link>
-        </div>
+      {/* Section 2 */}
+      <section className={styles.landingSection}>
+        <p className={styles.bodyCopy}>{"우리는 낡고 허술한 시대에 살고 있어"}</p>
+        <p className={styles.bodyCopy}>{"무엇이 진실이고 무엇이 거짓인지 때론 모르고 살아간다"}</p>
+        <p className={styles.bodyCopy}>{"We live in a time of old and loose Sometimes "}</p>
+        <p className={styles.bodyCopy}>{"you don't know what's true and what's false"}</p>
       </section>
+
+      <SignatureLine />
+
+      {/* Section 3 */}
+      <section className={styles.landingSection}>
+        <p className={styles.bodyCopy}>{"긴 설명은 필요하지 않아 거짓은 수치이고 창피한 행위 이잔아"}</p>
+        <p className={styles.bodyCopy}>{"성분이 뭐고 어떤 구조라고 떠들고 싶지 않아 "}</p>
+        <p className={styles.bodyCopy}>{"화려한 설명이 소용이 없다는 것을 알기에 ,,  최고라고 말할 필요도 없어 "}</p>
+        <p className={styles.bodyCopy}>{"스스로 얘기하는건 모순이고 창피한 행동이야"}</p>
+        <p className={styles.bodyCopy}>{"I don't need a long explanation. False is a disgrace, embarrassing act"}</p>
+        <p className={styles.bodyCopy}>{"I don't want to talk about the ingredients and the structure "}</p>
+        <p className={styles.bodyCopy}>{"I know the fancy explanation is useless, so I don't need to say it's the best "}</p>
+        <p className={styles.bodyCopy}>{"It's contradictory and embarrassing to speak for yourself"}</p>
+      </section>
+
+      <SignatureLine />
+
+      {/* Section 4 */}
+      <section className={styles.landingSection}>
+        <p className={styles.bodyCopy}>{"하지만 다들 본인 제품이 최고라고 얘기해"}</p>
+        <p className={styles.bodyCopy}>{"최고 자리는 거짓 홍보로 되는게 아냐  나는 그들과 같은 존재가 되기 싫어"}</p>
+        <p className={styles.bodyCopy}>{"I DON'T LIKE LYING 나는 거짓이 싫을 뿐이다"}</p>
+        <p className={styles.bodyCopy}>{"나를 믿는 사람을 속이며 이익을 만들고 싶지 않아 그것은 매우 역겨운 행동이야"}</p>
+        <p className={styles.bodyCopy}>{"But everyone says their products are the best"}</p>
+        <p className={styles.bodyCopy}>{"I don't want to be like them I don't like lying. I just don't like lying"}</p>
+        <p className={styles.bodyCopy}>{"I don't want to deceive people who believe in me. It's disgusting"}</p>
+      </section>
+
+      <SignatureLine />
+
+      {/* Section 5 */}
+      <section className={styles.landingSection}>
+        <p className={styles.bodyCopy}>{"상품이란 것이 직접 사용해야 알 수 있어 그래서 솔직히 답답해"}</p>
+        <p className={styles.bodyCopy}>{"유혹적인 표현을 하기 싫다 자극적인 표현도 하기 싫다"}</p>
+        <p className={styles.bodyCopy}>{"유저들은 이미 자극적인 표현에 젖어 있다"}</p>
+        <p className={styles.bodyCopy}>{"그러나 나는 이미 기성화 된 문화에 같이 길들여 지고 싶지 않다"}</p>
+        <p className={styles.bodyCopy}>{"입증이란 문턱에서 깊이 고뇌에 빠져 있겠지만 그들과 똑같이 하고 싶지 않아"}</p>
+        <p className={styles.bodyCopy}>{"You have to use it to know what a product is. So honestly, "}</p>
+        <p className={styles.bodyCopy}>{"it's frustrating I don't want to be seductive. I don't want to be provocative"}</p>
+        <p className={styles.bodyCopy}>{"Users are already steeped in provocative expressions"}</p>
+        <p className={styles.bodyCopy}>{"But I don't want to be tamed together into an established culture"}</p>
+        <p className={styles.bodyCopy}>{"I'll be in deep agony at the threshold of proof, "}</p>
+        <p className={styles.bodyCopy}>{"but I don't want to do the same as them"}</p>
+      </section>
+
+      <SignatureLine />
+
+      {/* Section 6 */}
+      <section className={styles.landingSection}>
+        <p className={styles.bodyCopy}>{"가치를 모르는자 자신을 사랑하지 않는자 의문을 가지는자"}</p>
+        <p className={styles.bodyCopy}>{"자격이 없다 여기서 나가라 진정으로 변혁을 원하는 자 환영한다"}</p>
+        <p className={styles.bodyCopy}>{"진실의 힘은 밝혀지기까지 시간이 걸리지만 가장 강하고 아름답고 빛이 난다"}</p>
+        <p className={styles.bodyCopy}>{"그것이 가장 큰 힘이고 가장 순수하고 강한 무기다"}</p>
+        <p className={styles.bodyCopy}>{"나는 그 시간까지 나의길을 가겠다"}</p>
+        <p className={styles.bodyCopy}>{"Those who don't know the value and those who don't love themselves, leave"}</p>
+        <p className={styles.bodyCopy}>{"You are not qualified. Get out of here. Those who truly want to change are welcome"}</p>
+        <p className={styles.bodyCopy}>{"The power of truth takes time to come to light, but it is the strongest, most beautiful and shiny power"}</p>
+        <p className={styles.bodyCopy}>{"It's the most powerful force and the purest and most powerful weapon"}</p>
+        <p className={styles.bodyCopy}>{"I'm going to go my own way until then"}</p>
+      </section>
+
+      <SignatureLine />
+
+      {/* Section 7 */}
+      <section className={styles.landingSection}>
+        <p className={styles.bodyCopy}>{"피부에 관한 퍼즐을 풀고자 세상에 나왔다"}</p>
+        <p className={styles.bodyCopy}>{"I came to the world to solve a puzzle about skin"}</p>
+        <p className={styles.bodyCopy}>{"August 2026 TONY WANG"}</p>
+      </section>
+
+      <SignatureLine />
 
       <BoardSection boardItems={boardItems} productSlug={product?.slug ?? null} />
 
