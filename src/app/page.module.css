@@ -26,11 +26,11 @@
   z-index: -1;
   pointer-events: none;
   user-select: none;
-  background-image: url("/landing-assets/hero-founder.webp");
+  background-image: url("/landing-assets/tonywang-why-manifesto-hero.webp");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: min(720px, 100%) auto;
-  opacity: 0.4;
+  opacity: 0.32;
   /* 이미지(최대 720px 정사각) 내부에서 상하좌우 페이드가 모두 끝나도록 px 기반 타원 마스크 사용 */
   mask-image: radial-gradient(
     330px 330px at 50% 340px,
@@ -49,7 +49,7 @@
 @media (max-width: 768px) {
   .founderImage {
     background-size: min(430px, 100%) auto;
-    opacity: 0.35;
+    opacity: 0.28;
     mask-image: radial-gradient(
       196px 196px at 50% 210px,
       rgba(0, 0, 0, 1) 40%,
