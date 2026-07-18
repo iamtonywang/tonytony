@@ -5,6 +5,8 @@ export default function OurWorkPage() {
   return (
     <>
       <div className={styles.story}>
+        <div className={styles.documentaryImage} aria-hidden="true" />
+
         <SignatureLine />
 
         <section className={styles.section}>

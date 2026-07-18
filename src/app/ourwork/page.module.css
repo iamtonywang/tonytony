@@ -1,5 +1,58 @@
+/* 6개 섹션 전체를 감싸는 공통 배경 영역 (Home sectionsBackdrop과 동일 방식) */
 .story {
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/*
+ * 단일 documentary 이미지 레이어(정확히 1회 렌더링).
+ * 가로형(1400x933) 원본을 비율 그대로 상단 중앙에 두고,
+ * px 기반 타원 마스크로 사각 경계·하단을 기존 배경색(#5f5f5f)으로 페이드시킨다.
+ */
+.documentaryImage {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  background-image: url("/landing-assets/tonywang-skin-documentary-hero.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: min(760px, 100%) auto;
+  opacity: 0.4;
+  mask-image: radial-gradient(
+    330px 220px at 50% 235px,
+    rgba(0, 0, 0, 1) 42%,
+    rgba(0, 0, 0, 0.5) 68%,
+    transparent 96%
+  );
+  -webkit-mask-image: radial-gradient(
+    330px 220px at 50% 235px,
+    rgba(0, 0, 0, 1) 42%,
+    rgba(0, 0, 0, 0.5) 68%,
+    transparent 96%
+  );
+}
+
+@media (max-width: 768px) {
+  .documentaryImage {
+    background-size: 100% auto;
+    opacity: 0.35;
+    mask-image: radial-gradient(
+      175px 115px at 50% 125px,
+      rgba(0, 0, 0, 1) 40%,
+      rgba(0, 0, 0, 0.5) 68%,
+      transparent 96%
+    );
+    -webkit-mask-image: radial-gradient(
+      175px 115px at 50% 125px,
+      rgba(0, 0, 0, 1) 40%,
+      rgba(0, 0, 0, 0.5) 68%,
+      transparent 96%
+    );
+  }
 }
 
 /* Home의 .introduction/.launch/.manifesto와 동일한 섹션 밀도 */
