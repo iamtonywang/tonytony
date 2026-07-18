@@ -2,31 +2,18 @@
   width: 100%;
 }
 
+/* Home의 .introduction/.launch/.manifesto와 동일한 섹션 밀도 */
 .section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
-  max-width: 760px;
+  max-width: 620px;
   min-width: 0;
-  min-height: clamp(220px, 34vh, 360px);
   margin: 0 auto;
-  padding: 64px 28px;
+  padding: 18px 28px 20px;
   text-align: center;
   overflow-wrap: break-word;
-}
-
-.opening {
-  min-height: clamp(200px, 30vh, 320px);
-}
-
-.question {
-  min-height: clamp(320px, 52vh, 520px);
-}
-
-.declaration {
-  min-height: clamp(280px, 42vh, 440px);
 }
 
 .brandTitle {
@@ -55,18 +42,25 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+/* Home과 동일한 내부 간격: 타이틀-서브타이틀 4px, 타이틀-본문 9px, 본문-본문 5px */
 .brandTitle + .sectionTitle {
   margin-top: 4px;
 }
 
-.bodyCopy + .bodyCopy {
+.brandTitle + .bodyCopy,
+.sectionTitle + .bodyCopy {
   margin-top: 9px;
+}
+
+.bodyCopy + .bodyCopy {
+  margin-top: 5px;
 }
 
 .sectionTitle + .sectionTitle {
   margin-top: 9px;
 }
 
+/* Home의 .footerDivider와 동일한 Footer 위 fade hairline */
 .footerDivider {
   width: min(760px, calc(100% - 56px));
   height: 1px;
@@ -77,10 +71,4 @@
     rgba(255, 255, 255, 0.15),
     transparent
   );
-}
-
-@media (min-width: 769px) {
-  .section {
-    padding-block: 80px;
-  }
 }

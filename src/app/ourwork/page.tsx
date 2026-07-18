@@ -5,7 +5,9 @@ export default function OurWorkPage() {
   return (
     <>
       <div className={styles.story}>
-        <section className={`${styles.section} ${styles.opening}`}>
+        <SignatureLine />
+
+        <section className={styles.section}>
           <h1 className={styles.brandTitle}>TONY WANG</h1>
           <p className={styles.sectionTitle}>OUR WORK</p>
         </section>
@@ -43,13 +45,13 @@ export default function OurWorkPage() {
 
         <SignatureLine />
 
-        <section className={`${styles.section} ${styles.question}`}>
+        <section className={styles.section}>
           <h2 className={styles.brandTitle}>So, what is creation?</h2>
         </section>
 
         <SignatureLine />
 
-        <section className={`${styles.section} ${styles.declaration}`}>
+        <section className={styles.section}>
           <p className={styles.sectionTitle}>
             To create, you have to be willing to go a little crazy.
           </p>
