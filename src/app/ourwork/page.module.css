@@ -1,0 +1,86 @@
+.story {
+  width: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 760px;
+  min-width: 0;
+  min-height: clamp(220px, 34vh, 360px);
+  margin: 0 auto;
+  padding: 64px 28px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.opening {
+  min-height: clamp(200px, 30vh, 320px);
+}
+
+.question {
+  min-height: clamp(320px, 52vh, 520px);
+}
+
+.declaration {
+  min-height: clamp(280px, 42vh, 440px);
+}
+
+.brandTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.bodyCopy {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.brandTitle + .sectionTitle {
+  margin-top: 4px;
+}
+
+.bodyCopy + .bodyCopy {
+  margin-top: 9px;
+}
+
+.sectionTitle + .sectionTitle {
+  margin-top: 9px;
+}
+
+.footerDivider {
+  width: min(760px, calc(100% - 56px));
+  height: 1px;
+  margin: 10px auto 18px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+}
+
+@media (min-width: 769px) {
+  .section {
+    padding-block: 80px;
+  }
+}
