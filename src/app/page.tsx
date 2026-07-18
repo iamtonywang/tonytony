@@ -47,6 +47,8 @@ export default function HomePage() {
           August 2026 TONY WANG
         </time>
       </section>
+
+      <div className={styles.footerDivider} aria-hidden="true" />
     </>
   );
 }

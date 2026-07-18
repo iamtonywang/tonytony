@@ -81,3 +81,16 @@
   line-height: 1.12;
   color: rgba(255, 255, 255, 0.82);
 }
+
+/* Footer 위 조용한 경계선: 좌우가 투명하게 사라지는 1px fade hairline */
+.footerDivider {
+  width: min(760px, calc(100% - 56px));
+  height: 1px;
+  margin: 10px auto 18px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+}
