@@ -36,6 +36,18 @@ export default function HomePage() {
       </section>
 
       <SignatureLine />
+
+      <section className={styles.manifesto}>
+        <p className={styles.brandTitle}>TONY WANG</p>
+        <p className={styles.bodyCopy}>set out to achieve innovation and creation</p>
+        <p className={styles.bodyCopy}>Area for achieving transformation as a mechanism</p>
+        <p className={styles.bodyCopy}>the absolute realm that only a creator can do</p>
+        <p className={styles.manifestoBridge}>TONY WANG AND NIGAJUN AND Start</p>
+        <p className={styles.bodyCopy}>We&apos;re going on a long journey now</p>
+        <time className={styles.launchDate} dateTime="2026-08">
+          August 2026 TONY WANG
+        </time>
+      </section>
     </>
   );
 }
