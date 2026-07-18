@@ -1,8 +1,18 @@
+/*
+ * 화면이 콘텐츠보다 길 때 main(flex: 1)의 남는 공간이 hairline과 Footer 사이에
+ * 쌓이지 않도록, Home에서만 backdrop이 남는 공간을 흡수해 hairline을 Footer에 붙인다.
+ */
+:global(main):has(.sectionsBackdrop) {
+  display: flex;
+  flex-direction: column;
+}
+
 /* 3개 콘텐츠 섹션 전체를 감싸는 공통 배경 영역 */
 .sectionsBackdrop {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  flex: 1 0 auto;
 }
 
 /*
