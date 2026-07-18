@@ -1,0 +1,63 @@
+.introduction,
+.launch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 620px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 18px 28px 20px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.brandTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.laboratoryTitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.bodyCopy {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.laboratoryTitle + .bodyCopy {
+  margin-top: 9px;
+}
+
+.bodyCopy + .bodyCopy {
+  margin-top: 5px;
+}
+
+.productTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.08;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.launchDate {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  color: rgba(255, 255, 255, 0.82);
+}
