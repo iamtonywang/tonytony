@@ -1,0 +1,441 @@
+/*
+ * 벽을 타고 흐르는 안료 레이어.
+ * - 각 stream = 정적인 번짐 기둥(본체) + ::before(내려오는 안료 덩어리) + ::after(가늘게 갈라진 흐름)
+ * - 애니메이션은 transform/opacity만 사용. blur는 정적.
+ * - reduced-motion에서는 모션만 멈추고 안료 자국은 그대로 보인다.
+ */
+
+.pigmentLayer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.stream {
+  position: absolute;
+  top: -4%;
+  height: 106%;
+  display: block;
+}
+
+.stream::before,
+.stream::after {
+  content: "";
+  position: absolute;
+  display: block;
+}
+
+/* 공통 낙하 모션: 위에서 생성 → 아래로 → 스며들 듯 소멸 */
+@keyframes pigmentFall {
+  0% {
+    transform: translate3d(0, -30%, 0) scaleY(0.72);
+    opacity: 0;
+  }
+
+  9% {
+    opacity: 1;
+  }
+
+  62% {
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: translate3d(0, 430%, 0) scaleY(1.18);
+    opacity: 0;
+  }
+}
+
+/* 내려오며 가늘어지는 변형 낙하 */
+@keyframes pigmentFallThin {
+  0% {
+    transform: translate3d(0, -40%, 0) scale(1, 0.8);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate3d(0, 400%, 0) scale(0.55, 1.3);
+    opacity: 0;
+  }
+}
+
+/* 갈라진 얇은 물줄기 */
+@keyframes pigmentTrickle {
+  0% {
+    transform: translate3d(0, -70%, 0);
+    opacity: 0;
+  }
+
+  14% {
+    opacity: 0.85;
+  }
+
+  58% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate3d(0, 170%, 0);
+    opacity: 0;
+  }
+}
+
+/* ── Mineral Blue: 좌측, 중간 폭, 뚜렷한 편 ── */
+.mineralBlue {
+  left: 6%;
+  width: 46px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(88, 118, 142, 0.28) 9%,
+    rgba(74, 102, 124, 0.2) 40%,
+    rgba(88, 118, 142, 0.09) 72%,
+    transparent 95%
+  );
+  border-radius: 46% 54% 52% 48% / 30% 24% 70% 76%;
+  filter: blur(9px);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.88) 56%, transparent 97%);
+}
+
+.mineralBlue::before {
+  left: 14%;
+  top: 0;
+  width: 58%;
+  height: 22%;
+  border-radius: 48% 52% 58% 42% / 62% 38% 66% 34%;
+  background: radial-gradient(
+    62% 46% at 50% 30%,
+    rgba(88, 118, 142, 0.5),
+    rgba(88, 118, 142, 0.16) 62%,
+    transparent 100%
+  );
+  animation: pigmentFall 26s linear -9s infinite;
+}
+
+.mineralBlue::after {
+  left: 66%;
+  top: 8%;
+  width: 3px;
+  height: 48%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(88, 118, 142, 0.34) 28%,
+    rgba(88, 118, 142, 0.1) 74%,
+    transparent
+  );
+  animation: pigmentTrickle 33s ease-in-out -14s infinite;
+}
+
+/* ── Antique Gold: 좌측 안쪽, 가늘고 희미 ── */
+.antiqueGold {
+  left: 17%;
+  width: 18px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(158, 132, 72, 0.2) 14%,
+    rgba(158, 132, 72, 0.08) 56%,
+    transparent 88%
+  );
+  border-radius: 52% 48% 44% 56% / 26% 30% 74% 70%;
+  filter: blur(6px);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.8) 48%, transparent 90%);
+}
+
+.antiqueGold::before {
+  left: 8%;
+  top: 0;
+  width: 76%;
+  height: 17%;
+  border-radius: 56% 44% 62% 38% / 58% 42% 60% 40%;
+  background: radial-gradient(
+    58% 44% at 50% 32%,
+    rgba(158, 132, 72, 0.38),
+    rgba(158, 132, 72, 0.12) 60%,
+    transparent 100%
+  );
+  animation: pigmentFallThin 38s ease-in -22s infinite;
+}
+
+.antiqueGold::after {
+  left: 40%;
+  top: 20%;
+  width: 2px;
+  height: 34%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(158, 132, 72, 0.24) 30%,
+    rgba(158, 132, 72, 0.07) 78%,
+    transparent
+  );
+  animation: pigmentTrickle 40s ease-in-out -6s infinite;
+}
+
+/* ── Silver Gray: 좌중앙, 넓고 아주 희미한 번짐 ── */
+.silverGray {
+  left: 30%;
+  width: 88px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(196, 200, 204, 0.11) 12%,
+    rgba(196, 200, 204, 0.05) 52%,
+    transparent 86%
+  );
+  border-radius: 42% 58% 55% 45% / 22% 28% 72% 78%;
+  filter: blur(16px);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.7) 50%, transparent 88%);
+}
+
+.silverGray::before {
+  left: 22%;
+  top: 0;
+  width: 52%;
+  height: 26%;
+  border-radius: 50% 50% 62% 38% / 60% 40% 68% 32%;
+  background: radial-gradient(
+    64% 48% at 50% 30%,
+    rgba(196, 200, 204, 0.2),
+    rgba(196, 200, 204, 0.07) 64%,
+    transparent 100%
+  );
+  animation: pigmentFall 36s linear -17s infinite;
+}
+
+.silverGray::after {
+  content: none;
+}
+
+/* ── Bone White: 중앙 부근, 가장 희미하고 가늘게(가독성 보호) ── */
+.boneWhite {
+  left: 49%;
+  width: 14px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(232, 228, 218, 0.1) 16%,
+    rgba(232, 228, 218, 0.04) 54%,
+    transparent 84%
+  );
+  border-radius: 50% 50% 46% 54% / 28% 24% 76% 72%;
+  filter: blur(7px);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.6) 44%, transparent 86%);
+}
+
+.boneWhite::before {
+  left: 12%;
+  top: 0;
+  width: 70%;
+  height: 15%;
+  border-radius: 54% 46% 58% 42% / 62% 38% 64% 36%;
+  background: radial-gradient(
+    56% 42% at 50% 34%,
+    rgba(232, 228, 218, 0.22),
+    rgba(232, 228, 218, 0.07) 62%,
+    transparent 100%
+  );
+  animation: pigmentFallThin 40s ease-in -31s infinite;
+}
+
+.boneWhite::after {
+  content: none;
+}
+
+/* ── Deep Emerald: 우중앙, 중간 폭 ── */
+.deepEmerald {
+  left: 63%;
+  width: 38px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(46, 94, 78, 0.26) 10%,
+    rgba(46, 94, 78, 0.17) 44%,
+    rgba(46, 94, 78, 0.07) 74%,
+    transparent 94%
+  );
+  border-radius: 48% 52% 56% 44% / 26% 32% 68% 74%;
+  filter: blur(10px);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.85) 58%, transparent 96%);
+}
+
+.deepEmerald::before {
+  left: 16%;
+  top: 0;
+  width: 60%;
+  height: 20%;
+  border-radius: 46% 54% 60% 40% / 64% 36% 62% 38%;
+  background: radial-gradient(
+    60% 46% at 50% 30%,
+    rgba(46, 94, 78, 0.46),
+    rgba(46, 94, 78, 0.15) 62%,
+    transparent 100%
+  );
+  animation: pigmentFall 30s linear -4s infinite;
+}
+
+.deepEmerald::after {
+  left: 70%;
+  top: 12%;
+  width: 3px;
+  height: 42%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(46, 94, 78, 0.3) 26%,
+    rgba(46, 94, 78, 0.09) 76%,
+    transparent
+  );
+  animation: pigmentTrickle 24s ease-in-out -19s infinite;
+}
+
+/* ── Dark Crimson: 우측, 좁고 깊은 색 ── */
+.darkCrimson {
+  left: 78%;
+  width: 26px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(122, 44, 52, 0.26) 12%,
+    rgba(122, 44, 52, 0.15) 46%,
+    rgba(122, 44, 52, 0.06) 76%,
+    transparent 94%
+  );
+  border-radius: 54% 46% 48% 52% / 24% 30% 70% 76%;
+  filter: blur(8px);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.82) 54%, transparent 94%);
+}
+
+.darkCrimson::before {
+  left: 10%;
+  top: 0;
+  width: 66%;
+  height: 19%;
+  border-radius: 50% 50% 58% 42% / 60% 40% 66% 34%;
+  background: radial-gradient(
+    58% 44% at 50% 32%,
+    rgba(122, 44, 52, 0.44),
+    rgba(122, 44, 52, 0.14) 60%,
+    transparent 100%
+  );
+  animation: pigmentFall 22s linear -13s infinite;
+}
+
+.darkCrimson::after {
+  left: 58%;
+  top: 16%;
+  width: 2px;
+  height: 38%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(122, 44, 52, 0.28) 30%,
+    rgba(122, 44, 52, 0.08) 78%,
+    transparent
+  );
+  animation: pigmentTrickle 29s ease-in-out -2s infinite;
+}
+
+/* ── Amber: 우측 끝, 중간 폭·은은함 ── */
+.amber {
+  left: 90%;
+  width: 34px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(176, 128, 66, 0.22) 11%,
+    rgba(176, 128, 66, 0.13) 46%,
+    rgba(176, 128, 66, 0.05) 76%,
+    transparent 92%
+  );
+  border-radius: 44% 56% 52% 48% / 28% 24% 72% 76%;
+  filter: blur(11px);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.8) 52%, transparent 92%);
+}
+
+.amber::before {
+  left: 18%;
+  top: 0;
+  width: 58%;
+  height: 23%;
+  border-radius: 48% 52% 62% 38% / 58% 42% 64% 36%;
+  background: radial-gradient(
+    62% 46% at 50% 30%,
+    rgba(176, 128, 66, 0.4),
+    rgba(176, 128, 66, 0.13) 62%,
+    transparent 100%
+  );
+  animation: pigmentFall 34s linear -26s infinite;
+}
+
+.amber::after {
+  left: 30%;
+  top: 10%;
+  width: 3px;
+  height: 44%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(176, 128, 66, 0.26) 28%,
+    rgba(176, 128, 66, 0.08) 76%,
+    transparent
+  );
+  animation: pigmentTrickle 37s ease-in-out -10s infinite;
+}
+
+/* 모바일: 레이어 수를 줄이고 번짐·폭을 절제 */
+@media (max-width: 768px) {
+  .silverGray,
+  .antiqueGold {
+    display: none;
+  }
+
+  .mineralBlue {
+    left: 5%;
+    width: 32px;
+    filter: blur(7px);
+  }
+
+  .boneWhite {
+    left: 48%;
+    width: 10px;
+  }
+
+  .deepEmerald {
+    left: 66%;
+    width: 26px;
+    filter: blur(8px);
+  }
+
+  .darkCrimson {
+    left: 82%;
+    width: 18px;
+  }
+
+  .amber {
+    left: 92%;
+    width: 22px;
+    filter: blur(9px);
+  }
+}
+
+/* 모션 제거 환경: 안료 자국은 정지 상태로 그대로 표시 */
+@media (prefers-reduced-motion: reduce) {
+  .stream::before,
+  .stream::after {
+    animation: none;
+  }
+}

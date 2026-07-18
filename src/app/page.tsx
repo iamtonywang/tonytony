@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import HomePigmentBackground from "@/components/sections/HomePigmentBackground";
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./page.module.css";
 
@@ -11,7 +12,9 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <>
+    <div className={styles.homeCanvas}>
+      <HomePigmentBackground />
+
       <SignatureLine />
 
       <section className={styles.introduction}>
@@ -49,6 +52,6 @@ export default function HomePage() {
       </section>
 
       <div className={styles.footerDivider} aria-hidden="true" />
-    </>
+    </div>
   );
 }
