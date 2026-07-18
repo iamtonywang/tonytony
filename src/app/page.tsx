@@ -12,41 +12,45 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <SignatureLine />
+      <div className={styles.sectionsBackdrop}>
+        <div className={styles.founderImage} aria-hidden="true" />
 
-      <section className={styles.introduction}>
-        <h1 className={styles.brandTitle}>TONY WANG</h1>
-        <h2 className={styles.laboratoryTitle}>Plant Cell Protein Laboratory</h2>
-        <p className={styles.bodyCopy}>
-          Plant Cell Gene Protein is a protein that precisely regulates the signaling of damaged
-          skin to activate recovery and regeneration.
-        </p>
-        <p className={styles.bodyCopy}>
-          ProteoPhytoComplex plant-based protein complex.
-        </p>
-      </section>
+        <SignatureLine />
 
-      <SignatureLine />
+        <section className={styles.introduction}>
+          <h1 className={styles.brandTitle}>TONY WANG</h1>
+          <h2 className={styles.laboratoryTitle}>Plant Cell Protein Laboratory</h2>
+          <p className={styles.bodyCopy}>
+            Plant Cell Gene Protein is a protein that precisely regulates the signaling of damaged
+            skin to activate recovery and regeneration.
+          </p>
+          <p className={styles.bodyCopy}>
+            ProteoPhytoComplex plant-based protein complex.
+          </p>
+        </section>
 
-      <section className={styles.launch}>
-        <h2 className={styles.productTitle}>NIGAJUN</h2>
-        <time className={styles.launchDate} dateTime="2026-08">
-          Launching August 2026
-        </time>
-      </section>
+        <SignatureLine />
 
-      <SignatureLine />
+        <section className={styles.launch}>
+          <h2 className={styles.productTitle}>NIGAJUN</h2>
+          <time className={styles.launchDate} dateTime="2026-08">
+            Launching August 2026
+          </time>
+        </section>
 
-      <section className={styles.manifesto}>
-        <p className={styles.brandTitle}>TONY WANG</p>
-        <p className={styles.bodyCopy}>
-          set out to achieve innovation and creation Area for achieving transformation as a mechanism the absolute realm that only a creator can do
-        </p>
-        <p className={styles.manifestoBridge}>TONY WANG AND NIGAJUN AND Start We&apos;re going on a long journey now</p>
-        <time className={styles.launchDate} dateTime="2026-08">
-          August 2026 TONY WANG
-        </time>
-      </section>
+        <SignatureLine />
+
+        <section className={styles.manifesto}>
+          <p className={styles.brandTitle}>TONY WANG</p>
+          <p className={styles.bodyCopy}>
+            set out to achieve innovation and creation Area for achieving transformation as a mechanism the absolute realm that only a creator can do
+          </p>
+          <p className={styles.manifestoBridge}>TONY WANG AND NIGAJUN AND Start We&apos;re going on a long journey now</p>
+          <time className={styles.launchDate} dateTime="2026-08">
+            August 2026 TONY WANG
+          </time>
+        </section>
+      </div>
 
       <div className={styles.footerDivider} aria-hidden="true" />
     </>
