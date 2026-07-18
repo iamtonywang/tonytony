@@ -21,6 +21,8 @@
   background-repeat: no-repeat;
   background-position: center top;
   background-size: min(760px, 100%) auto;
+  /* 이미지 표시 위치만 아래로 이동(레이어 이동이므로 mask 페이드도 함께 내려가 경계가 드러나지 않음) */
+  transform: translateY(90px);
   opacity: 0.4;
   mask-image: radial-gradient(
     330px 220px at 50% 235px,
@@ -39,6 +41,7 @@
 @media (max-width: 768px) {
   .documentaryImage {
     background-size: 100% auto;
+    transform: translateY(52px);
     opacity: 0.35;
     mask-image: radial-gradient(
       175px 115px at 50% 125px,
