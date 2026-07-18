@@ -2,8 +2,10 @@
   display: flex;
   align-items: center;
   width: 100%;
+  max-width: 760px;
   min-width: 0;
-  padding: 20px 16px;
+  margin: 0 auto;
+  padding: 20px 28px;
   gap: 12px;
 }
 
@@ -11,7 +13,7 @@
   flex: 1;
   min-width: 16px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.18);
   position: relative;
   overflow: hidden;
 }
@@ -23,11 +25,11 @@
   top: 0;
   bottom: 0;
   left: 0;
-  width: 30%;
+  width: 18%;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.95),
     rgba(255, 255, 255, 0)
   );
   transform: translateX(-100%);
@@ -48,11 +50,11 @@
   }
 
   22.5% {
-    transform: translateX(334%);
+    transform: translateX(556%);
   }
 
   100% {
-    transform: translateX(334%);
+    transform: translateX(556%);
   }
 }
 
@@ -63,24 +65,24 @@
   }
 
   50% {
-    transform: translateX(334%);
+    transform: translateX(556%);
   }
 
   100% {
-    transform: translateX(334%);
+    transform: translateX(556%);
   }
 }
 
 .brand {
   flex-shrink: 0;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   line-height: 1.2;
   color: rgba(255, 255, 255, 0.95);
   white-space: nowrap;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.25em;
   /* 마지막 글자 뒤 자간으로 인한 중심 쏠림 보정 */
-  margin-right: -0.3em;
+  margin-right: -0.25em;
 }
 
 @media (prefers-reduced-motion: reduce) {
