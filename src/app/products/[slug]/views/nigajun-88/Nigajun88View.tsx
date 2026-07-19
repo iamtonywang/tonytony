@@ -117,14 +117,17 @@ export default function Nigajun88View({ product, boardItems }: Props) {
       <SignatureLine />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
-        <p className={styles.productPrice}>
-          {typeof product?.finalPriceAmount === "number"
-            ? `₩${product.finalPriceAmount.toLocaleString()}`
-            : null}
-        </p>
+        <div className={styles.fourthProductCta}>
+          <p className={styles.fourthProductPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
 
-        <div className={styles.buyButtonRow}>
-          <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.buyButton}>
+          <Link
+            href={`/purchase/${product?.slug ?? ""}`}
+            className={styles.fourthProductBuyButton}
+          >
             Buy Now
           </Link>
         </div>
@@ -135,6 +138,7 @@ export default function Nigajun88View({ product, boardItems }: Props) {
           <span className={styles.boardTitleBrand}>TONYWANG</span>
           <span className={styles.boardTitleSub}>Ask me Questions</span>
         </h2>
+        <SignatureLine />
         <div className={styles.boardNotice}>
           <div className={styles.policyTitle}>Policy</div>
 
