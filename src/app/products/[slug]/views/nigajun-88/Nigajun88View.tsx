@@ -116,6 +116,12 @@ export default function Nigajun88View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <img
+        src="/landing-assets/nigajun-88-model-portrait.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
