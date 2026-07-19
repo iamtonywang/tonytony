@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SignatureLine from "@/components/sections/SignatureLine";
 import { getPublicProducts } from "./_server/getPublicProducts";
 import listStyles from "@/components/sections/Product/ProductListSection/ProductListSection.module.css";
 import styles from "./page.module.css";
@@ -21,26 +22,30 @@ export default async function ProductsPage() {
     });
 
   return (
-    <section className={styles.productLinksSection} aria-label="Product links">
-      <div className={styles.heroProductLinks}>
-        <div className={listStyles.productTextOverlayVisible}>
-          <ul className={listStyles.productOverlayList}>
-            {filteredAndSorted.map((item) => {
-              if (!item.slug) return null;
-              return (
-                <li key={item.slug} className={listStyles.productOverlayItem}>
-                  <Link
-                    href={`/products/${item.slug}`}
-                    className={listStyles.productOverlayLink}
-                  >
-                    {item.productName ?? ""}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+    <>
+      <SignatureLine />
+
+      <section className={styles.productLinksSection} aria-label="Product links">
+        <div className={styles.heroProductLinks}>
+          <div className={listStyles.productTextOverlayVisible}>
+            <ul className={listStyles.productOverlayList}>
+              {filteredAndSorted.map((item) => {
+                if (!item.slug) return null;
+                return (
+                  <li key={item.slug} className={listStyles.productOverlayItem}>
+                    <Link
+                      href={`/products/${item.slug}`}
+                      className={listStyles.productOverlayLink}
+                    >
+                      {item.productName ?? ""}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
