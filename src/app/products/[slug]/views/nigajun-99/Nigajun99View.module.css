@@ -127,11 +127,14 @@
   }
 }
 
-/* 제품 용기(자) 이미지: Hero보다 작은 소개용 크기, 중앙 배치, 장식 없음 */
+/*
+ * 제품 용기(자) 이미지: 출시 예정 티저이므로 작고 절제된 크기로 표시.
+ * PC 320px → 220px(약 31% 축소), 모바일 60% → 45%(약 25% 축소).
+ */
 .jarImage {
   display: block;
-  width: 60%;
-  max-width: 320px;
+  width: 45%;
+  max-width: 220px;
   height: auto;
   margin: 0 auto;
   object-fit: contain;
