@@ -1,7 +1,7 @@
 /*
- * Header 바로 아래 브랜드 문구 블록.
- * Typography 수치는 Our Work/WHY의 .brandTitle/.sectionTitle/.bodyCopy와 동일하며,
- * Hero처럼 비지 않도록 상하 padding을 최소로 압축한다.
+ * 위아래 공통 Hairline(SignatureLine) 사이의 브랜드 문구 블록.
+ * Typography 수치는 Our Work/WHY의 .sectionTitle/.bodyCopy와 동일하며,
+ * Hero처럼 비지 않도록 상하 padding 없이 조밀하게 유지한다.
  */
 .brandIntro {
   display: flex;
@@ -11,22 +11,13 @@
   max-width: 620px;
   min-width: 0;
   margin: 0 auto;
-  padding: 14px 28px 0;
+  padding: 0 28px;
   text-align: center;
   overflow-wrap: break-word;
 }
 
-.brandIntroBrand {
-  margin: 0;
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: 0.015em;
-  color: rgba(255, 255, 255, 0.95);
-}
-
 .brandIntroTitle {
-  margin: 4px 0 0;
+  margin: 0;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.12;
@@ -40,19 +31,6 @@
   font-weight: 400;
   line-height: 1.35;
   color: rgba(255, 255, 255, 0.72);
-}
-
-/* 문구 아래 공통 fade hairline: Home/Our Work/WHY의 .footerDivider와 동일 스타일, 간격만 압축 */
-.brandIntroDivider {
-  width: min(760px, calc(100% - 56px));
-  height: 1px;
-  margin: 10px auto 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.15),
-    transparent
-  );
 }
 
 .productLinksSection {
