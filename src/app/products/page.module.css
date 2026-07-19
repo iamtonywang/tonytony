@@ -1,3 +1,38 @@
+/*
+ * Hairline(SignatureLine) 바로 아래 브랜드 문구 블록.
+ * Typography 수치는 Our Work/WHY의 .sectionTitle/.bodyCopy와 동일하며,
+ * Hero처럼 비지 않도록 상하 padding을 최소로 압축한다.
+ */
+.brandIntro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 620px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 0 28px 4px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.brandIntroTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.brandIntroMeta {
+  margin: 5px 0 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .productLinksSection {
   width: 100%;
   display: flex;
