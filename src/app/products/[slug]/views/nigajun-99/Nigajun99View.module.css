@@ -83,6 +83,11 @@
   background: none;
   padding: 0;
   border-radius: 0;
+  /*
+   * 원본 webp 픽셀에 흰색 테두리가 구워져 있어 액자처럼 보인다.
+   * 파일은 수정하지 않고, 레이아웃 크기를 유지한 채 가장자리 6px만 잘라 가린다.
+   */
+  clip-path: inset(6px);
 }
 
 .purchaseSection {
