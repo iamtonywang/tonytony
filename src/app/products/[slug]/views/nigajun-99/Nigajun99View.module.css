@@ -63,6 +63,25 @@
   margin-top: 4px;
 }
 
+/*
+ * 44의 sectionSplitImage와 동일한 표시 방식(img 직접 배치, contain, 자동 높이).
+ * 장식 없음: border/outline/box-shadow/배경/padding/round 일절 미적용.
+ */
+.heroImage {
+  display: block;
+  width: 70%;
+  max-width: 300px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
 .purchaseSection {
   width: min(1120px, 92vw);
   margin: -12px auto 0;
