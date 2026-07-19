@@ -4,7 +4,16 @@ import { getPublicProducts } from "./_server/getPublicProducts";
 import listStyles from "@/components/sections/Product/ProductListSection/ProductListSection.module.css";
 import styles from "./page.module.css";
 
-const FIXED_ORDER = ["nigajun-44"] as const;
+const FIXED_ORDER = [
+  "nigajun-44",
+  "nigajun-99",
+  "nigajun-82",
+  "nigajun-77",
+  "nigajun-55",
+  "nigajun-35",
+  "nigajun-28",
+  "nigajun-17",
+] as const;
 
 export default async function ProductsPage() {
   const products = await getPublicProducts();
