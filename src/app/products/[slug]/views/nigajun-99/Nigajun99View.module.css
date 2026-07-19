@@ -64,13 +64,16 @@
 }
 
 /*
- * 44의 sectionSplitImage와 동일한 표시 방식(img 직접 배치, contain, 자동 높이).
+ * Hero 이미지: 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
+ * 실라인 박스는 max-width 760px + 좌우 padding 28px이므로
+ * 선의 실제 폭은 min(100%, 760px) - 56px → 이미지도 동일 기준으로 확장.
+ * 높이는 원본 비율(height: auto)로 폭에 비례해 커진다.
  * 장식 없음: border/outline/box-shadow/배경/padding/round 일절 미적용.
  */
 .heroImage {
   display: block;
-  width: 70%;
-  max-width: 300px;
+  width: calc(100% - 56px);
+  max-width: 704px;
   height: auto;
   margin: 0 auto;
   object-fit: contain;
