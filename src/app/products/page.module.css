@@ -37,6 +37,9 @@
  * nigajun-44-model-portrait: 프로젝트 공통 <img> + public path 방식.
  * 비율 유지 수치는 Nigajun44View .sectionSplitImage 핵심과 동일
  * (display:block / width:100% / height:auto / object-fit:contain).
+ * 사진의 사각 경계가 액자처럼 보이지 않도록, 공통 이미지 배경 처리 방식
+ * (Nigajun44View .section2Image의 radial mask 수치)을 그대로 재사용해
+ * 가장자리를 투명하게 페이드시켜 페이지 기본 배경(#5f5f5f)과 잇는다.
  */
 .modelPortrait {
   display: block;
@@ -45,6 +48,18 @@
   height: auto;
   margin: 0 auto;
   object-fit: contain;
+  mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.5) 80%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.5) 80%,
+    transparent 100%
+  );
 }
 
 .productLinksSection {
