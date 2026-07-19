@@ -63,6 +63,18 @@
   );
 }
 
+/*
+ * 모바일: 데스크톱 규칙(calc(100% - 56px))이 그대로 내려와 좌우 56px이 빠지면
+ * 작은 화면에서 이미지가 지나치게 작아진다. 가장자리는 mask로 페이드되므로
+ * 화면 폭 전체를 사용해도 Hairline 끝점과 자연스럽게 이어진다.
+ */
+@media (max-width: 768px) {
+  .modelPortrait {
+    width: 100%;
+    max-width: none;
+  }
+}
+
 .productLinksSection {
   width: 100%;
   display: flex;
