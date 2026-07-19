@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ProductListSection } from "@/components/sections/Product";
 import { getPublicProducts } from "./_server/getPublicProducts";
 import listStyles from "@/components/sections/Product/ProductListSection/ProductListSection.module.css";
 import styles from "./page.module.css";
@@ -22,36 +21,26 @@ export default async function ProductsPage() {
     });
 
   return (
-    <>
-      <section className={styles.heroSection} aria-label="Product list editorial hero">
-        <div className={styles.heroVisual}>
-          <div className={styles.heroOverlay}>
-            <div className={styles.heroProductLinks}>
-              <div className={listStyles.productTextOverlayVisible}>
-                <ul className={listStyles.productOverlayList}>
-                  {filteredAndSorted.map((item) => {
-                    if (!item.slug) return null;
-                    return (
-                      <li key={item.slug} className={listStyles.productOverlayItem}>
-                        <Link
-                          href={`/products/${item.slug}`}
-                          className={listStyles.productOverlayLink}
-                        >
-                          {item.productName ?? ""}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </div>
-          </div>
+    <section className={styles.productLinksSection} aria-label="Product links">
+      <div className={styles.heroProductLinks}>
+        <div className={listStyles.productTextOverlayVisible}>
+          <ul className={listStyles.productOverlayList}>
+            {filteredAndSorted.map((item) => {
+              if (!item.slug) return null;
+              return (
+                <li key={item.slug} className={listStyles.productOverlayItem}>
+                  <Link
+                    href={`/products/${item.slug}`}
+                    className={listStyles.productOverlayLink}
+                  >
+                    {item.productName ?? ""}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-      </section>
-      <div className={styles.afterHero}>
-        <div className={listStyles.productGlowLine} aria-hidden="true" />
-        <ProductListSection />
       </div>
-    </>
+    </section>
   );
 }
