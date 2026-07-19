@@ -124,10 +124,11 @@ export default function Nigajun88View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      <section className={styles.landingSection} aria-label="Product Description">
-        <p className={styles.sectionTitle}>NIGAJUN 88</p>
-        <p className={styles.bodyCopy}>Hair Nutrition Protein Cream</p>
-      </section>
+      <div className={styles.jarCopy}>
+        <p className={styles.jarNotice}>It will be released soon</p>
+        <p className={styles.jarBrand}>NIGAJUN 88</p>
+        <p className={styles.jarSub}>Hair Nutrition Protein Cream</p>
+      </div>
 
       <img
         src="/landing-assets/nigajun-88-product-jar.webp"
@@ -136,16 +137,6 @@ export default function Nigajun88View({ product, boardItems }: Props) {
       />
 
       <p className={styles.jarCaption}>It will be a precious thing to you</p>
-
-      <SignatureLine />
-
-      <div className={styles.jarCopy}>
-        <p className={styles.jarNotice}>It will be released soon</p>
-        <p className={styles.jarBrand}>NIGAJUN 88</p>
-        <p className={styles.jarSub}>Hair Nutrition Protein Cream</p>
-      </div>
-
-      <SignatureLine />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
         <div className={styles.fourthProductCta}>
