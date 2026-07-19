@@ -43,6 +43,9 @@ export default async function ProductsPage() {
 
         <div className={styles.portraitOverlay}>
           <p className={styles.portraitLead}>I made it for you.</p>
+          <p className={styles.portraitCopy}>
+            Don&apos;t compare it to other cosmetics.
+          </p>
 
           <div className={listStyles.productTextOverlayVisible}>
             <ul className={listStyles.productOverlayList}>
@@ -61,11 +64,6 @@ export default async function ProductsPage() {
               })}
             </ul>
           </div>
-
-          <p className={styles.portraitCopy}>
-            Don&apos;t compare it to other cosmetics
-          </p>
-          <p className={styles.portraitCopy}>It hurts my pride</p>
         </div>
       </section>
     </>
