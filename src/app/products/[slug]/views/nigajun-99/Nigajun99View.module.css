@@ -127,6 +127,16 @@
   }
 }
 
+/* 제품 용기(자) 이미지: Hero보다 작은 소개용 크기, 중앙 배치, 장식 없음 */
+.jarImage {
+  display: block;
+  width: 60%;
+  max-width: 320px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
 .purchaseSection {
   width: min(1120px, 92vw);
   margin: -12px auto 0;
