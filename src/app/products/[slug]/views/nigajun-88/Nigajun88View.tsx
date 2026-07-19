@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import styles from "./Nigajun82View.module.css";
+import styles from "./Nigajun88View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 import { formatBoardRowAuthor } from "@/app/products/boardMask";
 
@@ -19,7 +19,7 @@ const PINNED_NOTICE = {
   content: "공지 내용",
 } as const;
 
-export default function Nigajun82View({ product, boardItems }: Props) {
+export default function Nigajun88View({ product, boardItems }: Props) {
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
   const [boardTab, setBoardTab] = useState<"inquiry" | "review">("inquiry");
   const [showInquiryForm, setShowInquiryForm] = useState(false);

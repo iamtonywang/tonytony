@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 const FIXED_ORDER = [
   "nigajun-44",
   "nigajun-99",
-  "nigajun-82",
+  "nigajun-88",
   "nigajun-77",
   "nigajun-55",
   "nigajun-35",

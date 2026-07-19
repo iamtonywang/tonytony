@@ -3,7 +3,7 @@ import Link from "next/link";
 const PRODUCT_SLUGS = [
 	"nigajun-44",
 	"nigajun-99",
-	"nigajun-82",
+	"nigajun-88",
 	"nigajun-77",
 	"nigajun-55",
 	"nigajun-35",

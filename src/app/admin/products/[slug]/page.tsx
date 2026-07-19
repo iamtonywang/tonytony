@@ -10,7 +10,7 @@ import { getAdminProductReviewsBySlug } from "@/app/admin/products/_server/getAd
 const ALLOWED_SLUGS = new Set([
 	"nigajun-44",
 	"nigajun-99",
-	"nigajun-82",
+	"nigajun-88",
 	"nigajun-77",
 	"nigajun-55",
 	"nigajun-35",
