@@ -84,10 +84,22 @@
   padding: 0;
   border-radius: 0;
   /*
-   * 원본 webp 픽셀에 흰색 테두리가 구워져 있어 액자처럼 보인다.
-   * 파일은 수정하지 않고, 레이아웃 크기를 유지한 채 가장자리 6px만 잘라 가린다.
+   * 사진이 직사각형 캔버스 끝에서 선명하게 끊겨 배경(#5f5f5f)과의 대비로
+   * 액자처럼 보인다. 44의 .section2Image와 동일한 radial mask로
+   * 가장자리를 alpha 0까지 페이드시켜 배경과 자연스럽게 연결한다.
    */
-  clip-path: inset(6px);
+  mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.5) 80%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.5) 80%,
+    transparent 100%
+  );
 }
 
 .purchaseSection {
