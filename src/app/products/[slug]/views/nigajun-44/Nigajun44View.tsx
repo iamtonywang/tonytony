@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun44View.module.css";
@@ -15,6 +15,114 @@ function maskBoardAuthor(author: string) {
 interface Props {
   product?: ProductMinimal;
   boardItems: ProductBoardItem[];
+}
+
+const MANIFESTO_TEXT = "제품은 유저가 직접 사용해야 거짓과 진실을 알 수 있어.";
+const SECTION4_MANIFESTO_LINES = [
+  "과장된 표현도 자극적인 광고도 하고 싶지 않아.",
+  "최고의 위치는 거짓된 홍보로 되는 게 아냐.",
+  "허구와 유혹으로 가득 찬 광고가 무슨 필요가 있어?",
+];
+const SECTION5_MANIFESTO_LINES = [
+  "I DON'T LIKE LYING",
+  "나는 거짓이 싫다.",
+  "성분이 뭐고 어떤 구조라고 떠들고 싶지 않아.",
+  "유저를 속이며 이익을 만들고 싶지 않아. 그건 비참할 뿐이야.",
+];
+const SECTION6_MANIFESTO_LINES = [
+  "creation?",
+  "미쳐야 가질 수 있고 세상에 없던것을 만드는 것",
+];
+const MANIFESTO_REVEAL_TOTAL_MS = 3200;
+const MANIFESTO_CHAR_DURATION_MS = 420;
+
+/*
+ * Soft Type Reveal: Section 진입 시 문장을 왼쪽부터 한 글자씩 부드럽게 공개.
+ * 여러 줄이면 글자 delay가 줄을 넘어 이어져 위→아래 순서로 공개된다.
+ * - JS가 없거나 실패하면 armed가 되지 않아 문장이 처음부터 보인다.
+ * - observer는 시작 즉시 disconnect되어 한 번만 실행된다.
+ * - 접근성: 각 줄 p의 aria-label로 완전한 문장을 제공하고 글자 span은 aria-hidden.
+ */
+function ManifestoReveal({
+  lines,
+  lineClasses,
+}: {
+  lines: string[];
+  /* 줄 index별 추가 클래스(예: Section 5 첫 줄 강조). 없으면 공통 Typography만 사용. */
+  lineClasses?: (string | undefined)[];
+}) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [armed, setArmed] = useState(false);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    setArmed(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const glyphCount = lines.reduce(
+    (sum, line) => sum + Array.from(line.replace(/ /g, "")).length,
+    0,
+  );
+  const stepMs =
+    (MANIFESTO_REVEAL_TOTAL_MS - MANIFESTO_CHAR_DURATION_MS) / Math.max(1, glyphCount - 1);
+
+  const stateClass = started
+    ? styles.manifestoCopyStarted
+    : armed
+      ? styles.manifestoCopyArmed
+      : "";
+
+  let glyphIndex = 0;
+
+  return (
+    <div ref={ref} className={`${styles.manifestoCopy} ${stateClass}`}>
+      {lines.map((line, lineIdx) => (
+        <p
+          key={lineIdx}
+          className={
+            lineClasses?.[lineIdx]
+              ? `${styles.bodyCopy} ${lineClasses[lineIdx]}`
+              : styles.bodyCopy
+          }
+          aria-label={line}
+        >
+          {line.split(" ").map((word, wordIdx) => (
+            <Fragment key={wordIdx}>
+              {wordIdx > 0 ? " " : null}
+              <span className={styles.manifestoWord} aria-hidden="true">
+                {Array.from(word).map((char, charIdx) => {
+                  const delayMs = Math.round(glyphIndex * stepMs);
+                  glyphIndex += 1;
+                  return (
+                    <span
+                      key={charIdx}
+                      className={styles.manifestoChar}
+                      style={started ? { animationDelay: `${delayMs}ms` } : undefined}
+                    >
+                      {char}
+                    </span>
+                  );
+                })}
+              </span>
+            </Fragment>
+          ))}
+        </p>
+      ))}
+    </div>
+  );
 }
 
 function BoardSection({
@@ -348,7 +456,10 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       <SignatureLine />
 
       {/* Section 1: Product Identity + 가격 + Buy Now (텍스트 왼쪽 / 이미지 오른쪽) */}
-      <section className={styles.landingSection} aria-label="Product Identity">
+      <section
+        className={`${styles.landingSection} ${styles.uniformSection} ${styles.section1Uniform}`}
+        aria-label="Product Identity"
+      >
         <div className={styles.sectionSplit}>
           <div className={styles.sectionSplitCopy}>
             <h1 className={styles.brandTitle}>TONY WANG</h1>
@@ -382,8 +493,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      {/* Section 2 */}
-      <section className={styles.landingSection}>
+      {/* Section 2: Home founderImage 방식의 배경 오브젝트 + 문구 */}
+      <section className={`${styles.landingSection} ${styles.section2Backdrop}`}>
+        <div className={styles.section2Image} aria-hidden="true" />
         <p className={styles.bodyCopy}>{"우리는 낡고 허술한 시대에 살고 있어"}</p>
         <p className={styles.bodyCopy}>{"무엇이 진실이고 무엇이 거짓인지 때론 모르고 살아간다"}</p>
         <p className={styles.bodyCopy}>{"We live in a time of old and loose Sometimes "}</p>
@@ -392,68 +504,62 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      {/* Section 3 */}
-      <section className={styles.landingSection}>
-        <p className={styles.bodyCopy}>{"긴 설명은 필요하지 않아 거짓은 수치이고 창피한 행위 이잔아"}</p>
-        <p className={styles.bodyCopy}>{"성분이 뭐고 어떤 구조라고 떠들고 싶지 않아 "}</p>
-        <p className={styles.bodyCopy}>{"화려한 설명이 소용이 없다는 것을 알기에 ,,  최고라고 말할 필요도 없어 "}</p>
-        <p className={styles.bodyCopy}>{"스스로 얘기하는건 모순이고 창피한 행동이야"}</p>
-        <p className={styles.bodyCopy}>{"I don't need a long explanation. False is a disgrace, embarrassing act"}</p>
-        <p className={styles.bodyCopy}>{"I don't want to talk about the ingredients and the structure "}</p>
-        <p className={styles.bodyCopy}>{"I know the fancy explanation is useless, so I don't need to say it's the best "}</p>
-        <p className={styles.bodyCopy}>{"It's contradictory and embarrassing to speak for yourself"}</p>
+      {/* Section 3: Roman Number + 한 줄 Manifesto (Soft Type Reveal) */}
+      <section
+        className={`${styles.landingSection} ${styles.manifestoSection} ${styles.uniformSection}`}
+      >
+        <p className={styles.manifestoNumeral} aria-hidden="true">
+          III
+        </p>
+        <ManifestoReveal lines={[MANIFESTO_TEXT]} />
       </section>
 
       <SignatureLine />
 
-      {/* Section 4 */}
-      <section className={styles.landingSection}>
-        <p className={styles.bodyCopy}>{"하지만 다들 본인 제품이 최고라고 얘기해"}</p>
-        <p className={styles.bodyCopy}>{"최고 자리는 거짓 홍보로 되는게 아냐  나는 그들과 같은 존재가 되기 싫어"}</p>
-        <p className={styles.bodyCopy}>{"I DON'T LIKE LYING 나는 거짓이 싫을 뿐이다"}</p>
-        <p className={styles.bodyCopy}>{"나를 믿는 사람을 속이며 이익을 만들고 싶지 않아 그것은 매우 역겨운 행동이야"}</p>
-        <p className={styles.bodyCopy}>{"But everyone says their products are the best"}</p>
-        <p className={styles.bodyCopy}>{"I don't want to be like them I don't like lying. I just don't like lying"}</p>
-        <p className={styles.bodyCopy}>{"I don't want to deceive people who believe in me. It's disgusting"}</p>
+      {/* Section 4: Roman Number + 한 줄 Manifesto (Section 3과 동일 시스템) */}
+      <section
+        className={`${styles.landingSection} ${styles.manifestoSection} ${styles.uniformSection}`}
+      >
+        <p className={styles.manifestoNumeral} aria-hidden="true">
+          IV
+        </p>
+        <ManifestoReveal lines={SECTION4_MANIFESTO_LINES} />
       </section>
 
       <SignatureLine />
 
-      {/* Section 5 */}
-      <section className={styles.landingSection}>
-        <p className={styles.bodyCopy}>{"상품이란 것이 직접 사용해야 알 수 있어 그래서 솔직히 답답해"}</p>
-        <p className={styles.bodyCopy}>{"유혹적인 표현을 하기 싫다 자극적인 표현도 하기 싫다"}</p>
-        <p className={styles.bodyCopy}>{"유저들은 이미 자극적인 표현에 젖어 있다"}</p>
-        <p className={styles.bodyCopy}>{"그러나 나는 이미 기성화 된 문화에 같이 길들여 지고 싶지 않다"}</p>
-        <p className={styles.bodyCopy}>{"입증이란 문턱에서 깊이 고뇌에 빠져 있겠지만 그들과 똑같이 하고 싶지 않아"}</p>
-        <p className={styles.bodyCopy}>{"You have to use it to know what a product is. So honestly, "}</p>
-        <p className={styles.bodyCopy}>{"it's frustrating I don't want to be seductive. I don't want to be provocative"}</p>
-        <p className={styles.bodyCopy}>{"Users are already steeped in provocative expressions"}</p>
-        <p className={styles.bodyCopy}>{"But I don't want to be tamed together into an established culture"}</p>
-        <p className={styles.bodyCopy}>{"I'll be in deep agony at the threshold of proof, "}</p>
-        <p className={styles.bodyCopy}>{"but I don't want to do the same as them"}</p>
+      {/* Section 5: Roman Number + Manifesto (Section 3·4와 동일 시스템) */}
+      <section
+        className={`${styles.landingSection} ${styles.manifestoSection} ${styles.uniformSection}`}
+      >
+        <p className={styles.manifestoNumeral} aria-hidden="true">
+          V
+        </p>
+        <ManifestoReveal
+          lines={SECTION5_MANIFESTO_LINES}
+          lineClasses={[styles.manifestoLead]}
+        />
       </section>
 
       <SignatureLine />
 
-      {/* Section 6 */}
-      <section className={styles.landingSection}>
-        <p className={styles.bodyCopy}>{"가치를 모르는자 자신을 사랑하지 않는자 의문을 가지는자"}</p>
-        <p className={styles.bodyCopy}>{"자격이 없다 여기서 나가라 진정으로 변혁을 원하는 자 환영한다"}</p>
-        <p className={styles.bodyCopy}>{"진실의 힘은 밝혀지기까지 시간이 걸리지만 가장 강하고 아름답고 빛이 난다"}</p>
-        <p className={styles.bodyCopy}>{"그것이 가장 큰 힘이고 가장 순수하고 강한 무기다"}</p>
-        <p className={styles.bodyCopy}>{"나는 그 시간까지 나의길을 가겠다"}</p>
-        <p className={styles.bodyCopy}>{"Those who don't know the value and those who don't love themselves, leave"}</p>
-        <p className={styles.bodyCopy}>{"You are not qualified. Get out of here. Those who truly want to change are welcome"}</p>
-        <p className={styles.bodyCopy}>{"The power of truth takes time to come to light, but it is the strongest, most beautiful and shiny power"}</p>
-        <p className={styles.bodyCopy}>{"It's the most powerful force and the purest and most powerful weapon"}</p>
-        <p className={styles.bodyCopy}>{"I'm going to go my own way until then"}</p>
+      {/* Section 6: Roman Number + Manifesto (Section 3~5와 동일 시스템) */}
+      <section
+        className={`${styles.landingSection} ${styles.manifestoSection} ${styles.uniformSection}`}
+      >
+        <p className={styles.manifestoNumeral} aria-hidden="true">
+          VI
+        </p>
+        <ManifestoReveal
+          lines={SECTION6_MANIFESTO_LINES}
+          lineClasses={[styles.manifestoCreation]}
+        />
       </section>
 
       <SignatureLine />
 
       {/* Section 7 */}
-      <section className={styles.landingSection}>
+      <section className={`${styles.landingSection} ${styles.uniformSection}`}>
         <p className={styles.bodyCopy}>{"피부에 관한 퍼즐을 풀고자 세상에 나왔다"}</p>
         <p className={styles.bodyCopy}>{"I came to the world to solve a puzzle about skin"}</p>
         <p className={styles.bodyCopy}>{"August 2026 TONY WANG"}</p>

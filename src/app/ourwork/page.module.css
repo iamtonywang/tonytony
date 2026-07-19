@@ -40,6 +40,7 @@
 @media (max-width: 768px) {
   .documentaryImage {
     background-size: min(430px, 100%) auto;
+    transform: translateY(30%);
     opacity: 0.28;
     mask-image: radial-gradient(
       196px 196px at 50% 210px,

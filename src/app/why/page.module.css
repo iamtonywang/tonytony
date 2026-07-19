@@ -39,18 +39,19 @@
 @media (max-width: 768px) {
   .manifestoImage {
     background-size: min(430px, 100%) auto;
+    transform: translateY(30%);
     opacity: 0.28;
     mask-image: radial-gradient(
-      170px 170px at 50% 190px,
+      196px 196px at 50% 210px,
       rgba(0, 0, 0, 1) 40%,
       rgba(0, 0, 0, 0.5) 68%,
-      transparent 94%
+      transparent 96%
     );
     -webkit-mask-image: radial-gradient(
-      170px 170px at 50% 190px,
+      196px 196px at 50% 210px,
       rgba(0, 0, 0, 1) 40%,
       rgba(0, 0, 0, 0.5) 68%,
-      transparent 94%
+      transparent 96%
     );
   }
 }
