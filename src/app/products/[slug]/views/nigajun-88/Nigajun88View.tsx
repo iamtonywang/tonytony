@@ -126,16 +126,24 @@ export default function Nigajun88View({ product, boardItems }: Props) {
 
       <section className={styles.landingSection} aria-label="Product Description">
         <p className={styles.sectionTitle}>NIGAJUN 88</p>
-        <p className={styles.releaseNotice}>It will be released soon</p>
-        <p className={styles.bodyCopy}>
-          NIGAJUN 88 is a premium hair nutrition treatment designed to care for
-          both the scalp and hair. It helps nourish dry, weakened hair, supports
-          a healthier-looking scalp, reduces the appearance of hair loss caused
-          by breakage, and leaves hair stronger, smoother, shinier, and more
-          resilient with every use.
-        </p>
-        <p className={styles.bodyCopy}>August 2026 TONYWANG</p>
+        <p className={styles.bodyCopy}>Hair Nutrition Protein Cream</p>
       </section>
+
+      <img
+        src="/landing-assets/nigajun-88-product-jar.webp"
+        alt=""
+        className={styles.jarImage}
+      />
+
+      <p className={styles.jarCaption}>It will be a precious thing to you</p>
+
+      <SignatureLine />
+
+      <div className={styles.jarCopy}>
+        <p className={styles.jarNotice}>It will be released soon</p>
+        <p className={styles.jarBrand}>NIGAJUN 88</p>
+        <p className={styles.jarSub}>Hair Nutrition Protein Cream</p>
+      </div>
 
       <SignatureLine />
 
@@ -155,6 +163,8 @@ export default function Nigajun88View({ product, boardItems }: Props) {
           </Link>
         </div>
       </section>
+
+      <SignatureLine />
 
       <div className={styles.boardTopHeader}>
         <h2 className={styles.boardTopTitle}>

@@ -66,17 +66,60 @@
   margin-top: 4px;
 }
 
-/* 대표 이미지 아래 설명 블록의 출시 예정 강조 문구 (99 .releaseNotice와 동일) */
-.releaseNotice {
-  margin: 8px 0 0;
+/* 티저 문구: 99 jarCopy와 동일 (이미지 위 3줄) */
+.jarCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.jarNotice {
+  margin: 0;
   font-size: 17px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.15;
   color: #ff7f00;
 }
 
-.releaseNotice + .bodyCopy {
-  margin-top: 9px;
+.jarBrand {
+  margin: 4px 0 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.jarSub {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/*
+ * 제품 용기(자) 이미지: 99 .jarImage와 동일.
+ * 출시 예정 티저이므로 작고 절제된 크기로 표시.
+ */
+.jarImage {
+  display: block;
+  width: 45%;
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* 이미지 바로 아래 오렌지 캡션 */
+.jarCaption {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.15;
+  text-align: center;
+  color: #ff7f00;
 }
 
 /*
