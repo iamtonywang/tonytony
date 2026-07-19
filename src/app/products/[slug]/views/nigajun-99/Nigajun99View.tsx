@@ -138,11 +138,18 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      <img
-        src="/landing-assets/nigajun-99-product-jar.webp"
-        alt=""
-        className={styles.jarImage}
-      />
+      <div className={styles.jarTeaser}>
+        <img
+          src="/landing-assets/nigajun-99-product-jar.webp"
+          alt=""
+          className={styles.jarImage}
+        />
+        <div className={styles.jarOverlay}>
+          <p className={styles.jarOverlayNotice}>It will be released soon</p>
+          <p className={styles.jarOverlayBrand}>NIGAJUN 99</p>
+          <p className={styles.jarOverlaySub}>itchy skin care cream</p>
+        </div>
+      </div>
 
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>

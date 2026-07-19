@@ -130,14 +130,60 @@
 /*
  * 제품 용기(자) 이미지: 출시 예정 티저이므로 작고 절제된 크기로 표시.
  * PC 320px → 220px(약 31% 축소), 모바일 60% → 45%(약 25% 축소).
+ * 라벨 영역에 출시 예정 문구를 오버레이한다(shadow/glow/stroke 없음).
  */
-.jarImage {
-  display: block;
+.jarTeaser {
+  position: relative;
   width: 45%;
   max-width: 220px;
-  height: auto;
   margin: 0 auto;
+}
+
+.jarImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
   object-fit: contain;
+}
+
+.jarOverlay {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  width: 72%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.jarOverlayNotice {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #ff7f00;
+}
+
+.jarOverlayBrand {
+  margin: 4px 0 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.jarOverlaySub {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: #ffffff;
 }
 
 .purchaseSection {
