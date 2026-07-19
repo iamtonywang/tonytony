@@ -34,14 +34,16 @@ export default async function ProductsPage() {
 
       <SignatureLine />
 
-      <img
-        src="/landing-assets/nigajun-44-model-portrait.webp"
-        alt=""
-        className={styles.modelPortrait}
-      />
+      <section className={styles.modelPortraitFrame} aria-label="Product links">
+        <img
+          src="/landing-assets/nigajun-44-model-portrait.webp"
+          alt=""
+          className={styles.modelPortrait}
+        />
 
-      <section className={styles.productLinksSection} aria-label="Product links">
-        <div className={styles.heroProductLinks}>
+        <div className={styles.portraitOverlay}>
+          <p className={styles.portraitLead}>I made it for you.</p>
+
           <div className={listStyles.productTextOverlayVisible}>
             <ul className={listStyles.productOverlayList}>
               {filteredAndSorted.map((item) => {
@@ -59,6 +61,11 @@ export default async function ProductsPage() {
               })}
             </ul>
           </div>
+
+          <p className={styles.portraitCopy}>
+            Don&apos;t compare it to other cosmetics
+          </p>
+          <p className={styles.portraitCopy}>It hurts my pride</p>
         </div>
       </section>
     </>

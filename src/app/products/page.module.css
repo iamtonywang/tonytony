@@ -34,6 +34,18 @@
 }
 
 /*
+ * 이미지와 오버레이(문구 + CTA)의 position 기준 wrapper.
+ * 폭 규칙은 기존 .modelPortrait 값을 그대로 이어받는다
+ * (공통 Hairline의 선 시작~끝 폭: min(760px, 100%) - 좌우 28px).
+ */
+.modelPortraitFrame {
+  position: relative;
+  width: calc(100% - 56px);
+  max-width: 704px;
+  margin: 0 auto;
+}
+
+/*
  * nigajun-44-model-portrait: 프로젝트 공통 <img> + public path 방식.
  * 비율 유지 수치는 Nigajun44View .sectionSplitImage 핵심과 동일
  * (display:block / width:100% / height:auto / object-fit:contain).
@@ -43,11 +55,8 @@
  */
 .modelPortrait {
   display: block;
-  /* 공통 Hairline(SignatureLine)의 선 시작~끝 폭과 동일: min(760px, 100%) - 좌우 28px */
-  width: calc(100% - 56px);
-  max-width: 704px;
+  width: 100%;
   height: auto;
-  margin: 0 auto;
   object-fit: contain;
   mask-image: radial-gradient(
     50% 50% at 50% 50%,
@@ -64,31 +73,61 @@
 }
 
 /*
- * 모바일: 데스크톱 규칙(calc(100% - 56px))이 그대로 내려와 좌우 56px이 빠지면
+ * 모바일: 데스크톱 폭 규칙이 그대로 내려오면 좌우 56px이 빠져
  * 작은 화면에서 이미지가 지나치게 작아진다. 가장자리는 mask로 페이드되므로
  * 화면 폭 전체를 사용해도 Hairline 끝점과 자연스럽게 이어진다.
  */
 @media (max-width: 768px) {
-  .modelPortrait {
+  .modelPortraitFrame {
     width: 100%;
     max-width: none;
   }
 }
 
-.productLinksSection {
-  width: 100%;
+/*
+ * 이미지 하단의 빈 영역(인물의 얼굴·의상·손이 없는 다리 아래 페이드 구간)에
+ * 문구와 CTA를 세로로 쌓는다. 배경 박스·blur 없이 흰 글자 + 최소 그림자만 사용.
+ */
+.portraitOverlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
+  padding: 0 16px;
   text-align: center;
-  padding: 48px 16px;
-  box-sizing: border-box;
 }
 
-.heroProductLinks {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.portraitLead {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.portraitCopy {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+/* 마지막 두 문구는 한 문단처럼 조밀하게 */
+.portraitCopy + .portraitCopy {
+  margin-top: -5px;
+}
+
+@media (max-width: 768px) {
+  .portraitOverlay {
+    bottom: 3%;
+    gap: 8px;
+  }
 }
