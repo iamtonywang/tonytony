@@ -108,6 +108,15 @@ export default function Nigajun99View({ product, boardItems }: Props) {
     <article className={styles.detailPage}>
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Product Identity">
+        <h1 className={styles.brandTitle}>NIGAJUN 99</h1>
+        <p className={styles.sectionTitle}>itchy skin care cream</p>
+        <p className={styles.bodyCopy}>Proteo Phyto Complex Science</p>
+        <p className={styles.bodyCopy}>August 2026 TONY WANG</p>
+      </section>
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
