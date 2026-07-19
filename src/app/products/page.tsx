@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SignatureLine from "@/components/sections/SignatureLine";
 import { getPublicProducts } from "./_server/getPublicProducts";
 import listStyles from "@/components/sections/Product/ProductListSection/ProductListSection.module.css";
 import styles from "./page.module.css";
@@ -23,14 +22,15 @@ export default async function ProductsPage() {
 
   return (
     <>
-      <SignatureLine />
-
       <section className={styles.brandIntro} aria-label="Brand introduction">
+        <h1 className={styles.brandIntroBrand}>TONYWANG</h1>
         <p className={styles.brandIntroTitle}>
           Plant Cell Genetic Protein Laboratory
         </p>
         <p className={styles.brandIntroMeta}>August 2026 TONY WANG</p>
       </section>
+
+      <div className={styles.brandIntroDivider} aria-hidden="true" />
 
       <section className={styles.productLinksSection} aria-label="Product links">
         <div className={styles.heroProductLinks}>
