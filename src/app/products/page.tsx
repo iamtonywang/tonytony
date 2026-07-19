@@ -66,6 +66,17 @@ export default async function ProductsPage() {
           </div>
         </div>
       </section>
+
+      <SignatureLine />
+
+      <section className={styles.brandIntro} aria-label="Brand introduction">
+        <p className={styles.brandIntroTitle}>
+          Plant Cell Genetic Protein Laboratory
+        </p>
+        <p className={styles.brandIntroMeta}>August 2026 TONY WANG</p>
+      </section>
+
+      <SignatureLine />
     </>
   );
 }
