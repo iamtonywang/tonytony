@@ -33,6 +33,20 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+/*
+ * nigajun-44-model-portrait: 프로젝트 공통 <img> + public path 방식.
+ * 비율 유지 수치는 Nigajun44View .sectionSplitImage 핵심과 동일
+ * (display:block / width:100% / height:auto / object-fit:contain).
+ */
+.modelPortrait {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
 .productLinksSection {
   width: 100%;
   display: flex;

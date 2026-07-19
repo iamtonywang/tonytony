@@ -34,6 +34,12 @@ export default async function ProductsPage() {
 
       <SignatureLine />
 
+      <img
+        src="/landing-assets/nigajun-44-model-portrait.webp"
+        alt=""
+        className={styles.modelPortrait}
+      />
+
       <section className={styles.productLinksSection} aria-label="Product links">
         <div className={styles.heroProductLinks}>
           <div className={listStyles.productTextOverlayVisible}>
