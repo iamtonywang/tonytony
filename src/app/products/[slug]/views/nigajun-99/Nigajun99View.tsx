@@ -136,6 +136,8 @@ export default function Nigajun99View({ product, boardItems }: Props) {
         <p className={styles.bodyCopy}>August 2026 TONYWANG</p>
       </section>
 
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
