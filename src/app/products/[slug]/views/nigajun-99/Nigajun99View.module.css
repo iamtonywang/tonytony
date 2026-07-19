@@ -316,15 +316,6 @@
   box-sizing: border-box;
 }
 
-.boardTopTitle::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.18);
-  margin-top: 6px;
-}
-
 .boardTopTitle span {
   line-height: 1.1;
 }
