@@ -125,6 +125,17 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Product Description">
+        <p className={styles.sectionTitle}>NIGAJUN 99</p>
+        <p className={styles.releaseNotice}>It will be released soon</p>
+        <p className={styles.bodyCopy}>
+          A protein-enriched moisturizing cream created for dry, itchy-feeling
+          skin, helping maintain lasting hydration, comfort, softness, and a
+          healthy-looking skin barrier.
+        </p>
+        <p className={styles.bodyCopy}>August 2026 TONYWANG</p>
+      </section>
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"

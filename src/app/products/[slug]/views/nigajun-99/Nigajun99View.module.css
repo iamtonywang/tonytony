@@ -63,6 +63,19 @@
   margin-top: 4px;
 }
 
+/* Hero 아래 설명 블록의 출시 예정 강조 문구 */
+.releaseNotice {
+  margin: 8px 0 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ff7f00;
+}
+
+.releaseNotice + .bodyCopy {
+  margin-top: 9px;
+}
+
 /*
  * Hero 이미지: 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
  * 실라인 박스는 max-width 760px + 좌우 padding 28px이므로
