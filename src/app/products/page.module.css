@@ -43,8 +43,9 @@
  */
 .modelPortrait {
   display: block;
-  width: 100%;
-  max-width: 620px;
+  /* 공통 Hairline(SignatureLine)의 선 시작~끝 폭과 동일: min(760px, 100%) - 좌우 28px */
+  width: calc(100% - 56px);
+  max-width: 704px;
   height: auto;
   margin: 0 auto;
   object-fit: contain;
