@@ -66,6 +66,19 @@
   margin-top: 4px;
 }
 
+/* 대표 이미지 아래 설명 블록의 출시 예정 강조 문구 (99 .releaseNotice와 동일) */
+.releaseNotice {
+  margin: 8px 0 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ff7f00;
+}
+
+.releaseNotice + .bodyCopy {
+  margin-top: 9px;
+}
+
 /* 티저 문구: 99 jarCopy와 동일 (이미지 위 3줄) */
 .jarCopy {
   display: flex;

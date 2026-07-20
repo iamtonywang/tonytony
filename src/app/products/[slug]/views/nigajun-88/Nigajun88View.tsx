@@ -124,6 +124,21 @@ export default function Nigajun88View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Product Description">
+        <p className={styles.sectionTitle}>NIGAJUN 88</p>
+        <p className={styles.releaseNotice}>It will be released soon</p>
+        <p className={styles.bodyCopy}>
+          NIGAJUN 88 is a premium hair nutrition treatment designed to care for
+          both the scalp and hair. It helps nourish dry, weakened hair, supports
+          a healthier-looking scalp, reduces the appearance of hair loss caused
+          by breakage, and leaves hair stronger, smoother, shinier, and more
+          resilient with every use.
+        </p>
+        <p className={styles.bodyCopy}>August 2026 TONYWANG</p>
+      </section>
+
+      <SignatureLine />
+
       <div className={styles.jarCopy}>
         <p className={styles.jarNotice}>It will be released soon</p>
         <p className={styles.jarBrand}>NIGAJUN 88</p>
