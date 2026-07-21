@@ -122,6 +122,17 @@ export default function Nigajun77View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <section className={styles.landingSection} aria-label="Product Description">
+        <p className={styles.sectionTitle}>NIGAJUN 77</p>
+        <p className={styles.releaseNotice}>Shape Your Body. Strengthen Your Confidence.</p>
+        <p className={styles.bodyCopy}>
+          Hydrates, firms, and smooths the skin while helping create the appearance of a more
+          refined body contour.
+        </p>
+      </section>
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"

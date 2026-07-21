@@ -66,6 +66,19 @@
   margin-top: 4px;
 }
 
+/* 대표 이미지 아래 설명 블록의 강조 문구 (88 .releaseNotice와 동일) */
+.releaseNotice {
+  margin: 8px 0 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ff7f00;
+}
+
+.releaseNotice + .bodyCopy {
+  margin-top: 9px;
+}
+
 /*
  * 대표 이미지: 88 .heroImage와 동일.
  * 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
