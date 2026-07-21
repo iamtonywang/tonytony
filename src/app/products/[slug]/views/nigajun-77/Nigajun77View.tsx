@@ -157,6 +157,8 @@ export default function Nigajun77View({ product, boardItems }: Props) {
         <p className={styles.sectionTitle}>Body Slim & Firming Cream</p>
       </section>
 
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
