@@ -169,6 +169,19 @@
   color: #ff7f00;
 }
 
+/*
+ * 제품 용기(자) 이미지: 88 .jarImage와 동일 패턴, 보조 이미지로 더 작게 표시.
+ * 88: width 45%, max-width 220px → 77: width 32%, max-width 150px
+ */
+.jarImage {
+  display: block;
+  width: 32%;
+  max-width: 150px;
+  height: auto;
+  margin: 14px auto 0;
+  object-fit: contain;
+}
+
 @media (max-width: 768px) {
   .fourthProductCta {
     gap: 16px;

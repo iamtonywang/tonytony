@@ -198,6 +198,12 @@ export default function Nigajun77View({ product, boardItems }: Props) {
             Buy Now
           </Link>
         </div>
+
+        <img
+          src="/landing-assets/nigajun-77-product-jar.webp"
+          alt=""
+          className={styles.jarImage}
+        />
       </section>
 
       <SignatureLine />
