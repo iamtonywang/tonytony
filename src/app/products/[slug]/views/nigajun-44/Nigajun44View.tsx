@@ -496,7 +496,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <img
-        src="/landing-assets/nigajun-44-eye-detail.webp"
+        src="/landing-assets/nigajun-44-luxury-model.webp"
         alt=""
         className={styles.heroImage}
       />
