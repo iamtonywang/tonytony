@@ -495,6 +495,12 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <ManifestoReveal lines={[MANIFESTO_TEXT]} />
       </section>
 
+      <img
+        src="/landing-assets/nigajun-44-eye-detail.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <SignatureLine />
 
       {/* Section 4: Roman Number + 한 줄 Manifesto (Section 3과 동일 시스템) */}
