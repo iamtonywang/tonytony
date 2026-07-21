@@ -71,11 +71,6 @@
   margin-top: 5px;
 }
 
-/* Section 1 내부로 이동한 가격·Buy Now CTA와 위 문구 사이 간격 */
-.landingSection .fourthProductCta {
-  margin: 18px auto 0;
-}
-
 /*
  * Section 2: Home(.sectionsBackdrop/.founderImage)과 동일한 방식의 배경 오브젝트 레이어.
  * 문구와 좌우 분리하지 않고, 문구 뒤(z-index: -1)에 낮은 opacity + radial mask로 페이드시킨다.
@@ -167,17 +162,6 @@
 }
 
 /*
- * Section 1: Section 2와 동일한 높이 기준(.uniformSection의 min-height)을 사용한다.
- * 콘텐츠(제품 이미지 등)가 Section 2 문구보다 크므로, 세로 padding을 없애고
- * min-height + 중앙 정렬로 높이를 만들어 잘림 없이 같은 시각적 높이가 되게 한다.
- * (.landingSection의 세로 padding만 대체하며 좌우 padding·정렬·콘텐츠는 그대로)
- */
-.landingSection.section1Uniform {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-/*
  * Section 3: Roman Number(섹션 번호) + 한 줄 Manifesto의 중앙 축 구성.
  * 배경·박스·보더·장식 없음. 문장은 Soft Type Reveal로 글자 순서대로 공개된다.
  */
@@ -259,21 +243,18 @@
 }
 
 
-/* Section 2: 데스크톱 이미지·문구 좌우 배치, 모바일 세로 배치 */
-.sectionSplit {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 24px;
-  width: 100%;
+.purchaseSection {
+  width: min(1120px, 92vw);
+  margin: -12px auto 0;
+  text-align: center;
 }
 
 .sectionSplitImage {
   display: block;
-  flex: 0 0 32%;
-  width: 100%;
+  width: 32%;
   max-width: 32%;
   height: auto;
+  margin: 14px auto 0;
   object-fit: contain;
   /*
    * 최초 진입 인트로 모션: 비스듬한 상태에서 정면으로 회전하며 정지.
@@ -324,40 +305,15 @@
   }
 }
 
-.sectionSplitCopy {
-  flex: 1;
-  min-width: 0;
-  text-align: center;
-}
-
 @media (max-width: 768px) {
-  .sectionSplit {
-    flex-direction: column;
-    gap: 16px;
-  }
-
   .sectionSplitImage {
-    flex: none;
     width: 70%;
     max-width: 300px;
-    margin: 0 auto;
   }
-}
 
-@media (max-width: 768px) {
   .landingSection {
     padding: 56px 28px;
   }
-}
-
-.purchaseCtaSection {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 48px 0;
-  box-sizing: border-box;
-  background: #5f5f5f;
 }
 
 .fourthProductCta {
@@ -367,6 +323,7 @@
   justify-content: center;
   gap: 22px;
   max-width: min(560px, calc(100vw - 24px));
+  margin: 0 auto;
   box-sizing: border-box;
   pointer-events: auto;
 }
@@ -417,6 +374,10 @@
 
   .fourthProductBuyButton {
     font-size: 16px;
+  }
+
+  .purchaseSection {
+    width: min(1120px, 94vw);
   }
 
   .boardTopHeader {

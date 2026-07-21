@@ -455,40 +455,15 @@ export default function Nigajun44View({ product, boardItems }: Props) {
     <article className={styles.detailPage}>
       <SignatureLine />
 
-      {/* Section 1: Product Identity + 가격 + Buy Now (텍스트 왼쪽 / 이미지 오른쪽) */}
+      {/* Section 1: Product Identity */}
       <section
-        className={`${styles.landingSection} ${styles.uniformSection} ${styles.section1Uniform}`}
+        className={`${styles.landingSection} ${styles.uniformSection}`}
         aria-label="Product Identity"
       >
-        <div className={styles.sectionSplit}>
-          <div className={styles.sectionSplitCopy}>
-            <h1 className={styles.brandTitle}>TONY WANG</h1>
-            <p className={styles.sectionTitle}>NIGAJUN 44</p>
-            <p className={styles.bodyCopy}>Proteo Phyto Complex</p>
-            <p className={styles.bodyCopy}>Hybrid End Skincare</p>
-
-            <div className={styles.fourthProductCta}>
-              <p className={styles.fourthProductPrice}>
-                {typeof product?.finalPriceAmount === "number"
-                  ? `₩${product.finalPriceAmount.toLocaleString("ko-KR")}`
-                  : ""}
-              </p>
-
-              <Link
-                href={`/purchase/${product?.slug ?? ""}`}
-                className={styles.fourthProductBuyButton}
-              >
-                Buy Now
-              </Link>
-            </div>
-          </div>
-
-          <img
-            src="/landing-assets/nigajun-44-main-transparent.webp"
-            alt=""
-            className={styles.sectionSplitImage}
-          />
-        </div>
+        <h1 className={styles.brandTitle}>TONY WANG</h1>
+        <p className={styles.sectionTitle}>NIGAJUN 44</p>
+        <p className={styles.bodyCopy}>Proteo Phyto Complex</p>
+        <p className={styles.bodyCopy}>Hybrid End Skincare</p>
       </section>
 
       <SignatureLine />
@@ -563,6 +538,29 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <p className={styles.bodyCopy}>{"피부에 관한 퍼즐을 풀고자 세상에 나왔다"}</p>
         <p className={styles.bodyCopy}>{"I came to the world to solve a puzzle about skin"}</p>
         <p className={styles.bodyCopy}>{"August 2026 TONY WANG"}</p>
+      </section>
+
+      <section className={styles.purchaseSection} aria-label="Purchase">
+        <img
+          src="/landing-assets/nigajun-44-main-transparent.webp"
+          alt=""
+          className={styles.sectionSplitImage}
+        />
+
+        <div className={styles.fourthProductCta}>
+          <p className={styles.fourthProductPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString("ko-KR")}`
+              : ""}
+          </p>
+
+          <Link
+            href={`/purchase/${product?.slug ?? ""}`}
+            className={styles.fourthProductBuyButton}
+          >
+            Buy Now
+          </Link>
+        </div>
       </section>
 
       <SignatureLine />
