@@ -72,6 +72,16 @@
 }
 
 /*
+ * Section 1: 77·88·99 첫 소개 섹션과 동일한 세로 밀도.
+ * detailPage flex gap(16px)을 음수 margin으로 상쇄하고 padding을 최소화한다.
+ */
+.landingSection.introSection {
+  margin: -12px auto;
+  padding: 4px 28px;
+  min-height: unset;
+}
+
+/*
  * Section 2: Home(.sectionsBackdrop/.founderImage)과 동일한 방식의 배경 오브젝트 레이어.
  * 문구와 좌우 분리하지 않고, 문구 뒤(z-index: -1)에 낮은 opacity + radial mask로 페이드시킨다.
  */
@@ -313,6 +323,11 @@
 
   .landingSection {
     padding: 56px 28px;
+  }
+
+  .landingSection.introSection {
+    margin: -12px auto;
+    padding: 4px 28px;
   }
 }
 

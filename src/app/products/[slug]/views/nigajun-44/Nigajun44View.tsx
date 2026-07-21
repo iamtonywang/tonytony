@@ -457,7 +457,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       {/* Section 1: Product Identity */}
       <section
-        className={`${styles.landingSection} ${styles.uniformSection}`}
+        className={`${styles.landingSection} ${styles.introSection}`}
         aria-label="Product Identity"
       >
         <h1 className={styles.brandTitle}>TONY WANG</h1>
