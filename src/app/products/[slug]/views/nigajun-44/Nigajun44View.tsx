@@ -555,6 +555,12 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         />
       </section>
 
+      <img
+        src="/landing-assets/nigajun-44-creator-portrait.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <SignatureLine />
 
       {/* Section 7 */}
