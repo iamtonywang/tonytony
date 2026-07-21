@@ -87,6 +87,9 @@
  */
 .section2Backdrop {
   position: relative;
+  padding-top: 92px;
+  padding-bottom: 92px;
+  min-height: 260px;
   /*
    * 이미지 레이어를 scale로 확대하면 Section 경계를 살짝 넘는다.
    * mask가 경계에서 alpha 0으로 페이드되므로 clip 없이 자연스럽게 번지게 두고,
@@ -105,10 +108,9 @@
   background-image: url("/landing-assets/tonywang-why-manifesto-hero.webp");
   background-repeat: no-repeat;
   background-position: center 45%;
-  /* Section 2 전체 영역을 채움(비율 유지, cover 방식) */
-  background-size: cover;
-  /* 이미지+mask를 함께 확대해 구도·비율·페이드를 유지한 채 표시 크기만 25% 키운다 */
-  transform: scale(1.25);
+  /* 비율 유지·잘림 없이 Wrapper 안에 맞춘 뒤 scale로 표시 크기만 확대 */
+  background-size: contain;
+  transform: scale(1.42);
   transform-origin: center;
   opacity: 0.41;
   filter: brightness(1.15) contrast(1.1) saturate(1.05);
@@ -133,10 +135,9 @@
 
 @media (max-width: 768px) {
   .section2Image {
-    background-size: cover;
+    background-size: contain;
     background-position: center 40%;
-    /* 모바일은 화면을 넘지 않도록 확대 비율을 낮춘다 */
-    transform: scale(1.12);
+    transform: scale(1.26);
     opacity: 0.35;
     mask-image: radial-gradient(
       50% 50% at 50% 50%,
@@ -328,6 +329,11 @@
   .landingSection.introSection {
     margin: -12px auto;
     padding: 4px 28px;
+  }
+
+  .landingSection.section2Backdrop {
+    padding: 68px 28px;
+    min-height: 220px;
   }
 }
 
