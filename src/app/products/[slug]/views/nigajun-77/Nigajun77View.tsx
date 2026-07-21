@@ -159,6 +159,12 @@ export default function Nigajun77View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <img
+        src="/landing-assets/nigajun-77-beach-model.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
