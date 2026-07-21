@@ -148,6 +148,15 @@ export default function Nigajun77View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <section className={styles.landingSection} aria-label="Street Image Description">
+        <p className={styles.bodyCopy}>
+          Transform your daily routine into lasting confidence with deeply hydrated, firmer-looking
+          skin and a beautifully refined body line.
+        </p>
+        <p className={styles.brandTitle}>NIGAJUN77</p>
+        <p className={styles.sectionTitle}>Body Slim & Firming Cream</p>
+      </section>
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
