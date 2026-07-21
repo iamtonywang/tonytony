@@ -66,6 +66,10 @@
   margin-top: 4px;
 }
 
+.bodyCopy + .brandTitle {
+  margin-top: 6px;
+}
+
 /* 대표 이미지 아래 설명 블록의 강조 문구 (88 .releaseNotice와 동일) */
 .releaseNotice {
   margin: 8px 0 0;
