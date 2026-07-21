@@ -160,7 +160,7 @@ export default function Nigajun77View({ product, boardItems }: Props) {
       <SignatureLine />
 
       <img
-        src="/landing-assets/nigajun-77-beach-model.webp"
+        src="/landing-assets/nigajun-77-body-contour.webp"
         alt=""
         className={styles.heroImage}
       />
@@ -172,6 +172,17 @@ export default function Nigajun77View({ product, boardItems }: Props) {
           texture while leaving the skin feeling soft, refreshed, and comfortable. With consistent
           daily use, it supports a more refined and toned-looking leg appearance.
         </p>
+      </section>
+
+      <SignatureLine />
+
+      <img
+        src="/landing-assets/nigajun-77-beach-model.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <section className={styles.landingSection}>
         <p className={styles.brandTitle}>NIGAJUN 77</p>
         <p className={styles.sectionTitle}>Body Slim & Firming Cream</p>
         <p className={styles.bodyCopy}>
