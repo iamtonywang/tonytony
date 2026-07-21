@@ -184,6 +184,12 @@ export default function Nigajun77View({ product, boardItems }: Props) {
       <SignatureLine />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
+        <img
+          src="/landing-assets/nigajun-77-product-jar.webp"
+          alt=""
+          className={styles.jarImage}
+        />
+
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
             {typeof product?.finalPriceAmount === "number"
@@ -198,12 +204,6 @@ export default function Nigajun77View({ product, boardItems }: Props) {
             Buy Now
           </Link>
         </div>
-
-        <img
-          src="/landing-assets/nigajun-77-product-jar.webp"
-          alt=""
-          className={styles.jarImage}
-        />
       </section>
 
       <SignatureLine />
