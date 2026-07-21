@@ -165,6 +165,24 @@ export default function Nigajun77View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <section className={styles.landingSection} aria-label="Beach Image Description">
+        <p className={styles.bodyCopy}>
+          A daily body care formula designed to hydrate and firm the skin for smoother,
+          healthier-looking legs. The lightweight texture absorbs quickly, helping to improve skin
+          texture while leaving the skin feeling soft, refreshed, and comfortable. With consistent
+          daily use, it supports a more refined and toned-looking leg appearance.
+        </p>
+        <p className={styles.brandTitle}>NIGAJUN 77</p>
+        <p className={styles.sectionTitle}>Body Slim & Firming Cream</p>
+        <p className={styles.bodyCopy}>
+          Hydrates, firms, and smooths the skin while helping create the appearance of a more
+          refined body contour.
+        </p>
+        <p className={styles.bodyCopy}>August 2026 TONY WANG</p>
+      </section>
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
