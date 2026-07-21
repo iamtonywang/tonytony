@@ -513,6 +513,12 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <ManifestoReveal lines={SECTION4_MANIFESTO_LINES} />
       </section>
 
+      <img
+        src="/landing-assets/nigajun-44-spa-portrait.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <SignatureLine />
 
       {/* Section 5: Roman Number + Manifesto (Section 3·4와 동일 시스템) */}
