@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun77View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 import { formatBoardRowAuthor } from "@/app/products/boardMask";
@@ -105,6 +106,16 @@ export default function Nigajun77View({ product, boardItems }: Props) {
 
   return (
     <article className={styles.detailPage}>
+      <SignatureLine />
+
+      <section className={styles.landingSection} aria-label="Product Identity">
+        <h1 className={styles.brandTitle}>NIGAJUN 77</h1>
+        <p className={styles.sectionTitle}>Body Slim & Firming Cream</p>
+        <p className={styles.bodyCopy}>Proteo Phyto Complex Science</p>
+      </section>
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
