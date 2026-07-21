@@ -273,8 +273,8 @@
 
 .sectionSplitImage {
   display: block;
-  width: 32%;
-  max-width: 32%;
+  width: 26%;
+  max-width: 26%;
   height: auto;
   margin: 14px auto 0;
   object-fit: contain;
@@ -329,8 +329,8 @@
 
 @media (max-width: 768px) {
   .sectionSplitImage {
-    width: 70%;
-    max-width: 300px;
+    width: 58%;
+    max-width: 246px;
   }
 
   .landingSection {
