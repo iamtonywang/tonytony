@@ -534,6 +534,12 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         />
       </section>
 
+      <img
+        src="/landing-assets/nigajun-44-founder-portrait.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <SignatureLine />
 
       {/* Section 6: Roman Number + Manifesto (Section 3~5와 동일 시스템) */}
