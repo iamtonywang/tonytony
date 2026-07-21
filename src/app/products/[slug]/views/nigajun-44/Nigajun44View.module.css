@@ -82,43 +82,24 @@
 }
 
 /*
- * Section 2: Home(.sectionsBackdrop/.founderImage)과 동일한 방식의 배경 오브젝트 레이어.
- * 문구와 좌우 분리하지 않고, 문구 뒤(z-index: -1)에 낮은 opacity + radial mask로 페이드시킨다.
+ * Section 2: 77·88·99 .heroImage와 동일 폭·mask·object-fit.
+ * 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
+ * 실라인 박스는 max-width 760px + 좌우 padding 28px이므로
+ * 선의 실제 폭은 min(100%, 760px) - 56px → 이미지도 동일 기준으로 확장.
  */
-.section2Backdrop {
-  position: relative;
-  padding-top: 92px;
-  padding-bottom: 92px;
-  min-height: 260px;
-  /*
-   * 이미지 레이어를 scale로 확대하면 Section 경계를 살짝 넘는다.
-   * mask가 경계에서 alpha 0으로 페이드되므로 clip 없이 자연스럽게 번지게 두고,
-   * 가로 스크롤은 .detailPage의 overflow-x: hidden이 막는다.
-   */
-  overflow: visible;
-  isolation: isolate;
-}
-
-.section2Image {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  user-select: none;
-  background-image: url("/landing-assets/tonywang-why-manifesto-hero.webp");
-  background-repeat: no-repeat;
-  background-position: center 45%;
-  /* 비율 유지·잘림 없이 Wrapper 안에 맞춘 뒤 scale로 표시 크기만 확대 */
-  background-size: contain;
-  transform: scale(1.42);
-  transform-origin: center;
-  opacity: 0.41;
-  filter: brightness(1.15) contrast(1.1) saturate(1.05);
-  /*
-   * 페이드가 레이어 경계 안에서 완전히 끝나야 사각(액자) 경계가 보이지 않는다.
-   * 타원 반경을 레이어 절반 크기(50% 50%)로 맞춰 가장자리 alpha가 0에 도달하게 한다.
-   * 페이드 시작을 바깥쪽(55%)으로 옮겨 중앙 얼굴 디테일은 선명하게 유지한다.
-   */
+.heroImage {
+  display: block;
+  width: calc(100% - 56px);
+  max-width: 704px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
   mask-image: radial-gradient(
     50% 50% at 50% 50%,
     rgba(0, 0, 0, 1) 55%,
@@ -133,24 +114,54 @@
   );
 }
 
+/*
+ * Section 2: heroImage 위에 문구를 겹친다. 세로 padding·min-height는 기존 section2Backdrop과 동일.
+ */
+.section2Block {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding-top: 92px;
+  padding-bottom: 92px;
+  min-height: 260px;
+  isolation: isolate;
+}
+
+.section2Block .heroImage {
+  grid-area: 1 / 1;
+  opacity: 0.41;
+  filter: brightness(1.15) contrast(1.1) saturate(1.05);
+}
+
+.section2Copy {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 620px;
+  padding: 0 28px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
-  .section2Image {
-    background-size: contain;
-    background-position: center 40%;
-    transform: scale(1.26);
+  .heroImage {
+    width: 100%;
+    max-width: none;
+  }
+
+  .section2Block {
+    padding-top: 68px;
+    padding-bottom: 68px;
+    min-height: 220px;
+  }
+
+  .section2Block .heroImage {
     opacity: 0.35;
-    mask-image: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(0, 0, 0, 1) 55%,
-      rgba(0, 0, 0, 0.5) 80%,
-      transparent 100%
-    );
-    -webkit-mask-image: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(0, 0, 0, 1) 55%,
-      rgba(0, 0, 0, 0.5) 80%,
-      transparent 100%
-    );
   }
 }
 
@@ -329,11 +340,6 @@
   .landingSection.introSection {
     margin: -12px auto;
     padding: 4px 28px;
-  }
-
-  .landingSection.section2Backdrop {
-    padding: 68px 28px;
-    min-height: 220px;
   }
 }
 
