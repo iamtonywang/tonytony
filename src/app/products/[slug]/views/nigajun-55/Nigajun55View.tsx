@@ -176,6 +176,23 @@ export default function Nigajun55View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Daily Care">
+        <p className={styles.sectionTitle}>Confidence Begins with Daily Care</p>
+        <p className={styles.bodyCopy}>
+          Healthy skin starts with thoughtful care. NIGAJUN55 combines the power of a Mixed
+          Protein Complex with gentle daily cleansing to help you feel fresh, balanced, and
+          confident every day.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-55-water-glass.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
