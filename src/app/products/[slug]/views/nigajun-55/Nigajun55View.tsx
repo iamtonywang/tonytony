@@ -202,6 +202,12 @@ export default function Nigajun55View({ product, boardItems }: Props) {
           hydrated, and comfortably balanced skin.
         </p>
 
+        <img
+          src="/landing-assets/nigajun-55-product-capsule.webp"
+          alt=""
+          className={styles.productCapsuleImage}
+        />
+
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
             {typeof product?.finalPriceAmount === "number"

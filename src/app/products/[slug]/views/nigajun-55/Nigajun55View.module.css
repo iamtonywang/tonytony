@@ -99,6 +99,37 @@
   );
 }
 
+/*
+ * 제품 캡슐 이미지: .heroImage와 동일 처리(mask/object-fit/정렬),
+ * 표시 폭만 약 28% 축소(704px → 507px).
+ */
+.productCapsuleImage {
+  display: block;
+  width: calc((100% - 56px) * 0.72);
+  max-width: 507px;
+  height: auto;
+  margin: 14px auto 0;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.5) 80%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.5) 80%,
+    transparent 100%
+  );
+}
+
 .purchaseSection {
   width: min(1120px, 92vw);
   margin: -12px auto 0;
@@ -394,6 +425,11 @@
 @media (max-width: 768px) {
   .heroImage {
     width: 100%;
+    max-width: none;
+  }
+
+  .productCapsuleImage {
+    width: 72%;
     max-width: none;
   }
 
