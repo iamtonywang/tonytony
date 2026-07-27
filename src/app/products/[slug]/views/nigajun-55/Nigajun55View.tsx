@@ -160,6 +160,22 @@ export default function Nigajun55View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Hydration That Lasts">
+        <p className={styles.sectionTitle}>Hydration That Lasts</p>
+        <p className={styles.bodyCopy}>
+          Lightweight yet deeply moisturizing, the formula helps keep delicate skin smooth,
+          hydrated, and comfortable throughout the day.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-55-self-expression.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
