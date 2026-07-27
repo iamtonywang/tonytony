@@ -194,6 +194,14 @@ export default function Nigajun55View({ product, boardItems }: Props) {
       <SignatureLine />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
+        <p className={styles.sectionTitle}>
+          Pure Care. Natural Balance. Everyday Confidence.
+        </p>
+        <p className={styles.bodyCopy}>
+          A gentle feminine cleanser powered by a unique Mixed Protein Complex for fresh,
+          hydrated, and comfortably balanced skin.
+        </p>
+
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
             {typeof product?.finalPriceAmount === "number"
