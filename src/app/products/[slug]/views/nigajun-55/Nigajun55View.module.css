@@ -101,14 +101,14 @@
 
 /*
  * 제품 캡슐 이미지: .heroImage와 동일 처리(mask/object-fit/정렬),
- * 표시 폭만 약 28% 축소(704px → 507px).
+ * 표시 폭은 이전(0.72 / 507px) 대비 약 40% 추가 축소.
  */
 .productCapsuleImage {
   display: block;
-  width: calc((100% - 56px) * 0.72);
-  max-width: 507px;
+  width: calc((100% - 56px) * 0.43);
+  max-width: 304px;
   height: auto;
-  margin: 14px auto 0;
+  margin: 0 auto;
   object-fit: contain;
   border: none;
   outline: none;
@@ -144,7 +144,7 @@
   justify-content: center;
   gap: 22px;
   max-width: min(560px, calc(100vw - 24px));
-  margin: 14px auto 0;
+  margin: 0 auto;
   box-sizing: border-box;
   pointer-events: auto;
 }
@@ -429,7 +429,7 @@
   }
 
   .productCapsuleImage {
-    width: 72%;
+    width: 43%;
     max-width: none;
   }
 
