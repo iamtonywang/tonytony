@@ -203,7 +203,7 @@ export default function Nigajun55View({ product, boardItems }: Props) {
         </p>
 
         <img
-          src="/landing-assets/nigajun-55-product-capsule.webp"
+          src="/landing-assets/nigajun-55-product-capsule-v2.webp"
           alt=""
           className={styles.productCapsuleImage}
         />
