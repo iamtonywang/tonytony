@@ -144,6 +144,22 @@ export default function Nigajun55View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Everyday Comfort">
+        <p className={styles.sectionTitle}>Pure Cleansing, Everyday Comfort</p>
+        <p className={styles.bodyCopy}>
+          A soft, rich lather gently removes impurities while helping preserve your skin&apos;s
+          natural moisture, leaving you feeling fresh, soft, and refreshed after every use.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-55-social-acceptance.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
