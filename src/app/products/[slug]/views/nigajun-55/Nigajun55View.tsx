@@ -108,15 +108,14 @@ export default function Nigajun55View({ product, boardItems }: Props) {
     <article className={styles.detailPage}>
       <SignatureLine />
 
-      <section className={styles.landingSection} aria-label="Product Description">
-        <p className={styles.sectionTitle}>
-          Pure Care. Natural Balance. Everyday Confidence.
-        </p>
-        <p className={styles.bodyCopy}>
-          A gentle feminine cleanser powered by a unique Mixed Protein Complex for fresh,
-          hydrated, and comfortably balanced skin.
-        </p>
+      <section className={styles.landingSection} aria-label="Product Identity">
+        <h1 className={styles.brandTitle}>NIGAJUN 55</h1>
+        <p className={styles.sectionTitle}>feminine cleanser</p>
+        <p className={styles.bodyCopy}>Proteo Phyto Complex Science</p>
+        <p className={styles.bodyCopy}>August 2026 TONY WANG</p>
       </section>
+
+      <SignatureLine />
 
       <img
         src="/landing-assets/nigajun-55-hero.webp"
