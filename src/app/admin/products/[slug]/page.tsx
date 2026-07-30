@@ -13,7 +13,7 @@ const ALLOWED_SLUGS = new Set([
 	"nigajun-88",
 	"nigajun-77",
 	"nigajun-55",
-	"nigajun-35",
+	"nigajun-22",
 	"nigajun-28",
 	"nigajun-17",
 ]);

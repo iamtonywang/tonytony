@@ -5,7 +5,7 @@ import Nigajun99View from "./views/nigajun-99/Nigajun99View";
 import Nigajun88View from "./views/nigajun-88/Nigajun88View";
 import Nigajun77View from "./views/nigajun-77/Nigajun77View";
 import Nigajun55View from "./views/nigajun-55/Nigajun55View";
-import Nigajun35View from "./views/nigajun-35/Nigajun35View";
+import Nigajun22View from "./views/nigajun-22/Nigajun22View";
 import Nigajun28View from "./views/nigajun-28/Nigajun28View";
 import Nigajun17View from "./views/nigajun-17/Nigajun17View";
 
@@ -27,8 +27,8 @@ export default function ProductViewRouter({ slug, product, boardItems }: Product
       return <Nigajun77View product={product} boardItems={boardItems} />;
     case "nigajun-55":
       return <Nigajun55View product={product} boardItems={boardItems} />;
-    case "nigajun-35":
-      return <Nigajun35View product={product} boardItems={boardItems} />;
+    case "nigajun-22":
+      return <Nigajun22View product={product} boardItems={boardItems} />;
     case "nigajun-28":
       return <Nigajun28View product={product} boardItems={boardItems} />;
     case "nigajun-17":

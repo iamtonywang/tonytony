@@ -1,0 +1,306 @@
+.detailPage {
+  width: 100%;
+  max-width: 100%;
+  padding: 24px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.purchaseSection {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.productPrice {
+  margin-top: 4px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.buyButtonRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.buyButton {
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 6px 18px;
+  border-radius: 0;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.buyButton:hover {
+  color: #ff7f00;
+  border-color: #ff7f00;
+}
+
+.boardSection,
+.informationSection {
+  width: 92%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.informationToggle {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.informationTitle {
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 17px;
+  color: #ffffff;
+}
+
+.informationContent {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.informationContent p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 2px 0;
+  line-height: 1.2;
+}
+
+.boardTopHeader {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-right: 0;
+}
+
+.boardTopTitle {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 0;
+  padding-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.boardTopTitle::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  margin-top: 6px;
+}
+
+.boardTopTitle span {
+  line-height: 1.1;
+}
+
+.boardTitleBrand {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.boardTitleSub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 2px;
+}
+
+.boardNotice {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.policyTitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 8px 0 4px;
+  text-align: center;
+}
+
+.policyHighlight {
+  color: #ff7f00;
+  font-weight: 500;
+}
+
+.boardNotice p {
+  margin: 6px 0;
+  position: relative;
+  padding: 6px 0;
+}
+
+.boardNotice p:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 6px auto 0;
+}
+
+.boardActions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.boardActionBtn {
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 4px 10px;
+  color: #ffffff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.boardActionBtn:hover {
+  color: #ff7f00;
+  border-color: #ff7f00;
+}
+
+.boardActionBtnActive {
+  color: #ff7f00;
+  border-color: #ff7f00;
+}
+
+.boardType {
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-right: 4px;
+}
+
+.boardRow:hover .boardType {
+  color: #ff7f00;
+}
+
+.boardActionBtn:hover,
+.boardType,
+.informationTitle {
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif;
+}
+
+.boardList {
+  width: 100%;
+}
+
+.boardItem {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 5px 0;
+}
+
+.boardList > .boardItem:first-child {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.boardItem:last-child {
+  border-bottom: none;
+}
+
+.boardRow {
+  width: 100%;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.2s ease;
+}
+
+.boardRow:hover {
+  color: #ff7f00;
+}
+
+.boardRow:hover .boardPreviewAuthor,
+.boardRow:hover .boardPreviewText {
+  color: #ff7f00;
+}
+
+.boardPreviewAuthor {
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  line-height: 1.15;
+}
+
+.boardPreviewText {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.boardExpanded {
+  margin-top: 4px;
+  padding-bottom: 2px;
+  text-align: center;
+}
+
+.boardMeta,
+.boardDate,
+.boardContent {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 2px 0;
+  line-height: 1.15;
+}
+
+@media (max-width: 768px) {
+  .purchaseSection {
+    width: min(1120px, 94vw);
+  }
+
+  .boardTopHeader {
+    padding-top: 16px;
+  }
+}
