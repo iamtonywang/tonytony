@@ -67,6 +67,17 @@
 }
 
 /*
+ * 첫 hero 이미지 + overlay 기준 박스.
+ * 폭은 기존 .heroImage와 동일하게 유지하고, 이미지 자체 src/object-fit/mask는 변경하지 않는다.
+ */
+.heroImageWrap {
+  position: relative;
+  width: calc(100% - 56px);
+  max-width: 704px;
+  margin: 0 auto;
+}
+
+/*
  * 대표 이미지: 77·88·99 .heroImage와 동일.
  * 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
  * 높이는 원본 비율(height: auto)로 폭에 비례해 커진다.
@@ -97,6 +108,52 @@
     rgba(0, 0, 0, 0.5) 80%,
     transparent 100%
   );
+}
+
+/* wrap 내부 첫 hero만 부모 폭에 맞춤 (이미지 속성 자체는 유지) */
+.heroImageWrap .heroImage {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+/*
+ * simplify 이전 Nigajun55 .imageCopyOverlay 값을 현재 hero wrap에 복구.
+ */
+.imageCopyOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  pointer-events: none;
+}
+
+.heroOverlayTitle {
+  margin: 0;
+  max-width: 92%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+
+.heroOverlayBody {
+  margin: 0;
+  max-width: min(520px, 92%);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
 }
 
 /*
@@ -423,9 +480,29 @@
 }
 
 @media (max-width: 768px) {
+  .heroImageWrap {
+    width: 100%;
+    max-width: none;
+  }
+
   .heroImage {
     width: 100%;
     max-width: none;
+  }
+
+  .imageCopyOverlay {
+    padding: 12px 14px;
+    gap: 4px;
+  }
+
+  .heroOverlayTitle {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .heroOverlayBody {
+    font-size: 11px;
+    line-height: 1.35;
   }
 
   .productCapsuleImage {

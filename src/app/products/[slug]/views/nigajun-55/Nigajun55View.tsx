@@ -117,11 +117,21 @@ export default function Nigajun55View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      <img
-        src="/landing-assets/nigajun-55-hero.webp"
-        alt=""
-        className={styles.heroImage}
-      />
+      <div className={styles.heroImageWrap}>
+        <img
+          src="/landing-assets/nigajun-55-hero.webp"
+          alt=""
+          className={styles.heroImage}
+        />
+        <div className={styles.imageCopyOverlay}>
+          <p className={styles.heroOverlayTitle}>Gentle Care Begins with Balanced Skin</p>
+          <p className={styles.heroOverlayBody}>
+            Experience daily freshness with a gentle cleansing formula enriched with a Mixed
+            Protein Complex. Designed to leave your skin feeling clean, hydrated, and comfortably
+            balanced every day.
+          </p>
+        </div>
+      </div>
 
       <SignatureLine />
 
