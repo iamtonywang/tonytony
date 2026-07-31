@@ -150,6 +150,23 @@ export default function Nigajun22View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <SignatureLine />
+
+      <section className={styles.landingSection} aria-label="Oral Care">
+        <p className={styles.brandTitle}>ORAL CARE</p>
+        <p className={styles.sectionTitle}>Complete Oral Care, Every Day</p>
+        <p className={styles.bodyCopy}>
+          Effectively removes impurities and helps keep your mouth clean and refreshed, promoting a
+          healthier oral environment and a cleaner feeling after every brush.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-22-unity-hands.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
