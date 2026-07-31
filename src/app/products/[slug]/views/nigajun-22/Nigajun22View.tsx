@@ -178,6 +178,17 @@ export default function Nigajun22View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Closing Brand Message">
+        <p className={styles.brandTitle}>Closing Brand Message</p>
+        <p className={styles.sectionTitle}>More Than Toothpaste. A Daily Oral Care Ritual.</p>
+        <p className={styles.bodyCopy}>
+          Experience the power of NIGAJUN22 Protein Complex, combining gentle cleansing, gum care,
+          and lasting freshness in one premium daily toothpaste.
+        </p>
+      </section>
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
@@ -192,11 +203,14 @@ export default function Nigajun22View({ product, boardItems }: Props) {
         </div>
       </section>
 
+      <SignatureLine />
+
       <div className={styles.boardTopHeader}>
         <h2 className={styles.boardTopTitle}>
           <span className={styles.boardTitleBrand}>TONYWANG</span>
           <span className={styles.boardTitleSub}>Ask me Questions</span>
         </h2>
+        <SignatureLine />
         <div className={styles.boardNotice}>
           <div className={styles.policyTitle}>Policy</div>
 
