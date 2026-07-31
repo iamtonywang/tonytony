@@ -206,6 +206,8 @@ export default function Nigajun22View({ product, boardItems }: Props) {
         </div>
       </section>
 
+      <SignatureLine />
+
       <div className={styles.boardTopHeader}>
         <h2 className={styles.boardTopTitle}>
           <span className={styles.boardTitleBrand}>TONYWANG</span>
