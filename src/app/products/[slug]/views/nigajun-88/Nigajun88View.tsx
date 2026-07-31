@@ -112,6 +112,7 @@ export default function Nigajun88View({ product, boardItems }: Props) {
         <h1 className={styles.brandTitle}>NIGAJUN 88</h1>
         <p className={styles.sectionTitle}>Hair Nutrition Protein Cream</p>
         <p className={styles.bodyCopy}>Proteo Phyto Complex Science</p>
+        <p className={styles.bodyCopy}>August 2026 TONY WANG</p>
       </section>
 
       <SignatureLine />
