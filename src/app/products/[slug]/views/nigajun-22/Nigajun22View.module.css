@@ -101,40 +101,55 @@
 
 .purchaseSection {
   width: min(1120px, 92vw);
-  margin: 0 auto;
+  margin: -12px auto 0;
   text-align: center;
 }
 
-.productPrice {
-  margin-top: 4px;
-  margin-bottom: 10px;
-  text-align: center;
-  font-size: 18px;
-  color: #ffffff;
-}
-
-.buyButtonRow {
+/* 가격 + Buy Now: NIGAJUN 77의 fourthProductCta 구현과 동일(한 줄 row 배치) */
+.fourthProductCta {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
-  margin-top: 24px;
-  margin-bottom: 16px;
+  gap: 22px;
+  max-width: min(560px, calc(100vw - 24px));
+  margin: 0 auto;
+  box-sizing: border-box;
+  pointer-events: auto;
 }
 
-.buyButton {
-  display: inline-block;
-  text-align: center;
-  font-size: 14px;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 6px 18px;
-  border-radius: 0;
+.fourthProductPrice {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: "El Messiri", serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.fourthProductBuyButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: unset;
+  min-height: unset;
+  padding: 0;
+  border: none;
+  font-family: "El Messiri", serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.94);
+  text-decoration: none;
   background: transparent;
-  transition: all 0.2s ease;
+  box-sizing: border-box;
+  transition: color 0.2s ease;
 }
 
-.buyButton:hover {
+.fourthProductBuyButton:hover {
   color: #ff7f00;
-  border-color: #ff7f00;
 }
 
 .boardSection,
@@ -389,6 +404,19 @@
   .heroImage {
     width: 100%;
     max-width: none;
+  }
+
+  .fourthProductCta {
+    gap: 16px;
+    max-width: min(520px, calc(100vw - 20px));
+  }
+
+  .fourthProductPrice {
+    font-size: 16px;
+  }
+
+  .fourthProductBuyButton {
+    font-size: 16px;
   }
 
   .purchaseSection {
