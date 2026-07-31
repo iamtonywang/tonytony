@@ -200,6 +200,11 @@ export default function Nigajun22View({ product, boardItems }: Props) {
           className={styles.heroImage}
         />
 
+        <p className={styles.releaseNotice}>It will be released soon</p>
+        <p className={styles.brandTitle}>NIGAJUN 22</p>
+        <p className={styles.bodyCopy}>Protein toothpaste</p>
+        <p className={styles.bodyCopy}>Proteo Phyto Complex</p>
+
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
             {typeof product?.finalPriceAmount === "number"
