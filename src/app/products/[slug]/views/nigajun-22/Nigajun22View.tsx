@@ -167,6 +167,17 @@ export default function Nigajun22View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <section className={styles.landingSection} aria-label="Fresh Breath">
+        <p className={styles.brandTitle}>FRESH BREATH</p>
+        <p className={styles.sectionTitle}>Fresh Breath That Lasts</p>
+        <p className={styles.bodyCopy}>
+          Designed to leave your breath feeling fresh and your mouth comfortably clean, giving you
+          confidence from morning to night.
+        </p>
+      </section>
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
