@@ -117,6 +117,24 @@ export default function Nigajun22View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Healthy Gums">
+        <p className={styles.sectionTitle}>
+          Healthy Gums. Fresh Breath. Confident Smiles.
+        </p>
+        <p className={styles.bodyCopy}>
+          Powered by an advanced Protein Complex, NIGAJUN22 helps support healthy gums, maintain a
+          cleaner oral environment, and deliver long-lasting freshness with every brush.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-22-hands-detail.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
