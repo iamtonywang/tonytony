@@ -178,6 +178,12 @@ export default function Nigajun22View({ product, boardItems }: Props) {
         </p>
       </section>
 
+      <img
+        src="/landing-assets/nigajun-22-main-hero.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <SignatureLine />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
