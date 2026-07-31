@@ -135,6 +135,21 @@ export default function Nigajun22View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Protein Complex">
+        <p className={styles.brandTitle}>PROTEIN COMPLEX</p>
+        <p className={styles.sectionTitle}>Powered by Protein Complex Technology</p>
+        <p className={styles.bodyCopy}>
+          A carefully formulated Protein Complex helps care for your gums while supporting the
+          mouth&apos;s natural balance, delivering gentle daily protection and lasting comfort.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-22-wood-texture.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
