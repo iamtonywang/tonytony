@@ -187,6 +187,19 @@ export default function Nigajun22View({ product, boardItems }: Props) {
       <SignatureLine />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
+        <p className={styles.brandTitle}>FRESH BREATH</p>
+        <p className={styles.sectionTitle}>Fresh Breath That Lasts</p>
+        <p className={styles.bodyCopy}>
+          Designed to leave your breath feeling fresh and your mouth comfortably clean, giving you
+          confidence from morning to night.
+        </p>
+
+        <img
+          src="/landing-assets/nigajun-22-closing-brand-hero.webp"
+          alt=""
+          className={styles.heroImage}
+        />
+
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
             {typeof product?.finalPriceAmount === "number"
