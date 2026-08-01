@@ -220,6 +220,20 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <section
+        id="nigajun11-section06-text-below-image"
+        className={styles.landingSection}
+        aria-label="Cleanse Deep Balance Naturally Below Image"
+      >
+        <p className={styles.sectionTitle}>
+          Cleanse Deep. Balance Naturally. Reveal Healthy Skin.
+        </p>
+        <p className={styles.bodyCopy}>
+          Powered by a unique Mixed Protein Complex to help remove excess sebum, cleanse pores, and
+          prepare your skin for the next level of care.
+        </p>
+      </section>
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
