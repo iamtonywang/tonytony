@@ -169,6 +169,24 @@ export default function Nigajun11View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Perfect Pair with NIGAJUN44">
+        <p className={styles.brandTitle}>PERFECT PAIR WITH NIGAJUN44</p>
+        <p className={styles.sectionTitle}>Designed to Work Better Together</p>
+        <p className={styles.bodyCopy}>
+          For the best daily skincare experience, use NIGAJUN11 before applying NIGAJUN44 Serum.
+          Freshly cleansed skin helps prepare the surface for optimal comfort and a more effective
+          skincare routine.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-11-section-04.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
