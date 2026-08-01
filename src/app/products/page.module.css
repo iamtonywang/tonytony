@@ -103,7 +103,7 @@
 
 .portraitLead {
   margin: 0;
-  font-size: 14px;
+  font-size: 19px;
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: 0.005em;
@@ -113,7 +113,7 @@
 
 .portraitCopy {
   margin: 0;
-  font-size: 12px;
+  font-size: 19px;
   font-weight: 400;
   line-height: 1.35;
   color: rgba(255, 255, 255, 0.85);
