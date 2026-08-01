@@ -134,6 +134,24 @@ export default function Nigajun11View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Pore and Sebum Care">
+        <p className={styles.brandTitle}>PORE & SEBUM CARE</p>
+        <p className={styles.sectionTitle}>Deep Clean. Healthy-Looking Skin.</p>
+        <p className={styles.bodyCopy}>
+          Rich, creamy lather helps lift away excess oil, pore-clogging impurities, and everyday
+          residue without stripping away essential moisture, revealing a cleaner and more refined
+          complexion.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-11-section-02.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
