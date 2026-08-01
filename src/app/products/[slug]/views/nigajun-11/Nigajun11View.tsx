@@ -241,6 +241,11 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         className={styles.purchaseSection}
         aria-label="Purchase"
       >
+        <p className={styles.releaseNotice}>It will be released soon</p>
+        <p className={styles.brandTitle}>NIGAJUN 11</p>
+        <p className={styles.sectionTitle}>Mixed Protein Soap</p>
+        <p className={styles.bodyCopy}>Proteo Phyto Complex</p>
+
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
             {typeof product?.finalPriceAmount === "number"
