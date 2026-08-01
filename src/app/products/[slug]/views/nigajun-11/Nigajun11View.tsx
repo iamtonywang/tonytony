@@ -234,19 +234,30 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <section className={styles.purchaseSection} aria-label="Purchase">
-        <p className={styles.productPrice}>
-          {typeof product?.finalPriceAmount === "number"
-            ? `₩${product.finalPriceAmount.toLocaleString()}`
-            : null}
-        </p>
+      <SignatureLine />
 
-        <div className={styles.buyButtonRow}>
-          <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.buyButton}>
+      <section
+        id="nigajun11-purchase-section-align"
+        className={styles.purchaseSection}
+        aria-label="Purchase"
+      >
+        <div className={styles.fourthProductCta}>
+          <p className={styles.fourthProductPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
+
+          <Link
+            href={`/purchase/${product?.slug ?? ""}`}
+            className={styles.fourthProductBuyButton}
+          >
             Buy Now
           </Link>
         </div>
       </section>
+
+      <SignatureLine />
 
       <div className={styles.boardTopHeader}>
         <h2 className={styles.boardTopTitle}>
