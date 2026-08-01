@@ -66,6 +66,23 @@
   margin-top: 4px;
 }
 
+/* 출시 예정 강조: 99·88 .releaseNotice 패턴, 요청 사양 23px (11·22와 동일) */
+.releaseNotice {
+  margin: 8px 0 0;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ff7f00;
+}
+
+.releaseNotice + .brandTitle {
+  margin-top: 6px;
+}
+
+.releaseNotice + .bodyCopy {
+  margin-top: 9px;
+}
+
 /*
  * 첫 hero 이미지 wrapper.
  * 폭은 기존 .heroImage와 동일하게 유지하고, 이미지 자체 src/object-fit/mask는 변경하지 않는다.
