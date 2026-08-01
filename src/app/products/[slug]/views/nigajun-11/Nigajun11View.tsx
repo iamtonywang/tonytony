@@ -259,11 +259,12 @@ export default function Nigajun11View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      <div className={styles.boardTopHeader}>
+      <div id="nigajun11-board-hairline-replace" className={styles.boardTopHeader}>
         <h2 className={styles.boardTopTitle}>
           <span className={styles.boardTitleBrand}>TONYWANG</span>
           <span className={styles.boardTitleSub}>Ask me Questions</span>
         </h2>
+        <SignatureLine />
         <div className={styles.boardNotice}>
           <div className={styles.policyTitle}>Policy</div>
 
