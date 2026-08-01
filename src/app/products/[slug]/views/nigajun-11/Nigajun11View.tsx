@@ -187,6 +187,23 @@ export default function Nigajun11View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Daily Preparation">
+        <p className={styles.brandTitle}>DAILY PREPARATION</p>
+        <p className={styles.sectionTitle}>The Perfect First Step in Your Skincare Routine</p>
+        <p className={styles.bodyCopy}>
+          Clean, balanced skin provides the ideal foundation for the next stage of your skincare
+          routine, allowing follow-up products to perform at their best.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-11-section-05.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
