@@ -126,8 +126,9 @@
 }
 
 /*
- * /products 전용 제품명 텍스트 링크.
- * 공용 ProductListSection pill(.productOverlayLink)을 쓰지 않는다.
+ * /products 전용 제품명 링크.
+ * 작은 텍스트 밀착 박스 + ::after shimmer (텍스트 자체는 고정).
+ * 공용 ProductListSection CSS는 사용하지 않는다.
  */
 .productTextList {
   margin: 0;
@@ -136,7 +137,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .productTextItem {
@@ -172,88 +173,69 @@
 }
 
 .productTextLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  min-width: 0;
   margin: 0;
-  padding: 6px 4px;
-  border: none;
-  border-radius: 0;
+  padding: 2px 5px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
   background: transparent;
   box-shadow: none;
-  min-width: 0;
   color: #ffffff;
   text-decoration: none;
   font-size: 17px;
   line-height: 1.35;
   font-weight: 400;
   letter-spacing: 0.01em;
-  --pulse-y: -2px;
-  --pulse-brightness: 1.08;
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.75),
     0 2px 10px rgba(0, 0, 0, 0.55);
   transition:
-    color 0.2s ease,
-    text-shadow 0.2s ease,
-    letter-spacing 0.2s ease;
-  /* 등장(1.2s + item delay) 이후 신호 모션 시작 */
-  animation: productTextLinkPulse 2.8s ease-in-out infinite;
+    border-color 0.2s ease,
+    text-shadow 0.2s ease;
 }
 
-.productTextItem:nth-child(1) .productTextLink {
-  animation-delay: 1.4s;
-}
-.productTextItem:nth-child(2) .productTextLink {
-  animation-delay: 1.7s;
-}
-.productTextItem:nth-child(3) .productTextLink {
-  animation-delay: 2s;
-}
-.productTextItem:nth-child(4) .productTextLink {
-  animation-delay: 2.3s;
-}
-.productTextItem:nth-child(5) .productTextLink {
-  animation-delay: 2.6s;
-}
-.productTextItem:nth-child(6) .productTextLink {
-  animation-delay: 2.9s;
-}
-.productTextItem:nth-child(7) .productTextLink {
-  animation-delay: 3.2s;
-}
-.productTextItem:nth-child(8) .productTextLink {
-  animation-delay: 3.5s;
+.productTextLink::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -140%;
+  width: 55%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 127, 0, 0.22) 28%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(255, 127, 0, 0.22) 72%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: productTextLinkShimmer 3.2s linear infinite;
 }
 
 .productTextLink:hover {
-  animation-play-state: paused;
-  opacity: 1;
-  transform: translateY(-2px);
-  color: #ffffff;
-  letter-spacing: 0.02em;
+  border-color: rgba(255, 165, 0, 0.65);
+  background: transparent;
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.85),
-    0 3px 14px rgba(0, 0, 0, 0.7),
-    0 0 12px rgba(255, 255, 255, 0.18);
-  background: transparent;
-  border: none;
+    0 3px 12px rgba(0, 0, 0, 0.65);
 }
 
 .productTextLink:focus-visible {
-  animation-play-state: paused;
-  opacity: 1;
-  outline: 1px solid rgba(255, 255, 255, 0.85);
-  outline-offset: 4px;
+  outline: 1px solid rgba(255, 165, 0, 0.9);
+  outline-offset: 3px;
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 3px;
   background: transparent;
-  border: none;
 }
 
 .productTextLink:active {
-  transform: translateY(0);
-  opacity: 1;
+  border-color: rgba(255, 165, 0, 0.65);
 }
 
 @keyframes productTextItemIn {
@@ -263,17 +245,12 @@
   }
 }
 
-@keyframes productTextLinkPulse {
-  0%,
-  100% {
-    opacity: 0.72;
-    transform: translateY(0);
-    filter: brightness(1);
+@keyframes productTextLinkShimmer {
+  0% {
+    left: -140%;
   }
-  50% {
-    opacity: 1;
-    transform: translateY(var(--pulse-y, -2px));
-    filter: brightness(var(--pulse-brightness, 1.08));
+  100% {
+    left: 140%;
   }
 }
 
@@ -284,19 +261,17 @@
   }
 
   .productTextList {
-    gap: 6px;
+    gap: 7px;
   }
 
   .productTextLink {
+    padding: 2px 4px;
     font-size: 16px;
     line-height: 1.4;
-    padding: 8px 4px;
-    --pulse-y: -1px;
-    --pulse-brightness: 1.06;
   }
 
-  .productTextLink:hover {
-    transform: translateY(-1px);
+  .productTextLink::after {
+    animation-duration: 3.6s;
   }
 }
 
@@ -307,16 +282,9 @@
     animation: none;
   }
 
-  .productTextLink {
-    opacity: 1;
-    transform: none;
-    filter: none;
+  .productTextLink::after {
+    content: none;
+    display: none;
     animation: none;
-  }
-
-  .productTextLink:hover,
-  .productTextLink:focus-visible,
-  .productTextLink:active {
-    transform: none;
   }
 }
