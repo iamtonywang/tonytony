@@ -117,6 +117,21 @@ export default function Nigajun11View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Pure Cleansing">
+        <p className={styles.sectionTitle}>Pure Cleansing Begins with Protein Power</p>
+        <p className={styles.bodyCopy}>
+          Experience the cleansing power of our Mixed Protein Complex, designed to remove excess
+          sebum and daily impurities while leaving your skin feeling fresh, smooth, and naturally
+          balanced.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-11-main-hero.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
