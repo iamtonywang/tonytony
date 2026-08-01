@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import { getPublicProducts } from "./_server/getPublicProducts";
@@ -56,10 +57,14 @@ export default async function ProductsPage() {
           </p>
 
           <ul className={styles.productTextList}>
-            {filteredAndSorted.map((item) => {
+            {filteredAndSorted.map((item, index) => {
               if (!item.slug) return null;
               return (
-                <li key={item.slug} className={styles.productTextItem}>
+                <li
+                  key={item.slug}
+                  className={styles.productTextItem}
+                  style={{ "--shimmer-index": index } as CSSProperties}
+                >
                   <Link href={`/products/${item.slug}`} className={styles.productTextLink}>
                     {item.productName ?? ""}
                   </Link>

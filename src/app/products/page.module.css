@@ -127,7 +127,9 @@
 
 /*
  * /products 전용 제품명 링크.
- * 작은 텍스트 밀착 박스 + ::after shimmer (텍스트 자체는 고정).
+ * 작은 capsule 박스 + 순차 ::after shimmer (텍스트 고정, 한 번에 하나만).
+ * --shimmer-index: 0..7 (page.tsx)
+ * 슬롯 = 통과 1.2s + 간격 0.35s → 전체 사이클 8 × 1.55s = 12.4s
  * 공용 ProductListSection CSS는 사용하지 않는다.
  */
 .productTextList {
@@ -137,7 +139,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
 }
 
 .productTextItem {
@@ -177,11 +179,12 @@
   display: inline-block;
   width: fit-content;
   min-width: 0;
+  max-width: 100%;
   margin: 0;
-  padding: 2px 5px;
+  padding: 1px 6px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 4px;
+  border-radius: 999px;
   background: transparent;
   box-shadow: none;
   color: #ffffff;
@@ -209,17 +212,19 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 127, 0, 0.22) 28%,
-    rgba(255, 255, 255, 0.38) 50%,
-    rgba(255, 127, 0, 0.22) 72%,
+    rgba(255, 127, 0, 0.2) 28%,
+    rgba(255, 255, 255, 0.34) 50%,
+    rgba(255, 127, 0, 0.2) 72%,
     transparent 100%
   );
   transform: skewX(-20deg);
-  animation: productTextLinkShimmer 3.2s linear infinite;
+  /* 12.4s 사이클 중 앞 1.2s(≈9.677%)만 통과, 이후 대기 */
+  animation: productTextLinkShimmer 12.4s linear infinite;
+  animation-delay: calc(var(--shimmer-index, 0) * 1.55s);
 }
 
 .productTextLink:hover {
-  border-color: rgba(255, 165, 0, 0.65);
+  border-color: rgba(255, 200, 120, 0.55);
   background: transparent;
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.85),
@@ -235,7 +240,7 @@
 }
 
 .productTextLink:active {
-  border-color: rgba(255, 165, 0, 0.65);
+  border-color: rgba(255, 200, 120, 0.55);
 }
 
 @keyframes productTextItemIn {
@@ -249,6 +254,10 @@
   0% {
     left: -140%;
   }
+  9.677% {
+    left: 140%;
+  }
+  9.678%,
   100% {
     left: 140%;
   }
@@ -261,17 +270,13 @@
   }
 
   .productTextList {
-    gap: 7px;
+    gap: 5px;
   }
 
   .productTextLink {
-    padding: 2px 4px;
+    padding: 1px 5px;
     font-size: 16px;
     line-height: 1.4;
-  }
-
-  .productTextLink::after {
-    animation-duration: 3.6s;
   }
 }
 
