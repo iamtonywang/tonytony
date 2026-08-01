@@ -15,7 +15,7 @@ const ALLOWED_SLUGS = new Set([
 	"nigajun-55",
 	"nigajun-22",
 	"nigajun-11",
-	"nigajun-17",
+	"nigajun-00",
 ]);
 
 function slugToDisplayTitle(slug: string): string {

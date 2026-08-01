@@ -8,7 +8,7 @@ const PRODUCT_SLUGS = [
 	"nigajun-55",
 	"nigajun-22",
 	"nigajun-11",
-	"nigajun-17",
+	"nigajun-00",
 ] as const;
 
 export default async function Page() {
