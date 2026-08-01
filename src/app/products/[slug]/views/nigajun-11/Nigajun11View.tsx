@@ -152,6 +152,23 @@ export default function Nigajun11View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Mixed Protein Complex">
+        <p className={styles.brandTitle}>MIXED PROTEIN COMPLEX</p>
+        <p className={styles.sectionTitle}>Powered by an Advanced Mixed Protein Complex</p>
+        <p className={styles.bodyCopy}>
+          A unique blend of proteins helps maintain the skin&apos;s natural moisture barrier while
+          supporting smoother-looking skin and a healthy, refreshed appearance after every cleanse.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-11-section-03.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
