@@ -127,10 +127,19 @@
 
 /*
  * /products 전용 제품명 링크.
- * 기본: 테두리 없음(투명). 자기 차례에만 외곽 1px 오렌지 선 1회전 후 소멸.
- * 슬롯 = 활성 0.8s + 대기 0.15s → 전체 사이클 8 × 0.95s = 7.6s
+ * 기본: 테두리 없음. 자기 차례에만 외곽 1px 오렌지 선이 conic from 각도로 이동.
+ * transform rotate 금지(마스크와 충돌 시 중앙 원형으로 보임).
+ * 슬롯 = 활성 2s + 대기 0.3s → 전체 사이클 8 × 2.3s = 18.4s
  * 공용 ProductListSection CSS는 사용하지 않는다.
  */
+
+/* conic-gradient from 각도만 애니메이트 → 마스크 링은 고정 */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .productTextList {
   margin: 0;
   padding: 0;
@@ -180,6 +189,7 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
+  min-width: 0;
   max-width: 100%;
   margin: 0;
   padding: 1px 4px;
@@ -201,63 +211,68 @@
 }
 
 /*
- * inset:-1px + mask → 외곽 1px만. 텍스트/내부 통과 금지.
- * nth-child별 delay로 44→00 순차, 겹침 없음.
+ * 외곽 1px 링만 남기고 중앙 완전 제거.
+ * transform 회전 없이 --border-angle만 변경 → 중앙 원형 아티팩트 방지.
+ * 강조 구간 ≈ 65deg (원주의 ~18%).
  */
 .productTextLink::before {
   content: "";
   position: absolute;
   inset: -1px;
-  z-index: -1;
+  z-index: 0;
   border-radius: inherit;
   padding: 1px;
   box-sizing: border-box;
   pointer-events: none;
   background: conic-gradient(
-    from 0deg,
+    from var(--border-angle),
     transparent 0deg,
-    transparent 285deg,
-    rgba(255, 105, 0, 0.2) 310deg,
-    rgba(255, 110, 0, 1) 338deg,
-    rgba(255, 145, 25, 1) 350deg,
+    transparent 295deg,
+    rgba(255, 120, 0, 0.45) 305deg,
+    rgba(255, 105, 0, 1) 328deg,
+    rgba(255, 120, 0, 0.45) 348deg,
     transparent 360deg
   );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+  -webkit-mask-image:
+    linear-gradient(#fff 0 0),
+    linear-gradient(#fff 0 0);
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-origin: content-box, border-box;
   -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+  mask-image:
+    linear-gradient(#fff 0 0),
+    linear-gradient(#fff 0 0);
+  mask-clip: content-box, border-box;
+  mask-origin: content-box, border-box;
   mask-composite: exclude;
   opacity: 0;
-  transform: rotate(0deg);
-  animation: productTextLinkBorderSpin 7.6s linear infinite;
+  --border-angle: 0deg;
+  animation: productTextLinkBorderSpin 18.4s linear infinite;
 }
 
 .productTextItem:nth-child(1) .productTextLink::before {
   animation-delay: 0s;
 }
 .productTextItem:nth-child(2) .productTextLink::before {
-  animation-delay: 0.95s;
+  animation-delay: 2.3s;
 }
 .productTextItem:nth-child(3) .productTextLink::before {
-  animation-delay: 1.9s;
+  animation-delay: 4.6s;
 }
 .productTextItem:nth-child(4) .productTextLink::before {
-  animation-delay: 2.85s;
+  animation-delay: 6.9s;
 }
 .productTextItem:nth-child(5) .productTextLink::before {
-  animation-delay: 3.8s;
+  animation-delay: 9.2s;
 }
 .productTextItem:nth-child(6) .productTextLink::before {
-  animation-delay: 4.75s;
+  animation-delay: 11.5s;
 }
 .productTextItem:nth-child(7) .productTextLink::before {
-  animation-delay: 5.7s;
+  animation-delay: 13.8s;
 }
 .productTextItem:nth-child(8) .productTextLink::before {
-  animation-delay: 6.65s;
+  animation-delay: 16.1s;
 }
 
 .productTextLink:hover {
@@ -287,20 +302,20 @@
   }
 }
 
-/* 7.6s 중 앞 0.8s(≈10.526%)만 opacity 1 + 1회전, 이후 완전 숨김 */
+/* 18.4s 중 앞 2s(≈10.87%)만 표시하며 from 각도 0→360, 이후 완전 숨김 */
 @keyframes productTextLinkBorderSpin {
   0% {
     opacity: 1;
-    transform: rotate(0deg);
+    --border-angle: 0deg;
   }
-  10.526% {
+  10.87% {
     opacity: 1;
-    transform: rotate(360deg);
+    --border-angle: 360deg;
   }
-  10.527%,
+  10.88%,
   100% {
     opacity: 0;
-    transform: rotate(360deg);
+    --border-angle: 360deg;
   }
 }
 
@@ -332,5 +347,6 @@
     content: none;
     display: none;
     animation: none;
+    opacity: 0;
   }
 }
