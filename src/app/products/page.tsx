@@ -1,7 +1,6 @@
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import { getPublicProducts } from "./_server/getPublicProducts";
-import listStyles from "@/components/sections/Product/ProductListSection/ProductListSection.module.css";
 import styles from "./page.module.css";
 
 const FIXED_ORDER = [
@@ -56,23 +55,18 @@ export default async function ProductsPage() {
             Don&apos;t compare it to other cosmetics.
           </p>
 
-          <div className={listStyles.productTextOverlayVisible}>
-            <ul className={listStyles.productOverlayList}>
-              {filteredAndSorted.map((item) => {
-                if (!item.slug) return null;
-                return (
-                  <li key={item.slug} className={listStyles.productOverlayItem}>
-                    <Link
-                      href={`/products/${item.slug}`}
-                      className={listStyles.productOverlayLink}
-                    >
-                      {item.productName ?? ""}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+          <ul className={styles.productTextList}>
+            {filteredAndSorted.map((item) => {
+              if (!item.slug) return null;
+              return (
+                <li key={item.slug} className={styles.productTextItem}>
+                  <Link href={`/products/${item.slug}`} className={styles.productTextLink}>
+                    {item.productName ?? ""}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
 

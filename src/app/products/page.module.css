@@ -125,9 +125,198 @@
   margin-top: -5px;
 }
 
+/*
+ * /products 전용 제품명 텍스트 링크.
+ * 공용 ProductListSection pill(.productOverlayLink)을 쓰지 않는다.
+ */
+.productTextList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.productTextItem {
+  margin: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: productTextItemIn 1.2s ease forwards;
+}
+
+.productTextItem:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.productTextItem:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.productTextItem:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.productTextItem:nth-child(4) {
+  animation-delay: 1.1s;
+}
+.productTextItem:nth-child(5) {
+  animation-delay: 1.4s;
+}
+.productTextItem:nth-child(6) {
+  animation-delay: 1.7s;
+}
+.productTextItem:nth-child(7) {
+  animation-delay: 2s;
+}
+.productTextItem:nth-child(8) {
+  animation-delay: 2.3s;
+}
+
+.productTextLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 6px 4px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  min-width: 0;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  --pulse-y: -2px;
+  --pulse-brightness: 1.08;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.75),
+    0 2px 10px rgba(0, 0, 0, 0.55);
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease,
+    letter-spacing 0.2s ease;
+  /* 등장(1.2s + item delay) 이후 신호 모션 시작 */
+  animation: productTextLinkPulse 2.8s ease-in-out infinite;
+}
+
+.productTextItem:nth-child(1) .productTextLink {
+  animation-delay: 1.4s;
+}
+.productTextItem:nth-child(2) .productTextLink {
+  animation-delay: 1.7s;
+}
+.productTextItem:nth-child(3) .productTextLink {
+  animation-delay: 2s;
+}
+.productTextItem:nth-child(4) .productTextLink {
+  animation-delay: 2.3s;
+}
+.productTextItem:nth-child(5) .productTextLink {
+  animation-delay: 2.6s;
+}
+.productTextItem:nth-child(6) .productTextLink {
+  animation-delay: 2.9s;
+}
+.productTextItem:nth-child(7) .productTextLink {
+  animation-delay: 3.2s;
+}
+.productTextItem:nth-child(8) .productTextLink {
+  animation-delay: 3.5s;
+}
+
+.productTextLink:hover {
+  animation-play-state: paused;
+  opacity: 1;
+  transform: translateY(-2px);
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.85),
+    0 3px 14px rgba(0, 0, 0, 0.7),
+    0 0 12px rgba(255, 255, 255, 0.18);
+  background: transparent;
+  border: none;
+}
+
+.productTextLink:focus-visible {
+  animation-play-state: paused;
+  opacity: 1;
+  outline: 1px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 4px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  background: transparent;
+  border: none;
+}
+
+.productTextLink:active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@keyframes productTextItemIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes productTextLinkPulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(var(--pulse-y, -2px));
+    filter: brightness(var(--pulse-brightness, 1.08));
+  }
+}
+
 @media (max-width: 768px) {
   .portraitOverlay {
     bottom: 4%;
     gap: 8px;
+  }
+
+  .productTextList {
+    gap: 6px;
+  }
+
+  .productTextLink {
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 8px 4px;
+    --pulse-y: -1px;
+    --pulse-brightness: 1.06;
+  }
+
+  .productTextLink:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .productTextItem {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .productTextLink {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+
+  .productTextLink:hover,
+  .productTextLink:focus-visible,
+  .productTextLink:active {
+    transform: none;
   }
 }
