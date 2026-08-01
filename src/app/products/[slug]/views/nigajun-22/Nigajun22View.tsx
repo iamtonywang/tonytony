@@ -200,6 +200,8 @@ export default function Nigajun22View({ product, boardItems }: Props) {
           className={styles.heroImage}
         />
 
+        <SignatureLine />
+
         <p className={styles.releaseNotice}>It will be released soon</p>
         <p className={styles.brandTitle}>NIGAJUN 22</p>
         <p className={styles.bodyCopy}>Protein toothpaste</p>
