@@ -211,26 +211,26 @@
 }
 
 /*
- * 외곽 1px 링만 남기고 중앙 완전 제거.
+ * 외곽 ~2px 링만 남기고 중앙 완전 제거.
  * transform 회전 없이 --border-angle만 변경 → 중앙 원형 아티팩트 방지.
- * 강조 구간 ≈ 65deg (원주의 ~18%).
+ * 강조 구간 ≈ 65deg (원주의 ~18%). 링크 본체 padding/크기는 변경하지 않음.
  */
 .productTextLink::before {
   content: "";
   position: absolute;
-  inset: -1px;
+  inset: -2px;
   z-index: 0;
   border-radius: inherit;
-  padding: 1px;
+  padding: 2px;
   box-sizing: border-box;
   pointer-events: none;
   background: conic-gradient(
     from var(--border-angle),
     transparent 0deg,
     transparent 295deg,
-    rgba(255, 125, 0, 0.9) 305deg,
-    rgba(255, 95, 0, 1) 328deg,
-    rgba(255, 125, 0, 0.9) 348deg,
+    rgba(255, 100, 0, 0.95) 305deg,
+    rgba(255, 80, 0, 1) 328deg,
+    rgba(255, 100, 0, 0.95) 348deg,
     transparent 360deg
   );
   -webkit-mask-image:
@@ -246,9 +246,10 @@
   mask-origin: content-box, border-box;
   mask-composite: exclude;
   filter:
-    drop-shadow(0 0 4px rgba(255, 95, 0, 0.95))
-    drop-shadow(0 0 8px rgba(255, 95, 0, 0.65))
-    drop-shadow(0 0 12px rgba(255, 120, 0, 0.35));
+    drop-shadow(0 0 6px rgba(255, 90, 0, 0.95))
+    drop-shadow(0 0 12px rgba(255, 90, 0, 0.75))
+    drop-shadow(0 0 20px rgba(255, 120, 0, 0.55))
+    drop-shadow(0 0 30px rgba(255, 140, 0, 0.3));
   opacity: 0;
   --border-angle: 0deg;
   animation: productTextLinkBorderSpin 18.4s linear infinite;
