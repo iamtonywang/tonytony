@@ -92,7 +92,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 32%;
+  bottom: 8%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,7 +127,7 @@
 
 @media (max-width: 768px) {
   .portraitOverlay {
-    bottom: 30%;
+    bottom: 4%;
     gap: 8px;
   }
 }
