@@ -127,9 +127,8 @@
 
 /*
  * /products 전용 제품명 링크.
- * capsule 외곽 1px 테두리만 순차 회전 (텍스트·박스 내부 고정).
- * --shimmer-index: 0..7 (page.tsx)
- * 슬롯 = 활성 0.75s + 대기 0.12s → 전체 사이클 8 × 0.87s = 6.96s
+ * 기본: 테두리 없음(투명). 자기 차례에만 외곽 1px 오렌지 선 1회전 후 소멸.
+ * 슬롯 = 활성 0.8s + 대기 0.15s → 전체 사이클 8 × 0.95s = 7.6s
  * 공용 ProductListSection CSS는 사용하지 않는다.
  */
 .productTextList {
@@ -139,7 +138,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 1px;
 }
 
 .productTextItem {
@@ -181,33 +180,29 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
-  min-width: 0;
   max-width: 100%;
   margin: 0;
-  padding: 1px 5px;
+  padding: 1px 4px;
   overflow: visible;
-  border: 1px solid rgba(255, 115, 0, 0.58);
+  border: 1px solid transparent;
   border-radius: 999px;
   background: transparent;
   box-shadow: none;
   color: #ffffff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.35;
   font-weight: 400;
   letter-spacing: 0.01em;
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.75),
     0 2px 10px rgba(0, 0, 0, 0.55);
-  transition:
-    border-color 0.2s ease,
-    text-shadow 0.2s ease;
+  transition: text-shadow 0.2s ease;
 }
 
 /*
- * inset:-1px → 외곽 테두리에 밀착.
- * mask로 중앙을 완전 제거해 1px 링만 회전 (텍스트 위 통과 금지).
- * 자기 슬롯(0.75s)에서만 opacity 1 + 1회전.
+ * inset:-1px + mask → 외곽 1px만. 텍스트/내부 통과 금지.
+ * nth-child별 delay로 44→00 순차, 겹침 없음.
  */
 .productTextLink::before {
   content: "";
@@ -237,12 +232,36 @@
   mask-composite: exclude;
   opacity: 0;
   transform: rotate(0deg);
-  animation: productTextLinkBorderSpin 6.96s linear infinite;
-  animation-delay: calc(var(--shimmer-index, 0) * 0.87s);
+  animation: productTextLinkBorderSpin 7.6s linear infinite;
+}
+
+.productTextItem:nth-child(1) .productTextLink::before {
+  animation-delay: 0s;
+}
+.productTextItem:nth-child(2) .productTextLink::before {
+  animation-delay: 0.95s;
+}
+.productTextItem:nth-child(3) .productTextLink::before {
+  animation-delay: 1.9s;
+}
+.productTextItem:nth-child(4) .productTextLink::before {
+  animation-delay: 2.85s;
+}
+.productTextItem:nth-child(5) .productTextLink::before {
+  animation-delay: 3.8s;
+}
+.productTextItem:nth-child(6) .productTextLink::before {
+  animation-delay: 4.75s;
+}
+.productTextItem:nth-child(7) .productTextLink::before {
+  animation-delay: 5.7s;
+}
+.productTextItem:nth-child(8) .productTextLink::before {
+  animation-delay: 6.65s;
 }
 
 .productTextLink:hover {
-  border-color: rgba(255, 115, 0, 0.78);
+  border-color: transparent;
   background: transparent;
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.85),
@@ -258,7 +277,7 @@
 }
 
 .productTextLink:active {
-  border-color: rgba(255, 115, 0, 0.78);
+  border-color: transparent;
 }
 
 @keyframes productTextItemIn {
@@ -268,17 +287,17 @@
   }
 }
 
-/* 6.96s 중 앞 0.75s(≈10.776%)만 1회전 후 숨김 */
+/* 7.6s 중 앞 0.8s(≈10.526%)만 opacity 1 + 1회전, 이후 완전 숨김 */
 @keyframes productTextLinkBorderSpin {
   0% {
     opacity: 1;
     transform: rotate(0deg);
   }
-  10.776% {
+  10.526% {
     opacity: 1;
     transform: rotate(360deg);
   }
-  10.777%,
+  10.527%,
   100% {
     opacity: 0;
     transform: rotate(360deg);
@@ -292,12 +311,12 @@
   }
 
   .productTextList {
-    gap: 1px;
+    gap: 0;
   }
 
   .productTextLink {
-    padding: 1px 4px;
-    font-size: 15px;
+    padding: 1px 3px;
+    font-size: 14px;
     line-height: 1.4;
   }
 }
