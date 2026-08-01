@@ -45,7 +45,7 @@ export default async function ProductsPage() {
 
       <section className={styles.modelPortraitFrame} aria-label="Product links">
         <img
-          src="/landing-assets/nigajun-44-model-portrait.webp"
+          src="/landing-assets/products-page-hero.webp"
           alt=""
           className={styles.modelPortrait}
         />
