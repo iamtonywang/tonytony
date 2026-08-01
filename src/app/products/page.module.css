@@ -139,7 +139,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: 6px;
 }
 
 .productTextItem {
@@ -183,7 +183,7 @@
   margin: 0;
   padding: 1px 6px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   background: transparent;
   box-shadow: none;
@@ -212,9 +212,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 127, 0, 0.2) 28%,
-    rgba(255, 255, 255, 0.34) 50%,
-    rgba(255, 127, 0, 0.2) 72%,
+    rgba(255, 127, 0, 0.12) 30%,
+    rgba(255, 127, 0, 0.28) 50%,
+    rgba(255, 127, 0, 0.12) 70%,
     transparent 100%
   );
   transform: skewX(-20deg);
@@ -270,7 +270,7 @@
   }
 
   .productTextList {
-    gap: 5px;
+    gap: 3px;
   }
 
   .productTextLink {
