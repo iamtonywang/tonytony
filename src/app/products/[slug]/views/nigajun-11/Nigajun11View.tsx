@@ -132,6 +132,8 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
