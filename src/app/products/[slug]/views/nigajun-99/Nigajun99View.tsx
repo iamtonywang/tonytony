@@ -175,6 +175,24 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Skin Barrier Support">
+        <p className={styles.brandTitle}>SKIN BARRIER SUPPORT</p>
+        <p className={styles.sectionTitle}>Protect What Matters Most</p>
+        <p className={styles.bodyCopy}>
+          {
+            "Helps reinforce the skin's natural moisture barrier, minimizing moisture loss and maintaining healthier, more resilient-looking skin with daily use."
+          }
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-99-section-05.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.landingSection} aria-label="Product Description">
         <p className={styles.sectionTitle}>NIGAJUN 99</p>
         <p className={styles.releaseNotice}>It will be released soon</p>
