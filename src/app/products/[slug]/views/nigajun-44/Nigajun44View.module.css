@@ -114,48 +114,10 @@
   );
 }
 
-/*
- * Section 2: heroImage 위에 문구를 겹친다. 세로 padding·min-height는 기존 section2Backdrop과 동일.
- */
-.section2Block {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  padding-top: 92px;
-  padding-bottom: 92px;
-  min-height: 260px;
-  isolation: isolate;
-}
-
-.section2Block .heroImage {
-  grid-area: 1 / 1;
-}
-
-.section2Copy {
-  grid-area: 1 / 1;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 620px;
-  padding: 0 28px;
-  text-align: center;
-  box-sizing: border-box;
-}
-
 @media (max-width: 768px) {
   .heroImage {
     width: 100%;
     max-width: none;
-  }
-
-  .section2Block {
-    padding-top: 68px;
-    padding-bottom: 68px;
-    min-height: 220px;
   }
 }
 

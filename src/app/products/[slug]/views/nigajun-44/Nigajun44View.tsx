@@ -468,20 +468,22 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      {/* Section 2: heroImage(77·88·99 공통 폭) + 문구 오버레이 */}
-      <section className={styles.section2Block} aria-label="Manifesto Introduction">
-        <img
-          src="/landing-assets/nigajun-44-section-02-new.webp"
-          alt=""
-          className={styles.heroImage}
-        />
-        <div className={styles.section2Copy}>
-          <p className={styles.bodyCopy}>{"우리는 낡고 허술한 시대에 살고 있어"}</p>
-          <p className={styles.bodyCopy}>{"무엇이 진실이고 무엇이 거짓인지 때론 모르고 살아간다"}</p>
-          <p className={styles.bodyCopy}>{"We live in a time of old and loose Sometimes "}</p>
-          <p className={styles.bodyCopy}>{"you don't know what's true and what's false"}</p>
-        </div>
+      {/* Section 2: 문구(이미지 위) → heroImage */}
+      <section
+        className={styles.landingSection}
+        aria-label="Manifesto Introduction"
+      >
+        <p className={styles.bodyCopy}>{"우리는 낡고 허술한 시대에 살고 있어"}</p>
+        <p className={styles.bodyCopy}>{"무엇이 진실이고 무엇이 거짓인지 때론 모르고 살아간다"}</p>
+        <p className={styles.bodyCopy}>{"We live in a time of old and loose Sometimes"}</p>
+        <p className={styles.bodyCopy}>{"you don't know what's true and what's false"}</p>
       </section>
+
+      <img
+        src="/landing-assets/nigajun-44-section-02-new.webp"
+        alt=""
+        className={styles.heroImage}
+      />
 
       <SignatureLine />
 
