@@ -167,6 +167,23 @@ export default function Nigajun88View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <SignatureLine />
+
+      <section className={styles.landingSection} aria-label="Daily Hair Performance">
+        <p className={styles.brandTitle}>DAILY HAIR PERFORMANCE</p>
+        <p className={styles.sectionTitle}>Care That Builds Confidence</p>
+        <p className={styles.bodyCopy}>
+          Every application supports healthier-looking hair and a refreshed
+          scalp, making daily hair care a foundation for lasting confidence.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-88-section-05.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.landingSection} aria-label="Product Description">
         <p className={styles.sectionTitle}>NIGAJUN 88</p>
         <p className={styles.releaseNotice}>It will be released soon</p>
