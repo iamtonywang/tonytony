@@ -66,6 +66,39 @@
   margin-top: 4px;
 }
 
+/*
+ * 대표 이미지: NIGAJUN 11 .heroImage와 동일.
+ * 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
+ * 높이는 원본 비율(height: auto)로 폭에 비례해 커진다.
+ * 장식 없음: border/outline/box-shadow/배경/padding/round 일절 미적용.
+ */
+.heroImage {
+  display: block;
+  width: calc(100% - 56px);
+  max-width: 704px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.5) 80%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.5) 80%,
+    transparent 100%
+  );
+}
+
 .purchaseSection {
   width: min(1120px, 92vw);
   margin: 0 auto;
@@ -353,6 +386,11 @@
 }
 
 @media (max-width: 768px) {
+  .heroImage {
+    width: 100%;
+    max-width: none;
+  }
+
   .purchaseSection {
     width: min(1120px, 94vw);
   }

@@ -117,6 +117,23 @@ export default function Nigajun00View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Reveal Your Skin">
+        <p className={styles.sectionTitle}>Reveal Your Skin&apos;s True Potential</p>
+        <p className={styles.bodyCopy}>
+          Powered by an advanced Hybrid Mixed Protein Complex, NIGAJUN00 delivers intensive
+          hydration, refines the look of pores, improves the appearance of skin density, and helps
+          restore lasting moisture from within.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-00-main-hero.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
