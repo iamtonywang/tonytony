@@ -117,6 +117,18 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Hydration Promise">
+        <p className={styles.sectionTitle}>
+          Relieve Dryness. Restore Comfort. Reveal Healthy Skin.
+        </p>
+        <p className={styles.bodyCopy}>
+          NIGAJUN99 is specially formulated to provide intensive hydration for
+          dry, uncomfortable skin. It helps replenish moisture, soothe feelings
+          of tightness, and support a healthier-looking skin barrier for lasting
+          comfort every day.
+        </p>
+      </section>
+
       <img
         src="/landing-assets/nigajun-99-hero.webp"
         alt=""
