@@ -516,7 +516,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <img
-        src="/landing-assets/nigajun-44-section-04-v2.webp"
+        src="/landing-assets/nigajun-44-section-04.webp"
         alt=""
         className={styles.heroImage}
       />
@@ -537,7 +537,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <img
-        src="/landing-assets/nigajun-44-section-05.webp"
+        src="/landing-assets/nigajun-44-section-05-v2.webp"
         alt=""
         className={styles.heroImage}
       />
