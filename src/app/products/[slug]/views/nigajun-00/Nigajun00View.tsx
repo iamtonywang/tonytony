@@ -244,6 +244,7 @@ export default function Nigajun00View({ product, boardItems }: Props) {
           <span className={styles.boardTitleBrand}>TONYWANG</span>
           <span className={styles.boardTitleSub}>Ask me Questions</span>
         </h2>
+        <SignatureLine />
         <div className={styles.boardNotice}>
           <div className={styles.policyTitle}>Policy</div>
 
