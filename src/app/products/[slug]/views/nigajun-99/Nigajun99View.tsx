@@ -193,6 +193,24 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Healthy Skin Begins Here">
+        <p className={styles.brandTitle}>HEALTHY SKIN BEGINS HERE</p>
+        <p className={styles.sectionTitle}>
+          Healthy Skin Begins with Lasting Moisture
+        </p>
+        <p className={styles.bodyCopy}>
+          Consistent hydration helps create skin that feels smoother, more
+          comfortable, and naturally balanced, restoring confidence through
+          healthy-looking skin every day.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-99-section-06.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.landingSection} aria-label="Product Description">
         <p className={styles.sectionTitle}>NIGAJUN 99</p>
         <p className={styles.releaseNotice}>It will be released soon</p>
