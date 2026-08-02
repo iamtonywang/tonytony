@@ -199,11 +199,16 @@ export default function Nigajun88View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      <div className={styles.jarCopy}>
-        <p className={styles.jarNotice}>It will be released soon</p>
-        <p className={styles.jarBrand}>NIGAJUN 88</p>
-        <p className={styles.jarSub}>Hair Nutrition Protein Cream</p>
-      </div>
+      <section className={styles.landingSection} aria-label="Healthy Scalp Promise">
+        <p className={styles.sectionTitle}>
+          Healthy Scalp. Stronger Hair. Lasting Confidence.
+        </p>
+        <p className={styles.bodyCopy}>
+          {
+            "NIGAJUN88 combines advanced daily scalp care with nourishing hair support to help create stronger-looking, fuller-looking hair and a balanced, refreshed scalp—because confidence begins with healthy hair."
+          }
+        </p>
+      </section>
 
       <img
         src="/landing-assets/nigajun-88-section-06.webp"
@@ -211,23 +216,25 @@ export default function Nigajun88View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
-      <p className={styles.jarCaption}>It will be a precious thing to you</p>
-
       <section className={styles.purchaseSection} aria-label="Purchase">
-        <div className={styles.fourthProductCta}>
-          <p className={styles.fourthProductPrice}>
-            {typeof product?.finalPriceAmount === "number"
-              ? `₩${product.finalPriceAmount.toLocaleString()}`
-              : null}
-          </p>
+        <p className={styles.fourthProductPrice}>
+          {typeof product?.finalPriceAmount === "number"
+            ? `₩${product.finalPriceAmount.toLocaleString()}`
+            : null}
+        </p>
 
-          <Link
-            href={`/purchase/${product?.slug ?? ""}`}
-            className={styles.fourthProductBuyButton}
-          >
-            Buy Now
-          </Link>
+        <div className={styles.jarCopy}>
+          <p className={styles.jarNotice}>It will be released soon</p>
+          <p className={styles.jarBrand}>NIGAJUN 88</p>
+          <p className={styles.jarSub}>Hair Nutrition Protein Cream</p>
         </div>
+
+        <Link
+          href={`/purchase/${product?.slug ?? ""}`}
+          className={styles.fourthProductBuyButton}
+        >
+          Buy Now
+        </Link>
       </section>
 
       <SignatureLine />

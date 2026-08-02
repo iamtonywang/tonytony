@@ -112,18 +112,7 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
-/* 이미지 바로 아래 오렌지 캡션 */
-.jarCaption {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.15;
-  text-align: center;
-  color: #ff7f00;
-}
-
-/*
- * 대표 이미지: 99 .heroImage와 동일.
+/* 대표 이미지: 99 .heroImage와 동일.
  * 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
  * 높이는 원본 비율(height: auto)로 폭에 비례해 커진다.
  * 장식 없음: border/outline/box-shadow/배경/padding/round 일절 미적용.
@@ -161,19 +150,7 @@
   text-align: center;
 }
 
-/* 가격 + Buy Now: NIGAJUN 99의 fourthProductCta 구현과 동일(한 줄 row 배치) */
-.fourthProductCta {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  max-width: min(560px, calc(100vw - 24px));
-  margin: 0 auto;
-  box-sizing: border-box;
-  pointer-events: auto;
-}
-
+/* 가격 / Buy Now Typography (NIGAJUN 99와 동일) */
 .fourthProductPrice {
   margin: 0;
   flex-shrink: 0;
@@ -209,11 +186,6 @@
 }
 
 @media (max-width: 768px) {
-  .fourthProductCta {
-    gap: 16px;
-    max-width: min(520px, calc(100vw - 20px));
-  }
-
   .fourthProductPrice {
     font-size: 16px;
   }
