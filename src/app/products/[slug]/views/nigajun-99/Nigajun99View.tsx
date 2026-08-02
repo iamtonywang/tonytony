@@ -227,17 +227,17 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <div className={styles.jarCopy}>
         <p className={styles.jarNotice}>It will be released soon</p>
-        <p className={styles.jarBrand}>NIGAJUN99</p>
-        <p className={styles.jarSub}>itchy skin care cream</p>
+        <p className={styles.jarBrand}>NIGAJUN 99</p>
+        <p className={styles.jarSub}>Mixed Protein itchy skin care cream</p>
+        <p className={styles.jarSub}>Proteo Phyto Complex</p>
+        <p className={styles.jarSub}>August 2026 TONY WANG</p>
       </div>
 
       <img
-        src="/landing-assets/nigajun-99-product-jar.webp"
+        src="/landing-assets/nigajun-99-section-06-v2.webp"
         alt=""
         className={styles.jarImage}
       />
-
-      <p className={styles.jarCaption}>It will be a precious thing to you</p>
 
       <section className={styles.purchaseSection} aria-label="Purchase">
         <div className={styles.fourthProductCta}>
