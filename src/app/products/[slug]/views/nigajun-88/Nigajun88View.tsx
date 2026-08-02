@@ -150,6 +150,23 @@ export default function Nigajun88View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <SignatureLine />
+
+      <section className={styles.landingSection} aria-label="Dandruff and Scalp Comfort">
+        <p className={styles.brandTitle}>DANDRUFF & SCALP COMFORT</p>
+        <p className={styles.sectionTitle}>Refresh and Rebalance</p>
+        <p className={styles.bodyCopy}>
+          Helps remove buildup while keeping the scalp feeling clean, refreshed,
+          and comfortably balanced, supporting a healthier scalp with every use.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-88-section-04.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.landingSection} aria-label="Product Description">
         <p className={styles.sectionTitle}>NIGAJUN 88</p>
         <p className={styles.releaseNotice}>It will be released soon</p>
