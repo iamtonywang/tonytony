@@ -155,6 +155,26 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Comfort for Dry Skin">
+        <p className={styles.brandTitle}>COMFORT FOR DRY SKIN</p>
+        <p className={styles.sectionTitle}>
+          Comfort Starts with Healthy Hydration
+        </p>
+        <p className={styles.bodyCopy}>
+          Designed for dry and sensitive-looking skin, the nourishing formula
+          helps reduce the feeling of dryness and discomfort while supporting a
+          calm, balanced complexion.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-99-section-04.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.landingSection} aria-label="Product Description">
         <p className={styles.sectionTitle}>NIGAJUN 99</p>
         <p className={styles.releaseNotice}>It will be released soon</p>
