@@ -134,6 +134,21 @@ export default function Nigajun00View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Hybrid Mixed Protein">
+        <p className={styles.brandTitle}>HYBRID MIXED PROTEIN</p>
+        <p className={styles.sectionTitle}>Powered by Hybrid Mixed Protein Technology</p>
+        <p className={styles.bodyCopy}>
+          An advanced blend of carefully selected proteins helps nourish the skin, reinforce its
+          moisture barrier, and promote a smoother, healthier-looking complexion.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-00-section-03.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
