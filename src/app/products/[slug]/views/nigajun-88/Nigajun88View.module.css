@@ -150,7 +150,19 @@
   text-align: center;
 }
 
-/* 가격 / Buy Now Typography (NIGAJUN 99와 동일) */
+/* 가격 + Buy Now: NIGAJUN 99의 fourthProductCta 구현과 동일(한 줄 row 배치) */
+.fourthProductCta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  max-width: min(560px, calc(100vw - 24px));
+  margin: 0 auto;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
 .fourthProductPrice {
   margin: 0;
   flex-shrink: 0;
@@ -186,6 +198,11 @@
 }
 
 @media (max-width: 768px) {
+  .fourthProductCta {
+    gap: 16px;
+    max-width: min(520px, calc(100vw - 20px));
+  }
+
   .fourthProductPrice {
     font-size: 16px;
   }

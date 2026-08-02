@@ -216,25 +216,27 @@ export default function Nigajun88View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <div className={styles.jarCopy}>
+        <p className={styles.jarNotice}>It will be released soon</p>
+        <p className={styles.jarBrand}>NIGAJUN 88</p>
+        <p className={styles.jarSub}>Hair Nutrition Protein Cream</p>
+      </div>
+
       <section className={styles.purchaseSection} aria-label="Purchase">
-        <p className={styles.fourthProductPrice}>
-          {typeof product?.finalPriceAmount === "number"
-            ? `₩${product.finalPriceAmount.toLocaleString()}`
-            : null}
-        </p>
+        <div className={styles.fourthProductCta}>
+          <p className={styles.fourthProductPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
 
-        <div className={styles.jarCopy}>
-          <p className={styles.jarNotice}>It will be released soon</p>
-          <p className={styles.jarBrand}>NIGAJUN 88</p>
-          <p className={styles.jarSub}>Hair Nutrition Protein Cream</p>
+          <Link
+            href={`/purchase/${product?.slug ?? ""}`}
+            className={styles.fourthProductBuyButton}
+          >
+            Buy Now
+          </Link>
         </div>
-
-        <Link
-          href={`/purchase/${product?.slug ?? ""}`}
-          className={styles.fourthProductBuyButton}
-        >
-          Buy Now
-        </Link>
       </section>
 
       <SignatureLine />
