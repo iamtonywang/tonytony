@@ -168,6 +168,23 @@ export default function Nigajun00View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Skin Density">
+        <p className={styles.brandTitle}>SKIN DENSITY</p>
+        <p className={styles.sectionTitle}>Reveal Firmer, Fuller-Looking Skin</p>
+        <p className={styles.bodyCopy}>
+          The Hybrid Mixed Protein Complex helps improve the appearance of skin density, leaving
+          your complexion feeling more resilient, supple, and visibly revitalized.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-00-section-05.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
