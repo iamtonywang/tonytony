@@ -130,8 +130,6 @@
 
 .section2Block .heroImage {
   grid-area: 1 / 1;
-  opacity: 0.41;
-  filter: brightness(1.15) contrast(1.1) saturate(1.05);
 }
 
 .section2Copy {
@@ -158,10 +156,6 @@
     padding-top: 68px;
     padding-bottom: 68px;
     min-height: 220px;
-  }
-
-  .section2Block .heroImage {
-    opacity: 0.35;
   }
 }
 
