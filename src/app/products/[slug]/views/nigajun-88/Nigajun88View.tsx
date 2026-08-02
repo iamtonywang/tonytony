@@ -134,6 +134,22 @@ export default function Nigajun88View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Thinning Hair Care">
+        <p className={styles.brandTitle}>THINNING HAIR CARE</p>
+        <p className={styles.sectionTitle}>Support Hair That Looks Fuller</p>
+        <p className={styles.bodyCopy}>
+          Specially developed to care for fine and thinning-looking hair, helping
+          improve the appearance of volume, strength, and resilience with
+          consistent daily care.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-88-section-03.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <section className={styles.landingSection} aria-label="Product Description">
         <p className={styles.sectionTitle}>NIGAJUN 88</p>
         <p className={styles.releaseNotice}>It will be released soon</p>
