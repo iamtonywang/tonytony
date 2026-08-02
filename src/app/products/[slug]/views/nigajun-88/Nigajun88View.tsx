@@ -208,7 +208,7 @@ export default function Nigajun88View({ product, boardItems }: Props) {
       <img
         src="/landing-assets/nigajun-88-section-06.webp"
         alt=""
-        className={styles.jarImage}
+        className={styles.heroImage}
       />
 
       <p className={styles.jarCaption}>It will be a precious thing to you</p>

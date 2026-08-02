@@ -112,19 +112,6 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
-/*
- * 제품 용기(자) 이미지: 99 .jarImage와 동일.
- * 출시 예정 티저이므로 작고 절제된 크기로 표시.
- */
-.jarImage {
-  display: block;
-  width: 45%;
-  max-width: 220px;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-}
-
 /* 이미지 바로 아래 오렌지 캡션 */
 .jarCaption {
   margin: 0;
