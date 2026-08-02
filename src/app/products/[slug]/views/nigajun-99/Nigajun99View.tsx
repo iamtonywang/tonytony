@@ -236,7 +236,7 @@ export default function Nigajun99View({ product, boardItems }: Props) {
       <img
         src="/landing-assets/nigajun-99-section-06-v2.webp"
         alt=""
-        className={styles.jarImage}
+        className={styles.heroImage}
       />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
