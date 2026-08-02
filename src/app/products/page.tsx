@@ -45,7 +45,7 @@ export default async function ProductsPage() {
 
       <section className={styles.modelPortraitFrame} aria-label="Product links">
         <img
-          src="/landing-assets/products-page-hero.webp"
+          src="/landing-assets/product-main-image.webp"
           alt=""
           className={styles.modelPortrait}
         />
