@@ -212,14 +212,15 @@ export default function Nigajun99View({ product, boardItems }: Props) {
       />
 
       <section className={styles.landingSection} aria-label="Product Description">
-        <p className={styles.sectionTitle}>NIGAJUN 99</p>
-        <p className={styles.releaseNotice}>It will be released soon</p>
-        <p className={styles.bodyCopy}>
-          A protein-enriched moisturizing cream created for dry, itchy-feeling
-          skin, helping maintain lasting hydration, comfort, softness, and a
-          healthy-looking skin barrier.
+        <p className={styles.sectionTitle}>
+          Hydrate Deeply. Comfort Naturally. Live Confidently.
         </p>
-        <p className={styles.bodyCopy}>August 2026 TONYWANG</p>
+        <p className={styles.bodyCopy}>
+          NIGAJUN99 delivers intensive moisture and daily comfort for dry skin,
+          helping maintain a stronger moisture barrier and a healthier-looking
+          complexion. Because truly beautiful skin begins with lasting
+          hydration.
+        </p>
       </section>
 
       <SignatureLine />
