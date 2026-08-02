@@ -249,6 +249,8 @@ export default function Nigajun99View({ product, boardItems }: Props) {
         <p className={styles.jarSub}>August 2026 TONY WANG</p>
       </div>
 
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
