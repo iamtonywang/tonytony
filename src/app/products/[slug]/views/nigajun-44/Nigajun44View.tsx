@@ -570,13 +570,13 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <p className={styles.bodyCopy}>{"August 2026 TONY WANG"}</p>
       </section>
 
-      <section className={styles.purchaseSection} aria-label="Purchase">
-        <img
-          src="/landing-assets/nigajun-44-main-transparent.webp"
-          alt=""
-          className={styles.sectionSplitImage}
-        />
+      <img
+        src="/landing-assets/nigajun-44-section-07.webp"
+        alt=""
+        className={styles.heroImage}
+      />
 
+      <section className={styles.purchaseSection} aria-label="Purchase">
         <div className={styles.fourthProductCta}>
           <p className={styles.fourthProductPrice}>
             {typeof product?.finalPriceAmount === "number"
