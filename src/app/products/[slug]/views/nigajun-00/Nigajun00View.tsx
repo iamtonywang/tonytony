@@ -200,6 +200,17 @@ export default function Nigajun00View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <section className={styles.landingSection} aria-label="Closing Brand Message">
+        <p className={styles.sectionTitle}>
+          Hydrate Deeper. Strengthen Better. Glow Naturally.
+        </p>
+        <p className={styles.bodyCopy}>
+          NIGAJUN00 Hybrid Mixed Protein Serum transforms your daily skincare routine with advanced
+          hydration, refined pores, enhanced skin density, and lasting moisture—for healthier-looking,
+          naturally radiant skin.
+        </p>
+      </section>
+
       <SignatureLine />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
