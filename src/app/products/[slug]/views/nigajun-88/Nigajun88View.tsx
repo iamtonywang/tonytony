@@ -206,7 +206,7 @@ export default function Nigajun88View({ product, boardItems }: Props) {
       </div>
 
       <img
-        src="/landing-assets/nigajun-88-product-jar.webp"
+        src="/landing-assets/nigajun-88-section-06.webp"
         alt=""
         className={styles.jarImage}
       />
