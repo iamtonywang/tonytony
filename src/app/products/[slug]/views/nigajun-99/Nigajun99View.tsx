@@ -137,6 +137,24 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Deep Hydration">
+        <p className={styles.brandTitle}>DEEP HYDRATION</p>
+        <p className={styles.sectionTitle}>Deep Hydration That Lasts</p>
+        <p className={styles.bodyCopy}>
+          Infuses the skin with long-lasting moisture to help relieve dryness
+          while leaving the skin feeling soft, smooth, and comfortably hydrated
+          throughout the day.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-99-section-03-v2.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.landingSection} aria-label="Product Description">
         <p className={styles.sectionTitle}>NIGAJUN 99</p>
         <p className={styles.releaseNotice}>It will be released soon</p>
