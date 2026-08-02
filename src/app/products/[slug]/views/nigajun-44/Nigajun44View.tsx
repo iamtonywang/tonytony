@@ -471,7 +471,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       {/* Section 2: heroImage(77·88·99 공통 폭) + 문구 오버레이 */}
       <section className={styles.section2Block} aria-label="Manifesto Introduction">
         <img
-          src="/landing-assets/tonywang-why-manifesto-hero.webp"
+          src="/landing-assets/nigajun-44-section-02-new.webp"
           alt=""
           className={styles.heroImage}
         />
@@ -496,7 +496,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <img
-        src="/landing-assets/nigajun-44-luxury-model.webp"
+        src="/landing-assets/nigajun-44-section-03.webp"
         alt=""
         className={styles.heroImage}
       />
@@ -514,7 +514,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <img
-        src="/landing-assets/nigajun-44-spa-portrait.webp"
+        src="/landing-assets/nigajun-44-section-04.webp"
         alt=""
         className={styles.heroImage}
       />
@@ -535,7 +535,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <img
-        src="/landing-assets/nigajun-44-founder-portrait.webp"
+        src="/landing-assets/nigajun-44-section-05.webp"
         alt=""
         className={styles.heroImage}
       />
@@ -556,7 +556,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
       </section>
 
       <img
-        src="/landing-assets/nigajun-44-creator-portrait.webp"
+        src="/landing-assets/nigajun-44-section-06.webp"
         alt=""
         className={styles.heroImage}
       />
