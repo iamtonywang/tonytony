@@ -221,18 +221,23 @@ export default function Nigajun00View({ product, boardItems }: Props) {
         <p className={styles.bodyCopy}>Proteo Phyto Complex</p>
         <p className={styles.bodyCopy}>August 2026 TONY WANG</p>
 
-        <p className={styles.productPrice}>
-          {typeof product?.finalPriceAmount === "number"
-            ? `₩${product.finalPriceAmount.toLocaleString()}`
-            : null}
-        </p>
+        <div className={styles.fourthProductCta}>
+          <p className={styles.fourthProductPrice}>
+            {typeof product?.finalPriceAmount === "number"
+              ? `₩${product.finalPriceAmount.toLocaleString()}`
+              : null}
+          </p>
 
-        <div className={styles.buyButtonRow}>
-          <Link href={`/purchase/${product?.slug ?? ""}`} className={styles.buyButton}>
+          <Link
+            href={`/purchase/${product?.slug ?? ""}`}
+            className={styles.fourthProductBuyButton}
+          >
             Buy Now
           </Link>
         </div>
       </section>
+
+      <SignatureLine />
 
       <div className={styles.boardTopHeader}>
         <h2 className={styles.boardTopTitle}>
