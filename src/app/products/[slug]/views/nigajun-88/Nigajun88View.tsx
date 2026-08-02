@@ -117,6 +117,15 @@ export default function Nigajun88View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Hair Strength Promise">
+        <p className={styles.sectionTitle}>Stronger Hair Begins at the Root</p>
+        <p className={styles.bodyCopy}>
+          NIGAJUN88 is designed to nourish the scalp, support stronger-looking
+          hair, reduce the appearance of thinning, and promote a healthier scalp
+          environment for fuller, healthier-looking hair every day.
+        </p>
+      </section>
+
       <img
         src="/landing-assets/nigajun-88-model-portrait.webp"
         alt=""
