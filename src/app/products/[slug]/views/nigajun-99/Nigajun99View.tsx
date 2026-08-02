@@ -225,6 +225,22 @@ export default function Nigajun99View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
+      <section className={styles.landingSection} aria-label="Daily Moisture Care">
+        <p className={styles.brandTitle}>DAILY MOISTURE CARE</p>
+        <p className={styles.sectionTitle}>Everyday Care for Lasting Comfort</p>
+        <p className={styles.bodyCopy}>
+          The lightweight yet deeply nourishing formula absorbs quickly,
+          delivering continuous hydration without leaving a greasy residue,
+          making it ideal for daily skincare.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-99-section-06-v2.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
       <div className={styles.jarCopy}>
         <p className={styles.jarNotice}>It will be released soon</p>
         <p className={styles.jarBrand}>NIGAJUN 99</p>
@@ -232,12 +248,6 @@ export default function Nigajun99View({ product, boardItems }: Props) {
         <p className={styles.jarSub}>Proteo Phyto Complex</p>
         <p className={styles.jarSub}>August 2026 TONY WANG</p>
       </div>
-
-      <img
-        src="/landing-assets/nigajun-99-section-06-v2.webp"
-        alt=""
-        className={styles.heroImage}
-      />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
         <div className={styles.fourthProductCta}>
