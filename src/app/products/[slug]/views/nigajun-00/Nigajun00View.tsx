@@ -149,6 +149,25 @@ export default function Nigajun00View({ product, boardItems }: Props) {
         className={styles.heroImage}
       />
 
+      <SignatureLine />
+
+      <section className={styles.landingSection} aria-label="Pore Refining">
+        <p className={styles.brandTitle}>PORE REFINING</p>
+        <p className={styles.sectionTitle}>Refined Pores. Smoother Skin.</p>
+        <p className={styles.bodyCopy}>
+          Lightweight yet deeply nourishing, the serum helps minimize the appearance of pores while
+          improving overall skin texture for a refined, balanced finish.
+        </p>
+      </section>
+
+      <img
+        src="/landing-assets/nigajun-00-section-04.webp"
+        alt=""
+        className={styles.heroImage}
+      />
+
+      <SignatureLine />
+
       <section className={styles.purchaseSection} aria-label="Purchase">
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
