@@ -214,6 +214,13 @@ export default function Nigajun00View({ product, boardItems }: Props) {
       <SignatureLine />
 
       <section className={styles.purchaseSection} aria-label="Purchase">
+        <p className={styles.releaseNotice}>It will be released soon</p>
+        <p className={styles.brandTitle}>NIGAJUN 00</p>
+        <p className={styles.sectionTitle}>Hybrid Mixed Protein Serum</p>
+        <p className={styles.bodyCopy}>Protein toothpaste</p>
+        <p className={styles.bodyCopy}>Proteo Phyto Complex</p>
+        <p className={styles.bodyCopy}>August 2026 TONY WANG</p>
+
         <p className={styles.productPrice}>
           {typeof product?.finalPriceAmount === "number"
             ? `₩${product.finalPriceAmount.toLocaleString()}`

@@ -66,6 +66,24 @@
   margin-top: 4px;
 }
 
+/* 출시 예정 강조: 기존 releaseNotice 패턴, 요청 사양 21px / #ff7f00 */
+.releaseNotice {
+  margin: 8px 0 0;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ff7f00;
+  text-align: center;
+}
+
+.releaseNotice + .brandTitle {
+  margin-top: 6px;
+}
+
+.releaseNotice + .bodyCopy {
+  margin-top: 9px;
+}
+
 /*
  * 대표 이미지: NIGAJUN 11 .heroImage와 동일.
  * 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
@@ -102,6 +120,12 @@
 .purchaseSection {
   width: min(1120px, 92vw);
   margin: 0 auto;
+  text-align: center;
+}
+
+.purchaseSection .brandTitle,
+.purchaseSection .sectionTitle,
+.purchaseSection .bodyCopy {
   text-align: center;
 }
 
