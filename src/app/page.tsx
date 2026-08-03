@@ -13,8 +13,6 @@ export default function HomePage() {
   return (
     <>
       <div className={styles.sectionsBackdrop}>
-        <div className={styles.founderImage} aria-hidden="true" />
-
         <SignatureLine />
 
         <section className={styles.introduction}>
@@ -50,6 +48,12 @@ export default function HomePage() {
             August 2026 TONY WANG
           </time>
         </section>
+
+        <img
+          src="/landing-assets/tonywang-home-main-hero-v2.webp"
+          alt=""
+          className={styles.founderImage}
+        />
       </div>
 
       <div className={styles.footerDivider} aria-hidden="true" />
