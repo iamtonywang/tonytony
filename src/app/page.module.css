@@ -1,37 +1,31 @@
-/*
- * 화면이 콘텐츠보다 길 때 main(flex: 1)의 남는 공간이 hairline과 Footer 사이에
- * 쌓이지 않도록, Home에서만 backdrop이 남는 공간을 흡수해 hairline을 Footer에 붙인다.
- */
-:global(main):has(.sectionsBackdrop) {
-  display: flex;
-  flex-direction: column;
+.home {
+  width: 100%;
+  min-width: 0;
 }
 
-/* 3개 콘텐츠 섹션 전체를 감싸는 공통 배경 영역 */
-.sectionsBackdrop {
+/*
+ * Hero: normal-flow section. Height from aspect-ratio of source 1200×1400.
+ * Max display width PC 720px / mobile 430px (existing composition caps).
+ */
+.hero {
   position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  aspect-ratio: 1200 / 1400;
   overflow: hidden;
-  isolation: isolate;
-  flex: 1 0 auto;
 }
 
-/*
- * 단일 manifesto 이미지 레이어(정확히 1회 렌더링, 3페이지 공통 이미지).
- * 정사각형(1500x1500) 원본을 변형 없이 상단 중앙에 두고,
- * radial mask로 사각 경계·하단을 기존 배경색(#5f5f5f)으로 자연스럽게 페이드시킨다.
- */
 .founderImage {
   position: absolute;
   inset: 0;
-  z-index: -1;
   pointer-events: none;
   user-select: none;
   background-image: url("/landing-assets/tonywang-home-main-hero-v2.webp");
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: min(720px, 100%) auto;
+  background-size: 100% auto;
   opacity: 0.65;
-  /* 이미지(최대 720px 정사각) 내부에서 상하좌우 페이드가 모두 끝나도록 px 기반 타원 마스크 사용 */
   mask-image: radial-gradient(
     330px 330px at 50% 340px,
     rgba(0, 0, 0, 1) 42%,
@@ -47,18 +41,20 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    max-width: 430px;
+  }
+
   .founderImage {
-    background-size: min(430px, 100%) auto;
-    transform: translateY(30%);
     opacity: 0.6;
     mask-image: radial-gradient(
-      196px 196px at 50% 210px,
+      196px 196px at 50% 42%,
       rgba(0, 0, 0, 1) 40%,
       rgba(0, 0, 0, 0.5) 68%,
       transparent 96%
     );
     -webkit-mask-image: radial-gradient(
-      196px 196px at 50% 210px,
+      196px 196px at 50% 42%,
       rgba(0, 0, 0, 1) 40%,
       rgba(0, 0, 0, 0.5) 68%,
       transparent 96%
@@ -150,7 +146,6 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
-/* Footer 위 조용한 경계선: 좌우가 투명하게 사라지는 1px fade hairline */
 .footerDivider {
   width: min(760px, calc(100% - 56px));
   height: 1px;
