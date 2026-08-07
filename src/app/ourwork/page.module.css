@@ -1,63 +1,91 @@
-/* 6개 섹션 전체를 감싸는 공통 배경 영역 (Home sectionsBackdrop과 동일 방식) */
-.story {
+.ourwork {
   width: 100%;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
+  min-width: 0;
 }
 
 /*
- * 단일 manifesto 이미지 레이어(정확히 1회 렌더링, 3페이지 공통 이미지).
- * 정사각형(1500x1500) 원본을 비율 그대로 상단 중앙에 두고,
- * Home/WHY?와 동일한 원형 radial mask로 하단을 기존 배경색(#5f5f5f)으로 페이드시킨다.
- * (이전 가로형 이미지용 납작한 타원 마스크 + translateY가 하단 잘림의 원인이라 제거)
+ * Independent Hero — normal flow, aspect from source 1200×1400.
+ * Max width PC 720px / mobile 430px.
  */
-.documentaryImage {
+.hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  aspect-ratio: 1200 / 1400;
+  overflow: hidden;
+  background: transparent;
+}
+
+.heroMedia {
   position: absolute;
   inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  user-select: none;
-  background-image: url("/landing-assets/tonywang-ourwork-hero.webp");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: min(720px, 100%) auto;
-  opacity: 0.65;
+  z-index: 0;
+  /* Minimal soft edge so the rectangular crop does not read as a hard frame */
   mask-image: radial-gradient(
-    330px 330px at 50% 340px,
-    rgba(0, 0, 0, 1) 42%,
-    rgba(0, 0, 0, 0.5) 68%,
-    transparent 96%
+    ellipse 72% 78% at 50% 42%,
+    #000 0%,
+    #000 48%,
+    rgba(0, 0, 0, 0.55) 72%,
+    transparent 100%
   );
   -webkit-mask-image: radial-gradient(
-    330px 330px at 50% 340px,
-    rgba(0, 0, 0, 1) 42%,
-    rgba(0, 0, 0, 0.5) 68%,
-    transparent 96%
+    ellipse 72% 78% at 50% 42%,
+    #000 0%,
+    #000 48%,
+    rgba(0, 0, 0, 0.55) 72%,
+    transparent 100%
   );
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.65;
+}
+
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0.08) 28%,
+    transparent 52%
+  );
+}
+
+.heroCopy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 28px clamp(24px, 7%, 48px);
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
-  .documentaryImage {
-    background-size: min(430px, 100%) auto;
-    transform: translateY(30%);
+  .hero {
+    max-width: 430px;
+  }
+
+  .heroImage {
+    object-position: center 12%;
     opacity: 0.6;
-    mask-image: radial-gradient(
-      196px 196px at 50% 210px,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 0.5) 68%,
-      transparent 96%
-    );
-    -webkit-mask-image: radial-gradient(
-      196px 196px at 50% 210px,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 0.5) 68%,
-      transparent 96%
-    );
+  }
+
+  .heroCopy {
+    padding-bottom: clamp(20px, 6%, 36px);
   }
 }
 
-/* Home의 .introduction/.launch/.manifesto와 동일한 섹션 밀도 */
 .section {
   display: flex;
   flex-direction: column;
@@ -78,6 +106,7 @@
   line-height: 1.08;
   letter-spacing: 0.015em;
   color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .sectionTitle {
@@ -87,6 +116,7 @@
   line-height: 1.12;
   letter-spacing: 0.005em;
   color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .bodyCopy {
@@ -97,7 +127,6 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
-/* Home과 동일한 내부 간격: 타이틀-서브타이틀 4px, 타이틀-본문 9px, 본문-본문 5px */
 .brandTitle + .sectionTitle {
   margin-top: 4px;
 }
@@ -115,7 +144,6 @@
   margin-top: 9px;
 }
 
-/* Home의 .footerDivider와 동일한 Footer 위 fade hairline */
 .footerDivider {
   width: min(760px, calc(100% - 56px));
   height: 1px;
