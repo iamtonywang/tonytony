@@ -18,7 +18,7 @@
   background: transparent;
 }
 
-/* Left/right fade only — nests vertical fade + image + scrim */
+/* 1) Left/right edge dissolve */
 .heroFadeX {
   position: absolute;
   inset: 0;
@@ -26,15 +26,15 @@
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    #000 12%,
-    #000 88%,
+    #000 22%,
+    #000 78%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    #000 12%,
-    #000 88%,
+    #000 22%,
+    #000 78%,
     transparent 100%
   );
   mask-size: 100% 100%;
@@ -45,22 +45,48 @@
   -webkit-mask-repeat: no-repeat;
 }
 
-/* Top/bottom fade only — applied inside horizontal fade */
+/* 2) Top/bottom edge dissolve */
 .heroFadeY {
   position: absolute;
   inset: 0;
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    #000 11%,
-    #000 80%,
+    #000 18%,
+    #000 73%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    #000 11%,
-    #000 80%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+/* 3) Portrait-centered ellipse — breaks remaining rectangular silhouette */
+.heroFadeShape {
+  position: absolute;
+  inset: 0;
+  mask-image: radial-gradient(
+    ellipse 72% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
     transparent 100%
   );
   mask-size: 100% 100%;
@@ -81,22 +107,24 @@
   object-position: center top;
   transform: scale(1.03);
   transform-origin: center top;
+  opacity: 0.84;
+  filter: contrast(0.86) brightness(0.97);
 }
 
-/* Inside both masks so L/R/B edges also dissolve — not a hard rectangle */
+/* Soft bottom wash inside all three masks */
 .heroScrim {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.22) 0%,
-    rgba(0, 0, 0, 0.08) 28%,
-    transparent 52%
+    rgba(0, 0, 0, 0.14) 0%,
+    rgba(0, 0, 0, 0.05) 24%,
+    transparent 48%
   );
 }
 
-/* Outside mask wrappers — text stays sharp */
+/* Outside all masks — copy stays sharp */
 .heroCopy {
   position: absolute;
   left: 0;
@@ -150,15 +178,15 @@
     mask-image: linear-gradient(
       to right,
       transparent 0%,
-      #000 9%,
-      #000 91%,
+      #000 15%,
+      #000 85%,
       transparent 100%
     );
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0%,
-      #000 9%,
-      #000 91%,
+      #000 15%,
+      #000 85%,
       transparent 100%
     );
   }
@@ -167,15 +195,32 @@
     mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 10%,
-      #000 78%,
+      #000 14%,
+      #000 76%,
       transparent 100%
     );
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 10%,
-      #000 78%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+  }
+
+  .heroFadeShape {
+    mask-image: radial-gradient(
+      ellipse 78% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 78% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
       transparent 100%
     );
   }

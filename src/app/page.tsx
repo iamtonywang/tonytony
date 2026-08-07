@@ -74,17 +74,19 @@ export default function HomePage() {
       <section className={styles.hero}>
         <div className={styles.heroFadeX}>
           <div className={styles.heroFadeY}>
-            <div className={styles.heroMedia}>
-              <Image
-                src="/landing-assets/tonywang-home-main-hero-v2.webp"
-                alt="Tony Wang, founder of DERMAPHYTON Global Institute"
-                fill
-                priority
-                sizes="(max-width: 768px) min(430px, 100vw), min(720px, 100vw)"
-                className={styles.heroImage}
-              />
+            <div className={styles.heroFadeShape}>
+              <div className={styles.heroMedia}>
+                <Image
+                  src="/landing-assets/tonywang-home-main-hero-v2.webp"
+                  alt="Tony Wang, founder of DERMAPHYTON Global Institute"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) min(430px, 100vw), min(720px, 100vw)"
+                  className={styles.heroImage}
+                />
+              </div>
+              <div className={styles.heroScrim} aria-hidden="true" />
             </div>
-            <div className={styles.heroScrim} aria-hidden="true" />
           </div>
         </div>
         <div className={styles.heroCopy}>
