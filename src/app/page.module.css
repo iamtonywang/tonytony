@@ -109,7 +109,7 @@
   transform-origin: center top;
   opacity: 0.84;
   filter: contrast(0.86) brightness(0.97);
-  animation: heroPortraitReveal 3s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
+  animation: heroPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
 @keyframes heroPortraitReveal {
@@ -153,9 +153,9 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: #000;
+  background: #5f5f5f;
   pointer-events: none;
-  animation: heroDarknessVeil 3.2s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
+  animation: heroDarknessVeil 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
 @keyframes heroDarknessVeil {
