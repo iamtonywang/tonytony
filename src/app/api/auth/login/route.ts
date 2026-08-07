@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseAdminClient } from "@/lib/supabase/admin";
 
 type LoginRequestBody = {
   login_id?: unknown;
@@ -47,9 +48,10 @@ export async function POST(req: Request) {
   }
 
   const supabase = await getSupabaseServerClient();
+  const admin = getSupabaseAdminClient();
 
-  // Login lookup RPC: login_id -> email, user_status
-  const { data: lookupData, error: lookupError } = await supabase.rpc(
+  // Login lookup RPC: login_id -> email, user_status (service_role only)
+  const { data: lookupData, error: lookupError } = await admin.rpc(
     "login_lookup_email_and_status",
     { p_login_id: loginId },
   );
@@ -88,7 +90,7 @@ export async function POST(req: Request) {
     );
   }
 
-  // Auth: email + password only when status is active
+  // Auth: email + password only when status is active (Cookie client)
   const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -127,7 +129,7 @@ export async function POST(req: Request) {
       ? (usersRows[0] as { id: number; login_id: string | null })
       : null;
 
-  // users row 누락 시 backfill 생성
+  // users row 누락 시 backfill 생성 (service_role RPC)
   if (!existingUserRow || typeof existingUserRow.id !== "number") {
     const authPhoneRaw = signInData.user.phone;
     const authPhone = typeof authPhoneRaw === "string" ? authPhoneRaw.trim() : "";
@@ -139,7 +141,7 @@ export async function POST(req: Request) {
       : email;
 
     const fallbackLoginId = loginId.trim().toLowerCase();
-    const { error: backfillError } = await supabase.rpc("create_user_after_signup", {
+    const { error: backfillError } = await admin.rpc("create_user_after_signup", {
       p_auth_user_id: authUserId,
       p_login_id: fallbackLoginId,
       p_phone: fallbackPhone,
@@ -156,4 +158,3 @@ export async function POST(req: Request) {
 
   return NextResponse.json({ ok: true });
 }
-

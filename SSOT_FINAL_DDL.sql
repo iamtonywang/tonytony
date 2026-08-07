@@ -209,14 +209,29 @@ UUID(auth_user_id)는 내부 연결용이다.
 public.users.user_status는 로그인 전 선판정한다(서버 축). Auth 메타데이터(raw_user_meta_data)는 핵심 판정 기준으로 사용하지 않는다.
 6.8 로그인용 보안 조회 RPC 기준
 서버 전용 선판정 조회 RPC가 존재한다(로그인용).
+함수명: login_lookup_email_and_status(p_login_id text)
 입력값은 login_id 1개다.
 반환값은 email, user_status 2개만 가진다.
 서버는 이 조회 결과로 user_status를 먼저 판정하고, active일 때만 Auth(email + password) 인증으로 연결한다.
 미존재 / 중복 / email 없음은 로그인 차단 대상으로 간주한다.
 해당 RPC는 비밀번호 검증/세션 생성 책임이 없다.
+EXECUTE는 service_role만 허용한다. PUBLIC / anon / authenticated EXECUTE는 금지한다.
+호출은 API 서버의 service-role client만 수행한다.
+6.8.1 회원가입 중복 선판정 RPC 기준
+서버 전용 중복 검사 RPC가 존재한다(가입용).
+함수명: check_signup_duplicates(p_login_id text, p_phone text)
+반환값은 login_id_exists, phone_exists boolean 2개만 가진다.
+phone은 숫자만 남기도록 정규화한 뒤 public.users와 비교한다.
+해당 RPC는 비밀번호 검증/세션 생성 책임이 없다.
+EXECUTE는 service_role만 허용한다. PUBLIC / anon / authenticated EXECUTE는 금지한다.
+호출은 API 서버의 service-role client만 수행한다.
 6.9 회원가입 저장 경로(보안)
 회원가입 시 public.users insert는 SECURITY DEFINER 함수(create_user_after_signup)를 통해서만 수행한다.
 route에서 direct insert는 금지하며, RLS 우회를 위해 해당 함수를 사용한다.
+create_user_after_signup(uuid, text, text, text)의 EXECUTE도 service_role만 허용한다.
+PUBLIC / anon / authenticated EXECUTE는 금지한다.
+Auth signUp / signInWithPassword와 Cookie 처리는 anon Cookie server client가 담당하고,
+인증 RPC 3개(check_signup_duplicates / create_user_after_signup / login_lookup_email_and_status)만 service-role client가 호출한다.
 7. 관리자 권한 구조
 admins는 별도 로그인 계정 테이블이 아니다.
 users 중 일부에 관리자 역할을 추가 부여하는 구조다.

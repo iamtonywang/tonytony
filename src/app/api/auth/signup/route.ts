@@ -71,9 +71,10 @@ export async function POST(req: Request) {
   }
 
   const supabase = await getSupabaseServerClient();
+  const admin = getSupabaseAdminClient();
 
-  // Duplicate checks happen on the server only.
-  const { data: duplicateData, error: duplicateError } = await supabase.rpc(
+  // Duplicate checks: service_role only (auth RPC lock)
+  const { data: duplicateData, error: duplicateError } = await admin.rpc(
     "check_signup_duplicates",
     {
       p_login_id: loginId,
@@ -168,9 +169,9 @@ export async function POST(req: Request) {
     );
   }
 
-  // Persist into public.users via SECURITY DEFINER function (no direct insert)
+  // Persist into public.users via SECURITY DEFINER function (service_role RPC only)
   const userId = (data?.user as { id?: string } | undefined)?.id;
-  const { error: insertError } = await supabase.rpc("create_user_after_signup", {
+  const { error: insertError } = await admin.rpc("create_user_after_signup", {
     p_auth_user_id: userId,
     p_login_id: loginId,
     p_phone: phone,
@@ -185,7 +186,6 @@ export async function POST(req: Request) {
       insertError?.hint,
     );
     if (userId) {
-      const admin = getSupabaseAdminClient();
       try {
         await admin.auth.admin.deleteUser(userId, false);
       } catch {}
@@ -198,4 +198,3 @@ export async function POST(req: Request) {
 
   return NextResponse.json({ ok: true });
 }
-

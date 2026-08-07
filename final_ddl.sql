@@ -72,6 +72,51 @@ begin
 end;
 $$;
 
+-- 회원가입 중복 선판정 RPC (서버 service_role 전용)
+-- - login_id / phone 존재 여부만 반환한다
+-- - 비밀번호 검증/세션 생성 책임이 없다
+create or replace function public.check_signup_duplicates(
+  p_login_id text,
+  p_phone text
+)
+returns table (
+  login_id_exists boolean,
+  phone_exists boolean
+)
+language plpgsql
+stable
+security definer
+set search_path to public
+as $$
+declare
+  v_phone text := regexp_replace(coalesce(p_phone, ''), '[^0-9]', '', 'g');
+begin
+  return query
+  select
+    exists (
+      select 1
+      from public.users u
+      where u.login_id = p_login_id
+    ) as login_id_exists,
+    exists (
+      select 1
+      from public.users u
+      where length(v_phone) > 0
+        and regexp_replace(coalesce(u.phone, ''), '[^0-9]', '', 'g') = v_phone
+    ) as phone_exists;
+end;
+$$;
+
+revoke all on function public.create_user_after_signup(uuid, text, text, text) from public;
+revoke all on function public.create_user_after_signup(uuid, text, text, text) from anon;
+revoke all on function public.create_user_after_signup(uuid, text, text, text) from authenticated;
+grant execute on function public.create_user_after_signup(uuid, text, text, text) to service_role;
+
+revoke all on function public.check_signup_duplicates(text, text) from public;
+revoke all on function public.check_signup_duplicates(text, text) from anon;
+revoke all on function public.check_signup_duplicates(text, text) from authenticated;
+grant execute on function public.check_signup_duplicates(text, text) to service_role;
+
 do $$
 declare
   v_labels text[];
@@ -2044,6 +2089,7 @@ $$;
 -- - 입력된 login_id로 public.users에서 email과 user_status를 안전하게 조회한다
 -- - 비밀번호 검증/세션 생성/인증 호출 책임은 없다
 -- - 미존재/중복/email 없음은 행 미반환으로 처리하여 상위 서버가 차단 판단하도록 한다
+-- - EXECUTE는 service_role만 허용한다 (anon/authenticated/PUBLIC 금지)
 create or replace function login_lookup_email_and_status(p_login_id text)
 returns table (
   email text,
@@ -2064,6 +2110,11 @@ as $$
   from matched m
   where (select count(*) from matched) = 1;
 $$;
+
+revoke all on function public.login_lookup_email_and_status(text) from public;
+revoke all on function public.login_lookup_email_and_status(text) from anon;
+revoke all on function public.login_lookup_email_and_status(text) from authenticated;
+grant execute on function public.login_lookup_email_and_status(text) to service_role;
 
 create policy users_select_own
 on users
