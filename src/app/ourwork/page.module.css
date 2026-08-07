@@ -4,8 +4,8 @@
 }
 
 /*
- * Independent Hero — normal flow, aspect from source 1200×1400.
- * Max width PC 720px / mobile 430px.
+ * Hero: Home-matched image system. Height from aspect-ratio of source 1200×1400.
+ * Max display width PC 720px / mobile 430px.
  */
 .hero {
   position: relative;
@@ -18,57 +18,204 @@
   background: transparent;
 }
 
-.heroMedia {
+/* 1) Left/right edge dissolve — Home SSOT */
+.heroFadeX {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* Minimal soft edge so the rectangular crop does not read as a hard frame */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+/* 2) Top/bottom edge dissolve — Home SSOT */
+.heroFadeY {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+/* 3) Portrait-centered ellipse — Home SSOT */
+.heroFadeShape {
+  position: absolute;
+  inset: 0;
   mask-image: radial-gradient(
-    ellipse 72% 78% at 50% 42%,
+    ellipse 50% 82% at 50% 46%,
     #000 0%,
-    #000 48%,
-    rgba(0, 0, 0, 0.55) 72%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
     transparent 100%
   );
   -webkit-mask-image: radial-gradient(
-    ellipse 72% 78% at 50% 42%,
+    ellipse 50% 82% at 50% 46%,
     #000 0%,
-    #000 48%,
-    rgba(0, 0, 0, 0.55) 72%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
     transparent 100%
   );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.heroMedia {
+  position: absolute;
+  inset: 0;
 }
 
 .heroImage {
   object-fit: cover;
   object-position: center top;
-  opacity: 0.65;
+  transform: scale(1.03);
+  transform-origin: center top;
+  opacity: 0.84;
+  filter: contrast(0.86) brightness(0.97);
+  animation: ourworkPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
+@keyframes ourworkPortraitReveal {
+  0% {
+    opacity: 0.1;
+    transform: scale(1.045);
+  }
+
+  35% {
+    opacity: 0.36;
+    transform: scale(1.04);
+  }
+
+  70% {
+    opacity: 0.72;
+    transform: scale(1.034);
+  }
+
+  100% {
+    opacity: 0.84;
+    transform: scale(1.03);
+  }
+}
+
+/* Soft bottom wash inside all three masks — Home SSOT */
 .heroScrim {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.28) 0%,
-    rgba(0, 0, 0, 0.08) 28%,
-    transparent 52%
+    rgba(0, 0, 0, 0.14) 0%,
+    rgba(0, 0, 0, 0.05) 24%,
+    transparent 48%
   );
 }
 
+/* Reveal veil — inside all three masks, above image/scrim, below copy — Home SSOT */
+.heroFadeShape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #5f5f5f;
+  pointer-events: none;
+  animation: ourworkDarknessVeil 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
+}
+
+@keyframes ourworkDarknessVeil {
+  0% {
+    opacity: 0.66;
+  }
+
+  35% {
+    opacity: 0.46;
+  }
+
+  70% {
+    opacity: 0.15;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Outside all masks — copy stays sharp — Home layer relation */
 .heroCopy {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 0 28px clamp(24px, 7%, 48px);
   pointer-events: none;
+  animation: ourworkCopyReveal 1.4s ease-out 1.25s 1 both;
+}
+
+@keyframes ourworkCopyReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImage {
+    animation: none;
+  }
+
+  .heroFadeShape::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .heroCopy {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
@@ -76,9 +223,59 @@
     max-width: 430px;
   }
 
+  .heroFadeX {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+  }
+
+  .heroFadeY {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+  }
+
+  .heroFadeShape {
+    mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+  }
+
   .heroImage {
     object-position: center 12%;
-    opacity: 0.6;
   }
 
   .heroCopy {
@@ -99,6 +296,7 @@
   overflow-wrap: break-word;
 }
 
+/* OUR WORK typography — not Home heroTitle sizes */
 .brandTitle {
   margin: 0;
   font-size: 17px;

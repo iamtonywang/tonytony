@@ -9,16 +9,22 @@ export default function OurWorkPage() {
       <SignatureLine />
 
       <section className={styles.hero}>
-        <div className={styles.heroMedia}>
-          <Image
-            src="/landing-assets/tonywang-ourwork-hero.webp"
-            alt="Portrait representing creative work and human experience"
-            fill
-            priority
-            sizes="(max-width: 768px) min(430px, 100vw), min(720px, 100vw)"
-            className={styles.heroImage}
-          />
-          <div className={styles.heroScrim} aria-hidden="true" />
+        <div className={styles.heroFadeX}>
+          <div className={styles.heroFadeY}>
+            <div className={styles.heroFadeShape}>
+              <div className={styles.heroMedia}>
+                <Image
+                  src="/landing-assets/tonywang-ourwork-hero.webp"
+                  alt="Portrait representing creative work and human experience"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) min(430px, 100vw), min(720px, 100vw)"
+                  className={styles.heroImage}
+                />
+              </div>
+              <div className={styles.heroScrim} aria-hidden="true" />
+            </div>
+          </div>
         </div>
         <div className={styles.heroCopy}>
           <h1 className={styles.brandTitle}>TONY WANG</h1>
