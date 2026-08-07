@@ -109,6 +109,25 @@
   transform-origin: center top;
   opacity: 0.84;
   filter: contrast(0.86) brightness(0.97);
+  animation: heroImageReveal 1.15s ease-out 1 both;
+}
+
+@keyframes heroImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+
+  to {
+    opacity: 0.84;
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImage {
+    animation: none;
+  }
 }
 
 /* Soft bottom wash inside all three masks */
