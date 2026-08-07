@@ -109,24 +109,28 @@
   transform-origin: center top;
   opacity: 0.84;
   filter: contrast(0.86) brightness(0.97);
-  animation: heroImageReveal 1.15s ease-out 1 both;
+  animation: heroPortraitReveal 3s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
-@keyframes heroImageReveal {
-  from {
-    opacity: 0;
-    transform: scale(1.05);
+@keyframes heroPortraitReveal {
+  0% {
+    opacity: 0.1;
+    transform: scale(1.045);
   }
 
-  to {
+  35% {
+    opacity: 0.36;
+    transform: scale(1.04);
+  }
+
+  70% {
+    opacity: 0.72;
+    transform: scale(1.034);
+  }
+
+  100% {
     opacity: 0.84;
     transform: scale(1.03);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .heroImage {
-    animation: none;
   }
 }
 
@@ -143,6 +147,35 @@
   );
 }
 
+/* Darkness veil — inside all three masks, above image/scrim, below copy */
+.heroFadeShape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #000;
+  pointer-events: none;
+  animation: heroDarknessVeil 3.2s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
+}
+
+@keyframes heroDarknessVeil {
+  0% {
+    opacity: 0.66;
+  }
+
+  35% {
+    opacity: 0.46;
+  }
+
+  70% {
+    opacity: 0.15;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 /* Outside all masks — copy stays sharp */
 .heroCopy {
   position: absolute;
@@ -156,6 +189,33 @@
   text-align: center;
   padding: 0 28px clamp(24px, 7%, 48px);
   pointer-events: none;
+  animation: heroCopyReveal 1.4s ease-out 1.25s 1 both;
+}
+
+@keyframes heroCopyReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImage {
+    animation: none;
+  }
+
+  .heroFadeShape::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .heroCopy {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 .heroTitle {
