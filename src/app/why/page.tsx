@@ -14,8 +14,8 @@ export default function WhyPage() {
             <div className={styles.heroFadeShape}>
               <div className={styles.heroMedia}>
                 <Image
-                  src="/landing-assets/tonywang-why-hero.webp"
-                  alt="Portrait representing purpose, creation, and the story behind WHY"
+                  src="/landing-assets/tonywang-why-hero-v2.webp"
+                  alt="Two people representing identity, purpose, and the question of WHY"
                   fill
                   priority
                   sizes="(max-width: 768px) min(430px, 100vw), min(720px, 100vw)"
