@@ -4,8 +4,8 @@ import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
 import { getAdminProductPriceBySlug } from "@/app/admin/products/_server/getAdminProductPriceBySlug";
-import { getAdminProductInquiriesBySlug } from "@/app/admin/products/_server/getAdminProductInquiriesBySlug";
-import { getAdminProductReviewsBySlug } from "@/app/admin/products/_server/getAdminProductReviewsBySlug";
+import AdminProductInquiriesPanel from "./_components/AdminProductInquiriesPanel";
+import AdminProductReviewsPanel from "./_components/AdminProductReviewsPanel";
 
 const ALLOWED_SLUGS = new Set([
 	"nigajun-44",
@@ -111,114 +111,6 @@ async function submitPrice(formData: FormData) {
 	redirect(`/admin/products/${slug}?err=${encodeURIComponent(message)}`);
 }
 
-async function submitInquiryAnswer(formData: FormData) {
-	"use server";
-
-	const slugRaw = formData.get("slug");
-	const slug = typeof slugRaw === "string" ? slugRaw.trim() : "";
-	if (!slug || !ALLOWED_SLUGS.has(slug)) {
-		notFound();
-	}
-
-	const idRaw = formData.get("inquiryId");
-	const inquiryId =
-		typeof idRaw === "string" ? Number(idRaw.trim()) : typeof idRaw === "number" ? Number(idRaw) : NaN;
-	const answerRaw = formData.get("answerContent");
-	const answerContent = typeof answerRaw === "string" ? answerRaw.trim() : "";
-
-	if (!Number.isFinite(inquiryId) || inquiryId <= 0) {
-		redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent("invalid_inquiry_id")}`);
-	}
-	if (answerContent.length === 0) {
-		redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent("answer_content_required")}`);
-	}
-
-	const origin = await getRequestOrigin();
-	const cookieHeader = (await headers()).get("cookie") ?? "";
-
-	const res = await fetch(`${origin}/api/admin/products/inquiry`, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			...(cookieHeader ? { Cookie: cookieHeader } : {}),
-		},
-		body: JSON.stringify({ inquiryId, answerContent }),
-	});
-
-	let message = "failed";
-	try {
-		const data = (await res.json()) as { ok?: boolean; message?: string };
-		if (data.ok === true) {
-			revalidatePath(`/admin/products/${slug}`);
-			redirect(`/admin/products/${slug}?inq_saved=1`);
-		}
-		if (typeof data.message === "string" && data.message.trim() !== "") {
-			message = data.message.trim();
-		} else if (!res.ok) {
-			message = `http_${res.status}`;
-		}
-	} catch {
-		message = "invalid_response";
-	}
-
-	redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent(message)}`);
-}
-
-async function hideInquiry(formData: FormData) {
-	"use server";
-
-	const slugRaw = formData.get("slug");
-	const slug = typeof slugRaw === "string" ? slugRaw.trim() : "";
-	if (!slug || !ALLOWED_SLUGS.has(slug)) {
-		notFound();
-	}
-
-	const idRaw = formData.get("inquiryId");
-	const inquiryId =
-		typeof idRaw === "string" ? Number(idRaw.trim()) : typeof idRaw === "number" ? Number(idRaw) : NaN;
-
-	if (!Number.isFinite(inquiryId) || inquiryId <= 0) {
-		redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent("invalid_inquiry_id")}`);
-	}
-
-	const origin = await getRequestOrigin();
-	const cookieHeader = (await headers()).get("cookie") ?? "";
-
-	const res = await fetch(`${origin}/api/admin/products/inquiry`, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			...(cookieHeader ? { Cookie: cookieHeader } : {}),
-		},
-		body: JSON.stringify({ action: "hide", inquiryId }),
-	});
-
-	let message = "failed";
-	try {
-		const data = (await res.json()) as {
-			ok?: boolean;
-			message?: string;
-			code?: string;
-			error?: string;
-			detail?: string;
-			hint?: string;
-		};
-		if (data.ok === true) {
-			revalidatePath(`/admin/products/${slug}`);
-			redirect(`/admin/products/${slug}`);
-		}
-		if (typeof data.message === "string" && data.message.trim() !== "") {
-			message = [data.message, data.code, data.error, data.detail, data.hint].filter(Boolean).join(" | ");
-		} else if (!res.ok) {
-			message = `http_${res.status}`;
-		}
-	} catch {
-		message = "invalid_response";
-	}
-
-	redirect(`/admin/products/${slug}?inq_err=${encodeURIComponent(message)}`);
-}
-
 export default async function Page({
 	params,
 	searchParams,
@@ -227,9 +119,6 @@ export default async function Page({
 	searchParams: Promise<{
 		saved?: string;
 		err?: string;
-		inq_saved?: string;
-		inq_err?: string;
-		inq_hidden?: string;
 	}>;
 }>) {
 	const { slug } = await params;
@@ -239,11 +128,7 @@ export default async function Page({
 		notFound();
 	}
 
-	const [priceData, inquiries, reviews] = await Promise.all([
-		getAdminProductPriceBySlug(slug),
-		getAdminProductInquiriesBySlug(slug),
-		getAdminProductReviewsBySlug(slug),
-	]);
+	const priceData = await getAdminProductPriceBySlug(slug);
 	const finalPriceLabel =
 		typeof priceData.finalPriceAmount === "number" ? String(priceData.finalPriceAmount) : "";
 	const basePriceLabel =
@@ -256,16 +141,6 @@ export default async function Page({
 		statusLine = "저장되었습니다.";
 	} else if (typeof sp.err === "string" && sp.err.length > 0) {
 		statusLine = `실패: ${decodeURIComponent(sp.err)}`;
-	}
-
-	let inquirySavedLine: string | null = null;
-	if (sp.inq_saved === "1") {
-		inquirySavedLine = "문의 답변이 저장되었습니다.";
-	}
-
-	let inquiryHiddenLine: string | null = null;
-	if (sp.inq_hidden === "1") {
-		inquiryHiddenLine = "문의가 숨김 처리되었습니다.";
 	}
 
 	const displayTitle = slugToDisplayTitle(slug);
@@ -397,183 +272,10 @@ export default async function Page({
 					</div>
 				</details>
 			</div>
-			<div style={sectionStyle}>
-				<strong>Inquiry Management</strong>
-				{typeof sp.inq_err === "string" && sp.inq_err.length > 0 ? (
-					<p
-						role="alert"
-						style={{
-							marginTop: 8,
-							marginBottom: 8,
-							color: "rgb(248, 113, 113)",
-							fontFamily: "ui-monospace, Consolas, monospace",
-							wordBreak: "break-word",
-							whiteSpace: "pre-wrap",
-						}}
-					>
-						inq_err: {sp.inq_err}
-					</p>
-				) : null}
-				{inquirySavedLine ? (
-					<p style={{ marginTop: 8, marginBottom: 0, opacity: 0.9 }}>{inquirySavedLine}</p>
-				) : null}
-				{inquiryHiddenLine ? (
-					<p style={{ marginTop: 8, marginBottom: 0, opacity: 0.9 }}>{inquiryHiddenLine}</p>
-				) : null}
-				{inquiries.length === 0 ? (
-					<p style={{ marginTop: 8, opacity: 0.8 }}>등록된 문의가 없습니다.</p>
-				) : (
-					<ul style={{ margin: "12px 0 0", padding: 0, listStyle: "none" }}>
-						{inquiries.map((row) => {
-							const replyLabel = row.answerContent ? "답변완료" : "미답변";
-							return (
-								<li
-									key={row.id}
-									style={{
-										marginBottom: 14,
-										paddingBottom: 12,
-										borderBottom: "1px solid rgba(255,255,255,0.12)",
-									}}
-								>
-									<div>
-										<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-											<strong>작성자</strong>: {row.authorLabel}
-										</p>
-										<p style={{ margin: "0 0 4px", opacity: 0.88, fontSize: 12 }}>
-											<span
-												style={{
-													display: "inline-block",
-													padding: "2px 8px",
-													border: "1px solid rgba(255,255,255,0.22)",
-													borderRadius: 2,
-													color: "rgba(255,255,255,0.88)",
-												}}
-											>
-												{row.isPrivate === true ? "비밀글" : "일반글"}
-											</span>
-										</p>
-										<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-											<strong>제목</strong>: {row.title}
-										</p>
-										<p style={{ margin: "0 0 4px", opacity: 0.95, whiteSpace: "pre-wrap" }}>
-											<strong>문의내용</strong>: {row.content}
-										</p>
-										<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-											<strong>상태</strong>: {row.inquiryStatus}
-										</p>
-										<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-											<strong>답변</strong>: {replyLabel}
-										</p>
-										<p style={{ margin: 0, opacity: 0.95 }}>
-											<strong>생성일</strong>: {row.createdAt}
-										</p>
-										<form action={hideInquiry} style={{ marginTop: 8 }}>
-											<input type="hidden" name="slug" value={slug} />
-											<input type="hidden" name="inquiryId" value={row.id} />
-											<button type="submit">삭제</button>
-										</form>
-									</div>
-									{row.answerContent ? (
-										<div>
-											<p style={{ margin: "0 0 4px", whiteSpace: "pre-wrap" }}>
-												<strong>답변내용</strong>: {row.answerContent}
-											</p>
-											<p style={{ margin: "0 0 4px" }}>
-												<strong>답변자</strong>: TONYWANG
-											</p>
-											{row.answeredAt ? (
-												<p style={{ margin: 0 }}>
-													<strong>답변일</strong>: {row.answeredAt}
-												</p>
-											) : null}
-										</div>
-									) : (
-										<div>
-											<form action={submitInquiryAnswer} style={{ marginTop: 8 }}>
-												<input type="hidden" name="slug" value={slug} />
-												<input type="hidden" name="inquiryId" value={String(row.id)} />
-												<label
-													style={{ display: "block", marginBottom: 4, opacity: 0.88 }}
-													htmlFor={`inq-answer-${row.id}`}
-												>
-													답변 작성
-												</label>
-												<textarea
-													id={`inq-answer-${row.id}`}
-													name="answerContent"
-													required
-													rows={4}
-													style={{
-														width: "100%",
-														maxWidth: 520,
-														boxSizing: "border-box",
-														padding: 8,
-														background: "transparent",
-														color: "rgba(255,255,255,0.92)",
-														border: "1px solid rgba(255,255,255,0.3)",
-														borderRadius: 2,
-													}}
-												/>
-												<div style={{ marginTop: 6 }}>
-													<button
-														type="submit"
-														style={{
-															cursor: "pointer",
-															padding: "8px 16px",
-															border: "1px solid rgba(255,255,255,0.2)",
-															borderRadius: 2,
-															color: "rgba(255,255,255,0.92)",
-															background: "transparent",
-														}}
-													>
-														답변 저장
-													</button>
-												</div>
-											</form>
-										</div>
-									)}
-								</li>
-							);
-						})}
-					</ul>
-				)}
-			</div>
-			<div style={sectionStyle}>
-				<strong>Review Management</strong>
-				{reviews.length === 0 ? (
-					<p style={{ marginTop: 8, opacity: 0.8 }}>등록된 리뷰가 없습니다.</p>
-				) : (
-					<ul style={{ margin: "12px 0 0", padding: 0, listStyle: "none" }}>
-						{reviews.map((row) => (
-							<li
-								key={row.id}
-								style={{
-									marginBottom: 14,
-									paddingBottom: 12,
-									borderBottom: "1px solid rgba(255,255,255,0.12)",
-								}}
-							>
-								<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-									<strong>작성자</strong>: {row.authorLabel}
-								</p>
-								<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-									<strong>평점</strong>:{" "}
-									{row.rating !== null && row.rating !== undefined ? String(row.rating) : "—"}
-								</p>
-								<p style={{ margin: "0 0 4px", opacity: 0.95, whiteSpace: "pre-wrap" }}>
-									<strong>리뷰내용</strong>: {row.content}
-								</p>
-								<p style={{ margin: "0 0 4px", opacity: 0.95 }}>
-									<strong>상태</strong>: {row.reviewStatus}
-								</p>
-								<p style={{ margin: 0, opacity: 0.95 }}>
-									<strong>생성일</strong>: {row.createdAt}
-								</p>
-							</li>
-						))}
-					</ul>
-				)}
-			</div>
+
+			<AdminProductInquiriesPanel slug={slug} />
+			<AdminProductReviewsPanel slug={slug} />
+
 			<div style={sectionStyle}>
 				<strong>Sales Status</strong>
 				<p style={{ marginTop: 8, opacity: 0.8 }}>
