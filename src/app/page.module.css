@@ -5,10 +5,11 @@
 
 /*
  * Hero: normal-flow section. Height from aspect-ratio of source 1200×1400.
- * Max display width PC 720px / mobile 430px (existing composition caps).
+ * Max display width PC 720px / mobile 430px.
  */
 .hero {
   position: relative;
+  isolation: isolate;
   width: 100%;
   max-width: 720px;
   margin-inline: auto;
@@ -16,28 +17,74 @@
   overflow: hidden;
 }
 
-.founderImage {
+.heroMedia {
   position: absolute;
   inset: 0;
+  z-index: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.heroScrim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 38%;
   pointer-events: none;
-  user-select: none;
-  background-image: url("/landing-assets/tonywang-home-main-hero-v2.webp");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: 100% auto;
-  opacity: 0.65;
-  mask-image: radial-gradient(
-    330px 330px at 50% 340px,
-    rgba(0, 0, 0, 1) 42%,
-    rgba(0, 0, 0, 0.5) 68%,
-    transparent 96%
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(0, 0, 0, 0.12) 55%,
+    transparent 100%
   );
-  -webkit-mask-image: radial-gradient(
-    330px 330px at 50% 340px,
-    rgba(0, 0, 0, 1) 42%,
-    rgba(0, 0, 0, 0.5) 68%,
-    transparent 96%
-  );
+}
+
+.heroCopy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 28px clamp(24px, 7%, 48px);
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.heroInstitute {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.heroSubtitle {
+  margin: 6px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -45,20 +92,12 @@
     max-width: 430px;
   }
 
-  .founderImage {
-    opacity: 0.6;
-    mask-image: radial-gradient(
-      196px 196px at 50% 42%,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 0.5) 68%,
-      transparent 96%
-    );
-    -webkit-mask-image: radial-gradient(
-      196px 196px at 50% 42%,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 0.5) 68%,
-      transparent 96%
-    );
+  .heroImage {
+    object-position: center 12%;
+  }
+
+  .heroCopy {
+    padding-bottom: clamp(20px, 6%, 36px);
   }
 }
 
@@ -86,15 +125,6 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
-.laboratoryTitle {
-  margin: 4px 0 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: 0.005em;
-  color: rgba(255, 255, 255, 0.85);
-}
-
 .bodyCopy {
   margin: 0;
   font-size: 12px;
@@ -103,7 +133,6 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
-.laboratoryTitle + .bodyCopy,
 .brandTitle + .bodyCopy {
   margin-top: 9px;
 }

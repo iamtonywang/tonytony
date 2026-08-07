@@ -5,19 +5,12 @@ import { getHeaderSession } from "@/components/sections/Header/_server/getHeader
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TONYWANG | 식물세포 유전자 단백질 BIO 연구소",
+  metadataBase: new URL("https://www.iamtonywang.com"),
+  title: {
+    default: "TONY WANG",
+    template: "%s | TONY WANG",
+  },
   description: "식물세포 유전자 단백질 기반 BIO 연구소",
-  openGraph: {
-    title: "TONYWANG | 식물세포 유전자 단백질 BIO 연구소",
-    description: "식물세포 유전자 단백질 기반 BIO 연구소",
-    url: "https://www.iamtonywang.com",
-    siteName: "TONYWANG",
-    locale: "ko_KR",
-    type: "website",
-  },
-  alternates: {
-    canonical: "https://www.iamtonywang.com",
-  },
 };
 
 export default async function RootLayout({
