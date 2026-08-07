@@ -15,26 +15,27 @@
   margin-inline: auto;
   aspect-ratio: 1200 / 1400;
   overflow: hidden;
+  background: transparent;
 }
 
-.heroMedia {
+/* Left/right fade only — nests vertical fade + image + scrim */
+.heroFadeX {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* Elliptical soft-edge mask: keep ~60% center opaque, fade four edges into page bg */
-  mask-image: radial-gradient(
-    ellipse 62% 58% at 50% 40%,
-    #000 0%,
-    #000 58%,
-    rgba(0, 0, 0, 0.55) 74%,
-    transparent 97%
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
   );
-  -webkit-mask-image: radial-gradient(
-    ellipse 62% 58% at 50% 40%,
-    #000 0%,
-    #000 58%,
-    rgba(0, 0, 0, 0.55) 74%,
-    transparent 97%
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
   );
   mask-size: 100% 100%;
   -webkit-mask-size: 100% 100%;
@@ -44,28 +45,58 @@
   -webkit-mask-repeat: no-repeat;
 }
 
+/* Top/bottom fade only — applied inside horizontal fade */
+.heroFadeY {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 11%,
+    #000 80%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 11%,
+    #000 80%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.heroMedia {
+  position: absolute;
+  inset: 0;
+}
+
 .heroImage {
   object-fit: cover;
   object-position: center top;
+  transform: scale(1.03);
+  transform-origin: center top;
 }
 
-/* Bottom-only contrast wash for copy; does not darken the full portrait */
+/* Inside both masks so L/R/B edges also dissolve — not a hard rectangle */
 .heroScrim {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  height: 26%;
+  inset: 0;
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.1) 45%,
-    transparent 100%
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.08) 28%,
+    transparent 52%
   );
 }
 
+/* Outside mask wrappers — text stays sharp */
 .heroCopy {
   position: absolute;
   left: 0;
@@ -77,6 +108,7 @@
   align-items: center;
   text-align: center;
   padding: 0 28px clamp(24px, 7%, 48px);
+  pointer-events: none;
 }
 
 .heroTitle {
@@ -86,7 +118,7 @@
   line-height: 1.08;
   letter-spacing: 0.015em;
   color: rgba(255, 255, 255, 0.96);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
 }
 
 .heroInstitute {
@@ -96,7 +128,7 @@
   line-height: 1.2;
   letter-spacing: 0.005em;
   color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .heroSubtitle {
@@ -106,7 +138,7 @@
   line-height: 1.2;
   letter-spacing: 0.005em;
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 768px) {
@@ -114,29 +146,42 @@
     max-width: 430px;
   }
 
-  .heroMedia {
-    mask-image: radial-gradient(
-      ellipse 68% 56% at 50% 36%,
-      #000 0%,
-      #000 56%,
-      rgba(0, 0, 0, 0.5) 72%,
-      transparent 96%
+  .heroFadeX {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 9%,
+      #000 91%,
+      transparent 100%
     );
-    -webkit-mask-image: radial-gradient(
-      ellipse 68% 56% at 50% 36%,
-      #000 0%,
-      #000 56%,
-      rgba(0, 0, 0, 0.5) 72%,
-      transparent 96%
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 9%,
+      #000 91%,
+      transparent 100%
+    );
+  }
+
+  .heroFadeY {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 78%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 78%,
+      transparent 100%
     );
   }
 
   .heroImage {
     object-position: center 12%;
-  }
-
-  .heroScrim {
-    height: 30%;
   }
 
   .heroCopy {
