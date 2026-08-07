@@ -1,62 +1,289 @@
-/* 5개 섹션 전체를 감싸는 공통 배경 영역 (Home/Our Work와 동일 방식) */
-.manifesto {
+.why {
   width: 100%;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
+  min-width: 0;
 }
 
 /*
- * 단일 manifesto 이미지 레이어(정확히 1회 렌더링).
- * 정사각형(1500x1500) 원본을 비율 그대로 상단 중앙에 두고,
- * px 기반 타원 마스크로 사각 경계·하단을 기존 배경색(#5f5f5f)으로 페이드시킨다.
+ * Hero: Home-matched image system. Height from aspect-ratio of source 1200×1400.
+ * Max display width PC 720px / mobile 430px.
+ * Dirty opacity 0.65/0.6 intent migrated to final .heroImage opacity 0.84.
  */
-.manifestoImage {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  user-select: none;
-  background-image: url("/landing-assets/tonywang-why-hero.webp");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: min(720px, 100%) auto;
-  opacity: 0.3;
-  mask-image: radial-gradient(
-    330px 330px at 50% 340px,
-    rgba(0, 0, 0, 1) 42%,
-    rgba(0, 0, 0, 0.5) 68%,
-    transparent 96%
-  );
-  -webkit-mask-image: radial-gradient(
-    330px 330px at 50% 340px,
-    rgba(0, 0, 0, 1) 42%,
-    rgba(0, 0, 0, 0.5) 68%,
-    transparent 96%
-  );
+.hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  aspect-ratio: 1200 / 1400;
+  overflow: hidden;
+  background: transparent;
 }
 
-@media (max-width: 768px) {
-  .manifestoImage {
-    background-size: min(430px, 100%) auto;
-    transform: translateY(30%);
-    opacity: 0.28;
-    mask-image: radial-gradient(
-      196px 196px at 50% 210px,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 0.5) 68%,
-      transparent 96%
-    );
-    -webkit-mask-image: radial-gradient(
-      196px 196px at 50% 210px,
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 0.5) 68%,
-      transparent 96%
-    );
+/* 1) Left/right edge dissolve — Home SSOT */
+.heroFadeX {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+/* 2) Top/bottom edge dissolve — Home SSOT */
+.heroFadeY {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+/* 3) Portrait-centered ellipse — Home SSOT */
+.heroFadeShape {
+  position: absolute;
+  inset: 0;
+  mask-image: radial-gradient(
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.heroMedia {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center top;
+  transform: scale(1.03);
+  transform-origin: center top;
+  opacity: 0.84;
+  filter: contrast(0.86) brightness(0.97);
+  animation: whyPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
+}
+
+@keyframes whyPortraitReveal {
+  0% {
+    opacity: 0.1;
+    transform: scale(1.045);
+  }
+
+  35% {
+    opacity: 0.36;
+    transform: scale(1.04);
+  }
+
+  70% {
+    opacity: 0.72;
+    transform: scale(1.034);
+  }
+
+  100% {
+    opacity: 0.84;
+    transform: scale(1.03);
   }
 }
 
-/* Home의 .introduction/.launch/.manifesto와 동일한 섹션 밀도 */
+/* Soft bottom wash inside all three masks — Home SSOT */
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.14) 0%,
+    rgba(0, 0, 0, 0.05) 24%,
+    transparent 48%
+  );
+}
+
+/* Reveal veil — inside all three masks, above image/scrim, below copy — Home SSOT */
+.heroFadeShape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #5f5f5f;
+  pointer-events: none;
+  animation: whyDarknessVeil 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
+}
+
+@keyframes whyDarknessVeil {
+  0% {
+    opacity: 0.66;
+  }
+
+  35% {
+    opacity: 0.46;
+  }
+
+  70% {
+    opacity: 0.15;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Outside all masks — copy stays sharp */
+.heroCopy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 28px clamp(24px, 7%, 48px);
+  pointer-events: none;
+  animation: whyCopyReveal 1.4s ease-out 1.25s 1 both;
+}
+
+@keyframes whyCopyReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImage {
+    animation: none;
+  }
+
+  .heroFadeShape::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .heroCopy {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    max-width: 430px;
+  }
+
+  .heroFadeX {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+  }
+
+  .heroFadeY {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+  }
+
+  .heroFadeShape {
+    mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+  }
+
+  .heroImage {
+    object-position: center 12%;
+  }
+
+  .heroCopy {
+    padding-bottom: clamp(20px, 6%, 36px);
+  }
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -70,6 +297,7 @@
   overflow-wrap: break-word;
 }
 
+/* WHY title typography — not Home heroTitle sizes */
 .brandTitle {
   margin: 0;
   font-size: 17px;
@@ -77,6 +305,7 @@
   line-height: 1.08;
   letter-spacing: 0.015em;
   color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .sectionTitle {
@@ -86,6 +315,7 @@
   line-height: 1.12;
   letter-spacing: 0.005em;
   color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .bodyCopy {
@@ -96,7 +326,6 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
-/* Home과 동일한 내부 간격: 타이틀-서브타이틀 4px, 타이틀-본문 9px, 본문-본문 5px */
 .brandTitle + .sectionTitle {
   margin-top: 4px;
 }
@@ -110,7 +339,6 @@
   margin-top: 5px;
 }
 
-/* Home의 .footerDivider와 동일한 Footer 위 fade hairline */
 .footerDivider {
   width: min(760px, calc(100% - 56px));
   height: 1px;
