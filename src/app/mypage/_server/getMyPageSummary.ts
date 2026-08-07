@@ -10,7 +10,6 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 			loginId: null,
 			realName: null,
 			phone: null,
-			email: null,
 			isPartner: false,
 		};
 	}
@@ -20,11 +19,11 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 	// users
 	const { data: usersRows } = await supabase
 		.from("users")
-		.select("id, login_id, phone, email")
+		.select("id, login_id, phone")
 		.eq("login_id", headerSession.loginId)
 		.limit(1);
 	const userRow = Array.isArray(usersRows) && usersRows.length === 1
-		? (usersRows[0] as { id: number; login_id: string | null; phone: string | null; email: string | null })
+		? (usersRows[0] as { id: number; login_id: string | null; phone: string | null })
 		: null;
 
 	if (!userRow || typeof userRow.id !== "number") {
@@ -32,7 +31,6 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 			loginId: null,
 			realName: null,
 			phone: null,
-			email: null,
 			isPartner: false,
 		};
 	}
@@ -59,9 +57,7 @@ export async function getMyPageSummary(): Promise<MyPageSummary | null> {
 		loginId: (userRow.login_id ?? null),
 		realName: (profile?.real_name ?? null),
 		phone: (userRow.phone ?? null),
-		email: (userRow.email ?? null),
 		isPartner,
 	};
 	return summary;
 }
-

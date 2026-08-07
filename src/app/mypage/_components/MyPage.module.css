@@ -1,126 +1,99 @@
 .pageBackground {
-  min-height: calc(100vh - 120px);
-  background-image: url("/landing-assets/login-bg-main.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #5f5f5f;
   position: relative;
-}
-
-.pageBackground::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
 }
 
 .pageInner {
   position: relative;
   z-index: 1;
-  padding: 24px;
+  padding: 16px 24px 32px;
 }
 
 .contentWrap {
-  padding-top: 25vh;
-}
-
-.headerText {
-  margin: 24px 0 18px;
-  text-align: center;
-}
-
-.brand {
-  font-size: 17px;
-  font-weight: 300;
-  color: #ffffff;
-  margin-bottom: 6px;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
-}
-
-.sub {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 2px 0;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
-}
-
-.desc {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 10px;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 .pageTitle {
   text-align: center;
   font-size: 20px;
   color: #ffffff;
-  margin-top: 20px;
+  margin: 8px 0 20px;
+  font-weight: 500;
   font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
     "Noto Sans KR", sans-serif;
+}
+
+.profileSection {
+  width: 100%;
+  margin: 0 0 24px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.profileBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+}
+
+.profileLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.profileValue {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  color: #ffffff;
 }
 
 .accordionWrap {
   width: 100%;
-  max-width: 420px;
-  margin: 18px auto 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 10px;
+  gap: 12px;
+}
+
+.menuGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .navBox {
   width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: transparent;
   text-align: center;
-  padding: 10px 12px;
-}
-
-.accordionPanel {
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* 펼침 영역 내 한글 본문·제목 14px 통일 (Profile 영문 블록은 .profileSection으로 제외) */
-.panelKorean section h2,
-.panelKorean section p,
-.panelKorean section a {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.92);
-  text-align: center;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
-}
-
-.panelKorean section article,
-.panelKorean section article p {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.92);
-  text-align: center;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
-}
-
-.panelText {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.92);
-  text-align: center;
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  box-sizing: border-box;
 }
 
 .navItem {
   width: 100%;
-  font-size: 14px;
+  min-height: 44px;
+  font-size: 15px;
   color: rgba(255, 255, 255, 0.92);
   background: transparent;
   border: none;
@@ -137,71 +110,44 @@
   color: #ffffff;
 }
 
-.profileSection {
+.accordionPanel {
+  width: 100%;
   text-align: center;
+  padding: 4px 0 8px;
 }
 
-.profileSection :where(p, li, div) {
+/* 펼침 영역 내 한글 본문·제목 통일 */
+.panelKorean section h2,
+.panelKorean section p,
+.panelKorean section a {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.92);
   text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.profileTitle {
-  font-size: 17px;
-  color: #ffffff;
-  text-align: center;
-  margin: 0 0 8px;
-  font-weight: 600;
   font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
     "Noto Sans KR", sans-serif;
 }
 
-.profileText {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
+.panelKorean section article,
+.panelKorean section article p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.92);
   text-align: center;
-  margin: 4px 0;
+  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+}
+
+.panelText {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
   font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
     "Noto Sans KR", sans-serif;
 }
 
 .emptyState {
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
   color: rgba(255, 255, 255, 0.7);
-  margin: 40px 0;
+  margin: 24px 0;
   letter-spacing: 0.02em;
-}
-
-.emptyState::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 12px auto 0;
-}
-
-.partnerCtaBox {
-  width: 100%;
-  max-width: 420px;
-  margin: 16px auto 0;
-  padding: 10px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: transparent;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.partnerCtaTitle {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.95);
-  font-family: "EL Messiri", "NanumSquare", "나눔스퀘어", "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
-}
-
-.partnerCtaBox:hover {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
 }

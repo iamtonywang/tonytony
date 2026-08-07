@@ -7,16 +7,19 @@ type Props = {
 
 export default function ProfileSection({ summary }: Props) {
 	return (
-		<section>
-			<h2 className={styles.profileTitle}>Profile</h2>
-			<div>
-				<p className={styles.profileText}>login_ {summary?.loginId ?? "-"}</p>
-				<p className={styles.profileText}>Name {summary?.realName ?? "-"}</p>
-				<p className={styles.profileText}>HP {summary?.phone ?? "-"}</p>
-				<p className={styles.profileText}>Email {summary?.email ?? "-"}</p>
-				<p className={styles.profileText}>Partner: {summary?.isPartner ? "YES" : "NO"}</p>
-			</div>
+		<section className={styles.profileBlock} aria-label="Profile">
+			<p className={styles.profileText}>
+				<span className={styles.profileLabel}>Login ID</span>
+				<span className={styles.profileValue}>{summary?.loginId ?? "-"}</span>
+			</p>
+			<p className={styles.profileText}>
+				<span className={styles.profileLabel}>Name</span>
+				<span className={styles.profileValue}>{summary?.realName ?? "-"}</span>
+			</p>
+			<p className={styles.profileText}>
+				<span className={styles.profileLabel}>Phone</span>
+				<span className={styles.profileValue}>{summary?.phone ?? "-"}</span>
+			</p>
 		</section>
 	);
 }
-
