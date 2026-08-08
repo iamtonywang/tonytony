@@ -46,15 +46,17 @@ export default async function ProductsPage() {
       <section className={styles.hero} aria-label="Product collection portrait">
         <div className={styles.heroFadeX}>
           <div className={styles.heroFadeY}>
-            <Image
-              src="/landing-assets/tonywang-products-hero-v2.webp"
-              alt="NIGAJUN product collection portrait"
-              width={1200}
-              height={1400}
-              priority
-              sizes="(max-width: 768px) 100vw, 900px"
-              className={styles.heroImage}
-            />
+            <div className={styles.heroFadeShape}>
+              <Image
+                src="/landing-assets/tonywang-products-hero-v2.webp"
+                alt="NIGAJUN product collection portrait"
+                width={1200}
+                height={1400}
+                priority
+                sizes="(max-width: 768px) 100vw, 900px"
+                className={styles.heroImage}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -68,10 +70,14 @@ export default async function ProductsPage() {
         <ul className={styles.productGrid}>
           {filteredAndSorted.map((item) => {
             if (!item.slug) return null;
+            const showComingSoon = item.slug !== "nigajun-44";
             return (
               <li key={item.slug} className={styles.productGridItem}>
                 <Link href={`/products/${item.slug}`} className={styles.productGridLink}>
-                  {item.productName ?? ""}
+                  <span className={styles.productGridName}>{item.productName ?? ""}</span>
+                  {showComingSoon ? (
+                    <span className={styles.productGridComingSoon}>COMING SOON</span>
+                  ) : null}
                 </Link>
               </li>
             );

@@ -34,7 +34,7 @@
 
 /*
  * Hero: image only. PC max 900px, 28px side safety.
- * Minimal nested FadeX / FadeY — preserve image content and baked-in copy.
+ * Nested FadeX / FadeY / FadeShape soften rectangular silhouette.
  */
 .hero {
   width: calc(100% - 56px);
@@ -46,15 +46,19 @@
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    #000 6%,
-    #000 94%,
+    rgba(0, 0, 0, 0.35) 7%,
+    #000 15%,
+    #000 85%,
+    rgba(0, 0, 0, 0.35) 93%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    #000 6%,
-    #000 94%,
+    rgba(0, 0, 0, 0.35) 7%,
+    #000 15%,
+    #000 85%,
+    rgba(0, 0, 0, 0.35) 93%,
     transparent 100%
   );
   mask-size: 100% 100%;
@@ -67,15 +71,40 @@
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    #000 3%,
-    #000 97%,
+    #000 8%,
+    #000 91%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    #000 3%,
-    #000 97%,
+    #000 8%,
+    #000 91%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.heroFadeShape {
+  width: 100%;
+  height: 100%;
+  mask-image: radial-gradient(
+    ellipse 72% 76% at 50% 48%,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.82) 72%,
+    rgba(0, 0, 0, 0.28) 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 76% at 50% 48%,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.82) 72%,
+    rgba(0, 0, 0, 0.28) 88%,
     transparent 100%
   );
   mask-size: 100% 100%;
@@ -101,31 +130,68 @@
     mask-image: linear-gradient(
       to right,
       transparent 0%,
-      #000 3%,
-      #000 97%,
+      #000 10%,
+      #000 90%,
       transparent 100%
     );
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0%,
-      #000 3%,
-      #000 97%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+  }
+
+  .heroFadeY {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+  }
+
+  .heroFadeShape {
+    mask-image: radial-gradient(
+      ellipse 82% 78% at 50% 48%,
+      #000 0%,
+      #000 58%,
+      rgba(0, 0, 0, 0.82) 72%,
+      rgba(0, 0, 0, 0.28) 88%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 82% 78% at 50% 48%,
+      #000 0%,
+      #000 58%,
+      rgba(0, 0, 0, 0.82) 72%,
+      rgba(0, 0, 0, 0.28) 88%,
       transparent 100%
     );
   }
 }
 
-/* Product select: below Hero, normal flow */
+/* Product select: compact single-row capsules below Hero */
 .productSelect {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 760px;
+  max-width: 900px;
   min-width: 0;
   margin: 0 auto;
   padding: 8px 28px 12px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .productSelectTitle {
@@ -148,10 +214,10 @@
 
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px 16px;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 6px;
   width: 100%;
-  margin: 20px 0 0;
+  margin: 16px 0 0;
   padding: 0;
   list-style: none;
 }
@@ -163,25 +229,45 @@
 
 .productGridLink {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 44px;
-  padding: 8px 10px;
+  min-height: 32px;
+  max-height: 34px;
+  padding: 4px 7px;
   box-sizing: border-box;
   color: #ffffff;
   text-decoration: none;
   text-align: center;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.35;
-  letter-spacing: 0.01em;
   border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
   background: transparent;
-  overflow-wrap: break-word;
+  overflow: hidden;
   transition:
     color 0.2s ease,
     border-color 0.2s ease;
+}
+
+.productGridName {
+  display: block;
+  max-width: 100%;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.productGridComingSoon {
+  display: block;
+  margin-top: 1px;
+  font-size: 7px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.56);
+  white-space: nowrap;
 }
 
 .productGridLink:hover {
@@ -203,17 +289,42 @@
 @media (max-width: 768px) {
   .productSelect {
     padding: 8px 22px 12px;
+    max-width: 100%;
   }
 
   .productGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px 12px;
-    margin-top: 16px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin-top: 14px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .productGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .productGridItem {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 88px;
   }
 
   .productGridLink {
-    font-size: 14px;
-    line-height: 1.4;
-    padding: 10px 8px;
+    width: auto;
+    min-width: 88px;
+    max-width: 96px;
+    padding: 4px 8px;
+  }
+
+  .productGridName {
+    font-size: 11px;
+  }
+
+  .productGridComingSoon {
+    font-size: 7px;
   }
 }
