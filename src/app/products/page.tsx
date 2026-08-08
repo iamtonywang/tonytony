@@ -34,11 +34,14 @@ export default async function ProductsPage() {
     <>
       <SignatureLine />
 
-      <section className={styles.brandIntro} aria-label="Brand introduction">
-        <p className={styles.brandIntroTitle}>
-          Plant Cell Genetic Protein Laboratory
-        </p>
-        <p className={styles.brandIntroMeta}>August 2026 TONY WANG</p>
+      <section
+        className={`${styles.brandIntro} ${styles.brandIntroPrimary}`}
+        aria-label="Brand introduction"
+      >
+        <p className={styles.brandIntroBrand}>TONYWANG</p>
+        <p className={styles.brandIntroTitle}>DERMA PHYTON Global Institute</p>
+        <p className={styles.brandIntroSubject}>Plant cell gene protein</p>
+        <p className={styles.brandIntroMeta}>One day in August 2026 TONY WANG</p>
       </section>
 
       <SignatureLine />
