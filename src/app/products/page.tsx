@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import { getPublicProducts } from "./_server/getPublicProducts";
@@ -43,36 +43,40 @@ export default async function ProductsPage() {
 
       <SignatureLine />
 
-      <section className={styles.modelPortraitFrame} aria-label="Product links">
-        <img
-          src="/landing-assets/tonywang-products-hero-v2.webp"
-          alt="NIGAJUN product collection portrait"
-          className={styles.modelPortrait}
-        />
-
-        <div className={styles.portraitOverlay}>
-          <p className={styles.portraitLead}>I made it for you.</p>
-          <p className={styles.portraitCopy}>
-            Don&apos;t compare it to other cosmetics.
-          </p>
-
-          <ul className={styles.productTextList}>
-            {filteredAndSorted.map((item, index) => {
-              if (!item.slug) return null;
-              return (
-                <li
-                  key={item.slug}
-                  className={styles.productTextItem}
-                  style={{ "--shimmer-index": index } as CSSProperties}
-                >
-                  <Link href={`/products/${item.slug}`} className={styles.productTextLink}>
-                    {item.productName ?? ""}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+      <section className={styles.hero} aria-label="Product collection portrait">
+        <div className={styles.heroFadeX}>
+          <div className={styles.heroFadeY}>
+            <Image
+              src="/landing-assets/tonywang-products-hero-v2.webp"
+              alt="NIGAJUN product collection portrait"
+              width={1200}
+              height={1400}
+              priority
+              sizes="(max-width: 768px) 100vw, 900px"
+              className={styles.heroImage}
+            />
+          </div>
         </div>
+      </section>
+
+      <SignatureLine />
+
+      <section className={styles.productSelect} aria-label="NIGAJUN products">
+        <h1 className={styles.productSelectTitle}>NIGAJUN</h1>
+        <h2 className={styles.productSelectSubtitle}>I MADE IT FOR YOU.</h2>
+
+        <ul className={styles.productGrid}>
+          {filteredAndSorted.map((item) => {
+            if (!item.slug) return null;
+            return (
+              <li key={item.slug} className={styles.productGridItem}>
+                <Link href={`/products/${item.slug}`} className={styles.productGridLink}>
+                  {item.productName ?? ""}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
       <SignatureLine />
