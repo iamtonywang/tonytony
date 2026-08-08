@@ -133,29 +133,29 @@
   object-position: center top;
   transform: scale(1.03);
   transform-origin: center top;
-  opacity: 0.84;
-  filter: contrast(0.86) brightness(0.97);
+  opacity: 0.94;
+  filter: contrast(1.04) brightness(1.01);
   animation: heroPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
 @keyframes heroPortraitReveal {
   0% {
-    opacity: 0.1;
+    opacity: 0.12;
     transform: scale(1.045);
   }
 
   35% {
-    opacity: 0.36;
+    opacity: 0.42;
     transform: scale(1.04);
   }
 
   70% {
-    opacity: 0.72;
+    opacity: 0.80;
     transform: scale(1.034);
   }
 
   100% {
-    opacity: 0.84;
+    opacity: 0.94;
     transform: scale(1.03);
   }
 }
@@ -203,8 +203,9 @@
 @media (prefers-reduced-motion: reduce) {
   .heroImage {
     animation: none;
-    opacity: 0.84;
+    opacity: 0.94;
     transform: scale(1.03);
+    filter: contrast(1.04) brightness(1.01);
   }
 
   .heroFadeShape::after {
