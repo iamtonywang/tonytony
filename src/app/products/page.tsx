@@ -47,15 +47,17 @@ export default async function ProductsPage() {
         <div className={styles.heroFadeX}>
           <div className={styles.heroFadeY}>
             <div className={styles.heroFadeShape}>
-              <Image
-                src="/landing-assets/tonywang-products-hero-v2.webp"
-                alt="NIGAJUN product collection portrait"
-                width={1200}
-                height={1400}
-                priority
-                sizes="(max-width: 768px) 100vw, 900px"
-                className={styles.heroImage}
-              />
+              <div className={styles.heroMedia}>
+                <Image
+                  src="/landing-assets/tonywang-products-hero-v2.webp"
+                  alt="NIGAJUN product collection portrait"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) min(430px, 100vw), min(720px, 100vw)"
+                  className={styles.heroImage}
+                />
+              </div>
+              <div className={styles.heroScrim} aria-hidden="true" />
             </div>
           </div>
         </div>
