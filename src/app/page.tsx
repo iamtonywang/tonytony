@@ -8,7 +8,7 @@ const HOME_URL = "https://www.iamtonywang.com";
 const HOME_TITLE = "TONY WANG | DERMAPHYTON Global Institute";
 const HOME_DESCRIPTION =
   "TONY WANG researches Plant Cell Gene Protein and ProteoPhytoComplex at DERMAPHYTON Global Institute.";
-const HOME_OG_IMAGE = `${HOME_URL}/landing-assets/tonywang-home-main-hero-v2.webp`;
+const HOME_OG_IMAGE = `${HOME_URL}/landing-assets/tonywang-home-hero-v3.webp`;
 
 export const metadata: Metadata = {
   title: {
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
       {
         url: HOME_OG_IMAGE,
         width: 1200,
-        height: 1400,
-        alt: "Tony Wang, founder of DERMAPHYTON Global Institute",
+        height: 1700,
+        alt: "TONY WANG — DERMA PHYTON Global Institute",
       },
     ],
   },
@@ -77,8 +77,8 @@ export default function HomePage() {
             <div className={styles.heroFadeShape}>
               <div className={styles.heroMedia}>
                 <Image
-                  src="/landing-assets/tonywang-home-main-hero-v2.webp"
-                  alt="Tony Wang, founder of DERMAPHYTON Global Institute"
+                  src="/landing-assets/tonywang-home-hero-v3.webp"
+                  alt="Tony Wang founder portrait for DERMA PHYTON Global Institute"
                   fill
                   priority
                   sizes="(max-width: 768px) min(430px, 100vw), min(720px, 100vw)"
@@ -89,11 +89,12 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className={styles.heroCopy}>
-          <h1 className={styles.heroTitle}>TONY WANG</h1>
-          <p className={styles.heroInstitute}>DERMAPHYTON Global Institute</p>
-          <h2 className={styles.heroSubtitle}>Plant Cell Gene Protein</h2>
-        </div>
+      </section>
+
+      <section className={styles.heroIdentity} aria-label="Brand identity">
+        <h1 className={styles.heroTitle}>TONY WANG</h1>
+        <h2 className={styles.heroInstitute}>DERMA PHYTON Global Institute</h2>
+        <p className={styles.heroSubtitle}>Plant cell gene protein</p>
       </section>
 
       <SignatureLine />

@@ -4,8 +4,9 @@
 }
 
 /*
- * Hero: normal-flow section. Height from aspect-ratio of source 1200×1400.
+ * Hero: normal-flow section. Height from aspect-ratio of source 1200×1700.
  * Max display width PC 720px / mobile 430px.
+ * object-fit: contain preserves baked-in copy (no crop).
  */
 .hero {
   position: relative;
@@ -13,7 +14,7 @@
   width: 100%;
   max-width: 720px;
   margin-inline: auto;
-  aspect-ratio: 1200 / 1400;
+  aspect-ratio: 1200 / 1700;
   overflow: hidden;
   background: transparent;
 }
@@ -49,18 +50,19 @@
 .heroFadeY {
   position: absolute;
   inset: 0;
+  /* v3 tall portrait: widen opaque band so baked top/bottom copy remains readable */
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    #000 18%,
-    #000 73%,
+    #000 12%,
+    #000 80%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    #000 18%,
-    #000 73%,
+    #000 12%,
+    #000 80%,
     transparent 100%
   );
   mask-size: 100% 100%;
@@ -75,18 +77,19 @@
 .heroFadeShape {
   position: absolute;
   inset: 0;
+  /* slightly taller ellipse for 1200×1700 baked copy at top/bottom */
   mask-image: radial-gradient(
-    ellipse 50% 82% at 50% 46%,
+    ellipse 52% 90% at 50% 48%,
     #000 0%,
-    #000 42%,
-    rgba(0, 0, 0, 0.82) 58%,
+    #000 45%,
+    rgba(0, 0, 0, 0.85) 62%,
     transparent 100%
   );
   -webkit-mask-image: radial-gradient(
-    ellipse 50% 82% at 50% 46%,
+    ellipse 52% 90% at 50% 48%,
     #000 0%,
-    #000 42%,
-    rgba(0, 0, 0, 0.82) 58%,
+    #000 45%,
+    rgba(0, 0, 0, 0.85) 62%,
     transparent 100%
   );
   mask-size: 100% 100%;
@@ -103,10 +106,10 @@
 }
 
 .heroImage {
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center center;
   transform: scale(1.03);
-  transform-origin: center top;
+  transform-origin: center center;
   opacity: 0.84;
   filter: contrast(0.86) brightness(0.97);
   animation: heroPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
@@ -139,15 +142,16 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  /* softened — v3 already has dark field + white baked copy */
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.14) 0%,
-    rgba(0, 0, 0, 0.05) 24%,
-    transparent 48%
+    rgba(0, 0, 0, 0.06) 0%,
+    rgba(0, 0, 0, 0.02) 18%,
+    transparent 40%
   );
 }
 
-/* Darkness veil — inside all three masks, above image/scrim, below copy */
+/* Darkness veil — inside all three masks, above image/scrim */
 .heroFadeShape::after {
   content: "";
   position: absolute;
@@ -176,32 +180,6 @@
   }
 }
 
-/* Outside all masks — copy stays sharp */
-.heroCopy {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 28px clamp(24px, 7%, 48px);
-  pointer-events: none;
-  animation: heroCopyReveal 1.4s ease-out 1.25s 1 both;
-}
-
-@keyframes heroCopyReveal {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .heroImage {
     animation: none;
@@ -211,11 +189,19 @@
     animation: none;
     opacity: 0;
   }
+}
 
-  .heroCopy {
-    animation: none;
-    opacity: 1;
-  }
+/* Visible SEO identity — outside Hero image, no overlay/scrim/motion */
+.heroIdentity {
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+  padding: 18px 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: transparent;
 }
 
 .heroTitle {
@@ -224,8 +210,7 @@
   font-weight: 500;
   line-height: 1.08;
   letter-spacing: 0.015em;
-  color: rgba(255, 255, 255, 0.96);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .heroInstitute {
@@ -234,18 +219,15 @@
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.005em;
-  color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .heroSubtitle {
-  margin: 6px 0 0;
+  margin: 5px 0 0;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
-  letter-spacing: 0.005em;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 @media (max-width: 768px) {
@@ -274,42 +256,34 @@
     mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 14%,
-      #000 76%,
+      #000 10%,
+      #000 84%,
       transparent 100%
     );
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 14%,
-      #000 76%,
+      #000 10%,
+      #000 84%,
       transparent 100%
     );
   }
 
   .heroFadeShape {
     mask-image: radial-gradient(
-      ellipse 56% 86% at 50% 42%,
+      ellipse 58% 94% at 50% 46%,
       #000 0%,
-      #000 44%,
-      rgba(0, 0, 0, 0.8) 60%,
+      #000 46%,
+      rgba(0, 0, 0, 0.84) 64%,
       transparent 100%
     );
     -webkit-mask-image: radial-gradient(
-      ellipse 56% 86% at 50% 42%,
+      ellipse 58% 94% at 50% 46%,
       #000 0%,
-      #000 44%,
-      rgba(0, 0, 0, 0.8) 60%,
+      #000 46%,
+      rgba(0, 0, 0, 0.84) 64%,
       transparent 100%
     );
-  }
-
-  .heroImage {
-    object-position: center 12%;
-  }
-
-  .heroCopy {
-    padding-bottom: clamp(20px, 6%, 36px);
   }
 }
 
