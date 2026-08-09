@@ -1,10 +1,46 @@
 "use client";
 
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun44View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
+
+const EDITORIAL_SIZES =
+  "(max-width: 768px) min(430px, 100vw), min(720px, 100vw)";
+
+function EditorialImageFrame({
+  src,
+  alt,
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+}) {
+  return (
+    <div className={styles.editorialImageFrame}>
+      <div className={styles.editorialFadeX}>
+        <div className={styles.editorialFadeY}>
+          <div className={styles.editorialFadeShape}>
+            <div className={styles.editorialMedia}>
+              <Image
+                className={styles.editorialImage}
+                src={src}
+                alt={alt}
+                fill
+                sizes={EDITORIAL_SIZES}
+                priority={priority}
+                loading={priority ? undefined : "lazy"}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function maskBoardAuthor(author: string) {
   if (!author) return "User";
@@ -479,10 +515,10 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <p className={styles.bodyCopy}>{"you don't know what's true and what's false"}</p>
       </section>
 
-      <img
+      <EditorialImageFrame
         src="/landing-assets/nigajun-44-section-02-new.webp"
-        alt=""
-        className={styles.heroImage}
+        alt="NIGAJUN 44 portrait of Tony Wang"
+        priority
       />
 
       <SignatureLine />
@@ -497,10 +533,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <ManifestoReveal lines={[MANIFESTO_TEXT]} />
       </section>
 
-      <img
+      <EditorialImageFrame
         src="/landing-assets/nigajun-44-section-03-v2.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <SignatureLine />
@@ -515,10 +550,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <ManifestoReveal lines={SECTION4_MANIFESTO_LINES} />
       </section>
 
-      <img
+      <EditorialImageFrame
         src="/landing-assets/nigajun-44-section-04.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <SignatureLine />
@@ -536,10 +570,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         />
       </section>
 
-      <img
+      <EditorialImageFrame
         src="/landing-assets/nigajun-44-section-05-v2.webp"
-        alt=""
-        className={styles.heroImage}
+        alt="NIGAJUN 44 editorial portrait with integrity manifesto"
       />
 
       <SignatureLine />
@@ -557,10 +590,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         />
       </section>
 
-      <img
+      <EditorialImageFrame
         src="/landing-assets/nigajun-44-section-06.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <SignatureLine />
@@ -572,10 +604,9 @@ export default function Nigajun44View({ product, boardItems }: Props) {
         <p className={styles.bodyCopy}>{"August 2026 TONY WANG"}</p>
       </section>
 
-      <img
+      <EditorialImageFrame
         src="/landing-assets/nigajun-44-section-07.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <SignatureLine />

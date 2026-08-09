@@ -122,6 +122,168 @@
 }
 
 /*
+ * Editorial image frames: Home-matched FadeX/Y/Shape, no motion/scrim/veil.
+ * All six assets are 1200×1400. contain preserves baked-in copy.
+ */
+.editorialImageFrame {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  aspect-ratio: 1200 / 1400;
+  overflow: hidden;
+  background: transparent;
+}
+
+.editorialFadeX {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialFadeY {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialFadeShape {
+  position: absolute;
+  inset: 0;
+  mask-image: radial-gradient(
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialMedia {
+  position: absolute;
+  inset: 0;
+}
+
+.editorialImage {
+  object-fit: contain;
+  object-position: center center;
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .editorialImageFrame {
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .editorialFadeX {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+  }
+
+  .editorialFadeY {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+  }
+
+  .editorialFadeShape {
+    mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+  }
+}
+
+/*
  * Section 2의 실제 높이와 동일한 시각적 높이를 Section 3~7에 적용.
  * Section 2는 고정 height 없이 .landingSection padding(72px, 모바일 56px)
  * + 문구 4줄(약 79px)로 높이가 만들어지므로, 같은 padding 구조를 그대로 쓰고
