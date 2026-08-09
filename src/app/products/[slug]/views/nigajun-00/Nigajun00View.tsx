@@ -1,11 +1,57 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun00View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 import { formatBoardRowAuthor } from "@/app/products/boardMask";
+
+const EDITORIAL_SIZES =
+  "(max-width: 768px) min(430px, 100vw), min(720px, 100vw)";
+
+type EditorialImageFrameProps = {
+  src: string;
+  alt: string;
+  priority?: boolean;
+  ratio?: "standard" | "square";
+};
+
+function EditorialImageFrame({
+  src,
+  alt,
+  priority = false,
+  ratio = "standard",
+}: EditorialImageFrameProps) {
+  return (
+    <div
+      className={`${styles.editorialImageFrame} ${
+        ratio === "square"
+          ? styles.editorialImageFrameSquare
+          : styles.editorialImageFrameStandard
+      }`}
+    >
+      <div className={styles.editorialFadeX}>
+        <div className={styles.editorialFadeY}>
+          <div className={styles.editorialFadeShape}>
+            <div className={styles.editorialMedia}>
+              <Image
+                className={styles.editorialImage}
+                src={src}
+                alt={alt}
+                fill
+                sizes={EDITORIAL_SIZES}
+                priority={priority}
+                loading={priority ? undefined : "lazy"}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface Props {
   product?: ProductMinimal;
@@ -126,10 +172,11 @@ export default function Nigajun00View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-00-main-hero.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-00-section-01-v2.webp"
+        alt="NIGAJUN 00 Hybrid Mixed Protein Serum editorial portrait"
+        ratio="standard"
+        priority
       />
 
       <SignatureLine />
@@ -143,10 +190,10 @@ export default function Nigajun00View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-00-section-03.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-00-section-02-v2.webp"
+        alt="NIGAJUN 00 advanced hydration serum editorial"
+        ratio="square"
       />
 
       <SignatureLine />
@@ -160,10 +207,10 @@ export default function Nigajun00View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-00-section-04.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-00-section-03-v2.webp"
+        alt="NIGAJUN 00 protein nutrition skincare serum editorial"
+        ratio="square"
       />
 
       <SignatureLine />
@@ -177,10 +224,10 @@ export default function Nigajun00View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-00-section-05.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-00-section-04-v2.webp"
+        alt="NIGAJUN 00 serum bottle and hydration editorial"
+        ratio="standard"
       />
 
       <SignatureLine />
@@ -194,10 +241,10 @@ export default function Nigajun00View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-00-section-06.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-00-section-05-v2.webp"
+        alt="NIGAJUN 00 protein nutrition serum bottle editorial"
+        ratio="square"
       />
 
       <section className={styles.landingSection} aria-label="Closing Brand Message">
