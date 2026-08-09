@@ -77,53 +77,172 @@
 }
 
 /*
- * Hero 이미지: 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
- * 실라인 박스는 max-width 760px + 좌우 padding 28px이므로
- * 선의 실제 폭은 min(100%, 760px) - 56px → 이미지도 동일 기준으로 확장.
- * 높이는 원본 비율(height: auto)로 폭에 비례해 커진다.
- * 장식 없음: border/outline/box-shadow/배경/padding/round 일절 미적용.
+ * Editorial image frames: Home-matched FadeX/Y/Shape, no motion/scrim/veil.
+ * Tall = 1200×1700 (image 1); Standard = 1200×1400 (images 2–6).
+ * object-fit: contain preserves baked-in copy (no cover/scale/opacity dim).
  */
-.heroImage {
-  display: block;
-  width: calc(100% - 56px);
-  max-width: 704px;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  background: none;
-  padding: 0;
-  border-radius: 0;
-  /*
-   * 사진이 직사각형 캔버스 끝에서 선명하게 끊겨 배경(#5f5f5f)과의 대비로
-   * 액자처럼 보인다. 44의 .section2Image와 동일한 radial mask로
-   * 가장자리를 alpha 0까지 페이드시켜 배경과 자연스럽게 연결한다.
-   */
+.editorialImageFrame {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  overflow: hidden;
+  background: transparent;
+}
+
+.editorialImageFrameTall {
+  aspect-ratio: 1200 / 1700;
+}
+
+.editorialImageFrameStandard {
+  aspect-ratio: 1200 / 1400;
+}
+
+.editorialFadeX {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialFadeY {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialFadeShape {
+  position: absolute;
+  inset: 0;
   mask-image: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(0, 0, 0, 1) 55%,
-    rgba(0, 0, 0, 0.5) 80%,
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
     transparent 100%
   );
   -webkit-mask-image: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(0, 0, 0, 1) 55%,
-    rgba(0, 0, 0, 0.5) 80%,
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
     transparent 100%
   );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
 }
 
-/*
- * 모바일: 데스크톱 규칙(calc(100% - 56px))이 그대로 내려와 좌우 56px이 빠지면
- * 작은 화면에서 이미지가 지나치게 작아진다. 가장자리는 mask로 페이드되므로
- * 화면 폭 전체를 사용해도 자연스럽게 이어진다. (44 modelPortrait 방식과 동일)
- */
+.editorialMedia {
+  position: absolute;
+  inset: 0;
+}
+
+.editorialImage {
+  object-fit: contain;
+  object-position: center center;
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
 @media (max-width: 768px) {
-  .heroImage {
+  .editorialImageFrame {
     width: 100%;
-    max-width: none;
+    max-width: 430px;
+  }
+
+  .editorialFadeX {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+  }
+
+  .editorialFadeY {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+  }
+
+  .editorialFadeShape {
+    mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
   }
 }
 

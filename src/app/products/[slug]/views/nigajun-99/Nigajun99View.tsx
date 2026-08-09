@@ -1,11 +1,55 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun99View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 import { formatBoardRowAuthor } from "@/app/products/boardMask";
+
+const EDITORIAL_SIZES =
+  "(max-width: 768px) min(430px, 100vw), min(720px, 100vw)";
+
+function EditorialImageFrame({
+  src,
+  alt,
+  ratio,
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  ratio: "tall" | "standard";
+  priority?: boolean;
+}) {
+  return (
+    <div
+      className={`${styles.editorialImageFrame} ${
+        ratio === "tall"
+          ? styles.editorialImageFrameTall
+          : styles.editorialImageFrameStandard
+      }`}
+    >
+      <div className={styles.editorialFadeX}>
+        <div className={styles.editorialFadeY}>
+          <div className={styles.editorialFadeShape}>
+            <div className={styles.editorialMedia}>
+              <Image
+                className={styles.editorialImage}
+                src={src}
+                alt={alt}
+                fill
+                sizes={EDITORIAL_SIZES}
+                priority={priority}
+                loading={priority ? undefined : "lazy"}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface Props {
   product?: ProductMinimal;
@@ -129,10 +173,11 @@ export default function Nigajun99View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-99-hero.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/tonywang-nigajun-99-section-01.webp"
+        alt="NIGAJUN 99 editorial portrait with a drum"
+        ratio="tall"
+        priority
       />
 
       <SignatureLine />
@@ -147,10 +192,10 @@ export default function Nigajun99View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-99-section-03-v2.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/tonywang-nigajun-99-section-02.webp"
+        alt="NIGAJUN 99 skin comfort editorial"
+        ratio="standard"
       />
 
       <SignatureLine />
@@ -167,10 +212,10 @@ export default function Nigajun99View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-99-section-04.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/tonywang-nigajun-99-section-03.webp"
+        alt="NIGAJUN 99 hydration and skin comfort editorial"
+        ratio="standard"
       />
 
       <SignatureLine />
@@ -185,10 +230,10 @@ export default function Nigajun99View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-99-section-05.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/tonywang-nigajun-99-section-04.webp"
+        alt="NIGAJUN 99 daily moisture care editorial"
+        ratio="standard"
       />
 
       <SignatureLine />
@@ -205,10 +250,10 @@ export default function Nigajun99View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-99-section-06.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/tonywang-nigajun-99-section-05.webp"
+        alt="NIGAJUN 99 brand story editorial"
+        ratio="standard"
       />
 
       <section className={styles.landingSection} aria-label="Product Description">
@@ -235,10 +280,10 @@ export default function Nigajun99View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-99-section-06-v2.webp"
-        alt=""
-        className={styles.heroImage}
+      <EditorialImageFrame
+        src="/landing-assets/tonywang-nigajun-99-section-06.webp"
+        alt="NIGAJUN 99 product cream editorial"
+        ratio="standard"
       />
 
       <div className={styles.jarCopy}>
