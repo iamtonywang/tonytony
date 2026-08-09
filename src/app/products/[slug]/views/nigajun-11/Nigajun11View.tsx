@@ -1,11 +1,47 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun11View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 import { formatBoardRowAuthor } from "@/app/products/boardMask";
+
+const EDITORIAL_SIZES =
+  "(max-width: 768px) min(430px, 100vw), min(720px, 100vw)";
+
+function EditorialImageFrame({
+  src,
+  alt,
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+}) {
+  return (
+    <div className={styles.editorialImageFrame}>
+      <div className={styles.editorialFadeX}>
+        <div className={styles.editorialFadeY}>
+          <div className={styles.editorialFadeShape}>
+            <div className={styles.editorialMedia}>
+              <Image
+                className={styles.editorialImage}
+                src={src}
+                alt={alt}
+                fill
+                sizes={EDITORIAL_SIZES}
+                priority={priority}
+                loading={priority ? undefined : "lazy"}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface Props {
   product?: ProductMinimal;
@@ -126,10 +162,10 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-11-main-hero.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-11-section-01-v2.webp"
         alt=""
-        className={styles.heroImage}
+        priority
       />
 
       <SignatureLine />
@@ -144,10 +180,9 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-11-section-02.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-11-section-02-v2.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <SignatureLine />
@@ -161,10 +196,9 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-11-section-03.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-11-section-03-v2.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <SignatureLine />
@@ -179,10 +213,9 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-11-section-04.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-11-section-04-v2.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <SignatureLine />
@@ -196,10 +229,9 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-11-section-05.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-11-section-05-v2.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <SignatureLine />
@@ -214,10 +246,9 @@ export default function Nigajun11View({ product, boardItems }: Props) {
         </p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-11-section-06.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-11-section-06-v2.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <section
