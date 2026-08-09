@@ -1,11 +1,55 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun77View.module.css";
 import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
 import { formatBoardRowAuthor } from "@/app/products/boardMask";
+
+const EDITORIAL_SIZES =
+  "(max-width: 768px) min(430px, 100vw), min(720px, 100vw)";
+
+function EditorialImageFrame({
+  src,
+  alt,
+  priority = false,
+  ratio = "standard",
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+  ratio?: "standard" | "tall";
+}) {
+  return (
+    <div
+      className={`${styles.editorialImageFrame} ${
+        ratio === "tall"
+          ? styles.editorialImageFrameTall
+          : styles.editorialImageFrameStandard
+      }`}
+    >
+      <div className={styles.editorialFadeX}>
+        <div className={styles.editorialFadeY}>
+          <div className={styles.editorialFadeShape}>
+            <div className={styles.editorialMedia}>
+              <Image
+                className={styles.editorialImage}
+                src={src}
+                alt={alt}
+                fill
+                sizes={EDITORIAL_SIZES}
+                priority={priority}
+                loading={priority ? undefined : "lazy"}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface Props {
   product?: ProductMinimal;
@@ -117,10 +161,10 @@ export default function Nigajun77View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      <img
-        src="/landing-assets/nigajun-77-group-model.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-77-section-01.webp"
         alt=""
-        className={styles.heroImage}
+        priority
       />
 
       <section className={styles.landingSection} aria-label="Product Description">
@@ -143,10 +187,9 @@ export default function Nigajun77View({ product, boardItems }: Props) {
         <p className={styles.sectionTitle}>Body Slim & Firming Cream</p>
       </section>
 
-      <img
-        src="/landing-assets/nigajun-77-street-model.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-77-section-02.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <section className={styles.landingSection} aria-label="Street Image Description">
@@ -160,10 +203,9 @@ export default function Nigajun77View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      <img
-        src="/landing-assets/nigajun-77-body-contour.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-77-section-03.webp"
         alt=""
-        className={styles.heroImage}
       />
 
       <section className={styles.landingSection} aria-label="Beach Image Description">
@@ -177,10 +219,10 @@ export default function Nigajun77View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      <img
-        src="/landing-assets/nigajun-77-beach-model.webp"
+      <EditorialImageFrame
+        src="/landing-assets/nigajun-77-section-04.webp"
         alt=""
-        className={styles.heroImage}
+        ratio="tall"
       />
 
       <section className={styles.landingSection}>

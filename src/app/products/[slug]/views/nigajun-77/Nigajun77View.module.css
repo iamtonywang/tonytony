@@ -93,36 +93,173 @@
 }
 
 /*
- * 대표 이미지: 88 .heroImage와 동일.
- * 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
- * 높이는 원본 비율(height: auto)로 폭에 비례해 커진다.
- * 장식 없음: border/outline/box-shadow/배경/padding/round 일절 미적용.
+ * Editorial image frames: Home-matched FadeX/Y/Shape, no motion/scrim/veil.
+ * Standard = 1200×1400 (images 1–3); Tall = 1200×1700 (image 4).
+ * object-fit: contain preserves baked-in copy.
  */
-.heroImage {
-  display: block;
-  width: calc(100% - 56px);
-  max-width: 704px;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  background: none;
-  padding: 0;
-  border-radius: 0;
+.editorialImageFrame {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  overflow: hidden;
+  background: transparent;
+}
+
+.editorialImageFrameStandard {
+  aspect-ratio: 1200 / 1400;
+}
+
+.editorialImageFrameTall {
+  aspect-ratio: 1200 / 1700;
+}
+
+.editorialFadeX {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialFadeY {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialFadeShape {
+  position: absolute;
+  inset: 0;
   mask-image: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(0, 0, 0, 1) 55%,
-    rgba(0, 0, 0, 0.5) 80%,
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
     transparent 100%
   );
   -webkit-mask-image: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(0, 0, 0, 1) 55%,
-    rgba(0, 0, 0, 0.5) 80%,
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
     transparent 100%
   );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialMedia {
+  position: absolute;
+  inset: 0;
+}
+
+.editorialImage {
+  object-fit: contain;
+  object-position: center center;
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .editorialImageFrame {
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .editorialFadeX {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+  }
+
+  .editorialFadeY {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+  }
+
+  .editorialFadeShape {
+    mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+  }
 }
 
 .purchaseSection {
@@ -446,11 +583,6 @@
 }
 
 @media (max-width: 768px) {
-  .heroImage {
-    width: 100%;
-    max-width: none;
-  }
-
   .purchaseSection {
     width: min(1120px, 94vw);
   }
