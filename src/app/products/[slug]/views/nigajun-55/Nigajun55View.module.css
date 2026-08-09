@@ -84,13 +84,173 @@
 }
 
 /*
- * 첫 hero 이미지 wrapper.
- * 폭은 기존 .heroImage와 동일하게 유지하고, 이미지 자체 src/object-fit/mask는 변경하지 않는다.
+ * Editorial image frames: Home-matched FadeX/Y/Shape, no motion/scrim/veil.
+ * Standard = 1200×1400 (images 1–4); Portrait = 884×1700 (image 5, alpha).
+ * object-fit: contain preserves baked-in copy and transparent edges.
  */
-.heroImageWrap {
-  width: calc(100% - 56px);
-  max-width: 704px;
-  margin: 0 auto;
+.editorialImageFrame {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  overflow: hidden;
+  background: transparent;
+}
+
+.editorialImageFrameStandard {
+  aspect-ratio: 1200 / 1400;
+}
+
+.editorialImageFramePortrait {
+  aspect-ratio: 884 / 1700;
+}
+
+.editorialFadeX {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 35%,
+    #000 65%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialFadeY {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 73%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialFadeShape {
+  position: absolute;
+  inset: 0;
+  mask-image: radial-gradient(
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 50% 82% at 50% 46%,
+    #000 0%,
+    #000 42%,
+    rgba(0, 0, 0, 0.82) 58%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.editorialMedia {
+  position: absolute;
+  inset: 0;
+}
+
+.editorialImage {
+  object-fit: contain;
+  object-position: center center;
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .editorialImageFrame {
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .editorialFadeX {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 30%,
+      #000 70%,
+      transparent 100%
+    );
+  }
+
+  .editorialFadeY {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 14%,
+      #000 76%,
+      transparent 100%
+    );
+  }
+
+  .editorialFadeShape {
+    mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 56% 86% at 50% 42%,
+      #000 0%,
+      #000 44%,
+      rgba(0, 0, 0, 0.8) 60%,
+      transparent 100%
+    );
+  }
 }
 
 /*
@@ -126,46 +286,6 @@
   font-weight: 400;
   line-height: 1.35;
   color: rgba(255, 255, 255, 0.72);
-}
-
-/*
- * 대표 이미지: 77·88·99 .heroImage와 동일.
- * 좌우 끝을 SignatureLine 실라인 끝선에 맞춘다.
- * 높이는 원본 비율(height: auto)로 폭에 비례해 커진다.
- * 장식 없음: border/outline/box-shadow/배경/padding/round 일절 미적용.
- */
-.heroImage {
-  display: block;
-  width: calc(100% - 56px);
-  max-width: 704px;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  background: none;
-  padding: 0;
-  border-radius: 0;
-  mask-image: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(0, 0, 0, 1) 55%,
-    rgba(0, 0, 0, 0.5) 80%,
-    transparent 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(0, 0, 0, 1) 55%,
-    rgba(0, 0, 0, 0.5) 80%,
-    transparent 100%
-  );
-}
-
-/* wrap 내부 첫 hero만 부모 폭에 맞춤 (이미지 속성 자체는 유지) */
-.heroImageWrap .heroImage {
-  width: 100%;
-  max-width: none;
-  margin: 0;
 }
 
 /*
@@ -492,16 +612,6 @@
 }
 
 @media (max-width: 768px) {
-  .heroImageWrap {
-    width: 100%;
-    max-width: none;
-  }
-
-  .heroImage {
-    width: 100%;
-    max-width: none;
-  }
-
   .introCopySection {
     padding: 4px 16px;
   }
