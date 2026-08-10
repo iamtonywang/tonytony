@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import type { ProductBoardItem, ProductMinimal } from "../_server/types";
+import type { ProductMinimal } from "../_server/types";
 import Nigajun44View from "./views/nigajun-44/Nigajun44View";
 import Nigajun99View from "./views/nigajun-99/Nigajun99View";
 import Nigajun88View from "./views/nigajun-88/Nigajun88View";
@@ -12,27 +12,26 @@ import Nigajun00View from "./views/nigajun-00/Nigajun00View";
 interface ProductViewRouterProps {
   slug: string;
   product?: ProductMinimal;
-  boardItems: ProductBoardItem[];
 }
 
-export default function ProductViewRouter({ slug, product, boardItems }: ProductViewRouterProps) {
+export default function ProductViewRouter({ slug, product }: ProductViewRouterProps) {
   switch (slug) {
     case "nigajun-44":
-      return <Nigajun44View product={product} boardItems={boardItems} />;
+      return <Nigajun44View product={product} />;
     case "nigajun-99":
-      return <Nigajun99View product={product} boardItems={boardItems} />;
+      return <Nigajun99View product={product} />;
     case "nigajun-88":
-      return <Nigajun88View product={product} boardItems={boardItems} />;
+      return <Nigajun88View product={product} />;
     case "nigajun-77":
-      return <Nigajun77View product={product} boardItems={boardItems} />;
+      return <Nigajun77View product={product} />;
     case "nigajun-55":
-      return <Nigajun55View product={product} boardItems={boardItems} />;
+      return <Nigajun55View product={product} />;
     case "nigajun-22":
-      return <Nigajun22View product={product} boardItems={boardItems} />;
+      return <Nigajun22View product={product} />;
     case "nigajun-11":
-      return <Nigajun11View product={product} boardItems={boardItems} />;
+      return <Nigajun11View product={product} />;
     case "nigajun-00":
-      return <Nigajun00View product={product} boardItems={boardItems} />;
+      return <Nigajun00View product={product} />;
     default:
       notFound();
   }

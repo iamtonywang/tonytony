@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun77View.module.css";
-import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
+import type { ProductMinimal } from "@/app/products/_server/types";
+import { useLazyProductBoard } from "../../_components/useLazyProductBoard";
 import { formatBoardRowAuthor } from "@/app/products/boardMask";
 
 const EDITORIAL_SIZES =
@@ -53,7 +54,6 @@ function EditorialImageFrame({
 
 interface Props {
   product?: ProductMinimal;
-  boardItems: ProductBoardItem[];
 }
 
 const PINNED_NOTICE = {
@@ -64,7 +64,9 @@ const PINNED_NOTICE = {
   content: "공지 내용",
 } as const;
 
-export default function Nigajun77View({ product, boardItems }: Props) {
+export default function Nigajun77View({ product }: Props) {
+  const { status: boardStatus, items: boardItems, loadBoard, refreshBoard } = useLazyProductBoard(product?.slug ?? null);
+  const boardReady = boardStatus === "success" || boardStatus === "empty";
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
   const [boardTab, setBoardTab] = useState<"inquiry" | "review">("inquiry");
   const [showInquiryForm, setShowInquiryForm] = useState(false);
@@ -106,8 +108,9 @@ export default function Nigajun77View({ product, boardItems }: Props) {
       });
       const data = (await res.json()) as { ok?: boolean; message?: string };
       if (data.ok) {
+        setInquiryContent("");
         setInquiryIsPrivate(false);
-        window.location.reload();
+        await refreshBoard();
         return;
       }
       window.alert(data.message ?? "저장에 실패했습니다.");
@@ -136,8 +139,9 @@ export default function Nigajun77View({ product, boardItems }: Props) {
       });
       const data = (await res.json()) as { ok?: boolean; message?: string };
       if (data.ok) {
+        setReviewContent("");
         setReviewIsPrivate(false);
-        window.location.reload();
+        await refreshBoard();
         return;
       }
       window.alert(data.message ?? "리뷰 등록에 실패했습니다.");
@@ -286,6 +290,37 @@ export default function Nigajun77View({ product, boardItems }: Props) {
             &nbsp;제품 구입 유저만 가능 합니다
           </p>
         </div>
+        {boardStatus === "idle" ? (
+          <div className={styles.boardActions}>
+            <button
+              type="button"
+              className={styles.boardActionBtn}
+              onClick={() => void loadBoard()}
+            >
+              INQUIRY / REVIEW
+            </button>
+          </div>
+        ) : null}
+        {boardStatus === "loading" ? (
+          <p className={styles.boardNotice} style={{ textAlign: "center" }}>
+            Loading…
+          </p>
+        ) : null}
+        {boardStatus === "error" ? (
+          <div className={styles.boardActions}>
+            <p className={styles.boardNotice} style={{ width: "100%", textAlign: "center" }}>
+              Unable to load board.
+            </p>
+            <button
+              type="button"
+              className={styles.boardActionBtn}
+              onClick={() => void loadBoard()}
+            >
+              Retry
+            </button>
+          </div>
+        ) : null}
+        {boardReady ? (
         <div className={styles.boardActions}>
           <button
             type="button"
@@ -308,9 +343,10 @@ export default function Nigajun77View({ product, boardItems }: Props) {
             Review
           </button>
         </div>
+        ) : null}
       </div>
 
-      {boardTab === "inquiry" && showInquiryForm ? (
+      {boardReady && boardTab === "inquiry" && showInquiryForm ? (
         <div
           style={{
             maxWidth: 720,
@@ -365,7 +401,7 @@ export default function Nigajun77View({ product, boardItems }: Props) {
         </div>
       ) : null}
 
-      {boardTab === "review" && showReviewForm ? (
+      {boardReady && boardTab === "review" && showReviewForm ? (
         <div
           style={{
             maxWidth: 720,
@@ -470,7 +506,8 @@ export default function Nigajun77View({ product, boardItems }: Props) {
             ) : null}
           </div>
 
-          {filteredBoardItems.map((item, i) => {
+          {boardReady
+            ? filteredBoardItems.map((item, i) => {
             const rowIndex = i + 1;
             const preview =
               item.isPrivate
@@ -540,7 +577,8 @@ export default function Nigajun77View({ product, boardItems }: Props) {
                 ) : null}
               </div>
             );
-          })}
+          })
+            : null}
         </div>
       </section>
 

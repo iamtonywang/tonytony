@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./Nigajun44View.module.css";
-import type { ProductBoardItem, ProductMinimal } from "@/app/products/_server/types";
+import type { ProductMinimal } from "@/app/products/_server/types";
+import { useLazyProductBoard } from "../../_components/useLazyProductBoard";
 
 const EDITORIAL_SIZES =
   "(max-width: 768px) min(430px, 100vw), min(720px, 100vw)";
@@ -50,7 +51,6 @@ function maskBoardAuthor(author: string) {
 
 interface Props {
   product?: ProductMinimal;
-  boardItems: ProductBoardItem[];
 }
 
 const MANIFESTO_TEXT = "제품은 유저가 직접 사용해야 거짓과 진실을 알 수 있어.";
@@ -162,12 +162,12 @@ function ManifestoReveal({
 }
 
 function BoardSection({
-  boardItems,
   productSlug,
 }: {
-  boardItems: ProductBoardItem[];
   productSlug: string | null;
 }) {
+  const { status: boardStatus, items: boardItems, loadBoard, refreshBoard } = useLazyProductBoard(productSlug);
+  const boardReady = boardStatus === "success" || boardStatus === "empty";
   const [openBoardIndex, setOpenBoardIndex] = useState<number | null>(null);
   const [boardTab, setBoardTab] = useState<"inquiry" | "review">("inquiry");
   const [showInquiryForm, setShowInquiryForm] = useState(false);
@@ -208,8 +208,9 @@ function BoardSection({
       });
       const data = (await res.json()) as { ok?: boolean; message?: string };
       if (data.ok) {
+        setInquiryContent("");
         setInquiryIsPrivate(false);
-        window.location.reload();
+        await refreshBoard();
         return;
       }
       window.alert(data.message ?? "저장에 실패했습니다.");
@@ -238,8 +239,9 @@ function BoardSection({
       });
       const data = (await res.json()) as { ok?: boolean; message?: string };
       if (data.ok) {
+        setReviewContent("");
         setReviewIsPrivate(false);
-        window.location.reload();
+        await refreshBoard();
         return;
       }
       window.alert(data.message ?? "리뷰 등록에 실패했습니다.");
@@ -271,6 +273,37 @@ function BoardSection({
             &nbsp;제품 구입 유저만 가능 합니다
           </p>
         </div>
+        {boardStatus === "idle" ? (
+          <div className={styles.boardActions}>
+            <button
+              type="button"
+              className={styles.boardActionBtn}
+              onClick={() => void loadBoard()}
+            >
+              INQUIRY / REVIEW
+            </button>
+          </div>
+        ) : null}
+        {boardStatus === "loading" ? (
+          <p className={styles.boardNotice} style={{ textAlign: "center" }}>
+            Loading…
+          </p>
+        ) : null}
+        {boardStatus === "error" ? (
+          <div className={styles.boardActions}>
+            <p className={styles.boardNotice} style={{ width: "100%", textAlign: "center" }}>
+              Unable to load board.
+            </p>
+            <button
+              type="button"
+              className={styles.boardActionBtn}
+              onClick={() => void loadBoard()}
+            >
+              Retry
+            </button>
+          </div>
+        ) : null}
+        {boardReady ? (
         <div className={styles.boardActions}>
           <button
             type="button"
@@ -293,9 +326,10 @@ function BoardSection({
             Review
           </button>
         </div>
+        ) : null}
       </div>
 
-      {boardTab === "inquiry" && showInquiryForm ? (
+      {boardReady && boardTab === "inquiry" && showInquiryForm ? (
         <div
           style={{
             maxWidth: 720,
@@ -350,7 +384,7 @@ function BoardSection({
         </div>
       ) : null}
 
-      {boardTab === "review" && showReviewForm ? (
+      {boardReady && boardTab === "review" && showReviewForm ? (
         <div
           style={{
             maxWidth: 720,
@@ -407,7 +441,8 @@ function BoardSection({
 
       <section className={styles.boardSection}>
         <div className={styles.boardList}>
-          {filteredBoardItems.map((item, i) => {
+          {boardReady
+            ? filteredBoardItems.map((item, i) => {
             const rowIndex = i;
             const preview =
               item.isPrivate
@@ -477,14 +512,15 @@ function BoardSection({
                 ) : null}
               </div>
             );
-          })}
+          })
+            : null}
         </div>
       </section>
     </>
   );
 }
 
-export default function Nigajun44View({ product, boardItems }: Props) {
+export default function Nigajun44View({ product }: Props) {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
   return (
@@ -630,7 +666,7 @@ export default function Nigajun44View({ product, boardItems }: Props) {
 
       <SignatureLine />
 
-      <BoardSection boardItems={boardItems} productSlug={product?.slug ?? null} />
+      <BoardSection productSlug={product?.slug ?? null} />
 
       <section className={styles.informationSection}>
         <button

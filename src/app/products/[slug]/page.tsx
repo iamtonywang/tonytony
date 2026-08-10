@@ -1,7 +1,6 @@
 import ProductDetailView from "./ProductDetailView";
 import ProductViewRouter from "./ProductViewRouter";
 import { getProductBySlug } from "../_server/getProductBySlug";
-import { getProductBoardBySlug } from "../_server/getProductBoardBySlug";
 import { getSupabasePublicClient } from "../_server/client";
 import type { ProductSharedRow } from "../_server/types";
 import { notFound } from "next/navigation";
@@ -30,10 +29,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound();
   }
 
-  const [product, boardItems] = await Promise.all([
-    getProductBySlug(slug, sharedProductRow),
-    getProductBoardBySlug(slug, sharedProductRow),
-  ]);
+  const product = await getProductBySlug(slug, sharedProductRow);
 
   if (product === null) {
     notFound();
@@ -41,7 +37,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   return (
     <ProductDetailView>
-      <ProductViewRouter slug={slug} product={product ?? undefined} boardItems={boardItems} />
+      <ProductViewRouter slug={slug} product={product ?? undefined} />
     </ProductDetailView>
   );
 }
