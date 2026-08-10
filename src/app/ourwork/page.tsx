@@ -1,12 +1,68 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./page.module.css";
 
+export const metadata: Metadata = {
+  title: {
+    absolute: "OUR WORK | TONY WANG",
+  },
+  description:
+    "Explore TONY WANG's creative philosophy, research vision, and the work behind NIGAJUN.",
+  alternates: {
+    canonical: "https://www.iamtonywang.com/ourwork",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.iamtonywang.com/ourwork",
+    siteName: "TONY WANG",
+    title: "OUR WORK | TONY WANG",
+    description:
+      "Explore TONY WANG's creative philosophy, research vision, and the work behind NIGAJUN.",
+    images: [
+      {
+        url: "/landing-assets/tonywang-ourwork-hero-clean-v4.webp",
+        width: 1200,
+        height: 1700,
+        alt: "OUR WORK by TONY WANG",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OUR WORK | TONY WANG",
+    description:
+      "Explore TONY WANG's creative philosophy, research vision, and the work behind NIGAJUN.",
+    images: ["/landing-assets/tonywang-ourwork-hero-clean-v4.webp"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function OurWorkPage() {
   return (
     <div className={styles.ourwork}>
       <SignatureLine />
+
+      <section
+        className={styles.heroIdentity}
+        aria-labelledby="ourwork-hero-title"
+      >
+        <p className={styles.heroBrand}>TONY WANG</p>
+        <h1 id="ourwork-hero-title" className={styles.heroTitle}>
+          OUR WORK
+        </h1>
+        <p className={styles.heroInstitute}>
+          DERMA PHYTON Global Institute
+        </p>
+        <p className={styles.heroSubtitle}>
+          Plant cell gene protein
+        </p>
+      </section>
 
       <section className={styles.hero}>
         <div className={styles.heroFadeX}>
@@ -44,10 +100,6 @@ export default function OurWorkPage() {
             <span className={`${styles.heroMessageBrand} ${styles.heroMessageBrandStart}`}>NIGAJUN</span>
             <span className={styles.heroMessageBrand}>One day in August 2026 TONY WANG</span>
           </div>
-        </div>
-        <div className={styles.heroCopy}>
-          <h1 className={styles.brandTitle}>TONY WANG</h1>
-          <p className={styles.sectionTitle}>OUR WORK</p>
         </div>
       </section>
 

@@ -1,12 +1,68 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
 import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./page.module.css";
 
+export const metadata: Metadata = {
+  title: {
+    absolute: "WHY? | TONY WANG",
+  },
+  description:
+    "Discover why TONY WANG created NIGAJUN and the principles of truth, proof, innovation, and creation behind the work.",
+  alternates: {
+    canonical: "https://www.iamtonywang.com/why",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.iamtonywang.com/why",
+    siteName: "TONY WANG",
+    title: "WHY? | TONY WANG",
+    description:
+      "Discover why TONY WANG created NIGAJUN and the principles of truth, proof, innovation, and creation behind the work.",
+    images: [
+      {
+        url: "/landing-assets/tonywang-why-hero-v4.webp",
+        width: 1200,
+        height: 1700,
+        alt: "WHY by TONY WANG",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WHY? | TONY WANG",
+    description:
+      "Discover why TONY WANG created NIGAJUN and the principles of truth, proof, innovation, and creation behind the work.",
+    images: ["/landing-assets/tonywang-why-hero-v4.webp"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function WhyPage() {
   return (
     <div className={styles.why}>
       <SignatureLine />
+
+      <section
+        className={styles.heroIdentity}
+        aria-labelledby="why-hero-title"
+      >
+        <p className={styles.heroBrand}>TONY WANG</p>
+        <h1 id="why-hero-title" className={styles.heroTitle}>
+          WHY?
+        </h1>
+        <p className={styles.heroInstitute}>
+          DERMA PHYTON Global Institute
+        </p>
+        <p className={styles.heroSubtitle}>
+          Plant cell gene protein
+        </p>
+      </section>
 
       <section className={styles.hero}>
         <div className={styles.heroFadeX}>
@@ -26,13 +82,6 @@ export default function WhyPage() {
             </div>
           </div>
         </div>
-      </section>
-
-      <section className={styles.heroIdentity} aria-labelledby="why-page-title">
-        <h1 id="why-page-title" className={styles.brandTitle}>
-          TONY WANG
-        </h1>
-        <h2 className={styles.sectionTitle}>WHY?</h2>
       </section>
 
       <SignatureLine />

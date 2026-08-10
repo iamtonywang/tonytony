@@ -71,6 +71,18 @@ export default function HomePage() {
 
       <SignatureLine />
 
+      <section className={styles.heroIdentity} aria-labelledby="home-hero-title">
+        <h1 id="home-hero-title" className={styles.heroTitle}>
+          TONY WANG
+        </h1>
+        <h2 className={styles.heroInstitute}>
+          DERMA PHYTON Global Institute
+        </h2>
+        <p className={styles.heroSubtitle}>
+          Plant cell gene protein
+        </p>
+      </section>
+
       <section className={styles.hero}>
         <div className={styles.heroFadeX}>
           <div className={styles.heroFadeY}>
@@ -117,12 +129,6 @@ export default function HomePage() {
             </span>
           </p>
         </div>
-      </section>
-
-      <section className={styles.heroIdentity} aria-label="Brand identity">
-        <h1 className={styles.heroTitle}>TONY WANG</h1>
-        <h2 className={styles.heroInstitute}>DERMA PHYTON Global Institute</h2>
-        <p className={styles.heroSubtitle}>Plant cell gene protein</p>
       </section>
 
       <SignatureLine />

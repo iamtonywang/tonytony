@@ -172,16 +172,51 @@
   }
 }
 
-/* Outside all masks — SEO identity in normal flow below hero */
+/* Independent SEO identity — above hero image */
 .heroIdentity {
   display: flex;
   width: 100%;
   max-width: 620px;
-  margin: 0 auto;
+  margin-inline: auto;
   padding: 18px 28px 20px;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.heroBrand {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.heroTitle {
+  margin: 8px 0 0;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.heroInstitute {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.heroSubtitle {
+  margin: 5px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 @media (prefers-reduced-motion: reduce) {

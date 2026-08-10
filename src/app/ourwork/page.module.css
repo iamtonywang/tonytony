@@ -220,19 +220,51 @@
   display: none;
 }
 
-.heroCopy {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
+/* Independent SEO identity — above hero image */
+.heroIdentity {
   display: flex;
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+  padding: 18px 28px 20px;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 28px clamp(24px, 7%, 48px);
-  pointer-events: none;
-  animation: ourworkCopyReveal 1.4s ease-out 1.25s 1 both;
+}
+
+.heroBrand {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.heroTitle {
+  margin: 8px 0 0;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.heroInstitute {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.heroSubtitle {
+  margin: 5px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 @keyframes ourworkCopyReveal {
@@ -255,11 +287,6 @@
     opacity: 0;
   }
 
-  .heroCopy {
-    animation: none;
-    opacity: 1;
-  }
-
   .heroMessage {
     animation: none;
     opacity: 1;
@@ -270,7 +297,6 @@
   .hero {
     max-width: 430px;
     overflow: visible;
-    margin-bottom: 68px;
   }
 
   .heroFadeX {
@@ -334,14 +360,6 @@
 
   .mobileOnlyBreak {
     display: inline;
-  }
-
-  .heroCopy {
-    top: 100%;
-    right: 0;
-    bottom: auto;
-    left: 0;
-    padding: 14px 20px 10px;
   }
 
   .heroMessageLines,
