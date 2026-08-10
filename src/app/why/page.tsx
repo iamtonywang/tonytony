@@ -26,10 +26,13 @@ export default function WhyPage() {
             </div>
           </div>
         </div>
-        <div className={styles.heroCopy}>
-          <h1 className={styles.brandTitle}>TONY WANG</h1>
-          <p className={styles.sectionTitle}>WHY?</p>
-        </div>
+      </section>
+
+      <section className={styles.heroIdentity} aria-labelledby="why-page-title">
+        <h1 id="why-page-title" className={styles.brandTitle}>
+          TONY WANG
+        </h1>
+        <h2 className={styles.sectionTitle}>WHY?</h2>
       </section>
 
       <SignatureLine />

@@ -172,30 +172,16 @@
   }
 }
 
-/* Outside all masks — copy stays sharp */
-.heroCopy {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
+/* Outside all masks — SEO identity in normal flow below hero */
+.heroIdentity {
   display: flex;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 18px 28px 20px;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 28px clamp(24px, 7%, 48px);
-  pointer-events: none;
-  animation: whyCopyReveal 1.4s ease-out 1.25s 1 both;
-}
-
-@keyframes whyCopyReveal {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -206,11 +192,6 @@
   .heroFadeShape::after {
     animation: none;
     opacity: 0;
-  }
-
-  .heroCopy {
-    animation: none;
-    opacity: 1;
   }
 }
 
@@ -272,10 +253,6 @@
 
   .heroImage {
     object-position: center 12%;
-  }
-
-  .heroCopy {
-    padding-bottom: clamp(20px, 6%, 36px);
   }
 }
 
