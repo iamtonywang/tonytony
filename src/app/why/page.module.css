@@ -4,9 +4,8 @@
 }
 
 /*
- * Hero: Home-matched image system. Height from aspect-ratio of source 1200×1400.
+ * Hero: Home-matched image system. Height from aspect-ratio of source 1200×1700.
  * Max display width PC 720px / mobile 430px.
- * Dirty opacity 0.65/0.6 intent migrated to final .heroImage opacity 0.84.
  */
 .hero {
   position: relative;
@@ -14,7 +13,7 @@
   width: 100%;
   max-width: 720px;
   margin-inline: auto;
-  aspect-ratio: 1200 / 1400;
+  aspect-ratio: 1200 / 1700;
   overflow: hidden;
   background: transparent;
 }
@@ -106,32 +105,28 @@
 .heroImage {
   object-fit: cover;
   object-position: center top;
-  transform: scale(1.03);
+  transform: none;
   transform-origin: center top;
-  opacity: 0.84;
-  filter: contrast(0.86) brightness(0.97);
+  opacity: 1;
+  filter: none;
   animation: whyPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
 @keyframes whyPortraitReveal {
   0% {
     opacity: 0.1;
-    transform: scale(1.045);
   }
 
   35% {
     opacity: 0.36;
-    transform: scale(1.04);
   }
 
   70% {
     opacity: 0.72;
-    transform: scale(1.034);
   }
 
   100% {
-    opacity: 0.84;
-    transform: scale(1.03);
+    opacity: 1;
   }
 }
 
