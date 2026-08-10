@@ -4,7 +4,7 @@
 }
 
 /*
- * Hero: Home-matched image system. Height from aspect-ratio of source 1200×1400.
+ * Hero: Home-matched image system. Height from aspect-ratio of source 1200×1700.
  * Max display width PC 720px / mobile 430px.
  */
 .hero {
@@ -13,7 +13,7 @@
   width: 100%;
   max-width: 720px;
   margin-inline: auto;
-  aspect-ratio: 1200 / 1400;
+  aspect-ratio: 1200 / 1700;
   overflow: hidden;
   background: transparent;
 }
