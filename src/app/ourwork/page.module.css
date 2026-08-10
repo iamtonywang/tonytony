@@ -105,32 +105,28 @@
 .heroImage {
   object-fit: cover;
   object-position: center top;
-  transform: scale(1.03);
+  transform: none;
   transform-origin: center top;
-  opacity: 0.84;
-  filter: contrast(0.86) brightness(0.97);
+  opacity: 1;
+  filter: none;
   animation: ourworkPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
 @keyframes ourworkPortraitReveal {
   0% {
     opacity: 0.1;
-    transform: scale(1.045);
   }
 
   35% {
     opacity: 0.36;
-    transform: scale(1.04);
   }
 
   70% {
     opacity: 0.72;
-    transform: scale(1.034);
   }
 
   100% {
-    opacity: 0.84;
-    transform: scale(1.03);
+    opacity: 1;
   }
 }
 
