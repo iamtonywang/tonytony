@@ -89,6 +89,21 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+        <div className={styles.heroMessage}>
+          <p className={styles.heroMessageLines}>
+            <span>긴 설명은 필요하지 않아</span>
+            <span>거짓은 수치이고 창피한 행위야</span>
+            <span>성분이 뭐고 어떤 구조라고 떠들고 싶지 않아</span>
+            <span>화려한 설명이 소용이 없다는 것을 알기에</span>
+            <span>최고라고 말할 필요도 없어</span>
+            <span>스스로 얘기 하는건 모순이고 창피한 행동이야</span>
+            <span className={styles.heroMessageBrand}>NIGAJUN</span>
+            <span className={styles.heroMessageBrand}>I MADE IT FOR YOU</span>
+            <span>피부를 위한 모든 퍼즐을 풀고자 세상에 나왔다</span>
+            <span>입증만이 진실이고 그것이 정직한 사실이다</span>
+            <span>수천 마디 거짓 과장된 표현은 필요 없다</span>
+          </p>
+        </div>
       </section>
 
       <section className={styles.heroIdentity} aria-label="Brand identity">

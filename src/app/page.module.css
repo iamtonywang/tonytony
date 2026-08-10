@@ -177,6 +177,68 @@
   }
 }
 
+/* Outside masks — message stays sharp over portrait */
+.heroMessage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(24px, 5%, 48px);
+  z-index: 2;
+  padding: 0 28px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  animation: heroMessageReveal 1.4s ease-out 1.25s 1 both;
+}
+
+@keyframes heroMessageReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.heroMessageLines {
+  width: 100%;
+  max-width: 660px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.95),
+    0 0 8px rgba(0, 0, 0, 0.72);
+}
+
+.heroMessageLines > span {
+  display: block;
+  margin: 0;
+}
+
+.heroMessageBrand {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: 0.04em;
+}
+
+.heroMessageLines > .heroMessageBrand:first-of-type {
+  margin-top: 8px;
+}
+
+.heroMessageLines > .heroMessageBrand:last-of-type {
+  margin-bottom: 8px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .heroImage {
     animation: none;
@@ -185,6 +247,11 @@
   .heroFadeShape::after {
     animation: none;
     opacity: 0;
+  }
+
+  .heroMessage {
+    animation: none;
+    opacity: 1;
   }
 }
 
@@ -230,6 +297,10 @@
 @media (max-width: 768px) {
   .hero {
     max-width: 430px;
+  }
+
+  .heroMessage {
+    padding: 0 18px;
   }
 
   .heroFadeX {
