@@ -28,7 +28,7 @@ function getSupabaseAuthCookies(request: NextRequest): string[] {
 		.map((cookie) => cookie.name);
 }
 
-/** 정적·미디어 요청: auth(getClaims/getUser)·방문 로그·visitor 쿠키 설정 없이 통과 */
+/** 정적·미디어 요청: auth(getClaims)·방문 로그·visitor 쿠키 설정 없이 통과 */
 const STATIC_ASSET_EXTENSION =
 	/\.(mp4|webm|mov|m4v|jpe?g|png|webp|gif|svg|ico|avif|css|js|map|woff2?|ttf|otf)$/i;
 
@@ -177,9 +177,15 @@ export async function proxy(request: NextRequest) {
 		},
 	});
 
+	let authUserId: string | null = null;
 	try {
-		await supabase.auth.getClaims();
+		const { data: claimsData } = await supabase.auth.getClaims();
+		const sub = claimsData?.claims?.sub;
+		if (typeof sub === "string" && sub.trim().length > 0) {
+			authUserId = sub;
+		}
 	} catch (error) {
+		authUserId = null;
 		if (isRefreshTokenNotFoundError(error)) {
 			const authCookieNames = getSupabaseAuthCookies(request);
 
@@ -207,14 +213,6 @@ export async function proxy(request: NextRequest) {
 		}
 
 		if (visitDateStr) {
-			let authUserId: string | null = null;
-			try {
-				const { data } = await supabase.auth.getUser();
-				authUserId = data.user?.id ?? null;
-			} catch {
-				authUserId = null;
-			}
-
 			const isAuthenticated = Boolean(authUserId);
 			const serviceRole = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
 
