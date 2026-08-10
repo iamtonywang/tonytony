@@ -8,7 +8,7 @@ const HOME_URL = "https://www.iamtonywang.com";
 const HOME_TITLE = "TONY WANG | DERMAPHYTON Global Institute";
 const HOME_DESCRIPTION =
   "TONY WANG researches Plant Cell Gene Protein and ProteoPhytoComplex at DERMAPHYTON Global Institute.";
-const HOME_OG_IMAGE = `${HOME_URL}/landing-assets/tonywang-home-hero-v3.webp`;
+const HOME_OG_IMAGE = `${HOME_URL}/landing-assets/tonywang-home-hero-clean-v4.webp`;
 
 export const metadata: Metadata = {
   title: {
@@ -77,7 +77,7 @@ export default function HomePage() {
             <div className={styles.heroFadeShape}>
               <div className={styles.heroMedia}>
                 <Image
-                  src="/landing-assets/tonywang-home-hero-v3.webp"
+                  src="/landing-assets/tonywang-home-hero-clean-v4.webp"
                   alt="Tony Wang founder portrait for DERMA PHYTON Global Institute"
                   fill
                   priority
