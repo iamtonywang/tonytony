@@ -78,7 +78,7 @@ export default async function ProductsPage() {
             const showComingSoon = item.slug !== "nigajun-44";
             return (
               <li key={item.slug} className={styles.productGridItem}>
-                <Link href={`/products/${item.slug}`} className={styles.productGridLink}>
+                <Link href={`/products/${item.slug}`} prefetch={false} className={styles.productGridLink}>
                   <span className={styles.productGridName}>{item.productName ?? ""}</span>
                   {showComingSoon ? (
                     <span className={styles.productGridComingSoon}>COMING SOON</span>
