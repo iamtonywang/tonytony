@@ -106,32 +106,28 @@
 .heroImage {
   object-fit: contain;
   object-position: center center;
-  transform: scale(1.03);
+  transform: none;
   transform-origin: center center;
-  opacity: 0.84;
-  filter: contrast(0.86) brightness(0.97);
+  opacity: 1;
+  filter: none;
   animation: heroPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
 @keyframes heroPortraitReveal {
   0% {
     opacity: 0.1;
-    transform: scale(1.045);
   }
 
   35% {
     opacity: 0.36;
-    transform: scale(1.04);
   }
 
   70% {
     opacity: 0.72;
-    transform: scale(1.034);
   }
 
   100% {
-    opacity: 0.84;
-    transform: scale(1.03);
+    opacity: 1;
   }
 }
 
@@ -182,7 +178,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: clamp(24px, 5%, 48px);
+  bottom: 50%;
   z-index: 2;
   padding: 0 28px;
   display: flex;
@@ -224,6 +220,10 @@
   margin: 0;
 }
 
+.mobileOnlyBreak {
+  display: none;
+}
+
 .heroMessageBrand {
   font-size: 14px;
   font-weight: 500;
@@ -252,6 +252,26 @@
   .heroMessage {
     animation: none;
     opacity: 1;
+  }
+}
+
+@media (min-width: 769px) {
+  .heroMessage {
+    padding-inline: 12px;
+  }
+
+  .heroMessageLines {
+    width: auto;
+    max-width: none;
+    gap: 2px;
+  }
+
+  .heroMessageLines > span {
+    display: block;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.28;
   }
 }
 
@@ -300,7 +320,12 @@
   }
 
   .heroMessage {
+    bottom: 15%;
     padding: 0 18px;
+  }
+
+  .mobileOnlyBreak {
+    display: inline;
   }
 
   .heroFadeX {
