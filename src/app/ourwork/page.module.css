@@ -220,6 +220,10 @@
   margin-top: 7px;
 }
 
+.mobileOnlyBreak {
+  display: none;
+}
+
 .heroCopy {
   position: absolute;
   left: 0;
@@ -269,6 +273,8 @@
 @media (max-width: 768px) {
   .hero {
     max-width: 430px;
+    overflow: visible;
+    margin-bottom: 68px;
   }
 
   .heroFadeX {
@@ -326,8 +332,20 @@
     object-position: center 12%;
   }
 
+  .heroMessage {
+    inset: 15% 0 -15%;
+  }
+
+  .mobileOnlyBreak {
+    display: inline;
+  }
+
   .heroCopy {
-    padding-bottom: clamp(20px, 6%, 36px);
+    top: 100%;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    padding: 14px 20px 10px;
   }
 
   .heroMessageLines,

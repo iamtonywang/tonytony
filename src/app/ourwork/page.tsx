@@ -33,7 +33,11 @@ export default function OurWorkPage() {
             <span>진실이 거짓이고 거짓이 진실이 되는 세상</span>
             <span>자본의 힘이 진실이고 때론 없다는 것이 거짓도 되기도 한다</span>
             <span>매우 안타깝고 괴로운 것이다</span>
-            <span>TONY WANG 은 입증만 있다 입증이란 가장 무겁고 책임감이 따른다</span>
+            <span>
+              TONY WANG 은 입증만 있다
+              <br className={styles.mobileOnlyBreak} />
+              {" "}입증이란 가장 무겁고 책임감이 따른다
+            </span>
             <span>그것이 나의 힘이자 자본의 힘과는 비교도 할 수 없는 성역이다</span>
             <span>이제 Innovation and Creation 이루기 위해 출발한다</span>
             <span>하나의 메커니즘으로 변혁을 만들기 위해 세상에 나온 것이다</span>
