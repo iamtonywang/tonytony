@@ -70,7 +70,7 @@ export default function OurWorkPage() {
             <div className={styles.heroFadeShape}>
               <div className={styles.heroMedia}>
                 <Image
-                  src="/landing-assets/tonywang-ourwork-hero-clean-v4.webp"
+                  src="/landing-assets/tonywang-ourwork-hero-v5.webp"
                   alt="Portrait representing creative work and human experience"
                   fill
                   priority
