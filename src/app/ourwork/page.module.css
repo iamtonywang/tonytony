@@ -213,6 +213,7 @@
   color: rgba(255, 255, 255, 0.98);
   font-size: 14px;
   font-weight: 500;
+  line-height: 1.25;
 }
 
 .heroMessageBrandStart {
@@ -327,6 +328,12 @@
 
   .heroCopy {
     padding-bottom: clamp(20px, 6%, 36px);
+  }
+
+  .heroMessageLines,
+  .heroMessageBrand {
+    font-size: 12px;
+    line-height: 1.25;
   }
 }
 
