@@ -5,9 +5,9 @@ import SignatureLine from "@/components/sections/SignatureLine";
 import styles from "./page.module.css";
 
 const HOME_URL = "https://www.iamtonywang.com";
-const HOME_TITLE = "TONY WANG | DERMAPHYTON Global Institute";
+const HOME_TITLE = "TONY WANG | DERMA PHYTON Global Institute";
 const HOME_DESCRIPTION =
-  "TONY WANG researches Plant Cell Gene Protein and ProteoPhytoComplex at DERMAPHYTON Global Institute.";
+  "Plant cell gene protein research by TONY WANG at DERMA PHYTON Global Institute, developing ProteoPhytoComplex and NIGAJUN through proof and innovation.";
 const HOME_OG_IMAGE = `${HOME_URL}/landing-assets/tonywang-home-hero-clean-v4.webp`;
 
 export const metadata: Metadata = {
@@ -54,6 +54,7 @@ const homeJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "TONY WANG",
+  alternateName: "DERMA PHYTON Global Institute",
   url: HOME_URL,
   description: HOME_DESCRIPTION,
   inLanguage: "en",
@@ -78,9 +79,9 @@ export default function HomePage() {
         <h2 className={styles.heroInstitute}>
           DERMA PHYTON Global Institute
         </h2>
-        <p className={styles.heroSubtitle}>
+        <h3 className={styles.heroSubtitle}>
           Plant cell gene protein
-        </p>
+        </h3>
       </section>
 
       <section className={styles.hero}>

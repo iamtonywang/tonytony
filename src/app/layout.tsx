@@ -21,7 +21,7 @@ export default async function RootLayout({
   const headerSession = await getHeaderSession();
 
   return (
-    <html lang="ko">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
