@@ -106,27 +106,32 @@
   object-fit: cover;
   object-position: center top;
   transform: none;
-  transform-origin: center top;
+  transform-origin: center center;
   opacity: 1;
   filter: none;
-  animation: ourworkPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
+  will-change: opacity, transform;
+  animation: ourworkPortraitReveal 8s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
 @keyframes ourworkPortraitReveal {
   0% {
-    opacity: 0.1;
+    opacity: 0.03;
+    transform: scale(0.72) rotate(-2deg);
   }
 
   35% {
-    opacity: 0.36;
+    opacity: 0.35;
+    transform: scale(0.86) rotate(-1deg);
   }
 
-  70% {
-    opacity: 0.72;
+  75% {
+    opacity: 0.82;
+    transform: scale(1.025) rotate(0.5deg);
   }
 
   100% {
     opacity: 1;
+    transform: scale(1) rotate(0deg);
   }
 }
 
@@ -175,7 +180,7 @@
 /* Outside all masks — copy stays sharp — Home layer relation */
 .heroMessage {
   position: absolute;
-  inset: 0;
+  inset: 30% 0 -30%;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -214,10 +219,6 @@
 
 .heroMessageBrandStart {
   margin-top: 7px;
-}
-
-.mobileOnlyBreak {
-  display: none;
 }
 
 /* Independent SEO identity — above hero image */
@@ -280,6 +281,10 @@
 @media (prefers-reduced-motion: reduce) {
   .heroImage {
     animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    will-change: auto;
   }
 
   .heroFadeShape::after {
@@ -297,6 +302,7 @@
   .hero {
     max-width: 430px;
     overflow: visible;
+    margin-bottom: 94px;
   }
 
   .heroFadeX {
@@ -355,11 +361,16 @@
   }
 
   .heroMessage {
-    inset: 15% 0 -15%;
+    inset: 45% 0 -45%;
   }
 
-  .mobileOnlyBreak {
-    display: inline;
+  .heroMessageLines {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .heroMessageLines span {
+    white-space: normal;
   }
 
   .heroMessageLines,
