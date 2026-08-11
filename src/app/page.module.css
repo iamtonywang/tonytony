@@ -110,24 +110,29 @@
   transform-origin: center center;
   opacity: 1;
   filter: none;
-  animation: heroPortraitReveal 5s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
+  will-change: opacity, transform;
+  animation: heroPortraitReveal 8s cubic-bezier(0.22, 1, 0.36, 1) 1 both;
 }
 
 @keyframes heroPortraitReveal {
   0% {
-    opacity: 0.1;
+    opacity: 0.03;
+    transform: scale(0.72) rotate(-2deg);
   }
 
   35% {
-    opacity: 0.36;
+    opacity: 0.35;
+    transform: scale(0.86) rotate(-1deg);
   }
 
-  70% {
-    opacity: 0.72;
+  75% {
+    opacity: 0.82;
+    transform: scale(1.025) rotate(0.5deg);
   }
 
   100% {
     opacity: 1;
+    transform: scale(1) rotate(0deg);
   }
 }
 
@@ -242,6 +247,10 @@
 @media (prefers-reduced-motion: reduce) {
   .heroImage {
     animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    will-change: auto;
   }
 
   .heroFadeShape::after {
