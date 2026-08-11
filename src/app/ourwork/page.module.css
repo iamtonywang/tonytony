@@ -13,8 +13,9 @@
   width: 100%;
   max-width: 720px;
   margin-inline: auto;
+  margin-bottom: 135px;
   aspect-ratio: 1200 / 1700;
-  overflow: hidden;
+  overflow: visible;
   background: transparent;
 }
 
@@ -23,6 +24,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
   mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -180,7 +182,7 @@
 /* Outside all masks — copy stays sharp — Home layer relation */
 .heroMessage {
   position: absolute;
-  inset: 30% 0 -30%;
+  inset: 50% 0 -50%;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -200,7 +202,7 @@
   align-items: center;
   gap: 3px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25;
   letter-spacing: 0;
 }
@@ -213,12 +215,16 @@
 .heroMessageBrand {
   color: rgba(255, 255, 255, 0.98);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25;
 }
 
 .heroMessageBrandStart {
   margin-top: 7px;
+}
+
+.mobileOnlyBreak {
+  display: none;
 }
 
 /* Independent SEO identity — above hero image */
@@ -302,7 +308,7 @@
   .hero {
     max-width: 430px;
     overflow: visible;
-    margin-bottom: 94px;
+    margin-bottom: 234px;
   }
 
   .heroFadeX {
@@ -361,7 +367,7 @@
   }
 
   .heroMessage {
-    inset: 45% 0 -45%;
+    inset: 65% 0 -65%;
   }
 
   .heroMessageLines {
@@ -371,6 +377,10 @@
 
   .heroMessageLines span {
     white-space: normal;
+  }
+
+  .mobileOnlyBreak {
+    display: inline;
   }
 
   .heroMessageLines,
