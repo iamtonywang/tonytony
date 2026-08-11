@@ -183,7 +183,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 50%;
+  bottom: 5%;
   z-index: 2;
   padding: 0 28px;
   display: flex;
@@ -326,10 +326,12 @@
 @media (max-width: 768px) {
   .hero {
     max-width: 430px;
+    overflow: visible;
+    margin-bottom: 186px;
   }
 
   .heroMessage {
-    bottom: 15%;
+    bottom: -30%;
     padding: 0 18px;
   }
 
